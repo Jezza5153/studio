@@ -28,56 +28,64 @@ export const homeContent = {
 };
 
 export const menuContent = {
+  // SHARING IS CARING / HET BEPROEFDE RECEPT (Starters & kleine gerechten)
   gerechtjes: [
-    { name: "Vegan curry", description: "Courgette, bonen, wortel, kokos, witte rijst", price: "9.50" },
-    { name: "Bao bun", description: "Keuze uit pulled pork of jackfruit met rendang", price: "8.75" },
-    { name: "Carpaccio tartaar", description: "Klassieke rundercarpaccio, maar dan anders", price: "10.50" },
-    { name: "Bruschetta", description: "Met verse tomaat, basilicum en knoflook", price: "7.00" },
-    { name: "Griekse salade", description: "Feta, komkommer, tomaat, olijven en rode ui", price: "8.00" },
-    { name: "Zalm carpaccio", description: "Dun gesneden gerookte zalm met dille-dressing", price: "11.00" },
-    { name: "Biet carpaccio", description: "Met geitenkaas, walnoten en honing", price: "9.00" },
-    { name: "Rijstballen", description: "Gevulde arancini met een hart van mozzarella", price: "8.50" },
-    { name: "Gazpacho", description: "Verfrissende koude Spaanse soep", price: "6.50" },
+    { name: "Gehaktballetjes", description: "Kalf – parmesan – bieslook", price: "20" },
+    { name: "Bruschetta", description: "Knoflook – olijfolie – tomaat – focaccia", price: "20" },
+    { name: "Vegan", description: "Beschrijf de ingrediënten en details (chef’s keuze)", price: "20" },
+    { name: "Gevuld tomaatje", description: "Garnaal – cocktailsaus – tomaat", price: "20" },
+    { name: "Peppadews", description: "Gegrilde paprika – roomkaas", price: "20" },
+    { name: "Gevulde eitjes", description: "Mayonaise – bieslook", price: "20" },
+    { name: "Bao bun", description: "Bao – brisket of tofu – sriracha-mayo", price: "20" },
+    { name: "Carpaccio", description: "Rund – truffelmayo – parmesan", price: "20" },
+    { name: "Biet tartaar", description: "Geitenkaas – walnoot – honing", price: "20" },
+    { name: "Vitello tonnato", description: "Rund – tonijnmayonaise – kappertjes", price: "20" },
+    { name: "Gerookte zalm", description: "Citroen – dille – komkommer", price: "20" },
+    { name: "Caprese", description: "Tomaat – basilicum – mozzarella", price: "20" }
   ],
-  bites: [
-    { name: "Gevulde eitjes", description: "Een klassieker, romig en smaakvol", price: "5.50" },
-    { name: "Gehaktballen in tomatensaus", description: "Huisgemaakt, naar oma's recept", price: "7.50" },
-    { name: "Hollandse caprese", description: "Met buffelmozzarella en trostomaten", price: "6.50" },
-    { name: "Chicken wings", description: "Krokant gebakken met een licht pikante marinade", price: "8.00" },
-    { name: "Mozzarella-spek sticks", description: "Gesmolten mozzarella omwikkeld met krokant spek", price: "7.00" },
-    { name: "Garnalencocktail", description: "Een retro favoriet met whiskysaus", price: "9.00" },
-    { name: "Halloumi nuggets", description: "Krokante kaasnuggets met een zoete chilidip", price: "7.50" },
-    { name: "Crudités", description: "Verse groenten met gerookte-paprika hummus", price: "6.00" },
-    { name: "Broodplankje", description: "Met aioli en kruidenboter", price: "5.00" },
+
+  // COMFORT – Het bekende comfort, de gezonde keuze
+  comfort: [
+    { name: "Jan zijn soepje", description: "Groenten van de buren – even vragen", price: "20" },
+    { name: "Runder stoofpotje", description: "Ui – wortel – pastinaak", price: "20" },
+    { name: "Ossobuco", description: "Polenta – gremolata", price: "20" },
+    { name: "Courgettesoep", description: "Courgette – knoflook – ui – basilicum", price: "20" }
   ],
-  kazen: [
-    { name: "Brie (geit)", pairing: "amandel & karamel", producer: "Bastiaansen, Bodegraven", price: "9.00" },
-    { name: "Fiore", pairing: "balsamico & dadelbrood", producer: "Oudwijker, Lopikerkapel", price: "9.50" },
-    { name: "Brokkel Gouda", pairing: "appelstroop & sesam", producer: "Weerribben XO, Delden", price: "8.50" },
-    { name: "Olde Remeker", pairing: "appel & walnoot", producer: "Remeker, Lunteren", price: "10.00" },
-    { name: "Colosso blauw (buffel)", pairing: "mango chutney & blauwe bes", producer: "Lokale selectie", price: "10.50" },
-  ],
-  charcuterie: [
-    { name: "Fuet", producer: "Gerrit Takke – Utrecht", price: "7.00" },
-    { name: "Mortadella (pistache)", producer: "De Slagerij – Amersfoort", price: "7.50" },
-    { name: "Spinata Romana", producer: "Gerrit Takke – Utrecht", price: "8.00" },
-    { name: "Rauwe ham", producer: "De Slagerij – Amersfoort", price: "8.50" },
-    { name: "Cranberry pâté", producer: "Huisgemaakt", price: "7.00" },
-  ],
-  planken: [
-    { name: "Beetje van beiden", description: "Selectie kaas & charcuterie", price: "18.50" },
-    { name: "Flinke jongen", description: "Uitgebreide plank met van alles wat", price: "26.00" },
-    { name: "Tafeltje dekken", description: "Laat je verrassen door de chef", price: "35.00 p.p." },
-    { name: "Kan niet kiezen", description: "Een proeverij van onze favoriete gerechtjes", price: "29.50 p.p." },
-  ],
+
+  // ZOETIGHEID (Desserts)
   zoet: [
-    { name: "Dame Blanche", description: "Vanille-ijs met warme chocoladesaus", price: "7.50" },
-    { name: "Affogato", description: "Een bol vanille-ijs overgoten met hete espresso", price: "6.00" },
-    { name: "Cheesecake", description: "Huisgemaakte cheesecake met rood fruit", price: "8.00" },
-    { name: "Salted caramel parfait", description: "Met een krokantje van pinda", price: "8.50" },
-    { name: "Parfait van het seizoen", description: "Vraag naar de smaak van het moment", price: "8.50" },
+    { name: "Appeltaartje", description: "Appel – caramel – amandel – slagroom", price: "20" },
+    { name: "Parfait", description: "Fruit van nu – crumble", price: "20" },
+    { name: "Dame Blanche", description: "Warme chocolade – vanille-ijs – slagroom", price: "20" },
+    { name: "Crème brûlée", description: "Een Franse afscheid", price: "20" },
+    // Optioneel extra zoals vermeld onder ‘De Tafelaar’
+    { name: "Vanille-ijs of citroensorbet", description: "Supplement", price: "+2" }
   ],
-  disclaimer: "Heeft u een allergie? Meld het ons! Wij informeren u graag over de mogelijkheden."
+
+  // KAZEN
+  kazen: [
+    // PDF noemt specifiek ‘Veluwnaartje’; overige kazen stonden niet uitgewerkt
+    { name: "Veluwnaartje", description: "Walnoot – gepekeld bietje", price: "20" }
+  ],
+
+  // BORREL – CHARCUTERIE
+  charcuterie: [
+    { name: "Prosciutto", description: "Geconfijte knoflook – crouton", price: "20" },
+    { name: "Venkelworstje", description: "Met venkel ‘shotje’", price: "20" },
+    { name: "Spinata", description: "Parmesan – hazelnoot", price: "20" },
+    { name: "Fuet", description: "Gepekeld dingetje", price: "20" }
+  ],
+
+  // PLANKJEUH – De Tafelaar
+  planken: [
+    { name: "Beetje van beiden", description: "2 Kaasjes – 2 Charcuterietjes", price: "34" },
+    { name: "Flinke jongen", description: "3 Kaasjes – 3 Charcuterietjes – 3 Gerechtjes", price: "74" },
+    { name: "Tafeltje dekken", description: "5 Kaasjes – 5 Charcuterietjes – 5 Gerechtjes", price: "115" },
+    { name: "Kan niet kiezen", description: "6 Kaasjes – 6 Charcuterietjes – 8 Gerechtjes", price: "149" }
+  ],
+
+  // (Historische secties ‘bites’ uit je oude kaart zijn verwijderd i.v.m. PDF-indeling)
+  bites: []
 };
 
 export const philosophyContent = {

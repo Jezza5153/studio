@@ -2,57 +2,57 @@
   "placeholderImages": [
     {
       "id": "hero",
-      "description": "A beautiful canal in the city center of Amersfoort.",
-      "imageUrl": "https://images.unsplash.com/photo-1594757393431-89045a7c0623?w=1920&h=1080&fit=crop&q=80",
-      "imageHint": "amersfoort binnenstad"
+      "description": "Koppelpoort city gate and canal in the historic center of Amersfoort.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Koppelpoort_in_Amersfoort.jpg",
+      "imageHint": "amersfoort binnenstad koppelpoort"
     },
     {
       "id": "vegan-curry",
-      "description": "A vibrant bowl of vegan curry.",
-      "imageUrl": "https://picsum.photos/seed/curry-amersfoort/400/300",
+      "description": "A vibrant bowl of vegan curry with rice and tofu.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/6/64/Vegan_Curry_-_Milk_No_Sugar.jpg",
       "imageHint": "vegan curry"
     },
     {
       "id": "bao-bun",
-      "description": "Soft bao buns with delicious filling.",
-      "imageUrl": "https://picsum.photos/seed/bao-amersfoort/400/300",
+      "description": "Soft bao buns with savory filling.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/75/Bao_Buns_%2828180915740%29.jpg",
       "imageHint": "bao buns"
     },
     {
       "id": "carpaccio-tartaar",
-      "description": "Finely sliced beef for carpaccio.",
-      "imageUrl": "https://picsum.photos/seed/carpaccio-amersfoort/400/300",
+      "description": "Finely sliced beef carpaccio plated elegantly.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Beef_Carpaccio_at_Petrus.jpg",
       "imageHint": "beef carpaccio"
     },
     {
       "id": "cheese-platter",
-      "description": "An assortment of fine cheeses.",
-      "imageUrl": "https://picsum.photos/seed/cheese-amersfoort/400/300",
+      "description": "An assortment of fine cheeses on a platter.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Cheese_platter.jpg",
       "imageHint": "cheese platter"
     },
     {
       "id": "charcuterie-board",
-      "description": "A selection of cured meats.",
-      "imageUrl": "https://picsum.photos/seed/charcuterie-amersfoort/400/300",
+      "description": "A charcuterie board with cured meats and accompaniments.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7b/A_charcuterie_board.jpg",
       "imageHint": "charcuterie board"
     },
     {
       "id": "dame-blanche",
-      "description": "A classic Dame Blanche dessert.",
-      "imageUrl": "https://picsum.photos/seed/dessert-amersfoort/400/300",
-      "imageHint": "ice cream"
+      "description": "A classic Dame Blanche dessert with vanilla ice cream and chocolate sauce.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Dame_Blanche_%28Pannenkoe%29%2C_Berkel_en_Rodenrijs_%282023%29_02.jpg",
+      "imageHint": "dame blanche dessert"
     },
     {
       "id": "philosophy-image",
-      "description": "Natural ingredients on a wooden table.",
-      "imageUrl": "https://picsum.photos/seed/philosophy-amersfoort/800/600",
+      "description": "Fresh natural ingredients on a rustic wooden surface.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/73/Mushrooms_on_Table_%2848405211396%29.jpg",
       "imageHint": "fresh ingredients"
     },
     {
       "id": "producer-farm",
-      "description": "A local farm landscape.",
-      "imageUrl": "https://picsum.photos/seed/farm-amersfoort/500/350",
-      "imageHint": "dutch farm"
+      "description": "Boerderij Middeleeuws Erf De Bergkamp at Landgoed Schothorst in Amersfoort.",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Boerderij_Middeleeuws_Erf_De_Bergkamp_%28Amersfoort%29_06.jpg",
+      "imageHint": "amersfoort farm landscape"
     }
   ]
 }

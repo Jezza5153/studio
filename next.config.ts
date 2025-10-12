@@ -1,4 +1,4 @@
-import type {NextConfig} from 'next';
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   /* config options here */
@@ -10,13 +10,20 @@ const nextConfig: NextConfig = {
   },
   images: {
     remotePatterns: [
+      // ✅ Wikimedia Commons CDN (for Amersfoort city shots)
       {
         protocol: 'https',
-        hostname: 'placehold.co',
+        hostname: 'upload.wikimedia.org',
       },
+      // ✅ Unsplash CDN (optional: if you use Unsplash photos)
       {
         protocol: 'https',
         hostname: 'images.unsplash.com',
+      },
+      // (Optional) Keep placeholders you already used
+      {
+        protocol: 'https',
+        hostname: 'placehold.co',
       },
       {
         protocol: 'https',
