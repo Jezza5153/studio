@@ -58,8 +58,8 @@ export default function ReserverenPage() {
                 </CardHeader>
                 <CardContent>
                     <address className="not-italic text-muted-foreground">
-                        <p>Tafelaar Amersfoort</p>
-                        <p>{contactDetails.address}</p>
+                        <p>De Tafelaar</p>
+                        <p>{contactDetails.address.split(',').slice(1).join(',')}</p>
                     </address>
                 </CardContent>
             </Card>

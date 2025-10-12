@@ -1,5 +1,6 @@
 import { contactDetails, navLinks, openingHours } from "@/lib/data";
-import { Utensils, Facebook, Instagram, Twitter } from "lucide-react";
+import { Facebook, Instagram, Twitter } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 export function Footer() {
@@ -9,10 +10,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="flex flex-col">
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <Utensils className="h-6 w-6 text-primary" />
-              <span className="font-headline text-lg font-semibold">
-                Tafelaar Amersfoort
-              </span>
+               <Image src="/logo.png" alt="De Tafelaar Logo" width={160} height={40} className="object-contain -ml-4" />
             </Link>
             <p className="text-muted-foreground text-sm">
               Samen aan tafel. Kleine gerechten, grote gezelligheid.
@@ -52,7 +50,7 @@ export function Footer() {
           <div>
             <h4 className="font-headline text-lg mb-4">Contact</h4>
             <address className="not-italic text-sm text-muted-foreground space-y-2">
-              <p>{contactDetails.address}</p>
+              <p>{contactDetails.address.replace('Tafelaar Amersfoort', 'De Tafelaar')}</p>
               <p><a href={`tel:${contactDetails.phone}`} className="hover:text-primary transition-colors">{contactDetails.phone}</a></p>
               <p><a href={`mailto:${contactDetails.email}`} className="hover:text-primary transition-colors">{contactDetails.email}</a></p>
             </address>

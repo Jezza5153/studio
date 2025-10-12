@@ -17,7 +17,7 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Tafelaar Amersfoort",
+  title: "De Tafelaar",
   description: "Samen aan tafel. Kleine gerechten, grote gezelligheid.",
 };
 
