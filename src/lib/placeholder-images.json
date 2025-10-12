@@ -1,3 +1,58 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero",
+      "description": "A cozy and inviting table setting at a restaurant.",
+      "imageUrl": "https://picsum.photos/seed/tafelaar-hero/1920/1080",
+      "imageHint": "restaurant table"
+    },
+    {
+      "id": "vegan-curry",
+      "description": "A vibrant bowl of vegan curry.",
+      "imageUrl": "https://picsum.photos/seed/curry/400/300",
+      "imageHint": "vegan curry"
+    },
+    {
+      "id": "bao-bun",
+      "description": "Soft bao buns with delicious filling.",
+      "imageUrl": "https://picsum.photos/seed/bao/400/300",
+      "imageHint": "bao bun"
+    },
+    {
+      "id": "carpaccio-tartaar",
+      "description": "Finely sliced beef for carpaccio.",
+      "imageUrl": "https://picsum.photos/seed/carpaccio/400/300",
+      "imageHint": "beef carpaccio"
+    },
+    {
+      "id": "cheese-platter",
+      "description": "An assortment of fine cheeses.",
+      "imageUrl": "https://picsum.photos/seed/cheese/400/300",
+      "imageHint": "cheese platter"
+    },
+    {
+      "id": "charcuterie-board",
+      "description": "A selection of cured meats.",
+      "imageUrl": "https://picsum.photos/seed/charcuterie/400/300",
+      "imageHint": "charcuterie board"
+    },
+    {
+      "id": "dame-blanche",
+      "description": "A classic Dame Blanche dessert.",
+      "imageUrl": "https://picsum.photos/seed/dessert/400/300",
+      "imageHint": "ice cream"
+    },
+    {
+      "id": "philosophy-image",
+      "description": "Natural ingredients on a wooden table.",
+      "imageUrl": "https://picsum.photos/seed/philosophy/800/600",
+      "imageHint": "fresh ingredients"
+    },
+    {
+      "id": "producer-farm",
+      "description": "A local farm landscape.",
+      "imageUrl": "https://picsum.photos/seed/farm/500/350",
+      "imageHint": "local farm"
+    }
+  ]
 }
