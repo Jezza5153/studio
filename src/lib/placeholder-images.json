@@ -10,49 +10,49 @@
       "id": "vegan-curry",
       "description": "A vibrant bowl of vegan curry.",
       "imageUrl": "https://picsum.photos/seed/curry-amersfoort/400/300",
-      "imageHint": "amersfoort binnenstad"
+      "imageHint": "vegan curry"
     },
     {
       "id": "bao-bun",
       "description": "Soft bao buns with delicious filling.",
       "imageUrl": "https://picsum.photos/seed/bao-amersfoort/400/300",
-      "imageHint": "amersfoort binnenstad"
+      "imageHint": "bao buns"
     },
     {
       "id": "carpaccio-tartaar",
       "description": "Finely sliced beef for carpaccio.",
       "imageUrl": "https://picsum.photos/seed/carpaccio-amersfoort/400/300",
-      "imageHint": "amersfoort binnenstad"
+      "imageHint": "beef carpaccio"
     },
     {
       "id": "cheese-platter",
       "description": "An assortment of fine cheeses.",
       "imageUrl": "https://picsum.photos/seed/cheese-amersfoort/400/300",
-      "imageHint": "amersfoort binnenstad"
+      "imageHint": "cheese platter"
     },
     {
       "id": "charcuterie-board",
       "description": "A selection of cured meats.",
       "imageUrl": "https://picsum.photos/seed/charcuterie-amersfoort/400/300",
-      "imageHint": "amersfoort binnenstad"
+      "imageHint": "charcuterie board"
     },
     {
       "id": "dame-blanche",
       "description": "A classic Dame Blanche dessert.",
       "imageUrl": "https://picsum.photos/seed/dessert-amersfoort/400/300",
-      "imageHint": "amersfoort binnenstad"
+      "imageHint": "ice cream"
     },
     {
       "id": "philosophy-image",
       "description": "Natural ingredients on a wooden table.",
       "imageUrl": "https://picsum.photos/seed/philosophy-amersfoort/800/600",
-      "imageHint": "amersfoort binnenstad"
+      "imageHint": "fresh ingredients"
     },
     {
       "id": "producer-farm",
       "description": "A local farm landscape.",
       "imageUrl": "https://picsum.photos/seed/farm-amersfoort/500/350",
-      "imageHint": "amersfoort binnenstad"
+      "imageHint": "dutch farm"
     }
   ]
 }
