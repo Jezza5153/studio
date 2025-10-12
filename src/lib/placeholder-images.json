@@ -2,57 +2,57 @@
   "placeholderImages": [
     {
       "id": "hero",
-      "description": "A cozy and inviting table setting at a restaurant.",
-      "imageUrl": "https://picsum.photos/seed/amersfoort-hero/1920/1080",
-      "imageHint": "amersfoort binnestad"
+      "description": "A beautiful canal in the city center of Amersfoort.",
+      "imageUrl": "https://images.unsplash.com/photo-1594757393431-89045a7c0623?w=1920&h=1080&fit=crop",
+      "imageHint": "amersfoort binnenstad"
     },
     {
       "id": "vegan-curry",
       "description": "A vibrant bowl of vegan curry.",
       "imageUrl": "https://picsum.photos/seed/curry-amersfoort/400/300",
-      "imageHint": "vegan curry"
+      "imageHint": "amersfoort binnenstad"
     },
     {
       "id": "bao-bun",
       "description": "Soft bao buns with delicious filling.",
       "imageUrl": "https://picsum.photos/seed/bao-amersfoort/400/300",
-      "imageHint": "bao bun"
+      "imageHint": "amersfoort binnenstad"
     },
     {
       "id": "carpaccio-tartaar",
       "description": "Finely sliced beef for carpaccio.",
       "imageUrl": "https://picsum.photos/seed/carpaccio-amersfoort/400/300",
-      "imageHint": "beef carpaccio"
+      "imageHint": "amersfoort binnenstad"
     },
     {
       "id": "cheese-platter",
       "description": "An assortment of fine cheeses.",
       "imageUrl": "https://picsum.photos/seed/cheese-amersfoort/400/300",
-      "imageHint": "cheese platter"
+      "imageHint": "amersfoort binnenstad"
     },
     {
       "id": "charcuterie-board",
       "description": "A selection of cured meats.",
       "imageUrl": "https://picsum.photos/seed/charcuterie-amersfoort/400/300",
-      "imageHint": "charcuterie board"
+      "imageHint": "amersfoort binnenstad"
     },
     {
       "id": "dame-blanche",
       "description": "A classic Dame Blanche dessert.",
       "imageUrl": "https://picsum.photos/seed/dessert-amersfoort/400/300",
-      "imageHint": "ice cream"
+      "imageHint": "amersfoort binnenstad"
     },
     {
       "id": "philosophy-image",
       "description": "Natural ingredients on a wooden table.",
       "imageUrl": "https://picsum.photos/seed/philosophy-amersfoort/800/600",
-      "imageHint": "fresh ingredients"
+      "imageHint": "amersfoort binnenstad"
     },
     {
       "id": "producer-farm",
       "description": "A local farm landscape.",
       "imageUrl": "https://picsum.photos/seed/farm-amersfoort/500/350",
-      "imageHint": "local farm"
+      "imageHint": "amersfoort binnenstad"
     }
   ]
 }
