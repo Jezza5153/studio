@@ -1,12 +1,11 @@
 "use client";
 
 import { useMemo } from "react";
-import { MENU, type MenuItem, type MenuCategory } from "@/content/menu";
+import { MENU, type MenuItem, type MenuCategory, __MENU_DEBUG_SOURCE } from "@/content/menu";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Download, FileText, Info } from "lucide-react";
 
-// ===== Helpers =====
 function formatPriceNoCurrency(price: number | null) {
   if (price == null) return "";
   return new Intl.NumberFormat("nl-NL", {
@@ -27,8 +26,10 @@ function slugify(input: string) {
   return input.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, "-").replace(/(^-|-$)/g, "");
 }
 
-// ===== Page =====
 export default function MenuPage() {
+  // DEBUG: verify correct data source at runtime
+  console.log("[MENU DEBUG]", __MENU_DEBUG_SOURCE, MENU.title, MENU.categories.map(c => c.name));
+
   const categories: (MenuCategory & { id: string })[] = useMemo(
     () => MENU.categories.map((c) => ({ ...c, id: slugify(c.name) })),
     []
@@ -36,7 +37,6 @@ export default function MenuPage() {
 
   return (
     <div className="container mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-16">
-      {/* Header (H1 is static so 'currency=EUR' can never appear) */}
       <header className="mb-8 sm:mb-10 md:mb-12">
         <div className="rounded-2xl border bg-card p-6 sm:p-8">
           <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl tracking-tight">
@@ -46,7 +46,6 @@ export default function MenuPage() {
             Shared dining met liefde voor seizoen, lokaal en gezelligheid. Kies je favoriete
             gerechtjes — of laat de chef je verrassen.
           </p>
-
           <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
             <Button asChild>
               <a href={PDF_URL} target="_blank" rel="noopener noreferrer">
@@ -63,7 +62,6 @@ export default function MenuPage() {
           </div>
         </div>
 
-        {/* Compact overzichtsnavigatie (optional: comment this out if you don’t want it) */}
         <nav className="sticky top-16 z-40 -mx-1 overflow-x-auto py-3">
           <ul className="flex items-center gap-2">
             {categories.map((c) => (
@@ -80,7 +78,6 @@ export default function MenuPage() {
         </nav>
       </header>
 
-      {/* Sections: calmer layout, better contrast */}
       <main className="space-y-8 sm:space-y-10">
         {categories.map((category) => (
           <section
@@ -94,7 +91,6 @@ export default function MenuPage() {
                 {category.items.length} {category.items.length === 1 ? "gerecht" : "gerechten"}
               </p>
             </div>
-
             <ul className="divide-y">
               {category.items.map((item) => (
                 <li key={item.name} className="py-4 first:pt-0 last:pb-0">
@@ -116,31 +112,23 @@ export default function MenuPage() {
   );
 }
 
-// ===== Row: name + price (no €), description, readable allergens =====
 function MenuRow({ item }: { item: MenuItem }) {
   const showMeta = (item.tags?.length ?? 0) > 0 || (item.allergens?.length ?? 0) > 0;
-
   return (
     <div className="grid grid-cols-1 gap-2">
-      {/* Top line: name + price (no dotted leader for cleaner look) */}
       <div className="flex items-baseline justify-between gap-3">
         <h3 className="text-lg font-semibold leading-tight">{item.name}</h3>
         <p className="shrink-0 text-lg font-semibold tabular-nums">
           {formatPriceNoCurrency(item.price)}
         </p>
       </div>
-
-      {/* Description */}
       {item.description && (
         <p className="text-sm text-muted-foreground leading-relaxed">
           {item.description}
         </p>
       )}
-
-      {/* Tags + Allergens */}
       {showMeta && (
         <div className="mt-1 flex flex-wrap items-center gap-2">
-          {/* Tags */}
           {item.tags?.map((t) => (
             <Badge
               key={t}
@@ -151,8 +139,6 @@ function MenuRow({ item }: { item: MenuItem }) {
               {TAG_LABELS[t] ?? t}
             </Badge>
           ))}
-
-          {/* Allergens – high-contrast chips */}
           {item.allergens?.length ? (
             <div className="flex flex-wrap items-center gap-1.5">
               <span className="text-[11px] font-medium text-foreground/80 mr-1">Allergenen:</span>
