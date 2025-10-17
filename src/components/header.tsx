@@ -21,7 +21,7 @@ export function Header() {
     className?: string;
     onItemClick?: () => void;
   }) => (
-    <nav className={cn("flex flex-col items-start gap-3 text-lg", className)}>
+    <nav className={cn("flex flex-col items-start gap-2 text-lg", className)}>
       {navLinks.map((link) => (
         <SheetClose asChild key={link.href}>
           <Link
@@ -75,9 +75,12 @@ export function Header() {
 
         {/* Mobile menu */}
         <div className="flex lg:hidden items-center">
+           <Button asChild size="sm" className="mr-2">
+            <Link href="/reserveren">Reserveer nu</Link>
+          </Button>
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" aria-label="Open menu" className="md:opacity-100">
+              <Button variant="ghost" size="icon" aria-label="Open menu">
                 <MenuIcon className="h-6 w-6" />
               </Button>
             </SheetTrigger>
@@ -96,13 +99,6 @@ export function Header() {
                   <NavLinks />
                   <div className="pt-4">
                     <LanguageToggle />
-                  </div>
-                  <div className="pt-4">
-                    <Button asChild className="w-full">
-                      <SheetClose asChild>
-                        <Link href="/reserveren">Reserveer nu</Link>
-                      </SheetClose>
-                    </Button>
                   </div>
                 </div>
               </div>
