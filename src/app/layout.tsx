@@ -8,11 +8,13 @@ import { cn } from "@/lib/utils";
 
 const inter = Inter({
   subsets: ["latin"],
+  display: "swap",
   variable: "--font-inter",
 });
 
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
+  display: "swap",
   variable: "--font-playfair-display",
 });
 
@@ -27,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="nl">
+    <html lang="nl" suppressHydrationWarning>
        <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -35,7 +37,7 @@ export default function RootLayout({
       </head>
       <body className={cn("font-body antialiased", inter.variable, playfairDisplay.variable)}>
         <Header />
-        <main>{children}</main>
+        <main className="flex-1">{children}</main>
         <Footer />
         <Toaster />
       </body>
