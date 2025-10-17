@@ -25,306 +25,150 @@ export const MENU: MenuData = {
   currency: "EUR",
   categories: [
     {
-      name: "Bites",
+      name: "Kazen",
       items: [
         {
-          name: "Olijven gemarineerd",
-          description: "Huisgemarineerde olijven met citroen en kruiderij",
-          price: 5.5,
-          tags: [
-            "V",
-            "VG",
-            "GF"
-          ],
-          allergens: []
+          name: "Geiten brie",
+          description: "vijgen chutney - jan zen crackers",
+          price: 6.50,
+          tags: ["V"],
+          allergens: ["melk", "gluten"],
         },
         {
-          name: "Brood & boter",
-          description: "Desem, gekarnde boter, zeezout",
-          price: 6.5,
-          tags: [
-            "V"
-          ],
-          allergens: [
-            "gluten",
-            "melk"
-          ]
+          name: "Wilde Bloemenkaas",
+          description: "rozijnen - dadelbrood",
+          price: 7.00,
+          tags: ["V"],
+          allergens: ["melk", "gluten"],
         },
         {
-          name: "Peppadews",
-          description: "Gevulde pepertjes met roomkaas",
-          price: 7.5,
-          tags: [
-            "V",
-            "GF"
-          ],
-          allergens: [
-            "melk"
-          ]
+          name: "Hoeve goud intens",
+          description: "rozijnen - dadelbrood",
+          price: 7.50,
+          tags: ["V"],
+          allergens: ["melk", "gluten"],
         },
         {
-          name: "Gevulde eitjes",
-          description: "Mayonaise, bieslook, kerrie",
-          price: 7,
-          tags: [
-            "V",
-            "GF"
-          ],
-          allergens: [
-            "eieren",
-            "mosterd"
-          ]
+          name: "Oudwijker Fiore",
+          description: "bier mostard - dadel brood",
+          price: 8.50,
+          tags: ["V"],
+          allergens: ["melk", "gluten", "mosterd"],
         },
         {
-          name: "Fuet",
-          description: "Spaanse gedroogde worst",
-          price: 8.5,
-          tags: [
-            "GF"
-          ],
-          allergens: []
-        }
-      ]
+          name: "Manchego",
+          description: "geroosterde noten mix - bier mostard",
+          price: 9.00,
+          tags: ["V"],
+          allergens: ["melk", "noten", "mosterd"],
+        },
+        {
+          name: "Arcadie Blauw",
+          description: "vijgen compote - jan zen cracker",
+          price: 8.50,
+          tags: ["V"],
+          allergens: ["melk", "gluten"],
+        },
+      ],
     },
     {
-      name: "Koud",
+      name: "Charcuterie",
       items: [
         {
-          name: "Runder tartaar",
-          description: "Kappertjes, mosterd, eidooier",
-          price: 13.5,
+          name: "Veluwnaartje",
+          description: "kesbeke uitjes",
+          price: 7.00,
           tags: [],
-          allergens: [
-            "eieren",
-            "mosterd"
-          ]
+          allergens: [],
         },
         {
-          name: "Burrata",
-          description: "Tomaat, basilicum, balsamico",
-          price: 12.5,
-          tags: [
-            "V",
-            "GF"
-          ],
-          allergens: [
-            "melk"
-          ]
-        },
-        {
-          name: "Gerookte zalm",
-          description: "Citroen, dille, komkommer",
-          price: 13,
-          tags: [
-            "GF"
-          ],
-          allergens: [
-            "vis"
-          ]
-        },
-        {
-          name: "Biet tartaar",
-          description: "Geitenkaas, walnoot, honing",
-          price: 11,
-          tags: [
-            "V",
-            "GF"
-          ],
-          allergens: [
-            "melk",
-            "noten"
-          ]
-        },
-        {
-          name: "Vitello tonnato",
-          description: "Kalf, tonijnmayonaise, kappertjes",
-          price: 14,
+          name: "Venkelworstje",
+          description: "kesbeke cornichon",
+          price: 7.00,
           tags: [],
-          allergens: [
-            "vis",
-            "eieren"
-          ]
+          allergens: [],
         },
         {
-          name: "Carpaccio",
-          description: "Rund, truffelmayo, parmezaan",
-          price: 13.5,
-          tags: [
-            "GF"
-          ],
-          allergens: [
-            "melk",
-            "eieren"
-          ]
+          name: "Prosciutto",
+          description: "Geconfijte Knoflook - Crouton",
+          price: 8.00,
+          tags: [],
+          allergens: ["gluten"],
         },
         {
-          name: "Caprese",
-          description: "Tomaat, basilicum, mozzarella",
-          price: 10,
-          tags: [
-            "V",
-            "GF"
-          ],
-          allergens: [
-            "melk"
-          ]
-        }
-      ]
+          name: "Peperworstje",
+          description: "kesbeke cornichon",
+          price: 7.00,
+          tags: [],
+          allergens: [],
+        },
+        {
+          name: "Gedroogde Twentse worst",
+          description: "kesbeke cornichon",
+          price: 6.00,
+          tags: [],
+          allergens: [],
+        },
+      ],
     },
     {
-      name: "Warm",
+      name: "Borrel",
       items: [
         {
-          name: "Gehaktballetjes",
-          description: "Kalf, parmezaan, bieslook",
-          price: 9.5,
-          tags: [],
-          allergens: [
-            "melk",
-            "gluten",
-            "eieren"
-          ]
+          name: "Peppedews",
+          description: "Gevulde paprikatjes",
+          price: 6.50,
+          tags: ["V"],
+          allergens: ["melk"],
         },
         {
-          name: "Jan zijn soepje",
-          description: "Vraag naar de soep van de dag",
-          price: 7.5,
-          tags: [],
-          allergens: []
+          name: "Olijven",
+          description: "de tafelaars kruiden mix",
+          price: 4.50,
+          tags: ["V", "VG", "GF"],
+          allergens: [],
         },
         {
-          name: "Runder stoofpotje",
-          description: "Ui, wortel, pastinaak",
-          price: 14.5,
-          tags: [
-            "GF"
-          ],
-          allergens: []
+          name: "Gerookte Notenmix",
+          description: "Huis gemaakte noten mix Jan zijn recept",
+          price: 3.50,
+          tags: ["V", "VG", "GF"],
+          allergens: ["noten"],
         },
         {
-          name: "Ossobuco",
-          description: "Polenta, gremolata",
-          price: 16,
-          tags: [
-            "GF"
-          ],
-          allergens: []
+          name: "Sardientjes",
+          description: "Courgette - Knoflook - Ui - Basilicum",
+          price: 6.50,
+          tags: ["GF"],
+          allergens: ["vis"],
         },
-        {
-          name: "Bao bun brisket",
-          description: "Brisket, sriracha-mayo, lente-ui",
-          price: 12.5,
-          tags: [],
-          allergens: [
-            "gluten",
-            "soja",
-            "eieren"
-          ]
-        },
-        {
-          name: "Bao bun tofu",
-          description: "Krokante tofu, sriracha-mayo, lente-ui",
-          price: 12.5,
-          tags: [
-            "V"
-          ],
-          allergens: [
-            "gluten",
-            "soja",
-            "eieren"
-          ]
-        }
-      ]
+      ],
     },
     {
-      name: "Zoet",
+      name: "Arrangementen",
       items: [
         {
-          name: "Appeltaartje",
-          description: "Appel, caramel, amandel, slagroom",
-          price: 8,
-          tags: [
-            "V"
-          ],
-          allergens: [
-            "gluten",
-            "melk",
-            "noten"
-          ]
+          name: "Lekker borrellen (p.p.)",
+          description: "Een leuk carcuterie en kaas plankje",
+          price: 12.50,
+          tags: [],
+          allergens: ["melk", "gluten", "noten"],
         },
         {
-          name: "Parfait",
-          description: "Fruit van het seizoen, crumble",
-          price: 9,
-          tags: [
-            "V",
-            "GF"
-          ],
-          allergens: [
-            "melk",
-            "eieren"
-          ]
+          name: "Chefs choice",
+          description: "4 gerechten die de chef speciaal voor u maakt",
+          price: 38.00,
+          tags: [],
+          allergens: [],
         },
         {
-          name: "Dame Blanche",
-          description: "Warme chocolade, vanille-ijs, slagroom",
-          price: 8.5,
-          tags: [
-            "V",
-            "GF"
-          ],
-          allergens: [
-            "melk"
-          ]
-        },
-        {
-          name: "Crème brûlée",
-          description: "Een Franse klassieker",
-          price: 8.5,
-          tags: [
-            "V",
-            "GF"
-          ],
-          allergens: [
-            "melk",
-            "eieren"
-          ]
+            name: "Dessert plankje",
+            description: "Kan je niet kiezen neem dan beetje van alles - 2 koffies",
+            price: 5.00,
+            tags: ["V"],
+            allergens: ["melk", "gluten", "eieren", "noten"],
         }
-      ]
+      ],
     },
-    {
-      name: "Planken",
-      items: [
-        {
-          name: "Beetje van beiden",
-          description: "2 Kaasjes & 2 Charcuterietjes",
-          price: 24.5,
-          tags: [],
-          allergens: [
-            "melk",
-            "gluten"
-          ]
-        },
-        {
-          name: "Flinke jongen",
-          description: "3 Kaasjes, 3 Charcuterietjes & 3 Gerechtjes",
-          price: 55,
-          tags: [],
-          allergens: [
-            "melk",
-            "gluten",
-            "eieren",
-            "vis"
-          ]
-        },
-        {
-          name: "Kan niet kiezen",
-          description: "Laat de chef kiezen, een reis door de kaart (p.p.)",
-          price: 45,
-          tags: [],
-          allergens: []
-        }
-      ]
-    }
-  ]
+  ],
 };
