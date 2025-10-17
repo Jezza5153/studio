@@ -15,12 +15,12 @@ export function MenuClient({ menuContent }: MenuClientProps) {
 
   const renderMenuItem = (item: any, index: number) => {
     return (
-      <Card key={index}>
+      <Card key={index} className="h-full">
         <CardHeader>
-          <CardTitle className="flex justify-between items-start">
+          <CardTitle className="flex justify-between items-start text-xl">
             <span>{item.name}</span>
           </CardTitle>
-          {item.description && <CardDescription>{item.description}</CardDescription>}
+          {item.description && <CardDescription className="pt-1">{item.description}</CardDescription>}
         </CardHeader>
         <CardFooter>
           <p className="font-semibold text-foreground">€{item.price}</p>
@@ -39,7 +39,7 @@ export function MenuClient({ menuContent }: MenuClientProps) {
         </TabsList>
         {menuCategories.map((category) => (
           <TabsContent key={category} value={category}>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {(menuContent as any)[category].map(renderMenuItem)}
             </div>
           </TabsContent>

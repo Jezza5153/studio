@@ -6,7 +6,7 @@ import { Phone } from "lucide-react";
 
 export default function ReserverenPage() {
   return (
-    <div className="container mx-auto px-4 py-12 sm:py-16 md:py-24">
+    <div className="container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
       <div className="text-center mb-12">
         <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl">Reserveer uw tafel</h1>
         <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
@@ -18,7 +18,7 @@ export default function ReserverenPage() {
         <div className="lg:col-span-2">
           <Card className="shadow-lg rounded-2xl">
             <CardHeader>
-              <CardTitle className="font-headline text-2xl">Online reserveren</CardTitle>
+              <CardTitle className="font-headline text-2xl sm:text-3xl">Online reserveren</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
@@ -63,9 +63,9 @@ export default function ReserverenPage() {
                     </address>
                 </CardContent>
             </Card>
-            <Card className="shadow-lg rounded-2xl">
-                <CardContent className="p-0">
-                <div className="aspect-[4/3] md:aspect-video bg-muted rounded-lg flex items-center justify-center">
+            <Card className="shadow-lg rounded-2xl overflow-hidden">
+                <CardContent className="p-0 h-full">
+                <div className="aspect-[4/3] md:aspect-video bg-muted flex items-center justify-center h-full">
                     <p className="text-muted-foreground">Kaart placeholder</p>
                 </div>
                 </CardContent>

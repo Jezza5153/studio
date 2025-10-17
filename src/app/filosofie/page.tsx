@@ -7,7 +7,7 @@ export default function FilosofiePage() {
 
   return (
     <div className="bg-background">
-      <div className="container mx-auto px-4 py-12 sm:py-16 md:py-24">
+      <div className="container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
         <div className="text-center mb-12">
           <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl">{philosophyContent.title}</h1>
           <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
@@ -30,14 +30,14 @@ export default function FilosofiePage() {
                     </p>
                 </div>
             </div>
-            <div className="md:order-1">
+            <div className="md:order-1 overflow-hidden rounded-2xl">
                 {philosophyImage && (
                 <Image
                     src={philosophyImage.imageUrl}
                     alt={philosophyImage.description}
                     width={800}
                     height={600}
-                    className="rounded-2xl shadow-lg object-cover w-full h-auto"
+                    className="object-cover w-full h-auto"
                     data-ai-hint={philosophyImage.imageHint}
                     sizes="(max-width: 768px) 100vw, 50vw"
                 />

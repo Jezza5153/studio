@@ -16,7 +16,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col space-y-12 sm:space-y-16 md:space-y-24">
       <section className="relative h-[60vh] md:h-[70vh] w-full">
         {heroImage && (
           <Image
@@ -48,43 +48,37 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            {homeContent.highlights.map((highlight, index) => {
-              const Icon = highlightsIcons[highlight.title as keyof typeof highlightsIcons] || UtensilsCrossed;
-              return (
-              <Card key={index} className="text-center border-0 shadow-lg rounded-2xl bg-card hover:shadow-2xl transition-shadow duration-300">
-                <CardHeader>
-                  <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
-                    <Icon className="h-8 w-8 text-primary" />
-                  </div>
-                  <CardTitle className="font-headline text-xl pt-4">{highlight.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground text-base">{highlight.description}</p>
-                </CardContent>
-              </Card>
-            )})}
-          </div>
+      <section className="container mx-auto px-4 sm:px-6 md:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          {homeContent.highlights.map((highlight, index) => {
+            const Icon = highlightsIcons[highlight.title as keyof typeof highlightsIcons] || UtensilsCrossed;
+            return (
+            <Card key={index} className="text-center border-0 shadow-lg rounded-2xl bg-card hover:shadow-2xl transition-shadow duration-300 h-full">
+              <CardHeader>
+                <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
+                  <Icon className="h-8 w-8 text-primary" />
+                </div>
+                <CardTitle className="font-headline text-xl pt-4">{highlight.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground text-base">{highlight.description}</p>
+              </CardContent>
+            </Card>
+          )})}
         </div>
       </section>
 
-      <section className="py-16 sm:py-20 bg-secondary/30">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="font-headline text-2xl sm:text-3xl md:text-4xl mb-4">{homeContent.howItWorks.title}</h2>
-          <p className="max-w-prose mx-auto text-base sm:text-lg text-muted-foreground leading-relaxed">
-            {homeContent.howItWorks.description}
-          </p>
-        </div>
+      <section className="container mx-auto px-4 sm:px-6 md:px-8 text-center">
+        <h2 className="font-headline text-2xl sm:text-3xl md:text-4xl mb-4">{homeContent.howItWorks.title}</h2>
+        <p className="max-w-prose mx-auto text-base sm:text-lg text-muted-foreground leading-relaxed">
+          {homeContent.howItWorks.description}
+        </p>
       </section>
       
-      <section className="py-16 sm:py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="bg-accent/20 border-l-4 border-accent text-accent-foreground p-6 md:p-10 rounded-2xl text-center shadow-lg">
-             <h3 className="font-headline text-2xl md:text-3xl">{homeContent.seasonalTeaser.title}</h3>
-             <p className="mt-2 text-base md:text-lg max-w-prose mx-auto leading-relaxed">{homeContent.seasonalTeaser.description}</p>
-          </div>
+      <section className="container mx-auto px-4 sm:px-6 md:px-8 pb-12 sm:pb-16 md:pb-24">
+        <div className="bg-accent/20 border-l-4 border-accent text-accent-foreground p-6 md:p-10 rounded-2xl text-center shadow-lg">
+           <h3 className="font-headline text-2xl md:text-3xl">{homeContent.seasonalTeaser.title}</h3>
+           <p className="mt-2 text-base md:text-lg max-w-prose mx-auto leading-relaxed">{homeContent.seasonalTeaser.description}</p>
         </div>
       </section>
     </div>

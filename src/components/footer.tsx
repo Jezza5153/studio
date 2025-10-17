@@ -7,7 +7,7 @@ import { Separator } from "./ui/separator";
 export function Footer() {
   return (
     <footer className="bg-secondary/30 border-t">
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center sm:text-left">
           <div className="flex flex-col items-center sm:items-start space-y-4">
             <Link href="/" className="flex items-center gap-2">
