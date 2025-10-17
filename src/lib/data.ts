@@ -30,62 +30,60 @@ export const homeContent = {
 export const menuContent = {
   // SHARING IS CARING / HET BEPROEFDE RECEPT (Starters & kleine gerechten)
   gerechtjes: [
-    { name: "Gehaktballetjes", description: "Kalf – parmesan – bieslook", price: "20" },
-    { name: "Bruschetta", description: "Knoflook – olijfolie – tomaat – focaccia", price: "20" },
-    { name: "Vegan", description: "Beschrijf de ingrediënten en details (chef’s keuze)", price: "20" },
-    { name: "Gevuld tomaatje", description: "Garnaal – cocktailsaus – tomaat", price: "20" },
-    { name: "Peppadews", description: "Gegrilde paprika – roomkaas", price: "20" },
-    { name: "Gevulde eitjes", description: "Mayonaise – bieslook", price: "20" },
-    { name: "Bao bun", description: "Bao – brisket of tofu – sriracha-mayo", price: "20" },
-    { name: "Carpaccio", description: "Rund – truffelmayo – parmesan", price: "20" },
-    { name: "Biet tartaar", description: "Geitenkaas – walnoot – honing", price: "20" },
-    { name: "Vitello tonnato", description: "Rund – tonijnmayonaise – kappertjes", price: "20" },
-    { name: "Gerookte zalm", description: "Citroen – dille – komkommer", price: "20" },
-    { name: "Caprese", description: "Tomaat – basilicum – mozzarella", price: "20" }
+    { name: "Gehaktballetjes", description: "Kalf – parmesan – bieslook", price: "9.50" },
+    { name: "Bruschetta", description: "Knoflook – olijfolie – tomaat – focaccia", price: "8.50" },
+    { name: "Vegan", description: "Chef’s keuze van seizoensgroenten", price: "10.50" },
+    { name: "Gevuld tomaatje", description: "Garnaal – cocktailsaus – tomaat", price: "11.50" },
+    { name: "Peppadews", description: "Gegrilde paprika – roomkaas", price: "7.50" },
+    { name: "Gevulde eitjes", description: "Mayonaise – bieslook – kerrie", price: "7.00" },
+    { name: "Bao bun", description: "Brisket of tofu – sriracha-mayo", price: "12.50" },
+    { name
+: "Carpaccio", description: "Rund – truffelmayo – parmesan", price: "13.50" },
+    { name: "Biet tartaar", description: "Geitenkaas – walnoot – honing", price: "11.00" },
+    { name: "Vitello tonnato", description: "Kalf – tonijnmayonaise – kappertjes", price: "14.00" },
+    { name: "Gerookte zalm", description: "Citroen – dille – komkommer", price: "13.00" },
+    { name: "Caprese", description: "Tomaat – basilicum – mozzarella", price: "10.00" }
   ],
 
   // COMFORT – Het bekende comfort, de gezonde keuze
   comfort: [
-    { name: "Jan zijn soepje", description: "Groenten van de buren – even vragen", price: "20" },
-    { name: "Runder stoofpotje", description: "Ui – wortel – pastinaak", price: "20" },
-    { name: "Ossobuco", description: "Polenta – gremolata", price: "20" },
-    { name: "Courgettesoep", description: "Courgette – knoflook – ui – basilicum", price: "20" }
+    { name: "Jan zijn soepje", description: "Vraag naar de soep van de dag", price: "7.50" },
+    { name: "Runder stoofpotje", description: "Ui – wortel – pastinaak", price: "14.50" },
+    { name: "Ossobuco", description: "Polenta – gremolata", price: "16.00" },
+    { name: "Courgettesoep", description: "Courgette – knoflook – ui – basilicum", price: "7.50" }
   ],
 
   // ZOETIGHEID (Desserts)
   zoet: [
-    { name: "Appeltaartje", description: "Appel – caramel – amandel – slagroom", price: "20" },
-    { name: "Parfait", description: "Fruit van nu – crumble", price: "20" },
-    { name: "Dame Blanche", description: "Warme chocolade – vanille-ijs – slagroom", price: "20" },
-    { name: "Crème brûlée", description: "Een Franse afscheid", price: "20" },
-    // Optioneel extra zoals vermeld onder ‘De Tafelaar’
-    { name: "Vanille-ijs of citroensorbet", description: "Supplement", price: "+2" }
+    { name: "Appeltaartje", description: "Appel – caramel – amandel – slagroom", price: "8.00" },
+    { name: "Parfait", description: "Fruit van nu – crumble", price: "9.00" },
+    { name: "Dame Blanche", description: "Warme chocolade – vanille-ijs – slagroom", price: "8.50" },
+    { name: "Crème brûlée", description: "Een Franse afscheid", price: "8.50" },
   ],
 
   // KAZEN
   kazen: [
-    // PDF noemt specifiek ‘Veluwnaartje’; overige kazen stonden niet uitgewerkt
-    { name: "Veluwnaartje", description: "Walnoot – gepekeld bietje", price: "20" }
+    { name: "Veluwnaartje", description: "Walnoot – gepekeld bietje", price: "10.00" },
+    { name: "Selectie Hollandse Kazen", description: "3 soorten kaas met vijgenbrood", price: "14.00" }
   ],
 
   // BORREL – CHARCUTERIE
   charcuterie: [
-    { name: "Prosciutto", description: "Geconfijte knoflook – crouton", price: "20" },
-    { name: "Venkelworstje", description: "Met venkel ‘shotje’", price: "20" },
-    { name: "Spinata", description: "Parmesan – hazelnoot", price: "20" },
-    { name: "Fuet", description: "Gepekeld dingetje", price: "20" }
+    { name: "Prosciutto", description: "Geconfijte knoflook – crouton", price: "12.00" },
+    { name: "Venkelworstje", description: "Met venkel ‘shotje’", price: "9.50" },
+    { name: "Spinata", description: "Parmesan – hazelnoot", price: "9.00" },
+    { name: "Fuet", description: "Met ingelegde groenten", price: "8.50" }
   ],
 
   // PLANKJEUH – De Tafelaar
   planken: [
-    { name: "Beetje van beiden", description: "2 Kaasjes – 2 Charcuterietjes", price: "34" },
-    { name: "Flinke jongen", description: "3 Kaasjes – 3 Charcuterietjes – 3 Gerechtjes", price: "74" },
-    { name: "Tafeltje dekken", description: "5 Kaasjes – 5 Charcuterietjes – 5 Gerechtjes", price: "115" },
-    { name: "Kan niet kiezen", description: "6 Kaasjes – 6 Charcuterietjes – 8 Gerechtjes", price: "149" }
+    { name: "Beetje van beiden", description: "2 Kaasjes & 2 Charcuterietjes", price: "24.50" },
+    { name: "Flinke jongen", description: "3 Kaasjes, 3 Charcuterietjes & 3 Gerechtjes", price: "55.00" },
+    { name: "Tafeltje dekken", description: "5 Kaasjes, 5 Charcuterietjes & 5 Gerechtjes", price: "85.00" },
+    { name: "Kan niet kiezen", description: "Laat de chef kiezen, een reis door de kaart", price: "45.00 p.p." }
   ],
-
-  // (Historische secties ‘bites’ uit je oude kaart zijn verwijderd i.v.m. PDF-indeling)
-  bites: []
+  bites: [],
+  disclaimer: "Heeft u een allergie? Meld het ons!"
 };
 
 export const philosophyContent = {

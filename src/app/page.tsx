@@ -33,7 +33,7 @@ export default function Home() {
           <h1 className="font-headline text-4xl md:text-6xl lg:text-7xl !leading-tight tracking-wide">
             {homeContent.hero.headline}
           </h1>
-          <p className="mt-4 max-w-2xl text-lg md:text-xl text-primary-foreground/90">
+          <p className="mt-4 max-w-2xl text-md md:text-xl text-primary-foreground/90">
             {homeContent.hero.subhead}
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
@@ -80,9 +80,9 @@ export default function Home() {
       
       <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4">
-          <div className="bg-accent/20 border-l-4 border-accent text-accent-foreground p-8 md:p-12 rounded-2xl text-center shadow-lg">
-             <h3 className="font-headline text-3xl md:text-4xl">{homeContent.seasonalTeaser.title}</h3>
-             <p className="mt-2 text-lg">{homeContent.seasonalTeaser.description}</p>
+          <div className="bg-accent/20 border-l-4 border-accent text-accent-foreground p-6 md:p-12 rounded-2xl text-center shadow-lg">
+             <h3 className="font-headline text-2xl md:text-4xl">{homeContent.seasonalTeaser.title}</h3>
+             <p className="mt-2 text-md md:text-lg">{homeContent.seasonalTeaser.description}</p>
           </div>
         </div>
       </section>

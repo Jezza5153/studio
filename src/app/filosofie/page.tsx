@@ -16,7 +16,7 @@ export default function FilosofiePage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
+            <div className="space-y-8 md:order-2">
                 <div>
                     <h2 className="font-headline text-3xl mb-4">{philosophyContent.mission.title}</h2>
                     <p className="text-muted-foreground leading-relaxed">
@@ -30,7 +30,7 @@ export default function FilosofiePage() {
                     </p>
                 </div>
             </div>
-            <div>
+            <div className="md:order-1">
                 {philosophyImage && (
                 <Image
                     src={philosophyImage.imageUrl}

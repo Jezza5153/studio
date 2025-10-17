@@ -2,16 +2,16 @@
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { menuContent } from "@/lib/data";
+import type { menuContent as menuContentType } from "@/lib/data";
 
 type MenuClientProps = {
-  menuContent: typeof menuContent;
+  menuContent: typeof menuContentType;
 };
 
 
 export function MenuClient({ menuContent }: MenuClientProps) {
 
-  const menuCategories = Object.keys(menuContent).filter(key => key !== 'disclaimer');
+  const menuCategories = Object.keys(menuContent).filter(key => key !== 'disclaimer' && (menuContent as any)[key].length > 0);
 
   const renderMenuItem = (item: any, index: number) => {
     return (
@@ -32,7 +32,7 @@ export function MenuClient({ menuContent }: MenuClientProps) {
   return (
     <>
       <Tabs defaultValue="gerechtjes" className="w-full">
-        <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-6 mb-8 h-auto flex-wrap">
+        <TabsList className="mb-8 h-auto flex-wrap justify-start md:justify-center">
           {menuCategories.map((category) => (
             <TabsTrigger key={category} value={category} className="capitalize">{category}</TabsTrigger>
           ))}
