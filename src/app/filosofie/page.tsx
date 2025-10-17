@@ -1,4 +1,4 @@
-import { philosophyContent } from "@/lib/data";
+import { philosophyContent } from "@/content/site-content";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import Image from "next/image";
 

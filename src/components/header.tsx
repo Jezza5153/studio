@@ -7,7 +7,7 @@ import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "./ui/sheet";
 import { Menu as MenuIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { navLinks } from "@/lib/data";
+import { navLinks } from "@/content/site-content";
 import { LanguageToggle } from "./language-toggle";
 import Image from "next/image";
 

@@ -1,5 +1,5 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { openingHours } from "@/lib/data";
+import { openingHours } from "@/content/site-content";
 
 export default function OpeningstijdenPage() {
   return (

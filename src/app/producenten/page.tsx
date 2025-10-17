@@ -1,5 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { producers } from "@/lib/data";
+import { producers } from "@/content/site-content";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { MapPin, Link as LinkIcon } from "lucide-react";
 import Image from "next/image";

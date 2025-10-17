@@ -1,4 +1,4 @@
-import { contactDetails, navLinks, openingHours } from "@/lib/data";
+import { contactDetails, navLinks, openingHours } from "@/content/site-content";
 import { Facebook, Instagram, Twitter } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";

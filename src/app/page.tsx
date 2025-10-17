@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { homeContent } from "@/lib/data";
+import { homeContent } from "@/content/site-content";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { ArrowRight, UtensilsCrossed, Users, Leaf, MapPin } from "lucide-react";
 import Image from "next/image";
