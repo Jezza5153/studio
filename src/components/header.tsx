@@ -33,7 +33,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center px-4 sm:px-6 md:px-8">
+      <div className="container flex h-14 items-center px-4 sm:px-6 md:px-8">
         <Link href="/" className="mr-8 flex items-center gap-2 shrink-0">
           <Image src="/logo.png" alt="De Tafelaar Logo" width={144} height={36} className="object-contain w-28 md:w-36" />
         </Link>
@@ -53,13 +53,13 @@ export function Header() {
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[80vw] sm:w-[50vw]">
+            <SheetContent side="right" className="w-[80vw] sm:w-[50vw] p-0">
                 <div className="p-6">
                     <Link href="/" className="mb-8 block">
                         <Image src="/logo.png" alt="De Tafelaar Logo" width={144} height={36} className="object-contain w-36" />
                     </Link>
-                    <div className="flex flex-col space-y-4">
-                       <NavLinks className="flex-col items-start gap-0" onItemClick={() => document.getElementById('sheet-close')?.click()} />
+                    <div className="flex flex-col space-y-2">
+                       <NavLinks className="flex-col items-start gap-0 space-y-2" onItemClick={() => document.getElementById('sheet-close')?.click()} />
                        <div className="border-t pt-4 mt-4 flex flex-col gap-4">
                            <LanguageToggle />
                            <Button asChild className="w-full" size="lg">
