@@ -6,9 +6,9 @@ import { Phone } from "lucide-react";
 
 export default function ReserverenPage() {
   return (
-    <div className="container mx-auto px-4 py-16 md:py-24">
+    <div className="container mx-auto px-4 py-12 md:py-24">
       <div className="text-center mb-12">
-        <h1 className="font-headline text-4xl md:text-5xl">Reserveer uw tafel</h1>
+        <h1 className="font-headline text-3xl md:text-5xl">Reserveer uw tafel</h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
           We kijken ernaar uit u te mogen verwelkomen.
         </p>
@@ -35,7 +35,7 @@ export default function ReserverenPage() {
         </div>
 
         <div>
-          <h2 className="font-headline text-3xl mb-6">Veelgestelde Vragen</h2>
+          <h2 className="font-headline text-2xl md:text-3xl mb-6">Veelgestelde Vragen</h2>
           <Accordion type="single" collapsible className="w-full">
             {reservationFaq.map((item, index) => (
                 <AccordionItem key={index} value={`item-${index}`}>

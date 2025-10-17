@@ -8,9 +8,9 @@ import Link from "next/link";
 export default function ProducentenPage() {
     const producerImage = PlaceHolderImages.find((img) => img.id === "producer-farm");
   return (
-    <div className="container mx-auto px-4 py-16 md:py-24">
+    <div className="container mx-auto px-4 py-12 md:py-24">
       <div className="text-center mb-12">
-        <h1 className="font-headline text-4xl md:text-5xl">Onze Producenten</h1>
+        <h1 className="font-headline text-3xl md:text-5xl">Onze Producenten</h1>
         <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
           De helden achter onze smaken. We zijn trots op onze samenwerking met deze gepassioneerde, lokale makers.
         </p>

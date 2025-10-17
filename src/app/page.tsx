@@ -17,7 +17,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col">
-      <section className="relative h-[60vh] md:h-[70vh] w-full">
+      <section className="relative h-[50vh] md:h-[70vh] w-full">
         {heroImage && (
           <Image
             src={heroImage.imageUrl}
@@ -30,10 +30,10 @@ export default function Home() {
         )}
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white p-4">
-          <h1 className="font-headline text-4xl md:text-6xl lg:text-7xl !leading-tight tracking-wide">
+          <h1 className="font-headline text-3xl md:text-6xl lg:text-7xl !leading-tight tracking-wide">
             {homeContent.hero.headline}
           </h1>
-          <p className="mt-4 max-w-2xl text-md md:text-xl text-primary-foreground/90">
+          <p className="mt-4 max-w-2xl text-base md:text-xl text-primary-foreground/90">
             {homeContent.hero.subhead}
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
@@ -47,7 +47,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-24 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {homeContent.highlights.map((highlight, index) => {
@@ -69,7 +69,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-secondary/30">
+      <section className="py-12 md:py-24 bg-secondary/30">
         <div className="container mx-auto px-4 text-center">
           <h2 className="font-headline text-3xl md:text-4xl mb-4">{homeContent.howItWorks.title}</h2>
           <p className="max-w-3xl mx-auto text-lg text-muted-foreground">
@@ -78,7 +78,7 @@ export default function Home() {
         </div>
       </section>
       
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-12 md:py-24 bg-background">
         <div className="container mx-auto px-4">
           <div className="bg-accent/20 border-l-4 border-accent text-accent-foreground p-6 md:p-12 rounded-2xl text-center shadow-lg">
              <h3 className="font-headline text-2xl md:text-4xl">{homeContent.seasonalTeaser.title}</h3>
