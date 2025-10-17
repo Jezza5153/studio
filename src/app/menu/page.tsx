@@ -2,14 +2,6 @@ import { menuContent } from "@/lib/data";
 import { MenuClient } from "./menu-client";
 
 export default function MenuPage() {
-  const allMenuItems = Object.entries(menuContent).flatMap(([category, items]) => {
-    if (Array.isArray(items)) {
-      return items.map(item => ({ ...item, category }));
-    }
-    return [];
-  });
-  const menuItemsString = allMenuItems.map(item => `${item.name}: ${item.description || ''}`).join('\n');
-
   return (
     <div className="container mx-auto px-4 py-16 md:py-24">
       <div className="text-center mb-12">
@@ -19,7 +11,7 @@ export default function MenuPage() {
         </p>
       </div>
 
-      <MenuClient menuContent={menuContent} menuItemsString={menuItemsString} />
+      <MenuClient menuContent={menuContent} />
     </div>
   );
 }
