@@ -46,7 +46,7 @@ export function Header() {
           <Image
             src="/logo.png"
             alt="De Tafelaar logo"
-            width={160}
+            width={144}
             height={40}
             className="object-contain w-28 md:w-36"
             priority
@@ -75,9 +75,6 @@ export function Header() {
 
         {/* Mobile menu */}
         <div className="flex lg:hidden items-center">
-           <Button asChild size="sm" className="mr-2">
-            <Link href="/reserveren">Reserveer nu</Link>
-          </Button>
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" aria-label="Open menu">
@@ -90,7 +87,7 @@ export function Header() {
                   <Image
                     src="/logo.png"
                     alt="De Tafelaar logo"
-                    width={160}
+                    width={144}
                     height={40}
                     className="object-contain w-36"
                   />
@@ -98,7 +95,12 @@ export function Header() {
                 <div className="flex flex-col space-y-2">
                   <NavLinks />
                   <div className="pt-4">
-                    <LanguageToggle />
+                     <LanguageToggle />
+                  </div>
+                   <div className="pt-4">
+                    <Button asChild size="sm" className="w-full">
+                        <Link href="/reserveren">Reserveer nu</Link>
+                    </Button>
                   </div>
                 </div>
               </div>

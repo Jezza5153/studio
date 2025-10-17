@@ -1,3 +1,4 @@
+
 import { contactDetails, navLinks, openingHours } from "@/lib/data";
 import { Facebook, Instagram, Twitter } from "lucide-react";
 import Image from "next/image";

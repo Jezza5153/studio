@@ -1,3 +1,4 @@
+
 import { menuContent } from "@/lib/data";
 import { MenuClient } from "./menu-client";
 
