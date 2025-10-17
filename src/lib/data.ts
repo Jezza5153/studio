@@ -2,6 +2,8 @@ export const navLinks = [
   { href: "/", label: "Home" },
   { href: "/menu", label: "Menu" },
   { href: "/filosofie", label: "Filosofie" },
+  { href: "/producenten", label: "Producenten" },
+  { href: "/openingstijden", label: "Openingstijden" },
   { href: "/reserveren", label: "Reserveren" },
 ];
 
@@ -26,64 +28,6 @@ export const homeContent = {
   }
 };
 
-export const menuContent = {
-  // SHARING IS CARING / HET BEPROEFDE RECEPT (Starters & kleine gerechten)
-  gerechtjes: [
-    { name: "Gehaktballetjes", description: "Kalf – parmesan – bieslook", price: "9.50" },
-    { name: "Bruschetta", description: "Knoflook – olijfolie – tomaat – focaccia", price: "8.50" },
-    { name: "Vegan", description: "Chef’s keuze van seizoensgroenten", price: "10.50" },
-    { name: "Gevuld tomaatje", description: "Garnaal – cocktailsaus – tomaat", price: "11.50" },
-    { name: "Peppadews", description: "Gegrilde paprika – roomkaas", price: "7.50" },
-    { name: "Gevulde eitjes", description: "Mayonaise – bieslook – kerrie", price: "7.00" },
-    { name: "Bao bun", description: "Brisket of tofu – sriracha-mayo", price: "12.50" },
-    { name
-: "Carpaccio", description: "Rund – truffelmayo – parmesan", price: "13.50" },
-    { name: "Biet tartaar", description: "Geitenkaas – walnoot – honing", price: "11.00" },
-    { name: "Vitello tonnato", description: "Kalf – tonijnmayonaise – kappertjes", price: "14.00" },
-    { name: "Gerookte zalm", description: "Citroen – dille – komkommer", price: "13.00" },
-    { name: "Caprese", description: "Tomaat – basilicum – mozzarella", price: "10.00" }
-  ],
-
-  // COMFORT – Het bekende comfort, de gezonde keuze
-  comfort: [
-    { name: "Jan zijn soepje", description: "Vraag naar de soep van de dag", price: "7.50" },
-    { name: "Runder stoofpotje", description: "Ui – wortel – pastinaak", price: "14.50" },
-    { name: "Ossobuco", description: "Polenta – gremolata", price: "16.00" },
-    { name: "Courgettesoep", description: "Courgette – knoflook – ui – basilicum", price: "7.50" }
-  ],
-
-  // ZOETIGHEID (Desserts)
-  zoet: [
-    { name: "Appeltaartje", description: "Appel – caramel – amandel – slagroom", price: "8.00" },
-    { name: "Parfait", description: "Fruit van nu – crumble", price: "9.00" },
-    { name: "Dame Blanche", description: "Warme chocolade – vanille-ijs – slagroom", price: "8.50" },
-    { name: "Crème brûlée", description: "Een Franse afscheid", price: "8.50" },
-  ],
-
-  // KAZEN
-  kazen: [
-    { name: "Veluwnaartje", description: "Walnoot – gepekeld bietje", price: "10.00" },
-    { name: "Selectie Hollandse Kazen", description: "3 soorten kaas met vijgenbrood", price: "14.00" }
-  ],
-
-  // BORREL – CHARCUTERIE
-  charcuterie: [
-    { name: "Prosciutto", description: "Geconfijte knoflook – crouton", price: "12.00" },
-    { name: "Venkelworstje", description: "Met venkel ‘shotje’", price: "9.50" },
-    { name: "Spinata", description: "Parmesan – hazelnoot", price: "9.00" },
-    { name: "Fuet", description: "Met ingelegde groenten", price: "8.50" }
-  ],
-
-  // PLANKJEUH – De Tafelaar
-  planken: [
-    { name: "Beetje van beiden", description: "2 Kaasjes & 2 Charcuterietjes", price: "24.50" },
-    { name: "Flinke jongen", description: "3 Kaasjes, 3 Charcuterietjes & 3 Gerechtjes", price: "55.00" },
-    { name: "Tafeltje dekken", description: "5 Kaasjes, 5 Charcuterietjes & 5 Gerechtjes", price: "85.00" },
-    { name: "Kan niet kiezen", description: "Laat de chef kiezen, een reis door de kaart", price: "45.00 p.p." }
-  ],
-  bites: [],
-  disclaimer: "Heeft u een allergie? Meld het ons!"
-};
 
 export const philosophyContent = {
   title: "Onze Filosofie",

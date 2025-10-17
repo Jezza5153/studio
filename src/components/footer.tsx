@@ -1,4 +1,3 @@
-
 import { contactDetails, navLinks, openingHours } from "@/lib/data";
 import { Facebook, Instagram, Twitter } from "lucide-react";
 import Image from "next/image";
@@ -40,7 +39,7 @@ export function Footer() {
           <div className="sm:pt-2">
             <h4 className="font-headline text-lg mb-4">Openingstijden</h4>
             <div className="space-y-2 text-sm text-muted-foreground max-w-xs mx-auto sm:max-w-none">
-                {openingHours.schedule.slice(2).map(item => (
+                {openingHours.schedule.slice(2, 7).map(item => (
                     <div key={item.day} className="flex justify-between py-0.5">
                         <span>{item.day}</span>
                         <span>{item.time}</span>

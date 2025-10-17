@@ -2,7 +2,6 @@ import { MENU, type MenuItem } from "@/content/menu";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Download, FileText } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
 
 function formatCurrency(price: number | null, currency: string) {
   if (price === null) return "";
@@ -35,13 +34,13 @@ export default function MenuPage() {
         <div className="flex shrink-0 items-center gap-2">
           <Button asChild variant="outline">
             <a href={pdfUrl} target="_blank" rel="noopener noreferrer">
-              <FileText className="mr-2" />
+              <FileText className="mr-2 h-4 w-4" />
               Open PDF
             </a>
           </Button>
           <Button asChild>
             <a href={pdfUrl} download="De-Tafelaar-Menu.pdf">
-              <Download className="mr-2" />
+              <Download className="mr-2 h-4 w-4" />
               Download
             </a>
           </Button>
@@ -50,7 +49,7 @@ export default function MenuPage() {
 
       <main className="space-y-12">
         {MENU.categories.map((category) => (
-          <section key={category.name} id={category.name.toLowerCase()}>
+          <section key={category.name} id={category.name.toLowerCase().replace(/ /g, '-')}>
             <h2 className="font-headline text-2xl sm:text-3xl md:text-4xl mb-6 border-b pb-3">
               {category.name}
             </h2>
@@ -88,7 +87,7 @@ function MenuItemCard({ item }: { item: MenuItem }) {
           {item.tags.length > 0 && (
             <div className="flex items-center gap-2">
               {item.tags.map((tag) => (
-                <Badge key={tag} variant="outline" className="text-accent-foreground border-accent">
+                <Badge key={tag} variant="outline" className="border-accent text-accent-foreground">
                   {TAG_MAP[tag] || tag}
                 </Badge>
               ))}
