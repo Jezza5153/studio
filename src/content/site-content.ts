@@ -5,7 +5,6 @@ export const navLinks = [
   { href: "/", label: "Home" },
   { href: "/menu", label: "Menu" },
   { href: "/filosofie", label: "Filosofie" },
-  { href: "/producenten", label: "Producenten" },
   { href: "/openingstijden", label: "Openingstijden" },
 ];
 
