@@ -70,9 +70,9 @@ export function Header() {
           <Image
             src="/logo.png"
             alt="De Tafelaar logo"
-            width={144}
-            height={40}
-            className="object-contain w-28 md:w-36"
+            width={288}       // natural width of your logo file
+            height={80}       // natural height of your logo file
+            className="h-8 md:h-10 w-auto"  // ✅ scale by height only
             priority
           />
         </Link>
@@ -119,9 +119,9 @@ export function Header() {
                   <Image
                     src="/logo.png"
                     alt="De Tafelaar logo"
-                    width={144}
-                    height={40}
-                    className="object-contain w-36"
+                    width={288}
+                    height={80}
+                    className="h-10 w-auto"   // slightly bigger in drawer
                   />
                 </Link>
 
