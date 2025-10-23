@@ -15,16 +15,17 @@ export const contactDetails = {
 };
 
 export const openingHours = {
-    title: "Openingstijden",
-    schedule: [
-        { day: "Maandag", time: "Gesloten" },
-        { day: "Dinsdag", time: "Gesloten" },
-        { day: "Woensdag", time: "17:00 - 23:00" },
-        { day: "Donderdag", time: "17:00 - 23:00" },
-        { day: "Vrijdag", time: "15:00 - 00:00" },
-        { day: "Zaterdag", time: "15:00 - 00:00" },
-        { day: "Zondag", time: "15:00 - 23:00", special: "Lunch & Borrel" },
-    ],
+  title: "Openingstijden",
+  schedule: [
+    { day: "Maandag", time: "Gesloten" },
+    { day: "Dinsdag", time: "Gesloten" },
+    { day: "Woensdag", time: "17:00 - 23:00" },
+    { day: "Donderdag", time: "17:00 - 23:00" },
+    { day: "Vrijdag", time: "15:00 - 00:00" },
+    { day: "Zaterdag", time: "15:00 - 00:00" },
+    { day: "Zondag", time: "15:00 - 23:00", special: "Lunch & Borrel" },
+  ],
+  footer: "Let op: openingstijden kunnen afwijken tijdens feestdagen en evenementen.", // ✅ added footer
 };
 
 export const homeContent = {
@@ -36,19 +37,23 @@ export const homeContent = {
   highlights: [
     {
       title: "Shared dining",
-      description: "Proef en deel een verscheidenheid aan kleine, seizoensgebonden gerechtjes.",
+      description:
+        "Proef en deel een verscheidenheid aan kleine, seizoensgebonden gerechtjes.",
     },
     {
       title: "Lokale makers",
-      description: "We werken samen met lokale boeren en producenten voor de verste smaken.",
+      description:
+        "We werken samen met lokale boeren en producenten voor de verste smaken.",
     },
     {
       title: "Duurzaam",
-      description: "Onze keuken is gericht op duurzaamheid, met respect voor mens en natuur.",
+      description:
+        "Onze keuken is gericht op duurzaamheid, met respect voor mens en natuur.",
     },
     {
       title: "Centrale locatie",
-      description: "Gevestigd in de historische binnenstad van Amersfoort, makkelijk bereikbaar.",
+      description:
+        "Gevestigd in de historische binnenstad van Amersfoort, makkelijk bereikbaar.",
     },
   ],
   howItWorks: {
@@ -64,50 +69,57 @@ export const homeContent = {
 };
 
 export const reservationFaq = [
-    {
-        question: "Hoe werkt shared dining?",
-        answer: "U bestelt diverse kleine gerechten van de kaart die in het midden van de tafel worden geplaatst, zodat iedereen kan proeven en delen. We raden 2-3 gerechten per persoon aan om mee te starten."
-    },
-    {
-        question: "Houden jullie rekening met dieetwensen of allergieën?",
-        answer: "Jazeker. Geef uw dieetwensen of allergieën aan bij de reservering of aan uw tafel, dan kan onze keuken hier rekening mee houden. Veel van onze gerechten zijn aan te passen."
-    },
-    {
-        question: "Kan ik voor een grote groep reserveren?",
-        answer: "Absoluut. Voor groepen groter dan 8 personen vragen we u om telefonisch of per e-mail contact met ons op te nemen, zodat we de mogelijkheden kunnen bespreken."
-    },
-    {
-        question: "Is het restaurant rolstoeltoegankelijk?",
-        answer: "Ons restaurant is gelegen in een historisch pand en daardoor beperkt toegankelijk. Neem alstublieft contact met ons op voor meer informatie over de mogelijkheden."
-    }
+  {
+    question: "Hoe werkt shared dining?",
+    answer:
+      "U bestelt diverse kleine gerechten van de kaart die in het midden van de tafel worden geplaatst, zodat iedereen kan proeven en delen. We raden 2-3 gerechten per persoon aan om mee te starten.",
+  },
+  {
+    question: "Houden jullie rekening met dieetwensen of allergieën?",
+    answer:
+      "Jazeker. Geef uw dieetwensen of allergieën aan bij de reservering of aan uw tafel, dan kan onze keuken hier rekening mee houden. Veel van onze gerechten zijn aan te passen.",
+  },
+  {
+    question: "Kan ik voor een grote groep reserveren?",
+    answer:
+      "Absoluut. Voor groepen groter dan 8 personen vragen we u om telefonisch of per e-mail contact met ons op te nemen, zodat we de mogelijkheden kunnen bespreken.",
+  },
+  {
+    question: "Is het restaurant rolstoeltoegankelijk?",
+    answer:
+      "Ons restaurant is gelegen in een historisch pand en daardoor beperkt toegankelijk. Neem alstublieft contact met ons op voor meer informatie over de mogelijkheden.",
+  },
 ];
 
 export const philosophyContent = {
-    title: "Onze Filosofie",
-    mission: {
-        title: "Missie: Samen Genieten",
-        text: "Bij De Tafelaar geloven we dat eten een verbindende ervaring is. Onze missie is om een plek te creëren waar gasten samenkomen om niet alleen heerlijke gerechten, maar ook verhalen en momenten te delen. We streven naar een sfeer van 'grote gezelligheid' waarin iedereen zich welkom en op zijn gemak voelt."
-    },
-    whySharedDining: {
-        title: "Waarom Shared Dining?",
-        text: "Shared dining doorbreekt de traditionele restaurant-ervaring. Het moedigt interactie aan, nodigt uit tot proeven en zorgt voor een dynamische, sociale maaltijd. Het is de perfecte manier om nieuwe smaken te ontdekken en samen een culinair avontuur te beleven, hapje voor hapje."
-    }
-}
+  title: "Onze Filosofie",
+  mission: {
+    title: "Missie: Samen Genieten",
+    text: "Bij De Tafelaar geloven we dat eten een verbindende ervaring is. Onze missie is om een plek te creëren waar gasten samenkomen om niet alleen heerlijke gerechten, maar ook verhalen en momenten te delen. We streven naar een sfeer van 'grote gezelligheid' waarin iedereen zich welkom en op zijn gemak voelt.",
+  },
+  whySharedDining: {
+    title: "Waarom Shared Dining?",
+    text: "Shared dining doorbreekt de traditionele restaurant-ervaring. Het moedigt interactie aan, nodigt uit tot proeven en zorgt voor een dynamische, sociale maaltijd. Het is de perfecte manier om nieuwe smaken te ontdekken en samen een culinair avontuur te beleven, hapje voor hapje.",
+  },
+};
 
 export const producers = [
-    {
-        name: "Kaasboerderij Bastiaansen",
-        location: "Leusden",
-        description: "Levert ons een selectie van ambachtelijke, biologische kazen. Hun passie voor het vak proef je in elke hap."
-    },
-    {
-        name: "Slagerij Gerrit Takke",
-        location: "Amersfoort",
-        description: "Onze vertrouwde, lokale slager die zorgt voor het beste vlees en huisgemaakte charcuterie van topkwaliteit."
-    },
-    {
-        name: "De Verse Grond",
-        location: "Bunschoten-Spakenburg",
-        description: "Hier halen we onze dagverse, seizoensgebonden groenten. Duurzaam geteeld met respect voor de natuur."
-    },
+  {
+    name: "Kaasboerderij Bastiaansen",
+    location: "Leusden",
+    description:
+      "Levert ons een selectie van ambachtelijke, biologische kazen. Hun passie voor het vak proef je in elke hap.",
+  },
+  {
+    name: "Slagerij Gerrit Takke",
+    location: "Amersfoort",
+    description:
+      "Onze vertrouwde, lokale slager die zorgt voor het beste vlees en huisgemaakte charcuterie van topkwaliteit.",
+  },
+  {
+    name: "De Verse Grond",
+    location: "Bunschoten-Spakenburg",
+    description:
+      "Hier halen we onze dagverse, seizoensgebonden groenten. Duurzaam geteeld met respect voor de natuur.",
+  },
 ];
