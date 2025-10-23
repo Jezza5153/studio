@@ -114,7 +114,7 @@ export default function MenuPage() {
         </div>
 
         {/* Sticky category nav */}
-        <nav className="sticky top-16 z-40 -mx-1 overflow-x-auto py-3" aria-label="Categorieën">
+        <nav className="sticky top-16 z-40 -mx-1 overflow-x-auto py-3" aria-label="Categorieën" role="navigation">
           <ul className="flex items-center gap-2">
             {categories.map((c) => {
               const isActive = active === c.id;
@@ -122,6 +122,8 @@ export default function MenuPage() {
                 <li key={c.id}>
                   <a
                     href={`#${c.id}`}
+                    aria-controls={c.id}
+                    aria-current={isActive ? "page" : undefined}
                     onClick={(e) => {
                       e.preventDefault();
                       onChipClick(c.id);
@@ -141,7 +143,7 @@ export default function MenuPage() {
         </nav>
       </header>
 
-      {/* MOBILE: accordion */}
+      {/* MOBILE: accordion (unchanged) */}
       <section className="sm:hidden">
         <Accordion type="single" collapsible className="w-full space-y-3">
           {categories.map((category) => (
@@ -181,26 +183,30 @@ export default function MenuPage() {
         </div>
       </section>
 
-      {/* DESKTOP/TABLET */}
+      {/* DESKTOP/TABLET – same order & logic, with visual upgrades */}
       <main className="hidden sm:block space-y-8 md:space-y-10">
         {categories.map((category) => (
           <section
             key={category.id}
             id={category.id}
-            className="rounded-2xl border bg-card p-5 sm:p-6 scroll-mt-28"
+            className="scroll-mt-28 rounded-[14px] border-2 border-border bg-card p-5 sm:p-6 md:p-8"
             aria-labelledby={`${category.id}-title`}
           >
             <div className="mb-4 sm:mb-5">
-              <h2 id={`${category.id}-title`} className="font-headline text-2xl sm:text-3xl tracking-tight">
+              <h2
+                id={`${category.id}-title`}
+                className="font-headline text-2xl sm:text-3xl tracking-tight text-balance"
+              >
                 {category.name}
               </h2>
               <p className="text-xs text-muted-foreground mt-1">
                 {category.items.length} {category.items.length === 1 ? "gerecht" : "gerechten"}
               </p>
             </div>
-            <ul className="divide-y">
+
+            <ul className="divide-y divide-border">
               {category.items.map((item) => (
-                <li key={item.name} className="py-4 first:pt-0 last:pb-0">
+                <li key={item.name} className="py-5 first:pt-0 last:pb-0 min-h-[84px]">
                   <MenuRow item={item} />
                 </li>
               ))}
@@ -225,10 +231,17 @@ function MenuRow({ item }: { item: MenuItem }) {
 
   return (
     <div className="grid grid-cols-1 gap-2">
-      {/* Top line: name + price */}
-      <div className="flex items-baseline justify-between gap-3">
-        <h3 className="text-lg font-semibold leading-tight">{item.name}</h3>
-        <p className="shrink-0 text-lg font-semibold tabular-nums">
+      {/* Top line: name — dotted leader — price (leaders desktop-only) */}
+      <div className="flex items-baseline gap-3">
+        <h3 className="text-lg sm:text-xl font-semibold leading-tight">{item.name}</h3>
+
+        {/* dotted leader rule (hidden on mobile) */}
+        <div
+          aria-hidden
+          className="hidden sm:block flex-1 mx-3 border-t border-dotted border-foreground/30 translate-y-1"
+        />
+
+        <p className="shrink-0 text-lg sm:text-xl font-semibold tabular-nums">
           {formatPriceNoCurrency(item.price)}
         </p>
       </div>
@@ -238,7 +251,7 @@ function MenuRow({ item }: { item: MenuItem }) {
         <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
       )}
 
-      {/* 👇 NEW: Add-ons */}
+      {/* Add-ons */}
       {item.addons?.length ? (
         <div className="mt-1 flex flex-wrap gap-2">
           {item.addons.map((a) => (
