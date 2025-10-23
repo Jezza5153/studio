@@ -1,18 +1,28 @@
-
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "./ui/sheet";
 import { Menu as MenuIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { navLinks } from "@/content/site-content";
-import { LanguageToggle } from "./language-toggle";
-import Image from "next/image";
 
 export function Header() {
   const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 2);
+    onScroll(); // set initial
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const focusRing =
+    "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2";
 
   const NavLinks = ({
     className,
@@ -22,26 +32,40 @@ export function Header() {
     onItemClick?: () => void;
   }) => (
     <nav className={cn("flex flex-col items-start gap-2 text-lg", className)}>
-      {navLinks.map((link) => (
-        <SheetClose asChild key={link.href}>
-          <Link
-            href={link.href}
-            onClick={onItemClick}
-            className={cn(
-              "text-lg font-medium transition-colors hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-md py-2",
-              pathname === link.href ? "text-primary" : "text-muted-foreground"
-            )}
-          >
-            {link.label}
-          </Link>
-        </SheetClose>
-      ))}
+      {navLinks.map((link) => {
+        const isActive = pathname === link.href;
+        return (
+          <SheetClose asChild key={link.href}>
+            <Link
+              href={link.href}
+              aria-current={isActive ? "page" : undefined}
+              onClick={onItemClick}
+              className={cn(
+                "relative text-lg font-medium transition-colors rounded-md py-2",
+                focusRing,
+                isActive ? "text-primary" : "text-muted-foreground",
+                // underline indicator
+                "after:absolute after:inset-x-0 after:-bottom-1 after:h-0.5 after:rounded-full",
+                isActive ? "after:bg-primary" : "after:bg-transparent hover:text-primary"
+              )}
+            >
+              {link.label}
+            </Link>
+          </SheetClose>
+        );
+      })}
     </nav>
   );
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur">
-      <div className="container mx-auto flex h-14 items-center justify-between px-4 sm:px-6 md:px-8">
+    <header
+      className={cn(
+        "sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur transition-shadow supports-[backdrop-filter]:bg-background/60",
+        scrolled && "shadow-sm"
+      )}
+    >
+      <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 md:px-8">
+        {/* Logo */}
         <Link href="/" className="mr-8 flex items-center" aria-label="De Tafelaar – home">
           <Image
             src="/logo.png"
@@ -54,21 +78,28 @@ export function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden lg:flex flex-1 items-center justify-end gap-4">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={cn(
-                "text-sm font-medium transition-colors hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-md",
-                pathname === link.href ? "text-primary" : "text-muted-foreground"
-              )}
-            >
-              {link.label}
-            </Link>
-          ))}
-          <LanguageToggle />
-          <Button asChild size="sm">
+        <nav className="hidden lg:flex flex-1 items-center justify-end gap-6">
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={isActive ? "page" : undefined}
+                className={cn(
+                  "relative text-[15px] font-medium transition-colors rounded-md",
+                  focusRing,
+                  isActive ? "text-primary" : "text-muted-foreground",
+                  // underline indicator
+                  "after:absolute after:inset-x-0 after:-bottom-1.5 after:h-0.5 after:rounded-full",
+                  isActive ? "after:bg-primary" : "after:bg-transparent hover:text-primary"
+                )}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+          <Button asChild size="sm" className="ml-4 shadow-sm hover:opacity-90">
             <Link href="/reserveren">Reserveer nu</Link>
           </Button>
         </nav>
@@ -81,6 +112,7 @@ export function Header() {
                 <MenuIcon className="h-6 w-6" />
               </Button>
             </SheetTrigger>
+
             <SheetContent side="right" className="w-[80vw] sm:w-[50vw] p-0">
               <div className="p-6 max-h-dvh overflow-auto">
                 <Link href="/" className="mb-8 block">
@@ -92,16 +124,15 @@ export function Header() {
                     className="object-contain w-36"
                   />
                 </Link>
-                <div className="flex flex-col space-y-2">
-                  <NavLinks />
-                  <div className="pt-4">
-                     <LanguageToggle />
-                  </div>
-                   <div className="pt-4">
-                    <Button asChild size="sm" className="w-full">
-                        <Link href="/reserveren">Reserveer nu</Link>
-                    </Button>
-                  </div>
+
+                {/* Nav */}
+                <NavLinks />
+
+                {/* Divider + CTA */}
+                <div className="mt-4 border-t pt-4">
+                  <Button asChild size="sm" className="w-full hover:opacity-90">
+                    <Link href="/reserveren">Reserveer nu</Link>
+                  </Button>
                 </div>
               </div>
             </SheetContent>
