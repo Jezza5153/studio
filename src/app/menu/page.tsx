@@ -52,7 +52,6 @@ export default function MenuPage() {
           if (e.isIntersecting && e.target.id) setActive(e.target.id);
         });
       },
-      // Root margins tuned voor sticky header (top) en om niet te “flikkeren”
       { rootMargin: "-35% 0px -55% 0px", threshold: 0.01 }
     );
 
@@ -64,12 +63,11 @@ export default function MenuPage() {
     return () => obs.disconnect();
   }, [categories]);
 
-  // Smooth scroll handler voor chips (werkt ook zonder global CSS)
+  // Smooth scroll handler
   const onChipClick = useCallback((slug: string) => {
     const el = document.getElementById(slug);
     if (!el) return;
     el.scrollIntoView({ behavior: "smooth", block: "start" });
-    // Update hash zonder jump
     history.replaceState(null, "", `#${slug}`);
   }, []);
 
@@ -89,7 +87,7 @@ export default function MenuPage() {
         setTimeout(() => setCopied(false), 1800);
       }
     } catch {
-      // als wordt geannuleerd: niets doen
+      // cancelled: do nothing
     }
   }, []);
 
@@ -151,19 +149,18 @@ export default function MenuPage() {
         </nav>
       </header>
 
-      {/* MOBILE: accordion for ultra-easy navigation */}
+      {/* MOBILE: accordion */}
       <section className="sm:hidden">
         <Accordion type="single" collapsible className="w-full space-y-3">
           {categories.map((category) => (
             <div key={category.id}>
-              {/* Invisible anchor voor correct scroll-target onder sticky header */}
-              <span id={category.id} className="block h-24 -mt-24" aria-hidden="true" />
               <AccordionItem value={category.id} className="border rounded-xl">
                 <AccordionTrigger className="px-4 py-3 text-left font-headline text-lg">
                   <div className="flex w-full items-baseline justify-between gap-3">
                     <span>{category.name}</span>
                     <span className="text-xs text-muted-foreground">
-                      {category.items.length} {category.items.length === 1 ? "gerecht" : "gerechten"}
+                      {category.items.length}{" "}
+                      {category.items.length === 1 ? "gerecht" : "gerechten"}
                     </span>
                   </div>
                 </AccordionTrigger>
@@ -180,7 +177,6 @@ export default function MenuPage() {
             </div>
           ))}
         </Accordion>
-        {/* Share button mobiel */}
         <div className="mt-4 flex justify-center">
           <Button
             variant="outline"
@@ -194,7 +190,7 @@ export default function MenuPage() {
         </div>
       </section>
 
-      {/* DESKTOP/TABLET: section cards */}
+      {/* DESKTOP/TABLET */}
       <main className="hidden sm:block space-y-8 md:space-y-10">
         {categories.map((category) => (
           <section
@@ -211,7 +207,8 @@ export default function MenuPage() {
                 {category.name}
               </h2>
               <p className="text-xs text-muted-foreground mt-1">
-                {category.items.length} {category.items.length === 1 ? "gerecht" : "gerechten"}
+                {category.items.length}{" "}
+                {category.items.length === 1 ? "gerecht" : "gerechten"}
               </p>
             </div>
             <ul className="divide-y">
@@ -235,13 +232,12 @@ export default function MenuPage() {
   );
 }
 
-// ===== Row: name + price (no currency symbol), description, readable allergens =====
+// ===== Menu Row =====
 function MenuRow({ item }: { item: MenuItem }) {
   const showMeta = (item.tags?.length ?? 0) > 0 || (item.allergens?.length ?? 0) > 0;
 
   return (
     <div className="grid grid-cols-1 gap-2">
-      {/* Top line: name + price (géén €-teken) */}
       <div className="flex items-baseline justify-between gap-3">
         <h3 className="text-lg font-semibold leading-tight">{item.name}</h3>
         <p className="shrink-0 text-lg font-semibold tabular-nums">
@@ -249,17 +245,14 @@ function MenuRow({ item }: { item: MenuItem }) {
         </p>
       </div>
 
-      {/* Description */}
       {item.description && (
         <p className="text-sm text-muted-foreground leading-relaxed">
           {item.description}
         </p>
       )}
 
-      {/* Tags + Allergens */}
       {showMeta && (
         <div className="mt-1 flex flex-wrap items-center gap-2">
-          {/* Tags */}
           {item.tags?.map((t) => (
             <Badge
               key={t}
@@ -271,10 +264,11 @@ function MenuRow({ item }: { item: MenuItem }) {
             </Badge>
           ))}
 
-          {/* Allergens – high-contrast chips */}
           {item.allergens?.length ? (
             <div className="flex flex-wrap items-center gap-1.5">
-              <span className="text-[11px] font-medium text-foreground/80 mr-1">Allergenen:</span>
+              <span className="text-[11px] font-medium text-foreground/80 mr-1">
+                Allergenen:
+              </span>
               {item.allergens.map((a) => (
                 <span
                   key={a}
