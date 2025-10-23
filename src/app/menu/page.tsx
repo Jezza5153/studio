@@ -183,36 +183,38 @@ export default function MenuPage() {
         </div>
       </section>
 
-      {/* DESKTOP/TABLET – same order & logic, with visual upgrades */}
-      <main className="hidden sm:block space-y-8 md:space-y-10">
-        {categories.map((category) => (
-          <section
-            key={category.id}
-            id={category.id}
-            className="scroll-mt-28 rounded-[14px] border-2 border-border bg-card p-5 sm:p-6 md:p-8"
-            aria-labelledby={`${category.id}-title`}
-          >
-            <div className="mb-4 sm:mb-5">
-              <h2
-                id={`${category.id}-title`}
-                className="font-headline text-2xl sm:text-3xl tracking-tight text-balance"
-              >
-                {category.name}
-              </h2>
-              <p className="text-xs text-muted-foreground mt-1">
-                {category.items.length} {category.items.length === 1 ? "gerecht" : "gerechten"}
-              </p>
-            </div>
+      {/* DESKTOP/TABLET – responsive multi-column grid (2 → 3) */}
+      <main className="hidden sm:block">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {categories.map((category) => (
+            <section
+              key={category.id}
+              id={category.id}
+              className="h-full scroll-mt-28 rounded-[14px] border-2 border-border bg-card p-5 sm:p-6 md:p-8 flex flex-col"
+              aria-labelledby={`${category.id}-title`}
+            >
+              <div className="mb-4 sm:mb-5">
+                <h2
+                  id={`${category.id}-title`}
+                  className="font-headline text-2xl sm:text-3xl tracking-tight text-balance"
+                >
+                  {category.name}
+                </h2>
+                <p className="text-xs text-muted-foreground mt-1">
+                  {category.items.length} {category.items.length === 1 ? "gerecht" : "gerechten"}
+                </p>
+              </div>
 
-            <ul className="divide-y divide-border">
-              {category.items.map((item) => (
-                <li key={item.name} className="py-5 first:pt-0 last:pb-0 min-h-[84px]">
-                  <MenuRow item={item} />
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))}
+              <ul className="divide-y divide-border">
+                {category.items.map((item) => (
+                  <li key={item.name} className="py-5 first:pt-0 last:pb-0">
+                    <MenuRow item={item} />
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))}
+        </div>
       </main>
 
       <footer className="mt-10 md:mt-14 border-t pt-6 text-center text-sm text-muted-foreground">
