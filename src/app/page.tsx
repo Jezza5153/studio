@@ -17,6 +17,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col space-y-10 sm:space-y-16 md:space-y-24">
+      {/* Hero */}
       <section className="relative h-[65svh] md:h-[70vh] w-full">
         {heroImage && (
           <Image
@@ -34,7 +35,7 @@ export default function Home() {
           <h1 className="font-headline text-3xl sm:text-4xl md:text-6xl lg:text-7xl leading-tight tracking-wide max-w-4xl">
             {homeContent.hero.headline}
           </h1>
-          <p className="mt-3 max-w-xl text-base sm:text-lg text-primary-foreground/90">
+          <p className="mt-3 max-w-xl text-base sm:text-lg text-white/90">
             {homeContent.hero.subhead}
           </p>
           <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto max-w-sm sm:max-w-none">
@@ -55,24 +56,30 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Highlights */}
       <section className="container mx-auto px-4 sm:px-6 md:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {homeContent.highlights.map((highlight, index) => {
             const Icon =
-              highlightsIcons[highlight.title as keyof typeof highlightsIcons] || UtensilsCrossed;
+              highlightsIcons[highlight.title as keyof typeof highlightsIcons] ||
+              UtensilsCrossed;
             return (
               <Card
                 key={index}
-                className="text-center border-0 shadow-lg rounded-2xl bg-card hover:shadow-2xl transition-shadow duration-300 h-full"
+                className="text-center border-0 shadow-lg rounded-2xl bg-card hover:shadow-2xl transition-shadow duration-300 h-full min-h-[220px]"
               >
                 <CardHeader>
                   <div className="mx-auto bg-primary/10 p-4 rounded-full w-fit">
                     <Icon className="h-8 w-8 text-primary" />
                   </div>
-                  <CardTitle className="font-headline text-xl pt-4">{highlight.title}</CardTitle>
+                  <CardTitle className="font-headline text-xl pt-4">
+                    {highlight.title}
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground text-base">{highlight.description}</p>
+                  <p className="text-muted-foreground text-base">
+                    {highlight.description}
+                  </p>
                 </CardContent>
               </Card>
             );
@@ -80,6 +87,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* How it works */}
       <section className="container mx-auto px-4 sm:px-6 md:px-8 text-center">
         <h2 className="font-headline text-2xl sm:text-3xl md:text-4xl mb-4">
           {homeContent.howItWorks.title}
@@ -89,12 +97,13 @@ export default function Home() {
         </p>
       </section>
 
+      {/* Seasonal teaser */}
       <section className="container mx-auto px-4 sm:px-6 md:px-8 pb-12 sm:pb-16 md:pb-24">
-        <div className="bg-accent/20 border-l-4 border-accent text-accent-foreground p-6 sm:p-8 md:p-10 rounded-2xl text-center shadow-lg">
-          <h3 className="font-headline text-2xl md:text-3xl">
+        <div className="bg-muted ring-1 ring-border p-6 sm:p-8 md:p-10 rounded-2xl text-center shadow-lg">
+          <h3 className="font-headline text-2xl md:text-3xl text-foreground">
             {homeContent.seasonalTeaser.title}
           </h3>
-          <p className="mt-2 text-base md:text-lg max-w-prose mx-auto leading-relaxed">
+          <p className="mt-2 text-base md:text-lg max-w-prose mx-auto leading-relaxed text-muted-foreground">
             {homeContent.seasonalTeaser.description}
           </p>
         </div>

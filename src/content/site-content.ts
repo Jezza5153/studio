@@ -10,8 +10,12 @@ export const navLinks = [
 
 export const contactDetails = {
   address: "Krommestraat, Amersfoort",
-  phone: "033-1234567",
+  phone: "Binnekort beschikbaar",
   email: "info@tafelaaramersfoort.nl",
+  socials: {
+    facebook: "https://www.facebook.com/people/Tafelaar-Amersfoort",
+    instagram: "https://instagram.com/tafelaaramersfoort",
+  },
 };
 
 export const openingHours = {
@@ -25,7 +29,8 @@ export const openingHours = {
     { day: "Zaterdag", time: "15:00 - 00:00" },
     { day: "Zondag", time: "15:00 - 23:00", special: "Lunch & Borrel" },
   ],
-  footer: "Let op: openingstijden kunnen afwijken tijdens feestdagen en evenementen.", // ✅ added footer
+  footer:
+    "Let op: openingstijden kunnen afwijken tijdens feestdagen en evenementen.",
 };
 
 export const homeContent = {
