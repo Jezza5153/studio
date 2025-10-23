@@ -21,11 +21,10 @@ export const openingHours = {
         { day: "Dinsdag", time: "Gesloten" },
         { day: "Woensdag", time: "17:00 - 23:00" },
         { day: "Donderdag", time: "17:00 - 23:00" },
-        { day: "Vrijdag", time: "17:00 - 00:00" },
-        { day: "Zaterdag", time: "17:00 - 00:00" },
-        { day: "Zondag", time: "12:00 - 22:00", special: "Lunch & Borrel" },
+        { day: "Vrijdag", time: "15:00 - 00:00" },
+        { day: "Zaterdag", time: "15:00 - 00:00" },
+        { day: "Zondag", time: "15:00 - 23:00", special: "Lunch & Borrel" },
     ],
-    footer: "Elke eerste maandag van de maand zijn we geopend. Volg ons op Instagram voor updates."
 };
 
 export const homeContent = {

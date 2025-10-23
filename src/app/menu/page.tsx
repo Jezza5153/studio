@@ -1,9 +1,10 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo, useState, useCallback } from "react";
 import { MENU, type MenuItem, type MenuCategory } from "@/content/menu";
 import { Badge } from "@/components/ui/badge";
-import { Info } from "lucide-react";
+import { Info, Share2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   Accordion,
   AccordionContent,
@@ -30,6 +31,10 @@ function slugify(input: string) {
   return input.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, "-").replace(/(^-|-$)/g, "");
 }
 
+function capitalize(s: string) {
+  return s.length ? s.charAt(0).toUpperCase() + s.slice(1) : s;
+}
+
 // ===== Page =====
 export default function MenuPage() {
   const categories: (MenuCategory & { id: string })[] = useMemo(
@@ -37,33 +42,111 @@ export default function MenuPage() {
     []
   );
 
+  // Active chip highlight while scrolling
+  const [active, setActive] = useState<string>(categories[0]?.id);
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting && e.target.id) setActive(e.target.id);
+        });
+      },
+      // Root margins tuned voor sticky header (top) en om niet te “flikkeren”
+      { rootMargin: "-35% 0px -55% 0px", threshold: 0.01 }
+    );
+
+    categories.forEach((c) => {
+      const el = document.getElementById(c.id);
+      if (el) obs.observe(el);
+    });
+
+    return () => obs.disconnect();
+  }, [categories]);
+
+  // Smooth scroll handler voor chips (werkt ook zonder global CSS)
+  const onChipClick = useCallback((slug: string) => {
+    const el = document.getElementById(slug);
+    if (!el) return;
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+    // Update hash zonder jump
+    history.replaceState(null, "", `#${slug}`);
+  }, []);
+
+  // Share button
+  const [copied, setCopied] = useState(false);
+  const share = useCallback(async () => {
+    const url = typeof window !== "undefined" ? window.location.href : "";
+    const title = "De Tafelaar – Menu";
+    const text = "Ons menu bekijken?";
+
+    try {
+      if (navigator.share) {
+        await navigator.share({ title, text, url });
+      } else {
+        await navigator.clipboard.writeText(url);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 1800);
+      }
+    } catch {
+      // als wordt geannuleerd: niets doen
+    }
+  }, []);
+
   return (
     <div className="container mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-16">
       {/* Header */}
       <header className="mb-8 sm:mb-10 md:mb-12">
         <div className="rounded-2xl border bg-card p-6 sm:p-8">
-          <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl tracking-tight">
-            Ons Menu
-          </h1>
-          <p className="mt-2 max-w-prose text-base sm:text-lg text-muted-foreground leading-relaxed">
-            Shared dining met liefde voor seizoen, lokaal en gezelligheid. Kies je favoriete
-            gerechtjes — of laat de chef je verrassen.
-          </p>
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl tracking-tight">
+                Ons Menu
+              </h1>
+              <p className="mt-2 max-w-prose text-base sm:text-lg text-muted-foreground leading-relaxed">
+                Shared dining met liefde voor seizoen, lokaal en gezelligheid. Kies je favoriete
+                gerechtjes — of laat de chef je verrassen.
+              </p>
+            </div>
+            <Button
+              variant="outline"
+              className="hidden sm:inline-flex gap-2"
+              onClick={share}
+              aria-label="Deel deze menupagina"
+            >
+              <Share2 className="h-4 w-4" />
+              {copied ? "Link Gekopieerd" : "Deel"}
+            </Button>
+          </div>
         </div>
 
         {/* Sticky category nav */}
-        <nav className="sticky top-16 z-40 -mx-1 overflow-x-auto py-3">
+        <nav
+          className="sticky top-16 z-40 -mx-1 overflow-x-auto py-3"
+          aria-label="Categorieën"
+        >
           <ul className="flex items-center gap-2">
-            {categories.map((c) => (
-              <li key={c.id}>
-                <a
-                  href={`#${c.id}`}
-                  className="inline-flex whitespace-nowrap rounded-full border bg-background px-3 py-1.5 text-sm hover:bg-accent/20 transition-colors"
-                >
-                  {c.name}
-                </a>
-              </li>
-            ))}
+            {categories.map((c) => {
+              const isActive = active === c.id;
+              return (
+                <li key={c.id}>
+                  <a
+                    href={`#${c.id}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onChipClick(c.id);
+                    }}
+                    className={[
+                      "inline-flex whitespace-nowrap rounded-full border px-3 py-1.5 text-sm transition-colors",
+                      isActive ? "bg-muted text-foreground" : "bg-background hover:bg-accent/20",
+                      "focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-ring",
+                    ].join(" ")}
+                  >
+                    {c.name}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </nav>
       </header>
@@ -72,27 +155,43 @@ export default function MenuPage() {
       <section className="sm:hidden">
         <Accordion type="single" collapsible className="w-full space-y-3">
           {categories.map((category) => (
-            <AccordionItem key={category.id} value={category.id} id={category.id} className="border rounded-xl">
-              <AccordionTrigger className="px-4 py-3 text-left font-headline text-lg">
-                <div className="flex w-full items-baseline justify-between gap-3">
-                  <span>{category.name}</span>
-                  <span className="text-xs text-muted-foreground">
-                    {category.items.length} {category.items.length === 1 ? "gerecht" : "gerechten"}
-                  </span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent className="px-4 pb-4">
-                <ul className="divide-y">
-                  {category.items.map((item) => (
-                    <li key={item.name} className="py-3">
-                      <MenuRow item={item} />
-                    </li>
-                  ))}
-                </ul>
-              </AccordionContent>
-            </AccordionItem>
+            <div key={category.id}>
+              {/* Invisible anchor voor correct scroll-target onder sticky header */}
+              <span id={category.id} className="block h-24 -mt-24" aria-hidden="true" />
+              <AccordionItem value={category.id} className="border rounded-xl">
+                <AccordionTrigger className="px-4 py-3 text-left font-headline text-lg">
+                  <div className="flex w-full items-baseline justify-between gap-3">
+                    <span>{category.name}</span>
+                    <span className="text-xs text-muted-foreground">
+                      {category.items.length} {category.items.length === 1 ? "gerecht" : "gerechten"}
+                    </span>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="px-4 pb-4">
+                  <ul className="divide-y">
+                    {category.items.map((item) => (
+                      <li key={item.name} className="py-3">
+                        <MenuRow item={item} />
+                      </li>
+                    ))}
+                  </ul>
+                </AccordionContent>
+              </AccordionItem>
+            </div>
           ))}
         </Accordion>
+        {/* Share button mobiel */}
+        <div className="mt-4 flex justify-center">
+          <Button
+            variant="outline"
+            className="inline-flex gap-2"
+            onClick={share}
+            aria-label="Deel deze menupagina"
+          >
+            <Share2 className="h-4 w-4" />
+            {copied ? "Link Gekopieerd" : "Deel"}
+          </Button>
+        </div>
       </section>
 
       {/* DESKTOP/TABLET: section cards */}
@@ -101,10 +200,16 @@ export default function MenuPage() {
           <section
             key={category.id}
             id={category.id}
-            className="rounded-2xl border bg-card p-5 sm:p-6"
+            className="rounded-2xl border bg-card p-5 sm:p-6 scroll-mt-28"
+            aria-labelledby={`${category.id}-title`}
           >
             <div className="mb-4 sm:mb-5">
-              <h2 className="font-headline text-2xl sm:text-3xl tracking-tight">{category.name}</h2>
+              <h2
+                id={`${category.id}-title`}
+                className="font-headline text-2xl sm:text-3xl tracking-tight"
+              >
+                {category.name}
+              </h2>
               <p className="text-xs text-muted-foreground mt-1">
                 {category.items.length} {category.items.length === 1 ? "gerecht" : "gerechten"}
               </p>
@@ -130,13 +235,13 @@ export default function MenuPage() {
   );
 }
 
-// ===== Row: name + price (no €), description, readable allergens =====
+// ===== Row: name + price (no currency symbol), description, readable allergens =====
 function MenuRow({ item }: { item: MenuItem }) {
   const showMeta = (item.tags?.length ?? 0) > 0 || (item.allergens?.length ?? 0) > 0;
 
   return (
     <div className="grid grid-cols-1 gap-2">
-      {/* Top line: name + price */}
+      {/* Top line: name + price (géén €-teken) */}
       <div className="flex items-baseline justify-between gap-3">
         <h3 className="text-lg font-semibold leading-tight">{item.name}</h3>
         <p className="shrink-0 text-lg font-semibold tabular-nums">
@@ -184,8 +289,4 @@ function MenuRow({ item }: { item: MenuItem }) {
       )}
     </div>
   );
-}
-
-function capitalize(s: string) {
-  return s.length ? s.charAt(0).toUpperCase() + s.slice(1) : s;
 }
