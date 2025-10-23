@@ -121,7 +121,7 @@ export const MENU: MenuData = {
           allergens: ["lactose", "gluten", "eieren"],
         },
         {
-          name: "Gehaktballetjes (Vega)",
+          name: "Gehacktballetjes",
           description: "De Vegetarische Slager - Tomatensaus",
           price: 9.5,
           tags: ["V"],
