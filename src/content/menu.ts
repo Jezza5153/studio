@@ -134,8 +134,8 @@ export const MENU: MenuData = {
           allergens: ["lactose"],
         },
         {
-          name: "Dumplings",
-          description: "Groentendumplings - Crispy Onions",
+          name: "Sui Gyoza",
+          description: "Gestoomde Gyozas - Crispy Onions",
           price: 9.5,
           tags: ["V"],
           allergens: ["gluten", "soja"],
