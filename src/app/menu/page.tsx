@@ -65,8 +65,8 @@ export default function MenuPage() {
                 Ons Menu
               </h1>
               <p className="mt-2 max-w-prose text-base sm:text-lg text-muted-foreground leading-relaxed">
-                Shared dining met liefde voor seizoen, lokaal en gezelligheid. Kies je favoriete
-                gerechtjes — of laat de chef je verrassen.
+                Shared dining met liefde voor seizoen, lokaal en gezelligheid.
+                Kies je favoriete gerechtjes — of laat de chef je verrassen.
               </p>
             </div>
             <Button
@@ -96,7 +96,7 @@ export default function MenuPage() {
         ))}
       </section>
 
-      {/* DESKTOP/TABLET – no internal scroll; items flow into columns inside each tile */}
+      {/* DESKTOP/TABLET – no internal scroll; items flow in a grid inside each tile */}
       <main className="hidden sm:block">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {categories.map((category) => (
@@ -114,19 +114,20 @@ export default function MenuPage() {
                   {category.name}
                 </h2>
                 <p className="text-xs text-muted-foreground mt-1">
-                  {category.items.length} {category.items.length === 1 ? "gerecht" : "gerechten"}
+                  {category.items.length}{" "}
+                  {category.items.length === 1 ? "gerecht" : "gerechten"}
                 </p>
               </div>
 
-              {/* Key: columns! */}
-              <ul className="columns-2 xl:columns-3 gap-x-8 [column-fill:_balance]">
+              {/* Key: real grid, not CSS columns */}
+              <ul className="grid grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-5">
                 {category.items.map((item) => (
                   <li
                     key={item.name}
-                    className="mb-5 inline-block w-full align-top"
+                    className="min-w-0"
                     style={{ breakInside: "avoid" } as CSSProperties}
                   >
-                    <MenuRowColumn item={item} />
+                    <MenuRowGrid item={item} />
                   </li>
                 ))}
               </ul>
@@ -145,27 +146,27 @@ export default function MenuPage() {
   );
 }
 
-/* ===== Desktop/Tablet row variant tuned for column layout ===== */
-function MenuRowColumn({ item }: { item: MenuItem }) {
+/* ===== Desktop/Tablet row variant tuned for grid (no dotted leader) ===== */
+function MenuRowGrid({ item }: { item: MenuItem }) {
   const showMeta = (item.tags?.length ?? 0) > 0 || (item.allergens?.length ?? 0) > 0;
 
   return (
-    <div className="grid grid-cols-1 gap-2 rounded-lg">
-      {/* Top line: name — dotted leader — price */}
-      <div className="flex items-baseline gap-3">
+    <div className="rounded-lg">
+      <div className="flex items-baseline justify-between gap-3">
         <h3 className="text-lg font-semibold leading-tight">{item.name}</h3>
-        <div aria-hidden className="flex-1 mx-3 border-t border-dotted border-foreground/30 translate-y-1" />
         <p className="shrink-0 text-lg font-semibold tabular-nums">
           {formatPriceNoCurrency(item.price)}
         </p>
       </div>
 
       {item.description && (
-        <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+        <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
+          {item.description}
+        </p>
       )}
 
       {showMeta && (
-        <div className="mt-1 flex flex-wrap items-center gap-2">
+        <div className="mt-2 flex flex-wrap items-center gap-2">
           {item.tags?.map((t) => (
             <Badge
               key={t}
@@ -179,7 +180,9 @@ function MenuRowColumn({ item }: { item: MenuItem }) {
 
           {item.allergens?.length ? (
             <div className="flex flex-wrap items-center gap-1.5">
-              <span className="text-[11px] font-medium text-foreground/80 mr-1">Allergenen:</span>
+              <span className="text-[11px] font-medium text-foreground/80 mr-1">
+                Allergenen:
+              </span>
               {item.allergens.map((a) => (
                 <span
                   key={a}

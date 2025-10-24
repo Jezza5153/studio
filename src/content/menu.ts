@@ -10,7 +10,6 @@ export type MenuItem = {
   price: number | null;
   tags: string[];
   allergens: string[]; // Gebruik "lactose" i.p.v. "melk"
-  addons?: { label: string; price: number }[]; // 👈 NEW: optionele add-ons per gerecht
 };
 
 export type MenuCategory = { name: string; items: MenuItem[] };
@@ -121,7 +120,7 @@ export const MENU: MenuData = {
           allergens: ["lactose", "gluten", "eieren"],
         },
         {
-          name: "Gehacktballetjes",
+          name: "Gehaktballetjes (Vega)",
           description: "De Vegetarische Slager - Tomatensaus",
           price: 9.5,
           tags: ["V"],
@@ -141,11 +140,19 @@ export const MENU: MenuData = {
           tags: ["V"],
           allergens: ["gluten", "soja"],
         },
+        // ⬇️ Bao Bun opgesplitst in twee varianten
         {
-          name: "Bao Bun",
-          description: "Bao - Pulled Pork of Inari - Sriracha Mayo",
+          name: "Bao Bun Pulled Pork",
+          description: "Bao - Pulled Pork - Sriracha Mayo",
           price: 8.5,
           tags: [],
+          allergens: ["gluten", "soja", "eieren"],
+        },
+        {
+          name: "Bao Bun Inari",
+          description: "Bao - Inari - Sriracha Mayo",
+          price: 8.5,
+          tags: ["V"],
           allergens: ["gluten", "soja", "eieren"],
         },
       ],
@@ -175,9 +182,21 @@ export const MENU: MenuData = {
           price: 7.5,
           tags: ["V"],
           allergens: ["lactose", "noten", "gluten"],
-          addons: [{ label: "extra bol ijs of sorbet", price: 2.0 }], // 👈 add-on i.p.v. los item
         },
-        // VERWIJDERD: los 'Extra: Toeslag (+2)' – staat nu als add-on bij Appel Gemakje
+        {
+          name: "Vanille-ijs of Citroensorbet",
+          description: "Keuze uit vanille-ijs of citroensorbet",
+          price: 6.5,
+          tags: ["V"],
+          allergens: ["lactose"], // sorbet is lactosevrij; als duo-item tonen we 'lactose' i.v.m. vanille-ijs
+        },
+        {
+          name: "Extra: Toeslag (+2)",
+          description: "Toeslag voor extra bol ijs of sorbet",
+          price: 2.0,
+          tags: ["V"],
+          allergens: [],
+        },
         {
           name: "Vegan Snicker",
           description: "Snicker, maar dan vegan",
@@ -187,7 +206,8 @@ export const MENU: MenuData = {
         },
         {
           name: "Dessert Plankje",
-          description: "Kan je niet kiezen? Neem dan een beetje van alles - 2 koffies + 5",
+          description:
+            "Kan je niet kiezen? Proef een beetje van al onze desserts. Optioneel met 2 koffies voor 5 euro extra.",
           price: 15.0,
           tags: ["V"],
           allergens: ["lactose", "gluten", "eieren", "noten"],
@@ -241,6 +261,7 @@ export const MENU: MenuData = {
           tags: ["V"],
           allergens: ["lactose", "gluten"],
         },
+        // Weetje-onderregel voor hele kaas-sectie:
         {
           name: "— Weetje —",
           description:
@@ -256,8 +277,20 @@ export const MENU: MenuData = {
     {
       name: "Charcuterie",
       items: [
-        { name: "Veluwnaartje", description: "Kesbeke Uitjes", price: 7.0, tags: [], allergens: [] },
-        { name: "Venkelworstje", description: "Kesbeke Cornichon", price: 7.0, tags: [], allergens: [] },
+        {
+          name: "Veluwnaartje",
+          description: "Kesbeke Uitjes",
+          price: 7.0,
+          tags: [],
+          allergens: [],
+        },
+        {
+          name: "Venkelworstje",
+          description: "Kesbeke Cornichon",
+          price: 7.0,
+          tags: [],
+          allergens: [],
+        },
         {
           name: "Serrano Ham van het Bot",
           description: "Geconfijte Knoflook - Crouton",
@@ -265,8 +298,20 @@ export const MENU: MenuData = {
           tags: [],
           allergens: ["gluten"],
         },
-        { name: "Peperworstje", description: "Kesbeke Cornichon", price: 7.0, tags: [], allergens: [] },
-        { name: "Gedroogde Twentse Worst", description: "Kesbeke Cornichon", price: 6.0, tags: [], allergens: [] },
+        {
+          name: "Peperworstje",
+          description: "Kesbeke Cornichon",
+          price: 7.0,
+          tags: [],
+          allergens: [],
+        },
+        {
+          name: "Gedroogde Twentse Worst",
+          description: "Kesbeke Cornichon",
+          price: 6.0,
+          tags: [],
+          allergens: [],
+        },
       ],
     },
 
@@ -274,8 +319,20 @@ export const MENU: MenuData = {
     {
       name: "Borrel",
       items: [
-        { name: "Peppedews", description: "Gevulde Paprikatjes", price: 6.5, tags: ["V"], allergens: ["lactose"] },
-        { name: "Olijven", description: "De Tafelaars Kruidenmix", price: 4.5, tags: ["V", "VG", "GF"], allergens: [] },
+        {
+          name: "Peppedews",
+          description: "Gevulde Paprikatjes",
+          price: 6.5,
+          tags: ["V"],
+          allergens: ["lactose"],
+        },
+        {
+          name: "Olijven",
+          description: "De Tafelaars Kruidenmix",
+          price: 4.5,
+          tags: ["V", "VG", "GF"],
+          allergens: [],
+        },
         {
           name: "Gerookte Notenmix",
           description: "Huisgemaakte Notenmix - Jan Zijn Recept",
@@ -283,7 +340,13 @@ export const MENU: MenuData = {
           tags: ["V", "VG", "GF"],
           allergens: ["noten"],
         },
-        { name: "Sardientjes", description: "Courgette - Knoflook - Ui - Basilicum", price: 6.5, tags: [], allergens: ["vis"] },
+        {
+          name: "Sardientjes",
+          description: "Courgette - Knoflook - Ui - Basilicum",
+          price: 6.5,
+          tags: [],
+          allergens: ["vis"],
+        },
       ],
     },
 
@@ -298,10 +361,17 @@ export const MENU: MenuData = {
           tags: [],
           allergens: ["lactose", "gluten", "noten"],
         },
-        { name: "Chef’s Choice", description: "4 Gerechten die de chef speciaal voor u maakt", price: 38.0, tags: [], allergens: [] },
+        {
+          name: "Chef’s Choice",
+          description: "4 Gerechten die de chef speciaal voor u maakt",
+          price: 38.0,
+          tags: [],
+          allergens: [],
+        },
         {
           name: "Dessert Plankje",
-          description: "Kan je niet kiezen? Neem dan een beetje van alles - 2 koffies + 5",
+          description:
+            "Kan je niet kiezen? Proef een beetje van al onze desserts. Optioneel met 2 koffies voor 5 euro extra.",
           price: 15.0,
           tags: ["V"],
           allergens: ["lactose", "gluten", "eieren", "noten"],
