@@ -1,22 +1,30 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { contactDetails, reservationFaq, openingHours } from "@/content/site-content";
-import { Phone, Info } from "lucide-react";
+import { Phone, Info, MapPin, Mail } from "lucide-react";
 
 export default function ReserverenPage() {
   // ---- helpers (no API keys) ----
-  const hasDialablePhone = /\d/.test(contactDetails.phone || "");
   const label = "De Tafelaar";
-  const mapsQuery = encodeURIComponent(`${label}, ${contactDetails.address}`);
+  const addressLines = (contactDetails.address || "").split("\n").filter(Boolean);
+  const prettyAddress = [label, ...addressLines]; // voor weergave
+  const queryAddress = encodeURIComponent(prettyAddress.join(", ")); // voor maps
 
   // Public, keyless embed:
-  const mapsEmbedSrc = `https://www.google.com/maps?&q=${mapsQuery}&output=embed`;
+  const mapsEmbedSrc = `https://www.google.com/maps?&q=${queryAddress}&output=embed`;
 
   // Open externally:
-  const googleWeb = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
-  const appleMaps = `https://maps.apple.com/?q=${mapsQuery}`;
-  const geoFallback = `geo:0,0?q=${mapsQuery}`; // many Android devices open default maps app
+  const googleWeb = `https://www.google.com/maps/search/?api=1&query=${queryAddress}`;
+  const appleMaps = `https://maps.apple.com/?q=${queryAddress}`;
+  const geoFallback = `geo:0,0?q=${queryAddress}`; // many Android devices open default maps app
+
+  const hasDialablePhone = /\d/.test(contactDetails.phone || "");
 
   return (
     <div className="container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
@@ -30,53 +38,69 @@ export default function ReserverenPage() {
 
       {/* Main grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
-        {/* Left: Booking card */}
+        {/* Left: Booking / Actions card (vult de plaats van de toekomstige widget) */}
         <div className="lg:col-span-2">
           <Card className="shadow-lg rounded-2xl">
             <CardHeader>
-              <CardTitle className="font-headline text-2xl sm:text-3xl">Online reserveren</CardTitle>
+              <CardTitle className="font-headline text-2xl sm:text-3xl">
+                Kom je eten?
+              </CardTitle>
             </CardHeader>
             <CardContent>
-              {/* Widget placeholder */}
-              <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
-                <p className="text-muted-foreground">Reserverings-widget volgt binnenkort</p>
-              </div>
-
-              {/* Actions */}
-              <p className="text-sm text-muted-foreground mt-4">
-                Lukt het online niet of heeft u speciale wensen? Neem dan contact met ons op:
-              </p>
-              <div className="mt-4 flex flex-col sm:flex-row gap-3">
-                {hasDialablePhone ? (
-                  <Button asChild className="w-full sm:w-auto">
-                    <a href={`tel:${contactDetails.phone}`}>
-                      <Phone className="mr-2 h-4 w-4" />
-                      Bel ons
-                    </a>
-                  </Button>
-                ) : (
-                  <Button asChild className="w-full sm:w-auto">
-                    <a href={`mailto:${contactDetails.email}?subject=${encodeURIComponent("Reservering De Tafelaar")}`}>
-                      Mail ons
-                    </a>
-                  </Button>
-                )}
-                <Button asChild variant="outline" className="w-full sm:w-auto">
-                  <a href={`mailto:${contactDetails.email}?subject=${encodeURIComponent("Reservering De Tafelaar")}`}>
-                    Stuur een e-mail
-                  </a>
-                </Button>
-              </div>
-
-              {/* Reservation info */}
-              <div className="mt-6 rounded-xl border p-4 bg-card/50">
-                <p className="text-sm text-muted-foreground flex items-start gap-2">
-                  <Info className="h-4 w-4 mt-0.5" />
-                  <span>
-                    <strong>Reserveringsinfo:</strong> voor groepen &gt; 8 personen graag per e-mail. Vermeld eventuele{" "}
-                    <em>allergieën/dieetwensen</em> bij uw aanvraag. Tijden kunnen afwijken op feestdagen.
-                  </span>
+              <div className="rounded-xl border p-5 sm:p-6 bg-card/50">
+                <p className="text-muted-foreground leading-relaxed">
+                  Onze online reserveringswidget komt binnenkort beschikbaar. Tot die tijd helpen we je
+                  graag via telefoon of e-mail. Liever direct navigeren? Open ons adres in je
+                  favoriete kaartapp.
                 </p>
+
+                <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {hasDialablePhone && (
+                    <Button asChild className="w-full">
+                      <a href={`tel:${contactDetails.phone}`}>
+                        <Phone className="mr-2 h-4 w-4" />
+                        Bel ons
+                      </a>
+                    </Button>
+                  )}
+
+                  <Button asChild variant="outline" className="w-full">
+                    <a
+                      href={`mailto:${contactDetails.email}?subject=${encodeURIComponent("Reservering De Tafelaar")}`}
+                    >
+                      <Mail className="mr-2 h-4 w-4" />
+                      Stuur een e-mail
+                    </a>
+                  </Button>
+
+                  <Button asChild variant="secondary" className="w-full">
+                    <a href={googleWeb} target="_blank" rel="noopener noreferrer">
+                      <MapPin className="mr-2 h-4 w-4" />
+                      Open in Google Maps
+                    </a>
+                  </Button>
+
+                  <Button asChild variant="outline" className="w-full">
+                    <a href={appleMaps} target="_blank" rel="noopener noreferrer">
+                      Open in Apple Maps
+                    </a>
+                  </Button>
+
+                  {/* mobiel-specifieke deep link */}
+                  <Button asChild variant="ghost" className="w-full sm:col-span-2 lg:col-span-1 md:hidden">
+                    <a href={geoFallback}>Open in Maps (telefoon)</a>
+                  </Button>
+                </div>
+
+                <div className="mt-5 rounded-xl border p-4 bg-background/70">
+                  <p className="text-sm text-muted-foreground flex items-start gap-2">
+                    <Info className="h-4 w-4 mt-0.5" />
+                    <span>
+                      <strong>Tip:</strong> voor groepen &gt; 8 personen graag even mailen. Vermeld
+                      ook eventuele <em>allergieën of dieetwensen</em>. Tijden kunnen afwijken op feestdagen.
+                    </span>
+                  </p>
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -136,12 +160,12 @@ export default function ReserverenPage() {
               <CardTitle className="font-headline text-xl">Adres</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col gap-4">
-              <address className="not-italic text-muted-foreground text-base sm:text-lg">
-                <p>{label}</p>
-                <p>{contactDetails.address}</p>
+              <address className="not-italic text-muted-foreground text-base sm:text-lg leading-relaxed">
+                {prettyAddress.map((line, i) => (
+                  <p key={i}>{line}</p>
+                ))}
               </address>
 
-              {/* All buttons in one container, can wrap; geo link mobile-only */}
               <div className="flex flex-wrap gap-3">
                 <Button asChild className="w-full sm:w-auto">
                   <a href={googleWeb} target="_blank" rel="noopener noreferrer">
@@ -153,33 +177,35 @@ export default function ReserverenPage() {
                     Open in Apple Maps
                   </a>
                 </Button>
-                <Button asChild variant="ghost" className="w-full sm:w-auto md:hidden">
-                  <a href={geoFallback}>
-                    Open in Maps (telefoon)
-                  </a>
-                </Button>
+                {hasDialablePhone && (
+                  <Button asChild variant="ghost" className="w-full sm:w-auto">
+                    <a href={`tel:${contactDetails.phone}`}>
+                      Bel: {contactDetails.phone}
+                    </a>
+                  </Button>
+                )}
               </div>
             </CardContent>
           </Card>
 
-          {/* Stylish embed preview (no key) */}
+          {/* Map embed – altijd in kleur */}
           <Card className="shadow-lg rounded-2xl overflow-hidden">
             <CardContent className="p-0 h-full">
               <div className="relative pt-8">
-                {/* pt-8 gives space so the Google info bubble top-left doesn't overlap our UI */}
+                {/* top padding om overlap met Google info-bubble te vermijden */}
                 <iframe
                   title="Locatie De Tafelaar op Google Maps"
                   src={mapsEmbedSrc}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  className="block w-full h-[300px] md:h-[420px] aspect-[4/3] md:aspect-video md:grayscale md:hover:grayscale-0 transition-all"
+                  className="block w-full h-[300px] md:h-[420px] aspect-[4/3] md:aspect-video"
                   allowFullScreen
                 />
-                {/* Overlay label moved to bottom-left for calm layout */}
+                {/* Overlay label links-onder, rustig in beeld */}
                 <div className="pointer-events-none absolute left-4 bottom-4 rounded-full bg-background/90 px-3 py-1 shadow">
                   <span className="text-sm">📍 {label}</span>
                 </div>
-                {/* Subtle top fade to soften the busy top-left corner */}
+                {/* Subtle top fade om het drukke hoekje te verzachten */}
                 <div className="pointer-events-none absolute inset-x-0 top-0 h-8 bg-gradient-to-b from-background/50 to-transparent" />
               </div>
               <noscript>
