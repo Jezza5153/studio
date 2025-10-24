@@ -120,8 +120,8 @@ export const MENU: MenuData = {
           allergens: ["lactose", "gluten", "eieren"],
         },
         {
-          name: "Gehaktballetjes (Vega)",
-          description: "De Vegetarische Slager - Tomatensaus",
+          name: "Gehackte balletjes",
+          description: "Van de Vegetarische Slager - Tomatensaus",
           price: 9.5,
           tags: ["V"],
           allergens: ["gluten", "soja"],
@@ -184,18 +184,11 @@ export const MENU: MenuData = {
           allergens: ["lactose", "noten", "gluten"],
         },
         {
-          name: "Vanille-ijs of Citroensorbet",
+          name: "Extra: Toeslag",
           description: "Keuze uit vanille-ijs of citroensorbet",
-          price: 6.5,
-          tags: ["V"],
-          allergens: ["lactose"], // sorbet is lactosevrij; als duo-item tonen we 'lactose' i.v.m. vanille-ijs
-        },
-        {
-          name: "Extra: Toeslag (+2)",
-          description: "Toeslag voor extra bol ijs of sorbet",
           price: 2.0,
           tags: ["V"],
-          allergens: [],
+          allergens: ["lactose"], // sorbet is lactosevrij; als duo-item tonen we 'lactose' i.v.m. vanille-ijs
         },
         {
           name: "Vegan Snicker",
@@ -321,7 +314,7 @@ export const MENU: MenuData = {
       items: [
         {
           name: "Peppedews",
-          description: "Gevulde Paprikatjes",
+          description: "Gevulde Paprikaatjes",
           price: 6.5,
           tags: ["V"],
           allergens: ["lactose"],
