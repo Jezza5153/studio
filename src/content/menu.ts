@@ -79,7 +79,7 @@ export const MENU: MenuData = {
         },
         {
           name: "Bruschetta",
-          description: "Knoflook - Olijfolie - Tomaat - Focaccia",
+          description: "Knoflook - Olijfolie - Tomaat",
           price: 6.5,
           tags: ["V"],
           allergens: ["gluten"],
@@ -164,7 +164,7 @@ export const MENU: MenuData = {
       items: [
         {
           name: "Dame Blanche",
-          description: "Warme Chocolade - Vanille-ijs - Slagroom",
+          description: "Warme Chocolade - Vanille ijs - Slagroom",
           price: 7.5,
           tags: ["V"],
           allergens: ["lactose"],
@@ -178,14 +178,14 @@ export const MENU: MenuData = {
         },
         {
           name: "Appel Gemakje",
-          description: "Appel - Caramel - Amandel - Slagroom",
+          description: "Appel - Caramel - Slagroom",
           price: 7.5,
           tags: ["V"],
           allergens: ["lactose", "noten", "gluten"],
         },
         {
           name: "Extra: Toeslag",
-          description: "Keuze uit vanille-ijs of citroensorbet",
+          description: "Keuze uit vanille ijs of citroensorbet",
           price: 2.0,
           tags: ["V"],
           allergens: ["lactose"], // sorbet is lactosevrij; als duo-item tonen we 'lactose' i.v.m. vanille-ijs
@@ -248,7 +248,7 @@ export const MENU: MenuData = {
           allergens: ["lactose", "noten", "mosterd"],
         },
         {
-          name: "Arcadie Blauw",
+          name: "Arcadia Blauw",
           description: "Vijgencompote - Sfoglie",
           price: 8.5,
           tags: ["V"],
@@ -272,7 +272,7 @@ export const MENU: MenuData = {
       items: [
         {
           name: "Veluwnaartje",
-          description: "Kesbeke Uitjes",
+          description: "Kesbeke Smuluitjes",
           price: 7.0,
           tags: [],
           allergens: [],
@@ -285,8 +285,8 @@ export const MENU: MenuData = {
           allergens: [],
         },
         {
-          name: "Serrano Ham van het Bot",
-          description: "Geconfijte Knoflook - Crouton",
+          name: "Serrano Ham handgesneden",
+          description: "Geconfijte Knoflook - Croutons",
           price: 8.0,
           tags: [],
           allergens: ["gluten"],
@@ -313,29 +313,29 @@ export const MENU: MenuData = {
       name: "Borrel",
       items: [
         {
-          name: "Peppedews",
-          description: "Gevulde Paprikaatjes",
+          name: "Peppadews",
+          description: "Gevulde Paprikaatjes met Roomkaas",
           price: 6.5,
           tags: ["V"],
           allergens: ["lactose"],
         },
         {
           name: "Olijven",
-          description: "De Tafelaars Kruidenmix",
+          description: "In de Tafelaar Kruidenmix",
           price: 4.5,
           tags: ["V", "VG", "GF"],
           allergens: [],
         },
         {
           name: "Gerookte Notenmix",
-          description: "Huisgemaakte Notenmix - Jan Zijn Recept",
+          description: "Huisgemaakte Notenmix",
           price: 3.5,
           tags: ["V", "VG", "GF"],
           allergens: ["noten"],
         },
         {
           name: "Sardientjes",
-          description: "Courgette - Knoflook - Ui - Basilicum",
+          description: "In olie",
           price: 6.5,
           tags: [],
           allergens: ["vis"],
@@ -356,7 +356,7 @@ export const MENU: MenuData = {
         },
         {
           name: "Chef’s Choice",
-          description: "4 Gerechten die de chef speciaal voor u maakt",
+          description: "4 Gerechten van de chef",
           price: 38.0,
           tags: [],
           allergens: [],
