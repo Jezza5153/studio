@@ -9,8 +9,8 @@ export const navLinks = [
 ];
 
 export const contactDetails = {
-  address: "8 Kamp, Amersfoort",
-  phone: "Binnekort beschikbaar",
+  address: "Kamp 8\n3811 AR Amersfoort\nNederland",
+  phone: "+31 6 341 279 32",
   email: "info@tafelaaramersfoort.nl",
   socials: {
     facebook: "https://www.facebook.com/people/Tafelaar-Amersfoort",
