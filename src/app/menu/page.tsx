@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, useCallback, Fragment, CSSProperties } from "react";
+import { useMemo, useState, useCallback, Fragment } from "react";
 import { MENU, type MenuItem, type MenuCategory } from "@/content/menu";
 import { Badge } from "@/components/ui/badge";
 import { Info, Share2 } from "lucide-react";
@@ -24,7 +24,6 @@ const TAG_LABELS: Record<string, string> = {
 function slugify(input: string) {
   return input.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, "-").replace(/(^-|-$)/g, "");
 }
-
 function capitalize(s: string) {
   return s.length ? s.charAt(0).toUpperCase() + s.slice(1) : s;
 }
@@ -65,8 +64,8 @@ export default function MenuPage() {
                 Ons Menu
               </h1>
               <p className="mt-2 max-w-prose text-base sm:text-lg text-muted-foreground leading-relaxed">
-                Shared dining met liefde voor seizoen, lokaal en gezelligheid.
-                Kies je favoriete gerechtjes — of laat de chef je verrassen.
+                Shared dining met liefde voor seizoen, lokaal en gezelligheid. Kies je favoriete
+                gerechtjes — of laat de chef je verrassen.
               </p>
             </div>
             <Button
@@ -82,7 +81,7 @@ export default function MenuPage() {
         </div>
       </header>
 
-      {/* MOBILE: 2-column per category (no accordion) */}
+      {/* ✅ MOBILE: 2 kolommen per categorie – ongewijzigd */}
       <section className="sm:hidden space-y-8">
         {categories.map((category) => (
           <Fragment key={category.id}>
@@ -96,38 +95,32 @@ export default function MenuPage() {
         ))}
       </section>
 
-      {/* DESKTOP/TABLET – no internal scroll; items flow in a grid inside each tile */}
+      {/* ✅ DESKTOP/TABLET: rustiger – 2 kolommen page grid, lijst in elk blok */}
       <main className="hidden sm:block">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid md:grid-cols-2 gap-8">
           {categories.map((category) => (
             <section
               key={category.id}
               id={category.id}
-              className="h-full scroll-mt-28 rounded-[14px] border-2 border-border bg-card p-5 sm:p-6 md:p-8"
+              className="rounded-2xl border bg-card/90 p-6 md:p-8"
               aria-labelledby={`${category.id}-title`}
             >
-              <div className="mb-4 sm:mb-5">
+              <div className="mb-5">
                 <h2
                   id={`${category.id}-title`}
-                  className="font-headline text-2xl sm:text-3xl tracking-tight text-balance"
+                  className="font-headline text-2xl md:text-3xl tracking-tight"
                 >
                   {category.name}
                 </h2>
                 <p className="text-xs text-muted-foreground mt-1">
-                  {category.items.length}{" "}
-                  {category.items.length === 1 ? "gerecht" : "gerechten"}
+                  {category.items.length} {category.items.length === 1 ? "gerecht" : "gerechten"}
                 </p>
               </div>
 
-              {/* Key: real grid, not CSS columns */}
-              <ul className="grid grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-5">
+              <ul className="divide-y">
                 {category.items.map((item) => (
-                  <li
-                    key={item.name}
-                    className="min-w-0"
-                    style={{ breakInside: "avoid" } as CSSProperties}
-                  >
-                    <MenuRowGrid item={item} />
+                  <li key={item.name} className="py-4 first:pt-0 last:pb-0">
+                    <MenuRowDesktop item={item} />
                   </li>
                 ))}
               </ul>
@@ -146,47 +139,48 @@ export default function MenuPage() {
   );
 }
 
-/* ===== Desktop/Tablet row variant tuned for grid (no dotted leader) ===== */
-function MenuRowGrid({ item }: { item: MenuItem }) {
+/* ===== Desktop row – eenvoudig: naam links, prijs rechts, kleine meta ===== */
+function MenuRowDesktop({ item }: { item: MenuItem }) {
   const showMeta = (item.tags?.length ?? 0) > 0 || (item.allergens?.length ?? 0) > 0;
 
   return (
-    <div className="rounded-lg">
+    <div className="min-w-0">
+      {/* Naam + prijs */}
       <div className="flex items-baseline justify-between gap-3">
-        <h3 className="text-lg font-semibold leading-tight">{item.name}</h3>
-        <p className="shrink-0 text-lg font-semibold tabular-nums">
+        <h3 className="text-lg md:text-xl font-semibold leading-tight truncate">{item.name}</h3>
+        <p className="shrink-0 text-lg md:text-xl font-semibold tabular-nums">
           {formatPriceNoCurrency(item.price)}
         </p>
       </div>
 
+      {/* Beschrijving */}
       {item.description && (
-        <p className="mt-1 text-sm text-muted-foreground leading-relaxed">
-          {item.description}
-        </p>
+        <p className="mt-1 text-sm text-muted-foreground leading-relaxed">{item.description}</p>
       )}
 
+      {/* Subtiele meta */}
       {showMeta && (
         <div className="mt-2 flex flex-wrap items-center gap-2">
+          {/* Tags (subtiel outline) */}
           {item.tags?.map((t) => (
             <Badge
               key={t}
               variant="outline"
-              className="border-emerald-300 bg-emerald-100/80 text-emerald-900 text-[11px] px-2.5 py-1"
+              className="border-emerald-300 bg-transparent text-emerald-900/90 text-[11px] px-2.5 py-1"
               title={TAG_LABELS[t] ?? t}
             >
               {TAG_LABELS[t] ?? t}
             </Badge>
           ))}
 
+          {/* Allergenen (klein en gedempt) */}
           {item.allergens?.length ? (
             <div className="flex flex-wrap items-center gap-1.5">
-              <span className="text-[11px] font-medium text-foreground/80 mr-1">
-                Allergenen:
-              </span>
+              <span className="text-[11px] font-medium text-foreground/70 mr-1">Allergenen:</span>
               {item.allergens.map((a) => (
                 <span
                   key={a}
-                  className="rounded-full border border-amber-400 bg-amber-200 px-2.5 py-1 text-[11px] font-semibold text-amber-950"
+                  className="rounded-full border border-amber-300/80 bg-amber-100/70 px-2.5 py-0.5 text-[11px] font-semibold text-amber-900/90"
                 >
                   {capitalize(a)}
                 </span>
@@ -199,7 +193,7 @@ function MenuRowGrid({ item }: { item: MenuItem }) {
   );
 }
 
-/* ===== Mobile card (2-col grid) ===== */
+/* ===== Mobile card (2-col grid) – ongewijzigd ===== */
 function MenuCardMobile({ item }: { item: MenuItem }) {
   return (
     <div className="rounded-xl border p-3 bg-background/60">
