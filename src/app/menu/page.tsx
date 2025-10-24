@@ -81,7 +81,7 @@ export default function MenuPage() {
         </div>
       </header>
 
-      {/* ✅ MOBILE: 2 kolommen per categorie – ongewijzigd */}
+      {/* ✅ MOBILE: 2 kolommen per categorie – ongewijzigde layout, subtielere badges */}
       <section className="sm:hidden space-y-8">
         {categories.map((category) => (
           <Fragment key={category.id}>
@@ -95,7 +95,7 @@ export default function MenuPage() {
         ))}
       </section>
 
-      {/* ✅ DESKTOP/TABLET: rustiger – 2 kolommen page grid, lijst in elk blok */}
+      {/* ✅ DESKTOP/TABLET: 2 kolommen page grid, rustige lijst per blok */}
       <main className="hidden sm:block">
         <div className="grid md:grid-cols-2 gap-8">
           {categories.map((category) => (
@@ -117,7 +117,7 @@ export default function MenuPage() {
                 </p>
               </div>
 
-              <ul className="divide-y">
+              <ul className="divide-y divide-border/70">
                 {category.items.map((item) => (
                   <li key={item.name} className="py-4 first:pt-0 last:pb-0">
                     <MenuRowDesktop item={item} />
@@ -139,7 +139,7 @@ export default function MenuPage() {
   );
 }
 
-/* ===== Desktop row – eenvoudig: naam links, prijs rechts, kleine meta ===== */
+/* ===== Desktop row – subtiel: naam links, prijs rechts, zachte outline-badges ===== */
 function MenuRowDesktop({ item }: { item: MenuItem }) {
   const showMeta = (item.tags?.length ?? 0) > 0 || (item.allergens?.length ?? 0) > 0;
 
@@ -161,26 +161,26 @@ function MenuRowDesktop({ item }: { item: MenuItem }) {
       {/* Subtiele meta */}
       {showMeta && (
         <div className="mt-2 flex flex-wrap items-center gap-2">
-          {/* Tags (subtiel outline) */}
+          {/* Tags – outline, neutraal */}
           {item.tags?.map((t) => (
             <Badge
               key={t}
               variant="outline"
-              className="border-emerald-300 bg-transparent text-emerald-900/90 text-[11px] px-2.5 py-1"
+              className="border-border text-foreground/70 bg-transparent text-[11px] px-2.5 py-1 rounded-full"
               title={TAG_LABELS[t] ?? t}
             >
               {TAG_LABELS[t] ?? t}
             </Badge>
           ))}
 
-          {/* Allergenen (klein en gedempt) */}
+          {/* Allergenen – ook outline/neutral */}
           {item.allergens?.length ? (
             <div className="flex flex-wrap items-center gap-1.5">
-              <span className="text-[11px] font-medium text-foreground/70 mr-1">Allergenen:</span>
+              <span className="text-[11px] font-medium text-foreground/60 mr-1">Allergenen:</span>
               {item.allergens.map((a) => (
                 <span
                   key={a}
-                  className="rounded-full border border-amber-300/80 bg-amber-100/70 px-2.5 py-0.5 text-[11px] font-semibold text-amber-900/90"
+                  className="rounded-full border border-border bg-transparent px-2.5 py-1 text-[11px] font-medium text-foreground/70"
                 >
                   {capitalize(a)}
                 </span>
@@ -193,7 +193,7 @@ function MenuRowDesktop({ item }: { item: MenuItem }) {
   );
 }
 
-/* ===== Mobile card (2-col grid) – ongewijzigd ===== */
+/* ===== Mobile card (2-col grid) – zelfde layout, subtiele badges ===== */
 function MenuCardMobile({ item }: { item: MenuItem }) {
   return (
     <div className="rounded-xl border p-3 bg-background/60">
@@ -213,7 +213,7 @@ function MenuCardMobile({ item }: { item: MenuItem }) {
           <Badge
             key={t}
             variant="outline"
-            className="border-emerald-300 bg-emerald-100/80 text-emerald-900 text-[10px] px-2 py-0.5"
+            className="border-border text-foreground/70 bg-transparent text-[10px] px-2 py-0.5 rounded-full"
             title={TAG_LABELS[t] ?? t}
           >
             {TAG_LABELS[t] ?? t}

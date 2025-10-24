@@ -9,7 +9,10 @@ export const navLinks = [
 ];
 
 export const contactDetails = {
-  address: "Kamp 8\n3811 AR Amersfoort\nNederland",
+  // Belangrijk: elke regel scheiden met "\n" zodat we hard afbreken in UI
+  address: `De Tafelaar
+Kamp 8
+3811 AR Amersfoort`,
   phone: "+31 6 341 279 32",
   email: "info@tafelaaramersfoort.nl",
   socials: {
