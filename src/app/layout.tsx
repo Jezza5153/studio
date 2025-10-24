@@ -5,6 +5,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
+import Tapla from "./tapla"; // ✅ added per Tapla instructions
 
 const inter = Inter({
   subsets: ["latin"],
@@ -34,11 +35,7 @@ export const metadata: Metadata = {
   applicationName: siteName,
   alternates: {
     canonical: siteUrl,
-    // If you add EN later, uncomment:
-    // languages: {
-    //   "nl-NL": siteUrl,
-    //   "en-US": `${siteUrl}/en`,
-    // },
+    // languages: { "nl-NL": siteUrl, "en-US": `${siteUrl}/en` },
   },
   openGraph: {
     title: siteTitle,
@@ -60,7 +57,6 @@ export const metadata: Metadata = {
 };
 
 function restaurantJsonLd() {
-  // TIP: update address/phone/reservation URL when you have them.
   const data = {
     "@context": "https://schema.org",
     "@type": "Restaurant",
@@ -72,24 +68,30 @@ function restaurantJsonLd() {
     servesCuisine: ["Shared Dining", "Nederlands", "Seizoensgebonden"],
     address: {
       "@type": "PostalAddress",
-      streetAddress: "—", // Vul in
+      streetAddress: "—",
       addressLocality: "Amersfoort",
-      postalCode: "—", // Vul in
+      postalCode: "—",
       addressCountry: "NL",
     },
-    telephone: "—", // Vul in
+    telephone: "—",
     priceRange: "€€",
     acceptsReservations: "True",
-    sameAs: [
-      // Voeg je socials toe als je ze hebt
-      // "https://www.instagram.com/tafelaar",
-      // "https://www.facebook.com/tafelaar",
-      // "https://www.linkedin.com/company/tafelaar",
-    ],
+    sameAs: [],
     openingHoursSpecification: [
-      { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday"], opens: "17:00", closes: "22:00" },
-      { "@type": "OpeningHoursSpecification", dayOfWeek: ["Friday", "Saturday"], opens: "12:00", closes: "23:00" },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday"],
+        opens: "17:00",
+        closes: "22:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Friday", "Saturday"],
+        opens: "12:00",
+        closes: "23:00",
+      },
       { "@type": "OpeningHoursSpecification", dayOfWeek: "Sunday", opens: "12:00", closes: "21:00" },
+      // Tip: align with your real hours later.
     ],
     hasMenu: `${siteUrl}/menu`,
     makesOffer: [
@@ -104,7 +106,6 @@ function restaurantJsonLd() {
 }
 
 function faqJsonLd() {
-  // Simple FAQ to help AI answer common questions
   const data = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -142,15 +143,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="nl" className={cn(inter.variable, playfairDisplay.variable)}>
       <head>
-        {/* Preconnect for webfonts (keeps your current approach) */}
+        {/* Preconnect for webfonts */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* If you still use a link stylesheet for fonts, keep it here; next/font already handles preloading */}
-        {/* JSON-LD for SEO + AI assistants */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: restaurantJsonLd() }}
-        />
+        {/* JSON-LD */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: restaurantJsonLd() }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd() }} />
       </head>
       <body className={cn("font-body antialiased")}>
@@ -168,6 +165,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </main>
         <Footer />
         <Toaster />
+
+        {/* ✅ Required by Tapla: place just before </body> */}
+        <Tapla />
       </body>
     </html>
   );
