@@ -90,7 +90,7 @@ export const reservationFaq = [
   {
     question: "Kan ik voor een grote groep reserveren?",
     answer:
-      "Absoluut. Voor groepen groter dan 8 personen vragen we u om telefonisch of per e-mail contact met ons op te nemen, zodat we de mogelijkheden kunnen bespreken.",
+      "Absoluut. Voor groepen vanaf 7 personen vragen we u om telefonisch of per e-mail contact met ons op te nemen, zodat we de mogelijkheden kunnen bespreken.",
   },
   {
     question: "Is het restaurant rolstoeltoegankelijk?",
