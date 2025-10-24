@@ -1,16 +1,10 @@
 "use client";
 
-import { useEffect, useMemo, useState, useCallback } from "react";
+import { useMemo, useState, useCallback, Fragment, CSSProperties } from "react";
 import { MENU, type MenuItem, type MenuCategory } from "@/content/menu";
 import { Badge } from "@/components/ui/badge";
 import { Info, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 
 // ===== Helpers =====
 function formatPriceNoCurrency(price: number | null) {
@@ -42,33 +36,7 @@ export default function MenuPage() {
     []
   );
 
-  const [active, setActive] = useState<string>(categories[0]?.id);
-
-  useEffect(() => {
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting && e.target.id) setActive(e.target.id);
-        });
-      },
-      { rootMargin: "-35% 0px -55% 0px", threshold: 0.01 }
-    );
-
-    categories.forEach((c) => {
-      const el = document.getElementById(c.id);
-      if (el) obs.observe(el);
-    });
-
-    return () => obs.disconnect();
-  }, [categories]);
-
-  const onChipClick = useCallback((slug: string) => {
-    const el = document.getElementById(slug);
-    if (!el) return;
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
-    history.replaceState(null, "", `#${slug}`);
-  }, []);
-
+  // Share button
   const [copied, setCopied] = useState(false);
   const share = useCallback(async () => {
     const url = typeof window !== "undefined" ? window.location.href : "";
@@ -112,85 +80,30 @@ export default function MenuPage() {
             </Button>
           </div>
         </div>
-
-        {/* Sticky category nav */}
-        <nav className="sticky top-16 z-40 -mx-1 overflow-x-auto py-3" aria-label="Categorieën" role="navigation">
-          <ul className="flex items-center gap-2">
-            {categories.map((c) => {
-              const isActive = active === c.id;
-              return (
-                <li key={c.id}>
-                  <a
-                    href={`#${c.id}`}
-                    aria-controls={c.id}
-                    aria-current={isActive ? "page" : undefined}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      onChipClick(c.id);
-                    }}
-                    className={[
-                      "inline-flex whitespace-nowrap rounded-full border px-3 py-1.5 text-sm transition-colors",
-                      isActive ? "bg-muted text-foreground" : "bg-background hover:bg-accent/20",
-                      "focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-ring",
-                    ].join(" ")}
-                  >
-                    {c.name}
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
       </header>
 
-      {/* MOBILE: accordion (unchanged) */}
-      <section className="sm:hidden">
-        <Accordion type="single" collapsible className="w-full space-y-3">
-          {categories.map((category) => (
-            <div key={category.id}>
-              <AccordionItem value={category.id} className="border rounded-xl">
-                <AccordionTrigger className="px-4 py-3 text-left font-headline text-lg">
-                  <div className="flex w-full items-baseline justify-between gap-3">
-                    <span>{category.name}</span>
-                    <span className="text-xs text-muted-foreground">
-                      {category.items.length} {category.items.length === 1 ? "gerecht" : "gerechten"}
-                    </span>
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="px-4 pb-4">
-                  <ul className="divide-y">
-                    {category.items.map((item) => (
-                      <li key={item.name} className="py-3">
-                        <MenuRow item={item} />
-                      </li>
-                    ))}
-                  </ul>
-                </AccordionContent>
-              </AccordionItem>
+      {/* MOBILE: 2-column per category (no accordion) */}
+      <section className="sm:hidden space-y-8">
+        {categories.map((category) => (
+          <Fragment key={category.id}>
+            <h2 className="font-headline text-xl mb-3">{category.name}</h2>
+            <div className="grid grid-cols-2 gap-3">
+              {category.items.map((item) => (
+                <MenuCardMobile key={item.name} item={item} />
+              ))}
             </div>
-          ))}
-        </Accordion>
-        <div className="mt-4 flex justify-center">
-          <Button
-            variant="outline"
-            className="inline-flex gap-2"
-            onClick={share}
-            aria-label="Deel deze menupagina"
-          >
-            <Share2 className="h-4 w-4" />
-            {copied ? "Link Gekopieerd" : "Deel"}
-          </Button>
-        </div>
+          </Fragment>
+        ))}
       </section>
 
-      {/* DESKTOP/TABLET – responsive multi-column grid (2 → 3) */}
+      {/* DESKTOP/TABLET – no internal scroll; items flow into columns inside each tile */}
       <main className="hidden sm:block">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {categories.map((category) => (
             <section
               key={category.id}
               id={category.id}
-              className="h-full scroll-mt-28 rounded-[14px] border-2 border-border bg-card p-5 sm:p-6 md:p-8 flex flex-col"
+              className="h-full scroll-mt-28 rounded-[14px] border-2 border-border bg-card p-5 sm:p-6 md:p-8"
               aria-labelledby={`${category.id}-title`}
             >
               <div className="mb-4 sm:mb-5">
@@ -205,10 +118,15 @@ export default function MenuPage() {
                 </p>
               </div>
 
-              <ul className="divide-y divide-border">
+              {/* Key: columns! */}
+              <ul className="columns-2 xl:columns-3 gap-x-8 [column-fill:_balance]">
                 {category.items.map((item) => (
-                  <li key={item.name} className="py-5 first:pt-0 last:pb-0">
-                    <MenuRow item={item} />
+                  <li
+                    key={item.name}
+                    className="mb-5 inline-block w-full align-top"
+                    style={{ breakInside: "avoid" } as CSSProperties}
+                  >
+                    <MenuRowColumn item={item} />
                   </li>
                 ))}
               </ul>
@@ -227,50 +145,27 @@ export default function MenuPage() {
   );
 }
 
-// ===== Row: name + price, description, add-ons, badges =====
-function MenuRow({ item }: { item: MenuItem }) {
+/* ===== Desktop/Tablet row variant tuned for column layout ===== */
+function MenuRowColumn({ item }: { item: MenuItem }) {
   const showMeta = (item.tags?.length ?? 0) > 0 || (item.allergens?.length ?? 0) > 0;
 
   return (
-    <div className="grid grid-cols-1 gap-2">
-      {/* Top line: name — dotted leader — price (leaders desktop-only) */}
+    <div className="grid grid-cols-1 gap-2 rounded-lg">
+      {/* Top line: name — dotted leader — price */}
       <div className="flex items-baseline gap-3">
-        <h3 className="text-lg sm:text-xl font-semibold leading-tight">{item.name}</h3>
-
-        {/* dotted leader rule (hidden on mobile) */}
-        <div
-          aria-hidden
-          className="hidden sm:block flex-1 mx-3 border-t border-dotted border-foreground/30 translate-y-1"
-        />
-
-        <p className="shrink-0 text-lg sm:text-xl font-semibold tabular-nums">
+        <h3 className="text-lg font-semibold leading-tight">{item.name}</h3>
+        <div aria-hidden className="flex-1 mx-3 border-t border-dotted border-foreground/30 translate-y-1" />
+        <p className="shrink-0 text-lg font-semibold tabular-nums">
           {formatPriceNoCurrency(item.price)}
         </p>
       </div>
 
-      {/* Description */}
       {item.description && (
         <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
       )}
 
-      {/* Add-ons */}
-      {item.addons?.length ? (
-        <div className="mt-1 flex flex-wrap gap-2">
-          {item.addons.map((a) => (
-            <span
-              key={a.label}
-              className="rounded-full border border-primary/30 bg-primary/10 px-2.5 py-1 text-[11px] font-medium text-foreground"
-            >
-              +{a.price.toFixed(2)} {a.label}
-            </span>
-          ))}
-        </div>
-      ) : null}
-
-      {/* Tags + Allergens */}
       {showMeta && (
         <div className="mt-1 flex flex-wrap items-center gap-2">
-          {/* Tags */}
           {item.tags?.map((t) => (
             <Badge
               key={t}
@@ -282,7 +177,6 @@ function MenuRow({ item }: { item: MenuItem }) {
             </Badge>
           ))}
 
-          {/* Allergens */}
           {item.allergens?.length ? (
             <div className="flex flex-wrap items-center gap-1.5">
               <span className="text-[11px] font-medium text-foreground/80 mr-1">Allergenen:</span>
@@ -298,6 +192,37 @@ function MenuRow({ item }: { item: MenuItem }) {
           ) : null}
         </div>
       )}
+    </div>
+  );
+}
+
+/* ===== Mobile card (2-col grid) ===== */
+function MenuCardMobile({ item }: { item: MenuItem }) {
+  return (
+    <div className="rounded-xl border p-3 bg-background/60">
+      <div className="flex items-baseline justify-between gap-2">
+        <h3 className="text-base font-semibold leading-tight">{item.name}</h3>
+        <span className="text-base font-semibold tabular-nums">
+          {formatPriceNoCurrency(item.price)}
+        </span>
+      </div>
+
+      {item.description && (
+        <p className="mt-1 text-xs text-muted-foreground">{item.description}</p>
+      )}
+
+      <div className="mt-2 flex flex-wrap gap-1.5">
+        {item.tags?.map((t) => (
+          <Badge
+            key={t}
+            variant="outline"
+            className="border-emerald-300 bg-emerald-100/80 text-emerald-900 text-[10px] px-2 py-0.5"
+            title={TAG_LABELS[t] ?? t}
+          >
+            {TAG_LABELS[t] ?? t}
+          </Badge>
+        ))}
+      </div>
     </div>
   );
 }
