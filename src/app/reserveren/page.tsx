@@ -141,7 +141,8 @@ export default function ReserverenPage() {
                 <p>{contactDetails.address}</p>
               </address>
 
-              <div className="flex flex-col sm:flex-row gap-3">
+              {/* All buttons in one container, can wrap; geo link mobile-only */}
+              <div className="flex flex-wrap gap-3">
                 <Button asChild className="w-full sm:w-auto">
                   <a href={googleWeb} target="_blank" rel="noopener noreferrer">
                     Open in Google Maps
@@ -152,7 +153,7 @@ export default function ReserverenPage() {
                     Open in Apple Maps
                   </a>
                 </Button>
-                <Button asChild variant="ghost" className="w-full sm:w-auto">
+                <Button asChild variant="ghost" className="w-full sm:w-auto md:hidden">
                   <a href={geoFallback}>
                     Open in Maps (telefoon)
                   </a>
@@ -164,21 +165,22 @@ export default function ReserverenPage() {
           {/* Stylish embed preview (no key) */}
           <Card className="shadow-lg rounded-2xl overflow-hidden">
             <CardContent className="p-0 h-full">
-              <div className="relative">
-                {/* Map */}
+              <div className="relative pt-8">
+                {/* pt-8 gives space so the Google info bubble top-left doesn't overlap our UI */}
                 <iframe
                   title="Locatie De Tafelaar op Google Maps"
                   src={mapsEmbedSrc}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  className="block w-full h-[300px] md:h-[420px] aspect-[4/3] md:aspect-video"
+                  className="block w-full h-[300px] md:h-[420px] aspect-[4/3] md:aspect-video md:grayscale md:hover:grayscale-0 transition-all"
+                  allowFullScreen
                 />
-                {/* Subtle overlay label for a premium feel */}
-                <div className="pointer-events-none absolute left-4 top-4 rounded-full bg-background/90 px-3 py-1 shadow">
+                {/* Overlay label moved to bottom-left for calm layout */}
+                <div className="pointer-events-none absolute left-4 bottom-4 rounded-full bg-background/90 px-3 py-1 shadow">
                   <span className="text-sm">📍 {label}</span>
                 </div>
-                {/* Gradient edge for contrast */}
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-background/40 to-transparent" />
+                {/* Subtle top fade to soften the busy top-left corner */}
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-8 bg-gradient-to-b from-background/50 to-transparent" />
               </div>
               <noscript>
                 <div className="p-4">

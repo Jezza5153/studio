@@ -9,7 +9,7 @@ export const navLinks = [
 ];
 
 export const contactDetails = {
-  address: "Krommestraat, Amersfoort",
+  address: "8 Kamp, Amersfoort",
   phone: "Binnekort beschikbaar",
   email: "info@tafelaaramersfoort.nl",
   socials: {
