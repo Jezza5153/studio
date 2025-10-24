@@ -5,6 +5,8 @@ import Link from "next/link";
 import { Separator } from "./ui/separator";
 
 export function Footer() {
+  const hasDialablePhone = /\d/.test(contactDetails.phone || "");
+
   return (
     <footer className="bg-secondary/30 border-t">
       <div className="container mx-auto px-4 sm:px-6 md:px-8 py-12">
@@ -67,7 +69,7 @@ export function Footer() {
               {openingHours.schedule.slice(2, 7).map((item) => (
                 <div key={item.day} className="flex justify-between py-0.5">
                   <span>{item.day}</span>
-                  <span>{item.time}</span>
+                  <span className="tabular-nums">{item.time}</span>
                 </div>
               ))}
             </div>
@@ -77,10 +79,24 @@ export function Footer() {
           <div className="sm:pt-2">
             <h4 className="font-headline text-lg mb-4">Contact</h4>
             <address className="not-italic text-sm text-muted-foreground space-y-3">
-              <p>{contactDetails.address}</p>
+              {/* Presenteer adres op meerdere regels */}
+              <p className="whitespace-pre-line">{contactDetails.address}</p>
+
+              {/* Telefoon */}
               <p>
-                <span className="py-1.5 inline-block">Binnekort beschikbaar</span>
+                {hasDialablePhone ? (
+                  <a
+                    href={`tel:${contactDetails.phone}`}
+                    className="hover:text-primary transition-colors py-1.5 inline-block"
+                  >
+                    {contactDetails.phone}
+                  </a>
+                ) : (
+                  <span className="py-1.5 inline-block">{contactDetails.phone}</span>
+                )}
               </p>
+
+              {/* E-mail */}
               <p>
                 <a
                   href={`mailto:${contactDetails.email}`}
@@ -96,7 +112,9 @@ export function Footer() {
         <Separator className="my-8" />
 
         <div className="text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} De Tafelaar. Alle rechten voorbehouden.</p>
+          <p>
+            &copy; {new Date().getFullYear()} De Tafelaar. Alle rechten voorbehouden.
+          </p>
         </div>
       </div>
     </footer>
