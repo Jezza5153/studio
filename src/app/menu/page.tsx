@@ -5,6 +5,7 @@ import { MENU, type MenuItem, type MenuCategory } from "@/content/menu";
 import { Badge } from "@/components/ui/badge";
 import { Info, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link"; // ✅ added
 
 // ===== Helpers =====
 function formatPriceNoCurrency(price: number | null) {
@@ -67,7 +68,20 @@ export default function MenuPage() {
                 Shared dining met liefde voor seizoen, lokaal en gezelligheid. Kies je favoriete
                 gerechtjes — of laat de chef je verrassen.
               </p>
+
+              {/* ✅ Menu switch: Eten (active) / Dranken */}
+              <nav className="mt-4" aria-label="Menu switch">
+                <div className="inline-flex items-center gap-2">
+                  <Button asChild size="sm" aria-current="page">
+                    <Link href="/menu">Eten</Link>
+                  </Button>
+                  <Button asChild size="sm" variant="outline">
+                    <Link href="/drank">Dranken</Link>
+                  </Button>
+                </div>
+              </nav>
             </div>
+
             <Button
               variant="outline"
               className="hidden sm:inline-flex gap-2"
