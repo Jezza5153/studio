@@ -37,7 +37,7 @@ export const MENU: MenuData = {
         },
         {
           name: "Carpaccio",
-          description: "Biologisch Rundvlees - Truffelmayo - Parmezaan",
+          description: "Biologisch Rundvlees - Truffelmayonaise - Parmezaan",
           price: 10.5,
           tags: [],
           allergens: ["lactose", "eieren"],
@@ -71,7 +71,7 @@ export const MENU: MenuData = {
           allergens: ["schaaldieren", "eieren"],
         },
         {
-          name: "Bietjes Tartaar",
+          name: "Carpaccio van Bieten",
           description: "Geitenkaas - Walnoot - Honing",
           price: 7.0,
           tags: ["V"],
@@ -143,14 +143,14 @@ export const MENU: MenuData = {
         // ⬇️ Bao Bun opgesplitst in twee varianten
         {
           name: "Bao Bun Pulled Pork",
-          description: "Bao - Pulled Pork - Sriracha Mayo",
+          description: "Bao - Pulled Pork - Sriracha Mayonaise",
           price: 8.5,
           tags: [],
           allergens: ["gluten", "soja", "eieren"],
         },
         {
           name: "Bao Bun Inari",
-          description: "Bao - Inari - Sriracha Mayo",
+          description: "Bao - Inari - Sriracha Mayonaise",
           price: 8.5,
           tags: ["V"],
           allergens: ["gluten", "soja", "eieren"],
@@ -323,14 +323,14 @@ export const MENU: MenuData = {
           name: "Olijven",
           description: "In de Tafelaar Kruidenmix",
           price: 4.5,
-          tags: ["V", "VG", "GF"],
+          tags: ["V", "VG"],
           allergens: [],
         },
         {
           name: "Gerookte Notenmix",
           description: "Huisgemaakte Notenmix",
           price: 3.5,
-          tags: ["V", "VG", "GF"],
+          tags: ["V", "VG"],
           allergens: ["noten"],
         },
         {
