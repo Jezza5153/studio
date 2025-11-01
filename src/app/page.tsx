@@ -40,7 +40,7 @@ export default function Home() {
           </p>
           <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto max-w-sm sm:max-w-none">
             <Button asChild size="lg" className="min-h-11">
-              <Link href="/reserveren">Reserveer nu</Link>
+              <Link href="/reserveren">contact ons</Link>
             </Button>
             <Button
               asChild
@@ -111,7 +111,7 @@ export default function Home() {
 
           <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
             <Button asChild size="lg">
-              <Link href="/reserveren">Reserveer je plek</Link>
+              <Link href="/reserveren">Contacteer ons</Link>
             </Button>
             <Button asChild size="lg" variant="outline">
               <Link href="/menu">

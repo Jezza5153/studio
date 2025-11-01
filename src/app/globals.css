@@ -86,3 +86,46 @@ body {
     @apply bg-background text-foreground overflow-x-hidden antialiased;
   }
 }
+
+/* === Tapla widget: subtiele aandachtspuls ============================== */
+/* Werkt voor meerdere mogelijke hooks: containerclass, data-attr of id.   */
+
+@keyframes tapla-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.18);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+/* Pas de animatie toe zodra de widget aanwezig is */
+:is(.tapla-widget-container, [data-tapla-widget], #tapla-widget) {
+  animation-name: tapla-pulse;
+  animation-duration: 2s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 2;          /* twee keer “ademen” */
+  animation-fill-mode: both;
+  animation-delay: 1.2s;                 /* klein momentje na pageload */
+  will-change: transform, box-shadow;    /* performance hint */
+}
+
+/* Respecteer gebruikers die minder animatie willen */
+@media (prefers-reduced-motion: reduce) {
+  :is(.tapla-widget-container, [data-tapla-widget], #tapla-widget) {
+    animation: none !important;
+  }
+}
+
+/* (Optioneel) Iets hoger plaatsen als hij botst met cookiebanner/nav */
+/*
+:is(.tapla-widget-container, [data-tapla-widget], #tapla-widget) {
+  bottom: 80px !important;
+}
+*/
