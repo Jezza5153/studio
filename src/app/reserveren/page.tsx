@@ -50,9 +50,7 @@ export default function ReserverenPage() {
             </CardHeader>
             <CardContent className="pt-0">
               <p className="text-muted-foreground leading-relaxed">
-                Onze online reserveringswidget komt binnenkort. Tot die tijd helpen wij je graag
-                telefonisch of per e-mail. Liever direct navigeren? Open ons adres in je favoriete
-                kaartapp.
+              Zin om aan te schuiven? Klik rechtsonder in het scherm op Reserveren nu er nog een tafeltje voor je vrij is.
               </p>
 
               {/* Buttons: primary focus on “Bel ons”, rustige mix verder */}
