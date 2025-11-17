@@ -14,7 +14,7 @@ export const contactDetails = {
 Kamp 8
 3811 AR Amersfoort`,
   phone: "+31 6 341 279 32",
-  email: "info@tafelaaramersfoort.nl",
+  email: "reserveren@tafelaaramersfoort.nl",
   socials: {
     facebook: "https://www.facebook.com/people/Tafelaar-Amersfoort",
     instagram: "https://instagram.com/tafelaaramersfoort",
