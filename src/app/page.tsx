@@ -101,12 +101,10 @@ export default function Home() {
       <section className="container mx-auto px-4 sm:px-6 md:px-8 pb-12 sm:pb-16 md:pb-24">
         <div className="rounded-2xl text-center shadow-lg ring-1 ring-border bg-primary/5 px-6 py-8 sm:px-8 sm:py-10 md:px-10 md:py-12">
           <h3 className="font-headline text-2xl md:text-3xl text-foreground">
-            De Tafelaar is nu <span className="text-primary">open</span> — voel je welkom!
+            {homeContent.seasonalTeaser.title}
           </h3>
           <p className="mt-3 text-base md:text-lg max-w-2xl mx-auto leading-relaxed text-muted-foreground">
-            Onze huiskamer is de plek waar tafelen en gezelligheid samenkomen.
-            Schuif aan bij de <strong>aanschuiftafel</strong> en leer nieuwe mensen kennen,
-            of kom met vrienden genieten van shared dining.
+            {homeContent.seasonalTeaser.description}
           </p>
 
           <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
