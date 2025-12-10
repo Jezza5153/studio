@@ -210,8 +210,8 @@ export default function OverOnsPage() {
           </h3>
           <ul className="relative pl-6 space-y-5 before:absolute before:left-2 before:top-0 before:h-full before:w-px before:bg-border">
             {philosophyContent.origin.text.map((step: string, i: number) => (
-              <li key={i} className="relative">
-                <span className="absolute left-[-2px] top-1.5 h-2.5 w-2.5 rounded-full bg-primary/80 ring-2 ring-background" />
+              <li key={i} className="relative pl-4">
+                <span className="absolute left-[-9px] top-1.5 h-2.5 w-2.5 rounded-full bg-primary/80 ring-2 ring-background" />
                 <p className="text-muted-foreground">{step}</p>
               </li>
             ))}
