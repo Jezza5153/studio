@@ -53,9 +53,6 @@ export default function OverOnsPage() {
       <div className="relative container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
         {/* Header */}
         <motion.header {...fade} className="text-center mb-10 sm:mb-12">
-          <p className="inline-block text-xs tracking-widest uppercase text-primary/80 mb-2">
-            Over Ons
-          </p>
           <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl">
             {philosophyContent.title}
           </h1>
