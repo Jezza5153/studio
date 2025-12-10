@@ -56,45 +56,45 @@
     },
     {
       "id": "producer-farmfields",
-      "description": "Placeholder for Farmfields producer.",
-      "imageUrl": "https://images.unsplash.com/photo-1518994603110-1912b3272afd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8b3JnYW5pYyUyMGZhcm18ZW58MHx8fHwxNzY1MzQzNTQ3fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "organic farm"
+      "description": "Logo of Farmfields",
+      "imageUrl": "/pics/Farmfields.png",
+      "imageHint": "Farmfields logo"
     },
     {
       "id": "producer-boot",
-      "description": "Placeholder for Boot Koffie producer.",
-      "imageUrl": "https://images.unsplash.com/photo-1607681034540-2c46cc71896d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxjb2ZmZWUlMjBiZWFuc3xlbnwwfHx8fDE3NjUzOTg5NTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "coffee beans"
+      "description": "Logo of Boot Koffie",
+      "imageUrl": "/pics/Boot koffie.png",
+      "imageHint": "Boot Koffie logo"
     },
     {
       "id": "producer-rockcity",
-      "description": "Placeholder for Rock City Brewing producer.",
-      "imageUrl": "https://images.unsplash.com/photo-1626869506304-d6c177078dae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjcmFmdCUyMGJyZXdlcnl8ZW58MHx8fHwxNzY1Mzk4OTUxfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "craft brewery"
+      "description": "Logo of Rock City Brewing",
+      "imageUrl": "/pics/Rockcity Brewing.png",
+      "imageHint": "Rockcity Brewing logo"
     },
     {
       "id": "producer-drieringen",
-      "description": "Placeholder for De Drie Ringen producer.",
-      "imageUrl": "https://images.unsplash.com/photo-1735296157572-c2f547d620c2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxoaXN0b3JpYyUyMGJyZXdlcnl8ZW58MHx8fHwxNzY1Mzk4OTUxfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "historic brewery"
+      "description": "Logo of De Drie Ringen brewery",
+      "imageUrl": "/pics/Drie ringen.png",
+      "imageHint": "De Drie Ringen logo"
     },
     {
       "id": "producer-mirakel",
-      "description": "Placeholder for Brouwerij 't Mirakel producer.",
-      "imageUrl": "https://images.unsplash.com/photo-1587669284207-e8ee0fc74144?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxiZWVyJTIwYm90dGxlfGVufDB8fHx8MTc2NTM3NTQ3MXww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "beer bottle"
+      "description": "Logo of Brouwerij 't Mirakel",
+      "imageUrl": "/pics/Mirakel.png",
+      "imageHint": "Mirakel brewery logo"
     },
     {
       "id": "producer-eem",
-      "description": "Placeholder for Eem Bier producer.",
-      "imageUrl": "https://images.unsplash.com/photo-1595885914073-3af381bbee7e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxyaXZlciUyMGxhbmRzY2FwZXxlbnwwfHx8fDE3NjUzMDEzMzV8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "river landscape"
+      "description": "Logo of Eem Bier",
+      "imageUrl": "/pics/Eembier.png",
+      "imageHint": "Eem Bier logo"
     },
     {
       "id": "producer-kortegarde",
-      "description": "Placeholder for Korte Garde producer.",
-      "imageUrl": "https://images.unsplash.com/photo-1556741574-0ddb65d14311?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHx3aW5lJTIwc2hvcHxlbnwwfHx8fDE3NjUzOTg5NTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "wine shop"
+      "description": "Logo of Korte Garde",
+      "imageUrl": "/pics/Korte Garde.png",
+      "imageHint": "Korte Garde logo"
     },
     {
       "id": "kitchen-1",
