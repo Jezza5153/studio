@@ -4,7 +4,11 @@ export default function sitemap() {
     return [
       { url: `${base}/`, lastModified },
       { url: `${base}/menu`, lastModified },
-      { url: `${base}/filosofie`, lastModified },
+      { url: `${base}/over-ons`, lastModified },
+      { url: `${base}/over-onze-makers`, lastModified },
+      { url: `${base}/verhuur-en-groepen`, lastModified },
+      { url: `${base}/impressie`, lastModified },
+      { url: `${base}/contact`, lastModified },
       { url: `${base}/openingstijden`, lastModified },
       { url: `${base}/reserveren`, lastModified },
     ];

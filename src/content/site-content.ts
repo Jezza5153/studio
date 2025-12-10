@@ -4,8 +4,11 @@
 export const navLinks = [
   { href: "/", label: "Home" },
   { href: "/menu", label: "Menu" },
-  { href: "/filosofie", label: "Filosofie" },
-  { href: "/openingstijden", label: "Openingstijden" },
+  { href: "/over-ons", label: "Over Ons" },
+  { href: "/over-onze-makers", label: "Over Onze Makers" },
+  { href: "/verhuur-en-groepen", label: "Verhuur en Groepen" },
+  { href: "/impressie", label: "Impressie" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export const contactDetails = {
@@ -38,9 +41,9 @@ export const openingHours = {
 
 export const homeContent = {
   hero: {
-    headline: "Samen aan tafel. Kleine gerechten, grote gezelligheid.",
+    headline: "Welkom bij De Tafelaar.",
     subhead:
-      "Welkom bij De Tafelaar. Ontdek onze passie voor shared dining, duurzame, lokale ingrediënten en een onvergetelijke sfeer in hartje Amersfoort.",
+      "De Tafelaar is een fijne, gastvrije plek in het hart van Amersfoort waar je samen kunt genieten van goed eten, lekkere drankjes en een gezellige sfeer.",
   },
   highlights: [
     {
@@ -100,7 +103,7 @@ export const reservationFaq = [
 ];
 
 export const philosophyContent = {
-  title: "Onze Filosofie",
+  title: "Over Ons",
   mission: {
     title: "Missie: Samen Genieten",
     text: "Bij De Tafelaar geloven we dat eten een verbindende ervaring is. Onze missie is om een plek te creëren waar gasten samenkomen om niet alleen heerlijke gerechten, maar ook verhalen en momenten te delen. We streven naar een sfeer van 'grote gezelligheid' waarin iedereen zich welkom en op zijn gemak voelt.",
