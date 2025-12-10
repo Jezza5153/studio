@@ -19,10 +19,16 @@ import {
   Search,
 } from "lucide-react";
 
-const fade = {
+const containerFade = {
+  initial: { opacity: 0 },
+  whileInView: { opacity: 1 },
+  viewport: { once: true, amount: 0.2 },
+  transition: { staggerChildren: 0.08, duration: 0.3, ease: "easeOut" },
+};
+
+const itemFade = {
   initial: { opacity: 0, y: 8 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.25 },
   transition: { duration: 0.32, ease: "easeOut" },
 };
 
@@ -70,7 +76,7 @@ export default function MakersPage() {
 
       <div className="relative container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
         {/* header */}
-        <motion.header {...fade} className="text-center mb-8 sm:mb-10">
+        <motion.header {...itemFade} viewport={{ once: true, amount: 0.25 }} className="text-center mb-8 sm:mb-10">
           <p className="inline-block text-xs tracking-widest uppercase text-primary/80 mb-2">
             {makersIntro.kicker}
           </p>
@@ -86,7 +92,7 @@ export default function MakersPage() {
         </motion.header>
 
         {/* controls */}
-        <motion.div {...fade} className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <motion.div {...itemFade} viewport={{ once: true, amount: 0.25 }} className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-wrap gap-2">
             <button
               onClick={() => setFilter("Alle")}
@@ -122,7 +128,7 @@ export default function MakersPage() {
         </motion.div>
 
         {/* marquee of names */}
-        <motion.div {...fade} className="mb-8">
+        <motion.div {...itemFade} viewport={{ once: true, amount: 0.25 }} className="mb-8">
           <div className="relative overflow-hidden rounded-xl border border-border">
             <div className="flex gap-8 py-4 animate-[marquee_28s_linear_infinite] hover:[animation-play-state:paused]">
               {[...makers, ...makers].map((m, i) => (
@@ -136,7 +142,7 @@ export default function MakersPage() {
 
         {/* grid */}
         <motion.section
-          {...fade}
+          {...containerFade}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
         >
           {items.map((m) => {
@@ -146,8 +152,9 @@ export default function MakersPage() {
               : null;
 
             return (
-              <article
+              <motion.article
                 key={m.slug}
+                {...itemFade}
                 className="group relative rounded-2xl p-[1px] bg-gradient-to-br from-primary/20 via-transparent to-primary/10"
               >
                 <div className="rounded-2xl bg-card overflow-hidden shadow-[0_1px_0_0_rgba(0,0,0,0.03)] flex flex-col">
@@ -204,7 +211,7 @@ export default function MakersPage() {
                     </div>
                   </div>
                 </div>
-              </article>
+              </motion.article>
             );
           })}
         </motion.section>

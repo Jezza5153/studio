@@ -16,11 +16,17 @@ import {
 import { motion } from "framer-motion";
 import { useCountUp } from "@/hooks/useCountUp";
 
-const fade = {
+const containerFade = {
+  initial: { opacity: 0 },
+  whileInView: { opacity: 1 },
+  viewport: { once: true, amount: 0.25 },
+  transition: { staggerChildren: 0.08, duration: 0.3, ease: "easeOut" },
+};
+
+const itemFade = {
   initial: { opacity: 0, y: 8 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.3 },
-  transition: { duration: 0.35, ease: "easeOut" },
+  transition: { duration: 0.32, ease: "easeOut" },
 };
 
 export default function OverOnsPage() {
@@ -50,9 +56,9 @@ export default function OverOnsPage() {
         }}
       />
 
-      <div className="relative container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
+      <motion.div {...containerFade} className="relative container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
         {/* Header */}
-        <motion.header {...fade} className="text-center mb-10 sm:mb-12">
+        <motion.header {...itemFade} className="text-center mb-10 sm:mb-12">
           <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl">
             {philosophyContent.title}
           </h1>
@@ -76,7 +82,7 @@ export default function OverOnsPage() {
 
         {/* Intro + Hero */}
         <motion.section
-          {...fade}
+          {...itemFade}
           className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center mb-12"
         >
           <div className="space-y-6 md:order-2">
@@ -108,7 +114,7 @@ export default function OverOnsPage() {
         </motion.section>
 
         {/* Values grid 2.0 */}
-        <motion.section {...fade} className="mb-12">
+        <motion.section {...itemFade} className="mb-12">
           <h3 className="font-headline text-2xl sm:text-3xl md:text-4xl mb-2">
             {philosophyContent.values.title}
           </h3>
@@ -161,7 +167,7 @@ export default function OverOnsPage() {
         </motion.section>
 
         {/* Eten & drinken + Chef’s Choice card */}
-        <motion.section {...fade} className="mb-12">
+        <motion.section {...itemFade} className="mb-12">
           <h3 className="font-headline text-2xl sm:text-3xl md:text-4xl mb-4">
             {philosophyContent.etenEnDrinken.title}
           </h3>
@@ -180,7 +186,7 @@ export default function OverOnsPage() {
 
         {/* Optional photo collage */}
         {!!gallery.length && (
-          <motion.section {...fade} className="mb-12">
+          <motion.section {...itemFade} className="mb-12">
             <div className="grid grid-cols-3 gap-2 sm:gap-3">
               {gallery.slice(0, 3).map((img: any, i: number) => (
                 <div
@@ -204,11 +210,11 @@ export default function OverOnsPage() {
         )}
 
         {/* Origin as a mini timeline */}
-        <motion.section {...fade} className="mb-12">
+        <motion.section {...itemFade} className="mb-12">
           <h3 className="font-headline text-2xl sm:text-3xl md:text-4xl mb-4">
             {philosophyContent.origin.title}
           </h3>
-          <ul className="relative pl-6 space-y-5 before:absolute before:left-2 before:top-0 before:h-full before:w-px before:bg-border">
+          <ul className="relative pl-6 space-y-5 before:absolute before:left-[7px] before:top-0 before:h-full before:w-px before:bg-border">
             {philosophyContent.origin.text.map((step: string, i: number) => (
               <li key={i} className="relative pl-4">
                 <span className="absolute left-[-11px] top-1.5 h-2.5 w-2.5 rounded-full bg-primary/80 ring-2 ring-background" />
@@ -219,7 +225,7 @@ export default function OverOnsPage() {
         </motion.section>
 
         {/* Producer marquee (edit names to your actual partners) */}
-        <motion.section {...fade} className="mb-12">
+        <motion.section {...itemFade} className="mb-12">
           <div className="relative overflow-hidden rounded-xl border border-border">
             <div className="flex gap-8 py-4 animate-[marquee_30s_linear_infinite] hover:[animation-play-state:paused]">
               {["Wijnwinkel op de hoek", "Brouwerij Amersfoort", "Boer Jan", "Kaas affineurs", "Groenteteler Utrecht"].map((n, i) => (
@@ -234,7 +240,7 @@ export default function OverOnsPage() {
 
         {/* Quote */}
         {philosophyContent.quote?.text && (
-          <motion.section {...fade} className="mb-12">
+          <motion.section {...itemFade} className="mb-12">
             <figure className="rounded-2xl border border-border p-6 sm:p-8 bg-muted/30">
               <blockquote className="text-xl sm:text-2xl leading-relaxed tracking-tight">
                 “{philosophyContent.quote.text}”
@@ -250,7 +256,7 @@ export default function OverOnsPage() {
         )}
 
         {/* Why */}
-        <motion.section {...fade} className="mb-12">
+        <motion.section {...itemFade} className="mb-12">
           <h3 className="font-headline text-2xl sm:text-3xl md:text-4xl mb-4">
             {philosophyContent.why.title}
           </h3>
@@ -267,7 +273,7 @@ export default function OverOnsPage() {
         </motion.section>
 
         {/* CTA card with soft glow */}
-        <motion.section {...fade} aria-labelledby="kom-langs">
+        <motion.section {...itemFade} aria-labelledby="kom-langs">
           <div className="relative rounded-2xl border border-border p-6 sm:p-8 overflow-hidden">
             <div className="pointer-events-none absolute -inset-1 bg-gradient-to-r from-primary/10 via-transparent to-primary/10 blur-2xl" />
             <div className="relative flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -303,7 +309,7 @@ export default function OverOnsPage() {
             </div>
           </div>
         </motion.section>
-      </div>
+      </motion.div>
 
       {/* Local keyframes for the marquee */}
       <style jsx global>{`
