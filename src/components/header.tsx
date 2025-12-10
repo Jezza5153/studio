@@ -5,7 +5,13 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from "./ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetClose,
+  SheetTitle,
+} from "./ui/sheet";
 import { Menu as MenuIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { navLinks } from "@/content/site-content";
@@ -46,7 +52,9 @@ export function Header() {
                 isActive ? "text-primary" : "text-muted-foreground",
                 // underline indicator
                 "after:absolute after:inset-x-0 after:-bottom-1 after:h-0.5 after:rounded-full",
-                isActive ? "after:bg-primary" : "after:bg-transparent hover:text-primary"
+                isActive
+                  ? "after:bg-primary"
+                  : "after:bg-transparent hover:text-primary"
               )}
             >
               {link.label}
@@ -66,13 +74,17 @@ export function Header() {
     >
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 md:px-8">
         {/* Logo */}
-        <Link href="/" className="mr-8 flex items-center" aria-label="De Tafelaar – home">
+        <Link
+          href="/"
+          className="mr-8 flex items-center"
+          aria-label="De Tafelaar – home"
+        >
           <Image
             src="/logo.png"
             alt="De Tafelaar logo"
-            width={288}       // natural width of your logo file
-            height={80}       // natural height of your logo file
-            className="h-8 md:h-10 w-auto"  // ✅ scale by height only
+            width={288} // natural width of your logo file
+            height={80} // natural height of your logo file
+            className="h-8 md:h-10 w-auto" // ✅ scale by height only
             priority
           />
         </Link>
@@ -92,14 +104,20 @@ export function Header() {
                   isActive ? "text-primary" : "text-muted-foreground",
                   // underline indicator
                   "after:absolute after:inset-x-0 after:-bottom-1.5 after:h-0.5 after:rounded-full",
-                  isActive ? "after:bg-primary" : "after:bg-transparent hover:text-primary"
+                  isActive
+                    ? "after:bg-primary"
+                    : "after:bg-transparent hover:text-primary"
                 )}
               >
                 {link.label}
               </Link>
             );
           })}
-          <Button asChild size="sm" className="ml-4 shadow-sm hover:opacity-90">
+          <Button
+            asChild
+            size="sm"
+            className="ml-4 shadow-sm hover:opacity-90"
+          >
             <Link href="/reserveren">Reserveer nu</Link>
           </Button>
         </nav>
@@ -114,6 +132,7 @@ export function Header() {
             </SheetTrigger>
 
             <SheetContent side="right" className="w-[80vw] sm:w-[50vw] p-0">
+              <SheetTitle className="sr-only">Menu</SheetTitle>
               <div className="p-6 max-h-dvh overflow-auto">
                 <Link href="/" className="mb-8 block">
                   <Image
@@ -121,7 +140,7 @@ export function Header() {
                     alt="De Tafelaar logo"
                     width={288}
                     height={80}
-                    className="h-10 w-auto"   // slightly bigger in drawer
+                    className="h-10 w-auto" // slightly bigger in drawer
                   />
                 </Link>
 
@@ -130,7 +149,11 @@ export function Header() {
 
                 {/* Divider + CTA */}
                 <div className="mt-4 border-t pt-4">
-                  <Button asChild size="sm" className="w-full hover:opacity-90">
+                  <Button
+                    asChild
+                    size="sm"
+                    className="w-full hover:opacity-90"
+                  >
                     <Link href="/reserveren">Reserveer nu</Link>
                   </Button>
                 </div>
