@@ -19,14 +19,15 @@ import { useCountUp } from "@/hooks/useCountUp";
 const containerFade = {
   initial: { opacity: 0 },
   whileInView: { opacity: 1 },
-  viewport: { once: true, amount: 0.25 },
-  transition: { staggerChildren: 0.08, duration: 0.3, ease: "easeOut" },
+  viewport: { once: true, amount: 0.1 },
+  transition: { duration: 0.3, ease: "easeOut" },
 };
 
 const itemFade = {
   initial: { opacity: 0, y: 8 },
   whileInView: { opacity: 1, y: 0 },
   transition: { duration: 0.32, ease: "easeOut" },
+  viewport: { once: true, amount: 0.25 },
 };
 
 export default function OverOnsPage() {
@@ -217,7 +218,7 @@ export default function OverOnsPage() {
           <ul className="relative pl-6 space-y-5 before:absolute before:left-[7px] before:top-0 before:h-full before:w-px before:bg-border">
             {philosophyContent.origin.text.map((step: string, i: number) => (
               <li key={i} className="relative pl-4">
-                <span className="absolute left-[-11px] top-1.5 h-2.5 w-2.5 rounded-full bg-primary/80 ring-2 ring-background" />
+                <span className="absolute left-[-10px] top-1.5 h-2.5 w-2.5 rounded-full bg-primary/80 ring-2 ring-background" />
                 <p className="text-muted-foreground">{step}</p>
               </li>
             ))}
