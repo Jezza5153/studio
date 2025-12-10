@@ -40,7 +40,7 @@ export default function Home() {
           </p>
           <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto max-w-sm sm:max-w-none">
             <Button asChild size="lg" className="min-h-11">
-              <Link href="/reserveren">contact ons</Link>
+              <Link href="/reserveren" prefetch={true}>contact ons</Link>
             </Button>
             <Button
               asChild
@@ -48,7 +48,7 @@ export default function Home() {
               size="lg"
               className="bg-transparent border-white text-white hover:bg-white hover:text-black min-h-11"
             >
-              <Link href="/menu">
+              <Link href="/menu" prefetch={false}>
                 Bekijk menu <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
@@ -109,10 +109,10 @@ export default function Home() {
 
           <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-3">
             <Button asChild size="lg">
-              <Link href="/reserveren">Contacteer ons</Link>
+              <Link href="/reserveren" prefetch={true}>Contacteer ons</Link>
             </Button>
             <Button asChild size="lg" variant="outline">
-              <Link href="/menu">
+              <Link href="/menu" prefetch={false}>
                 Bekijk menu <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>

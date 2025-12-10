@@ -1,6 +1,4 @@
 // app/(site)/over-ons/page.tsx
-'use client';
-
 import { philosophyContent } from "@/content/site-content";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import Image from "next/image";
@@ -13,53 +11,30 @@ import {
   HeartHandshake,
   Sprout,
 } from "lucide-react";
-import { motion } from "framer-motion";
-import { useCountUp } from "@/hooks/useCountUp";
 
-const containerFade = {
-  initial: { opacity: 0 },
-  whileInView: { opacity: 1 },
-  viewport: { once: true, amount: 0.1 },
-  transition: { duration: 0.3, ease: "easeOut" },
-};
-
-const itemFade = {
-  initial: { opacity: 0, y: 8 },
-  whileInView: { opacity: 1, y: 0 },
-  transition: { duration: 0.32, ease: "easeOut" },
-  viewport: { once: true, amount: 0.25 },
-};
+export const dynamic = 'force-static';
 
 export default function OverOnsPage() {
   const hero = PlaceHolderImages.find((img) => img.id === "philosophy-image");
 
-  // Resolve optional gallery images from your placeholder lib
   const gallery =
     philosophyContent.gallery
       ?.map((g) => PlaceHolderImages.find((img) => img.id === g.id) ?? null)
       .filter(Boolean) ?? [];
 
-  // Optional fun stats (tune values or remove entire block below)
-  const statA = useCountUp(14);
-  const statB = useCountUp(8);
-  const statC = useCountUp(12);
-
   return (
     <div className="relative bg-background">
       {/* Radial glow */}
       <div className="pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)] bg-gradient-to-b from-primary/5 to-transparent" />
-      {/* Grain */}
+      {/* Optimized Grain */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.06] mix-blend-soft-light"
-        style={{
-          backgroundImage:
-            "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/></filter><rect width='120' height='120' filter='url(%23n)' opacity='0.8'/></svg>\")",
-        }}
+        className="pointer-events-none absolute inset-0 opacity-[0.05] hidden sm:block"
+        style={{ backgroundImage: "url(/noise.png)" }}
       />
 
-      <motion.div {...containerFade} className="relative container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
+      <div className="relative container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
         {/* Header */}
-        <motion.header {...itemFade} className="text-center mb-10 sm:mb-12">
+        <header className="text-center mb-10 sm:mb-12">
           <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl">
             {philosophyContent.title}
           </h1>
@@ -79,11 +54,10 @@ export default function OverOnsPage() {
               ))}
             </div>
           )}
-        </motion.header>
+        </header>
 
         {/* Intro + Hero */}
-        <motion.section
-          {...itemFade}
+        <section
           className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center mb-12"
         >
           <div className="space-y-6 md:order-2">
@@ -112,10 +86,10 @@ export default function OverOnsPage() {
               />
             )}
           </div>
-        </motion.section>
+        </section>
 
         {/* Values grid 2.0 */}
-        <motion.section {...itemFade} className="mb-12">
+        <section className="mb-12">
           <h3 className="font-headline text-2xl sm:text-3xl md:text-4xl mb-2">
             {philosophyContent.values.title}
           </h3>
@@ -153,22 +127,22 @@ export default function OverOnsPage() {
           {/* Optional fun stats; delete if you don't want numbers */}
           <div className="mt-6 grid grid-cols-3 gap-3">
             <div className="rounded-xl border border-border px-4 py-3 text-center">
-              <div className="text-2xl font-semibold">{statA}+</div>
+              <div className="text-2xl font-semibold">14+</div>
               <div className="text-sm text-muted-foreground">Lokale producenten</div>
             </div>
             <div className="rounded-xl border border-border px-4 py-3 text-center">
-              <div className="text-2xl font-semibold">{statB}+</div>
+              <div className="text-2xl font-semibold">8+</div>
               <div className="text-sm text-muted-foreground">Seizoensgerechten</div>
             </div>
             <div className="rounded-xl border border-border px-4 py-3 text-center">
-              <div className="text-2xl font-semibold">{statC}+</div>
+              <div className="text-2xl font-semibold">12+</div>
               <div className="text-sm text-muted-foreground">Jaar ervaring</div>
             </div>
           </div>
-        </motion.section>
+        </section>
 
         {/* Eten & drinken + Chef’s Choice card */}
-        <motion.section {...itemFade} className="mb-12">
+        <section className="mb-12">
           <h3 className="font-headline text-2xl sm:text-3xl md:text-4xl mb-4">
             {philosophyContent.etenEnDrinken.title}
           </h3>
@@ -183,11 +157,11 @@ export default function OverOnsPage() {
               Niet kiezen? Begin met een wisselende selectie van favorieten om te delen.
             </p>
           </div>
-        </motion.section>
+        </section>
 
         {/* Optional photo collage */}
         {!!gallery.length && (
-          <motion.section {...itemFade} className="mb-12">
+          <section className="mb-12">
             <div className="grid grid-cols-3 gap-2 sm:gap-3">
               {gallery.slice(0, 3).map((img: any, i: number) => (
                 <div
@@ -207,26 +181,26 @@ export default function OverOnsPage() {
                 </div>
               ))}
             </div>
-          </motion.section>
+          </section>
         )}
 
         {/* Origin as a mini timeline */}
-        <motion.section {...itemFade} className="mb-12">
+        <section className="mb-12">
           <h3 className="font-headline text-2xl sm:text-3xl md:text-4xl mb-4">
             {philosophyContent.origin.title}
           </h3>
           <ul className="relative pl-6 space-y-5 before:absolute before:left-[7px] before:top-0 before:h-full before:w-px before:bg-border">
             {philosophyContent.origin.text.map((step: string, i: number) => (
               <li key={i} className="relative pl-4">
-                <span className="absolute left-[-10px] top-1.5 h-2.5 w-2.5 rounded-full bg-primary/80 ring-2 ring-background" />
+                <span className="absolute left-[-9.5px] top-1.5 h-2.5 w-2.5 rounded-full bg-primary/80 ring-2 ring-background" />
                 <p className="text-muted-foreground">{step}</p>
               </li>
             ))}
           </ul>
-        </motion.section>
+        </section>
 
         {/* Producer marquee (edit names to your actual partners) */}
-        <motion.section {...itemFade} className="mb-12">
+        <section className="mb-12">
           <div className="relative overflow-hidden rounded-xl border border-border">
             <div className="flex gap-8 py-4 animate-[marquee_30s_linear_infinite] hover:[animation-play-state:paused]">
               {["Wijnwinkel op de hoek", "Brouwerij Amersfoort", "Boer Jan", "Kaas affineurs", "Groenteteler Utrecht"].map((n, i) => (
@@ -237,11 +211,11 @@ export default function OverOnsPage() {
               ))}
             </div>
           </div>
-        </motion.section>
+        </section>
 
         {/* Quote */}
         {philosophyContent.quote?.text && (
-          <motion.section {...itemFade} className="mb-12">
+          <section className="mb-12">
             <figure className="rounded-2xl border border-border p-6 sm:p-8 bg-muted/30">
               <blockquote className="text-xl sm:text-2xl leading-relaxed tracking-tight">
                 “{philosophyContent.quote.text}”
@@ -253,11 +227,11 @@ export default function OverOnsPage() {
                 </figcaption>
               )}
             </figure>
-          </motion.section>
+          </section>
         )}
 
         {/* Why */}
-        <motion.section {...itemFade} className="mb-12">
+        <section className="mb-12">
           <h3 className="font-headline text-2xl sm:text-3xl md:text-4xl mb-4">
             {philosophyContent.why.title}
           </h3>
@@ -271,10 +245,10 @@ export default function OverOnsPage() {
               </p>
             ))}
           </div>
-        </motion.section>
+        </section>
 
         {/* CTA card with soft glow */}
-        <motion.section {...itemFade} aria-labelledby="kom-langs">
+        <section aria-labelledby="kom-langs">
           <div className="relative rounded-2xl border border-border p-6 sm:p-8 overflow-hidden">
             <div className="pointer-events-none absolute -inset-1 bg-gradient-to-r from-primary/10 via-transparent to-primary/10 blur-2xl" />
             <div className="relative flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -293,6 +267,7 @@ export default function OverOnsPage() {
                 {!!philosophyContent.ctaLinks?.reserve && (
                   <Link
                     href={philosophyContent.ctaLinks.reserve}
+                    prefetch={true}
                     className="inline-flex items-center justify-center rounded-xl bg-primary px-4 py-2 text-primary-foreground hover:opacity-90 transition-opacity"
                   >
                     Reserveer
@@ -301,6 +276,7 @@ export default function OverOnsPage() {
                 {!!philosophyContent.ctaLinks?.menu && (
                   <Link
                     href={philosophyContent.ctaLinks.menu}
+                    prefetch={false}
                     className="inline-flex items-center justify-center rounded-xl border border-border px-4 py-2 hover:bg-muted transition-colors"
                   >
                     Bekijk menu
@@ -309,14 +285,19 @@ export default function OverOnsPage() {
               </div>
             </div>
           </div>
-        </motion.section>
-      </motion.div>
+        </section>
+      </div>
 
       {/* Local keyframes for the marquee */}
       <style jsx global>{`
         @keyframes marquee {
           from { transform: translateX(0); }
           to { transform: translateX(-50%); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .animate-\\[marquee_30s_linear_infinite\\] { 
+            animation: none !important; 
+          }
         }
       `}</style>
     </div>

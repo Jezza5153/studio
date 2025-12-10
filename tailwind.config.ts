@@ -1,4 +1,5 @@
 import type {Config} from 'tailwindcss';
+const { fontFamily } = require("tailwindcss/defaultTheme")
 
 export default {
   darkMode: ['class'],
@@ -10,8 +11,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['var(--font-inter)', 'sans-serif'],
-        headline: ['var(--font-playfair-display)', 'serif'],
+        body: ["var(--font-inter)", ...fontFamily.sans],
+        headline: ["var(--font-playfair-display)", ...fontFamily.serif],
         code: ['monospace'],
       },
       colors: {
