@@ -287,19 +287,6 @@ export default function OverOnsPage() {
           </div>
         </section>
       </div>
-
-      {/* Local keyframes for the marquee */}
-      <style jsx global>{`
-        @keyframes marquee {
-          from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .animate-\\[marquee_30s_linear_infinite\\] { 
-            animation: none !important; 
-          }
-        }
-      `}</style>
     </div>
   );
 }
