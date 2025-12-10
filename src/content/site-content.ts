@@ -168,7 +168,7 @@ export const philosophyContent = {
   usps: ["Shared dining", "Lokaal & seizoensgebonden", "Warm & ontspannen"],
   quote: {
     text: "Geen poeha, geen haast — gewoon samen aan tafel. Dat is waar we het voor doen.",
-    author: "Het team van De Tafelaar",
+    author: "Jan Molmans",
   },
   gallery: [
     // Map these to ids in your PlaceHolderImages
