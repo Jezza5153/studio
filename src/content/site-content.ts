@@ -193,24 +193,134 @@ export const philosophyContent = {
       "Shared dining doorbreekt de traditionele restaurant-ervaring. Het moedigt interactie aan, nodigt uit tot proeven en zorgt voor een dynamische, sociale maaltijd. Het is de perfecte manier om nieuwe smaken te ontdekken en samen een culinair avontuur te beleven, hapje voor hapje.",
   },
 };
+// content/site-content.ts
 
-export const producers = [
+export type Maker = {
+  slug: string;
+  name: string;
+  category: "Brouwerij" | "Koffie" | "Wijn" | "Vlees" | "Overig";
+  location?: string;
+  blurb: string;            // short card text
+  story?: string[];         // long detail paragraphs
+  website?: string;
+  imageId?: string;         // id from PlaceHolderImages
+};
+
+export const makersIntro = {
+  title: "Onze Makers",
+  kicker: "Over onze makers",
+  lead:
+    "Bij De Tafelaar werken we het liefst met mensen en producten van dichtbij. Makers die met aandacht werken, houden van hun vak en staan voor kwaliteit. Van lokale brouwers tot duurzame en biologische leveranciers — zij maken een belangrijk deel uit van wat je bij ons proeft en drinkt.",
+  cta:
+    "Klik op een van de makers hieronder en leer hun verhaal kennen.",
+};
+
+export const makers: Maker[] = [
   {
-    name: "Kaasboerderij Bastiaansen",
-    location: "Leusden",
-    description:
-      "Levert ons een selectie van ambachtelijke, biologische kazen. Hun passie voor het vak proef je in elke hap.",
+    slug: "farmfields",
+    name: "Farmfields",
+    category: "Vlees",
+    location: "Nederland",
+    blurb:
+      "Biologisch rundvlees met Beter Leven 4-sterren — herkomst, transparantie en dierenwelzijn voorop.",
+    website: "https://farmfields.nl",
+    imageId: "producer-farmfields",
+    story: [
+      "Farmfields is voor De Tafelaar een belangrijke partner als het gaat om eerlijk, duurzaam en bewust werken.",
+      "Het vlees draagt het 4-sterren Beter Leven-keurmerk: ruimte, natuurlijk gedrag en maximale zorg in de hele keten.",
+      "Korte ketens en vaste boeren zorgen voor balans tussen mens, dier en omgeving — dat proef je terug.",
+      "Deze werkwijze sluit naadloos aan bij onze kernwaarden. Daarom vind je Farmfields met trots terug op onze kaart.",
+    ],
   },
   {
-    name: "Slagerij Gerrit Takke",
+    slug: "boot-koffie",
+    name: "Boot Koffie",
+    category: "Koffie",
+    location: "Baarn",
+    blurb:
+      "Ambachtelijke, biologische koffie — zorgvuldig geselecteerd en gebrand met aandacht voor mens en milieu.",
+    website: "https://www.bootkoffie.nl",
+    imageId: "producer-boot",
+    story: [
+      "Boot Koffie staat voor kwaliteit, duurzaamheid en transparantie.",
+      "De bonen worden met zorg gebrand zodat de natuurlijke smaken optimaal tot hun recht komen — puur zoals koffie bedoeld is.",
+      "Past perfect bij De Tafelaar: biologisch, lokaal betrokken en met aandacht voor kwaliteit.",
+    ],
+  },
+  {
+    slug: "rock-city-brewing",
+    name: "Rock City Brewing",
+    category: "Brouwerij",
     location: "Amersfoort",
-    description:
-      "Onze vertrouwde, lokale slager die zorgt voor het beste vlees en huisgemaakte charcuterie van topkwaliteit.",
+    blurb:
+      "Eigenzinnige brouwerij waar craft en creativiteit samenkomen — van graankorrel tot glas.",
+    website: "https://rockcitybrewing.com",
+    imageId: "producer-rockcity",
+    story: [
+      "Rock City brouwt met aandacht en lef om te experimenteren.",
+      "Kwaliteit, balans en beleving vormen de basis van elk bier.",
+      "Ambacht, creativiteit en lokale betrokkenheid passen perfect bij wie wij zijn.",
+    ],
   },
   {
-    name: "De Verse Grond",
-    location: "Bunschoten-Spakenburg",
-    description:
-      "Hier halen we onze dagverse, seizoensgebonden groenten. Duurzaam geteeld met respect voor de natuur.",
+    slug: "de-drie-ringen",
+    name: "Stadsbrouwerij De Drie Ringen",
+    category: "Brouwerij",
+    location: "Amersfoort",
+    blurb:
+      "Historische stadsbrouwerij (1989 heropend) — traditie met een frisse blik.",
+    website: "https://www.dedrieringen.nl",
+    imageId: "producer-drieringen",
+    story: [
+      "Na het sluiten van Phoenix in 1969 verdween de brouwerstraditie, maar in 1989 werd De Drie Ringen heropend.",
+      "Sinds 2021 geeft Hugo Langelaan een nieuw hoofdstuk aan de brouwerij: respect voor geschiedenis, ruimte voor innovatie.",
+      "Rondleidingen, proeverijen en verhalen maken het tot een Amersfoorts icoon.",
+    ],
+  },
+  {
+    slug: "t-mirakel",
+    name: "Brouwerij ’t Mirakel",
+    category: "Brouwerij",
+    location: "Amersfoort",
+    blurb:
+      "Kleine batches met karakter, geïnspireerd op het Mirakel van Amersfoort (1444).",
+    website: "https://brouwerijmirakel.nl",
+    imageId: "producer-mirakel",
+    story: [
+      "Zeven Amersfoorters bliezen het lokale mirakel nieuw leven in met ambachtelijke speciaalbieren.",
+      "Bekende bieren: De Vondst en Lieve Vrouw — karaktervol, net als de stad.",
+      "Past naadloos bij De Tafelaar: lokaal, smaakvol en met verhaal.",
+    ],
+  },
+  {
+    slug: "eem-bier",
+    name: "Eem Bier",
+    category: "Brouwerij",
+    location: "Regio Amersfoort",
+    blurb:
+      "Nuchtere brouwerij vernoemd naar de rivier de Eem — doordrinkbaar, eerlijk en puur.",
+    website: "https://eembier.nl",
+    imageId: "producer-eem",
+    story: [
+      "Vakmanschap, balans en zuiverheid staan centraal.",
+      "Herkenbare bieren die passen bij een goed gerecht én een gezellig moment.",
+      "Lokale roots en eigen brouwhuis sluiten aan bij onze manier van werken.",
+    ],
+  },
+  {
+    slug: "korte-garde",
+    name: "Korte Garde",
+    category: "Wijn",
+    location: "Amersfoort",
+    blurb:
+      "Biologische & natuurwijnen met verhaal — selectie op herkomst, stijl en match met onze keuken.",
+    website: "https://kortegarde.nl",
+    imageId: "producer-kortegarde",
+    story: [
+      "Sterke focus op kwaliteit, vakkennis en persoonlijk advies.",
+      "Samen selecteren we wijnen die puur en verantwoord zijn gemaakt.",
+      "De korte lijnen en gedeelde liefde voor mooie producten maken de samenwerking vanzelfsprekend.",
+    ],
   },
 ];
+
