@@ -45,7 +45,7 @@
     {
       "id": "philosophy-image",
       "description": "Team photo of De Tafelaar staff.",
-      "imageUrl": "/de-tafelaar-personeel.jpg",
+      "imageUrl": "/pics/over ons 1 foto.jpg",
       "imageHint": "team restaurant"
     },
     {
@@ -93,37 +93,37 @@
     {
       "id": "kitchen-1",
       "description": "An elegantly plated dish from De Tafelaar.",
-      "imageUrl": "/de-tafelaar-gerecht-1.jpg",
+      "imageUrl": "pics/de-tafelaar-gerecht-1.jpg",
       "imageHint": "restaurant dish"
     },
     {
       "id": "dish-1",
       "description": "An elegantly plated dish.",
-      "imageUrl": "/de-tafelaar-gerecht-1.jpg",
+      "imageUrl": "pics/de-tafelaar-gerecht-2.jpg",
       "imageHint": "plated dish"
     },
     {
       "id": "venue-hero",
       "description": "The outdoor terrace of De Tafelaar restaurant.",
-      "imageUrl": "/de-tafelaar-terras.jpg",
+      "imageUrl": "/pics/de-tafelaar-terras.jpg",
       "imageHint": "restaurant terrace"
     },
     {
       "id": "venue-1",
-      "description": "The interior of De Tafelaar restaurant.",
-      "imageUrl": "/de-tafelaar-binnen-1.jpg",
+      "description": "Another view of the interior of De Tafelaar restaurant.",
+      "imageUrl": "/pics/over ons links.jpg",
       "imageHint": "restaurant interior"
     },
     {
       "id": "venue-2",
-      "description": "Another view of the interior of De Tafelaar restaurant.",
-      "imageUrl": "/de-tafelaar-binnen-2.jpg",
+      "description": "The interior of De Tafelaar restaurant.",
+      "imageUrl": "/pics/over ons rechts 1.jpg",
       "imageHint": "restaurant seating"
     },
     {
       "id": "venue-3",
       "description": "A detailed shot of the decor inside De Tafelaar.",
-      "imageUrl": "/de-tafelaar-binnen-3.jpg",
+      "imageUrl": "/pics/over ons rechts 2.jpg",
       "imageHint": "restaurant decor"
     }
   ]
