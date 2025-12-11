@@ -1,6 +1,5 @@
 // app/(site)/over-ons/page.tsx
 import { philosophyContent } from "@/content/site-content";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -12,15 +11,30 @@ import {
   Sprout,
 } from "lucide-react";
 
-export const dynamic = 'force-static';
+export const dynamic = "force-static";
 
 export default function OverOnsPage() {
-  const hero = PlaceHolderImages.find((img) => img.id === "philosophy-image");
+  // Hero image directly from /public/pics
+  const hero = {
+    src: "/pics/over ons 1 foto.jpg",
+    alt: "Team van De Tafelaar in het restaurant",
+  };
 
-  const gallery =
-    philosophyContent.gallery
-      ?.map((g) => PlaceHolderImages.find((img) => img.id === g.id) ?? null)
-      .filter(Boolean) ?? [];
+  // Gallery images directly from /public/pics
+  const gallery = [
+    {
+      src: "/pics/over ons links.jpg",
+      alt: "Over ons foto links bij De Tafelaar",
+    },
+    {
+      src: "/pics/over ons rechts 1.jpg",
+      alt: "Over ons foto rechts bij De Tafelaar",
+    },
+    {
+      src: "/pics/over ons rechts 2.jpg",
+      alt: "Over ons foto rechts De Tafelaar sfeer",
+    },
+  ];
 
   return (
     <div className="relative bg-background">
@@ -57,9 +71,7 @@ export default function OverOnsPage() {
         </header>
 
         {/* Intro + Hero */}
-        <section
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center mb-12"
-        >
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center mb-12">
           <div className="space-y-6 md:order-2">
             <h2 className="font-headline text-2xl sm:text-3xl md:text-4xl">
               {philosophyContent.intro.heading}
@@ -73,18 +85,15 @@ export default function OverOnsPage() {
           </div>
 
           <div className="md:order-1 overflow-hidden rounded-2xl">
-            {hero && (
-              <Image
-                src={hero.imageUrl}
-                alt={hero.description}
-                width={800}
-                height={600}
-                className="object-cover w-full h-auto"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                priority
-                data-ai-hint={hero.imageHint}
-              />
-            )}
+            <Image
+              src={hero.src}
+              alt={hero.alt}
+              width={800}
+              height={600}
+              className="object-cover w-full h-auto"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority
+            />
           </div>
         </section>
 
@@ -124,19 +133,24 @@ export default function OverOnsPage() {
             {philosophyContent.values.outro}
           </p>
 
-          {/* Optional fun stats; delete if you don't want numbers */}
           <div className="mt-6 grid grid-cols-3 gap-3">
             <div className="rounded-xl border border-border px-4 py-3 text-center">
               <div className="text-2xl font-semibold">14+</div>
-              <div className="text-sm text-muted-foreground">Lokale producenten</div>
+              <div className="text-sm text-muted-foreground">
+                Lokale producenten
+              </div>
             </div>
             <div className="rounded-xl border border-border px-4 py-3 text-center">
               <div className="text-2xl font-semibold">8+</div>
-              <div className="text-sm text-muted-foreground">Seizoensgerechten</div>
+              <div className="text-sm text-muted-foreground">
+                Seizoensgerechten
+              </div>
             </div>
             <div className="rounded-xl border border-border px-4 py-3 text-center">
               <div className="text-2xl font-semibold">12+</div>
-              <div className="text-sm text-muted-foreground">Jaar ervaring</div>
+              <div className="text-sm text-muted-foreground">
+                Jaar ervaring
+              </div>
             </div>
           </div>
         </section>
@@ -147,23 +161,26 @@ export default function OverOnsPage() {
             {philosophyContent.etenEnDrinken.title}
           </h3>
           <div className="space-y-4 text-muted-foreground leading-relaxed text-base sm:text-lg">
-            {philosophyContent.etenEnDrinken.text.map((p: string, i: number) => (
-              <p key={i}>{p}</p>
-            ))}
+            {philosophyContent.etenEnDrinken.text.map(
+              (p: string, i: number) => (
+                <p key={i}>{p}</p>
+              )
+            )}
           </div>
           <div className="mt-6 rounded-2xl border border-border p-4 sm:p-5 bg-muted/30">
             <h4 className="font-headline text-lg mb-1">Chef’s Choice</h4>
             <p className="text-muted-foreground">
-              Niet kiezen? Begin met een wisselende selectie van favorieten om te delen.
+              Niet kiezen? Begin met een wisselende selectie van favorieten om
+              te delen.
             </p>
           </div>
         </section>
 
-        {/* Optional photo collage */}
+        {/* Photo collage using /public/pics images */}
         {!!gallery.length && (
           <section className="mb-12">
             <div className="grid grid-cols-3 gap-2 sm:gap-3">
-              {gallery.slice(0, 3).map((img: any, i: number) => (
+              {gallery.slice(0, 3).map((img, i) => (
                 <div
                   key={i}
                   className={`overflow-hidden rounded-xl ${
@@ -171,8 +188,8 @@ export default function OverOnsPage() {
                   }`}
                 >
                   <Image
-                    src={img.imageUrl}
-                    alt={img.description}
+                    src={img.src}
+                    alt={img.alt}
                     width={i === 0 ? 1200 : 600}
                     height={i === 0 ? 900 : 600}
                     className="w-full h-full object-cover hover:scale-[1.02] transition-transform"
@@ -199,15 +216,37 @@ export default function OverOnsPage() {
           </ul>
         </section>
 
-        {/* Producer marquee (edit names to your actual partners) */}
+        {/* Producer marquee (still text for now) */}
         <section className="mb-12">
           <div className="relative overflow-hidden rounded-xl border border-border">
             <div className="flex gap-8 py-4 animate-[marquee_30s_linear_infinite] hover:[animation-play-state:paused]">
-              {["Wijnwinkel op de hoek", "Brouwerij Amersfoort", "Boer Jan", "Kaas affineurs", "Groenteteler Utrecht"].map((n, i) => (
-                <span key={i} className="whitespace-nowrap text-sm sm:text-base text-foreground/80">{n}</span>
+              {[
+                "Wijnwinkel op de hoek",
+                "Brouwerij Amersfoort",
+                "Boer Jan",
+                "Kaas affineurs",
+                "Groenteteler Utrecht",
+              ].map((n, i) => (
+                <span
+                  key={i}
+                  className="whitespace-nowrap text-sm sm:text-base text-foreground/80"
+                >
+                  {n}
+                </span>
               ))}
-              {["Wijnwinkel op de hoek", "Brouwerij Amersfoort", "Boer Jan", "Kaas affineurs", "Groenteteler Utrecht"].map((n, i) => (
-                <span key={`dup-${i}`} className="whitespace-nowrap text-sm sm:text-base text-foreground/80">{n}</span>
+              {[
+                "Wijnwinkel op de hoek",
+                "Brouwerij Amersfoort",
+                "Boer Jan",
+                "Kaas affineurs",
+                "Groenteteler Utrecht",
+              ].map((n, i) => (
+                <span
+                  key={`dup-${i}`}
+                  className="whitespace-nowrap text-sm sm:text-base text-foreground/80"
+                >
+                  {n}
+                </span>
               ))}
             </div>
           </div>
@@ -223,7 +262,9 @@ export default function OverOnsPage() {
               {philosophyContent.quote.author && (
                 <figcaption className="mt-4 flex items-center gap-3 text-muted-foreground">
                   <div className="h-px flex-1 bg-border" />
-                  <span className="italic">— {philosophyContent.quote.author}</span>
+                  <span className="italic">
+                    — {philosophyContent.quote.author}
+                  </span>
                 </figcaption>
               )}
             </figure>
