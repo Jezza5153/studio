@@ -33,7 +33,7 @@ export const openingHours = {
     { day: "Donderdag", time: "17:00 - 23:00" },
     { day: "Vrijdag", time: "15:00 - 00:00" },
     { day: "Zaterdag", time: "15:00 - 00:00" },
-    { day: "Zondag", time: "15:00 - 23:00", special: "Lunch & Borrel" },
+    { day: "Zondag", time: "17:00 - 23:00", special: "Lunch & Borrel" },
   ],
   footer:
     "Let op: openingstijden kunnen afwijken tijdens feestdagen en evenementen.",

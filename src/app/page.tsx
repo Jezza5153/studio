@@ -40,7 +40,7 @@ export default function Home() {
           </p>
           <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto max-w-sm sm:max-w-none">
             <Button asChild size="lg" className="min-h-11">
-              <Link href="/reserveren" prefetch={true}>contact ons</Link>
+              <Link href="/contact" prefetch={true}>contact ons</Link>
             </Button>
             <Button
               asChild
