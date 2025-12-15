@@ -110,21 +110,21 @@
     },
     {
       "id": "venue-1",
-      "description": "Another view of the interior of De Tafelaar restaurant.",
-      "imageUrl": "/pics/over ons links.jpg",
-      "imageHint": "restaurant interior"
-    },
-    {
-      "id": "venue-2",
       "description": "The interior of De Tafelaar restaurant.",
-      "imageUrl": "/pics/over ons rechts 1.jpg",
+      "imageUrl": "/pics/over ons links.jpg",
       "imageHint": "restaurant seating"
     },
     {
-      "id": "venue-3",
+      "id": "venue-2",
       "description": "A detailed shot of the decor inside De Tafelaar.",
-      "imageUrl": "/pics/over ons rechts 2.jpg",
+      "imageUrl": "/pics/over ons rechts 1.jpg",
       "imageHint": "restaurant decor"
+    },
+    {
+      "id": "venue-3",
+      "description": "Another view of the interior of De Tafelaar restaurant.",
+      "imageUrl": "/pics/over ons rechts 2.jpg",
+      "imageHint": "restaurant interior"
     }
   ]
 }

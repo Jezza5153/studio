@@ -44,38 +44,64 @@ export const homeContent = {
     headline: "Samen aan tafel. Kleine gerechten, grote gezelligheid.",
     subhead:
       "Welkom bij De Tafelaar. Ontdek onze passie voor shared dining, duurzame, lokale ingrediënten en een onvergetelijke sfeer in hartje Amersfoort.",
+
+    // NEW (for premium hero polish + AI/SEO clarity)
+    kicker: "Shared dining • Amersfoort",
+    entityDefinition:
+      "De Tafelaar is een shared-dining restaurant in Amersfoort met lokale leveranciers en seizoensgerechten.",
   },
+
+  // UPDATED: stable iconKey so icons don’t break when titles change
   highlights: [
     {
+      iconKey: "sharedDining",
       title: "Shared dining",
       description:
         "Proef en deel een verscheidenheid aan kleine, seizoensgebonden gerechtjes.",
     },
     {
+      iconKey: "makers",
       title: "Lokale makers",
       description:
         "We werken samen met lokale boeren en producenten voor de verste smaken.",
     },
     {
+      iconKey: "sustainable",
       title: "Duurzaam",
       description:
         "Onze keuken is gericht op duurzaamheid, met respect voor mens en natuur.",
     },
     {
+      iconKey: "location",
       title: "Centrale locatie",
       description:
         "Gevestigd in de historische binnenstad van Amersfoort, makkelijk bereikbaar.",
     },
   ],
+
   howItWorks: {
     title: "Hoe werkt het?",
     description:
       "Bij shared dining bestel je meerdere kleine gerechten die je deelt met je tafelgenoten. Zo kun je van alles proeven en samen een culinaire reis maken. We adviseren 2-3 gerechtjes per persoon om mee te beginnen. Ons team helpt je graag met kiezen!",
   },
-  seasonalTeaser: {
-    title: "Nieuw op de kaart: Lente! 🌷",
-    description:
-      "De lente is hier! Ontdek onze nieuwe seizoensgerechten met verse asperges, lam en rabarber. Perfect om te delen op ons zonnige terras.",
+
+  // REPLACED seasonalTeaser -> story (your new text)
+  story: {
+    title: "Samen eten, samen ontdekken",
+    paragraphs: [
+      "Bij De Tafelaar draait alles om samen eten en proeven. Kleine gerechten om te delen, gemaakt met verse, lokale producten en bereid volgens het seizoen.",
+      "Denk aan eieren en groenten van Het Derde Erf, ijs van De IJsmakerij of een goed glas van Rock City en De Drie Ringen.",
+      "Hapje voor hapje ontdek je nieuwe smaken en geniet je van de creativiteit van de keuken.",
+      "In de huiskamer ben je ook welkom om alleen te komen eten. Schuif aan bij de aanschuiftafel, ontmoet andere gasten en laat de gesprekken vanzelf ontstaan. Zo wordt eten bij De Tafelaar een gedeelde ervaring, of je nu met gezelschap komt of alleen.",
+    ],
+  },
+
+  // NEW: consistent CTAs across hero + story
+  ctas: {
+    primaryLabel: "Contact ons",
+    primaryHref: "/contact",
+    secondaryLabel: "Bekijk menu",
+    secondaryHref: "/menu",
   },
 };
 
@@ -193,6 +219,7 @@ export const philosophyContent = {
       "Shared dining doorbreekt de traditionele restaurant-ervaring. Het moedigt interactie aan, nodigt uit tot proeven en zorgt voor een dynamische, sociale maaltijd. Het is de perfecte manier om nieuwe smaken te ontdekken en samen een culinair avontuur te beleven, hapje voor hapje.",
   },
 };
+
 // content/site-content.ts
 
 export type Maker = {
@@ -200,10 +227,10 @@ export type Maker = {
   name: string;
   category: "Brouwerij" | "Koffie" | "Wijn" | "Vlees" | "Overig";
   location?: string;
-  blurb: string;            // short card text
-  story?: string[];         // long detail paragraphs
+  blurb: string; // short card text
+  story?: string[]; // long detail paragraphs
   website?: string;
-  imageId?: string;         // id from PlaceHolderImages
+  imageId?: string; // id from PlaceHolderImages
 };
 
 export const makersIntro = {
@@ -211,8 +238,7 @@ export const makersIntro = {
   kicker: "Over onze makers",
   lead:
     "Bij De Tafelaar werken we het liefst met mensen en producten van dichtbij. Makers die met aandacht werken, houden van hun vak en staan voor kwaliteit. Van lokale brouwers tot duurzame en biologische leveranciers — zij maken een belangrijk deel uit van wat je bij ons proeft en drinkt.",
-  cta:
-    "Klik op een van de makers hieronder en leer hun verhaal kennen.",
+  cta: "Klik op een van de makers hieronder en leer hun verhaal kennen.",
 };
 
 export const makers: Maker[] = [
@@ -323,4 +349,3 @@ export const makers: Maker[] = [
     ],
   },
 ];
-
