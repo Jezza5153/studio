@@ -95,23 +95,9 @@ export default function MenuPage() {
         </div>
       </header>
 
-      {/* ✅ MOBILE: 2 kolommen per categorie – ongewijzigde layout, subtielere badges */}
-      <section className="sm:hidden space-y-8">
-        {categories.map((category) => (
-          <Fragment key={category.id}>
-            <h2 className="font-headline text-xl mb-3">{category.name}</h2>
-            <div className="grid grid-cols-2 gap-3">
-              {category.items.map((item) => (
-                <MenuCardMobile key={item.name} item={item} />
-              ))}
-            </div>
-          </Fragment>
-        ))}
-      </section>
-
-      {/* ✅ DESKTOP/TABLET: 2 kolommen page grid, rustige lijst per blok */}
-      <main className="hidden sm:block">
-        <div className="grid md:grid-cols-2 gap-8">
+      {/* MOBILE + DESKTOP LAYOUT MERGED */}
+      <main>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
           {categories.map((category) => (
             <section
               key={category.id}
@@ -134,7 +120,7 @@ export default function MenuPage() {
               <ul className="divide-y divide-border/70">
                 {category.items.map((item) => (
                   <li key={item.name} className="py-4 first:pt-0 last:pb-0">
-                    <MenuRowDesktop item={item} />
+                    <MenuRow item={item} />
                   </li>
                 ))}
               </ul>
@@ -153,16 +139,16 @@ export default function MenuPage() {
   );
 }
 
-/* ===== Desktop row – subtiel: naam links, prijs rechts, zachte outline-badges ===== */
-function MenuRowDesktop({ item }: { item: MenuItem }) {
+/* ===== Combined Menu Row (for mobile and desktop) ===== */
+function MenuRow({ item }: { item: MenuItem }) {
   const showMeta = (item.tags?.length ?? 0) > 0 || (item.allergens?.length ?? 0) > 0;
 
   return (
     <div className="min-w-0">
       {/* Naam + prijs */}
       <div className="flex items-baseline justify-between gap-3">
-        <h3 className="text-lg md:text-xl font-semibold leading-tight truncate">{item.name}</h3>
-        <p className="shrink-0 text-lg md:text-xl font-semibold tabular-nums">
+        <h3 className="text-lg font-semibold leading-tight truncate">{item.name}</h3>
+        <p className="shrink-0 text-lg font-semibold tabular-nums">
           {formatPriceNoCurrency(item.price)}
         </p>
       </div>
@@ -203,37 +189,6 @@ function MenuRowDesktop({ item }: { item: MenuItem }) {
           ) : null}
         </div>
       )}
-    </div>
-  );
-}
-
-/* ===== Mobile card (2-col grid) – zelfde layout, subtiele badges ===== */
-function MenuCardMobile({ item }: { item: MenuItem }) {
-  return (
-    <div className="rounded-xl border p-3 bg-background/60">
-      <div className="flex items-baseline justify-between gap-2">
-        <h3 className="text-base font-semibold leading-tight">{item.name}</h3>
-        <span className="text-base font-semibold tabular-nums">
-          {formatPriceNoCurrency(item.price)}
-        </span>
-      </div>
-
-      {item.description && (
-        <p className="mt-1 text-xs text-muted-foreground">{item.description}</p>
-      )}
-
-      <div className="mt-2 flex flex-wrap gap-1.5">
-        {item.tags?.map((t) => (
-          <Badge
-            key={t}
-            variant="outline"
-            className="border-border text-foreground/70 bg-transparent text-[10px] px-2 py-0.5 rounded-full"
-            title={TAG_LABELS[t] ?? t}
-          >
-            {TAG_LABELS[t] ?? t}
-          </Badge>
-        ))}
-      </div>
     </div>
   );
 }

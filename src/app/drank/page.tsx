@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, Fragment } from "react";
+import { useMemo } from "react";
 import { DRINKS, type DrinkItem, type DrinkCategory, type DrinkSection } from "@/content/drinks";
 import { Button } from "@/components/ui/button";
 import { Info } from "lucide-react";
@@ -65,7 +65,7 @@ export default function DrankPage() {
 
       {/* Sections grid (1 col mobile, 2 col desktop) */}
       <main>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
           {sections.map((section) => (
             <section
               key={section.id}
@@ -123,8 +123,8 @@ function DrinkRow({ item }: { item: DrinkItem }) {
     <div className="min-w-0">
       {/* Naam + primaire prijs */}
       <div className="flex items-baseline justify-between gap-3">
-        <h4 className="text-lg md:text-xl font-semibold leading-tight truncate">{item.name}</h4>
-        <p className="shrink-0 text-lg md:text-xl font-semibold tabular-nums">
+        <h4 className="text-lg font-semibold leading-tight truncate">{item.name}</h4>
+        <p className="shrink-0 text-lg font-semibold tabular-nums">
           {formatPriceNoCurrency(primary)}
         </p>
       </div>

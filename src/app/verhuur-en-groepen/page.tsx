@@ -222,8 +222,7 @@ export default function VerhuurEnGroepenPage() {
             <CardHeader className="pb-2">
               <div className="flex items-center gap-2 text-primary">
                 <Coffee className="h-5 w-5" />
-                <CardTitle className="text-lg">Koffie &amp; thee</CardTitle>
-              </div>
+                <CardTitle className="text-lg">Koffie &amp; thee</CardTitle>              </div>
               <CardDescription>Ambachtelijk &amp; biologisch</CardDescription>
             </CardHeader>
             <CardContent className="text-sm text-muted-foreground leading-relaxed">
@@ -266,7 +265,7 @@ export default function VerhuurEnGroepenPage() {
           <h2 className="font-headline text-2xl sm:text-3xl md:text-4xl mb-4">
             Veelgestelde vragen
           </h2>
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <Card className="rounded-2xl border border-border">
               <CardHeader>
                 <CardTitle className="text-base flex items-center gap-2">
