@@ -7,6 +7,7 @@ export default function sitemap() {
       { url: `${base}/over-ons`, lastModified },
       { url: `${base}/over-onze-makers`, lastModified },
       { url: `${base}/verhuur-en-groepen`, lastModified },
+      { url: `${base}/catering`, lastModified },
       { url: `${base}/impressie`, lastModified },
       { url: `${base}/contact`, lastModified },
       { url: `${base}/openingstijden`, lastModified },

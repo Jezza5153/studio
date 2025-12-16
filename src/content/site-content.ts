@@ -7,6 +7,7 @@ export const navLinks = [
   { href: "/over-ons", label: "Over Ons" },
   { href: "/over-onze-makers", label: "Over Onze Makers" },
   { href: "/verhuur-en-groepen", label: "Verhuur en Groepen" },
+  { href: "/catering", label: "Catering" },
   { href: "/impressie", label: "Impressie" },
   { href: "/contact", label: "Contact" },
 ];
