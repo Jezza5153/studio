@@ -24,6 +24,7 @@ const siteName = "De Tafelaar";
 const siteTitle = "De Tafelaar – Shared Dining in Amersfoort";
 const siteDescription =
   "Samen aan tafel: kleine gerechten, grote gezelligheid. Duurzaam, lokaal en met liefde voor borrel & bites.";
+const taplaIframeSrc = 'https://widget.tapla.nl/book/e915e6ca-9391-4777-b651-7e2d2c145afc';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -75,7 +76,7 @@ function restaurantJsonLd() {
     },
     telephone: "—",
     priceRange: "€€",
-    acceptsReservations: "True",
+    acceptsReservations: taplaIframeSrc,
     sameAs: [],
     openingHoursSpecification: [
       {
@@ -94,13 +95,6 @@ function restaurantJsonLd() {
       // Tip: align with your real hours later.
     ],
     hasMenu: `${siteUrl}/menu`,
-    makesOffer: [
-      {
-        "@type": "Offer",
-        url: `${siteUrl}/reserveren`,
-        availability: "https://schema.org/InStock",
-      },
-    ],
   };
   return JSON.stringify(data);
 }
@@ -131,7 +125,7 @@ function faqJsonLd() {
         name: "Hoe kan ik reserveren?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Reserveer eenvoudig via onze website op de pagina ‘Reserveren’. Telefonisch reserveren kan ook.",
+          text: "Reserveer eenvoudig via de reserveringswidget rechtsonder op onze website.",
         },
       },
     ],
