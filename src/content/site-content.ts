@@ -204,7 +204,9 @@ export const philosophyContent = {
     { id: "dish-1" },
   ],
   ctaLinks: {
-    reserve: "/reserveren",
+    // Reservation lives in the Tapla widget site-wide.
+    // We keep /reserveren as a redirect for old links, but use /contact as canonical.
+    reserve: "/contact",
     menu: "/menu",
   },
 

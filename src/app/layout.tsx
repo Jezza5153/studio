@@ -5,7 +5,8 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
-import Tapla from "./tapla"; // ✅ Tapla widget site-wide
+import { TaplaMount } from "@/components/tapla-mount";
+import { TAPLA_IFRAME_SRC } from "@/lib/tapla";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -143,7 +144,7 @@ function faqJsonLd() {
         name: "Hoe kan ik reserveren?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Reserveer via de reserveringswidget rechtsonder op onze website. Lukt dat niet? Mail ons op reserveren@tafelaaramersfoort.nl.",
+          text: "Reserveer eenvoudig via de reserveringswidget rechtsonder op onze website.",
         },
       },
     ],
@@ -198,7 +199,7 @@ export default function RootLayout({
         <Toaster />
 
         {/* ✅ Tapla widget: keep just before </body> */}
-        <Tapla />
+        <TaplaMount />
       </body>
     </html>
   );

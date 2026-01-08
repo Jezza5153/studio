@@ -15,6 +15,7 @@ import {
 import { Menu as MenuIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { navLinks } from "@/content/site-content";
+import { ReserveerButton } from "./reserveer-button";
 
 export function Header() {
   const pathname = usePathname();
@@ -38,7 +39,7 @@ export function Header() {
     onItemClick?: () => void;
   }) => (
     <nav className={cn("flex flex-col items-start gap-2 text-lg", className)}>
-      {navLinks.map((link) => {
+      {navLinks.map((link: { href: string; label: string }) => {
         const isActive = pathname === link.href;
         return (
           <SheetClose asChild key={link.href}>
@@ -91,7 +92,7 @@ export function Header() {
 
         {/* Desktop nav */}
         <nav className="hidden lg:flex flex-1 items-center justify-end gap-6">
-          {navLinks.map((link) => {
+          {navLinks.map((link: { href: string; label: string }) => {
             const isActive = pathname === link.href;
             return (
               <Link
@@ -113,13 +114,11 @@ export function Header() {
               </Link>
             );
           })}
-          <Button
-            asChild
+          <ReserveerButton
             size="sm"
             className="ml-4 shadow-sm hover:opacity-90"
-          >
-            <Link href="/reserveren">Reserveer nu</Link>
-          </Button>
+            label="Reserveer nu"
+          />
         </nav>
 
         {/* Mobile menu */}
@@ -149,13 +148,13 @@ export function Header() {
 
                 {/* Divider + CTA */}
                 <div className="mt-4 border-t pt-4">
-                  <Button
-                    asChild
-                    size="sm"
-                    className="w-full hover:opacity-90"
-                  >
-                    <Link href="/reserveren">Reserveer nu</Link>
-                  </Button>
+                  <SheetClose asChild>
+                    <ReserveerButton
+                      size="sm"
+                      className="w-full hover:opacity-90"
+                      label="Reserveer nu"
+                    />
+                  </SheetClose>
                 </div>
               </div>
             </SheetContent>

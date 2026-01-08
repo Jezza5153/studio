@@ -18,6 +18,17 @@ export default function Tapla() {
   const [isOpen, setIsOpen] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
 
+  // Tapla widgets often decide what UI to render (button-only vs full booking)
+  // based on iframe size *at load time*. If we resize AFTER load, you can end up
+  // with a big white panel that still only shows the small button.
+  //
+  // Fix: keep the iframe ALWAYS at the "open" size, and when "closed" we simply
+  // clip it to the button area by shrinking the wrapper + translating the iframe.
+  const CLOSED_W = 160;
+  const CLOSED_H = 60;
+  const OPEN_W = 354;
+  const OPEN_H = 600;
+
   // Helper to send commands to the iframe
   const sendToTapla = (cmd: 'TAPLA_OPEN' | 'TAPLA_CLOSE') => {
     const win = iframeRef.current?.contentWindow;
@@ -75,28 +86,45 @@ export default function Tapla() {
         right: 'max(0px, env(safe-area-inset-right))',
         zIndex: 50,
       }}
+      aria-label="Tapla reserveringswidget"
     >
-      <iframe
-        ref={iframeRef}
-        title="Reserveren bij De Tafelaar (Tapla)"
-        frameBorder={0}
-        src={TAPLA_IFRAME_SRC}
+      {/* Wrapper = the visible window. We animate this. */}
+      <div
         style={{
-          width: isOpen ? 354 : 160,
-          height: isOpen ? 600 : 60,
+          width: isOpen ? OPEN_W : CLOSED_W,
+          height: isOpen ? OPEN_H : CLOSED_H,
           maxWidth: '100vw',
           maxHeight: '100vh',
-          outline: 'none',
-          border: '0',
+          overflow: 'hidden',
           borderRadius: 12,
           boxShadow:
             '0 8px 24px rgba(0,0,0,.18), 0 2px 8px rgba(0,0,0,.12)',
-          transition: 'width .2s ease, height .2s ease',
-          // Key fix: don’t render the expanded area as “transparent”
           background: '#fff',
+          transition: 'width .2s ease, height .2s ease',
         }}
-        tabIndex={-1}
-      />
+      >
+        <iframe
+          ref={iframeRef}
+          title="Reserveren bij De Tafelaar (Tapla)"
+          frameBorder={0}
+          src={TAPLA_IFRAME_SRC}
+          style={{
+            width: OPEN_W,
+            height: OPEN_H,
+            border: 0,
+            outline: 'none',
+            background: '#fff',
+            // When closed, shift the big iframe so only its bottom-right corner
+            // (where the green Tapla button sits) is visible.
+            transform: isOpen
+              ? 'translate(0px, 0px)'
+              : `translate(${CLOSED_W - OPEN_W}px, ${CLOSED_H - OPEN_H}px)`,
+            transition: 'transform .2s ease',
+          }}
+          tabIndex={-1}
+          // If Tapla ever needs popups or payments, keep sandbox off.
+        />
+      </div>
     </div>
   );
 }

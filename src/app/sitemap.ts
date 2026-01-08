@@ -11,7 +11,7 @@ export default function sitemap() {
       { url: `${base}/impressie`, lastModified },
       { url: `${base}/contact`, lastModified },
       { url: `${base}/openingstijden`, lastModified },
-      { url: `${base}/reserveren`, lastModified },
+      // /reserveren redirects to /contact (Tapla widget is site-wide)
     ];
   }
   
