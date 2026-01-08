@@ -1,23 +1,25 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { CalendarDays } from "lucide-react";
-import { cn } from "@/lib/utils";
+import type { ComponentProps } from "react";
 
-export function ReserveerButton({
-  label = "Reserveer nu",
-  className,
-}: {
+type Props = ComponentProps<typeof Button> & {
   label?: string;
-  className?: string;
-}) {
+};
+
+export function ReserveerButton({ label = "Reserveer nu", onClick, ...props }: Props) {
   return (
     <Button
+      {...props}
+      onClick={(e) => {
+        onClick?.(e);
+        // Mini delay zodat menu/sheet eerst kan sluiten
+        window.setTimeout(() => {
+          window.taplaOpen?.();
+        }, 0);
+      }}
       type="button"
-      className={cn("w-full", className)}
-      onClick={() => window.taplaOpen?.()}
     >
-      <CalendarDays className="mr-2 h-4 w-4" />
       {label}
     </Button>
   );

@@ -111,7 +111,7 @@ export default function Home() {
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            {homeContent.highlights.map((highlight, index) => {
+            {homeContent.highlights.map((highlight: { iconKey: string; title: string; description: string; }, index: number) => {
               const key = highlight.iconKey as HighlightIconKey;
               const Icon = HIGHLIGHT_ICONS[key] ?? UtensilsCrossed;
 
@@ -162,7 +162,7 @@ export default function Home() {
             </div>
 
             <div className="mx-auto mt-4 max-w-3xl space-y-4 text-base leading-relaxed text-muted-foreground md:text-lg">
-              {homeContent.story.paragraphs.map((p, i) => (
+              {homeContent.story.paragraphs.map((p: string, i: number) => (
                 <p key={i}>{p}</p>
               ))}
             </div>

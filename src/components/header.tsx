@@ -116,6 +116,7 @@ export function Header() {
             );
           })}
           <ReserveerButton
+            size="sm"
             className="ml-4 shadow-sm hover:opacity-90"
             label="Reserveer nu"
           />
@@ -150,6 +151,7 @@ export function Header() {
                 <div className="mt-4 border-t pt-4">
                   <SheetClose asChild>
                     <ReserveerButton
+                      size="sm"
                       className="w-full hover:opacity-90"
                       label="Reserveer nu"
                     />
