@@ -14,6 +14,7 @@ declare global {
 export default function Tapla() {
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const [mounted, setMounted] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => setMounted(true), []);
   
@@ -24,16 +25,17 @@ export default function Tapla() {
       iframeRef.current?.contentWindow?.postMessage(msg, TAPLA_ORIGIN);
     };
 
-    let fallbackTimeout: NodeJS.Timeout;
+    let fallbackTimeout: NodeJS.Timeout | null = null;
 
     window.taplaOpen = () => {
-      // Try to command the iframe
+      // Try to command the iframe to open.
       send("TAPLA_OPEN");
 
-      // Fallback: open booking in a new tab if nothing happens quickly
+      // If we don't get a confirmation message from the iframe quickly,
+      // it's likely blocked or not in interactive mode.
+      // Fallback: open the booking page in a new tab.
       fallbackTimeout = setTimeout(() => {
         const bookingWindow = window.open(TAPLA_IFRAME_SRC, "_blank", "noopener,noreferrer");
-        // Try to focus the new window, as some browsers might block it.
         if (bookingWindow) {
           bookingWindow.focus();
         }
@@ -42,15 +44,27 @@ export default function Tapla() {
 
     window.taplaClose = () => {
       send("TAPLA_CLOSE");
+      setIsOpen(false);
     };
 
     const onMessage = (event: MessageEvent) => {
       if (event.origin !== TAPLA_ORIGIN) return;
       
-      // If we receive any message from Tapla, it means the widget is responsive.
+      // If we receive ANY message from Tapla, it means the widget is responsive.
       // We can cancel the fallback to prevent opening a new tab unnecessarily.
       if (fallbackTimeout) {
         clearTimeout(fallbackTimeout);
+        fallbackTimeout = null;
+      }
+      
+      const data = event.data;
+      const type = typeof data === 'string' ? data : data?.type;
+
+      if (type === 'TAPLA_OPEN') {
+        setIsOpen(true);
+      }
+      if (type === 'TAPLA_CLOSE') {
+        setIsOpen(false);
       }
     };
 
@@ -83,12 +97,15 @@ export default function Tapla() {
         frameBorder={0}
         src={TAPLA_IFRAME_SRC}
         style={{
-          width: 160,
-          height: 60,
+          width: isOpen ? 354 : 160,
+          height: isOpen ? 600 : 60,
+          maxWidth: '100vw',
+          maxHeight: '100dvh',
           border: 0,
           borderRadius: 12,
           boxShadow: "0 8px 24px rgba(0,0,0,.18), 0 2px 8px rgba(0,0,0,.12)",
-          background: "transparent"
+          background: "#fff",
+          transition: 'width .2s ease, height .2s ease',
         }}
       />
     </div>

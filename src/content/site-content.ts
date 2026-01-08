@@ -99,7 +99,7 @@ export const homeContent = {
 
   // NEW: consistent CTAs across hero + story
   ctas: {
-    primaryLabel: "Contact ons",
+    primaryLabel: "Reserveer nu",
     primaryHref: "/contact",
     secondaryLabel: "Bekijk menu",
     secondaryHref: "/menu",

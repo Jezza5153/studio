@@ -15,6 +15,7 @@ import {
   Leaf,
   MapPin,
 } from "lucide-react";
+import { ReserveerButton } from "@/components/reserveer-button";
 
 export const dynamic = "force-static";
 
@@ -82,11 +83,7 @@ export default function Home() {
           {/* CTAs */}
           <div className="mt-6 flex w-full max-w-sm flex-col gap-3 sm:mt-8 sm:max-w-none sm:flex-row sm:gap-4">
             {/* Primary CTA */}
-            <Button asChild size="lg" className="min-h-11">
-              <Link href={homeContent.ctas.primaryHref} prefetch={false}>
-                {homeContent.ctas.primaryLabel}
-              </Link>
-            </Button>
+            <ReserveerButton size="lg" className="min-h-11" label="Reserveer nu" />
 
             {/* Secondary CTA – always visible */}
             <Button
@@ -168,11 +165,7 @@ export default function Home() {
             </div>
 
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Button asChild size="lg">
-                <Link href={homeContent.ctas.primaryHref} prefetch={false}>
-                  {homeContent.ctas.primaryLabel}
-                </Link>
-              </Button>
+              <ReserveerButton size="lg" label="Reserveer nu" />
 
               <Button asChild size="lg" variant="outline">
                 <Link href={homeContent.ctas.secondaryHref} prefetch={false}>
@@ -187,3 +180,5 @@ export default function Home() {
     </main>
   );
 }
+
+    
