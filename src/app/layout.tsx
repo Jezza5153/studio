@@ -7,6 +7,7 @@ import { Footer } from "@/components/footer";
 import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
 import Tapla from "./tapla"; // ✅ added per Tapla instructions
+import { TAPLA_IFRAME_SRC } from "@/lib/tapla";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,8 +26,7 @@ const siteName = "De Tafelaar";
 const siteTitle = "De Tafelaar – Shared Dining in Amersfoort";
 const siteDescription =
   "Samen aan tafel: kleine gerechten, grote gezelligheid. Duurzaam, lokaal en met liefde voor borrel & bites.";
-const taplaIframeSrc = 'https://widget.tapla.nl/book/e915e6ca-9391-4777-b651-7e2d2c145afc';
-
+  
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
