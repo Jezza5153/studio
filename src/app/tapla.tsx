@@ -15,26 +15,33 @@ declare global {
 }
 
 export default function Tapla() {
-  const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
 
+  // Helper to send commands to the iframe
   const sendToTapla = (cmd: 'TAPLA_OPEN' | 'TAPLA_CLOSE') => {
     const win = iframeRef.current?.contentWindow;
-    if (!win) return;
-    win.postMessage(cmd, TAPLA_ORIGIN);
+    if (win) {
+      win.postMessage(cmd, TAPLA_ORIGIN);
+    }
+  };
+  
+  // Minimalist open request handler
+  const requestOpen = () => {
+    setIsOpen(true);
+    sendToTapla("TAPLA_OPEN");
+  };
+
+  // Minimalist close request handler
+  const requestClose = () => {
+    setIsOpen(false);
+    sendToTapla("TAPLA_CLOSE");
   };
 
   useEffect(() => {
     // Expose functions for CTA buttons anywhere in the site
-    window.taplaOpen = () => {
-      setOpen(true);
-      // Tell Tapla inside the iframe to actually open the booking UI
-      sendToTapla('TAPLA_OPEN');
-    };
-    window.taplaClose = () => {
-      setOpen(false);
-      sendToTapla('TAPLA_CLOSE');
-    };
+    window.taplaOpen = requestOpen;
+    window.taplaClose = requestClose;
 
     const handleMessage = (event: MessageEvent) => {
       // Only trust messages from Tapla
@@ -52,8 +59,8 @@ export default function Tapla() {
           ? data.type || data.event || data.name
           : undefined;
 
-      if (type === 'TAPLA_OPEN') setOpen(true);
-      if (type === 'TAPLA_CLOSE') setOpen(false);
+      if (type === 'TAPLA_OPEN') setIsOpen(true);
+      if (type === 'TAPLA_CLOSE') setIsOpen(false);
     };
 
     window.addEventListener('message', handleMessage);
@@ -75,8 +82,8 @@ export default function Tapla() {
         frameBorder={0}
         src={TAPLA_IFRAME_SRC}
         style={{
-          width: open ? 354 : 160,
-          height: open ? 600 : 60,
+          width: isOpen ? 354 : 160,
+          height: isOpen ? 600 : 60,
           maxWidth: '100vw',
           maxHeight: '100vh',
           outline: 'none',
