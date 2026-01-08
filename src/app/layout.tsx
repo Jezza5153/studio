@@ -6,8 +6,10 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
-import { TaplaMount } from "@/components/tapla-mount";
-import { TAPLA_IFRAME_SRC } from "@/lib/tapla";
+import dynamic from "next/dynamic";
+
+// client-only (fix hydration mismatch)
+const TaplaMount = dynamic(() => import("@/components/tapla-mount"), { ssr: false });
 
 const inter = Inter({
   subsets: ["latin"],
