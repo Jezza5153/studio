@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
@@ -5,10 +6,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
-import dynamic from "next/dynamic";
-
-// client-only (fix hydration mismatch)
-const TaplaMount = dynamic(() => import("@/components/tapla-mount"), { ssr: false });
+import { TaplaMount } from "@/components/tapla-mount";
 
 const inter = Inter({
   subsets: ["latin"],

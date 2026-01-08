@@ -1,3 +1,4 @@
+
 // app/catering/page.tsx
 export const dynamic = "force-static";
 

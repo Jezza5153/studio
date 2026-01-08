@@ -1,3 +1,4 @@
+
 export default function ImpressiePage() {
   return (
     <div className="container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">

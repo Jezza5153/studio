@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -39,7 +40,7 @@ export function Header() {
     onItemClick?: () => void;
   }) => (
     <nav className={cn("flex flex-col items-start gap-2 text-lg", className)}>
-      {navLinks.map((link: { href: string; label: string }) => {
+      {navLinks.map((link) => {
         const isActive = pathname === link.href;
         return (
           <SheetClose asChild key={link.href}>
@@ -92,7 +93,7 @@ export function Header() {
 
         {/* Desktop nav */}
         <nav className="hidden lg:flex flex-1 items-center justify-end gap-6">
-          {navLinks.map((link: { href: string; label: string }) => {
+          {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
               <Link

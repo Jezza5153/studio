@@ -1,3 +1,4 @@
+
 import Link from 'next/link';
 import { type Maker } from '@/content/site-content';
 import { MapPin, X, ExternalLink } from 'lucide-react';

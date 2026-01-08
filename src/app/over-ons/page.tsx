@@ -1,3 +1,4 @@
+
 // app/(site)/over-ons/page.tsx
 import { philosophyContent } from "@/content/site-content";
 import Image from "next/image";

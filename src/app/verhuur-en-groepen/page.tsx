@@ -1,3 +1,4 @@
+
 // app/(site)/verhuur-en-groepen/page.tsx
 // Server component for speed (no client JS needed)
 export const dynamic = "force-static";

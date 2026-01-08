@@ -1,3 +1,4 @@
+
 // This file contains all the static text content for the website.
 // By centralizing it here, we can easily manage and update site-wide content without touching the component files.
 
@@ -99,7 +100,7 @@ export const homeContent = {
 
   // NEW: consistent CTAs across hero + story
   ctas: {
-    primaryLabel: "Reserveer nu",
+    primaryLabel: "Contact ons",
     primaryHref: "/contact",
     secondaryLabel: "Bekijk menu",
     secondaryHref: "/menu",
@@ -204,9 +205,7 @@ export const philosophyContent = {
     { id: "dish-1" },
   ],
   ctaLinks: {
-    // Reservation lives in the Tapla widget site-wide.
-    // We keep /reserveren as a redirect for old links, but use /contact as canonical.
-    reserve: "/contact",
+    reserve: "/reserveren",
     menu: "/menu",
   },
 

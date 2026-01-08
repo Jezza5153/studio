@@ -1,3 +1,4 @@
+
 export default function sitemap() {
     const base = "https://tafelaaramersfoort.nl";
     const lastModified = new Date();
