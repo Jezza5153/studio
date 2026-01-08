@@ -1,5 +1,5 @@
 
-// app/(site)/page.tsx
+// app/page.tsx
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
