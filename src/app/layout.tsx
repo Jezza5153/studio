@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
@@ -76,7 +77,7 @@ function restaurantJsonLd() {
     },
     telephone: "—",
     priceRange: "€€",
-    acceptsReservations: taplaIframeSrc,
+    acceptsReservations: true,
     sameAs: [],
     openingHoursSpecification: [
       {
