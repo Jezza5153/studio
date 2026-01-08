@@ -1,22 +1,24 @@
-'use client';
+"use client";
 
-import { ButtonHTMLAttributes } from 'react';
+import { Button } from "@/components/ui/button";
+import { CalendarDays } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
+export function ReserveerButton({
+  label = "Reserveer nu",
+  className,
+}: {
   label?: string;
-};
-
-export function ReserveerButton({ label = 'Reserveer', ...props }: Props) {
+  className?: string;
+}) {
   return (
-    <button
+    <Button
       type="button"
-      {...props}
-      onClick={(e) => {
-        props.onClick?.(e);
-        window.taplaOpen?.();
-      }}
+      className={cn("w-full", className)}
+      onClick={() => window.taplaOpen?.()}
     >
+      <CalendarDays className="mr-2 h-4 w-4" />
       {label}
-    </button>
+    </Button>
   );
 }

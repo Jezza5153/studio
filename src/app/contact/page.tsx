@@ -1,4 +1,4 @@
-// app/(site)/reserveren/page.tsx
+
 export const dynamic = "force-static";
 
 import Link from "next/link";
@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/accordion";
 import { contactDetails, reservationFaq, openingHours } from "@/content/site-content";
 import { Phone, Info, MapPin, Mail } from "lucide-react";
+import { ReserveerButton } from "@/components/reserveer-button";
 
 export default function ReserverenPage() {
   // Address + maps (no keys)
@@ -21,7 +22,10 @@ export default function ReserverenPage() {
   const googleWeb = `https://www.google.com/maps/search/?api=1&query=${queryAddress}`;
   const appleMaps = `https://maps.apple.com/?q=${queryAddress}`;
   const geoFallback = `geo:0,0?q=${queryAddress}`;
-  const hasDialablePhone = /\d/.test(contactDetails.phone || "");
+
+  const rawPhone = contactDetails.phone || "";
+  const dialPhone = rawPhone.replace(/[^\d+]/g, "");
+  const hasDialablePhone = /\d/.test(dialPhone);
 
   // --- FAQ override for "grote groep" ---
   const GROEP_ANTWOORD =
@@ -56,36 +60,47 @@ export default function ReserverenPage() {
             </CardHeader>
             <CardContent className="pt-0">
               <p className="text-muted-foreground leading-relaxed">
-                Klik <strong>rechtsonder</strong> op de <strong>groene reserveren-knop</strong> om te boeken.
+                Klik op de knop hieronder om direct een tafel te boeken. Voor vragen zijn we bereikbaar via de andere opties.
               </p>
 
               {/* Acties */}
               <div className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-3">
+                {/* ✅ CTA: opent Tapla */}
+                <ReserveerButton label="Reserveer nu" className="md:col-span-2" />
+
                 {hasDialablePhone && (
                   <Button asChild className="w-full">
-                    <a href={`tel:${contactDetails.phone}`}>
+                    <a href={`tel:${dialPhone}`}>
                       <Phone className="mr-2 h-4 w-4" />
                       Bel ons
                     </a>
                   </Button>
                 )}
+
                 <Button asChild variant="outline" className="w-full">
-                  <a href={`mailto:${contactDetails.email}?subject=${encodeURIComponent("Reservering De Tafelaar")}`}>
+                  <a
+                    href={`mailto:${contactDetails.email}?subject=${encodeURIComponent(
+                      "Vraag over reservering"
+                    )}`}
+                  >
                     <Mail className="mr-2 h-4 w-4" />
                     Mail ons
                   </a>
                 </Button>
+
                 <Button asChild variant="secondary" className="w-full">
                   <a href={googleWeb} target="_blank" rel="noopener noreferrer">
                     <MapPin className="mr-2 h-4 w-4" />
                     Open Google Maps
                   </a>
                 </Button>
+
                 <Button asChild variant="outline" className="w-full">
                   <a href={appleMaps} target="_blank" rel="noopener noreferrer">
                     Open Apple Maps
                   </a>
                 </Button>
+
                 <Button asChild variant="ghost" className="w-full md:hidden">
                   <a href={geoFallback}>Open in Maps (telefoon)</a>
                 </Button>
@@ -98,28 +113,6 @@ export default function ReserverenPage() {
                 </Link>
               </div>
 
-              {/* "Nep knop" uitleg */}
-              <div className="mt-4">
-                <button
-                  type="button"
-                  aria-disabled="true"
-                  className="w-full rounded-xl border border-dashed border-border bg-muted/30 px-4 py-2 text-sm text-foreground/80 cursor-default"
-                  title="Reserveer via de groene knop rechtsonder"
-                >
-                  Reserveer rechts onder via de groene knop
-                </button>
-              </div>
-
-              {/* TIP (vervangen tekst) */}
-              <div className="mt-6 rounded-xl bg-muted/40 p-4 border-l-4 border-primary/30">
-                <p className="text-sm text-muted-foreground flex items-start gap-2">
-                  <Info className="h-4 w-4 mt-0.5 shrink-0" />
-                  <span>
-                    <strong>Tip:</strong> Vanaf 7 personen hebben wij een chef&apos;s choice arrangement. Reserveer hier eventueel meerdere tafels
-                    voor en of bel/mail ons bij uitzonderingen, dieetwensen of andere bijzonderheden. Bij opmerkingen krijgen we niet meteen een melding.
-                  </span>
-                </p>
-              </div>
             </CardContent>
           </Card>
         </div>

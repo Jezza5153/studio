@@ -1,4 +1,3 @@
-
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
@@ -6,8 +5,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
-import Tapla from "./tapla"; // ✅ added per Tapla instructions
-import { TAPLA_IFRAME_SRC } from "@/lib/tapla";
+import Tapla from "./tapla"; // ✅ Tapla widget site-wide
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,7 +24,7 @@ const siteName = "De Tafelaar";
 const siteTitle = "De Tafelaar – Shared Dining in Amersfoort";
 const siteDescription =
   "Samen aan tafel: kleine gerechten, grote gezelligheid. Duurzaam, lokaal en met liefde voor borrel & bites.";
-  
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
@@ -37,7 +35,6 @@ export const metadata: Metadata = {
   applicationName: siteName,
   alternates: {
     canonical: siteUrl,
-    // languages: { "nl-NL": siteUrl, "en-US": `${siteUrl}/en` },
   },
   openGraph: {
     title: siteTitle,
@@ -68,35 +65,55 @@ function restaurantJsonLd() {
     image: `${siteUrl}/og-image.jpg`,
     description: siteDescription,
     servesCuisine: ["Shared Dining", "Nederlands", "Seizoensgebonden"],
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "—",
-      addressLocality: "Amersfoort",
-      postalCode: "—",
-      addressCountry: "NL",
-    },
-    telephone: "—",
     priceRange: "€€",
     acceptsReservations: true,
-    sameAs: [],
+    hasMenu: `${siteUrl}/menu`,
+
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Kamp 8",
+      postalCode: "3811 AR",
+      addressLocality: "Amersfoort",
+      addressCountry: "NL",
+    },
+
+    telephone: "+31634127932",
+    email: "reserveren@tafelaaramersfoort.nl",
+
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday"],
+        dayOfWeek: "Wednesday",
         opens: "17:00",
-        closes: "22:00",
+        closes: "23:00",
       },
       {
         "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Friday", "Saturday"],
-        opens: "12:00",
+        dayOfWeek: "Thursday",
+        opens: "17:00",
         closes: "23:00",
       },
-      { "@type": "OpeningHoursSpecification", dayOfWeek: "Sunday", opens: "12:00", closes: "21:00" },
-      // Tip: align with your real hours later.
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: "Friday",
+        opens: "15:00",
+        closes: "00:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: "Saturday",
+        opens: "15:00",
+        closes: "00:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: "Sunday",
+        opens: "17:00",
+        closes: "23:00",
+      },
     ],
-    hasMenu: `${siteUrl}/menu`,
   };
+
   return JSON.stringify(data);
 }
 
@@ -126,25 +143,42 @@ function faqJsonLd() {
         name: "Hoe kan ik reserveren?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Reserveer eenvoudig via de reserveringswidget rechtsonder op onze website.",
+          text: "Reserveer via de reserveringswidget rechtsonder op onze website. Lukt dat niet? Mail ons op reserveren@tafelaaramersfoort.nl.",
         },
       },
     ],
   };
+
   return JSON.stringify(data);
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="nl" className={cn(inter.variable, playfairDisplay.variable)}>
       <head>
         {/* Preconnect for webfonts */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+
         {/* JSON-LD */}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: restaurantJsonLd() }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd() }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: restaurantJsonLd() }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: faqJsonLd() }}
+        />
       </head>
+
       <body className={cn("font-body antialiased")}>
         {/* Skip link for keyboard users */}
         <a
@@ -155,13 +189,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </a>
 
         <Header />
+
         <main id="main" className="flex-1">
           {children}
         </main>
+
         <Footer />
         <Toaster />
 
-        {/* ✅ Required by Tapla: place just before </body> */}
+        {/* ✅ Tapla widget: keep just before </body> */}
         <Tapla />
       </body>
     </html>
