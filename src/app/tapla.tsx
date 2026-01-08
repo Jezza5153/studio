@@ -1,7 +1,11 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { TAPLA_ORIGIN, TAPLA_IFRAME_SRC } from '@/lib/tapla';
+
+const TAPLA_ORIGIN = 'https://widget.tapla.nl';
+// Update only if Tapla changes it:
+const TAPLA_IFRAME_SRC =
+  'https://widget.tapla.nl/book/e915e6ca-9391-4777-b651-7e2d2c145afc';
 
 declare global {
   interface Window {
@@ -32,17 +36,11 @@ export default function Tapla() {
       sendToTapla('TAPLA_CLOSE');
     };
 
-    // Optional: auto-open via URL param (great for ads/QR)
-    try {
-      const params = new URLSearchParams(window.location.search);
-      if (params.has('reserveer')) {
-        window.taplaOpen();
-      }
-    } catch {}
-
     const handleMessage = (event: MessageEvent) => {
       // Only trust messages from Tapla
       if (event.origin !== TAPLA_ORIGIN) return;
+
+      console.log("Tapla message:", event.data);
 
       const data = event.data as any;
 
@@ -59,12 +57,7 @@ export default function Tapla() {
     };
 
     window.addEventListener('message', handleMessage);
-
-    return () => {
-      window.removeEventListener('message', handleMessage);
-      delete window.taplaOpen;
-      delete window.taplaClose;
-    };
+    return () => window.removeEventListener('message', handleMessage);
   }, []);
 
   return (
