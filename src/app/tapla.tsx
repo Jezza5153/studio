@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { TAPLA_ORIGIN, TAPLA_IFRAME_SRC } from '@/lib/tapla';
 
 declare global {
@@ -12,24 +12,50 @@ declare global {
 
 export default function Tapla() {
   const [open, setOpen] = useState(false);
+  const iframeRef = useRef<HTMLIFrameElement | null>(null);
+
+  const sendToTapla = (cmd: 'TAPLA_OPEN' | 'TAPLA_CLOSE') => {
+    const win = iframeRef.current?.contentWindow;
+    if (!win) return;
+    win.postMessage(cmd, TAPLA_ORIGIN);
+  };
 
   useEffect(() => {
-    // Expose controls to the rest of the site
-    window.taplaOpen = () => setOpen(true);
-    window.taplaClose = () => setOpen(false);
+    // Expose functions for CTA buttons anywhere in the site
+    window.taplaOpen = () => {
+      setOpen(true);
+      // Tell Tapla inside the iframe to actually open the booking UI
+      sendToTapla('TAPLA_OPEN');
+    };
+    window.taplaClose = () => {
+      setOpen(false);
+      sendToTapla('TAPLA_CLOSE');
+    };
 
     // Optional: auto-open via URL param (great for ads/QR)
     try {
       const params = new URLSearchParams(window.location.search);
-      if (params.has('reserveer')) setOpen(true);
+      if (params.has('reserveer')) {
+        window.taplaOpen();
+      }
     } catch {}
 
     const handleMessage = (event: MessageEvent) => {
       // Only trust messages from Tapla
       if (event.origin !== TAPLA_ORIGIN) return;
 
-      if (event.data === 'TAPLA_OPEN') setOpen(true);
-      if (event.data === 'TAPLA_CLOSE') setOpen(false);
+      const data = event.data as any;
+
+      // Tapla may send strings or objects depending on version
+      const type =
+        typeof data === 'string'
+          ? data
+          : typeof data === 'object' && data
+          ? data.type || data.event || data.name
+          : undefined;
+
+      if (type === 'TAPLA_OPEN') setOpen(true);
+      if (type === 'TAPLA_CLOSE') setOpen(false);
     };
 
     window.addEventListener('message', handleMessage);
@@ -51,6 +77,7 @@ export default function Tapla() {
       }}
     >
       <iframe
+        ref={iframeRef}
         title="Reserveren bij De Tafelaar (Tapla)"
         frameBorder={0}
         src={TAPLA_IFRAME_SRC}
@@ -65,7 +92,8 @@ export default function Tapla() {
           boxShadow:
             '0 8px 24px rgba(0,0,0,.18), 0 2px 8px rgba(0,0,0,.12)',
           transition: 'width .2s ease, height .2s ease',
-          background: 'transparent',
+          // Key fix: don’t render the expanded area as “transparent”
+          background: '#fff',
         }}
         tabIndex={-1}
       />
