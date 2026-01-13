@@ -6,13 +6,15 @@ export default function sitemap() {
       { url: `${base}/`, lastModified },
       { url: `${base}/menu`, lastModified },
       { url: `${base}/over-ons`, lastModified },
+      { url: `${base}/buurtgids`, lastModified },
       { url: `${base}/over-onze-makers`, lastModified },
       { url: `${base}/verhuur-en-groepen`, lastModified },
       { url: `${base}/catering`, lastModified },
       { url: `${base}/impressie`, lastModified },
       { url: `${base}/contact`, lastModified },
       { url: `${base}/openingstijden`, lastModified },
-      // /reserveren redirects to /contact (Tapla widget is site-wide)
     ];
   }
   
+
+    

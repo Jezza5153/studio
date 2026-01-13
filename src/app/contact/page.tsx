@@ -42,10 +42,10 @@ export default function ReserverenPage() {
       {/* Hero */}
       <div className="text-center mb-12 md:mb-14">
         <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl tracking-tight">
-          Reserveer uw tafel
+          Contact & Reserveren
         </h1>
         <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
-          We kijken ernaar uit u te mogen verwelkomen.
+          We kijken ernaar uit u te mogen verwelkomen. Gebruik de knop hieronder om direct te reserveren.
         </p>
       </div>
 
@@ -56,7 +56,7 @@ export default function ReserverenPage() {
           <Card className="rounded-2xl border bg-card">
             <CardHeader className="pb-4 md:pb-6">
               <CardTitle className="font-headline text-2xl sm:text-3xl tracking-tight">
-                Kom je eten?
+                Reserveer uw tafel
               </CardTitle>
             </CardHeader>
             <CardContent className="pt-0">
@@ -67,7 +67,7 @@ export default function ReserverenPage() {
               {/* Acties */}
               <div className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-3">
                 {/* ✅ CTA: opent Tapla */}
-                <ReserveerButton label="Reserveer nu" className="md:col-span-2" />
+                <ReserveerButton label="Direct online reserveren" className="md:col-span-2" />
 
                 {hasDialablePhone && (
                   <Button asChild className="w-full">
@@ -165,3 +165,5 @@ export default function ReserverenPage() {
     </div>
   );
 }
+
+    

@@ -14,7 +14,8 @@ export function ReserveerButton({ label = "Reserveer nu", onClick, ...props }: P
       {...props}
       onClick={(e) => {
         onClick?.(e);
-        // Mini delay zodat menu/sheet eerst kan sluiten
+        // De window.taplaOpen functie is globaal beschikbaar gemaakt door tapla.tsx
+        // Het opent de reserveringswidget.
         window.setTimeout(() => {
           window.taplaOpen?.();
         }, 0);
@@ -25,3 +26,5 @@ export function ReserveerButton({ label = "Reserveer nu", onClick, ...props }: P
     </Button>
   );
 }
+
+    

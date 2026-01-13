@@ -6,6 +6,7 @@ export const navLinks = [
   { href: "/", label: "Home" },
   { href: "/menu", label: "Menu" },
   { href: "/over-ons", label: "Over Ons" },
+  { href: "/buurtgids", label: "Buurtgids" },
   { href: "/over-onze-makers", label: "Over Onze Makers" },
   { href: "/verhuur-en-groepen", label: "Verhuur en Groepen" },
   { href: "/catering", label: "Catering" },
@@ -100,8 +101,8 @@ export const homeContent = {
 
   // NEW: consistent CTAs across hero + story
   ctas: {
-    primaryLabel: "Contact ons",
-    primaryHref: "/contact",
+    primaryLabel: "Reserveer nu",
+    primaryHref: "/contact", // updated to not use /reserveren
     secondaryLabel: "Bekijk menu",
     secondaryHref: "/menu",
   },
@@ -205,7 +206,7 @@ export const philosophyContent = {
     { id: "dish-1" },
   ],
   ctaLinks: {
-    reserve: "/reserveren",
+    reserve: "/contact",
     menu: "/menu",
   },
 
@@ -351,3 +352,5 @@ export const makers: Maker[] = [
     ],
   },
 ];
+
+    

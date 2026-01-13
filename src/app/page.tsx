@@ -14,7 +14,10 @@ import {
   Users,
   Leaf,
   MapPin,
+  Theater,
+  Map,
 } from "lucide-react";
+import { ReserveerButton } from "@/components/reserveer-button";
 
 export const dynamic = "force-static";
 
@@ -82,16 +85,13 @@ export default function Home() {
           {/* CTAs */}
           <div className="mt-6 flex w-full max-w-sm flex-col gap-3 sm:mt-8 sm:max-w-none sm:flex-row sm:gap-4">
             {/* Primary CTA */}
-            <Button asChild size="lg" className="min-h-11">
-              <Link href={homeContent.ctas.primaryHref} prefetch={false}>
-                {homeContent.ctas.primaryLabel}
-              </Link>
-            </Button>
+            <ReserveerButton size="lg" className="min-h-11" label={homeContent.ctas.primaryLabel} />
 
             {/* Secondary CTA – always visible */}
             <Button
               asChild
               size="lg"
+              variant="outline"
               className="min-h-11 border border-white/60 bg-white/10 text-white transition-colors hover:border-white hover:bg-white hover:text-black"
             >
               <Link href={homeContent.ctas.secondaryHref} prefetch={false}>
@@ -142,6 +142,41 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ================= BUURTGIDS CTA ================= */}
+        <section className="container mx-auto px-4 sm:px-6 md:px-8" aria-labelledby="buurtgids-title">
+          <div className="rounded-2xl bg-secondary/20 px-6 py-8 ring-1 ring-border sm:px-8 sm:py-10 md:px-10 md:py-12">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+              <div className="md:col-span-2">
+                <h2 id="buurtgids-title" className="font-headline text-2xl text-foreground md:text-3xl">
+                  Op weg naar De Flint of het centrum?
+                </h2>
+                <p className="mt-2 text-muted-foreground max-w-prose">
+                  Onze Buurtgids helpt je de beste plekken te vinden voor en na je theaterbezoek, of om de leukste hotspots op de Kamp te ontdekken.
+                </p>
+                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+                    <li className="flex items-center gap-2">
+                      <Theater className="h-4 w-4 text-primary" />
+                      <span>Dichtbij Theater De Flint</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <MapPin className="h-4 w-4 text-primary" />
+                      <span>Hotspots in de straat Kamp</span>
+                    </li>
+                  </ul>
+              </div>
+              <div className="flex justify-start md:justify-end">
+                  <Button asChild size="lg">
+                    <Link href="/buurtgids">
+                      Open Buurtgids
+                      <Map className="ml-2 h-5 w-5" />
+                    </Link>
+                  </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
         {/* ================= HOW IT WORKS ================= */}
         <section className="container mx-auto px-4 sm:px-6 md:px-8 text-center" aria-labelledby="how-title">
           <h2 id="how-title" className="mb-4 font-headline text-2xl sm:text-3xl md:text-4xl">
@@ -168,12 +203,7 @@ export default function Home() {
             </div>
 
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Button asChild size="lg">
-                <Link href={homeContent.ctas.primaryHref} prefetch={false}>
-                  {homeContent.ctas.primaryLabel}
-                </Link>
-              </Button>
-
+              <ReserveerButton size="lg" label={homeContent.ctas.primaryLabel} />
               <Button asChild size="lg" variant="outline">
                 <Link href={homeContent.ctas.secondaryHref} prefetch={false}>
                   {homeContent.ctas.secondaryLabel}{" "}
@@ -187,3 +217,5 @@ export default function Home() {
     </main>
   );
 }
+
+    
