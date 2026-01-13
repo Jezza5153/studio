@@ -20,9 +20,9 @@ export default function ReserverenAliasPage() {
       </p>
 
       <div className="mt-6 flex flex-col sm:flex-row gap-3">
-        <ReserveerButton label="Reserveer nu" />
+        <ReserveerButton label="Open reserveringen" />
         <Button asChild variant="outline">
-          <Link href="/contact">Naar contact</Link>
+          <Link href="/contact">Vragen? Neem contact op</Link>
         </Button>
       </div>
     </div>
