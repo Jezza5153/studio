@@ -1,4 +1,16 @@
 
+import type { Metadata } from "next";
+
+// Noindex thin content until filled with proper gallery
+export const metadata: Metadata = {
+  title: "Impressie | De Tafelaar",
+  description: "Sfeerimpressie van De Tafelaar - binnenkort beschikbaar.",
+  robots: {
+    index: false,
+    follow: true,
+  },
+};
+
 export default function ImpressiePage() {
   return (
     <div className="container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
@@ -8,9 +20,9 @@ export default function ImpressiePage() {
           Krijg een gevoel bij de sfeer van De Tafelaar.
         </p>
       </div>
-       <div className="max-w-4xl mx-auto prose prose-lg text-muted-foreground text-center">
+      <div className="max-w-4xl mx-auto prose prose-lg text-muted-foreground text-center">
         <p>
-            Hier komt binnenkort een fotogalerij om u een indruk te geven van ons restaurant, de sfeer en onze gerechten.
+          Hier komt binnenkort een fotogalerij om u een indruk te geven van ons restaurant, de sfeer en onze gerechten.
         </p>
       </div>
     </div>

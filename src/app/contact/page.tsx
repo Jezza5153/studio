@@ -1,6 +1,19 @@
 
+import type { Metadata } from "next";
 
 export const dynamic = "force-static";
+
+export const metadata: Metadata = {
+  title: "Reserveren & Contact | Restaurant bij De Flint",
+  description: "Reserveer bij De Tafelaar - shared dining vlakbij Theater De Flint in Amersfoort. Direct online boeken, bellen of mailen. Op 2 min lopen van De Flint.",
+  alternates: {
+    canonical: "/contact",
+  },
+  openGraph: {
+    title: "Reserveren bij De Tafelaar",
+    description: "Reserveer eenvoudig online bij De Tafelaar in Amersfoort. Shared dining vlakbij Theater De Flint.",
+  },
+};
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -166,4 +179,3 @@ export default function ReserverenPage() {
   );
 }
 
-    

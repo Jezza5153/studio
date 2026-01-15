@@ -1,6 +1,31 @@
 
 // app/catering/page.tsx
+import type { Metadata } from "next";
+
 export const dynamic = "force-static";
+
+export const metadata: Metadata = {
+  title: "Catering Amersfoort | Office Lunch & Zakelijke Catering",
+  description:
+    "Professionele catering voor kantoor en evenementen in Amersfoort. Verse lunches, walking dinners, borrelplanken. Lokale ingrediënten, seizoensgebonden. Offerte aanvragen!",
+  alternates: {
+    canonical: "/catering",
+  },
+  openGraph: {
+    title: "Catering De Tafelaar | Zakelijk & Evenementen Amersfoort",
+    description: "Office lunch, walking dinner en event catering met lokale producten. Vanaf 10 personen.",
+  },
+  keywords: [
+    "catering amersfoort",
+    "office lunch amersfoort",
+    "zakelijke catering amersfoort",
+    "lunch bezorgen amersfoort",
+    "walking dinner catering",
+    "event catering amersfoort",
+    "bedrijfslunch bestellen",
+  ],
+};
+
 
 import Image from "next/image";
 import Link from "next/link";
@@ -298,7 +323,7 @@ export default function CateringPage() {
                 Office Lunch Assortiment
               </h2>
               <p className="mt-2 text-muted-foreground max-w-2xl">
-                Vaste prijzen, duidelijke keuzes. 
+                Vaste prijzen, duidelijke keuzes.
               </p>
             </div>
           </div>

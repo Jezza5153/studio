@@ -1,7 +1,31 @@
 
 // app/(site)/verhuur-en-groepen/page.tsx
 // Server component for speed (no client JS needed)
+import type { Metadata } from "next";
+
 export const dynamic = "force-static";
+
+export const metadata: Metadata = {
+  title: "Privé Diner & Groepsarrangementen Amersfoort | Huur De Tafelaar",
+  description:
+    "Zoekt u een locatie voor een feest, bedrijfsdiner of groepsuitje in Amersfoort? De Tafelaar biedt exclusieve verhuur tot 100 personen vlakbij De Flint. Chef's Choice arrangement vanaf 7 personen.",
+  alternates: {
+    canonical: "/verhuur-en-groepen",
+  },
+  openGraph: {
+    title: "Feestlocatie & Bedrijfsdiner Amersfoort | De Tafelaar",
+    description: "Unieke locatie voor feesten, borrels en zakelijke diners tot 100 personen. Op loopafstand van Theater De Flint.",
+  },
+  keywords: [
+    "feestlocatie amersfoort",
+    "privé diner amersfoort",
+    "bedrijfsdiner amersfoort",
+    "groepsarrangement restaurant",
+    "locatie huren amersfoort centrum",
+    "zakelijk diner de flint",
+  ],
+};
+
 
 import Image from "next/image";
 import Link from "next/link";
@@ -158,9 +182,8 @@ export default function VerhuurEnGroepenPage() {
             ].map((src, i) => (
               <div
                 key={src}
-                className={`overflow-hidden rounded-xl ${
-                  i === 0 ? "col-span-2 row-span-2" : ""
-                }`}
+                className={`overflow-hidden rounded-xl ${i === 0 ? "col-span-2 row-span-2" : ""
+                  }`}
               >
                 <Image
                   src={src}

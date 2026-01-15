@@ -4,9 +4,9 @@
 import { useMemo, useState, useCallback, Fragment } from "react";
 import { MENU, type MenuItem, type MenuCategory } from "@/content/menu";
 import { Badge } from "@/components/ui/badge";
-import { Info, Share2 } from "lucide-react";
+import { Info, Share2, Leaf } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Link from "next/link"; // ✅ added
+import Link from "next/link";
 
 // ===== Helpers =====
 function formatPriceNoCurrency(price: number | null) {
@@ -17,17 +17,26 @@ function formatPriceNoCurrency(price: number | null) {
   }).format(price);
 }
 
-const TAG_LABELS: Record<string, string> = {
-  V: "Vegetarisch",
-  VG: "Vegan",
-  GF: "Glutenvrij",
+// Dietary tag icons and colors
+const TAG_CONFIG: Record<string, { label: string; color: string; icon: string }> = {
+  V: { label: "Vegetarisch", color: "bg-green-500", icon: "🌿" },
+  VG: { label: "Vegan", color: "bg-emerald-600", icon: "🌱" },
+  GF: { label: "Glutenvrij", color: "bg-amber-500", icon: "🌾" },
+};
+
+// Allergen icons - subtle colored circles (only relevant ones)
+const ALLERGEN_CONFIG: Record<string, { label: string; color: string }> = {
+  lactose: { label: "Lactose", color: "bg-blue-400" },
+  gluten: { label: "Gluten", color: "bg-amber-400" },
+  noten: { label: "Noten", color: "bg-yellow-600" },
+  selderij: { label: "Selderij", color: "bg-lime-500" },
+  sesam: { label: "Sesam", color: "bg-stone-400" },
+  sulfiet: { label: "Sulfiet", color: "bg-purple-400" },
+  pinda: { label: "Pinda", color: "bg-orange-600" },
 };
 
 function slugify(input: string) {
   return input.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, "-").replace(/(^-|-$)/g, "");
-}
-function capitalize(s: string) {
-  return s.length ? s.charAt(0).toUpperCase() + s.slice(1) : s;
 }
 
 // ===== Page =====
@@ -52,7 +61,29 @@ export default function MenuPage() {
         setCopied(true);
         setTimeout(() => setCopied(false), 1800);
       }
-    } catch {}
+    } catch { }
+  }, []);
+
+  // Collect all allergens used in the menu for the legend
+  const usedAllergens = useMemo(() => {
+    const allergenSet = new Set<string>();
+    MENU.categories.forEach((cat) => {
+      cat.items.forEach((item) => {
+        item.allergens?.forEach((a) => allergenSet.add(a.toLowerCase()));
+      });
+    });
+    return Array.from(allergenSet).sort();
+  }, []);
+
+  // Collect all tags used
+  const usedTags = useMemo(() => {
+    const tagSet = new Set<string>();
+    MENU.categories.forEach((cat) => {
+      cat.items.forEach((item) => {
+        item.tags?.forEach((t) => tagSet.add(t));
+      });
+    });
+    return Array.from(tagSet);
   }, []);
 
   return (
@@ -70,7 +101,7 @@ export default function MenuPage() {
                 gerechtjes — of laat de chef je verrassen.
               </p>
 
-              {/* ✅ Menu switch: Eten (active) / Dranken */}
+              {/* Menu switch: Eten (active) / Dranken */}
               <nav className="mt-4" aria-label="Menu switch">
                 <div className="inline-flex items-center gap-2">
                   <Button asChild size="sm" aria-current="page">
@@ -96,7 +127,59 @@ export default function MenuPage() {
         </div>
       </header>
 
-      {/* MOBILE + DESKTOP LAYOUT MERGED */}
+      {/* ===== LEGEND SECTION (at top to prevent confusion) ===== */}
+      <section className="mb-8 sm:mb-10 md:mb-12">
+        <div className="rounded-2xl border bg-card/80 p-4 md:p-6">
+          <div className="flex flex-wrap items-start gap-6 md:gap-10">
+            {/* Dietary Tags Legend */}
+            {usedTags.length > 0 && (
+              <div className="flex items-center gap-3">
+                <span className="text-sm font-medium text-muted-foreground flex items-center gap-1.5">
+                  <Leaf className="h-3.5 w-3.5 text-green-600" />
+                  Dieet:
+                </span>
+                <div className="flex flex-wrap gap-3">
+                  {usedTags.map((tag) => {
+                    const config = TAG_CONFIG[tag];
+                    if (!config) return null;
+                    return (
+                      <div key={tag} className="flex items-center gap-1.5">
+                        <span className={`w-3 h-3 rounded-full ${config.color} ring-1 ring-white/50`} />
+                        <span className="text-sm text-muted-foreground">{config.label}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {/* Allergen Legend */}
+            {usedAllergens.length > 0 && (
+              <div className="flex items-start gap-3">
+                <span className="text-sm font-medium text-muted-foreground flex items-center gap-1.5 pt-0.5">
+                  <Info className="h-3.5 w-3.5 text-amber-600" />
+                  Allergenen:
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {usedAllergens.map((allergen) => {
+                    const config = ALLERGEN_CONFIG[allergen];
+                    const color = config?.color ?? "bg-gray-400";
+                    const label = config?.label ?? allergen;
+                    return (
+                      <div key={allergen} className="flex items-center gap-1.5">
+                        <span className={`w-2.5 h-2.5 rounded-full ${color} ring-1 ring-white/30`} />
+                        <span className="text-xs text-muted-foreground">{label}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* Menu Grid */}
       <main>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
           {categories.map((category) => (
@@ -130,6 +213,7 @@ export default function MenuPage() {
         </div>
       </main>
 
+      {/* Simple footer with allergen note */}
       <footer className="mt-10 md:mt-14 border-t pt-6 text-center text-sm text-muted-foreground">
         <p className="inline-flex items-center justify-center gap-2">
           <Info className="h-4 w-4" />
@@ -140,56 +224,61 @@ export default function MenuPage() {
   );
 }
 
-/* ===== Combined Menu Row (for mobile and desktop) ===== */
+/* ===== Menu Row with Icon System ===== */
 function MenuRow({ item }: { item: MenuItem }) {
-  const showMeta = (item.tags?.length ?? 0) > 0 || (item.allergens?.length ?? 0) > 0;
+  const hasTags = (item.tags?.length ?? 0) > 0;
+  const hasAllergens = (item.allergens?.length ?? 0) > 0;
 
   return (
     <div className="min-w-0">
-      {/* Naam + prijs */}
+      {/* Name + Price + Icons row */}
       <div className="flex items-baseline justify-between gap-3">
-        <h3 className="text-lg font-semibold leading-tight truncate">{item.name}</h3>
+        <div className="flex items-center gap-2 min-w-0">
+          <h3 className="text-lg font-semibold leading-tight truncate">{item.name}</h3>
+          {/* Tag icons inline with name */}
+          {hasTags && (
+            <div className="flex items-center gap-1 shrink-0">
+              {item.tags?.map((tag) => {
+                const config = TAG_CONFIG[tag];
+                if (!config) return null;
+                return (
+                  <span
+                    key={tag}
+                    className={`w-3 h-3 rounded-full ${config.color} ring-1 ring-white/50`}
+                    title={config.label}
+                  />
+                );
+              })}
+            </div>
+          )}
+          {/* Allergen icons inline */}
+          {hasAllergens && (
+            <div className="flex items-center gap-1 shrink-0">
+              {item.allergens?.map((allergen) => {
+                const a = allergen.toLowerCase();
+                const config = ALLERGEN_CONFIG[a];
+                const color = config?.color ?? "bg-gray-400";
+                return (
+                  <span
+                    key={a}
+                    className={`w-2.5 h-2.5 rounded-full ${color} ring-1 ring-white/30`}
+                    title={config?.label ?? allergen}
+                  />
+                );
+              })}
+            </div>
+          )}
+        </div>
         <p className="shrink-0 text-lg font-semibold tabular-nums">
           {formatPriceNoCurrency(item.price)}
         </p>
       </div>
 
-      {/* Beschrijving */}
+      {/* Description */}
       {item.description && (
         <p className="mt-1 text-sm text-muted-foreground leading-relaxed">{item.description}</p>
-      )}
-
-      {/* Subtiele meta */}
-      {showMeta && (
-        <div className="mt-2 flex flex-wrap items-center gap-2">
-          {/* Tags – outline, neutraal */}
-          {item.tags?.map((t) => (
-            <Badge
-              key={t}
-              variant="outline"
-              className="border-border text-foreground/70 bg-transparent text-[11px] px-2.5 py-1 rounded-full"
-              title={TAG_LABELS[t] ?? t}
-            >
-              {TAG_LABELS[t] ?? t}
-            </Badge>
-          ))}
-
-          {/* Allergenen – ook outline/neutral */}
-          {item.allergens?.length ? (
-            <div className="flex flex-wrap items-center gap-1.5">
-              <span className="text-[11px] font-medium text-foreground/60 mr-1">Allergenen:</span>
-              {item.allergens.map((a) => (
-                <span
-                  key={a}
-                  className="rounded-full border border-border bg-transparent px-2.5 py-1 text-[11px] font-medium text-foreground/70"
-                >
-                  {capitalize(a)}
-                </span>
-              ))}
-            </div>
-          ) : null}
-        </div>
       )}
     </div>
   );
 }
+

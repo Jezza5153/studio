@@ -63,6 +63,45 @@ export function Footer() {
             </ul>
           </div>
 
+          {/* Zakelijk & Groepen - Revenue Streams */}
+          <div className="sm:pt-2">
+            <h4 className="font-headline text-lg mb-4">Zakelijk & Groepen</h4>
+            <ul className="space-y-2">
+              <li>
+                <Link
+                  href="/verhuur-en-groepen"
+                  className="text-sm py-1.5 inline-block text-muted-foreground hover:text-primary transition-colors font-medium"
+                >
+                  🎉 Feestlocatie huren
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/catering"
+                  className="text-sm py-1.5 inline-block text-muted-foreground hover:text-primary transition-colors font-medium"
+                >
+                  🍽️ Catering & Office Lunch
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/eten-voor-theater-de-flint"
+                  className="text-sm py-1.5 inline-block text-muted-foreground hover:text-primary transition-colors"
+                >
+                  🎭 Eten bij De Flint
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/bourgondisch-eten-amersfoort"
+                  className="text-sm py-1.5 inline-block text-muted-foreground hover:text-primary transition-colors"
+                >
+                  🍷 Bourgondisch eten
+                </Link>
+              </li>
+            </ul>
+          </div>
+
           {/* Openingstijden */}
           <div className="sm:pt-2">
             <h4 className="font-headline text-lg mb-4">Openingstijden</h4>

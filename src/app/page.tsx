@@ -22,15 +22,21 @@ import { ReserveerButton } from "@/components/reserveer-button";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "De Tafelaar | Shared dining in Amersfoort",
+  title: "De Tafelaar | Shared dining in Amersfoort | Vlakbij De Flint",
   description:
-    "De Tafelaar is een shared-dining restaurant in Amersfoort met lokale leveranciers en seizoensgerechten. Kleine gerechten om te delen — warm, ontspannen en in het seizoen.",
+    "De Tafelaar is het shared-dining restaurant vlakbij Theater De Flint in Amersfoort. Kleine gerechten om te delen, gemaakt met verse, lokale producten. Op 2 min lopen van De Flint.",
   openGraph: {
-    title: "De Tafelaar | Shared dining in Amersfoort",
+    title: "De Tafelaar | Shared dining vlakbij De Flint",
     description:
-      "Kleine gerechten om te delen, lokale makers en seizoensgerechten — midden in Amersfoort.",
+      "Shared dining restaurant op 400m van Theater De Flint. Kleine gerechten om te delen, lokale makers en seizoensgerechten — midden in Amersfoort.",
     images: [{ url: "/pics/homepage.png" }],
   },
+  keywords: [
+    "restaurant de flint",
+    "restaurant vlakbij de flint",
+    "eten bij theater amersfoort",
+    "shared dining amersfoort",
+  ],
 };
 
 const HIGHLIGHT_ICONS = {
@@ -102,7 +108,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      
+
       <div className="space-y-12 py-12 sm:space-y-16 sm:py-16 md:space-y-24 md:py-24">
         {/* ================= HIGHLIGHTS ================= */}
         <section className="container mx-auto px-4 sm:px-6 md:px-8" aria-labelledby="highlights-title">
@@ -154,23 +160,23 @@ export default function Home() {
                   Onze Buurtgids helpt je de beste plekken te vinden voor en na je theaterbezoek, of om de leukste hotspots op de Kamp te ontdekken.
                 </p>
                 <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                    <li className="flex items-center gap-2">
-                      <Theater className="h-4 w-4 text-primary" />
-                      <span>Dichtbij Theater De Flint</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <MapPin className="h-4 w-4 text-primary" />
-                      <span>Hotspots in de straat Kamp</span>
-                    </li>
-                  </ul>
+                  <li className="flex items-center gap-2">
+                    <Theater className="h-4 w-4 text-primary" />
+                    <span>Dichtbij Theater De Flint</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <MapPin className="h-4 w-4 text-primary" />
+                    <span>Hotspots in de straat Kamp</span>
+                  </li>
+                </ul>
               </div>
               <div className="flex justify-start md:justify-end">
-                  <Button asChild size="lg">
-                    <Link href="/buurtgids">
-                      Open Buurtgids
-                      <Map className="ml-2 h-5 w-5" />
-                    </Link>
-                  </Button>
+                <Button asChild size="lg">
+                  <Link href="/buurtgids">
+                    Open Buurtgids
+                    <Map className="ml-2 h-5 w-5" />
+                  </Link>
+                </Button>
               </div>
             </div>
           </div>
@@ -218,4 +224,3 @@ export default function Home() {
   );
 }
 
-    

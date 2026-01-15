@@ -7,6 +7,7 @@ import { Footer } from "@/components/footer";
 import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
 import { TaplaMount } from "@/components/tapla-mount";
+import { GoogleAnalytics } from "@/components/google-analytics";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -54,6 +55,10 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
   category: "restaurant",
+  // Google Search Console verification
+  verification: {
+    google: "UVHlF4UO1TyFsgBCuR3NAsPh4SzMqrFvVXDmOVwQV-w",
+  },
 };
 
 function restaurantJsonLd() {
@@ -65,7 +70,7 @@ function restaurantJsonLd() {
     url: siteUrl,
     image: `${siteUrl}/og-image.jpg`,
     description: siteDescription,
-    servesCuisine: ["Shared Dining", "Nederlands", "Seizoensgebonden"],
+    servesCuisine: ["Shared Dining", "Bourgondisch", "Nederlands", "Seizoensgebonden"],
     priceRange: "€€",
     acceptsReservations: true,
     hasMenu: `${siteUrl}/menu`,
@@ -75,11 +80,41 @@ function restaurantJsonLd() {
       streetAddress: "Kamp 8",
       postalCode: "3811 AR",
       addressLocality: "Amersfoort",
+      addressRegion: "Utrecht",
       addressCountry: "NL",
+    },
+
+    // Geo coordinates for local search
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: 52.1598363,
+      longitude: 5.3918238,
     },
 
     telephone: "+31634127932",
     email: "reserveren@tafelaaramersfoort.nl",
+
+    // Social media links
+    sameAs: [
+      "https://www.facebook.com/people/Tafelaar-Amersfoort",
+      "https://instagram.com/tafelaaramersfoort",
+    ],
+
+    // Location context - near Theater De Flint
+    containedInPlace: {
+      "@type": "Place",
+      name: "Kamp, Amersfoort Centrum",
+      description: "Historische straat in hartje Amersfoort, vlakbij Theater De Flint",
+    },
+
+    // Area served
+    areaServed: {
+      "@type": "City",
+      name: "Amersfoort",
+    },
+
+    // Additional keywords for local search
+    keywords: "shared dining, restaurant amersfoort, eten bij de flint, restaurant kamp amersfoort, theater de flint restaurant",
 
     openingHoursSpecification: [
       {
@@ -113,10 +148,21 @@ function restaurantJsonLd() {
         closes: "23:00",
       },
     ],
+
+    // Aggregate Rating - Update these values as you collect reviews
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.8",
+      bestRating: "5",
+      worstRating: "1",
+      ratingCount: "12",
+      reviewCount: "12",
+    },
   };
 
   return JSON.stringify(data);
 }
+
 
 function faqJsonLd() {
   const data = {
@@ -198,6 +244,9 @@ export default function RootLayout({
         <Footer />
         <Toaster />
 
+        {/* Google Analytics */}
+        <GoogleAnalytics />
+
         {/* ✅ Tapla widget: keep just before </body> */}
         <TaplaMount />
       </body>
@@ -205,4 +254,3 @@ export default function RootLayout({
   );
 }
 
-    

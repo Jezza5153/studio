@@ -1,6 +1,17 @@
 
+import type { Metadata } from "next";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { openingHours } from "@/content/site-content";
+
+export const dynamic = "force-static";
+
+export const metadata: Metadata = {
+  title: "Openingstijden De Tafelaar Amersfoort | Reserveren",
+  description: "Bekijk de openingstijden van De Tafelaar in Amersfoort. Wo-zo geopend voor shared dining. Reserveer online of bel voor een tafel.",
+  alternates: {
+    canonical: "/openingstijden",
+  },
+};
 
 export default function OpeningstijdenPage() {
   return (

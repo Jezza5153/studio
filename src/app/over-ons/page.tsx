@@ -1,5 +1,6 @@
 
 // app/(site)/over-ons/page.tsx
+import type { Metadata } from "next";
 import { philosophyContent } from "@/content/site-content";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,6 +14,15 @@ import {
 } from "lucide-react";
 
 export const dynamic = "force-static";
+
+export const metadata: Metadata = {
+  title: "Over Ons | Shared Dining Restaurant Amersfoort",
+  description: "Leer De Tafelaar kennen: shared dining met lokale producten en seizoensgebonden gerechten. Ons verhaal, onze filosofie en waarom we doen wat we doen.",
+  alternates: {
+    canonical: "/over-ons",
+  },
+};
+
 
 export default function OverOnsPage() {
   // Hero image directly from /public/pics
@@ -184,9 +194,8 @@ export default function OverOnsPage() {
               {gallery.slice(0, 3).map((img, i) => (
                 <div
                   key={i}
-                  className={`overflow-hidden rounded-xl ${
-                    i === 0 ? "col-span-2 row-span-2" : ""
-                  }`}
+                  className={`overflow-hidden rounded-xl ${i === 0 ? "col-span-2 row-span-2" : ""
+                    }`}
                 >
                   <Image
                     src={img.src}
