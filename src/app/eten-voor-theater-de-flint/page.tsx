@@ -41,7 +41,7 @@ const faqs = [
     },
     {
         question: "Kunnen we op tijd eten voor de voorstelling?",
-        answer: "Ja, wij adviseren om minimaal 1,5 tot 2 uur voor aanvang te reserveren. Dan heeft u rustig de tijd om te genieten van shared dining en op tijd bij het theater te zijn.",
+        answer: "Ja, wij adviseren om een tafel te boeken 2 uur voor aanvang van de show. Dan heeft u rustig de tijd om te genieten van shared dining en op tijd bij het theater te zijn.",
     },
     {
         question: "Kunnen we snel shared dining doen (60-75 minuten)?",
@@ -124,7 +124,8 @@ export default function EtenVoorDeFlintPage() {
                             </CardHeader>
                             <CardContent className="text-sm text-muted-foreground">
                                 <p className="font-medium text-foreground">Vóór de show?</p>
-                                <p>Reserveer 1,5-2 uur voor aanvang</p>
+                                <p>Boek 2 uur voor aanvang van de show</p>
+                                <p className="text-xs text-muted-foreground/70">(zo hebt u rustig de tijd)</p>
                                 <p className="font-medium text-foreground mt-2">Na de show?</p>
                                 <p>Reserveer vanaf 22:00</p>
                             </CardContent>
