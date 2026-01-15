@@ -100,12 +100,8 @@ function restaurantJsonLd() {
       "https://instagram.com/tafelaaramersfoort",
     ],
 
-    // Location context - near Theater De Flint
-    containedInPlace: {
-      "@type": "Place",
-      name: "Kamp, Amersfoort Centrum",
-      description: "Historische straat in hartje Amersfoort, vlakbij Theater De Flint",
-    },
+    // Google Maps URL for local SEO
+    hasMap: "https://maps.google.com/?cid=YOUR_GOOGLE_CID",
 
     // Area served
     areaServed: {
