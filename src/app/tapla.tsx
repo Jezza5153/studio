@@ -16,9 +16,10 @@ export default function Tapla() {
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const [mounted, setMounted] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => setMounted(true), []);
-  
+
   useEffect(() => {
     if (!mounted) return;
 
@@ -50,14 +51,14 @@ export default function Tapla() {
 
     const onMessage = (event: MessageEvent) => {
       if (event.origin !== TAPLA_ORIGIN) return;
-      
+
       // If we receive ANY message from Tapla, it means the widget is responsive.
       // We can cancel the fallback to prevent opening a new tab unnecessarily.
       if (fallbackTimeout) {
         clearTimeout(fallbackTimeout);
         fallbackTimeout = null;
       }
-      
+
       const data = event.data;
       const type = typeof data === 'string' ? data : data?.type;
 
@@ -90,6 +91,9 @@ export default function Tapla() {
         bottom: "max(0px, env(safe-area-inset-bottom))",
         right: "max(0px, env(safe-area-inset-right))",
         zIndex: 50,
+        opacity: isLoaded ? 1 : 0,
+        transform: isLoaded ? 'translateY(0)' : 'translateY(20px)',
+        transition: 'opacity 0.3s ease-out, transform 0.3s ease-out',
       }}
     >
       <iframe
@@ -97,6 +101,7 @@ export default function Tapla() {
         title="Reserveren bij De Tafelaar (Tapla)"
         frameBorder={0}
         src={TAPLA_IFRAME_SRC}
+        onLoad={() => setIsLoaded(true)}
         style={{
           width: isOpen ? 354 : 160,
           height: isOpen ? 600 : 60,
@@ -106,7 +111,7 @@ export default function Tapla() {
           borderRadius: 12,
           boxShadow: "0 8px 24px rgba(0,0,0,.18), 0 2px 8px rgba(0,0,0,.12)",
           background: "#fff",
-          transition: 'width .2s ease, height .2s ease',
+          transition: 'width 0.25s ease, height 0.25s ease',
         }}
       />
     </div>
