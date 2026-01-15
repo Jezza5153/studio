@@ -14,6 +14,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/buurtgids`, lastModified, priority: 0.8, changeFrequency: "monthly" },
     { url: `${base}/over-ons`, lastModified, priority: 0.7, changeFrequency: "monthly" },
     { url: `${base}/over-onze-makers`, lastModified, priority: 0.7, changeFrequency: "monthly" },
+    { url: `${base}/filosofie`, lastModified, priority: 0.6, changeFrequency: "monthly" },
+    { url: `${base}/impressie`, lastModified, priority: 0.6, changeFrequency: "monthly" },
     { url: `${base}/contact`, lastModified, priority: 0.8, changeFrequency: "monthly" },
     { url: `${base}/reserveren`, lastModified, priority: 0.8, changeFrequency: "monthly" },
     { url: `${base}/verhuur-en-groepen`, lastModified, priority: 0.6, changeFrequency: "monthly" },
