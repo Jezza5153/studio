@@ -68,100 +68,106 @@ export function Header() {
   );
 
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur transition-shadow supports-[backdrop-filter]:bg-background/60",
-        scrolled && "shadow-sm"
-      )}
-    >
-      <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 md:px-8">
-        {/* Logo */}
-        <Link
-          href="/"
-          className="mr-8 flex items-center"
-          aria-label="De Tafelaar – home"
-        >
-          <Image
-            src="/logo.png"
-            alt="De Tafelaar logo"
-            width={288} // natural width of your logo file
-            height={80} // natural height of your logo file
-            className="h-8 md:h-10 w-auto" // ✅ scale by height only
-            priority
-          />
-        </Link>
-
-        {/* Desktop nav */}
-        <nav className="hidden lg:flex flex-1 items-center justify-end gap-6">
-          {navLinks.map((link) => {
-            const isActive = pathname === link.href;
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                aria-current={isActive ? "page" : undefined}
-                className={cn(
-                  "relative text-[15px] font-medium transition-colors rounded-md",
-                  focusRing,
-                  isActive ? "text-primary" : "text-muted-foreground",
-                  // underline indicator
-                  "after:absolute after:inset-x-0 after:-bottom-1.5 after:h-0.5 after:rounded-full",
-                  isActive
-                    ? "after:bg-primary"
-                    : "after:bg-transparent hover:text-primary"
-                )}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-          <ReserveerButton
-            size="sm"
-            className="ml-4 shadow-sm hover:opacity-90"
-            label="Reserveer nu"
-          />
-        </nav>
-
-        {/* Mobile menu */}
-        <div className="flex lg:hidden items-center">
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" aria-label="Open menu">
-                <MenuIcon className="h-6 w-6" />
-              </Button>
-            </SheetTrigger>
-
-            <SheetContent side="right" className="w-[80vw] sm:w-[50vw] p-0">
-              <SheetTitle className="sr-only">Menu</SheetTitle>
-              <div className="p-6 max-h-dvh overflow-auto">
-                <Link href="/" className="mb-8 block">
-                  <Image
-                    src="/logo.png"
-                    alt="De Tafelaar logo"
-                    width={288}
-                    height={80}
-                    className="h-10 w-auto" // slightly bigger in drawer
-                  />
-                </Link>
-
-                {/* Nav */}
-                <NavLinks />
-
-                {/* Divider + CTA */}
-                <div className="mt-4 border-t pt-4">
-                  <SheetClose asChild>
-                    <ReserveerButton
-                      size="sm"
-                      className="w-full hover:opacity-90"
-                      label="Reserveer nu"
-                    />
-                  </SheetClose>
-                </div>
-              </div>
-            </SheetContent>
-          </Sheet>
-        </div>
+    <>
+      {/* TEST DEPLOYMENT - REMOVE AFTER VERIFICATION */}
+      <div className="bg-red-600 text-white text-center py-1 text-sm font-bold">
+        🔴 DEPLOY TEST v15-01-2026 16:25 🔴
       </div>
-    </header>
+      <header
+        className={cn(
+          "sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur transition-shadow supports-[backdrop-filter]:bg-background/60",
+          scrolled && "shadow-sm"
+        )}
+      >
+        <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 md:px-8">
+          {/* Logo */}
+          <Link
+            href="/"
+            className="mr-8 flex items-center"
+            aria-label="De Tafelaar – home"
+          >
+            <Image
+              src="/logo.png"
+              alt="De Tafelaar logo"
+              width={288} // natural width of your logo file
+              height={80} // natural height of your logo file
+              className="h-8 md:h-10 w-auto" // ✅ scale by height only
+              priority
+            />
+          </Link>
+
+          {/* Desktop nav */}
+          <nav className="hidden lg:flex flex-1 items-center justify-end gap-6">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  aria-current={isActive ? "page" : undefined}
+                  className={cn(
+                    "relative text-[15px] font-medium transition-colors rounded-md",
+                    focusRing,
+                    isActive ? "text-primary" : "text-muted-foreground",
+                    // underline indicator
+                    "after:absolute after:inset-x-0 after:-bottom-1.5 after:h-0.5 after:rounded-full",
+                    isActive
+                      ? "after:bg-primary"
+                      : "after:bg-transparent hover:text-primary"
+                  )}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+            <ReserveerButton
+              size="sm"
+              className="ml-4 shadow-sm hover:opacity-90"
+              label="Reserveer nu"
+            />
+          </nav>
+
+          {/* Mobile menu */}
+          <div className="flex lg:hidden items-center">
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" aria-label="Open menu">
+                  <MenuIcon className="h-6 w-6" />
+                </Button>
+              </SheetTrigger>
+
+              <SheetContent side="right" className="w-[80vw] sm:w-[50vw] p-0">
+                <SheetTitle className="sr-only">Menu</SheetTitle>
+                <div className="p-6 max-h-dvh overflow-auto">
+                  <Link href="/" className="mb-8 block">
+                    <Image
+                      src="/logo.png"
+                      alt="De Tafelaar logo"
+                      width={288}
+                      height={80}
+                      className="h-10 w-auto" // slightly bigger in drawer
+                    />
+                  </Link>
+
+                  {/* Nav */}
+                  <NavLinks />
+
+                  {/* Divider + CTA */}
+                  <div className="mt-4 border-t pt-4">
+                    <SheetClose asChild>
+                      <ReserveerButton
+                        size="sm"
+                        className="w-full hover:opacity-90"
+                        label="Reserveer nu"
+                      />
+                    </SheetClose>
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
+        </div>
+      </header>
+    </>
   );
 }
