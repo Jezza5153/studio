@@ -255,25 +255,12 @@ export function NeighborhoodGuideClient() {
         });
         distanceMatrixRef.current = new google.maps.DistanceMatrixService();
 
-        // Center marker (De Tafelaar) - more prominent with label
+        // Center marker (De Tafelaar) - prominent red pin
         new google.maps.Marker({
           map,
           position: CENTER,
-          title: "De Tafelaar - Kamp 8",
-          label: {
-            text: "De Tafelaar",
-            color: "#fff",
-            fontWeight: "bold",
-            fontSize: "12px",
-          },
-          icon: {
-            path: google.maps.SymbolPath.CIRCLE,
-            scale: 12,
-            fillColor: "#e4572e",
-            fillOpacity: 1,
-            strokeColor: "#fff",
-            strokeWeight: 3,
-          },
+          title: "De Tafelaar - Kamp 8, Amersfoort",
+          animation: google.maps.Animation.DROP,
         });
 
         // 1) Resolve “De Tafelaar” place + show top card (live details)
