@@ -53,7 +53,8 @@ type PlaceLite = {
   group?: PlaceGroupKey;
 };
 
-const CENTER = { lat: 52.15983629999999, lng: 5.3918238 };
+// Kamp 8, 3811 AR Amersfoort - De Tafelaar
+const CENTER = { lat: 52.1556, lng: 5.3876 };
 
 const THEATERWEEKEND = {
   start: "2026-01-23",
@@ -71,17 +72,26 @@ const THEATERWEEKEND = {
 
 // The “marketing-plan driven” short list: Flint + parkeren + Kamp eet/drink.
 const CURATED_QUERIES: Array<{ group: PlaceGroupKey; label: string; query: string; icon: any }> = [
+  // Theater & Cultuur
   { group: "theater", label: "Theater De Flint", query: "Theater De Flint Amersfoort", icon: Ticket },
-  { group: "theater", label: "Pathé Amersfoort", query: "Pathé Amersfoort", icon: Ticket },
-  { group: "theater", label: "Vue Amersfoort", query: "Vue Amersfoort", icon: Ticket },
+  { group: "theater", label: "Pathé Amersfoort", query: "Pathé Amersfoort cinema", icon: Ticket },
   { group: "theater", label: "Onze Lieve Vrouwetoren", query: "Onze Lieve Vrouwetoren Amersfoort", icon: MapPin },
   { group: "theater", label: "Koppelpoort", query: "Koppelpoort Amersfoort", icon: MapPin },
   { group: "theater", label: "Museum Flehite", query: "Museum Flehite Amersfoort", icon: MapPin },
-  { group: "theater", label: "Eemhuis", query: "Eemhuis Amersfoort", icon: MapPin },
+  { group: "theater", label: "Eemhuis", query: "Eemhuis Amersfoort bibliotheek", icon: MapPin },
+  // Parkeren - closest to Kamp 8
+  { group: "parking", label: "Parkeergarage Koestraat", query: "Parkeergarage Koestraat Amersfoort", icon: Car },
   { group: "parking", label: "Parkeergarage Flintplein", query: "Parkeergarage Flintplein Amersfoort", icon: Car },
-  { group: "parking", label: "Parkeergarage Stadhuis", query: "Parkeergarage Stadhuis Amersfoort", icon: Car },
-  { group: "parking", label: "Parkeergarage Eemplein", query: "Parkeergarage Eemplein Amersfoort", icon: Car },
+  { group: "parking", label: "Parkeergarage Stadhuisplein", query: "Parkeergarage Stadhuisplein Amersfoort", icon: Car },
   { group: "parking", label: "Parkeergarage Beestenmarkt", query: "Parkeergarage Beestenmarkt Amersfoort", icon: Car },
+  { group: "parking", label: "Parkeergarage St. Jorisplein", query: "Parkeergarage St. Jorisplein Amersfoort", icon: Car },
+  // Kamp hotspots - restaurants & cafes on Kamp street
+  { group: "kamp", label: "De Aubergerie", query: "De Aubergerie Kamp Amersfoort", icon: UtensilsCrossed },
+  { group: "kamp", label: "Awazé", query: "Awazé restaurant Amersfoort", icon: UtensilsCrossed },
+  { group: "kamp", label: "Indian Flavour", query: "Indian Flavour Amersfoort", icon: UtensilsCrossed },
+  { group: "kamp", label: "Anna's Smaakatelier", query: "Anna's Smaakatelier Amersfoort", icon: UtensilsCrossed },
+  { group: "kamp", label: "Theehuis Something Else", query: "Theehuis Something Else Amersfoort", icon: UtensilsCrossed },
+  { group: "kamp", label: "Poke2go", query: "Poke2go Amersfoort", icon: UtensilsCrossed },
 ];
 
 function isTheaterWeekendNow(): boolean {
@@ -234,6 +244,8 @@ export function NeighborhoodGuideClient() {
         if (!cancelled) {
           upsertPlaces("theater", curatedResults.filter((p) => p.group === "theater"));
           upsertPlaces("parking", curatedResults.filter((p) => p.group === "parking"));
+          // Add curated Kamp hotspots (known real places on Kamp street)
+          upsertPlaces("kamp", curatedResults.filter((p) => p.group === "kamp"));
         }
 
         // 3) Kamp hotspots: eateries / drinks within ~250m, filtered on street name “Kamp”
@@ -354,12 +366,12 @@ export function NeighborhoodGuideClient() {
 
         const photos: Photo[] | undefined = r.photos
           ? r.photos
-              .slice(0, 6)
-              .map((p: any) => ({
-                urlSmall: p.getUrl({ maxWidth: 200, maxHeight: 200 }),
-                urlLarge: p.getUrl({ maxWidth: 1200, maxHeight: 1200 }),
-                attrs: (p.html_attributions || []).join(" "),
-              }))
+            .slice(0, 6)
+            .map((p: any) => ({
+              urlSmall: p.getUrl({ maxWidth: 200, maxHeight: 200 }),
+              urlLarge: p.getUrl({ maxWidth: 1200, maxHeight: 1200 }),
+              attrs: (p.html_attributions || []).join(" "),
+            }))
           : undefined;
 
         const types: string[] | undefined = r.types;

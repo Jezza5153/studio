@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 import { NeighborhoodGuideClient } from "./neighborhood-guide-client";
 
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Buurtgids De Flint & Kamp | Restaurant bij Theater De Flint Amersfoort",
