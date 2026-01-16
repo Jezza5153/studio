@@ -70,7 +70,7 @@ const THEATERWEEKEND = {
   ],
 };
 
-// The “marketing-plan driven” short list: Flint + parkeren + Kamp eet/drink.
+// The "marketing-plan driven" short list: Flint + parkeren + Kamp eet/drink.
 const CURATED_QUERIES: Array<{ group: PlaceGroupKey; label: string; query: string; icon: any }> = [
   // Theater & Cultuur
   { group: "theater", label: "Theater De Flint", query: "Theater De Flint Amersfoort", icon: Ticket },
@@ -92,6 +92,31 @@ const CURATED_QUERIES: Array<{ group: PlaceGroupKey; label: string; query: strin
   { group: "kamp", label: "Anna's Smaakatelier", query: "Anna's Smaakatelier Amersfoort", icon: UtensilsCrossed },
   { group: "kamp", label: "Theehuis Something Else", query: "Theehuis Something Else Amersfoort", icon: UtensilsCrossed },
   { group: "kamp", label: "Poke2go", query: "Poke2go Amersfoort", icon: UtensilsCrossed },
+];
+
+// Static fallback data - shown when Google Places API is unavailable
+const FALLBACK_THEATER: PlaceLite[] = [
+  { placeId: "flint", name: "Theater De Flint", typeLabel: "Theater", address: "Coninckstraat 60, 3811 WK Amersfoort", url: "https://www.google.com/maps/place/Theater+De+Flint", group: "theater" },
+  { placeId: "pathe", name: "Pathé Amersfoort", typeLabel: "Bioscoop", address: "Stadsring 201, 3817 BA Amersfoort", url: "https://www.google.com/maps/place/Pathé+Amersfoort", group: "theater" },
+  { placeId: "olvtoren", name: "Onze Lieve Vrouwetoren", typeLabel: "Bezienswaardigheid", address: "Lieve Vrouwekerkhof, Amersfoort", url: "https://www.google.com/maps/place/Onze+Lieve+Vrouwetoren", group: "theater" },
+  { placeId: "koppelpoort", name: "Koppelpoort", typeLabel: "Monument", address: "Kleine Spui, Amersfoort", url: "https://www.google.com/maps/place/Koppelpoort", group: "theater" },
+  { placeId: "flehite", name: "Museum Flehite", typeLabel: "Museum", address: "Westsingel 50, 3811 BC Amersfoort", url: "https://www.google.com/maps/place/Museum+Flehite", group: "theater" },
+];
+
+const FALLBACK_PARKING: PlaceLite[] = [
+  { placeId: "koestraat", name: "Parkeergarage Koestraat", typeLabel: "Parkeergarage", address: "Koestraat 5, Amersfoort", url: "https://www.google.com/maps/place/Parkeergarage+Koestraat", group: "parking" },
+  { placeId: "flintplein", name: "Parkeergarage Flintplein", typeLabel: "Parkeergarage", address: "Flintplein, Amersfoort", url: "https://www.google.com/maps/place/Parkeergarage+Flintplein", group: "parking" },
+  { placeId: "stadhuis", name: "Parkeergarage Stadhuisplein", typeLabel: "Parkeergarage", address: "Stadhuisplein, Amersfoort", url: "https://www.google.com/maps/place/Parkeergarage+Stadhuisplein", group: "parking" },
+  { placeId: "beestenmarkt", name: "Parkeergarage Beestenmarkt", typeLabel: "Parkeergarage", address: "Beestenmarkt, Amersfoort", url: "https://www.google.com/maps/place/Parkeergarage+Beestenmarkt", group: "parking" },
+];
+
+const FALLBACK_KAMP: PlaceLite[] = [
+  { placeId: "aubergerie", name: "De Aubergerie", typeLabel: "Frans restaurant", address: "Kamp 38, 3811 AR Amersfoort", rating: 4.5, url: "https://www.google.com/maps/place/De+Aubergerie", group: "kamp" },
+  { placeId: "awaze", name: "Awazé", typeLabel: "Ethiopisch restaurant", address: "Kamp 26, 3811 AR Amersfoort", rating: 4.6, url: "https://www.google.com/maps/place/Awazé", group: "kamp" },
+  { placeId: "indianflavour", name: "Indian Flavour", typeLabel: "Indiaas/Surinaams", address: "Kamp 17, 3811 AR Amersfoort", rating: 4.4, url: "https://www.google.com/maps/place/Indian+Flavour", group: "kamp" },
+  { placeId: "annas", name: "Anna's Smaakatelier", typeLabel: "Koffiebar & gebak", address: "Kamp 29, Amersfoort", rating: 4.7, url: "https://www.google.com/maps/place/Anna's+Smaakatelier", group: "kamp" },
+  { placeId: "theehuis", name: "Theehuis Something Else", typeLabel: "Theehuis", address: "Kamp 41, Amersfoort", rating: 4.5, url: "https://www.google.com/maps/place/Theehuis+Something+Else", group: "kamp" },
+  { placeId: "poke2go", name: "Poke2go", typeLabel: "Poké bowls", address: "Kamp 18, Amersfoort", rating: 4.3, url: "https://www.google.com/maps/place/Poke2go+Amersfoort", group: "kamp" },
 ];
 
 function isTheaterWeekendNow(): boolean {
@@ -157,9 +182,9 @@ export function NeighborhoodGuideClient() {
 
   const [placesByGroup, setPlacesByGroup] = useState<Record<PlaceGroupKey, PlaceLite[]>>({
     tafelaar: [],
-    theater: [],
-    parking: [],
-    kamp: [],
+    theater: FALLBACK_THEATER,
+    parking: FALLBACK_PARKING,
+    kamp: FALLBACK_KAMP,
     search: [],
   });
 
@@ -196,15 +221,23 @@ export function NeighborhoodGuideClient() {
 
         googleRef.current = google;
 
-        // Map
+        // Enhanced map styling for premium look
         const map = new google.maps.Map(mapRef.current, {
           center: CENTER,
           zoom: 16,
           fullscreenControl: true,
-          mapTypeControl: true,
-          streetViewControl: false,
+          mapTypeControl: false,
+          streetViewControl: true,
           zoomControl: true,
-          maxZoom: 20,
+          maxZoom: 19,
+          minZoom: 13,
+          gestureHandling: "cooperative",
+          styles: [
+            // Subtle styling for a cleaner look
+            { featureType: "poi.business", stylers: [{ visibility: "simplified" }] },
+            { featureType: "transit", stylers: [{ visibility: "off" }] },
+            { featureType: "water", elementType: "geometry.fill", stylers: [{ color: "#c8d7d4" }] },
+          ],
         });
         mapInstanceRef.current = map;
 
@@ -214,14 +247,33 @@ export function NeighborhoodGuideClient() {
         directionsRendererRef.current = new google.maps.DirectionsRenderer({
           suppressMarkers: true,
           preserveViewport: true,
+          polylineOptions: {
+            strokeColor: "#e4572e",
+            strokeWeight: 4,
+            strokeOpacity: 0.8,
+          },
         });
         distanceMatrixRef.current = new google.maps.DistanceMatrixService();
 
-        // Center marker (De Tafelaar)
+        // Center marker (De Tafelaar) - more prominent with label
         new google.maps.Marker({
           map,
           position: CENTER,
-          title: "De Tafelaar",
+          title: "De Tafelaar - Kamp 8",
+          label: {
+            text: "De Tafelaar",
+            color: "#fff",
+            fontWeight: "bold",
+            fontSize: "12px",
+          },
+          icon: {
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 12,
+            fillColor: "#e4572e",
+            fillOpacity: 1,
+            strokeColor: "#fff",
+            strokeWeight: 3,
+          },
         });
 
         // 1) Resolve “De Tafelaar” place + show top card (live details)
