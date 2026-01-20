@@ -98,7 +98,7 @@ export default function EventsWidget() {
                             border: 0,
                             borderRadius: 16,
                             boxShadow: "0 8px 24px rgba(0,0,0,.18), 0 2px 8px rgba(0,0,0,.12)",
-                            background: "#fff",
+                            background: "transparent",
                         }}
                     />
                 </div>
