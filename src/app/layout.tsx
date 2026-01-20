@@ -6,8 +6,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
-import { TaplaMount } from "@/components/tapla-mount";
-import { EventsMount } from "@/components/events-mount";
+import { UnifiedWidgetsMount } from "@/components/unified-widgets-mount";
 import { GoogleAnalytics } from "@/components/google-analytics";
 
 const inter = Inter({
@@ -244,11 +243,8 @@ export default function RootLayout({
         {/* Google Analytics */}
         <GoogleAnalytics />
 
-        {/* ✅ Tapla widget: right side */}
-        <TaplaMount />
-
-        {/* ✅ EVENTS widget: left side */}
-        <EventsMount />
+        {/* ✅ Unified Widgets: Events + Tapla together */}
+        <UnifiedWidgetsMount />
       </body>
     </html>
   );
