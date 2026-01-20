@@ -43,22 +43,23 @@ export default function EventsWidget() {
                 <button
                     onClick={() => setIsOpen(true)}
                     style={{
-                        padding: "12px 20px",
+                        padding: "14px 22px",
                         background: "#000",
-                        color: "#fff",
+                        color: "#D4AF37", // Gold color
                         border: "none",
                         borderRadius: 12,
-                        fontWeight: 600,
-                        fontSize: 14,
+                        fontWeight: 700,
+                        fontSize: 15,
+                        letterSpacing: "0.5px",
                         cursor: "pointer",
                         boxShadow: "0 8px 24px rgba(0,0,0,.18)",
                         display: "flex",
                         alignItems: "center",
-                        gap: 8,
+                        gap: 10,
                     }}
                 >
                     <span style={{ fontSize: 18 }}>🎫</span>
-                    Events
+                    EVENTS
                 </button>
             )}
 
