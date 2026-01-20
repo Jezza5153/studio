@@ -238,17 +238,16 @@ export default function UnifiedWidgets() {
                     </div>
                 )}
 
-                {/* Unified Button Pill */}
+                {/* Two Separate Button Blocks */}
                 {active === "none" && (
                     <div
                         style={{
                             display: "flex",
-                            borderRadius: 16,
-                            overflow: "hidden",
-                            boxShadow: "0 10px 40px rgba(0,0,0,.15)",
+                            gap: 12,
                             animation: "fadeIn 0.25s ease-out",
                         }}
                     >
+                        {/* EVENTS Block */}
                         <button
                             onClick={() => setActive("events")}
                             onMouseEnter={() => setHoveredButton("events")}
@@ -258,7 +257,7 @@ export default function UnifiedWidgets() {
                                 background: hoveredButton === "events" ? "#2a2a2a" : "#1a1a1a",
                                 color: "#D4AF37",
                                 border: "none",
-                                borderRight: "1px solid rgba(255,255,255,0.08)",
+                                borderRadius: 14,
                                 fontWeight: 700,
                                 fontSize: 14,
                                 letterSpacing: "0.5px",
@@ -267,22 +266,17 @@ export default function UnifiedWidgets() {
                                 alignItems: "center",
                                 gap: 10,
                                 transition: "all 0.2s ease",
+                                boxShadow: hoveredButton === "events"
+                                    ? "0 12px 32px rgba(0,0,0,.25)"
+                                    : "0 8px 24px rgba(0,0,0,.15)",
+                                transform: hoveredButton === "events" ? "translateY(-2px)" : "translateY(0)",
                             }}
                         >
                             <span style={{ fontSize: 16 }}>🎫</span>
                             EVENTS
-                            {!eventsLoaded && (
-                                <span style={{
-                                    width: 8,
-                                    height: 8,
-                                    background: "#D4AF37",
-                                    borderRadius: "50%",
-                                    opacity: 0.5,
-                                    animation: "spin 1s linear infinite",
-                                }} />
-                            )}
                         </button>
 
+                        {/* Reserveren Block */}
                         <button
                             onClick={() => setActive("tapla")}
                             onMouseEnter={() => setHoveredButton("tapla")}
@@ -292,6 +286,7 @@ export default function UnifiedWidgets() {
                                 background: hoveredButton === "tapla" ? "#35b08c" : "#2D9B7A",
                                 color: "#fff",
                                 border: "none",
+                                borderRadius: 14,
                                 fontWeight: 600,
                                 fontSize: 14,
                                 cursor: "pointer",
@@ -299,6 +294,10 @@ export default function UnifiedWidgets() {
                                 alignItems: "center",
                                 gap: 10,
                                 transition: "all 0.2s ease",
+                                boxShadow: hoveredButton === "tapla"
+                                    ? "0 12px 32px rgba(0,0,0,.25)"
+                                    : "0 8px 24px rgba(0,0,0,.15)",
+                                transform: hoveredButton === "tapla" ? "translateY(-2px)" : "translateY(0)",
                             }}
                         >
                             <span style={{ fontSize: 16 }}>📅</span>
