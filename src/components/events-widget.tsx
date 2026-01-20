@@ -36,9 +36,6 @@ export default function EventsWidget() {
                 bottom: "max(0px, env(safe-area-inset-bottom))",
                 right: "calc(170px + max(0px, env(safe-area-inset-right)))", // Next to Tapla on the RIGHT
                 zIndex: 50,
-                opacity: isLoaded ? 1 : 0,
-                transform: isLoaded ? "translateY(0)" : "translateY(20px)",
-                transition: "opacity 0.3s ease-out, transform 0.3s ease-out",
             }}
         >
             {/* Toggle Button */}
