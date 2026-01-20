@@ -91,6 +91,7 @@ export default function UnifiedWidgets() {
                     style={{ width: 1, height: 1 }}
                     title="Tapla preload"
                 />
+                {/* Events preload hidden while in development
                 <iframe
                     ref={eventsRef}
                     src={EVENTS_IFRAME_SRC}
@@ -98,6 +99,7 @@ export default function UnifiedWidgets() {
                     style={{ width: 1, height: 1 }}
                     title="Events preload"
                 />
+                */}
             </div>
 
             <div
@@ -247,7 +249,7 @@ export default function UnifiedWidgets() {
                             animation: "fadeIn 0.25s ease-out",
                         }}
                     >
-                        {/* EVENTS Block */}
+                        {/* EVENTS Block - Hidden while in development
                         <button
                             onClick={() => setActive("events")}
                             onMouseEnter={() => setHoveredButton("events")}
@@ -275,6 +277,7 @@ export default function UnifiedWidgets() {
                             <span style={{ fontSize: 16 }}>🎫</span>
                             EVENTS
                         </button>
+                        */}
 
                         {/* Reserveren Block */}
                         <button
