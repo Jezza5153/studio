@@ -7,9 +7,11 @@ type ActiveWidget = "none" | "tapla" | "events";
 
 export default function UnifiedWidgets() {
     const taplaRef = useRef<HTMLIFrameElement | null>(null);
+    const eventsRef = useRef<HTMLIFrameElement | null>(null);
     const [mounted, setMounted] = useState(false);
     const [active, setActive] = useState<ActiveWidget>("none");
-    const [isAnimating, setIsAnimating] = useState(false);
+    const [taplaLoaded, setTaplaLoaded] = useState(false);
+    const [eventsLoaded, setEventsLoaded] = useState(false);
     const [hoveredButton, setHoveredButton] = useState<string | null>(null);
 
     useEffect(() => setMounted(true), []);
@@ -23,21 +25,21 @@ export default function UnifiedWidgets() {
 
         window.taplaOpen = () => {
             send("TAPLA_OPEN");
-            handleOpen("tapla");
+            setActive("tapla");
         };
         window.taplaClose = () => {
             send("TAPLA_CLOSE");
-            handleClose();
+            setActive("none");
         };
-        window.eventsOpen = () => handleOpen("events");
-        window.eventsClose = () => handleClose();
+        window.eventsOpen = () => setActive("events");
+        window.eventsClose = () => setActive("none");
 
         const onMessage = (event: MessageEvent) => {
             if (event.origin !== TAPLA_ORIGIN) return;
             const data = event.data;
             const type = typeof data === "string" ? data : data?.type;
-            if (type === "TAPLA_OPEN") handleOpen("tapla");
-            if (type === "TAPLA_CLOSE") handleClose();
+            if (type === "TAPLA_OPEN") setActive("tapla");
+            if (type === "TAPLA_CLOSE") setActive("none");
         };
 
         window.addEventListener("message", onMessage);
@@ -50,39 +52,17 @@ export default function UnifiedWidgets() {
         };
     }, [mounted]);
 
-    const handleOpen = (widget: "tapla" | "events") => {
-        setIsAnimating(true);
-        setActive(widget);
-        setTimeout(() => setIsAnimating(false), 300);
-    };
-
-    const handleClose = () => {
-        setIsAnimating(true);
-        setTimeout(() => {
-            setActive("none");
-            setIsAnimating(false);
-        }, 200);
-    };
-
     if (!mounted) return null;
 
-    // Shared animation styles
-    const slideUpStyle = {
-        animation: isAnimating ? "slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1)" : undefined,
-    };
-
-    const fadeInStyle = {
-        animation: "fadeIn 0.3s ease-out",
-    };
+    const isLoading = (active === "events" && !eventsLoaded) || (active === "tapla" && !taplaLoaded);
 
     return (
         <>
-            {/* Keyframe animations */}
             <style jsx global>{`
                 @keyframes slideUp {
                     from {
                         opacity: 0;
-                        transform: translateY(30px) scale(0.95);
+                        transform: translateY(20px) scale(0.98);
                     }
                     to {
                         opacity: 1;
@@ -90,14 +70,35 @@ export default function UnifiedWidgets() {
                     }
                 }
                 @keyframes fadeIn {
-                    from { opacity: 0; }
-                    to { opacity: 1; }
+                    from { opacity: 0; transform: translateY(8px); }
+                    to { opacity: 1; transform: translateY(0); }
                 }
-                @keyframes pulse {
-                    0%, 100% { transform: scale(1); }
-                    50% { transform: scale(1.02); }
+                @keyframes shimmer {
+                    0% { background-position: -200% 0; }
+                    100% { background-position: 200% 0; }
+                }
+                @keyframes spin {
+                    to { transform: rotate(360deg); }
                 }
             `}</style>
+
+            {/* Preload iframes (hidden) */}
+            <div style={{ position: "absolute", left: -9999, top: -9999, opacity: 0, pointerEvents: "none" }}>
+                <iframe
+                    ref={taplaRef}
+                    src={TAPLA_IFRAME_SRC}
+                    onLoad={() => setTaplaLoaded(true)}
+                    style={{ width: 1, height: 1 }}
+                    title="Tapla preload"
+                />
+                <iframe
+                    ref={eventsRef}
+                    src={EVENTS_IFRAME_SRC}
+                    onLoad={() => setEventsLoaded(true)}
+                    style={{ width: 1, height: 1 }}
+                    title="Events preload"
+                />
+            </div>
 
             <div
                 style={{
@@ -109,17 +110,22 @@ export default function UnifiedWidgets() {
             >
                 {/* Events Widget */}
                 {active === "events" && (
-                    <div style={{ position: "relative", ...slideUpStyle }}>
+                    <div
+                        style={{
+                            position: "relative",
+                            animation: "slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
+                        }}
+                    >
                         <button
-                            onClick={() => handleClose()}
-                            onMouseEnter={() => setHoveredButton("close-events")}
+                            onClick={() => setActive("none")}
+                            onMouseEnter={() => setHoveredButton("close")}
                             onMouseLeave={() => setHoveredButton(null)}
                             style={{
                                 position: "absolute",
                                 top: 10,
                                 right: 10,
                                 zIndex: 10,
-                                background: hoveredButton === "close-events" ? "rgba(0,0,0,0.8)" : "rgba(0,0,0,0.5)",
+                                background: hoveredButton === "close" ? "rgba(0,0,0,0.8)" : "rgba(0,0,0,0.5)",
                                 color: "#fff",
                                 border: "none",
                                 borderRadius: "50%",
@@ -131,14 +137,42 @@ export default function UnifiedWidgets() {
                                 alignItems: "center",
                                 justifyContent: "center",
                                 transition: "all 0.2s ease",
-                                transform: hoveredButton === "close-events" ? "scale(1.1)" : "scale(1)",
+                                transform: hoveredButton === "close" ? "scale(1.1)" : "scale(1)",
                             }}
                         >
                             ✕
                         </button>
+
+                        {/* Loading skeleton */}
+                        {!eventsLoaded && (
+                            <div
+                                style={{
+                                    position: "absolute",
+                                    inset: 0,
+                                    borderRadius: 20,
+                                    background: "linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%)",
+                                    backgroundSize: "200% 100%",
+                                    animation: "shimmer 1.5s infinite",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                }}
+                            >
+                                <div style={{
+                                    width: 32,
+                                    height: 32,
+                                    border: "3px solid #ddd",
+                                    borderTopColor: "#D4AF37",
+                                    borderRadius: "50%",
+                                    animation: "spin 0.8s linear infinite",
+                                }} />
+                            </div>
+                        )}
+
                         <iframe
                             title="EVENTS Booking Widget"
                             src={EVENTS_IFRAME_SRC}
+                            onLoad={() => setEventsLoaded(true)}
                             style={{
                                 width: 380,
                                 height: 600,
@@ -146,8 +180,10 @@ export default function UnifiedWidgets() {
                                 maxHeight: "calc(100dvh - 100px)",
                                 border: 0,
                                 borderRadius: 20,
-                                boxShadow: "0 25px 50px -12px rgba(0,0,0,.25), 0 12px 24px -8px rgba(0,0,0,.15)",
+                                boxShadow: "0 25px 50px -12px rgba(0,0,0,.25)",
                                 background: "#fff",
+                                opacity: eventsLoaded ? 1 : 0,
+                                transition: "opacity 0.3s ease",
                             }}
                         />
                     </div>
@@ -155,11 +191,37 @@ export default function UnifiedWidgets() {
 
                 {/* Tapla Widget */}
                 {active === "tapla" && (
-                    <div style={{ ...slideUpStyle }}>
+                    <div style={{ animation: "slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1)" }}>
+                        {/* Loading skeleton */}
+                        {!taplaLoaded && (
+                            <div
+                                style={{
+                                    position: "absolute",
+                                    inset: 0,
+                                    borderRadius: 16,
+                                    background: "linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%)",
+                                    backgroundSize: "200% 100%",
+                                    animation: "shimmer 1.5s infinite",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                }}
+                            >
+                                <div style={{
+                                    width: 32,
+                                    height: 32,
+                                    border: "3px solid #ddd",
+                                    borderTopColor: "#2D9B7A",
+                                    borderRadius: "50%",
+                                    animation: "spin 0.8s linear infinite",
+                                }} />
+                            </div>
+                        )}
+
                         <iframe
-                            ref={taplaRef}
                             title="Reserveren bij De Tafelaar (Tapla)"
                             src={TAPLA_IFRAME_SRC}
+                            onLoad={() => setTaplaLoaded(true)}
                             style={{
                                 width: 354,
                                 height: 600,
@@ -167,8 +229,10 @@ export default function UnifiedWidgets() {
                                 maxHeight: "100dvh",
                                 border: 0,
                                 borderRadius: 16,
-                                boxShadow: "0 25px 50px -12px rgba(0,0,0,.25), 0 12px 24px -8px rgba(0,0,0,.15)",
+                                boxShadow: "0 25px 50px -12px rgba(0,0,0,.25)",
                                 background: "#fff",
+                                opacity: taplaLoaded ? 1 : 0,
+                                transition: "opacity 0.3s ease",
                             }}
                         />
                     </div>
@@ -181,13 +245,12 @@ export default function UnifiedWidgets() {
                             display: "flex",
                             borderRadius: 16,
                             overflow: "hidden",
-                            boxShadow: "0 10px 40px rgba(0,0,0,.15), 0 4px 12px rgba(0,0,0,.1)",
-                            ...fadeInStyle,
+                            boxShadow: "0 10px 40px rgba(0,0,0,.15)",
+                            animation: "fadeIn 0.25s ease-out",
                         }}
                     >
-                        {/* EVENTS button */}
                         <button
-                            onClick={() => handleOpen("events")}
+                            onClick={() => setActive("events")}
                             onMouseEnter={() => setHoveredButton("events")}
                             onMouseLeave={() => setHoveredButton(null)}
                             style={{
@@ -203,23 +266,25 @@ export default function UnifiedWidgets() {
                                 display: "flex",
                                 alignItems: "center",
                                 gap: 10,
-                                transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
-                                transform: hoveredButton === "events" ? "scale(1.02)" : "scale(1)",
+                                transition: "all 0.2s ease",
                             }}
                         >
-                            <span style={{
-                                fontSize: 16,
-                                transition: "transform 0.3s ease",
-                                transform: hoveredButton === "events" ? "rotate(-10deg) scale(1.1)" : "rotate(0)",
-                            }}>
-                                🎫
-                            </span>
+                            <span style={{ fontSize: 16 }}>🎫</span>
                             EVENTS
+                            {!eventsLoaded && (
+                                <span style={{
+                                    width: 8,
+                                    height: 8,
+                                    background: "#D4AF37",
+                                    borderRadius: "50%",
+                                    opacity: 0.5,
+                                    animation: "spin 1s linear infinite",
+                                }} />
+                            )}
                         </button>
 
-                        {/* Reserveren button */}
                         <button
-                            onClick={() => handleOpen("tapla")}
+                            onClick={() => setActive("tapla")}
                             onMouseEnter={() => setHoveredButton("tapla")}
                             onMouseLeave={() => setHoveredButton(null)}
                             style={{
@@ -233,17 +298,10 @@ export default function UnifiedWidgets() {
                                 display: "flex",
                                 alignItems: "center",
                                 gap: 10,
-                                transition: "all 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
-                                transform: hoveredButton === "tapla" ? "scale(1.02)" : "scale(1)",
+                                transition: "all 0.2s ease",
                             }}
                         >
-                            <span style={{
-                                fontSize: 16,
-                                transition: "transform 0.3s ease",
-                                transform: hoveredButton === "tapla" ? "rotate(10deg) scale(1.1)" : "rotate(0)",
-                            }}>
-                                📅
-                            </span>
+                            <span style={{ fontSize: 16 }}>📅</span>
                             Reserveren
                         </button>
                     </div>
