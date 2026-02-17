@@ -35,7 +35,7 @@ export default async function CourantHomePage() {
     await Promise.all([
       getLeadStory(),
       getPinnedItems(),
-      getLatestStories(undefined, 8),
+      getLatestStories(undefined, 20),
       getInstagramPosts(12),
       getLatestReviews(10),
       getSettings(),
