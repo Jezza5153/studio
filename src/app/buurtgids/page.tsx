@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 import { NeighborhoodGuideClient } from "./neighborhood-guide-client";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static"; // SQLite only available at build time on Vercel
 
 export const metadata: Metadata = {
   title: "Buurtgids De Flint & Kamp | Eten bij Theater De Flint Amersfoort",
