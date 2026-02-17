@@ -7,7 +7,7 @@
     "dev:safe": "npm run build && next start -p 9002",
     "genkit:dev": "genkit start -- tsx src/ai/dev.ts",
     "genkit:watch": "genkit start -- tsx --watch src/ai/dev.ts",
-    "build": "cp prisma/dev.db.seed prisma/dev.db && prisma generate && NODE_ENV=production next build",
+    "build": "echo '=== PRE-COPY ===' && ls -la prisma/dev.db* && cp prisma/dev.db.seed prisma/dev.db && echo '=== POST-COPY ===' && ls -la prisma/dev.db* && prisma generate && prisma db push --skip-generate && echo '=== POST-DB-PUSH ===' && node -e \"const{PrismaClient}=require('@prisma/client');const p=new PrismaClient();p.feedItem.count().then(c=>console.log(c+' feed items')).catch(e=>console.error(e.message)).finally(()=>p.\\$disconnect())\" && NODE_ENV=production next build",
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
