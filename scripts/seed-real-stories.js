@@ -26,7 +26,7 @@ Elke maand wisselt de daghap. Van een warme groentecurry tot een sappige gehaktb
 Ik hoop dat Makkelijke Maandag een plek wordt waar mensen samenkomen, genieten van lekker eten en elkaar ontmoeten. Kom langs, proef de daghap en schuif aan. Wie weet maakt u die avond een nieuwe connectie – dat is voor mij de essentie van Makkelijke Maandag bij De Tafelaar.
 
 Geschreven door Jan Molmans, eigenaar van De Tafelaar.`,
-        category: "evenement",
+        category: "events",
         publishedAt: new Date("2026-02-01T12:00:00Z"),
     },
     {
@@ -40,7 +40,7 @@ Het idee ontstond eigenlijk tijdens een van onze borrels in het restaurant. Jere
 Elke aflevering zal een mix zijn van verhalen, praktische tips, grappige momenten en onverwachte gesprekken. Soms schuift er iemand van het team aan, of een gast die een bijzonder verhaal heeft. Het gaat vooral om sfeer, eerlijkheid en een goed glas erbij – net zoals je bij ons in het restaurant gewend bent.
 
 Ik hoop dat De Borrelaar een plek wordt waar luisteraars kunnen lachen, herkennen en misschien zelfs inspiratie opdoen voor hun eigen culinaire avonturen. Houd de website in de gaten, want de eerste aflevering komt binnenkort online. En natuurlijk, wie weet drinken we binnenkort samen een glas, terwijl je ons verhaal beluistert.`,
-        category: "nieuws",
+        category: "behind",
         publishedAt: new Date("2026-02-05T12:00:00Z"),
     },
     {
@@ -56,7 +56,7 @@ Hoe bijzonder is het om te zien hoe iemand die ooit zijn eerste prakles kreeg bi
 We zien dit diner niet alleen als een avond met goed eten, maar ook als een moment waarop u kunt proeven van het verhaal achter de personen die bij ons werken. Want bij De Tafelaar draait het niet alleen om wat er op uw bord ligt — het gaat om de verbinding tussen gast en maker, passie en ervaring.
 
 Reserveer daarom een plekje op 30 maart en laat u verrassen door Sam's creaties. Wie weet ontmoet u hem zelf, hoort u zijn verhaal of deelt u zelfs uw eigen indruk van zijn gerechten. Een avond vol smaak én betekenis — dat is waar de toekomst van De Tafelaar om draait.`,
-        category: "evenement",
+        category: "events",
         publishedAt: new Date("2026-02-10T12:00:00Z"),
     },
     {
@@ -72,7 +72,7 @@ Wat ons uniek maakt, is onze focus op shared dining en lokale betrokkenheid. Onz
 Onze visie is om dé ontmoetingsplek van Amersfoort te zijn, waar traditie en vernieuwing elkaar versterken. Met een herkenbare stijl, een steeds wisselend en kwalitatief aanbod en een sfeer waarin je je direct thuis voelt, willen we bijdragen aan een levendige horeca\u2011cultuur die draait om verbinding, verrassing en vertrouwdheid.
 
 Bij De Tafelaar gaat het om meer dan wat er op tafel staat — het gaat om wat er aan tafel gebeurt. Samen eten, samen delen, samen verhalen maken.`,
-        category: "over-ons",
+        category: "behind",
         publishedAt: new Date("2026-01-15T12:00:00Z"),
     },
     {
@@ -84,7 +84,7 @@ Bij De Tafelaar gaat het om meer dan wat er op tafel staat — het gaat om wat e
 Onze lunchcatering is perfect voor bedrijven: vers belegde broodjes, bowls en lunchboxen, met aandacht voor smaak én dieetwensen. Voor privé\u2011bijeenkomsten bieden we maatwerk: van shared dining\u2011menu's tot volledige borrelarrangementen, met de warme, ontspannen sfeer die je in ons restaurant kent.
 
 Of je nu binnen of buiten onze deuren eet, bij De Tafelaar staat kwaliteit, gezelligheid en verbinding altijd voorop. Heb je een idee of speciale wens? Vertel het ons, dan maken we er samen iets bijzonders van.`,
-        category: "nieuws",
+        category: "behind",
         publishedAt: new Date("2026-01-20T12:00:00Z"),
     },
     {
@@ -102,7 +102,7 @@ Maar er is meer. Door lokaal te kopen, steunen we boeren en producenten in onze 
 Voor mij persoonlijk is het belangrijk dat De Tafelaar een plek is waar iedereen welkom is en waar de herkomst van het eten even belangrijk is als de bereiding ervan. Het betekent dat we durven te kiezen voor kwaliteit boven kwantiteit, voor duurzaamheid boven gemak, en voor gemeenschap boven anonimiteit. Samen eten wordt zo een ervaring die verder gaat dan alleen smaak — het brengt mensen dichter bij elkaar én bij de plek waar zij wonen.
 
 Bij De Tafelaar draait het om passie, aandacht en respect — voor onze gasten, voor de producten en voor de mensen die ze maken. En dat proef je bij elke hap.`,
-        category: "achter-de-schermen",
+        category: "behind",
         publishedAt: new Date("2026-01-25T12:00:00Z"),
     },
     {
@@ -132,7 +132,7 @@ Hoe was het om samen te werken met het team van De Tafelaar? "Het was heel leuk 
 Wat maakt het zo bijzonder om gasten aan één tafel te laten delen? "Het mooie was dat mensen echt beseften dat het gezellig kan zijn met vreemde mensen aan tafel. Vaak zijn we te individueel ingesteld, maar door iedereen samen te zetten, ontstonden leuke gesprekken en ontmoetingen. Het was bijzonder om te zien hoe mensen daar van genoten."
 
 Zou je in de toekomst nog een avond als deze willen organiseren? "Ja, absoluut. Het was een geweldig ervaring en het voelde echt speciaal om iets te creëren dat mensen samenbrengt."`,
-        category: "evenement",
+        category: "events",
         publishedAt: new Date("2026-02-12T12:00:00Z"),
     },
 ];
