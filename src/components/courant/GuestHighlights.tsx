@@ -1,38 +1,58 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+interface PhotoItem {
+    url: string;
+    name?: string;
+    quote?: string;
+}
+
 interface GuestHighlightsProps {
-    photos: string[];
+    photos: string; // JSON string from DB
     googleRating?: number;
     reviewCount?: number;
 }
 
 export function GuestHighlights({
-    photos,
+    photos: photosJson,
     googleRating = 0,
     reviewCount = 0,
 }: GuestHighlightsProps) {
+    const items: PhotoItem[] = useMemo(() => {
+        try {
+            const parsed = JSON.parse(photosJson);
+            // Support both array of strings and array of objects
+            return parsed.map((p: any) =>
+                typeof p === "string" ? { url: p } : p
+            );
+        } catch {
+            return [];
+        }
+    }, [photosJson]);
+
     const [current, setCurrent] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
 
     const next = useCallback(() => {
-        setCurrent((c) => (c + 1) % photos.length);
-    }, [photos.length]);
+        setCurrent((c) => (c + 1) % items.length);
+    }, [items.length]);
 
     const prev = useCallback(() => {
-        setCurrent((c) => (c - 1 + photos.length) % photos.length);
-    }, [photos.length]);
+        setCurrent((c) => (c - 1 + items.length) % items.length);
+    }, [items.length]);
 
     // Auto-advance every 5s
     useEffect(() => {
-        if (photos.length <= 1 || isPaused) return;
+        if (items.length <= 1 || isPaused) return;
         const timer = setInterval(next, 5000);
         return () => clearInterval(timer);
-    }, [photos.length, isPaused, next]);
+    }, [items.length, isPaused, next]);
 
-    if (photos.length === 0) return null;
+    if (items.length === 0) return null;
+
+    const photo = items[current];
 
     return (
         <section className="relative mx-auto max-w-7xl px-4 py-10">
@@ -53,8 +73,8 @@ export function GuestHighlights({
                     <AnimatePresence mode="wait">
                         <motion.img
                             key={current}
-                            src={photos[current]}
-                            alt={`Gastenfoto ${current + 1}`}
+                            src={photo.url}
+                            alt={photo.name ? `Foto door ${photo.name}` : `Gastenfoto ${current + 1}`}
                             className="absolute inset-0 h-full w-full object-cover"
                             initial={{ opacity: 0, scale: 1.05 }}
                             animate={{ opacity: 1, scale: 1 }}
@@ -63,10 +83,37 @@ export function GuestHighlights({
                         />
                     </AnimatePresence>
 
-                    <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/60 to-transparent" />
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
+                    {/* Reviewer name + quote */}
+                    {(photo.name || photo.quote) && (
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={current}
+                                className="absolute bottom-16 left-4 right-28 sm:left-6"
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -10 }}
+                                transition={{ duration: 0.4, delay: 0.2 }}
+                            >
+                                {photo.quote && (
+                                    <p className="text-sm font-medium text-white/95 italic sm:text-base">
+                                        &ldquo;{photo.quote}&rdquo;
+                                    </p>
+                                )}
+                                {photo.name && (
+                                    <p className="mt-1 text-xs font-semibold text-white/70 sm:text-sm">
+                                        — {photo.name}
+                                    </p>
+                                )}
+                            </motion.div>
+                        </AnimatePresence>
+                    )}
+
+                    {/* Google rating badge */}
                     {googleRating > 0 && (
-                        <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 shadow-lg backdrop-blur-sm">
+                        <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 shadow-lg backdrop-blur-sm sm:left-6">
                             <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z" fill="#4285F4" />
                                 <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
@@ -83,11 +130,13 @@ export function GuestHighlights({
                         </div>
                     )}
 
+                    {/* Photo counter */}
                     <div className="absolute bottom-4 right-4 rounded-full bg-black/50 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
-                        {current + 1} / {photos.length}
+                        {current + 1} / {items.length}
                     </div>
 
-                    {photos.length > 1 && (
+                    {/* Nav arrows */}
+                    {items.length > 1 && (
                         <>
                             <button onClick={prev} className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-black/30 p-2 text-white backdrop-blur-sm transition hover:bg-black/50" aria-label="Vorige foto">
                                 <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
@@ -99,15 +148,16 @@ export function GuestHighlights({
                     )}
                 </div>
 
-                {photos.length > 1 && (
+                {/* Thumbnail strip */}
+                {items.length > 1 && (
                     <div className="flex gap-1 overflow-x-auto bg-foreground/[0.03] p-2">
-                        {photos.map((url, i) => (
+                        {items.map((item, i) => (
                             <button
                                 key={i}
                                 onClick={() => setCurrent(i)}
                                 className={`relative h-14 w-20 flex-shrink-0 overflow-hidden rounded-md transition-all ${i === current ? "ring-2 ring-primary ring-offset-1" : "opacity-50 hover:opacity-80"}`}
                             >
-                                <img src={url} alt={`Thumbnail ${i + 1}`} className="h-full w-full object-cover" />
+                                <img src={item.url} alt={item.name || `Thumbnail ${i + 1}`} className="h-full w-full object-cover" />
                             </button>
                         ))}
                     </div>

@@ -67,17 +67,11 @@ export default async function CourantHomePage() {
       />
 
       {/* Guest photo highlights */}
-      {(() => {
-        let gPhotos: string[] = [];
-        try { gPhotos = JSON.parse(settings?.googlePhotos || "[]"); } catch { }
-        return gPhotos.length > 0 ? (
-          <GuestHighlights
-            photos={gPhotos}
-            googleRating={settings?.googleRating || 0}
-            reviewCount={settings?.googleReviewCount || 0}
-          />
-        ) : null;
-      })()}
+      <GuestHighlights
+        photos={settings?.googlePhotos || "[]"}
+        googleRating={settings?.googleRating || 0}
+        reviewCount={settings?.googleReviewCount || 0}
+      />
 
       <TheLiveWall
         initialItems={feedPage.items}

@@ -47,6 +47,11 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'cdn2.behold.pictures',
       },
+      // Google user content (customer photos)
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+      },
     ],
   },
 };
