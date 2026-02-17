@@ -76,6 +76,21 @@ async function handleIngest(request: Request) {
             upserted++;
         }
 
+        // Also update guest highlight photos in Settings (IMAGE posts only, large)
+        const photoUrls = posts
+            .filter((p: any) => p.mediaType === "IMAGE")
+            .slice(0, 10)
+            .map((p: any) => p.sizes?.large?.mediaUrl || p.sizes?.medium?.mediaUrl || p.mediaUrl)
+            .filter(Boolean);
+
+        if (photoUrls.length > 0) {
+            await prisma.settings.upsert({
+                where: { id: "singleton" },
+                create: { id: "singleton", googlePhotos: JSON.stringify(photoUrls) },
+                update: { googlePhotos: JSON.stringify(photoUrls) },
+            });
+        }
+
         return NextResponse.json({ success: true, upserted });
     } catch (err) {
         console.error("Instagram ingestion error:", err);
