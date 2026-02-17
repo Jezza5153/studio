@@ -11,6 +11,7 @@ export interface MediaItem {
     width: number;
     height: number;
     kind: "image" | "video";
+    videoUrl?: string;
 }
 
 export function parseMedia(media: string | null): MediaItem[] {

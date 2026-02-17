@@ -41,15 +41,18 @@ async function handleIngest(request: Request) {
             const caption = post.caption || "";
             const title = caption.split("\n")[0]?.slice(0, 100) || "Instagram post";
 
-            const media = JSON.stringify([
-                {
-                    url: imageUrl,
-                    thumbUrl: thumbUrl,
-                    width: post.sizes?.medium?.width || 700,
-                    height: post.sizes?.medium?.height || 700,
-                    kind: isVideo ? "video" : "image",
-                },
-            ]);
+            const mediaItem: Record<string, unknown> = {
+                url: imageUrl,
+                thumbUrl: thumbUrl,
+                width: post.sizes?.medium?.width || 700,
+                height: post.sizes?.medium?.height || 700,
+                kind: isVideo ? "video" : "image",
+            };
+            // For reels/videos, also store the actual video URL
+            if (isVideo && post.mediaUrl) {
+                mediaItem.videoUrl = post.mediaUrl;
+            }
+            const media = JSON.stringify([mediaItem]);
 
             await prisma.feedItem.upsert({
                 where: { slug },
