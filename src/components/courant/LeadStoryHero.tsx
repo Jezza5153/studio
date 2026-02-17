@@ -27,7 +27,7 @@ export function LeadStoryHero({ story }: LeadStoryHeroProps) {
                         fill
                         priority
                         sizes="100vw"
-                        className="object-cover"
+                        className="object-cover object-[center_60%]"
                     />
                 ) : (
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20" />
