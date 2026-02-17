@@ -2,20 +2,84 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { loadGoogleMaps } from "@/lib/load-google-maps";
+
+const PLACE_ID = "ChIJ-_xU7K72X0cR46fD6O_uQ08"; // De Tafelaar
+
+interface PhotoData {
+    url: string;
+    attribution?: string;
+}
 
 interface GuestHighlightsProps {
-    photos: string[];
     googleRating?: number;
     reviewCount?: number;
 }
 
 export function GuestHighlights({
-    photos,
     googleRating = 0,
     reviewCount = 0,
 }: GuestHighlightsProps) {
+    const [photos, setPhotos] = useState<PhotoData[]>([]);
     const [current, setCurrent] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
+    const [loading, setLoading] = useState(true);
+
+    const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "";
+
+    // Fetch customer photos from Google Places JS API (free tier)
+    useEffect(() => {
+        if (!apiKey) {
+            setLoading(false);
+            return;
+        }
+
+        let cancelled = false;
+
+        async function fetchPhotos() {
+            try {
+                const google = await loadGoogleMaps({
+                    apiKey,
+                    libraries: ["places"],
+                });
+
+                // We need a map div for PlacesService (can be hidden)
+                const dummyDiv = document.createElement("div");
+                const service = new google.maps.places.PlacesService(dummyDiv);
+
+                service.getDetails(
+                    {
+                        placeId: PLACE_ID,
+                        fields: ["photos"],
+                    },
+                    (place: any, status: any) => {
+                        if (cancelled) return;
+
+                        if (
+                            status === google.maps.places.PlacesServiceStatus.OK &&
+                            place?.photos?.length
+                        ) {
+                            const photoData: PhotoData[] = place.photos
+                                .slice(0, 10)
+                                .map((p: any) => ({
+                                    url: p.getUrl({ maxWidth: 1200, maxHeight: 800 }),
+                                    attribution: p.html_attributions?.[0] || "",
+                                }));
+                            setPhotos(photoData);
+                        }
+                        setLoading(false);
+                    }
+                );
+            } catch {
+                if (!cancelled) setLoading(false);
+            }
+        }
+
+        fetchPhotos();
+        return () => {
+            cancelled = true;
+        };
+    }, [apiKey]);
 
     const next = useCallback(() => {
         setCurrent((c) => (c + 1) % photos.length);
@@ -32,6 +96,8 @@ export function GuestHighlights({
         return () => clearInterval(timer);
     }, [photos.length, isPaused, next]);
 
+    // Don't render if no photos or still loading
+    if (loading) return null;
     if (photos.length === 0) return null;
 
     return (
@@ -56,7 +122,7 @@ export function GuestHighlights({
                     <AnimatePresence mode="wait">
                         <motion.img
                             key={current}
-                            src={photos[current]}
+                            src={photos[current]?.url}
                             alt={`Gastenfoto ${current + 1}`}
                             className="absolute inset-0 h-full w-full object-cover"
                             initial={{ opacity: 0, scale: 1.05 }}
@@ -133,17 +199,17 @@ export function GuestHighlights({
                 {/* Thumbnail strip */}
                 {photos.length > 1 && (
                     <div className="flex gap-1 overflow-x-auto bg-foreground/[0.03] p-2">
-                        {photos.map((url, i) => (
+                        {photos.map((photo, i) => (
                             <button
                                 key={i}
                                 onClick={() => setCurrent(i)}
                                 className={`relative h-14 w-20 flex-shrink-0 overflow-hidden rounded-md transition-all ${i === current
-                                        ? "ring-2 ring-primary ring-offset-1"
-                                        : "opacity-50 hover:opacity-80"
+                                    ? "ring-2 ring-primary ring-offset-1"
+                                    : "opacity-50 hover:opacity-80"
                                     }`}
                             >
                                 <img
-                                    src={url}
+                                    src={photo.url}
                                     alt={`Thumbnail ${i + 1}`}
                                     className="h-full w-full object-cover"
                                 />
