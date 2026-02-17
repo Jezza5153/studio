@@ -15,7 +15,7 @@ import { FrontPageGrid } from "@/components/courant/FrontPageGrid";
 import { TheLiveWall } from "@/components/courant/TheLiveWall";
 import { GuestHighlights } from "@/components/courant/GuestHighlights";
 
-export const revalidate = 60; // ISR: revalidate every 60s
+export const dynamic = 'force-static'; // SQLite is only available at build time on Vercel
 
 export const metadata: Metadata = {
   title: "De Tafelaar Courant | Shared dining in Amersfoort",
