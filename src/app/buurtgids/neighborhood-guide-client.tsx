@@ -600,8 +600,8 @@ export function NeighborhoodGuideClient() {
     const full = (await fetchDetails(place.placeId, place.group)) || place;
     const withDuration = await enrichWithDuration(full);
 
-    setSelected(withDuration);
-    await drawDirections(withDuration);
+    setSelected(withDuration as PlaceLite);
+    await drawDirections(withDuration as PlaceLite);
   }
 
   function clearSelection() {
