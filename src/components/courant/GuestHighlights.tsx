@@ -2,84 +2,20 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { loadGoogleMaps } from "@/lib/load-google-maps";
-
-const PLACE_ID = "ChIJ-_xU7K72X0cR46fD6O_uQ08"; // De Tafelaar
-
-interface PhotoData {
-    url: string;
-    attribution?: string;
-}
 
 interface GuestHighlightsProps {
+    photos: string[];
     googleRating?: number;
     reviewCount?: number;
 }
 
 export function GuestHighlights({
+    photos,
     googleRating = 0,
     reviewCount = 0,
 }: GuestHighlightsProps) {
-    const [photos, setPhotos] = useState<PhotoData[]>([]);
     const [current, setCurrent] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
-    const [loading, setLoading] = useState(true);
-
-    const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "";
-
-    // Fetch customer photos from Google Places JS API (free tier)
-    useEffect(() => {
-        if (!apiKey) {
-            setLoading(false);
-            return;
-        }
-
-        let cancelled = false;
-
-        async function fetchPhotos() {
-            try {
-                const google = await loadGoogleMaps({
-                    apiKey,
-                    libraries: ["places"],
-                });
-
-                // We need a map div for PlacesService (can be hidden)
-                const dummyDiv = document.createElement("div");
-                const service = new google.maps.places.PlacesService(dummyDiv);
-
-                service.getDetails(
-                    {
-                        placeId: PLACE_ID,
-                        fields: ["photos"],
-                    },
-                    (place: any, status: any) => {
-                        if (cancelled) return;
-
-                        if (
-                            status === google.maps.places.PlacesServiceStatus.OK &&
-                            place?.photos?.length
-                        ) {
-                            const photoData: PhotoData[] = place.photos
-                                .slice(0, 10)
-                                .map((p: any) => ({
-                                    url: p.getUrl({ maxWidth: 1200, maxHeight: 800 }),
-                                    attribution: p.html_attributions?.[0] || "",
-                                }));
-                            setPhotos(photoData);
-                        }
-                        setLoading(false);
-                    }
-                );
-            } catch {
-                if (!cancelled) setLoading(false);
-            }
-        }
-
-        fetchPhotos();
-        return () => {
-            cancelled = true;
-        };
-    }, [apiKey]);
 
     const next = useCallback(() => {
         setCurrent((c) => (c + 1) % photos.length);
@@ -96,13 +32,10 @@ export function GuestHighlights({
         return () => clearInterval(timer);
     }, [photos.length, isPaused, next]);
 
-    // Don't render if no photos or still loading
-    if (loading) return null;
     if (photos.length === 0) return null;
 
     return (
         <section className="relative mx-auto max-w-7xl px-4 py-10">
-            {/* Section header */}
             <div className="mb-6 flex items-center gap-4">
                 <div className="h-px flex-1 bg-border" />
                 <h2 className="text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground">
@@ -111,18 +44,16 @@ export function GuestHighlights({
                 <div className="h-px flex-1 bg-border" />
             </div>
 
-            {/* Photo slideshow */}
             <div
                 className="relative mx-auto max-w-4xl overflow-hidden rounded-2xl shadow-xl"
                 onMouseEnter={() => setIsPaused(true)}
                 onMouseLeave={() => setIsPaused(false)}
             >
-                {/* Main image */}
                 <div className="relative aspect-[16/9] bg-muted">
                     <AnimatePresence mode="wait">
                         <motion.img
                             key={current}
-                            src={photos[current]?.url}
+                            src={photos[current]}
                             alt={`Gastenfoto ${current + 1}`}
                             className="absolute inset-0 h-full w-full object-cover"
                             initial={{ opacity: 0, scale: 1.05 }}
@@ -132,10 +63,8 @@ export function GuestHighlights({
                         />
                     </AnimatePresence>
 
-                    {/* Gradient overlay at bottom */}
                     <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/60 to-transparent" />
 
-                    {/* Bottom-left: rating badge */}
                     {googleRating > 0 && (
                         <div className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 shadow-lg backdrop-blur-sm">
                             <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
@@ -144,92 +73,50 @@ export function GuestHighlights({
                                 <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05" />
                                 <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
                             </svg>
-                            <span className="text-sm font-bold text-gray-900">
-                                {googleRating.toFixed(1)}
-                            </span>
+                            <span className="text-sm font-bold text-gray-900">{googleRating.toFixed(1)}</span>
                             <div className="flex text-amber-500">
                                 {Array.from({ length: 5 }).map((_, i) => (
-                                    <span
-                                        key={i}
-                                        className="text-xs"
-                                        style={{ opacity: i < Math.round(googleRating) ? 1 : 0.25 }}
-                                    >
-                                        ★
-                                    </span>
+                                    <span key={i} className="text-xs" style={{ opacity: i < Math.round(googleRating) ? 1 : 0.25 }}>★</span>
                                 ))}
                             </div>
-                            {reviewCount > 0 && (
-                                <span className="text-xs text-gray-500">
-                                    ({reviewCount})
-                                </span>
-                            )}
+                            {reviewCount > 0 && <span className="text-xs text-gray-500">({reviewCount})</span>}
                         </div>
                     )}
 
-                    {/* Bottom-right: counter */}
                     <div className="absolute bottom-4 right-4 rounded-full bg-black/50 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
                         {current + 1} / {photos.length}
                     </div>
 
-                    {/* Nav arrows */}
                     {photos.length > 1 && (
                         <>
-                            <button
-                                onClick={prev}
-                                className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-black/30 p-2 text-white backdrop-blur-sm transition hover:bg-black/50"
-                                aria-label="Vorige foto"
-                            >
-                                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                                </svg>
+                            <button onClick={prev} className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-black/30 p-2 text-white backdrop-blur-sm transition hover:bg-black/50" aria-label="Vorige foto">
+                                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
                             </button>
-                            <button
-                                onClick={next}
-                                className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-black/30 p-2 text-white backdrop-blur-sm transition hover:bg-black/50"
-                                aria-label="Volgende foto"
-                            >
-                                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                                </svg>
+                            <button onClick={next} className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-black/30 p-2 text-white backdrop-blur-sm transition hover:bg-black/50" aria-label="Volgende foto">
+                                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
                             </button>
                         </>
                     )}
                 </div>
 
-                {/* Thumbnail strip */}
                 {photos.length > 1 && (
                     <div className="flex gap-1 overflow-x-auto bg-foreground/[0.03] p-2">
-                        {photos.map((photo, i) => (
+                        {photos.map((url, i) => (
                             <button
                                 key={i}
                                 onClick={() => setCurrent(i)}
-                                className={`relative h-14 w-20 flex-shrink-0 overflow-hidden rounded-md transition-all ${i === current
-                                    ? "ring-2 ring-primary ring-offset-1"
-                                    : "opacity-50 hover:opacity-80"
-                                    }`}
+                                className={`relative h-14 w-20 flex-shrink-0 overflow-hidden rounded-md transition-all ${i === current ? "ring-2 ring-primary ring-offset-1" : "opacity-50 hover:opacity-80"}`}
                             >
-                                <img
-                                    src={photo.url}
-                                    alt={`Thumbnail ${i + 1}`}
-                                    className="h-full w-full object-cover"
-                                />
+                                <img src={url} alt={`Thumbnail ${i + 1}`} className="h-full w-full object-cover" />
                             </button>
                         ))}
                     </div>
                 )}
             </div>
 
-            {/* "See more on Google" link */}
             <div className="mt-4 flex justify-center">
-                <a
-                    href="https://maps.google.com/?q=De+Tafelaar+Kamp+8+Amersfoort"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground/60 transition-colors hover:text-primary"
-                >
-                    <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" />
-                    </svg>
+                <a href="https://maps.google.com/?q=De+Tafelaar+Kamp+8+Amersfoort" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground/60 transition-colors hover:text-primary">
+                    <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" /></svg>
                     Meer foto&apos;s op Google
                 </a>
             </div>
