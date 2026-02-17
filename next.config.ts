@@ -29,6 +29,24 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'picsum.photos',
       },
+      // Instagram CDN
+      {
+        protocol: 'https',
+        hostname: '*.cdninstagram.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'scontent.*.fbcdn.net',
+      },
+      // Behold.so CDN (Instagram feed images)
+      {
+        protocol: 'https',
+        hostname: 'behold.pictures',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn2.behold.pictures',
+      },
     ],
   },
 };

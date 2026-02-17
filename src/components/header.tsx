@@ -103,12 +103,12 @@ export function Header() {
                 className={cn(
                   "relative text-[15px] font-medium transition-colors rounded-md",
                   focusRing,
-                  isActive ? "text-primary" : "text-muted-foreground",
-                  // underline indicator
-                  "after:absolute after:inset-x-0 after:-bottom-1.5 after:h-0.5 after:rounded-full",
+                  isActive ? "text-primary" : "text-muted-foreground hover:text-primary",
+                  // underline indicator with slide-in animation
+                  "after:absolute after:inset-x-0 after:-bottom-1.5 after:h-0.5 after:rounded-full after:transition-transform after:duration-300 after:origin-center",
                   isActive
-                    ? "after:bg-primary"
-                    : "after:bg-transparent hover:text-primary"
+                    ? "after:bg-primary after:scale-x-100"
+                    : "after:bg-primary after:scale-x-0 hover:after:scale-x-100"
                 )}
               >
                 {link.label}
