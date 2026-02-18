@@ -19,36 +19,41 @@ export function FrontPageGrid({
     pressItems,
 }: FrontPageGridProps) {
     return (
-        <section className="container mx-auto px-4 py-8 sm:px-6 sm:py-12 md:px-8">
+        <section className="container mx-auto px-4 py-6 sm:px-6 sm:py-10 md:px-8">
             {/* Section divider */}
-            <div className="mb-6 flex items-center gap-4">
+            <div className="mb-5 flex items-center gap-4">
                 <div className="h-px flex-1 bg-border" />
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
                     Vandaag op de voorpagina
                 </span>
                 <div className="h-px flex-1 bg-border" />
             </div>
 
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-12 lg:gap-0">
-                {/* Left: Story Column (5 cols) */}
-                <div className="lg:col-span-5 lg:pr-6">
+            <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8">
+                {/* Left zone: Stories + Instagram (8 cols) */}
+                <div className="lg:col-span-8">
                     <StoryColumn stories={stories} />
+
+                    {/* Instagram below stories */}
+                    {instagramPosts.length > 0 && (
+                        <div className="mt-6 border-t border-border/40 pt-6">
+                            <InstagramLivingGallery posts={instagramPosts} />
+                        </div>
+                    )}
                 </div>
 
-                {/* Middle: Instagram Gallery (4 cols) */}
-                <div className="lg:col-span-4 lg:border-l lg:border-border/40 lg:px-6">
-                    <InstagramLivingGallery posts={instagramPosts} />
-                </div>
-
-                {/* Right: Live Rail (3 cols) */}
-                <div className="lg:col-span-3 lg:border-l lg:border-border/40 lg:pl-6">
-                    <LiveRail
-                        settings={settings}
-                        reviews={reviews}
-                        pressItems={pressItems}
-                    />
-                </div>
+                {/* Right sidebar: Live Rail (4 cols) */}
+                <aside className="lg:col-span-4 lg:border-l lg:border-border/40 lg:pl-6">
+                    <div className="sticky top-4">
+                        <LiveRail
+                            settings={settings}
+                            reviews={reviews}
+                            pressItems={pressItems}
+                        />
+                    </div>
+                </aside>
             </div>
         </section>
     );
 }
+
