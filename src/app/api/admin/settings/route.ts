@@ -8,8 +8,13 @@ export async function GET(request: Request) {
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const settings = await prisma.settings.findFirst({ where: { id: "singleton" } });
-    return NextResponse.json(settings || { id: "singleton", tonightStatus: "OPEN", tonightNote: "", ownerReplyMessage: "", googleRating: 0, googleReviewCount: 0 });
+    try {
+        const settings = await prisma.settings.findFirst({ where: { id: "singleton" } });
+        return NextResponse.json(settings || { id: "singleton", tonightStatus: "OPEN", tonightNote: "", ownerReplyMessage: "", googleRating: 0, googleReviewCount: 0 });
+    } catch (err) {
+        console.error("Settings GET failed:", err);
+        return NextResponse.json({ error: "Failed to fetch settings", details: String(err) }, { status: 500 });
+    }
 }
 
 // PUT update settings
