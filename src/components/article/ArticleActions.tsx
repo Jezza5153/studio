@@ -1,12 +1,29 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect } from "react";
+import { trackEvent } from "@/lib/analytics";
 
 interface ArticleActionsProps {
     nextStory?: { slug: string; title: string } | null;
 }
 
 export function ArticleActions({ nextStory }: ArticleActionsProps) {
+    // Prefetch next article during idle time for instant navigation
+    useEffect(() => {
+        if (!nextStory) return;
+        const url = `/updates/${nextStory.slug}`;
+        if ("requestIdleCallback" in window) {
+            const id = requestIdleCallback(() => {
+                const link = document.createElement("link");
+                link.rel = "prefetch";
+                link.href = url;
+                document.head.appendChild(link);
+            });
+            return () => cancelIdleCallback(id);
+        }
+    }, [nextStory]);
+
     return (
         <div className="mt-12 pt-8 border-t border-border/40">
             <h3 className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/60 mb-4">
@@ -15,7 +32,10 @@ export function ArticleActions({ nextStory }: ArticleActionsProps) {
             <div className="grid gap-3 sm:grid-cols-3">
                 {/* Reserveer */}
                 <button
-                    onClick={() => window.eventsOpen?.()}
+                    onClick={() => {
+                        trackEvent("reserveer_click", { source: "article_bottom" });
+                        window.eventsOpen?.();
+                    }}
                     className="group rounded-xl border border-primary/30 bg-primary/5 p-4 text-left transition-all duration-150 hover:bg-primary/10"
                 >
                     <span className="text-lg">🍽️</span>
