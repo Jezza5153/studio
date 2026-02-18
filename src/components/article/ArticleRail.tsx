@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import type { ArticleSection } from "@/lib/article-utils";
+import { trackEvent } from "@/lib/analytics";
 
 interface RelatedStory {
     slug: string;
@@ -106,7 +107,10 @@ export function ArticleRail({ sections, relatedStories, latestStories = [], prev
         <div className="space-y-5">
             {/* Reserveer CTA */}
             <button
-                onClick={() => window.eventsOpen?.()}
+                onClick={() => {
+                    trackEvent("reserveer_click", { source: "article_rail" });
+                    window.eventsOpen?.();
+                }}
                 className="w-full rounded-xl border border-primary/30 bg-primary/5 py-3 text-center text-sm font-semibold text-primary transition-all duration-150 hover:bg-primary/10 active:scale-[0.98]"
             >
                 Reserveer
