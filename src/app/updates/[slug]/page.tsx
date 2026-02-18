@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getStoryBySlug, getRelatedStories, getAdjacentStories, parseMedia } from "@/lib/queries/feed";
+import { getStoryBySlug, getRelatedStories, getAdjacentStories, getLatestStories, parseMedia } from "@/lib/queries/feed";
 import { parseArticleSections } from "@/lib/article-utils";
-import { TYPE_LABELS, CATEGORY_LABELS } from "@/lib/constants";
+import { CATEGORY_LABELS } from "@/lib/constants";
 import { ArticleHero } from "@/components/article/ArticleHero";
 import { ArticleMetaBar } from "@/components/article/ArticleMetaBar";
 import { ArticleBody } from "@/components/article/ArticleBody";
 import { ArticleRail } from "@/components/article/ArticleRail";
+import { ArticleActions } from "@/components/article/ArticleActions";
 import { ReadingProgress } from "@/components/article/ReadingProgress";
 
 interface PageProps {
@@ -21,22 +22,26 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
     const media = parseMedia(story.media as string | null);
     const ogImage = media[0]?.url || "/pics/homepage.png";
+    const description = story.body?.slice(0, 160).replace(/\n/g, " ").trim() || "Lees meer op De Tafelaar Courant.";
+    const canonicalUrl = `https://detafelaar.nl/updates/${slug}`;
 
     return {
         title: `${story.title} | De Tafelaar Courant`,
-        description: story.body?.slice(0, 160) || "Lees meer op De Tafelaar Courant.",
+        description,
+        alternates: { canonical: canonicalUrl },
         openGraph: {
             title: story.title,
-            description: story.body?.slice(0, 160) || "",
+            description,
             images: [{ url: ogImage }],
             type: "article",
             publishedTime: story.publishedAt.toISOString(),
-            authors: story.authorName ? [story.authorName] : undefined,
+            authors: story.authorName ? [story.authorName] : ["De Tafelaar"],
+            url: canonicalUrl,
         },
         twitter: {
             card: "summary_large_image",
             title: story.title,
-            description: story.body?.slice(0, 160) || "",
+            description,
             images: [ogImage],
         },
     };
@@ -52,28 +57,79 @@ export default async function StoryPage({ params }: PageProps) {
     const article = parseArticleSections(story.body);
     const isReview = story.type === "GOOGLE_REVIEW";
     const rating = story.rating || 5;
+    const categoryLabel = CATEGORY_LABELS[story.category] || story.category;
 
-    // Fetch related + adjacent stories in parallel
-    const [relatedStories, { prev: prevStory, next: nextStory }] = await Promise.all([
+    // Fetch related + adjacent + fallback latest in parallel
+    const [relatedStories, { prev: prevStory, next: nextStory }, latestStories] = await Promise.all([
         getRelatedStories(story.category, story.slug, 3),
         getAdjacentStories(story.publishedAt, story.slug),
+        getLatestStories(undefined, 3),
     ]);
 
-    // Serialize dates for client components
-    const relatedForClient = relatedStories.map(s => ({
-        slug: s.slug,
-        title: s.title,
-        media: s.media as string | null,
-        publishedAt: s.publishedAt.toISOString(),
-    }));
+    // Serialize for client components
+    const serializeStories = (items: typeof relatedStories) =>
+        items.map(s => ({
+            slug: s.slug,
+            title: s.title,
+            media: (s as { media?: string | null }).media as string | null ?? null,
+            publishedAt: s.publishedAt.toISOString(),
+        }));
+
+    const relatedForClient = serializeStories(relatedStories);
+    const latestForClient = serializeStories(
+        latestStories.filter(s => s.slug !== story.slug).slice(0, 3)
+    );
+
+    // Hero caption
+    const heroCaption = media.length > 0 ? `${categoryLabel} · ${story.publishedAt.toLocaleDateString("nl-NL", { day: "numeric", month: "long", year: "numeric" })}` : undefined;
+
+    // JSON-LD: Article + BreadcrumbList
+    const ogImage = media[0]?.url || "/pics/homepage.png";
+    const canonicalUrl = `https://detafelaar.nl/updates/${slug}`;
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "NewsArticle",
+                headline: story.title,
+                description: story.body?.slice(0, 160).replace(/\n/g, " ").trim() || "",
+                image: ogImage,
+                datePublished: story.publishedAt.toISOString(),
+                author: {
+                    "@type": "Organization",
+                    name: story.authorName || "De Tafelaar",
+                },
+                publisher: {
+                    "@type": "Organization",
+                    name: "De Tafelaar",
+                    url: "https://detafelaar.nl",
+                },
+                mainEntityOfPage: canonicalUrl,
+            },
+            {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                    { "@type": "ListItem", position: 1, name: "Home", item: "https://detafelaar.nl" },
+                    { "@type": "ListItem", position: 2, name: "Courant", item: "https://detafelaar.nl/updates" },
+                    { "@type": "ListItem", position: 3, name: story.title },
+                ],
+            },
+        ],
+    };
 
     return (
         <>
             <ReadingProgress />
 
+            {/* JSON-LD structured data */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+
             <article className="pb-12">
                 {/* Hero */}
-                <ArticleHero title={story.title} media={media} />
+                <ArticleHero title={story.title} media={media} caption={heroCaption} />
 
                 {/* Content area: 8+4 grid */}
                 <div className="container mx-auto max-w-6xl px-4 sm:px-6">
@@ -134,18 +190,21 @@ export default async function StoryPage({ params }: PageProps) {
                                             href={story.sourceUrl}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="inline-flex items-center gap-2 rounded-lg bg-foreground/5 px-4 py-2 text-sm font-medium text-foreground transition hover:bg-foreground/10"
+                                            className="inline-flex items-center gap-2 rounded-lg bg-foreground/5 px-4 py-2 text-sm font-medium text-foreground transition-colors duration-150 hover:bg-foreground/10"
                                         >
                                             Bekijk origineel →
                                         </a>
                                     </div>
                                 )}
 
+                                {/* ────── P1: Bottom-of-article "Next actions" ────── */}
+                                <ArticleActions nextStory={nextStory} />
+
                                 {/* Back link */}
-                                <div className="mt-8 pt-6 border-t border-border/40">
+                                <div className="mt-6 pt-4 border-t border-border/20">
                                     <Link
                                         href="/updates"
-                                        className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                                        className="text-sm text-muted-foreground hover:text-primary transition-colors duration-150"
                                     >
                                         ← Terug naar alle updates
                                     </Link>
@@ -158,6 +217,7 @@ export default async function StoryPage({ params }: PageProps) {
                                     <ArticleRail
                                         sections={article.sections}
                                         relatedStories={relatedForClient}
+                                        latestStories={latestForClient}
                                         prevStory={prevStory}
                                         nextStory={nextStory}
                                     />

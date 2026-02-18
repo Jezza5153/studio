@@ -16,7 +16,6 @@ function InkReveal({ children, className }: { children: React.ReactNode; classNa
         const el = ref.current;
         if (!el) return;
 
-        // Respect prefers-reduced-motion
         const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
         if (mq.matches) {
             setVisible(true);
@@ -37,8 +36,8 @@ function InkReveal({ children, className }: { children: React.ReactNode; classNa
             className={className}
             style={{
                 opacity: visible ? 1 : 0,
-                transform: visible ? "translateY(0)" : "translateY(8px)",
-                transition: "opacity 250ms ease, transform 250ms ease",
+                transform: visible ? "translateY(0)" : "translateY(6px)",
+                transition: "opacity 280ms ease, transform 280ms ease",
             }}
         >
             {children}
@@ -49,7 +48,7 @@ function InkReveal({ children, className }: { children: React.ReactNode; classNa
 export function ArticleBody({ article }: ArticleBodyProps) {
     const { intro, sections, pullQuote } = article;
 
-    // Calculate where to insert the pull quote (~30% through sections)
+    // Insert pull quote ~30% through (only if enough sections)
     const pullQuoteIndex = sections.length >= 3
         ? Math.floor(sections.length * 0.3)
         : -1;
@@ -74,7 +73,7 @@ export function ArticleBody({ article }: ArticleBodyProps) {
                         </blockquote>
                     )}
 
-                    {/* Section heading */}
+                    {/* Section heading with ink reveal */}
                     {section.title && (
                         <InkReveal className="mt-8 mb-3">
                             <h2 className="font-headline text-xl font-bold text-foreground">
@@ -83,13 +82,13 @@ export function ArticleBody({ article }: ArticleBodyProps) {
                         </InkReveal>
                     )}
 
-                    {/* Q&A block */}
+                    {/* Q&A block — lighter style: left border, no card */}
                     {section.isQA ? (
-                        <div className="my-4 rounded-lg bg-foreground/[0.03] p-4">
-                            <p className="text-sm font-semibold text-foreground leading-relaxed">
+                        <div className="my-5 border-l-2 border-foreground/10 pl-5 py-1">
+                            <p className="text-[15px] font-semibold text-foreground/90 leading-relaxed">
                                 {section.question}
                             </p>
-                            <p className="mt-2 text-sm leading-relaxed text-foreground/80">
+                            <p className="mt-2 text-[15px] leading-[1.75] text-foreground/75">
                                 {section.answer}
                             </p>
                         </div>
@@ -102,7 +101,7 @@ export function ArticleBody({ article }: ArticleBodyProps) {
                 </div>
             ))}
 
-            {/* If no pull quote was inserted inline, and we have one, show it at the end */}
+            {/* Tail-end pull quote */}
             {pullQuoteIndex === -1 && pullQuote && sections.length > 0 && (
                 <blockquote className="my-8 border-l-4 border-primary/60 pl-6 py-2">
                     <p className="text-xl font-headline italic leading-relaxed text-foreground/80">
