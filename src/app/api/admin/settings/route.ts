@@ -4,11 +4,11 @@ import { isAuthorized } from "@/lib/admin-auth";
 
 // GET settings
 export async function GET(request: Request) {
-    if (!isAuthorized(request)) {
-        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
-
     try {
+        if (!isAuthorized(request)) {
+            return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+        }
+
         const settings = await prisma.settings.findFirst({ where: { id: "singleton" } });
         return NextResponse.json(settings || { id: "singleton", tonightStatus: "OPEN", tonightNote: "", ownerReplyMessage: "", googleRating: 0, googleReviewCount: 0 });
     } catch (err) {
@@ -19,13 +19,13 @@ export async function GET(request: Request) {
 
 // PUT update settings
 export async function PUT(request: Request) {
-    if (!isAuthorized(request)) {
-        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
-
-    const body = await request.json();
-
     try {
+        if (!isAuthorized(request)) {
+            return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+        }
+
+        const body = await request.json();
+
         const settings = await prisma.settings.upsert({
             where: { id: "singleton" },
             create: {
@@ -43,6 +43,6 @@ export async function PUT(request: Request) {
         return NextResponse.json(settings);
     } catch (err) {
         console.error("Settings update failed:", err);
-        return NextResponse.json({ error: "Update failed" }, { status: 500 });
+        return NextResponse.json({ error: "Update failed", details: String(err) }, { status: 500 });
     }
 }
