@@ -15,9 +15,11 @@ interface MediaItem {
 interface ArticleHeroProps {
     title: string;
     media: MediaItem[];
+    /** Optional caption line under the hero */
+    caption?: string;
 }
 
-/** Lightbox modal */
+/** Lightbox modal — loaded inline (component is tiny) */
 function Lightbox({
     media,
     initialIndex,
@@ -42,15 +44,13 @@ function Lightbox({
                 className="relative max-h-[90vh] max-w-[90vw]"
                 onClick={(e) => e.stopPropagation()}
             >
-                {/* Close */}
                 <button
                     onClick={onClose}
-                    className="absolute -top-10 right-0 text-white/70 hover:text-white text-sm font-medium transition-colors"
+                    className="absolute -top-10 right-0 text-white/70 hover:text-white text-sm font-medium transition-colors duration-150"
                 >
                     Sluiten ✕
                 </button>
 
-                {/* Image */}
                 {current.kind === "video" && current.videoUrl ? (
                     <video
                         src={current.videoUrl}
@@ -69,18 +69,17 @@ function Lightbox({
                     />
                 )}
 
-                {/* Navigation */}
                 {media.length > 1 && (
                     <>
                         <button
                             onClick={prev}
-                            className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white backdrop-blur-sm transition-all hover:bg-white/20"
+                            className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white backdrop-blur-sm transition-all duration-150 hover:bg-white/20"
                         >
                             ←
                         </button>
                         <button
                             onClick={next}
-                            className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white backdrop-blur-sm transition-all hover:bg-white/20"
+                            className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white backdrop-blur-sm transition-all duration-150 hover:bg-white/20"
                         >
                             →
                         </button>
@@ -94,70 +93,97 @@ function Lightbox({
     );
 }
 
-export function ArticleHero({ title, media }: ArticleHeroProps) {
+export function ArticleHero({ title, media, caption }: ArticleHeroProps) {
     const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-    const hasGallery = media.length > 1;
     const heroImage = media[0];
+    const hasMultiple = media.length > 1;
 
     const openLightbox = useCallback((idx: number) => {
-        // Respect reduced motion — skip animation but still open
         setLightboxIndex(idx);
     }, []);
 
+    // No images — clean gradient placeholder
     if (!heroImage) {
         return (
-            <div className="relative h-[35svh] min-h-[250px] max-h-[400px] w-full bg-gradient-to-br from-primary/10 to-accent/10" />
+            <div className="relative h-[25svh] min-h-[180px] max-h-[300px] w-full bg-gradient-to-br from-primary/10 to-accent/10" />
         );
     }
 
     return (
         <>
-            <div className="group relative h-[35svh] min-h-[250px] max-h-[400px] w-full overflow-hidden">
-                {/* Main hero image */}
-                <Image
-                    src={heroImage.url}
-                    alt={title}
-                    fill
-                    priority
-                    sizes="100vw"
-                    className="object-cover object-[center_60%] transition-transform duration-700 group-hover:scale-[1.02]"
-                />
+            <div className="group relative w-full overflow-hidden">
+                {/* Single image vs multi: different aspect ratios */}
+                <div className={`relative w-full ${hasMultiple ? "h-[35svh] min-h-[250px] max-h-[400px]" : "h-[30svh] min-h-[220px] max-h-[360px]"}`}>
+                    <Image
+                        src={heroImage.url}
+                        alt={title}
+                        fill
+                        priority
+                        sizes="100vw"
+                        className="object-cover object-[center_60%] transition-transform duration-700 group-hover:scale-[1.02]"
+                    />
 
-                {/* Dark gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-black/30 to-black/10" />
+                    {/* Dark gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-black/30 to-black/10" />
 
-                {/* Gallery button */}
-                {hasGallery && (
-                    <button
-                        onClick={() => openLightbox(0)}
-                        className="absolute bottom-4 right-4 z-10 inline-flex items-center gap-2 rounded-lg bg-black/50 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-sm transition-all hover:bg-black/70 active:scale-95"
-                    >
-                        <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                        Bekijk foto&apos;s ({media.length})
-                    </button>
-                )}
-
-                {/* Collage grid for multi-image (show 2-3 thumbnails) */}
-                {media.length >= 3 && (
-                    <div className="absolute bottom-4 left-4 z-10 flex gap-1.5">
-                        {media.slice(1, 4).map((img, i) => (
+                    {/* Gallery controls — only for multi-image */}
+                    {hasMultiple && (
+                        <>
+                            {/* Photo count badge + button — grouped bottom-right */}
                             <button
-                                key={i}
-                                onClick={() => openLightbox(i + 1)}
-                                className="relative h-12 w-12 overflow-hidden rounded-md border-2 border-white/30 transition-all hover:border-white/60 hover:scale-105 active:scale-95"
+                                onClick={() => openLightbox(0)}
+                                className="absolute bottom-4 right-4 z-10 inline-flex items-center gap-2 rounded-lg bg-black/50 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-sm transition-all duration-150 hover:bg-black/70 active:scale-95"
                             >
-                                <Image
-                                    src={img.url}
-                                    alt={`Foto ${i + 2}`}
-                                    fill
-                                    sizes="48px"
-                                    className="object-cover"
-                                />
+                                <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                                {media.length} foto&apos;s
                             </button>
-                        ))}
-                    </div>
+
+                            {/* Thumbnail strip — left side, only when 3+ images */}
+                            {media.length >= 3 && (
+                                <div className="absolute bottom-4 left-4 z-10 flex gap-1.5">
+                                    {media.slice(1, 4).map((img, i) => (
+                                        <button
+                                            key={i}
+                                            onClick={() => openLightbox(i + 1)}
+                                            className="relative h-12 w-12 overflow-hidden rounded-md border-2 border-white/30 transition-all duration-150 hover:border-white/60 hover:scale-105 active:scale-95"
+                                        >
+                                            <Image
+                                                src={img.url}
+                                                alt={`Foto ${i + 2}`}
+                                                fill
+                                                sizes="48px"
+                                                className="object-cover"
+                                            />
+                                            {/* Photo count badge on last thumbnail */}
+                                            {i === Math.min(2, media.length - 2) && media.length > 4 && (
+                                                <div className="absolute inset-0 flex items-center justify-center bg-black/50 text-[10px] font-bold text-white">
+                                                    +{media.length - 4}
+                                                </div>
+                                            )}
+                                        </button>
+                                    ))}
+                                </div>
+                            )}
+                        </>
+                    )}
+
+                    {/* Single image: clickable, no collage */}
+                    {!hasMultiple && (
+                        <button
+                            onClick={() => openLightbox(0)}
+                            className="absolute inset-0 z-10 cursor-zoom-in"
+                            aria-label="Vergroot afbeelding"
+                        />
+                    )}
+                </div>
+
+                {/* Caption */}
+                {caption && (
+                    <p className="container mx-auto max-w-6xl px-4 sm:px-6 mt-2 text-[11px] text-muted-foreground/60 italic">
+                        {caption}
+                    </p>
                 )}
             </div>
 
