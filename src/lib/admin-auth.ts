@@ -1,8 +1,8 @@
 // src/lib/admin-auth.ts
 // Shared admin authentication — validates Basic Auth credentials
 
-const ADMIN_USER = process.env.ADMIN_USER || "Tafelaar1991";
-const ADMIN_PASS = process.env.ADMIN_PASS || "Kamp8tafelaar!";
+const ADMIN_USER = (process.env.ADMIN_USER || "Tafelaar1991").trim();
+const ADMIN_PASS = (process.env.ADMIN_PASS || "Kamp8tafelaar!").trim();
 
 /**
  * Checks the Authorization header for valid admin credentials.
