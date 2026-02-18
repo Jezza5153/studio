@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import type { ArticleSection } from "@/lib/article-utils";
@@ -15,6 +15,8 @@ interface RelatedStory {
 interface ArticleRailProps {
     sections: ArticleSection[];
     relatedStories: RelatedStory[];
+    /** Fallback stories when relatedStories is empty */
+    latestStories?: RelatedStory[];
     prevStory?: { slug: string; title: string } | null;
     nextStory?: { slug: string; title: string } | null;
 }
@@ -29,13 +31,44 @@ function getThumb(media: string | null): string | null {
     }
 }
 
-export function ArticleRail({ sections, relatedStories, prevStory, nextStory }: ArticleRailProps) {
+/** Small story card with optional thumbnail */
+function StoryCard({ story }: { story: RelatedStory }) {
+    const thumb = getThumb(story.media);
+    return (
+        <Link
+            href={`/updates/${story.slug}`}
+            className="group flex gap-3 rounded-lg p-2 transition-all duration-150 hover:bg-foreground/5"
+        >
+            {thumb && (
+                <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-md">
+                    <Image
+                        src={thumb}
+                        alt={story.title}
+                        fill
+                        sizes="48px"
+                        className="object-cover"
+                    />
+                </div>
+            )}
+            <span className="text-xs font-medium leading-tight text-foreground line-clamp-2 group-hover:text-primary transition-colors duration-150">
+                {story.title}
+            </span>
+        </Link>
+    );
+}
+
+export function ArticleRail({ sections, relatedStories, latestStories = [], prevStory, nextStory }: ArticleRailProps) {
     const [activeSection, setActiveSection] = useState<string | null>(null);
     const [showBackToTop, setShowBackToTop] = useState(false);
-    const hasTOC = sections.filter(s => s.title).length >= 3;
-    const tocSections = sections.filter(s => s.title);
 
-    // IntersectionObserver for TOC highlighting + back-to-top
+    // Only show TOC if 3+ titled sections
+    const tocSections = sections.filter(s => s.title);
+    const hasTOC = tocSections.length >= 3;
+
+    // Never-empty editorial stories: prefer related, fallback to latest
+    const editorialStories = relatedStories.length > 0 ? relatedStories : latestStories;
+    const editorialLabel = relatedStories.length > 0 ? "Gerelateerd" : "Meer uit de Courant";
+
     useEffect(() => {
         if (typeof window === "undefined") return;
 
@@ -58,7 +91,6 @@ export function ArticleRail({ sections, relatedStories, prevStory, nextStory }: 
 
         sectionEls.forEach(el => observer.observe(el));
 
-        // Back-to-top: show when scrolled past intro
         const handleScroll = () => {
             setShowBackToTop(window.scrollY > 600);
         };
@@ -71,16 +103,16 @@ export function ArticleRail({ sections, relatedStories, prevStory, nextStory }: 
     }, [sections]);
 
     return (
-        <div className="space-y-6">
+        <div className="space-y-5">
             {/* Reserveer CTA */}
             <button
                 onClick={() => window.eventsOpen?.()}
-                className="w-full rounded-xl border border-primary/30 bg-primary/5 py-3 text-center text-sm font-semibold text-primary transition-all hover:bg-primary/10 active:scale-[0.98]"
+                className="w-full rounded-xl border border-primary/30 bg-primary/5 py-3 text-center text-sm font-semibold text-primary transition-all duration-150 hover:bg-primary/10 active:scale-[0.98]"
             >
                 Reserveer
             </button>
 
-            {/* Table of Contents */}
+            {/* Table of Contents — only with 3+ titled sections */}
             {hasTOC && (
                 <div className="rounded-xl border border-border/50 bg-foreground/[0.02] p-4">
                     <h4 className="mb-3 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/60">
@@ -91,9 +123,9 @@ export function ArticleRail({ sections, relatedStories, prevStory, nextStory }: 
                             <a
                                 key={section.id}
                                 href={`#${section.id}`}
-                                className={`block rounded-md px-2 py-1 text-xs font-medium transition-all ${activeSection === section.id
-                                        ? "bg-primary/10 text-primary"
-                                        : "text-muted-foreground hover:text-foreground hover:bg-foreground/5"
+                                className={`block rounded-md px-2 py-1 text-xs font-medium transition-all duration-150 ${activeSection === section.id
+                                    ? "bg-primary/10 text-primary"
+                                    : "text-muted-foreground hover:text-foreground hover:bg-foreground/5"
                                     }`}
                                 onClick={(e) => {
                                     e.preventDefault();
@@ -111,55 +143,33 @@ export function ArticleRail({ sections, relatedStories, prevStory, nextStory }: 
             {showBackToTop && (
                 <button
                     onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                    className="w-full rounded-lg border border-border/40 py-2 text-xs font-medium text-muted-foreground transition-all hover:bg-foreground/5 hover:text-foreground"
+                    className="w-full rounded-lg border border-border/40 py-2 text-xs font-medium text-muted-foreground transition-all duration-150 hover:bg-foreground/5 hover:text-foreground"
                 >
                     ↑ Terug naar boven
                 </button>
             )}
 
-            {/* Related stories */}
-            {relatedStories.length > 0 && (
-                <div>
+            {/* Editorial stories — NEVER empty (related → fallback latest) */}
+            {editorialStories.length > 0 && (
+                <div className="border-t border-border/30 pt-4">
                     <h4 className="mb-3 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/60">
-                        Gerelateerd
+                        {editorialLabel}
                     </h4>
-                    <div className="space-y-2">
-                        {relatedStories.map((story) => {
-                            const thumb = getThumb(story.media);
-                            return (
-                                <Link
-                                    key={story.slug}
-                                    href={`/updates/${story.slug}`}
-                                    className="group flex gap-3 rounded-lg p-2 transition-all hover:bg-foreground/5"
-                                >
-                                    {thumb && (
-                                        <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-md">
-                                            <Image
-                                                src={thumb}
-                                                alt={story.title}
-                                                fill
-                                                sizes="48px"
-                                                className="object-cover"
-                                            />
-                                        </div>
-                                    )}
-                                    <span className="text-xs font-medium leading-tight text-foreground line-clamp-2 group-hover:text-primary transition-colors">
-                                        {story.title}
-                                    </span>
-                                </Link>
-                            );
-                        })}
+                    <div className="space-y-1">
+                        {editorialStories.map((story) => (
+                            <StoryCard key={story.slug} story={story} />
+                        ))}
                     </div>
                 </div>
             )}
 
             {/* Prev / Next navigation */}
             {(prevStory || nextStory) && (
-                <div className="space-y-2 border-t border-border/40 pt-4">
+                <div className="space-y-2 border-t border-border/30 pt-4">
                     {prevStory && (
                         <Link
                             href={`/updates/${prevStory.slug}`}
-                            className="block rounded-lg p-2 text-xs text-muted-foreground transition-all hover:bg-foreground/5 hover:text-foreground"
+                            className="block rounded-lg p-2 text-xs text-muted-foreground transition-all duration-150 hover:bg-foreground/5 hover:text-foreground"
                         >
                             <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/50">← Vorig</span>
                             <span className="mt-0.5 block font-medium line-clamp-1">{prevStory.title}</span>
@@ -168,7 +178,7 @@ export function ArticleRail({ sections, relatedStories, prevStory, nextStory }: 
                     {nextStory && (
                         <Link
                             href={`/updates/${nextStory.slug}`}
-                            className="block rounded-lg p-2 text-xs text-muted-foreground transition-all hover:bg-foreground/5 hover:text-foreground"
+                            className="block rounded-lg p-2 text-xs text-muted-foreground transition-all duration-150 hover:bg-foreground/5 hover:text-foreground"
                         >
                             <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/50">Volgend →</span>
                             <span className="mt-0.5 block font-medium line-clamp-1">{nextStory.title}</span>
