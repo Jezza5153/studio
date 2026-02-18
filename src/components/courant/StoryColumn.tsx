@@ -53,7 +53,7 @@ function StoryCard({ item, index }: { item: FeedItem; index: number }) {
                         {item.title}
                     </h3>
                     {item.body && (
-                        <p className="mt-1 text-xs text-muted-foreground line-clamp-2">
+                        <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground/60 line-clamp-1">
                             {item.body}
                         </p>
                     )}

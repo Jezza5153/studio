@@ -19,10 +19,10 @@ export const CATEGORY_LABELS: Record<string, string> = {
 // ─── Category Color Coding ───
 export const CATEGORY_COLORS: Record<string, { text: string; bg: string; pill: string }> = {
     vanavond: { text: "text-rose-600", bg: "bg-rose-500/10", pill: "bg-rose-500/90" },
-    events: { text: "text-indigo-600", bg: "bg-indigo-500/10", pill: "bg-indigo-500/90" },
-    nieuwe_kaart: { text: "text-emerald-600", bg: "bg-emerald-500/10", pill: "bg-emerald-500/90" },
+    events: { text: "text-primary", bg: "bg-primary/10", pill: "bg-primary/90" },
+    nieuwe_kaart: { text: "text-amber-600", bg: "bg-amber-500/10", pill: "bg-amber-500/90" },
     krant: { text: "text-sky-600", bg: "bg-sky-500/10", pill: "bg-sky-500/90" },
-    behind: { text: "text-amber-600", bg: "bg-amber-500/10", pill: "bg-amber-500/90" },
+    behind: { text: "text-violet-600", bg: "bg-violet-500/10", pill: "bg-violet-500/90" },
     algemeen: { text: "text-slate-600", bg: "bg-slate-500/10", pill: "bg-slate-500/90" },
 };
 

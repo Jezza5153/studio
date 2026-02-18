@@ -18,8 +18,8 @@ export function LeadStoryHero({ story }: LeadStoryHeroProps) {
 
     return (
         <section className="relative overflow-hidden bg-foreground/5">
-            {/* Hero image with Ken Burns */}
-            <div className="relative h-[50vh] min-h-[400px] w-full sm:h-[60vh] md:h-[65vh]">
+            {/* Hero image — capped at 60svh so feed peeks into first viewport */}
+            <div className="relative h-[45svh] min-h-[320px] max-h-[520px] w-full sm:h-[50svh] md:h-[55svh]">
                 {heroImage ? (
                     <Image
                         src={heroImage.url}
@@ -91,6 +91,9 @@ export function LeadStoryHero({ story }: LeadStoryHeroProps) {
                     </motion.div>
                 </div>
             </div>
+
+            {/* Bottom fade — teases content below */}
+            <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-background to-transparent" />
         </section>
     );
 }
