@@ -41,6 +41,18 @@ body {
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* ── Brand semantic aliases ── */
+    --brand-primary: 29 39% 53%;
+    /* bronze/brown */
+    --brand-secondary: 215 25% 27%;
+    /* ink/charcoal */
+    --surface-paper: 60 33% 98%;
+    /* paper bg */
+    --accent-success: 145 50% 44%;
+    /* green — availability only */
+    --shadow-card: 0 2px 8px hsl(215 25% 27% / 0.06);
+    --shadow-card-hover: 0 6px 20px hsl(215 25% 27% / 0.12);
   }
 
   .dark {
@@ -76,6 +88,50 @@ body {
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --accent-success: 145 50% 38%;
+    --shadow-card: 0 2px 8px hsl(0 0% 0% / 0.2);
+    --shadow-card-hover: 0 6px 20px hsl(0 0% 0% / 0.35);
+  }
+}
+
+/* ── Button variant system ── */
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold tracking-wide transition-all duration-200 ease-out;
+    background: hsl(var(--brand-primary));
+    color: hsl(var(--primary-foreground));
+    box-shadow: var(--shadow-card);
+  }
+
+  .btn-primary:hover {
+    filter: brightness(1.08);
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-1px);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0);
+    filter: brightness(0.95);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3 text-sm font-semibold tracking-wide border transition-all duration-200 ease-out;
+    background: transparent;
+    color: hsl(var(--brand-secondary));
+    border-color: hsl(var(--brand-secondary) / 0.3);
+  }
+
+  .btn-secondary:hover {
+    background: hsl(var(--brand-secondary) / 0.06);
+    border-color: hsl(var(--brand-secondary) / 0.5);
+  }
+
+  .badge-success {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-widest;
+    background: hsl(var(--accent-success) / 0.12);
+    color: hsl(var(--accent-success));
+    border: 1px solid hsl(var(--accent-success) / 0.25);
   }
 }
 
@@ -89,6 +145,8 @@ body {
   }
 }
 
+/* ── Micro-interaction animations ── */
+
 /* Admin: toast slide-up animation */
 @keyframes slideUp {
   from {
@@ -100,4 +158,113 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Ink reveal: blur-to-sharp on load */
+@keyframes inkReveal {
+  from {
+    opacity: 0;
+    filter: blur(4px);
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+/* Paper breathing: ultra-subtle vertical drift */
+@keyframes paperBreathe {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-1.5px);
+  }
+}
+
+/* Section pulse: brief emphasis on scroll-in */
+@keyframes sectionPulse {
+  0% {
+    opacity: 0.6;
+    transform: translateY(8px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Utility classes for animations (motion-safe only) ── */
+@media (prefers-reduced-motion: no-preference) {
+  .ink-reveal {
+    animation: inkReveal 0.5s ease-out both;
+  }
+
+  .ink-reveal-delay-1 {
+    animation-delay: 60ms;
+  }
+
+  .ink-reveal-delay-2 {
+    animation-delay: 120ms;
+  }
+
+  .ink-reveal-delay-3 {
+    animation-delay: 180ms;
+  }
+
+  .ink-reveal-delay-4 {
+    animation-delay: 240ms;
+  }
+
+  .ink-reveal-delay-5 {
+    animation-delay: 300ms;
+  }
+
+  .card-hover {
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .ink-underline {
+    background-image: linear-gradient(hsl(var(--brand-secondary)), hsl(var(--brand-secondary)));
+    background-size: 0% 2px;
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    transition: background-size 0.3s ease;
+  }
+
+  .ink-underline:hover {
+    background-size: 100% 2px;
+  }
+
+  .paper-breathe {
+    animation: paperBreathe 12s ease-in-out infinite;
+  }
+
+  .section-enter {
+    animation: sectionPulse 0.4s ease-out both;
+  }
+}
+
+/* Paper grain texture overlay */
+.paper-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+  z-index: 1;
 }
