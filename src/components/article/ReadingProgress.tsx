@@ -35,9 +35,9 @@ export function ReadingProgress() {
 
     return (
         <div
-            // sits under sticky nav (top-16 = 64px = header height), brand bronze, 2px, no glow
-            className="fixed top-16 left-0 z-[55] h-[2px] bg-primary transition-[width] duration-120 ease-out"
-            style={{ width: `${progress}%` }}
+            // sits under sticky nav, uses CSS var for header height
+            className="fixed left-0 z-[55] h-[2px] bg-primary transition-[width] duration-120 ease-out"
+            style={{ width: `${progress}%`, top: 'var(--header-h, 4rem)' }}
             role="progressbar"
             aria-valuenow={Math.round(progress)}
             aria-valuemin={0}

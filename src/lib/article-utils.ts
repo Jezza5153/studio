@@ -4,9 +4,40 @@
  *
  * Guardrails:
  *   • Q&A only fires when 3+ consecutive question/answer pairs detected
- *   • Headings must be ALL-CAPS, 4-60 chars, no trailing punctuation
+ *   • Headings: HIGH (ALL-CAPS) + MEDIUM (Title Case) confidence
  *   • Pull quotes require 4+ sentences in body
  */
+
+/**
+ * Extract a clean meta description from article body.
+ * Trims to nearest sentence end within 140-180 chars.
+ * Falls back to last word boundary before 160.
+ */
+export function extractMetaDescription(body: string | null): string | null {
+    if (!body) return null;
+    const flat = body.replace(/\n+/g, " ").replace(/\s+/g, " ").trim();
+    if (!flat) return null;
+
+    // If the whole text fits in 180, use it
+    if (flat.length <= 180) return flat;
+
+    // Try to cut at a sentence boundary within 140-180 chars
+    const sentences = flat.match(/[^.!?]+[.!?]+/g);
+    if (sentences) {
+        let result = "";
+        for (const sentence of sentences) {
+            const next = result + sentence;
+            if (next.length > 180) break;
+            result = next;
+        }
+        if (result.length >= 80) return result.trim();
+    }
+
+    // Fallback: trim to last space before 160
+    const cut = flat.slice(0, 160);
+    const lastSpace = cut.lastIndexOf(" ");
+    return lastSpace > 100 ? cut.slice(0, lastSpace) + "…" : cut + "…";
+}
 
 export interface ArticleSection {
     id: string;
@@ -36,18 +67,47 @@ function isQuestion(line: string): boolean {
     return line.trim().endsWith("?");
 }
 
+const DUTCH_STOPWORDS = new Set([
+    "de", "het", "een", "en", "van", "in", "is", "op", "dat", "die",
+    "te", "aan", "met", "voor", "er", "om", "dan", "ook", "als", "maar",
+    "bij", "nog", "uit", "was", "wat", "naar", "over", "door",
+]);
+
 /**
  * Detect if a line looks like a section heading.
- * Strict rules: ALL-CAPS, 4-60 chars, no trailing period/question/comma.
+ * Two tiers:
+ *   HIGH confidence: ALL-CAPS, 4-60 chars, 2+ letters
+ *   MEDIUM confidence: Title-case-ish, 2+ words, 8-70 chars,
+ *     no trailing punctuation, ≤50% stopwords
  */
 function isHeading(line: string): boolean {
     const trimmed = line.trim();
-    if (trimmed.length < 4 || trimmed.length > 60) return false;
     if (/[.?!,;:]$/.test(trimmed)) return false;
-    // Must be ALL-CAPS (with allowed spaces/digits/hyphens)
-    if (trimmed !== trimmed.toUpperCase()) return false;
-    // Must contain at least 2 letters (avoid "123" or "--")
-    if ((trimmed.match(/[A-Z]/g) || []).length < 2) return false;
+
+    // HIGH: strict ALL-CAPS
+    if (
+        trimmed.length >= 4 &&
+        trimmed.length <= 60 &&
+        trimmed === trimmed.toUpperCase() &&
+        (trimmed.match(/[A-Z]/g) || []).length >= 2
+    ) {
+        return true;
+    }
+
+    // MEDIUM: Title-case paragraph header
+    const words = trimmed.split(/\s+/);
+    if (words.length < 2 || trimmed.length < 8 || trimmed.length > 70) return false;
+    // First word must start uppercase
+    if (!/^[A-Z\u00C0-\u00DC]/.test(words[0])) return false;
+    // Not too many stopwords (≤50%)
+    const stopCount = words.filter((w) => DUTCH_STOPWORDS.has(w.toLowerCase())).length;
+    if (stopCount / words.length > 0.5) return false;
+    // At least 2 capitalised words (ignoring stopwords)
+    const capWords = words.filter(
+        (w) => /^[A-Z\u00C0-\u00DC]/.test(w) && !DUTCH_STOPWORDS.has(w.toLowerCase())
+    ).length;
+    if (capWords < 2) return false;
+
     return true;
 }
 
