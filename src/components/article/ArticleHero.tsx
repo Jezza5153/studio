@@ -153,8 +153,11 @@ export function ArticleHero({ title, media, caption }: ArticleHeroProps) {
     return (
         <>
             <div className="group relative w-full overflow-hidden">
-                {/* Single image vs multi: different aspect ratios */}
-                <div className={`relative w-full ${hasMultiple ? "h-[35svh] min-h-[250px] max-h-[400px]" : "h-[30svh] min-h-[220px] max-h-[360px]"}`}>
+                {/* Single image vs multi: different aspect ratios — explicit ratio prevents CLS */}
+                <div
+                    className={`relative w-full ${hasMultiple ? "h-[35svh] min-h-[250px] max-h-[400px]" : "h-[30svh] min-h-[220px] max-h-[360px]"}`}
+                    style={{ aspectRatio: hasMultiple ? "16 / 7" : "16 / 9" }}
+                >
                     <Image
                         src={heroImage.url}
                         alt={title}
