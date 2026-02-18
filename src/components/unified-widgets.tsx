@@ -164,17 +164,20 @@ export default function UnifiedWidgets() {
                             onMouseEnter={() => setHoveredButton("reserve")}
                             onMouseLeave={() => setHoveredButton(null)}
                             style={{
-                                padding: "16px 22px",
-                                background: hoveredButton === "reserve" ? "#35b08c" : "#2D9B7A",
+                                padding: "14px 20px",
+                                background: hoveredButton === "reserve"
+                                    ? "hsl(28, 62%, 52%)"
+                                    : "hsl(28, 62%, 46%)",
                                 color: "#fff",
                                 border: "none",
-                                borderRadius: 14,
+                                borderRadius: 12,
                                 fontWeight: 600,
                                 fontSize: 14,
+                                letterSpacing: "0.01em",
                                 cursor: "pointer",
                                 display: "flex",
                                 alignItems: "center",
-                                gap: 10,
+                                gap: 8,
                                 transition: "all 0.2s ease",
                                 boxShadow: hoveredButton === "reserve"
                                     ? "0 12px 32px rgba(0,0,0,.25)"
@@ -182,8 +185,7 @@ export default function UnifiedWidgets() {
                                 transform: hoveredButton === "reserve" ? "translateY(-2px)" : "translateY(0)",
                             }}
                         >
-                            <span style={{ fontSize: 16 }}>📅</span>
-                            Reserveren
+                            Reserveer
                         </button>
                     </div>
                 )}

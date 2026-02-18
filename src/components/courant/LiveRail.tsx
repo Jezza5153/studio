@@ -26,8 +26,8 @@ function TonightStatusCard({ settings }: { settings: Settings | null }) {
             {settings.tonightNote && (
                 <p className="mt-2 text-xs text-muted-foreground">{settings.tonightNote}</p>
             )}
-            <div className="mt-3 flex items-center justify-center gap-1.5 rounded-lg bg-primary/10 py-1.5 text-xs font-semibold text-primary transition-colors hover:bg-primary/20">
-                📅 Reserveer nu
+            <div className="mt-3 flex items-center justify-center gap-1.5 rounded-lg border border-primary/30 py-1.5 text-xs font-semibold text-primary transition-colors hover:bg-primary/10">
+                Reserveer
             </div>
         </button>
     );
