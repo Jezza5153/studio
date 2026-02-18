@@ -5,7 +5,7 @@ import { searchFeed, getFeedPage, parseMedia } from "@/lib/queries/feed";
 import type { FeedItem } from "@prisma/client";
 import { TYPE_LABELS } from "@/lib/constants";
 
-export const dynamic = "force-static"; // SQLite only available at build time on Vercel
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
     title: "Updates | De Tafelaar Courant",

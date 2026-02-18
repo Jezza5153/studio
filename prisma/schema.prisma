@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -13,8 +13,8 @@ model FeedItem {
   category    String   // vanavond | events | nieuwe_kaart | krant | behind | algemeen
   title       String
   slug        String   @unique
-  body        String?
-  media       String?  // JSON string: [{url, thumbUrl, width, height, kind}]
+  body        String?  @db.Text
+  media       String?  @db.Text // JSON string: [{url, thumbUrl, width, height, kind}]
   rating      Int?
   authorName  String?
   sourceUrl   String?
@@ -32,9 +32,9 @@ model Settings {
   id                String   @id @default("singleton")
   tonightStatus     String   @default("OPEN") // OPEN | FEW_LEFT | FULL
   tonightNote       String   @default("")
-  googleRating      Float    @default(0)
+  googleRating      Float    @default(0) @db.DoublePrecision
   googleReviewCount Int      @default(0)
-  googlePhotos      String   @default("[]") // JSON array of photo URLs
-  ownerReplyMessage String   @default("")
+  googlePhotos      String   @default("[]") @db.Text // JSON array of photo URLs
+  ownerReplyMessage String   @default("")  @db.Text
   updatedAt         DateTime @updatedAt
 }
