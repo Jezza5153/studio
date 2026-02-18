@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import Image from "next/image";
 
 interface MediaItem {
@@ -19,7 +19,7 @@ interface ArticleHeroProps {
     caption?: string;
 }
 
-/** Lightbox modal — loaded inline (component is tiny) */
+/** Lightbox modal — ESC close, focus trap, scroll lock, aria-labels */
 function Lightbox({
     media,
     initialIndex,
@@ -30,14 +30,51 @@ function Lightbox({
     onClose: () => void;
 }) {
     const [index, setIndex] = useState(initialIndex);
+    const containerRef = useRef<HTMLDivElement>(null);
     const current = media[index];
 
-    const next = () => setIndex((i) => (i + 1) % media.length);
-    const prev = () => setIndex((i) => (i - 1 + media.length) % media.length);
+    const next = useCallback(() => setIndex((i) => (i + 1) % media.length), [media.length]);
+    const prev = useCallback(() => setIndex((i) => (i - 1 + media.length) % media.length), [media.length]);
+
+    // ESC close + arrow keys
+    useEffect(() => {
+        const handleKey = (e: KeyboardEvent) => {
+            if (e.key === "Escape") onClose();
+            if (e.key === "ArrowRight") next();
+            if (e.key === "ArrowLeft") prev();
+        };
+        window.addEventListener("keydown", handleKey);
+        return () => window.removeEventListener("keydown", handleKey);
+    }, [onClose, next, prev]);
+
+    // Scroll lock + focus trap
+    useEffect(() => {
+        const scrollY = window.scrollY;
+        document.body.style.overflow = "hidden";
+        document.body.style.position = "fixed";
+        document.body.style.top = `-${scrollY}px`;
+        document.body.style.width = "100%";
+
+        // Focus the container
+        containerRef.current?.focus();
+
+        return () => {
+            document.body.style.overflow = "";
+            document.body.style.position = "";
+            document.body.style.top = "";
+            document.body.style.width = "";
+            window.scrollTo(0, scrollY);
+        };
+    }, []);
 
     return (
         <div
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm"
+            ref={containerRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`Foto ${index + 1} van ${media.length}`}
+            tabIndex={-1}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm outline-none"
             onClick={onClose}
         >
             <div
@@ -46,6 +83,7 @@ function Lightbox({
             >
                 <button
                     onClick={onClose}
+                    aria-label="Sluiten"
                     className="absolute -top-10 right-0 text-white/70 hover:text-white text-sm font-medium transition-colors duration-150"
                 >
                     Sluiten ✕
@@ -73,17 +111,19 @@ function Lightbox({
                     <>
                         <button
                             onClick={prev}
+                            aria-label="Vorige foto"
                             className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white backdrop-blur-sm transition-all duration-150 hover:bg-white/20"
                         >
                             ←
                         </button>
                         <button
                             onClick={next}
+                            aria-label="Volgende foto"
                             className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white backdrop-blur-sm transition-all duration-150 hover:bg-white/20"
                         >
                             →
                         </button>
-                        <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs text-white/60">
+                        <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs text-white/60" aria-live="polite">
                             {index + 1} / {media.length}
                         </div>
                     </>
@@ -92,6 +132,7 @@ function Lightbox({
         </div>
     );
 }
+
 
 export function ArticleHero({ title, media, caption }: ArticleHeroProps) {
     const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);

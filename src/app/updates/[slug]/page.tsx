@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getStoryBySlug, getRelatedStories, getAdjacentStories, getLatestStories, parseMedia } from "@/lib/queries/feed";
-import { parseArticleSections } from "@/lib/article-utils";
+import { parseArticleSections, extractMetaDescription } from "@/lib/article-utils";
 import { CATEGORY_LABELS } from "@/lib/constants";
 import { ArticleHero } from "@/components/article/ArticleHero";
 import { ArticleMetaBar } from "@/components/article/ArticleMetaBar";
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
     const media = parseMedia(story.media as string | null);
     const ogImage = media[0]?.url || "/pics/homepage.png";
-    const description = story.body?.slice(0, 160).replace(/\n/g, " ").trim() || "Lees meer op De Tafelaar Courant.";
+    const description = extractMetaDescription(story.body) || "Lees meer op De Tafelaar Courant.";
     const canonicalUrl = `https://detafelaar.nl/updates/${slug}`;
 
     return {
@@ -84,34 +84,41 @@ export default async function StoryPage({ params }: PageProps) {
     const heroCaption = media.length > 0 ? `${categoryLabel} · ${story.publishedAt.toLocaleDateString("nl-NL", { day: "numeric", month: "long", year: "numeric" })}` : undefined;
 
     // JSON-LD: Article + BreadcrumbList
-    const ogImage = media[0]?.url || "/pics/homepage.png";
-    const canonicalUrl = `https://detafelaar.nl/updates/${slug}`;
+    const BASE = "https://detafelaar.nl";
+    const canonicalUrl = `${BASE}/updates/${slug}`;
+    const heroUrl = media[0]?.url;
+    const ogImage = heroUrl?.startsWith("http") ? heroUrl : heroUrl ? `${BASE}${heroUrl}` : `${BASE}/pics/homepage.png`;
     const jsonLd = {
         "@context": "https://schema.org",
         "@graph": [
             {
                 "@type": "NewsArticle",
                 headline: story.title,
-                description: story.body?.slice(0, 160).replace(/\n/g, " ").trim() || "",
+                description: extractMetaDescription(story.body) || "",
                 image: ogImage,
                 datePublished: story.publishedAt.toISOString(),
+                dateModified: ((story as Record<string, unknown>).updatedAt as Date ?? story.publishedAt).toISOString(),
                 author: {
-                    "@type": "Organization",
+                    "@type": story.authorName ? "Person" : "Organization",
                     name: story.authorName || "De Tafelaar",
                 },
                 publisher: {
                     "@type": "Organization",
                     name: "De Tafelaar",
-                    url: "https://detafelaar.nl",
+                    url: BASE,
+                    logo: {
+                        "@type": "ImageObject",
+                        url: `${BASE}/pics/logo.png`,
+                    },
                 },
                 mainEntityOfPage: canonicalUrl,
             },
             {
                 "@type": "BreadcrumbList",
                 itemListElement: [
-                    { "@type": "ListItem", position: 1, name: "Home", item: "https://detafelaar.nl" },
-                    { "@type": "ListItem", position: 2, name: "Courant", item: "https://detafelaar.nl/updates" },
-                    { "@type": "ListItem", position: 3, name: story.title },
+                    { "@type": "ListItem", position: 1, name: "Home", item: BASE },
+                    { "@type": "ListItem", position: 2, name: "Courant", item: `${BASE}/updates` },
+                    { "@type": "ListItem", position: 3, name: story.title, item: canonicalUrl },
                 ],
             },
         ],
@@ -213,7 +220,7 @@ export default async function StoryPage({ params }: PageProps) {
 
                             {/* Sidebar — 4 cols */}
                             <aside className="hidden lg:block lg:col-span-4">
-                                <div className="sticky top-24">
+                                <div className="sticky" style={{ top: 'calc(var(--header-h, 4rem) + 2rem)' }}>
                                     <ArticleRail
                                         sections={article.sections}
                                         relatedStories={relatedForClient}
