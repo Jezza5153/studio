@@ -115,11 +115,12 @@ export function Header() {
               </Link>
             );
           })}
-          <ReserveerButton
-            size="sm"
-            className="ml-4 shadow-sm hover:opacity-90"
-            label="Reserveer nu"
-          />
+          <button
+            onClick={() => window.eventsOpen?.()}
+            className="ml-4 text-[15px] font-medium text-primary transition-colors hover:text-primary/80 hover:underline underline-offset-4"
+          >
+            Reserveer
+          </button>
         </nav>
 
         {/* Mobile menu */}
