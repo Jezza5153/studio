@@ -153,6 +153,21 @@ export default async function StoryPage({ params }: PageProps) {
                             </p>
                         )}
 
+                        {/* Edition stamp — newspaper vibe */}
+                        <div className="mt-3 flex items-center gap-2 text-[11px] tracking-wide text-muted-foreground/50">
+                            <span className="font-semibold uppercase">{categoryLabel}</span>
+                            <span className="text-border">·</span>
+                            <time dateTime={story.publishedAt.toISOString()}>
+                                {story.publishedAt.toLocaleDateString("nl-NL", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}
+                            </time>
+                            {story.authorName && (
+                                <>
+                                    <span className="text-border">·</span>
+                                    <span>Editie {story.publishedAt.toLocaleDateString("nl-NL", { year: "numeric" })} Nr. {Math.ceil((story.publishedAt.getTime() - new Date(story.publishedAt.getFullYear(), 0, 1).getTime()) / (7 * 24 * 60 * 60 * 1000))}</span>
+                                </>
+                            )}
+                        </div>
+
                         {/* Rating (reviews) */}
                         {isReview && story.rating && (
                             <div className="mt-2 flex items-center gap-2">
