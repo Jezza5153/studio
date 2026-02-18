@@ -13,8 +13,14 @@ export async function GET() {
     checks.DATABASE_URL_UNPOOLED = process.env.DATABASE_URL_UNPOOLED
         ? `set (starts: ${process.env.DATABASE_URL_UNPOOLED.substring(0, 25)}...)`
         : "NOT SET";
-    checks.ADMIN_USER = process.env.ADMIN_USER ? "set" : "NOT SET (fallback used)";
-    checks.ADMIN_PASS = process.env.ADMIN_PASS ? "set" : "NOT SET (fallback used)";
+    checks.ADMIN_USER = process.env.ADMIN_USER
+        ? `set (${process.env.ADMIN_USER.length} chars, starts: "${process.env.ADMIN_USER.substring(0, 3)}...")`
+        : "NOT SET (fallback: Tafelaar1991)";
+    checks.ADMIN_PASS = process.env.ADMIN_PASS
+        ? `set (${process.env.ADMIN_PASS.length} chars, starts: "${process.env.ADMIN_PASS.substring(0, 3)}...")`
+        : "NOT SET (fallback: Kamp8tafelaar!)";
+    checks.ADMIN_USER_EXACT_MATCH = process.env.ADMIN_USER === "Tafelaar1991" ? "YES" : "NO";
+    checks.ADMIN_PASS_EXACT_MATCH = process.env.ADMIN_PASS === "Kamp8tafelaar!" ? "YES" : "NO";
     checks.NODE_ENV = process.env.NODE_ENV;
 
     // 2. Test DB connection
