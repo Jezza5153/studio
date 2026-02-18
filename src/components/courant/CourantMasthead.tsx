@@ -21,7 +21,7 @@ export function CourantMasthead() {
         <motion.div
             ref={ref}
             style={{ scaleY: height, opacity }}
-            className="relative z-20 origin-top border-b-2 border-foreground/20 bg-background px-4 py-4 text-center sm:py-6"
+            className="relative z-20 origin-top border-b border-foreground/15 bg-background px-4 py-3 text-center sm:py-4"
         >
             <motion.div
                 initial={{ opacity: 0, y: -20 }}
@@ -29,26 +29,26 @@ export function CourantMasthead() {
                 transition={{ duration: 0.8, ease: "easeOut" }}
             >
                 {/* Top rule line */}
-                <div className="mx-auto mb-3 h-[2px] w-32 bg-foreground/30 sm:w-48" />
+                <div className="mx-auto mb-2 h-[1px] w-24 bg-foreground/20 sm:w-36" />
 
                 {/* Masthead */}
-                <h1 className="font-headline text-3xl font-black uppercase tracking-[0.15em] text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
+                <h1 className="font-headline text-2xl font-black uppercase tracking-[0.15em] text-foreground sm:text-4xl md:text-5xl lg:text-6xl">
                     De Tafelaar Courant
                 </h1>
 
                 {/* Date + edition line */}
-                <div className="mt-2 flex flex-wrap items-center justify-center gap-2 font-serif text-[11px] uppercase tracking-widest text-muted-foreground sm:gap-4 sm:text-xs">
+                <div className="mt-1.5 flex flex-wrap items-center justify-center gap-2 font-serif text-[10px] uppercase tracking-widest text-muted-foreground/70 sm:gap-3 sm:text-[11px]">
                     <time dateTime={new Date().toISOString().slice(0, 10)}>
                         {dateStr}
                     </time>
-                    <span className="hidden sm:inline">·</span>
+                    <span className="hidden sm:inline text-muted-foreground/40">·</span>
                     <span>Editie: De Flint</span>
-                    <span className="hidden sm:inline">·</span>
+                    <span className="hidden sm:inline text-muted-foreground/40">·</span>
                     <span>Kamp 8, Amersfoort</span>
                 </div>
 
                 {/* Bottom rule line */}
-                <div className="mx-auto mt-3 h-[1px] w-48 bg-foreground/20 sm:w-64" />
+                <div className="mx-auto mt-2 h-[1px] w-36 bg-foreground/15 sm:w-48" />
             </motion.div>
         </motion.div>
     );

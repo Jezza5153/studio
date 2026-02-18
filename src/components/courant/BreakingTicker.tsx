@@ -51,11 +51,11 @@ export function BreakingTicker({ pinnedItems, settings, reviewQuote }: BreakingT
     if (reducedMotion) {
         return (
             <div
-                className="border-y border-foreground/10 bg-foreground/5 px-4 py-2"
+                className="border-y border-foreground/[0.06] bg-foreground/[0.02] px-4 py-1.5"
                 role="region"
                 aria-label="Laatste nieuwtjes"
             >
-                <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground">
+                <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-muted-foreground/70">
                     {tickerItems.map((item, i) => (
                         <span key={i}>{item}</span>
                     ))}
@@ -66,7 +66,7 @@ export function BreakingTicker({ pinnedItems, settings, reviewQuote }: BreakingT
 
     return (
         <div
-            className="relative overflow-hidden border-y border-foreground/10 bg-foreground/5"
+            className="relative overflow-hidden border-y border-foreground/[0.06] bg-foreground/[0.02]"
             style={{ maskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)", WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)" }}
             role="marquee"
             aria-label="Laatste nieuwtjes"
@@ -74,7 +74,7 @@ export function BreakingTicker({ pinnedItems, settings, reviewQuote }: BreakingT
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
         >
-            <div className="flex whitespace-nowrap py-2">
+            <div className="flex whitespace-nowrap py-1.5">
                 <div
                     ref={scrollRef}
                     className="flex animate-ticker-scroll gap-0"
@@ -84,7 +84,7 @@ export function BreakingTicker({ pinnedItems, settings, reviewQuote }: BreakingT
                     {[0, 1, 2].map((copy) => (
                         <span
                             key={copy}
-                            className="inline-block px-8 text-sm font-medium text-muted-foreground"
+                            className="inline-block px-8 text-xs font-medium text-muted-foreground/70"
                         >
                             {tickerContent}
                         </span>
