@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 
 export function ReadingProgress() {
     const [progress, setProgress] = useState(0);
 
     useEffect(() => {
-        // Respect prefers-reduced-motion
+        // Respect prefers-reduced-motion entirely
         const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
         if (mq.matches) return;
 
@@ -35,7 +35,8 @@ export function ReadingProgress() {
 
     return (
         <div
-            className="fixed top-0 left-0 z-[60] h-[2px] bg-primary/80 transition-[width] duration-150 ease-out"
+            // sits under sticky nav (top-16 = 64px = header height), brand bronze, 2px, no glow
+            className="fixed top-16 left-0 z-[55] h-[2px] bg-primary transition-[width] duration-120 ease-out"
             style={{ width: `${progress}%` }}
             role="progressbar"
             aria-valuenow={Math.round(progress)}
