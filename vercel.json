@@ -1,7 +1,4 @@
 {
-    "oidcTokenConfig": {
-        "enabled": false
-    },
     "crons": [
         {
             "path": "/api/cron/ingest-instagram",
