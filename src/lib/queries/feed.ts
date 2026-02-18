@@ -90,6 +90,37 @@ export const getStoryBySlug = cache(async (slug: string) => {
     return prisma.feedItem.findUnique({ where: { slug } });
 });
 
+/** Related stories in the same category (for the article rail) */
+export async function getRelatedStories(category: string, excludeSlug: string, limit = 3) {
+    return prisma.feedItem.findMany({
+        where: {
+            category,
+            slug: { not: excludeSlug },
+            type: { in: ["MANUAL", "PRESS"] },
+        },
+        orderBy: { publishedAt: "desc" },
+        take: limit,
+        select: { slug: true, title: true, media: true, publishedAt: true },
+    });
+}
+
+/** Get prev/next stories by publish date */
+export async function getAdjacentStories(publishedAt: Date, excludeSlug: string) {
+    const [prev, next] = await Promise.all([
+        prisma.feedItem.findFirst({
+            where: { publishedAt: { lt: publishedAt }, slug: { not: excludeSlug }, type: { in: ["MANUAL", "PRESS"] } },
+            orderBy: { publishedAt: "desc" },
+            select: { slug: true, title: true },
+        }),
+        prisma.feedItem.findFirst({
+            where: { publishedAt: { gt: publishedAt }, slug: { not: excludeSlug }, type: { in: ["MANUAL", "PRESS"] } },
+            orderBy: { publishedAt: "asc" },
+            select: { slug: true, title: true },
+        }),
+    ]);
+    return { prev, next };
+}
+
 export async function getSettings() {
     return prisma.settings.findFirst({ where: { id: "singleton" } });
 }
