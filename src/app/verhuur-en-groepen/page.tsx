@@ -8,13 +8,13 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Privé Diner & Groepsarrangementen Amersfoort | Huur De Tafelaar",
   description:
-    "Zoekt u een locatie voor een feest, bedrijfsdiner of groepsuitje in Amersfoort? De Tafelaar biedt exclusieve verhuur tot 100 personen vlakbij De Flint. Chef's Choice arrangement vanaf 7 personen.",
+    "Zoekt u een locatie voor een feest, bedrijfsdiner of groepsuitje in Amersfoort? De Tafelaar biedt exclusieve verhuur tot 100 personen vlakbij Flint. Chef's Choice arrangement vanaf 7 personen.",
   alternates: {
     canonical: "/verhuur-en-groepen",
   },
   openGraph: {
     title: "Feestlocatie & Bedrijfsdiner Amersfoort | De Tafelaar",
-    description: "Unieke locatie voor feesten, borrels en zakelijke diners tot 100 personen. Op loopafstand van Theater De Flint.",
+    description: "Unieke locatie voor feesten, borrels en zakelijke diners tot 100 personen. Op loopafstand van Flint.",
   },
   keywords: [
     "feestlocatie amersfoort",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     "bedrijfsdiner amersfoort",
     "groepsarrangement restaurant",
     "locatie huren amersfoort centrum",
-    "zakelijk diner de flint",
+    "zakelijk diner flint",
   ],
 };
 

@@ -64,7 +64,7 @@ const THEATERWEEKEND = {
   subtitle:
     "Theateravond op de planning? Dan regelen wij het eten. Reserveer op tijd. Vol is vol.",
   bullets: [
-    "Vlak bij De Flint",
+    "Vlak bij Flint",
     "Chef’s Choice 4 gangen",
     "Reserveren: 17:15 of 17:45",
   ],
@@ -73,7 +73,7 @@ const THEATERWEEKEND = {
 // The "marketing-plan driven" short list: Flint + parkeren + Kamp eet/drink.
 const CURATED_QUERIES: Array<{ group: PlaceGroupKey; label: string; query: string; icon: any }> = [
   // Theater & Cultuur
-  { group: "theater", label: "Theater De Flint", query: "Theater De Flint Amersfoort", icon: Ticket },
+  { group: "theater", label: "Flint", query: "Flint Amersfoort Theater", icon: Ticket },
   { group: "theater", label: "Pathé Amersfoort", query: "Pathé Amersfoort cinema", icon: Ticket },
   { group: "theater", label: "Onze Lieve Vrouwetoren", query: "Onze Lieve Vrouwetoren Amersfoort", icon: MapPin },
   { group: "theater", label: "Koppelpoort", query: "Koppelpoort Amersfoort", icon: MapPin },
@@ -96,7 +96,7 @@ const CURATED_QUERIES: Array<{ group: PlaceGroupKey; label: string; query: strin
 
 // Static fallback data - shown when Google Places API is unavailable
 const FALLBACK_THEATER: PlaceLite[] = [
-  { placeId: "flint", name: "Theater De Flint", typeLabel: "Theater", address: "Coninckstraat 60, 3811 WK Amersfoort", url: "https://www.google.com/maps/place/Theater+De+Flint", group: "theater" },
+  { placeId: "flint", name: "Flint", typeLabel: "Theater", address: "Coninckstraat 60, 3811 WK Amersfoort", url: "https://www.google.com/maps/place/Theater+De+Flint", group: "theater" },
   { placeId: "pathe", name: "Pathé Amersfoort", typeLabel: "Bioscoop", address: "Stadsring 201, 3817 BA Amersfoort", url: "https://www.google.com/maps/place/Pathé+Amersfoort", group: "theater" },
   { placeId: "olvtoren", name: "Onze Lieve Vrouwetoren", typeLabel: "Bezienswaardigheid", address: "Lieve Vrouwekerkhof, Amersfoort", url: "https://www.google.com/maps/place/Onze+Lieve+Vrouwetoren", group: "theater" },
   { placeId: "koppelpoort", name: "Koppelpoort", typeLabel: "Monument", address: "Kleine Spui, Amersfoort", url: "https://www.google.com/maps/place/Koppelpoort", group: "theater" },
@@ -620,7 +620,7 @@ export function NeighborhoodGuideClient() {
         <div className="mb-6">
           <h1 className="font-headline text-3xl sm:text-4xl tracking-tight">Buurtgids</h1>
           <p className="mt-2 text-muted-foreground">
-            De belangrijkste plekken rond <strong>De Tafelaar</strong>: De Flint, parkeren en de leukste spots in de straat.
+            De belangrijkste plekken rond <strong>De Tafelaar</strong>: Flint, parkeren en de leukste spots in de straat.
           </p>
         </div>
 
@@ -765,7 +765,7 @@ export function NeighborhoodGuideClient() {
             {/* Lists */}
             <PlacesSection
               title="Theater & cultuur"
-              subtitle="Handig rondom De Flint (en goed voor je timing)."
+              subtitle="Handig rondom Flint (en goed voor je timing)."
               places={theaterPlaces}
               onSelect={onSelect}
               icon={Ticket}
@@ -788,7 +788,7 @@ export function NeighborhoodGuideClient() {
             />
 
             <p className="text-xs text-muted-foreground">
-              Waarom dit er staat: in het marketingplan staat “De Flint + Q&A (parkeren, hoe werkt delen) + bewijs”.
+              Waarom dit er staat: in het marketingplan staat “Flint + Q&A (parkeren, hoe werkt delen) + bewijs”.
               Dit kaartje doet dat allemaal in één klik.
             </p>
           </div>

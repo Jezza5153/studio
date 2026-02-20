@@ -14,20 +14,20 @@ import { ReserveerButton } from "@/components/reserveer-button";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-    title: "Eten bij Theater De Flint | Bourgondisch Shared Dining op 2 min lopen",
+    title: "Restaurant vlakbij Flint | Bourgondisch Shared Dining op 2 min lopen",
     description:
-        "Op zoek naar een restaurant dicht bij Theater De Flint? De Tafelaar ligt op 400 meter (2 min lopen). Bourgondisch shared dining voor of na de voorstelling.",
+        "Op zoek naar een restaurant vlakbij Flint? De Tafelaar ligt op 400 meter (2 min lopen). Bourgondisch shared dining voor of na de voorstelling.",
     alternates: {
         canonical: "/eten-voor-theater-de-flint",
     },
     openGraph: {
-        title: "Eten bij Theater De Flint | De Tafelaar Amersfoort",
-        description: "Bourgondisch shared dining op 2 minuten lopen van Theater De Flint. Perfect voor of na de voorstelling.",
+        title: "Restaurant vlakbij Flint | De Tafelaar Amersfoort",
+        description: "Bourgondisch shared dining op 2 minuten lopen van Flint. Perfect voor of na de voorstelling.",
     },
     keywords: [
-        "restaurant de flint",
-        "eten theater de flint",
-        "bourgondisch eten dicht bij de flint",
+        "restaurant vlakbij flint",
+        "eten vlakbij flint amersfoort",
+        "bourgondisch eten dicht bij flint",
         "restaurant bij theater amersfoort",
         "eten voor voorstelling amersfoort",
     ],
@@ -36,8 +36,8 @@ export const metadata: Metadata = {
 // FAQ data for schema and display
 const faqs = [
     {
-        question: "Hoe ver is De Tafelaar lopen naar Theater De Flint?",
-        answer: "De Tafelaar ligt op ongeveer 400 meter van Theater De Flint, dat is circa 2 minuten lopen via de Kamp.",
+        question: "Hoe ver is De Tafelaar lopen naar Flint?",
+        answer: "De Tafelaar ligt op ongeveer 400 meter van Flint, dat is circa 2 minuten lopen via de Kamp.",
     },
     {
         question: "Kunnen we op tijd eten voor de voorstelling?",
@@ -45,11 +45,11 @@ const faqs = [
     },
     {
         question: "Kunnen we snel shared dining doen (60-75 minuten)?",
-        answer: "Jazeker, laat bij uw reservering weten dat u naar De Flint gaat en hoe laat de voorstelling begint. Wij stemmen het tempo van de gerechten daarop af.",
+        answer: "Jazeker, laat bij uw reservering weten dat u naar Flint gaat en hoe laat de voorstelling begint. Wij stemmen het tempo van de gerechten daarop af.",
     },
     {
         question: "Is er ruimte voor groepen na een show?",
-        answer: "Absoluut! We ontvangen graag groepen na de voorstelling. Vanaf 7 personen werken we met een Chef's Choice arrangement. Reserveer vooraf en vermeld dat het na De Flint is.",
+        answer: "Absoluut! We ontvangen graag groepen na de voorstelling. Vanaf 7 personen werken we met een Chef's Choice arrangement. Reserveer vooraf en vermeld dat het na Flint is.",
     },
     {
         question: "Hebben jullie rekening met dieetwensen en allergieën?",
@@ -87,14 +87,14 @@ export default function EtenVoorDeFlintPage() {
                 {/* Hero */}
                 <header className="text-center mb-12">
                     <p className="inline-block text-xs tracking-widest uppercase text-primary/80 mb-2">
-                        Op 2 min lopen van De Flint
+                        Op 2 min lopen van Flint
                     </p>
                     <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl tracking-tight">
-                        Bourgondisch eten bij Theater De Flint
+                        Bourgondisch eten vlakbij Flint
                     </h1>
                     <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
                         De Tafelaar is de ideale plek voor een heerlijk diner voor of na uw theaterbezoek.
-                        Shared dining met lokale, seizoensgebonden gerechten — op steenworp afstand van De Flint.
+                        Shared dining met lokale, seizoensgebonden gerechten — op steenworp afstand van Flint.
                     </p>
                 </header>
 
@@ -110,7 +110,7 @@ export default function EtenVoorDeFlintPage() {
                             </CardHeader>
                             <CardContent className="text-sm text-muted-foreground">
                                 <p className="font-medium text-foreground">Kamp 8, Amersfoort</p>
-                                <p>400 meter van Theater De Flint</p>
+                                <p>400 meter van Flint</p>
                                 <p>~2 minuten lopen</p>
                             </CardContent>
                         </Card>
@@ -154,7 +154,7 @@ export default function EtenVoorDeFlintPage() {
                             label="Reserveer nu"
                         />
                         <p className="mt-3 text-sm text-muted-foreground">
-                            Vermeld bij uw reservering dat u naar De Flint gaat!
+                            Vermeld bij uw reservering dat u naar Flint gaat!
                         </p>
                     </div>
                 </section>
@@ -192,7 +192,7 @@ export default function EtenVoorDeFlintPage() {
                         </Link>
                         <Link href="/buurtgids">
                             <Button variant="outline" className="rounded-xl">
-                                Buurtgids De Flint
+                                Buurtgids Flint
                             </Button>
                         </Link>
                         <Link href="/contact">

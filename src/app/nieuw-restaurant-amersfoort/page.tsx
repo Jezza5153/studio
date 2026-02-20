@@ -59,7 +59,7 @@ export default function NieuwRestaurantAmersfoortPage() {
                         </CardHeader>
                         <CardContent className="text-sm text-muted-foreground">
                             <p className="font-medium text-foreground">Kamp 8, Amersfoort</p>
-                            <p>Midden in het centrum, op loopafstand van De Flint, Koppelpoort en het station.</p>
+                            <p>Midden in het centrum, op loopafstand van Flint, Koppelpoort en het station.</p>
                         </CardContent>
                     </Card>
 
