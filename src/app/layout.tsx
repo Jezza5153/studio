@@ -7,9 +7,7 @@ import { Footer } from "@/components/footer";
 import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
 import { UnifiedWidgetsMount } from "@/components/unified-widgets-mount";
-import { PaperTexture } from "@/components/courant/PaperTexture";
 import { GoogleAnalytics } from "@/components/google-analytics";
-import { ScrollToTop } from "@/components/scroll-to-top";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -241,8 +239,6 @@ export default function RootLayout({
 
         <Footer />
         <Toaster />
-        <PaperTexture />
-        <ScrollToTop />
 
         {/* Google Analytics */}
         <GoogleAnalytics />
