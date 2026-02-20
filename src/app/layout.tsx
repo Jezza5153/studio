@@ -112,7 +112,7 @@ function restaurantJsonLd() {
     },
 
     // Additional keywords for local search
-    keywords: "shared dining, restaurant amersfoort, eten bij de flint, restaurant kamp amersfoort, theater de flint restaurant",
+    keywords: "shared dining, restaurant amersfoort, eten vlakbij flint, restaurant kamp amersfoort, restaurant nabij flint",
 
     openingHoursSpecification: [
       {

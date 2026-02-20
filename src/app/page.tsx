@@ -20,7 +20,7 @@ export const revalidate = 60; // ISR: revalidate every 60s
 export const metadata: Metadata = {
   title: "De Tafelaar Courant | Shared dining in Amersfoort",
   description:
-    "Het laatste nieuws van De Tafelaar — shared dining restaurant vlakbij Theater De Flint in Amersfoort. Updates, evenementen, nieuwe gerechten en meer.",
+    "Het laatste nieuws van De Tafelaar — shared dining restaurant vlakbij Flint in Amersfoort. Updates, evenementen, nieuwe gerechten en meer.",
   openGraph: {
     title: "De Tafelaar Courant",
     description:

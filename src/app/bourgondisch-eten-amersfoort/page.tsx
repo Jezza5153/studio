@@ -79,7 +79,7 @@ export default function BourgondischEtenAmersfoortPage() {
                             </div>
                         </CardHeader>
                         <CardContent className="text-sm text-muted-foreground">
-                            Kamp 8, midden in het centrum. Vlakbij De Flint en Koppelpoort.
+                            Kamp 8, midden in het centrum. Vlakbij Flint en Koppelpoort.
                         </CardContent>
                     </Card>
                 </div>
@@ -123,7 +123,7 @@ export default function BourgondischEtenAmersfoortPage() {
                     </Link>
                     <Link href="/eten-voor-theater-de-flint">
                         <Button variant="outline" className="rounded-xl">
-                            Eten bij De Flint
+                            Eten vlakbij Flint
                         </Button>
                     </Link>
                     <Link href="/contact">

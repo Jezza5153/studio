@@ -5,25 +5,25 @@ import { NeighborhoodGuideClient } from "./neighborhood-guide-client";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Buurtgids De Flint & Kamp | Eten bij Theater De Flint Amersfoort",
+  title: "Buurtgids Flint & Kamp | Eten vlakbij Flint Amersfoort",
   description:
-    "Op zoek naar eten dichtbij Theater De Flint? De Tafelaar ligt op 2 minuten lopen. Ontdek de beste restaurants naast De Flint, parkeren en hotspots op de Kamp in Amersfoort.",
+    "Op zoek naar eten dichtbij Flint? De Tafelaar ligt op 2 minuten lopen. Ontdek de beste restaurants nabij Flint, parkeren en hotspots op de Kamp in Amersfoort.",
   alternates: {
     canonical: "/buurtgids",
   },
   openGraph: {
-    title: "Buurtgids De Flint - Eten & Restaurants naast Theater De Flint",
-    description: "De beste restaurants en eten dichtbij Theater De Flint Amersfoort. De Tafelaar ligt in de Kamp, op 2 min lopen.",
+    title: "Buurtgids Flint - Eten & Restaurants vlakbij Flint",
+    description: "De beste restaurants en eten dichtbij Flint Amersfoort. De Tafelaar ligt in de Kamp, op 2 min lopen.",
   },
   keywords: [
-    "eten dichtbij de flint",
-    "eten naast de flint",
-    "restaurant de flint",
-    "eten theater de flint",
+    "eten dichtbij flint",
+    "eten naast flint",
+    "restaurant vlakbij flint",
+    "eten theater amersfoort",
     "restaurant naast theater amersfoort",
     "eten theater amersfoort",
     "restaurant kamp amersfoort",
-    "parkeren de flint",
+    "parkeren flint",
     "shared dining amersfoort"
   ],
 };

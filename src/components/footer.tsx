@@ -95,7 +95,7 @@ export function Footer() {
                   href="/eten-voor-theater-de-flint"
                   className="text-sm py-1.5 inline-block text-white/50 hover:text-white transition-colors"
                 >
-                  🎭 Eten bij De Flint
+                  🎭 Eten vlakbij Flint
                 </Link>
               </li>
               <li>
