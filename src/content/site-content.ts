@@ -11,6 +11,7 @@ export const navLinks = [
   { href: "/verhuur-en-groepen", label: "Verhuur en Groepen" },
   { href: "/catering", label: "Catering" },
   { href: "/impressie", label: "Impressie" },
+  { href: "/agenda", label: "Agenda" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -353,4 +354,3 @@ export const makers: Maker[] = [
   },
 ];
 
-    

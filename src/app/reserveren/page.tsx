@@ -9,10 +9,10 @@ import { Button } from "@/components/ui/button";
 export default function ReserverenPage() {
 
   useEffect(() => {
-    // Probeer de Tapla widget direct te openen bij het laden van de pagina.
+    // Open de Events booking widget direct bij het laden van de pagina.
     // Dit is een 'soft' redirect naar de reserveringsfunctionaliteit.
     const openTimeout = setTimeout(() => {
-       window.taplaOpen?.();
+      window.eventsOpen?.();
     }, 100);
 
     return () => clearTimeout(openTimeout);
@@ -30,7 +30,7 @@ export default function ReserverenPage() {
 
         <div className="mt-6 border rounded-xl p-4 bg-secondary/30">
           <p className="text-sm text-muted-foreground mb-3">
-             Zie je de widget niet? Geen zorgen. Gebruik de knoppen hieronder.
+            Zie je de widget niet? Geen zorgen. Gebruik de knoppen hieronder.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <ReserveerButton label="Open reserveringen" />
@@ -44,4 +44,3 @@ export default function ReserverenPage() {
   );
 }
 
-    

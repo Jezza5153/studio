@@ -243,7 +243,7 @@ export default function RootLayout({
         {/* Google Analytics */}
         <GoogleAnalytics />
 
-        {/* ✅ Unified Widgets: Events + Tapla together */}
+        {/* ✅ Events Booking Widget */}
         <UnifiedWidgetsMount />
       </body>
     </html>

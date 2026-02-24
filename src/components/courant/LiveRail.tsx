@@ -42,21 +42,26 @@ function ReviewQuoteRotator({
     settings: Settings | null;
 }) {
     const [index, setIndex] = useState(0);
+    const [expanded, setExpanded] = useState(false);
     const reducedMotion = useReducedMotion();
 
     useEffect(() => {
         if (reviews.length <= 1) return;
         const interval = setInterval(() => {
             setIndex((prev) => (prev + 1) % reviews.length);
+            setExpanded(false); // collapse when rotating
         }, 10000);
         return () => clearInterval(interval);
     }, [reviews.length]);
 
     if (reviews.length === 0) return null;
 
-    const currentRating = reviews[index].rating || 5;
+    const currentReview = reviews[index];
+    const currentRating = currentReview.rating || 5;
     const googleRating = settings?.googleRating || 0;
     const reviewCount = settings?.googleReviewCount || 0;
+    const bodyText = currentReview.body || "";
+    const isLong = bodyText.length > 120;
 
     return (
         <div className="rounded-xl border border-border/50 bg-foreground/[0.03] p-4">
@@ -107,33 +112,40 @@ function ReviewQuoteRotator({
                         exit={reducedMotion ? {} : { opacity: 0, y: -10 }}
                         transition={{ duration: 0.4 }}
                     >
-                        {/* Clickable review — opens on Google Maps */}
-                        <a
-                            href={reviews[index].sourceUrl || "https://maps.google.com/?q=De+Tafelaar+Kamp+8+Amersfoort"}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="block cursor-pointer transition-opacity hover:opacity-80"
-                        >
+                        {/* Review text — expandable */}
+                        <div>
                             <blockquote className="text-sm italic leading-relaxed text-foreground/80">
-                                &ldquo;{reviews[index].body?.slice(0, 120)}
-                                {(reviews[index].body?.length || 0) > 120 ? "…" : ""}
-                                &rdquo;
+                                &ldquo;{expanded || !isLong
+                                    ? bodyText
+                                    : bodyText.slice(0, 120) + "…"
+                                }&rdquo;
                             </blockquote>
-                            <div className="mt-2 flex items-center gap-2">
-                                <div
-                                    className="flex text-amber-500 drop-shadow-[0_0_6px_rgba(245,158,11,0.4)]"
-                                    role="img"
-                                    aria-label={`${currentRating} van 5 sterren`}
+                            {isLong && (
+                                <button
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        setExpanded(!expanded);
+                                    }}
+                                    className="mt-1 text-xs font-medium text-primary hover:underline"
                                 >
-                                    {Array.from({ length: currentRating }).map((_, i) => (
-                                        <span key={i} className="text-lg" aria-hidden="true">★</span>
-                                    ))}
-                                </div>
-                                <span className="text-xs text-muted-foreground">
-                                    — {reviews[index].authorName || "Gast"}
-                                </span>
+                                    {expanded ? "Minder" : "Lees meer"}
+                                </button>
+                            )}
+                        </div>
+                        <div className="mt-2 flex items-center gap-2">
+                            <div
+                                className="flex text-amber-500 drop-shadow-[0_0_6px_rgba(245,158,11,0.4)]"
+                                role="img"
+                                aria-label={`${currentRating} van 5 sterren`}
+                            >
+                                {Array.from({ length: currentRating }).map((_, i) => (
+                                    <span key={i} className="text-lg" aria-hidden="true">★</span>
+                                ))}
                             </div>
-                        </a>
+                            <span className="text-xs text-muted-foreground">
+                                — {currentReview.authorName || "Gast"}
+                            </span>
+                        </div>
 
                         {/* ── Owner reply (per-review, from Google) ── */}
                         {(() => {

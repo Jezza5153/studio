@@ -22,6 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/catering`, lastModified, priority: 0.6, changeFrequency: "monthly" },
     { url: `${base}/openingstijden`, lastModified, priority: 0.5, changeFrequency: "monthly" },
     { url: `${base}/drank`, lastModified, priority: 0.6, changeFrequency: "weekly" },
+    { url: `${base}/agenda`, lastModified, priority: 0.8, changeFrequency: "weekly" },
   ];
 }
 
