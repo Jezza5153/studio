@@ -34,7 +34,8 @@ export default function EventsWidget() {
             style={{
                 position: "fixed",
                 bottom: "max(0px, env(safe-area-inset-bottom))",
-                left: "max(16px, env(safe-area-inset-left))", // LEFT side of screen
+                left: "auto",
+                right: "max(16px, env(safe-area-inset-right))", // RIGHT side like old Tapla
                 zIndex: 50,
             }}
         >
