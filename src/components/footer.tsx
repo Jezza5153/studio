@@ -106,6 +106,14 @@ export function Footer() {
                   🍷 Bourgondisch eten
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/buurtgids"
+                  className="text-sm py-1.5 inline-block text-white/50 hover:text-white transition-colors"
+                >
+                  🗺️ Buurtgids
+                </Link>
+              </li>
             </ul>
           </div>
 

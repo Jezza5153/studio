@@ -5,9 +5,7 @@
 export const navLinks = [
   { href: "/", label: "Home" },
   { href: "/menu", label: "Menu" },
-  { href: "/over-ons", label: "Over Ons" },
-  { href: "/buurtgids", label: "Buurtgids" },
-  { href: "/over-onze-makers", label: "Over Onze Makers" },
+  { href: "/over-onze-makers", label: "Wij en Onze Makers" },
   { href: "/verhuur-en-groepen", label: "Verhuur en Groepen" },
   { href: "/catering", label: "Catering" },
   { href: "/impressie", label: "Impressie" },
