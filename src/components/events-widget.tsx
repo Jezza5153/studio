@@ -45,8 +45,8 @@ export default function EventsWidget() {
                     onClick={() => setIsOpen(true)}
                     style={{
                         padding: "14px 22px",
-                        background: "#000",
-                        color: "#D4AF37", // Gold color
+                        background: "#2D9B7A",
+                        color: "#fff",
                         border: "none",
                         borderRadius: 12,
                         fontWeight: 700,
@@ -60,7 +60,7 @@ export default function EventsWidget() {
                     }}
                 >
                     <span style={{ fontSize: 18 }}>🎫</span>
-                    EVENTS
+                    RESERVEREN
                 </button>
             )}
 
