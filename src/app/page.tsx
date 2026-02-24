@@ -105,6 +105,18 @@ export default function Home() {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
+
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="min-h-11 border border-white/60 bg-white/10 text-white transition-colors hover:border-white hover:bg-white hover:text-black"
+            >
+              <Link href="/agenda" prefetch={false}>
+                Agenda
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
