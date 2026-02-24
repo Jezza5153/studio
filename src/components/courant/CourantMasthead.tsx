@@ -42,7 +42,7 @@ export function CourantMasthead() {
                         {dateStr}
                     </time>
                     <span className="hidden sm:inline">·</span>
-                    <span>Editie: Flint</span>
+                    <span>Editie: Kamp</span>
                     <span className="hidden sm:inline">·</span>
                     <span>Kamp 8, Amersfoort</span>
                 </div>
