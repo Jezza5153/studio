@@ -6,7 +6,7 @@ import { prisma } from "@/lib/db";
 // Triggered by cron, protected by CRON_SECRET
 async function handleIngest(request: Request) {
     const authHeader = request.headers.get("authorization");
-    if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+    if (authHeader !== `Bearer ${process.env.CRON_SECRET?.trim()}`) {
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
@@ -29,7 +29,7 @@ async function handleIngest(request: Request) {
 
     try {
         // Google Places API (New) — Place Details with reviews + photos
-        const url = `https://places.googleapis.com/v1/places/${placeId}`;
+        const url = `https://places.googleapis.com/v1/places/${placeId}?languageCode=nl`;
         const res = await fetch(url, {
             headers: {
                 "X-Goog-Api-Key": apiKey,
@@ -54,13 +54,29 @@ async function handleIngest(request: Request) {
         const placeUri = data.googleMapsUri || "";
         const placePhotos = data.photos || [];
 
-        // Build photo URLs from place photos (up to 10)
-        const photoUrls: string[] = [];
-        for (const photo of placePhotos.slice(0, 10)) {
+        // Build photo objects paired with review quotes (up to 30)
+        const goodReviews = reviews
+            .filter((r: any) => {
+                const rMap: Record<string, number> = { ONE: 1, TWO: 2, THREE: 3, FOUR: 4, FIVE: 5 };
+                return (rMap[r.rating] || 5) >= 4 && (r.text?.text || r.originalText?.text || "").trim();
+            });
+        const photoItems: { url: string; name?: string; quote?: string }[] = [];
+        for (const [idx, photo] of placePhotos.slice(0, 30).entries()) {
             if (photo.name) {
-                photoUrls.push(
-                    `https://places.googleapis.com/v1/${photo.name}/media?maxWidthPx=800&key=${apiKey}`
-                );
+                const pairedReview = goodReviews.length > 0
+                    ? goodReviews[idx % goodReviews.length]
+                    : null;
+                const reviewBody = pairedReview
+                    ? (pairedReview.text?.text || pairedReview.originalText?.text || "").slice(0, 100)
+                    : undefined;
+                const reviewAuthor = pairedReview
+                    ? pairedReview.authorAttribution?.displayName || "Gast"
+                    : undefined;
+                photoItems.push({
+                    url: `https://places.googleapis.com/v1/${photo.name}/media?maxWidthPx=800&key=${apiKey}`,
+                    name: reviewAuthor,
+                    quote: reviewBody,
+                });
             }
         }
 
@@ -71,12 +87,12 @@ async function handleIngest(request: Request) {
                 id: "singleton",
                 googleRating: overallRating,
                 googleReviewCount: totalReviewCount,
-                googlePhotos: JSON.stringify(photoUrls),
+                googlePhotos: JSON.stringify(photoItems),
             },
             update: {
                 googleRating: overallRating,
                 googleReviewCount: totalReviewCount,
-                googlePhotos: JSON.stringify(photoUrls),
+                googlePhotos: JSON.stringify(photoItems),
             },
         });
 
@@ -101,8 +117,11 @@ async function handleIngest(request: Request) {
             // Only keep 4★ and 5★ reviews
             if (rating < 4) continue;
 
-            const body =
-                review.text?.text || review.originalText?.text || "";
+            // Prefer translated text (Dutch via languageCode=nl), fall back to original
+            // text.text = translated version, originalText.text = original language
+            const translatedText = review.text?.text || "";
+            const originalText = review.originalText?.text || "";
+            const body = translatedText || originalText;
 
             // Skip reviews without text
             if (!body.trim()) continue;
@@ -156,7 +175,7 @@ async function handleIngest(request: Request) {
             upserted,
             overallRating,
             totalReviewCount,
-            photosFound: photoUrls.length,
+            photosFound: photoItems.length,
         });
     } catch (err) {
         console.error("Google reviews ingestion error:", err);

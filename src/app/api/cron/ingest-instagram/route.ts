@@ -7,7 +7,7 @@ const BEHOLD_FEED_URL = "https://feeds.behold.so/iUbmvQA9aGjYOxLLqttW";
 
 async function handleIngest(request: Request) {
     const authHeader = request.headers.get("authorization");
-    if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+    if (authHeader !== `Bearer ${process.env.CRON_SECRET?.trim()}`) {
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 

@@ -1,0 +1,79 @@
+"use client";
+
+import Link from "next/link";
+import { useEffect } from "react";
+import { trackEvent } from "@/lib/analytics";
+
+interface ArticleActionsProps {
+    nextStory?: { slug: string; title: string } | null;
+}
+
+export function ArticleActions({ nextStory }: ArticleActionsProps) {
+    // Prefetch next article during idle time for instant navigation
+    useEffect(() => {
+        if (!nextStory) return;
+        const url = `/updates/${nextStory.slug}`;
+        if ("requestIdleCallback" in window) {
+            const id = requestIdleCallback(() => {
+                const link = document.createElement("link");
+                link.rel = "prefetch";
+                link.href = url;
+                document.head.appendChild(link);
+            });
+            return () => cancelIdleCallback(id);
+        }
+    }, [nextStory]);
+
+    return (
+        <div className="mt-12 pt-8 border-t border-border/40">
+            <h3 className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/60 mb-4">
+                Volgende stap
+            </h3>
+            <div className="grid gap-3 sm:grid-cols-3">
+                {/* #8: Reserveer — visually prominent with solid fill and hover lift */}
+                <button
+                    onClick={() => {
+                        trackEvent("reserveer_click", { source: "article_bottom" });
+                        window.eventsOpen?.();
+                    }}
+                    className="group rounded-xl bg-primary/10 border border-primary/20 p-4 text-left transition-all duration-200 hover:bg-primary/15 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-0.5"
+                >
+                    <span className="text-lg">🍽️</span>
+                    <span className="mt-1 block text-sm font-semibold text-primary">Reserveer een tafel</span>
+                    <span className="mt-0.5 block text-[11px] text-muted-foreground">Proef het zelf</span>
+                </button>
+
+                {/* #8: Bekijk menu — hover lift */}
+                <Link
+                    href="/menu"
+                    className="group rounded-xl border border-border/50 bg-foreground/[0.02] p-4 text-left transition-all duration-200 hover:bg-foreground/5 hover:shadow-lg hover:shadow-foreground/5 hover:-translate-y-0.5"
+                >
+                    <span className="text-lg">📋</span>
+                    <span className="mt-1 block text-sm font-semibold text-foreground">Bekijk menu</span>
+                    <span className="mt-0.5 block text-[11px] text-muted-foreground">Seizoensgerechten</span>
+                </Link>
+
+                {/* #8: Next story / All updates fallback — hover lift */}
+                {nextStory ? (
+                    <Link
+                        href={`/updates/${nextStory.slug}`}
+                        className="group rounded-xl border border-border/50 bg-foreground/[0.02] p-4 text-left transition-all duration-200 hover:bg-foreground/5 hover:shadow-lg hover:shadow-foreground/5 hover:-translate-y-0.5"
+                    >
+                        <span className="text-lg">📰</span>
+                        <span className="mt-1 block text-sm font-semibold text-foreground line-clamp-1">Volgend verhaal</span>
+                        <span className="mt-0.5 block text-[11px] text-muted-foreground line-clamp-1">{nextStory.title}</span>
+                    </Link>
+                ) : (
+                    <Link
+                        href="/updates"
+                        className="group rounded-xl border border-border/50 bg-foreground/[0.02] p-4 text-left transition-all duration-200 hover:bg-foreground/5 hover:shadow-lg hover:shadow-foreground/5 hover:-translate-y-0.5"
+                    >
+                        <span className="text-lg">📰</span>
+                        <span className="mt-1 block text-sm font-semibold text-foreground">Alle updates</span>
+                        <span className="mt-0.5 block text-[11px] text-muted-foreground">Terug naar de Courant</span>
+                    </Link>
+                )}
+            </div>
+        </div>
+    );
+}
