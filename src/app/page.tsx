@@ -121,6 +121,25 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ================= PAASBRUNCH BANNER ================= */}
+      <section className="relative overflow-hidden bg-gradient-to-r from-amber-50 via-orange-50 to-yellow-50 dark:from-amber-950/30 dark:via-orange-950/20 dark:to-yellow-950/30">
+        <div className="container mx-auto px-4 py-4 sm:px-6">
+          <Link
+            href="/updates/paasbrunch-amersfoort-2026"
+            className="group flex items-center justify-center gap-3 text-center transition-transform hover:scale-[1.01]"
+          >
+            <span className="text-2xl" role="img" aria-label="Paashaas">🐣</span>
+            <span className="font-headline text-sm font-semibold tracking-wide text-amber-900 dark:text-amber-200 sm:text-base">
+              Paasbrunch 5 &amp; 6 april
+            </span>
+            <span className="text-xs font-medium text-amber-700 dark:text-amber-400 sm:text-sm">
+              → Lees meer
+            </span>
+            <span className="text-2xl" role="img" aria-label="Paasei">🥚</span>
+          </Link>
+        </div>
+      </section>
+
       <div className="space-y-12 py-12 sm:space-y-16 sm:py-16 md:space-y-24 md:py-24">
         {/* ================= HIGHLIGHTS ================= */}
         <section className="container mx-auto px-4 sm:px-6 md:px-8" aria-labelledby="highlights-title">

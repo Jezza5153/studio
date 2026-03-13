@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { getStoryBySlug, getRelatedStories, getAdjacentStories, getLatestStories, parseMedia } from "@/lib/queries/feed";
 import { parseArticleSections, extractMetaDescription } from "@/lib/article-utils";
 import { CATEGORY_LABELS } from "@/lib/constants";
+import { getSeoOverride, buildFaqJsonLd } from "@/lib/seo-overrides";
 import { ArticleHero } from "@/components/article/ArticleHero";
 import { ArticleMetaBar } from "@/components/article/ArticleMetaBar";
 import { ArticleBody } from "@/components/article/ArticleBody";
@@ -20,13 +21,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const story = await getStoryBySlug(slug);
     if (!story) return { title: "Niet gevonden" };
 
+    const seoOverride = getSeoOverride(slug);
     const media = parseMedia(story.media as string | null);
     const ogImage = media[0]?.url || "/pics/homepage.png";
-    const description = extractMetaDescription(story.body) || "Lees meer op De Tafelaar Courant.";
+    const description = seoOverride?.metaDescription || extractMetaDescription(story.body) || "Lees meer op De Tafelaar Courant.";
+    const pageTitle = seoOverride?.seoTitle || `${story.title} | De Tafelaar Courant`;
     const canonicalUrl = `https://detafelaar.nl/updates/${slug}`;
 
     return {
-        title: `${story.title} | De Tafelaar Courant`,
+        title: pageTitle,
         description,
         alternates: { canonical: canonicalUrl },
         openGraph: {
@@ -83,45 +86,60 @@ export default async function StoryPage({ params }: PageProps) {
     // Hero caption
     const heroCaption = media.length > 0 ? `${categoryLabel} · ${story.publishedAt.toLocaleDateString("nl-NL", { day: "numeric", month: "long", year: "numeric" })}` : undefined;
 
-    // JSON-LD: Article + BreadcrumbList
+    // JSON-LD: Article + BreadcrumbList + optional Event + FAQ
+    const seoOverride = getSeoOverride(slug);
     const BASE = "https://detafelaar.nl";
     const canonicalUrl = `${BASE}/updates/${slug}`;
     const heroUrl = media[0]?.url;
     const ogImage = heroUrl?.startsWith("http") ? heroUrl : heroUrl ? `${BASE}${heroUrl}` : `${BASE}/pics/homepage.png`;
+
+    // Build the @graph array with base schemas
+    const graphItems: Record<string, unknown>[] = [
+        {
+            "@type": "NewsArticle",
+            headline: story.title,
+            description: extractMetaDescription(story.body) || "",
+            image: ogImage,
+            datePublished: story.publishedAt.toISOString(),
+            dateModified: ((story as Record<string, unknown>).updatedAt as Date ?? story.publishedAt).toISOString(),
+            author: {
+                "@type": story.authorName ? "Person" : "Organization",
+                name: story.authorName || "De Tafelaar",
+            },
+            publisher: {
+                "@type": "Organization",
+                name: "De Tafelaar",
+                url: BASE,
+                logo: {
+                    "@type": "ImageObject",
+                    url: `${BASE}/pics/logo.png`,
+                },
+            },
+            mainEntityOfPage: canonicalUrl,
+        },
+        {
+            "@type": "BreadcrumbList",
+            itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Home", item: BASE },
+                { "@type": "ListItem", position: 2, name: "Courant", item: `${BASE}/updates` },
+                { "@type": "ListItem", position: 3, name: story.title, item: canonicalUrl },
+            ],
+        },
+    ];
+
+    // Inject Event JSON-LD if configured
+    if (seoOverride?.eventJsonLd) {
+        graphItems.push(seoOverride.eventJsonLd);
+    }
+
+    // Inject FAQ JSON-LD if configured
+    if (seoOverride?.faqItems && seoOverride.faqItems.length > 0) {
+        graphItems.push(buildFaqJsonLd(seoOverride.faqItems));
+    }
+
     const jsonLd = {
         "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "NewsArticle",
-                headline: story.title,
-                description: extractMetaDescription(story.body) || "",
-                image: ogImage,
-                datePublished: story.publishedAt.toISOString(),
-                dateModified: ((story as Record<string, unknown>).updatedAt as Date ?? story.publishedAt).toISOString(),
-                author: {
-                    "@type": story.authorName ? "Person" : "Organization",
-                    name: story.authorName || "De Tafelaar",
-                },
-                publisher: {
-                    "@type": "Organization",
-                    name: "De Tafelaar",
-                    url: BASE,
-                    logo: {
-                        "@type": "ImageObject",
-                        url: `${BASE}/pics/logo.png`,
-                    },
-                },
-                mainEntityOfPage: canonicalUrl,
-            },
-            {
-                "@type": "BreadcrumbList",
-                itemListElement: [
-                    { "@type": "ListItem", position: 1, name: "Home", item: BASE },
-                    { "@type": "ListItem", position: 2, name: "Courant", item: `${BASE}/updates` },
-                    { "@type": "ListItem", position: 3, name: story.title, item: canonicalUrl },
-                ],
-            },
-        ],
+        "@graph": graphItems,
     };
 
     return (
