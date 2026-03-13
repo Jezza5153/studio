@@ -4,6 +4,7 @@ import { Facebook, Instagram } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Separator } from "./ui/separator";
+import { ObfuscatedEmail } from "./obfuscated-email";
 
 export function Footer() {
   const hasDialablePhone = /\d/.test(contactDetails.phone || "");
@@ -149,9 +150,7 @@ export function Footer() {
                 <span>{contactDetails.phone}</span>
               )}
               <span className="hidden sm:inline text-white/20">·</span>
-              <a href={`mailto:${contactDetails.email}`} className="hover:text-white transition-colors">
-                {contactDetails.email}
-              </a>
+              <ObfuscatedEmail user="reserveren" domain="tafelaaramersfoort.nl" className="hover:text-white transition-colors" />
             </address>
 
             <a

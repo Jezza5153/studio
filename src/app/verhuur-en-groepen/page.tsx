@@ -29,6 +29,7 @@ export const metadata: Metadata = {
 
 import Image from "next/image";
 import Link from "next/link";
+import { ObfuscatedEmail } from "@/components/obfuscated-email";
 import {
   Card,
   CardContent,
@@ -214,12 +215,12 @@ export default function VerhuurEnGroepenPage() {
                 <Link href="/contact" prefetch={false}>
                   <Button className="rounded-xl">Contactformulier</Button>
                 </Link>
-                <Link href="mailto:hallo@detafelaar.nl">
-                  <Button variant="outline" className="rounded-xl">
+                <Button asChild variant="outline" className="rounded-xl">
+                  <ObfuscatedEmail user="hallo" domain="detafelaar.nl">
                     <MessageSquare className="mr-2 h-4 w-4" />
                     Mail ons
-                  </Button>
-                </Link>
+                  </ObfuscatedEmail>
+                </Button>
               </div>
             </div>
           </Card>

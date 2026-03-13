@@ -27,6 +27,7 @@ import {
 import { contactDetails, reservationFaq, openingHours } from "@/content/site-content";
 import { Phone, Info, MapPin, Mail } from "lucide-react";
 import { ReserveerButton } from "@/components/reserveer-button";
+import { ObfuscatedEmail } from "@/components/obfuscated-email";
 
 export default function ReserverenPage() {
   // Address + maps (no keys)
@@ -92,14 +93,14 @@ export default function ReserverenPage() {
                 )}
 
                 <Button asChild variant="outline" className="w-full">
-                  <a
-                    href={`mailto:${contactDetails.email}?subject=${encodeURIComponent(
-                      "Vraag over reservering"
-                    )}`}
+                  <ObfuscatedEmail
+                    user="reserveren"
+                    domain="tafelaaramersfoort.nl"
+                    subject="Vraag over reservering"
                   >
                     <Mail className="mr-2 h-4 w-4" />
                     Mail ons
-                  </a>
+                  </ObfuscatedEmail>
                 </Button>
 
                 <Button asChild variant="secondary" className="w-full">

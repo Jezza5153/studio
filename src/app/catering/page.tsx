@@ -29,6 +29,7 @@ export const metadata: Metadata = {
 
 import Image from "next/image";
 import Link from "next/link";
+import { ObfuscatedEmail } from "@/components/obfuscated-email";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -563,12 +564,12 @@ export default function CateringPage() {
                 <Link href="/contact" prefetch={false}>
                   <Button className="rounded-xl">Contact opnemen</Button>
                 </Link>
-                <Link href="mailto:reserveren@tafelaaramersfoort.nl">
-                  <Button variant="outline" className="rounded-xl">
+                <Button asChild variant="outline" className="rounded-xl">
+                  <ObfuscatedEmail user="reserveren" domain="tafelaaramersfoort.nl">
                     <MessageSquare className="mr-2 h-4 w-4" />
                     Mail ons direct
-                  </Button>
-                </Link>
+                  </ObfuscatedEmail>
+                </Button>
               </div>
             </div>
           </Card>
