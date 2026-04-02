@@ -73,22 +73,14 @@ export function Footer() {
 
           {/* Zakelijk & Groepen */}
           <div className="sm:pt-2">
-            <h4 className="font-headline text-lg mb-4 text-white">Zakelijk &amp; Groepen</h4>
+            <h4 className="font-headline text-lg mb-4 text-white">Meer ontdekken</h4>
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="/verhuur-en-groepen"
-                  className="text-sm py-1.5 inline-block text-white/50 hover:text-white transition-colors font-medium"
+                  href="/restaurant-amersfoort-centrum"
+                  className="text-sm py-1.5 inline-block text-white/50 hover:text-white transition-colors"
                 >
-                  🎉 Feestlocatie huren
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/catering"
-                  className="text-sm py-1.5 inline-block text-white/50 hover:text-white transition-colors font-medium"
-                >
-                  🍽️ Catering &amp; Office Lunch
+                  Restaurant Amersfoort Centrum
                 </Link>
               </li>
               <li>
@@ -96,15 +88,55 @@ export function Footer() {
                   href="/eten-voor-theater-de-flint"
                   className="text-sm py-1.5 inline-block text-white/50 hover:text-white transition-colors"
                 >
-                  🎭 Eten vlakbij Flint
+                  Eten vlakbij Flint
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/bourgondisch-eten-amersfoort"
+                  href="/borrel-amersfoort"
                   className="text-sm py-1.5 inline-block text-white/50 hover:text-white transition-colors"
                 >
-                  🍷 Bourgondisch eten
+                  Borrelen in Amersfoort
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/uit-eten-amersfoort"
+                  className="text-sm py-1.5 inline-block text-white/50 hover:text-white transition-colors"
+                >
+                  Uit eten in Amersfoort
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/romantisch-diner-amersfoort"
+                  className="text-sm py-1.5 inline-block text-white/50 hover:text-white transition-colors"
+                >
+                  Romantisch diner
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/duurzaam-restaurant-amersfoort"
+                  className="text-sm py-1.5 inline-block text-white/50 hover:text-white transition-colors"
+                >
+                  Duurzaam eten
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/verhuur-en-groepen"
+                  className="text-sm py-1.5 inline-block text-white/50 hover:text-white transition-colors"
+                >
+                  Feestlocatie &amp; Groepen
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/catering"
+                  className="text-sm py-1.5 inline-block text-white/50 hover:text-white transition-colors"
+                >
+                  Catering &amp; Office Lunch
                 </Link>
               </li>
               <li>
@@ -112,7 +144,7 @@ export function Footer() {
                   href="/buurtgids"
                   className="text-sm py-1.5 inline-block text-white/50 hover:text-white transition-colors"
                 >
-                  🗺️ Buurtgids
+                  Buurtgids Flint &amp; Kamp
                 </Link>
               </li>
             </ul>

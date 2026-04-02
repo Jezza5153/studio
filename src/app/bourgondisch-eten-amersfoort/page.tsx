@@ -27,9 +27,38 @@ export const metadata: Metadata = {
     ],
 };
 
+const faqs = [
+    {
+        question: "Wat is bourgondisch eten bij De Tafelaar?",
+        answer: "Bourgondisch eten betekent genieten zonder haast. Bij De Tafelaar deel je kleine gerechten aan tafel: kazen, charcuterie, warme gerechten en desserts. Allemaal gemaakt met lokale, seizoensgebonden producten.",
+    },
+    {
+        question: "Hoeveel kost bourgondisch uit eten bij De Tafelaar?",
+        answer: "Gerechten varieren van EUR 3,50 tot EUR 15. Reken op EUR 25-35 per persoon, of kies het Chef's Choice arrangement voor EUR 45 p.p. inclusief bijpassend wijnarrangement voor EUR 28 p.p.",
+    },
+    {
+        question: "Is De Tafelaar geschikt voor een gezellig groepsdiner?",
+        answer: "Zeker, shared dining is juist perfect voor groepen. Vanaf 7 personen bieden we een Chef's Choice arrangement. We kunnen tot circa 100 personen ontvangen.",
+    },
+];
+
+function faqJsonLd() {
+    return JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: { "@type": "Answer", text: faq.answer },
+        })),
+    });
+}
+
 export default function BourgondischEtenAmersfoortPage() {
     return (
-        <div className="container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
+        <>
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd() }} />
+            <div className="container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
             {/* Hero */}
             <header className="text-center mb-12">
                 <p className="inline-block text-xs tracking-widest uppercase text-primary/80 mb-2">
@@ -134,5 +163,6 @@ export default function BourgondischEtenAmersfoortPage() {
                 </div>
             </section>
         </div>
+        </>
     );
 }

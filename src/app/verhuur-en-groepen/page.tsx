@@ -6,9 +6,9 @@ import type { Metadata } from "next";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Privé Diner & Groepsarrangementen Amersfoort | Huur De Tafelaar",
+  title: "Feestlocatie & Groepen Amersfoort | De Tafelaar",
   description:
-    "Zoekt u een locatie voor een feest, bedrijfsdiner of groepsuitje in Amersfoort? De Tafelaar biedt exclusieve verhuur tot 100 personen vlakbij Flint. Chef's Choice arrangement vanaf 7 personen.",
+    "Feest, bedrijfsdiner of groepsuitje in Amersfoort? De Tafelaar: verhuur tot 100 personen vlakbij Flint. Chef's Choice vanaf 7 pers.",
   alternates: {
     canonical: "/verhuur-en-groepen",
   },

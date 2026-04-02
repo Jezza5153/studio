@@ -3,9 +3,10 @@ import { getSettings, getLatestReviews } from "@/lib/queries/feed";
 import { ImpressieGallery } from "./ImpressieGallery";
 
 export const metadata: Metadata = {
-  title: "Impressie | De Tafelaar",
+  title: "Impressie | De Tafelaar Amersfoort",
   description:
-    "Sfeerimpressie van De Tafelaar — bekijk foto's van ons restaurant, de sfeer en wat onze gasten zeggen.",
+    "Sfeerimpressie van De Tafelaar: foto's van ons restaurant, gasten en gerechten. Bekijk wat onze gasten zeggen.",
+  alternates: { canonical: "/impressie" },
   robots: { index: true, follow: true },
 };
 

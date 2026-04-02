@@ -44,15 +44,15 @@ export const SEO_OVERRIDES: Record<string, SeoOverride> = {
                 price: "32.50",
                 priceCurrency: "EUR",
                 availability: "https://schema.org/InStock",
-                url: "https://detafelaar.nl/updates/paasbrunch-amersfoort-2026",
+                url: "https://tafelaaramersfoort.nl/updates/paasbrunch-amersfoort-2026",
             },
             description:
                 "Vier Pasen met een uitgebreide shared dining brunch bij De Tafelaar in Amersfoort. Brood, croissants, eiergerechten en meer.",
-            image: "https://detafelaar.nl/pics/homepage.png",
+            image: "https://tafelaaramersfoort.nl/pics/homepage.png",
             organizer: {
                 "@type": "Organization",
                 name: "De Tafelaar",
-                url: "https://detafelaar.nl",
+                url: "https://tafelaaramersfoort.nl",
             },
         },
         faqItems: [

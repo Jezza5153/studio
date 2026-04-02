@@ -8,13 +8,13 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion";
-import { MapPin, Clock, Users, Utensils, Phone } from "lucide-react";
+import { MapPin, Clock, Users, Utensils, Phone, Car } from "lucide-react";
 import { ReserveerButton } from "@/components/reserveer-button";
 
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-    title: "Restaurant vlakbij Flint | Bourgondisch Shared Dining op 2 min lopen",
+    title: "Restaurant vlakbij Flint | Shared Dining De Tafelaar",
     description:
         "Op zoek naar een restaurant vlakbij Flint? De Tafelaar ligt op 400 meter (2 min lopen). Bourgondisch shared dining voor of na de voorstelling.",
     alternates: {
@@ -27,9 +27,12 @@ export const metadata: Metadata = {
     keywords: [
         "restaurant vlakbij flint",
         "eten vlakbij flint amersfoort",
-        "bourgondisch eten dicht bij flint",
         "restaurant bij theater amersfoort",
         "eten voor voorstelling amersfoort",
+        "restaurant naast flint",
+        "diner voor theater amersfoort",
+        "parkeren flint amersfoort",
+        "restaurant flint amersfoort",
     ],
 };
 
@@ -37,23 +40,35 @@ export const metadata: Metadata = {
 const faqs = [
     {
         question: "Hoe ver is De Tafelaar lopen naar Flint?",
-        answer: "De Tafelaar ligt op ongeveer 400 meter van Flint, dat is circa 2 minuten lopen via de Kamp.",
+        answer: "De Tafelaar ligt op de Kamp 8, op ongeveer 400 meter van Theater de Flint. Dat is circa 2 minuten lopen. Je loopt via de Kamp rechtstreeks naar de ingang van Flint.",
     },
     {
         question: "Kunnen we op tijd eten voor de voorstelling?",
-        answer: "Ja, wij adviseren om een tafel te boeken 2 uur voor aanvang van de show. Dan heeft u rustig de tijd om te genieten van shared dining en op tijd bij het theater te zijn.",
+        answer: "Ja, wij adviseren om een tafel te boeken 2 uur voor aanvang van de show. Dan heb je rustig de tijd om te genieten van shared dining en op tijd bij het theater te zijn. Voorstellingen in Flint beginnen meestal om 20:00 of 20:15 — boek dan rond 18:00.",
     },
     {
         question: "Kunnen we snel shared dining doen (60-75 minuten)?",
-        answer: "Jazeker, laat bij uw reservering weten dat u naar Flint gaat en hoe laat de voorstelling begint. Wij stemmen het tempo van de gerechten daarop af.",
+        answer: "Jazeker, laat bij je reservering weten dat je naar Flint gaat en hoe laat de voorstelling begint. Wij stemmen het tempo van de gerechten daarop af zodat je op tijd bent.",
     },
     {
         question: "Is er ruimte voor groepen na een show?",
-        answer: "Absoluut! We ontvangen graag groepen na de voorstelling. Vanaf 7 personen werken we met een Chef's Choice arrangement. Reserveer vooraf en vermeld dat het na Flint is.",
+        answer: "Absoluut. We ontvangen graag groepen na de voorstelling. Vanaf 7 personen werken we met een Chef's Choice arrangement (EUR 45 p.p.). Reserveer vooraf en vermeld dat het na Flint is.",
+    },
+    {
+        question: "Waar kan ik parkeren bij Flint en De Tafelaar?",
+        answer: "De dichtstbijzijnde parkeergarage is Parking Flint (Stadsring), op 2 minuten lopen van zowel Flint als De Tafelaar. Parkeergarage Kamp en het Smallepad zijn ook goede opties. Op straat parkeren kan op de Kamp en omliggende straten (betaald tot 21:00).",
+    },
+    {
+        question: "Wat kost eten bij De Tafelaar?",
+        answer: "Gerechten varieren van EUR 3,50 tot EUR 15. Reken op gemiddeld EUR 25-35 per persoon voor eten. Ons Chef's Choice arrangement kost EUR 45 p.p., optioneel met bijpassend wijnarrangement voor EUR 28 p.p.",
     },
     {
         question: "Hebben jullie rekening met dieetwensen en allergieën?",
-        answer: "Wij werken met verse, lokale producten en kunnen vrijwel altijd rekening houden met allergieën en dieetwensen. Vermeld dit bij uw reservering of laat het weten bij aankomst.",
+        answer: "Wij werken met verse, lokale producten en kunnen vrijwel altijd rekening houden met allergieën en dieetwensen. Op de menukaart staan vegetarische (V) en vegan (VG) gerechten duidelijk aangegeven. Vermeld specifieke wensen bij je reservering.",
+    },
+    {
+        question: "Hoe laat beginnen voorstellingen in Flint meestal?",
+        answer: "De meeste avondvoorstellingen in Flint beginnen om 20:00 of 20:15. Middagvoorstellingen starten meestal rond 14:30 of 15:00. Check de Flint-website voor exacte tijden. Wij raden aan om 2 uur voor aanvang te reserveren voor een ontspannen diner.",
     },
 ];
 
@@ -100,7 +115,7 @@ export default function EtenVoorDeFlintPage() {
 
                 {/* Praktische info */}
                 <section className="max-w-4xl mx-auto mb-12">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         <Card className="rounded-2xl border">
                             <CardHeader className="pb-2">
                                 <div className="flex items-center gap-2 text-primary">
@@ -111,7 +126,7 @@ export default function EtenVoorDeFlintPage() {
                             <CardContent className="text-sm text-muted-foreground">
                                 <p className="font-medium text-foreground">Kamp 8, Amersfoort</p>
                                 <p>400 meter van Flint</p>
-                                <p>~2 minuten lopen</p>
+                                <p>~2 minuten lopen via de Kamp</p>
                             </CardContent>
                         </Card>
 
@@ -119,15 +134,13 @@ export default function EtenVoorDeFlintPage() {
                             <CardHeader className="pb-2">
                                 <div className="flex items-center gap-2 text-primary">
                                     <Clock className="h-5 w-5" />
-                                    <CardTitle className="text-lg">Timing tip</CardTitle>
+                                    <CardTitle className="text-lg">Voor de show</CardTitle>
                                 </div>
                             </CardHeader>
                             <CardContent className="text-sm text-muted-foreground">
-                                <p className="font-medium text-foreground">Vóór de show?</p>
-                                <p>Boek 2 uur voor aanvang van de show</p>
-                                <p className="text-xs text-muted-foreground/70">(zo hebt u rustig de tijd)</p>
-                                <p className="font-medium text-foreground mt-2">Na de show?</p>
-                                <p>Reserveer vanaf 22:00</p>
+                                <p className="font-medium text-foreground">Boek 2 uur voor aanvang</p>
+                                <p>Shows beginnen meestal 20:00/20:15</p>
+                                <p>Reserveer rond 18:00 voor rustig diner</p>
                             </CardContent>
                         </Card>
 
@@ -141,7 +154,35 @@ export default function EtenVoorDeFlintPage() {
                             <CardContent className="text-sm text-muted-foreground">
                                 <p className="font-medium text-foreground">Shared dining</p>
                                 <p>Kleine gerechten om te delen</p>
-                                <p>Lokaal & seizoensgebonden</p>
+                                <p>Lokaal &amp; seizoensgebonden</p>
+                            </CardContent>
+                        </Card>
+
+                        <Card className="rounded-2xl border">
+                            <CardHeader className="pb-2">
+                                <div className="flex items-center gap-2 text-primary">
+                                    <Car className="h-5 w-5" />
+                                    <CardTitle className="text-lg">Parkeren</CardTitle>
+                                </div>
+                            </CardHeader>
+                            <CardContent className="text-sm text-muted-foreground">
+                                <p className="font-medium text-foreground">Parking Flint (Stadsring)</p>
+                                <p>2 min lopen naar Flint &amp; De Tafelaar</p>
+                                <p>Ook: garage Kamp, Smallepad</p>
+                            </CardContent>
+                        </Card>
+
+                        <Card className="rounded-2xl border">
+                            <CardHeader className="pb-2">
+                                <div className="flex items-center gap-2 text-primary">
+                                    <Users className="h-5 w-5" />
+                                    <CardTitle className="text-lg">Groepen</CardTitle>
+                                </div>
+                            </CardHeader>
+                            <CardContent className="text-sm text-muted-foreground">
+                                <p className="font-medium text-foreground">Groepsarrangement</p>
+                                <p>Chef&apos;s Choice vanaf 7 pers.</p>
+                                <p>&euro;45 p.p. + opt. wijnarrangement</p>
                             </CardContent>
                         </Card>
                     </div>

@@ -22,20 +22,28 @@ import { ReserveerButton } from "@/components/reserveer-button";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "De Tafelaar | Shared dining in Amersfoort | Vlakbij Flint",
+  title: "De Tafelaar | Restaurant Amersfoort Centrum",
   description:
-    "De Tafelaar is het shared-dining restaurant vlakbij Flint in Amersfoort. Kleine gerechten om te delen, gemaakt met verse, lokale producten. Op 2 min lopen van Flint.",
+    "De Tafelaar: shared dining, borrel & diner in Amersfoort centrum. Kleine gerechten van lokale makers, vlakbij Flint. Wo-zo geopend.",
   openGraph: {
-    title: "De Tafelaar | Shared dining vlakbij Flint",
+    title: "De Tafelaar | Restaurant Amersfoort",
     description:
-      "Shared dining restaurant op 400m van Flint. Kleine gerechten om te delen, lokale makers en seizoensgerechten — midden in Amersfoort.",
+      "Shared dining, borrel & diner in Amersfoort centrum. Lokale gerechten, vlakbij Flint.",
     images: [{ url: "/pics/homepage.png" }],
   },
   keywords: [
-    "restaurant vlakbij flint",
-    "restaurant vlakbij flint",
-    "eten bij theater amersfoort",
+    "restaurant amersfoort",
+    "restaurant amersfoort centrum",
     "shared dining amersfoort",
+    "uit eten amersfoort",
+    "borrel amersfoort",
+    "diner amersfoort",
+    "gezellig restaurant amersfoort",
+    "restaurant vlakbij flint",
+    "kleine gerechten amersfoort",
+    "lokaal eten amersfoort",
+    "duurzaam restaurant amersfoort",
+    "beste restaurant amersfoort",
   ],
 };
 
@@ -48,9 +56,87 @@ const HIGHLIGHT_ICONS = {
 
 type HighlightIconKey = keyof typeof HIGHLIGHT_ICONS;
 
+function homeFaqJsonLd() {
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Wat is shared dining bij De Tafelaar?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Shared dining betekent dat je kleine gerechten bestelt om samen te delen aan tafel. Bij De Tafelaar kies je uit kazen, charcuterie, koude en warme gerechten en desserts — allemaal gemaakt met verse, lokale ingrediënten uit de regio Amersfoort.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Waar zit De Tafelaar in Amersfoort?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "De Tafelaar zit op de Kamp 8 in het centrum van Amersfoort, op 400 meter (2 minuten lopen) van Theater de Flint.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Hoe kan ik reserveren bij De Tafelaar?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Reserveer via de widget op onze website of bel +31 6 341 279 32. Voor groepen vanaf 7 personen bieden we een Chef's Choice arrangement aan.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Wat zijn de openingstijden van De Tafelaar?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Woensdag en donderdag 17:00-23:00, vrijdag en zaterdag 15:00-00:00, zondag 17:00-23:00. Maandag en dinsdag gesloten.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Heeft De Tafelaar vegetarische en vegan opties?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Ja, meerdere vegetarische en vegan gerechten op de kaart: carpaccio van bieten, Japanse curry, Bao Bun Inari en een vegan Snicker als dessert.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Kan ik De Tafelaar huren voor een feest?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Ja, beschikbaar voor feesten en bedrijfsdiners tot circa 100 personen. Chef's Choice arrangement EUR 45 p.p., optioneel met wijnarrangement.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Biedt De Tafelaar catering aan?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Ja, catering voor kantoorlunches, zakelijke events en walking dinners in de regio Amersfoort.",
+        },
+      },
+    ],
+  });
+}
+
+function homeBreadcrumbJsonLd() {
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://tafelaaramersfoort.nl" },
+    ],
+  });
+}
+
 export default function Home() {
   return (
-    <main className="flex flex-col">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: homeFaqJsonLd() }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: homeBreadcrumbJsonLd() }} />
+      <div className="flex flex-col">
       {/* ================= HERO ================= */}
       <section className="relative h-[65svh] md:h-[70vh] w-full" aria-labelledby="home-hero-title">
         <Image
@@ -251,7 +337,8 @@ export default function Home() {
           </div>
         </section>
       </div>
-    </main>
+    </div>
+    </>
   );
 }
 

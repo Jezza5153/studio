@@ -45,12 +45,11 @@ export const homeContent = {
   hero: {
     headline: "Samen aan tafel. Kleine gerechten, grote gezelligheid.",
     subhead:
-      "Welkom bij De Tafelaar. Ontdek onze passie voor shared dining, duurzame, lokale ingrediënten en een onvergetelijke sfeer in hartje Amersfoort.",
+      "Welkom bij De Tafelaar — het restaurant in Amersfoort centrum voor shared dining, borrel en diner. Lokale gerechten om te delen, vlakbij Flint.",
 
-    // NEW (for premium hero polish + AI/SEO clarity)
-    kicker: "Shared dining • Amersfoort",
+    kicker: "Restaurant Amersfoort Centrum",
     entityDefinition:
-      "De Tafelaar is een shared-dining restaurant in Amersfoort met lokale leveranciers en seizoensgerechten.",
+      "De Tafelaar is een shared-dining restaurant op de Kamp in Amersfoort centrum. Open wo–zo voor borrel, diner en groepen. Lokale producten, seizoensgebonden menu.",
   },
 
   // UPDATED: stable iconKey so icons don’t break when titles change

@@ -10,6 +10,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
     title: "Updates | De Tafelaar Courant",
     description: "Alle updates, evenementen, reviews en meer van De Tafelaar Amersfoort.",
+    alternates: { canonical: "/updates" },
 };
 
 function UpdateCard({ item }: { item: FeedItem }) {

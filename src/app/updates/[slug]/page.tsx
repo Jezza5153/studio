@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const ogImage = media[0]?.url || "/pics/homepage.png";
     const description = seoOverride?.metaDescription || extractMetaDescription(story.body) || "Lees meer op De Tafelaar Courant.";
     const pageTitle = seoOverride?.seoTitle || `${story.title} | De Tafelaar Courant`;
-    const canonicalUrl = `https://detafelaar.nl/updates/${slug}`;
+    const canonicalUrl = `https://tafelaaramersfoort.nl/updates/${slug}`;
 
     return {
         title: pageTitle,
@@ -88,7 +88,7 @@ export default async function StoryPage({ params }: PageProps) {
 
     // JSON-LD: Article + BreadcrumbList + optional Event + FAQ
     const seoOverride = getSeoOverride(slug);
-    const BASE = "https://detafelaar.nl";
+    const BASE = "https://tafelaaramersfoort.nl";
     const canonicalUrl = `${BASE}/updates/${slug}`;
     const heroUrl = media[0]?.url;
     const ogImage = heroUrl?.startsWith("http") ? heroUrl : heroUrl ? `${BASE}${heroUrl}` : `${BASE}/pics/homepage.png`;

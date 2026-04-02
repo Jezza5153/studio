@@ -9,19 +9,19 @@ import { ReserveerButton } from "@/components/reserveer-button";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-    title: "Nieuw Restaurant in Amersfoort 2025 | De Tafelaar Shared Dining",
+    title: "Nieuw Restaurant Amersfoort 2026 | De Tafelaar",
     description:
         "Ontdek De Tafelaar: het nieuwste shared dining restaurant in Amersfoort. Lokale gerechten, seizoensgebonden menu, gezellige sfeer. Nu geopend op de Kamp.",
     alternates: {
         canonical: "/nieuw-restaurant-amersfoort",
     },
     openGraph: {
-        title: "Nieuw Restaurant Amersfoort 2025 | De Tafelaar",
+        title: "Nieuw Restaurant Amersfoort 2026 | De Tafelaar",
         description: "Ontdek De Tafelaar: shared dining met lokale gerechten. Het nieuwe restaurant op de Kamp.",
     },
     keywords: [
         "nieuw restaurant amersfoort",
-        "nieuw restaurant amersfoort 2025",
+        "nieuw restaurant amersfoort 2026",
         "nieuwe horeca amersfoort",
         "restaurant opening amersfoort",
         "de tafelaar nieuw",

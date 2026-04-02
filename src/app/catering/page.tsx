@@ -7,7 +7,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Catering Amersfoort | Office Lunch & Zakelijke Catering",
   description:
-    "Professionele catering voor kantoor en evenementen in Amersfoort. Verse lunches, walking dinners, borrelplanken. Lokale ingrediënten, seizoensgebonden. Offerte aanvragen!",
+    "Catering in Amersfoort: verse lunches, walking dinners en borrelplanken. Lokale ingredienten, seizoensgebonden. Offerte aanvragen.",
   alternates: {
     canonical: "/catering",
   },
