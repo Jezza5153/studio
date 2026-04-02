@@ -6,8 +6,8 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
-import { UnifiedWidgetsMount } from "@/components/unified-widgets-mount";
 import { GoogleAnalytics } from "@/components/google-analytics";
+import Script from "next/script";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -23,9 +23,9 @@ const playfairDisplay = Playfair_Display({
 
 const siteUrl = "https://tafelaaramersfoort.nl";
 const siteName = "De Tafelaar";
-const siteTitle = "De Tafelaar – Shared Dining in Amersfoort";
+const siteTitle = "De Tafelaar – Restaurant Amersfoort Centrum";
 const siteDescription =
-  "Samen aan tafel: kleine gerechten, grote gezelligheid. Duurzaam, lokaal en met liefde voor borrel & bites.";
+  "De Tafelaar: restaurant in Amersfoort centrum voor shared dining, borrel en diner. Kleine gerechten van lokale makers, vlakbij Flint. Wo–zo geopend.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -100,7 +100,7 @@ function restaurantJsonLd() {
     ],
 
     // Google Maps URL for local SEO
-    hasMap: "https://maps.google.com/?cid=YOUR_GOOGLE_CID",
+    hasMap: "https://maps.google.com/?q=De+Tafelaar+Kamp+8+Amersfoort",
 
     // Area served
     areaServed: {
@@ -109,7 +109,7 @@ function restaurantJsonLd() {
     },
 
     // Additional keywords for local search
-    keywords: "shared dining, restaurant amersfoort, eten vlakbij flint, restaurant kamp amersfoort, restaurant nabij flint",
+    keywords: "restaurant amersfoort, restaurant amersfoort centrum, shared dining amersfoort, borrel amersfoort, diner amersfoort, uit eten amersfoort, restaurant vlakbij flint, gezellig restaurant amersfoort, lokaal eten amersfoort",
 
     openingHoursSpecification: [
       {
@@ -153,46 +153,39 @@ function restaurantJsonLd() {
       ratingCount: "12",
       reviewCount: "12",
     },
+
+    // Reserve action for AI engines and Google
+    potentialAction: {
+      "@type": "ReserveAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${siteUrl}/contact`,
+        actionPlatform: [
+          "http://schema.org/DesktopWebPlatform",
+          "http://schema.org/MobileWebPlatform",
+        ],
+      },
+      result: {
+        "@type": "Reservation",
+        name: "Tafel reserveren bij De Tafelaar",
+      },
+    },
+
+    // Logo
+    logo: {
+      "@type": "ImageObject",
+      url: `${siteUrl}/logo.png`,
+    },
+
+    // Payment
+    paymentAccepted: "Cash, Credit Card, Debit Card, PIN",
+    currenciesAccepted: "EUR",
   };
 
   return JSON.stringify(data);
 }
 
 
-function faqJsonLd() {
-  const data = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "Bieden jullie shared dining aan?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Ja, ons menu is gericht op kleine gerechten om te delen: samen proeven en genieten.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Werken jullie met lokale en duurzame producten?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Zeker. We focussen op lokale makers en seizoensgebonden ingrediënten, met aandacht voor duurzaamheid.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Hoe kan ik reserveren?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Reserveer eenvoudig via de reserveringswidget rechtsonder op onze website.",
-        },
-      },
-    ],
-  };
-
-  return JSON.stringify(data);
-}
 
 export default function RootLayout({
   children,
@@ -214,10 +207,6 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: restaurantJsonLd() }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: faqJsonLd() }}
         />
       </head>
 
@@ -253,8 +242,12 @@ export default function RootLayout({
         {/* Google Analytics */}
         <GoogleAnalytics />
 
-        {/* ✅ Events Booking Widget */}
-        <UnifiedWidgetsMount />
+        {/* BoekEerlijk Reserveerknop */}
+        <Script
+          src="https://www.boekeerlijk.nl/embed.js"
+          data-restaurant-id="de-tafelaar-30fcc6"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

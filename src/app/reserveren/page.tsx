@@ -9,10 +9,8 @@ import { Button } from "@/components/ui/button";
 export default function ReserverenPage() {
 
   useEffect(() => {
-    // Open de Events booking widget direct bij het laden van de pagina.
-    // Dit is een 'soft' redirect naar de reserveringsfunctionaliteit.
     const openTimeout = setTimeout(() => {
-      window.eventsOpen?.();
+      window.boekeerlijk?.open();
     }, 100);
 
     return () => clearTimeout(openTimeout);
