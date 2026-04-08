@@ -17,15 +17,15 @@ export interface SeoOverride {
 }
 
 export const SEO_OVERRIDES: Record<string, SeoOverride> = {
-    "paasbrunch-amersfoort-2026": {
-        seoTitle: "Paasbrunch Amersfoort 2026 – De Tafelaar",
+    "moederdag-high-tea-amersfoort-2026": {
+        seoTitle: "Moederdag High Tea Amersfoort 2026 – De Tafelaar",
         metaDescription:
-            "Vier Pasen met een uitgebreide paasbrunch bij De Tafelaar in het centrum van Amersfoort. Shared dining brunch met brood, croissants, eiergerechten en meer. Reserveer nu.",
+            "Verras je moeder met een uitgebreide high tea bij De Tafelaar in Amersfoort centrum. Shared dining high tea met hartige hapjes, zoete lekkernijen en lokale thee & koffie. Zondag 11 mei. Reserveer nu.",
         eventJsonLd: {
             "@type": "Event",
-            name: "Paasbrunch 2026 bij De Tafelaar",
-            startDate: "2026-04-05T11:00",
-            endDate: "2026-04-06T15:00",
+            name: "Moederdag High Tea 2026 bij De Tafelaar",
+            startDate: "2026-05-11T12:00",
+            endDate: "2026-05-11T17:00",
             eventAttendanceMode:
                 "https://schema.org/OfflineEventAttendanceMode",
             eventStatus: "https://schema.org/EventScheduled",
@@ -36,18 +36,19 @@ export const SEO_OVERRIDES: Record<string, SeoOverride> = {
                     "@type": "PostalAddress",
                     streetAddress: "Kamp 8",
                     addressLocality: "Amersfoort",
+                    postalCode: "3811 AR",
                     addressCountry: "NL",
                 },
             },
             offers: {
                 "@type": "Offer",
-                price: "32.50",
+                price: "37.50",
                 priceCurrency: "EUR",
                 availability: "https://schema.org/InStock",
-                url: "https://tafelaaramersfoort.nl/updates/paasbrunch-amersfoort-2026",
+                url: "https://tafelaaramersfoort.nl/updates/moederdag-high-tea-amersfoort-2026",
             },
             description:
-                "Vier Pasen met een uitgebreide shared dining brunch bij De Tafelaar in Amersfoort. Brood, croissants, eiergerechten en meer.",
+                "Vier Moederdag met een uitgebreide shared dining high tea bij De Tafelaar in Amersfoort. Hartige hapjes, zoete lekkernijen, lokale thee van Boot Koffie en meer.",
             image: "https://tafelaaramersfoort.nl/pics/homepage.png",
             organizer: {
                 "@type": "Organization",
@@ -57,20 +58,24 @@ export const SEO_OVERRIDES: Record<string, SeoOverride> = {
         },
         faqItems: [
             {
-                question: "Moet ik reserveren voor de paasbrunch?",
-                answer: "Ja, reserveren wordt aanbevolen omdat het aantal plaatsen beperkt is.",
+                question: "Moet ik reserveren voor de Moederdag high tea?",
+                answer: "Ja, reserveren is noodzakelijk. Het aantal plaatsen is beperkt en Moederdag is een populaire dag. Boek zo snel mogelijk via onze website of bel +31 6 341 279 32.",
             },
             {
-                question: "Is de paasbrunch geschikt voor kinderen?",
-                answer: "Ja, kinderen zijn welkom en er geldt een speciaal tarief voor kinderen tot en met 12 jaar.",
+                question: "Wat kost de Moederdag high tea?",
+                answer: "De high tea kost €37,50 per persoon. Kinderen tot en met 12 jaar betalen een gereduceerd tarief. Inclusief thee, koffie en een glas bubbels voor mama.",
             },
             {
-                question: "Wat voor soort brunch serveren jullie?",
-                answer: "We serveren een shared dining brunch met verschillende kleine gerechten om samen te delen.",
+                question: "Wat wordt er geserveerd bij de high tea?",
+                answer: "Een shared dining high tea met hartige hapjes (mini-sandwiches, quiche, kaasplanken), zoete lekkernijen (scones, taartjes, petit fours) en warme gerechten. Alles gemaakt met lokale, seizoensgebonden producten.",
             },
             {
-                question: "Waar ligt De Tafelaar?",
-                answer: "De Tafelaar ligt in het centrum van Amersfoort aan de Kamp.",
+                question: "Is de high tea geschikt voor kinderen?",
+                answer: "Ja, kinderen zijn van harte welkom. Er is een kindertarief en de gerechten zijn ook voor de kleinsten geschikt.",
+            },
+            {
+                question: "Hoe laat is de Moederdag high tea?",
+                answer: "Zondag 11 mei 2026, van 12:00 tot 17:00. We adviseren om rond 12:00 of 14:00 te reserveren voor een ontspannen middag.",
             },
         ],
     },

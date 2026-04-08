@@ -207,21 +207,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= PAASBRUNCH BANNER ================= */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-amber-50 via-orange-50 to-yellow-50 dark:from-amber-950/30 dark:via-orange-950/20 dark:to-yellow-950/30">
+      {/* ================= MOEDERDAG HIGH TEA BANNER ================= */}
+      <section className="relative overflow-hidden bg-gradient-to-r from-pink-50 via-rose-50 to-fuchsia-50 dark:from-pink-950/30 dark:via-rose-950/20 dark:to-fuchsia-950/30">
         <div className="container mx-auto px-4 py-4 sm:px-6">
           <Link
-            href="/updates/paasbrunch-amersfoort-2026"
+            href="/updates/moederdag-high-tea-amersfoort-2026"
             className="group flex items-center justify-center gap-3 text-center transition-transform hover:scale-[1.01]"
           >
-            <span className="text-2xl" role="img" aria-label="Paashaas">🐣</span>
-            <span className="font-headline text-sm font-semibold tracking-wide text-amber-900 dark:text-amber-200 sm:text-base">
-              Paasbrunch 5 &amp; 6 april
+            <span className="text-2xl" role="img" aria-label="Bloemen">💐</span>
+            <span className="font-headline text-sm font-semibold tracking-wide text-pink-900 dark:text-pink-200 sm:text-base">
+              Moederdag High Tea — zondag 11 mei
             </span>
-            <span className="text-xs font-medium text-amber-700 dark:text-amber-400 sm:text-sm">
-              → Lees meer
+            <span className="text-xs font-medium text-pink-700 dark:text-pink-400 sm:text-sm">
+              → Reserveer nu
             </span>
-            <span className="text-2xl" role="img" aria-label="Paasei">🥚</span>
+            <span className="text-2xl" role="img" aria-label="Theepot">🫖</span>
           </Link>
         </div>
       </section>
