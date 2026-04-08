@@ -14,25 +14,27 @@ import { ReserveerButton } from "@/components/reserveer-button";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-    title: "Restaurant vlakbij Flint | Shared Dining De Tafelaar",
+    title: "Eten voor Theater Amersfoort | Restaurant vlakbij Flint | De Tafelaar",
     description:
-        "Op zoek naar een restaurant vlakbij Flint? De Tafelaar ligt op 400 meter (2 min lopen). Bourgondisch shared dining voor of na de voorstelling.",
+        "Eten voor of na het theater in Amersfoort? De Tafelaar ligt op 400 meter van Flint (2 min lopen). Shared dining met lokale gerechten. Reserveer nu.",
     alternates: {
         canonical: "/eten-voor-theater-de-flint",
     },
     openGraph: {
-        title: "Restaurant vlakbij Flint | De Tafelaar Amersfoort",
-        description: "Bourgondisch shared dining op 2 minuten lopen van Flint. Perfect voor of na de voorstelling.",
+        title: "Eten voor Theater Amersfoort | Restaurant vlakbij Flint",
+        description: "Shared dining op 2 minuten lopen van Flint. Perfect voor of na de voorstelling in Amersfoort.",
     },
     keywords: [
+        "eten voor theater amersfoort",
         "restaurant vlakbij flint",
         "eten vlakbij flint amersfoort",
         "restaurant bij theater amersfoort",
         "eten voor voorstelling amersfoort",
         "restaurant naast flint",
         "diner voor theater amersfoort",
-        "parkeren flint amersfoort",
-        "restaurant flint amersfoort",
+        "restaurant theater amersfoort",
+        "eten voor flint amersfoort",
+        "uit eten voor theater",
     ],
 };
 
@@ -105,11 +107,11 @@ export default function EtenVoorDeFlintPage() {
                         Op 2 min lopen van Flint
                     </p>
                     <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl tracking-tight">
-                        Bourgondisch eten vlakbij Flint
+                        Eten voor het theater in Amersfoort
                     </h1>
                     <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
-                        De Tafelaar is de ideale plek voor een heerlijk diner voor of na uw theaterbezoek.
-                        Shared dining met lokale, seizoensgebonden gerechten — op steenworp afstand van Flint.
+                        Op zoek naar een restaurant voor of na het theater in Amersfoort? De Tafelaar ligt op
+                        400 meter van Theater de Flint — shared dining met lokale, seizoensgebonden gerechten.
                     </p>
                 </header>
 

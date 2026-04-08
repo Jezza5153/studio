@@ -9,22 +9,22 @@ import { ReserveerButton } from "@/components/reserveer-button";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-    title: "Nieuw Restaurant Amersfoort 2026 | De Tafelaar",
+    title: "Ontdek De Tafelaar | Shared Dining Restaurant Amersfoort",
     description:
-        "Ontdek De Tafelaar: het nieuwste shared dining restaurant in Amersfoort. Lokale gerechten, seizoensgebonden menu, gezellige sfeer. Nu geopend op de Kamp.",
+        "Ken je De Tafelaar al? Shared dining restaurant op de Kamp in Amersfoort. Lokale gerechten om te delen, seizoensgebonden menu, gezellige sfeer. Wo–zo geopend.",
     alternates: {
         canonical: "/nieuw-restaurant-amersfoort",
     },
     openGraph: {
-        title: "Nieuw Restaurant Amersfoort 2026 | De Tafelaar",
-        description: "Ontdek De Tafelaar: shared dining met lokale gerechten. Het nieuwe restaurant op de Kamp.",
+        title: "Ontdek De Tafelaar | Shared Dining Amersfoort",
+        description: "Shared dining met lokale gerechten op de Kamp in Amersfoort. Ontdek De Tafelaar.",
     },
     keywords: [
-        "nieuw restaurant amersfoort",
-        "nieuw restaurant amersfoort 2026",
-        "nieuwe horeca amersfoort",
-        "restaurant opening amersfoort",
-        "de tafelaar nieuw",
+        "restaurant ontdekken amersfoort",
+        "shared dining restaurant amersfoort",
+        "restaurant tip amersfoort",
+        "restaurant de kamp amersfoort",
+        "gezellig restaurant amersfoort centrum",
     ],
 };
 
@@ -35,15 +35,15 @@ export default function NieuwRestaurantAmersfoortPage() {
             <header className="text-center mb-12">
                 <div className="inline-flex items-center gap-2 text-primary mb-3">
                     <Sparkles className="h-5 w-5" />
-                    <span className="text-xs tracking-widest uppercase">Nieuw in Amersfoort</span>
+                    <span className="text-xs tracking-widest uppercase">Shared Dining op de Kamp</span>
                 </div>
                 <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl tracking-tight">
-                    De Tafelaar: Shared Dining op de Kamp
+                    Ontdek De Tafelaar in Amersfoort
                 </h1>
                 <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
-                    Op zoek naar een nieuw restaurant in Amersfoort? De Tafelaar brengt shared dining
-                    naar het centrum: kleine gerechten om te delen, lokale ingrediënten, en een
-                    ongedwongen sfeer.
+                    Op zoek naar een restaurant in Amersfoort dat net even anders is? Bij De Tafelaar
+                    deel je kleine gerechten aan tafel — gemaakt met lokale ingrediënten, in een
+                    ongedwongen sfeer op de Kamp.
                 </p>
             </header>
 

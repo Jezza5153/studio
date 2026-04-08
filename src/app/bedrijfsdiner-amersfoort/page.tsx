@@ -177,14 +177,19 @@ export default function BedrijfsdinerAmersfoortPage() {
                 {/* Links */}
                 <section className="max-w-2xl mx-auto text-center">
                     <div className="flex flex-wrap justify-center gap-3">
+                        <Link href="/feestlocatie-amersfoort">
+                            <Button variant="outline" className="rounded-xl">
+                                Feestlocatie
+                            </Button>
+                        </Link>
+                        <Link href="/prive-diner-amersfoort">
+                            <Button variant="outline" className="rounded-xl">
+                                Privé diner
+                            </Button>
+                        </Link>
                         <Link href="/catering">
                             <Button variant="outline" className="rounded-xl">
                                 Catering
-                            </Button>
-                        </Link>
-                        <Link href="/verhuur-en-groepen">
-                            <Button variant="outline" className="rounded-xl">
-                                Verhuur &amp; Groepen
                             </Button>
                         </Link>
                         <Link href="/contact">

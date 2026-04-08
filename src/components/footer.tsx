@@ -125,10 +125,34 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/verhuur-en-groepen"
+                  href="/feestlocatie-amersfoort"
                   className="text-sm py-1.5 inline-block text-white/50 hover:text-white transition-colors"
                 >
-                  Feestlocatie &amp; Groepen
+                  Feestlocatie Amersfoort
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/bedrijfsdiner-amersfoort"
+                  className="text-sm py-1.5 inline-block text-white/50 hover:text-white transition-colors"
+                >
+                  Bedrijfsdiner
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/prive-diner-amersfoort"
+                  className="text-sm py-1.5 inline-block text-white/50 hover:text-white transition-colors"
+                >
+                  Privé diner
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/vegetarisch-amersfoort"
+                  className="text-sm py-1.5 inline-block text-white/50 hover:text-white transition-colors"
+                >
+                  Vegetarisch eten
                 </Link>
               </li>
               <li>

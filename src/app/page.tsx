@@ -300,6 +300,38 @@ export default function Home() {
         </section>
 
 
+        {/* ================= DISCOVER MORE ================= */}
+        <section className="container mx-auto px-4 sm:px-6 md:px-8" aria-labelledby="discover-title">
+          <h2 id="discover-title" className="font-headline text-2xl text-foreground md:text-3xl mb-6 text-center">
+            Restaurant in Amersfoort centrum
+          </h2>
+          <p className="mx-auto max-w-3xl text-base leading-relaxed text-muted-foreground text-center mb-8">
+            De Tafelaar is een shared dining restaurant op de Kamp in het hart van Amersfoort.
+            Op loopafstand van station Amersfoort (5 min), Theater de Flint (2 min) en de Koppelpoort.
+            Woensdag t/m zondag geopend voor borrel, diner en groepen.
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 max-w-3xl mx-auto">
+            {[
+              { href: "/bourgondisch-eten-amersfoort", label: "Bourgondisch eten" },
+              { href: "/eten-voor-theater-de-flint", label: "Eten bij Flint" },
+              { href: "/borrel-amersfoort", label: "Borrelen" },
+              { href: "/romantisch-diner-amersfoort", label: "Romantisch diner" },
+              { href: "/vegetarisch-amersfoort", label: "Vegetarisch" },
+              { href: "/duurzaam-restaurant-amersfoort", label: "Duurzaam eten" },
+              { href: "/feestlocatie-amersfoort", label: "Feestlocatie" },
+              { href: "/catering", label: "Catering" },
+            ].map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="rounded-xl border bg-card px-3 py-2.5 text-center text-sm font-medium text-muted-foreground transition-colors hover:bg-primary/5 hover:text-foreground"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </section>
+
         {/* ================= HOW IT WORKS ================= */}
         <section className="container mx-auto px-4 sm:px-6 md:px-8 text-center" aria-labelledby="how-title">
           <h2 id="how-title" className="mb-4 font-headline text-2xl sm:text-3xl md:text-4xl">
