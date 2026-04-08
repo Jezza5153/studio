@@ -184,16 +184,14 @@ export default function RomantischDinerAmersfoortPage() {
                     <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-6 text-center">
                         Veelgestelde vragen
                     </h2>
-                    <Card className="rounded-2xl border p-6 sm:p-8">
-                        <dl className="space-y-6">
-                            {faqs.map((faq, index) => (
-                                <div key={index}>
-                                    <dt className="font-semibold text-base mb-1">{faq.question}</dt>
-                                    <dd className="text-sm text-muted-foreground">{faq.answer}</dd>
-                                </div>
-                            ))}
-                        </dl>
-                    </Card>
+                    <div className="space-y-4">
+                        {faqs.map((faq, i) => (
+                            <Card key={i} className="rounded-2xl border p-4 sm:p-6">
+                                <h3 className="font-semibold text-foreground mb-2">{faq.question}</h3>
+                                <p className="text-sm text-muted-foreground">{faq.answer}</p>
+                            </Card>
+                        ))}
+                    </div>
                 </section>
 
                 {/* Links */}
