@@ -27,6 +27,37 @@ export const metadata: Metadata = {
 };
 
 
+const faqs = [
+  {
+    question: "Hoeveel personen passen er bij De Tafelaar?",
+    answer: "Tot circa 100 personen staand, 50-60 personen zittend. De opstelling is flexibel en stemmen we af op jullie wensen.",
+  },
+  {
+    question: "Wat is het Chef's Choice arrangement?",
+    answer: "Vanaf 7 personen serveren we een Chef's Choice: een rijke selectie borrelplanken, koude en warme gerechten om te delen. Prijs: €45 per persoon. Optioneel bijpassend wijnarrangement voor €28 p.p.",
+  },
+  {
+    question: "Kan ik De Tafelaar ook overdag of op maandag/dinsdag huren?",
+    answer: "Ja, in overleg is veel mogelijk. Neem contact met ons op om de mogelijkheden te bespreken voor overdag of buiten onze reguliere openingstijden.",
+  },
+  {
+    question: "Houden jullie rekening met allergieën en dieetwensen?",
+    answer: "Absoluut. Geef allergieën en dieetwensen vooraf door, dan past de keuken het menu aan. We werken met verse, lokale producten en bieden vegetarische en vegan opties.",
+  },
+];
+
+function faqJsonLd() {
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: { "@type": "Answer", text: faq.answer },
+    })),
+  });
+}
+
 import Image from "next/image";
 import Link from "next/link";
 import { ObfuscatedEmail } from "@/components/obfuscated-email";
@@ -54,6 +85,8 @@ import {
 
 export default function VerhuurEnGroepenPage() {
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd() }} />
     <div className="relative bg-background">
       {/* light vignette, cheap to paint */}
       <div className="pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)] bg-gradient-to-b from-primary/5 to-transparent" />
@@ -227,5 +260,6 @@ export default function VerhuurEnGroepenPage() {
         </section>
       </div>
     </div>
+    </>
   );
 }

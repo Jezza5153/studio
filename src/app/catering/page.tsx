@@ -27,6 +27,37 @@ export const metadata: Metadata = {
 };
 
 
+const faqs = [
+  {
+    question: "Wat kost office lunch catering bij De Tafelaar?",
+    answer: "Broodjes en wraps vanaf €7,50 p.p., bowls vanaf €10,50 p.p. Lunchboxen: Classic €14,50, Veggie €13,50, Premium €18,50. Build your own lunch ook mogelijk.",
+  },
+  {
+    question: "Vanaf hoeveel personen kan ik catering bestellen?",
+    answer: "Onze office lunch catering is beschikbaar vanaf 10 personen. Voor grotere groepen tot 150+ personen schalen we eenvoudig op.",
+  },
+  {
+    question: "Hebben jullie vegetarische cateringopties?",
+    answer: "Ja, elk onderdeel van ons menu heeft vegetarische opties. De Veggie Lunchbox, Inari Bao-Style Sandwich, Bieten & Geitenkaas Bowl en Veggie Meatball Wrap zijn volledig vegetarisch.",
+  },
+  {
+    question: "Bezorgen jullie de catering op kantoor?",
+    answer: "Ja, we bezorgen in Amersfoort en omgeving. Alles wordt transport-proof verpakt en is klaar om te serveren. Neem contact op voor levertijden en -kosten.",
+  },
+];
+
+function faqJsonLd() {
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: { "@type": "Answer", text: faq.answer },
+    })),
+  });
+}
+
 import Image from "next/image";
 import Link from "next/link";
 import { ObfuscatedEmail } from "@/components/obfuscated-email";
@@ -189,6 +220,8 @@ function PricePill({ value }: { value: number }) {
 
 export default function CateringPage() {
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd() }} />
     <div className="relative bg-background">
       {/* light vignette */}
       <div className="pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)] bg-gradient-to-b from-primary/5 to-transparent" />
@@ -576,5 +609,6 @@ export default function CateringPage() {
         </section>
       </div>
     </div>
+    </>
   );
 }

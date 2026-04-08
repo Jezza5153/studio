@@ -108,9 +108,6 @@ function restaurantJsonLd() {
       name: "Amersfoort",
     },
 
-    // Additional keywords for local search
-    keywords: "restaurant amersfoort, restaurant amersfoort centrum, shared dining amersfoort, borrel amersfoort, diner amersfoort, uit eten amersfoort, restaurant vlakbij flint, gezellig restaurant amersfoort, lokaal eten amersfoort",
-
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
@@ -144,15 +141,9 @@ function restaurantJsonLd() {
       },
     ],
 
-    // Aggregate Rating - Update these values as you collect reviews
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.8",
-      bestRating: "5",
-      worstRating: "1",
-      ratingCount: "12",
-      reviewCount: "12",
-    },
+    // NOTE: aggregateRating removed — hardcoded values risk a Google penalty
+    // when they don't match actual Google review counts. Re-add when syncing
+    // live review data from the /api/cron/ingest-reviews endpoint.
 
     // Reserve action for AI engines and Google
     potentialAction: {

@@ -32,6 +32,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/uit-eten-amersfoort`, lastModified, priority: 0.8, changeFrequency: "monthly" },
     { url: `${base}/romantisch-diner-amersfoort`, lastModified, priority: 0.8, changeFrequency: "monthly" },
     { url: `${base}/duurzaam-restaurant-amersfoort`, lastModified, priority: 0.8, changeFrequency: "monthly" },
+    { url: `${base}/feestlocatie-amersfoort`, lastModified, priority: 0.8, changeFrequency: "monthly" },
+    { url: `${base}/bedrijfsdiner-amersfoort`, lastModified, priority: 0.8, changeFrequency: "monthly" },
+    { url: `${base}/prive-diner-amersfoort`, lastModified, priority: 0.8, changeFrequency: "monthly" },
+    { url: `${base}/vegetarisch-amersfoort`, lastModified, priority: 0.8, changeFrequency: "monthly" },
   ];
 
   // Dynamic article pages from database

@@ -2,50 +2,48 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Heart, Leaf, MapPin, Sparkles, Utensils, Users } from "lucide-react";
+import { Users, Leaf, Heart } from "lucide-react";
 import { ReserveerButton } from "@/components/reserveer-button";
 
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-    title: "Uit Eten in Amersfoort | Shared Dining bij De Tafelaar",
+    title: "Uit Eten in Amersfoort | Shared Dining De Tafelaar",
     description:
-        "Uit eten in Amersfoort? De Tafelaar: shared dining met kleine gerechten van lokale makers. Gezellig, duurzaam en in het centrum. Reserveer direct.",
+        "Uit eten in Amersfoort? De Tafelaar: shared dining met lokale gerechten op de Kamp. Gezellig samen aan tafel, kleine gerechten om te delen. Reserveer nu.",
     alternates: {
         canonical: "/uit-eten-amersfoort",
     },
     openGraph: {
-        title: "Uit Eten Amersfoort | De Tafelaar",
-        description: "Lekker uit eten in Amersfoort centrum. Shared dining met lokale, seizoensgebonden gerechten.",
+        title: "Uit Eten in Amersfoort | De Tafelaar",
+        description: "Shared dining met lokale gerechten. Gezellig uit eten op de Kamp.",
     },
     keywords: [
         "uit eten amersfoort",
+        "uit eten in amersfoort",
         "lekker eten amersfoort",
-        "uit eten amersfoort centrum",
         "eten amersfoort",
-        "gezellig uit eten amersfoort",
-        "lekker uit eten in amersfoort",
         "restaurant tip amersfoort",
-        "beste plek om te eten amersfoort",
+        "gezellig uit eten amersfoort",
     ],
 };
 
 const faqs = [
     {
-        question: "Wat maakt De Tafelaar bijzonder voor uit eten in Amersfoort?",
-        answer: "De Tafelaar is een shared-dining restaurant: je bestelt kleine gerechten om samen te delen. Alles is gemaakt met lokale, seizoensgebonden producten van Amersfoortse makers. Het is een ontspannen, gezellige manier van uit eten.",
+        question: "Waar kan ik lekker uit eten in Amersfoort?",
+        answer: "De Tafelaar op de Kamp is de plek voor shared dining in Amersfoort. Kleine gerechten om te delen, gemaakt met seizoensgebonden producten van lokale makers. Gezellig, lekker en betaalbaar.",
     },
     {
         question: "Hoeveel kost uit eten bij De Tafelaar?",
-        answer: "De gerechten varieren van EUR 3,50 tot EUR 15. Reken op gemiddeld EUR 25-35 per persoon voor eten, of kies het Chef's Choice arrangement voor EUR 45 p.p. inclusief een selectie van de chef.",
+        answer: "Reken op EUR 25-35 per persoon. Voor een complete avond is er het Chef's Choice arrangement voor EUR 45 p.p., eventueel met een bijpassend wijnarrangement voor EUR 28 p.p.",
     },
     {
-        question: "Is De Tafelaar geschikt voor een date of romantisch diner?",
-        answer: "Zeker. De warme sfeer en het samen delen van gerechten maken het perfect voor een date. Op doordeweekse avonden is het rustig en intiem.",
+        question: "Moet ik reserveren bij De Tafelaar?",
+        answer: "Reserveren is aanbevolen, vooral op vrijdag en zaterdag. Je kunt eenvoudig online reserveren via onze website of telefonisch contact opnemen.",
     },
     {
-        question: "Kan ik met kinderen uit eten bij De Tafelaar?",
-        answer: "Kinderen zijn welkom. Het shared-dining concept is juist leuk voor kinderen: ze kunnen van alles proeven. Vraag het team naar kindvriendelijke suggesties.",
+        question: "Is De Tafelaar geschikt voor een date of groep?",
+        answer: "Absoluut. Of je nu met z'n twee\u00ebn komt voor een romantisch diner of met een grotere groep: shared dining past altijd. Vanaf 7 personen bieden we een Chef's Choice arrangement aan. We kunnen tot circa 100 gasten ontvangen.",
     },
 ];
 
@@ -64,139 +62,132 @@ function faqJsonLd() {
 export default function UitEtenAmersfoortPage() {
     return (
         <>
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: faqJsonLd() }}
-            />
-
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd() }} />
             <div className="container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
-                <header className="text-center mb-12">
-                    <p className="inline-block text-xs tracking-widest uppercase text-primary/80 mb-2">
-                        Shared Dining &middot; Kamp 8 &middot; Amersfoort
-                    </p>
-                    <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl tracking-tight">
-                        Uit eten in Amersfoort
-                    </h1>
-                    <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
-                        Op zoek naar een fijne plek om uit eten te gaan in Amersfoort? Bij De Tafelaar deel
-                        je kleine gerechten aan tafel, gemaakt met ingredienten van lokale producenten.
-                        Ontspannen, gezellig en in het centrum.
-                    </p>
-                </header>
+            {/* Hero */}
+            <header className="text-center mb-12">
+                <p className="inline-block text-xs tracking-widest uppercase text-primary/80 mb-2">
+                    Shared Dining in Amersfoort
+                </p>
+                <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl tracking-tight">
+                    Uit eten in Amersfoort
+                </h1>
+                <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
+                    Op zoek naar een gezellige plek om uit eten te gaan in Amersfoort? Bij De Tafelaar
+                    deel je kleine gerechten aan tafel. Lokaal, seizoensgebonden en gemaakt met liefde.
+                </p>
+            </header>
 
-                <section className="max-w-4xl mx-auto mb-12">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <Card className="rounded-2xl border">
-                            <CardHeader className="pb-2">
-                                <div className="flex items-center gap-2 text-primary">
-                                    <Utensils className="h-5 w-5" />
-                                    <CardTitle className="text-lg">Kleine Gerechten</CardTitle>
-                                </div>
-                            </CardHeader>
-                            <CardContent className="text-sm text-muted-foreground">
-                                Geen vaste menu&apos;s maar een tafel vol gerechten om samen te ontdekken en te delen.
-                            </CardContent>
-                        </Card>
-
-                        <Card className="rounded-2xl border">
-                            <CardHeader className="pb-2">
-                                <div className="flex items-center gap-2 text-primary">
-                                    <Leaf className="h-5 w-5" />
-                                    <CardTitle className="text-lg">Lokale Producten</CardTitle>
-                                </div>
-                            </CardHeader>
-                            <CardContent className="text-sm text-muted-foreground">
-                                Biologisch vlees, ambachtelijk bier, natuurwijnen en seizoensgroenten uit de regio.
-                            </CardContent>
-                        </Card>
-
-                        <Card className="rounded-2xl border">
-                            <CardHeader className="pb-2">
-                                <div className="flex items-center gap-2 text-primary">
-                                    <Heart className="h-5 w-5" />
-                                    <CardTitle className="text-lg">Gezellige Sfeer</CardTitle>
-                                </div>
-                            </CardHeader>
-                            <CardContent className="text-sm text-muted-foreground">
-                                Warm interieur, ontspannen vibe. Kom als stel, groep of alleen &mdash; schuif aan.
-                            </CardContent>
-                        </Card>
-
-                        <Card className="rounded-2xl border">
-                            <CardHeader className="pb-2">
-                                <div className="flex items-center gap-2 text-primary">
-                                    <Sparkles className="h-5 w-5" />
-                                    <CardTitle className="text-lg">Chef&apos;s Choice</CardTitle>
-                                </div>
-                            </CardHeader>
-                            <CardContent className="text-sm text-muted-foreground">
-                                Laat de chef kiezen: een uitgebalanceerd arrangement van de beste gerechten van het moment.
-                            </CardContent>
-                        </Card>
-
-                        <Card className="rounded-2xl border">
-                            <CardHeader className="pb-2">
-                                <div className="flex items-center gap-2 text-primary">
-                                    <Users className="h-5 w-5" />
-                                    <CardTitle className="text-lg">Voor Iedereen</CardTitle>
-                                </div>
-                            </CardHeader>
-                            <CardContent className="text-sm text-muted-foreground">
-                                Vegetarisch, vegan en glutenvrij? Meerdere opties op de kaart. We denken graag mee.
-                            </CardContent>
-                        </Card>
-
-                        <Card className="rounded-2xl border">
-                            <CardHeader className="pb-2">
-                                <div className="flex items-center gap-2 text-primary">
-                                    <MapPin className="h-5 w-5" />
-                                    <CardTitle className="text-lg">Centrum & Flint</CardTitle>
-                                </div>
-                            </CardHeader>
-                            <CardContent className="text-sm text-muted-foreground">
-                                Kamp 8, midden in Amersfoort. Op 2 minuten van Flint, vlakbij Koppelpoort.
-                            </CardContent>
-                        </Card>
-                    </div>
-
-                    <div className="mt-8 text-center">
-                        <ReserveerButton size="lg" className="shadow-sm" label="Reserveer nu" />
-                    </div>
-                </section>
-
-                <section className="max-w-3xl mx-auto mb-12">
-                    <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-6 text-center">
-                        Veelgestelde vragen
-                    </h2>
-                    <Card className="rounded-2xl border p-6 sm:p-8">
-                        <dl className="space-y-6">
-                            {faqs.map((faq, i) => (
-                                <div key={i}>
-                                    <dt className="font-semibold text-base">{faq.question}</dt>
-                                    <dd className="mt-1 text-sm text-muted-foreground">{faq.answer}</dd>
-                                </div>
-                            ))}
-                        </dl>
+            {/* USPs */}
+            <section className="max-w-4xl mx-auto mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <Card className="rounded-2xl border">
+                        <CardHeader className="pb-2">
+                            <div className="flex items-center gap-2 text-primary">
+                                <Users className="h-5 w-5" />
+                                <CardTitle className="text-lg">Samen Delen</CardTitle>
+                            </div>
+                        </CardHeader>
+                        <CardContent className="text-sm text-muted-foreground">
+                            Bestel kleine gerechten en deel alles aan tafel. Proef meer, geniet samen.
+                        </CardContent>
                     </Card>
-                </section>
 
-                <section className="max-w-2xl mx-auto text-center">
-                    <div className="flex flex-wrap justify-center gap-3">
-                        <Link href="/menu">
-                            <Button variant="outline" className="rounded-xl">Bekijk ons menu</Button>
-                        </Link>
-                        <Link href="/borrel-amersfoort">
-                            <Button variant="outline" className="rounded-xl">Borrelen</Button>
-                        </Link>
-                        <Link href="/bourgondisch-eten-amersfoort">
-                            <Button variant="outline" className="rounded-xl">Bourgondisch Eten</Button>
-                        </Link>
-                        <Link href="/contact">
-                            <Button variant="outline" className="rounded-xl">Contact & Reserveren</Button>
-                        </Link>
+                    <Card className="rounded-2xl border">
+                        <CardHeader className="pb-2">
+                            <div className="flex items-center gap-2 text-primary">
+                                <Leaf className="h-5 w-5" />
+                                <CardTitle className="text-lg">Lokale Makers</CardTitle>
+                            </div>
+                        </CardHeader>
+                        <CardContent className="text-sm text-muted-foreground">
+                            Ingredi\u00ebnten van 14+ regionale producenten. Van Farmfields groenten tot Boot Koffie.
+                        </CardContent>
+                    </Card>
+
+                    <Card className="rounded-2xl border">
+                        <CardHeader className="pb-2">
+                            <div className="flex items-center gap-2 text-primary">
+                                <Heart className="h-5 w-5" />
+                                <CardTitle className="text-lg">Gezellige Sfeer</CardTitle>
+                            </div>
+                        </CardHeader>
+                        <CardContent className="text-sm text-muted-foreground">
+                            Warm interieur op de Kamp in hartje Amersfoort. Van date-night tot groepsdiner.
+                        </CardContent>
+                    </Card>
+                </div>
+
+                {/* CTA */}
+                <div className="mt-8 text-center">
+                    <ReserveerButton size="lg" className="shadow-sm" label="Reserveer nu" />
+                </div>
+            </section>
+
+            {/* Content */}
+            <section className="max-w-3xl mx-auto mb-12">
+                <Card className="rounded-2xl border p-6 sm:p-8">
+                    <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-4">
+                        Uit eten in Amersfoort bij De Tafelaar
+                    </h2>
+                    <div className="space-y-4 text-muted-foreground">
+                        <p>
+                            Uit eten gaan moet een beleving zijn. Bij De Tafelaar draait het om samen
+                            genieten: je bestelt kleine gerechten die je deelt aan tafel. Zo proef je
+                            veel meer dan bij een traditioneel driegangendiner.
+                        </p>
+                        <p>
+                            Onze keuken werkt uitsluitend met seizoensgebonden producten van lokale
+                            producenten. De kaart wisselt regelmatig, dus er is altijd iets nieuws te
+                            ontdekken. Van vegetarisch en vegan tot gerechten met vlees of vis — voor
+                            iedereen is er iets lekkers.
+                        </p>
+                        <p>
+                            Of je nu komt voor een spontane avond uit, een verjaardagsdiner of een
+                            gezellig etentje met vrienden: shared dining maakt elke avond bijzonder.
+                            We zijn geopend van woensdag t/m zondag en zitten op de Kamp, midden in
+                            het centrum van Amersfoort.
+                        </p>
                     </div>
-                </section>
-            </div>
+                </Card>
+            </section>
+
+            {/* FAQ */}
+            <section className="max-w-3xl mx-auto mb-12">
+                <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-6 text-center">
+                    Veelgestelde vragen
+                </h2>
+                <div className="space-y-4">
+                    {faqs.map((faq) => (
+                        <Card key={faq.question} className="rounded-2xl border p-6">
+                            <h3 className="font-semibold mb-2">{faq.question}</h3>
+                            <p className="text-sm text-muted-foreground">{faq.answer}</p>
+                        </Card>
+                    ))}
+                </div>
+            </section>
+
+            {/* Links */}
+            <section className="max-w-2xl mx-auto text-center">
+                <div className="flex flex-wrap justify-center gap-3">
+                    <Link href="/menu">
+                        <Button variant="outline" className="rounded-xl">
+                            Bekijk ons menu
+                        </Button>
+                    </Link>
+                    <Link href="/bourgondisch-eten-amersfoort">
+                        <Button variant="outline" className="rounded-xl">
+                            Bourgondisch eten
+                        </Button>
+                    </Link>
+                    <Link href="/contact">
+                        <Button variant="outline" className="rounded-xl">
+                            Contact & Reserveren
+                        </Button>
+                    </Link>
+                </div>
+            </section>
+        </div>
         </>
     );
 }
