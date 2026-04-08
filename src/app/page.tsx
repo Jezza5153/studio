@@ -211,12 +211,12 @@ export default function Home() {
       <section className="relative overflow-hidden bg-gradient-to-r from-pink-50 via-rose-50 to-fuchsia-50 dark:from-pink-950/30 dark:via-rose-950/20 dark:to-fuchsia-950/30">
         <div className="container mx-auto px-4 py-4 sm:px-6">
           <Link
-            href="/updates/moederdag-high-tea-amersfoort-2026"
+            href="/moederdag-high-tea-amersfoort"
             className="group flex items-center justify-center gap-3 text-center transition-transform hover:scale-[1.01]"
           >
             <span className="text-2xl" role="img" aria-label="Bloemen">💐</span>
             <span className="font-headline text-sm font-semibold tracking-wide text-pink-900 dark:text-pink-200 sm:text-base">
-              Moederdag High Tea — zondag 11 mei
+              Moederdag High Tea — zondag 10 mei
             </span>
             <span className="text-xs font-medium text-pink-700 dark:text-pink-400 sm:text-sm">
               → Reserveer nu

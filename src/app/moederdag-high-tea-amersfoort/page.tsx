@@ -10,7 +10,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
     title: "Moederdag High Tea Amersfoort 2026 | De Tafelaar",
     description:
-        "Moederdag vieren in Amersfoort? High tea bij De Tafelaar: shared dining met hartige hapjes, zoete lekkernijen en lokale thee. Zondag 11 mei. Reserveer nu.",
+        "Moederdag vieren in Amersfoort? High tea bij De Tafelaar: shared dining met hartige hapjes, zoete lekkernijen en lokale thee. Zondag 10 mei. Reserveer nu.",
     alternates: {
         canonical: "/moederdag-high-tea-amersfoort",
     },
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 const faqs = [
     {
         question: "Wanneer is de Moederdag high tea bij De Tafelaar?",
-        answer: "Zondag 11 mei 2026, van 12:00 tot 17:00. We adviseren om rond 12:00 of 14:00 te reserveren voor een ontspannen middag.",
+        answer: "Zondag 10 mei 2026, van 12:00 tot 17:00. We adviseren om rond 12:00 of 14:00 te reserveren voor een ontspannen middag.",
     },
     {
         question: "Wat kost de Moederdag high tea?",
@@ -75,8 +75,8 @@ function eventJsonLd() {
         "@context": "https://schema.org",
         "@type": "Event",
         name: "Moederdag High Tea 2026 bij De Tafelaar",
-        startDate: "2026-05-11T12:00",
-        endDate: "2026-05-11T17:00",
+        startDate: "2026-05-10T12:00",
+        endDate: "2026-05-10T17:00",
         eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
         eventStatus: "https://schema.org/EventScheduled",
         location: {
@@ -117,7 +117,7 @@ export default function MoederdagHighTeaPage() {
                 {/* Hero */}
                 <header className="text-center mb-12">
                     <p className="inline-block text-xs tracking-widest uppercase text-primary/80 mb-2">
-                        Zondag 11 mei 2026
+                        Zondag 10 mei 2026
                     </p>
                     <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl tracking-tight">
                         Moederdag High Tea in Amersfoort
@@ -139,7 +139,7 @@ export default function MoederdagHighTeaPage() {
                                 </div>
                             </CardHeader>
                             <CardContent className="text-sm text-muted-foreground">
-                                <p className="font-medium text-foreground">Zondag 11 mei 2026</p>
+                                <p className="font-medium text-foreground">Zondag 10 mei 2026</p>
                                 <p>12:00 – 17:00</p>
                                 <p>Reserveer rond 12:00 of 14:00</p>
                             </CardContent>

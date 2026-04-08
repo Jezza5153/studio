@@ -20,12 +20,12 @@ export const SEO_OVERRIDES: Record<string, SeoOverride> = {
     "moederdag-high-tea-amersfoort-2026": {
         seoTitle: "Moederdag High Tea Amersfoort 2026 – De Tafelaar",
         metaDescription:
-            "Verras je moeder met een uitgebreide high tea bij De Tafelaar in Amersfoort centrum. Shared dining high tea met hartige hapjes, zoete lekkernijen en lokale thee & koffie. Zondag 11 mei. Reserveer nu.",
+            "Verras je moeder met een uitgebreide high tea bij De Tafelaar in Amersfoort centrum. Shared dining high tea met hartige hapjes, zoete lekkernijen en lokale thee & koffie. Zondag 10 mei. Reserveer nu.",
         eventJsonLd: {
             "@type": "Event",
             name: "Moederdag High Tea 2026 bij De Tafelaar",
-            startDate: "2026-05-11T12:00",
-            endDate: "2026-05-11T17:00",
+            startDate: "2026-05-10T12:00",
+            endDate: "2026-05-10T17:00",
             eventAttendanceMode:
                 "https://schema.org/OfflineEventAttendanceMode",
             eventStatus: "https://schema.org/EventScheduled",
@@ -45,7 +45,7 @@ export const SEO_OVERRIDES: Record<string, SeoOverride> = {
                 price: "37.50",
                 priceCurrency: "EUR",
                 availability: "https://schema.org/InStock",
-                url: "https://tafelaaramersfoort.nl/updates/moederdag-high-tea-amersfoort-2026",
+                url: "https://tafelaaramersfoort.nl/moederdag-high-tea-amersfoort",
             },
             description:
                 "Vier Moederdag met een uitgebreide shared dining high tea bij De Tafelaar in Amersfoort. Hartige hapjes, zoete lekkernijen, lokale thee van Boot Koffie en meer.",
@@ -75,7 +75,7 @@ export const SEO_OVERRIDES: Record<string, SeoOverride> = {
             },
             {
                 question: "Hoe laat is de Moederdag high tea?",
-                answer: "Zondag 11 mei 2026, van 12:00 tot 17:00. We adviseren om rond 12:00 of 14:00 te reserveren voor een ontspannen middag.",
+                answer: "Zondag 10 mei 2026, van 12:00 tot 17:00. We adviseren om rond 12:00 of 14:00 te reserveren voor een ontspannen middag.",
             },
         ],
     },
