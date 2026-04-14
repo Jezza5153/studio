@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import {
     getLeadStory,
     getPinnedItems,
@@ -19,25 +18,18 @@ import { GuestHighlights } from "@/components/courant/GuestHighlights";
 export const revalidate = 60; // ISR: revalidate every 60s
 
 export const metadata: Metadata = {
-    title: "Agenda & Evenementen | De Tafelaar Amersfoort",
+    title: "Agenda & Updates | De Tafelaar Amersfoort",
     description:
-        "Agenda van De Tafelaar Amersfoort: evenementen, speciale menu's, reviews en updates. Shared dining restaurant op de Kamp, vlakbij Flint.",
+        "Bekijk de agenda van De Tafelaar — evenementen, updates, nieuwe gerechten en meer. Shared dining restaurant vlakbij Flint in Amersfoort.",
     alternates: {
         canonical: "/agenda",
     },
     openGraph: {
-        title: "Agenda & Evenementen | De Tafelaar Amersfoort",
+        title: "Agenda & Updates | De Tafelaar",
         description:
-            "Evenementen, speciale menu's en updates van De Tafelaar op de Kamp in Amersfoort centrum.",
+            "Evenementen, updates, menu-nieuws en reviews van De Tafelaar Amersfoort. Alles op één plek.",
         images: [{ url: "/pics/homepage.png" }],
     },
-    keywords: [
-        "agenda de tafelaar",
-        "evenementen restaurant amersfoort",
-        "de tafelaar nieuws",
-        "speciale menu amersfoort",
-        "restaurant evenement amersfoort",
-    ],
 };
 
 export default async function AgendaPage() {
@@ -87,27 +79,6 @@ export default async function AgendaPage() {
                 initialItems={feedPage.items}
                 initialHasMore={feedPage.hasMore}
             />
-
-            {/* SEO footer with internal links */}
-            <section className="container mx-auto px-4 sm:px-6 md:px-8 py-12 text-center">
-                <p className="text-sm text-muted-foreground mb-4">
-                    De Tafelaar is een shared dining restaurant op de Kamp 8 in Amersfoort centrum, op 2 minuten van Theater de Flint.
-                </p>
-                <div className="flex flex-wrap justify-center gap-3">
-                    <Link href="/updates" className="rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground">
-                        Alle updates
-                    </Link>
-                    <Link href="/menu" className="rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground">
-                        Menukaart
-                    </Link>
-                    <Link href="/reserveren" className="rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground">
-                        Reserveren
-                    </Link>
-                    <Link href="/impressie" className="rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground">
-                        Impressie
-                    </Link>
-                </div>
-            </section>
         </>
     );
 }

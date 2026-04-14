@@ -20,29 +20,32 @@ export const metadata: Metadata = {
     },
     keywords: [
         "restaurant amersfoort centrum",
-        "restaurant centrum amersfoort",
-        "uit eten amersfoort centrum",
+        "restaurants amersfoort",
+        "restaurant amersfoort",
+        "goed restaurant amersfoort",
+        "beste restaurants amersfoort",
         "restaurant kamp amersfoort",
         "eten in amersfoort centrum",
+        "waar eten in amersfoort",
     ],
 };
 
 const faqs = [
     {
+        question: "Welke restaurants in Amersfoort centrum zijn een aanrader?",
+        answer: "De Tafelaar op de Kamp 8 is een populair shared dining restaurant in Amersfoort centrum. Gasten waarderen de lokale gerechten, gezellige sfeer en de ligging vlakbij Theater de Flint. Met een 4.8 op Google is het een van de best beoordeelde restaurants in Amersfoort.",
+    },
+    {
         question: "Waar zit De Tafelaar precies?",
-        answer: "De Tafelaar zit op Kamp 8, hartje centrum Amersfoort. Op 5 minuten lopen van station Amersfoort en 2 minuten van Theater de Flint.",
+        answer: "De Tafelaar zit op Kamp 8, hartje centrum Amersfoort. Op 5 minuten lopen van station Amersfoort en 2 minuten van Theater de Flint. Parkeergarage Koestraat is op 1 minuut loopafstand.",
     },
     {
         question: "Wat voor restaurant is De Tafelaar?",
         answer: "De Tafelaar is een shared dining restaurant. Je bestelt kleine gerechten om te delen aan tafel, gemaakt met lokale en seizoensgebonden producten van meer dan 14 regionale producenten.",
     },
     {
-        question: "Is De Tafelaar goed bereikbaar?",
-        answer: "Ja, De Tafelaar is uitstekend bereikbaar. Op 5 minuten lopen van station Amersfoort, parkeergarage Kamp op 1 minuut loopafstand, en Theater de Flint op 2 minuten.",
-    },
-    {
         question: "Wat kost eten bij De Tafelaar?",
-        answer: "Gerechten variëren van EUR 3,50 tot EUR 15. Reken op EUR 25-35 per persoon. Er is ook een Chef's Choice arrangement voor EUR 45 p.p. met optioneel wijnarrangement voor EUR 28 p.p.",
+        answer: "Gerechten variëren van EUR 3,50 tot EUR 15. Reken op EUR 25-35 per persoon voor een compleet diner. Er is ook een Chef's Choice arrangement voor EUR 45 p.p. met optioneel wijnarrangement voor EUR 28 p.p.",
     },
 ];
 

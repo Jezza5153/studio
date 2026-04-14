@@ -43,9 +43,9 @@ export default function DrankPage() {
         <div className="rounded-2xl border bg-card p-6 sm:p-8">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl tracking-tight">Drankenkaart De Tafelaar Amersfoort</h1>
+              <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl tracking-tight">Dranken</h1>
               <p className="mt-2 max-w-prose text-base sm:text-lg text-muted-foreground leading-relaxed">
-                Lokale bieren, biologische wijnen van Korte Garde en cocktails — passend bij onze shared dining gerechten in Amersfoort centrum. Van Amersfoortse brouwerijen zoals Rock City Brewing en De Drie Ringen tot signature cocktails.
+                Van mooie wijnen en bieren tot cocktails, fris en koffie — kies iets wat past bij je gerechtjes.
               </p>
 
               {/* Switch: Eten / Dranken */}

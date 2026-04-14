@@ -24,28 +24,28 @@ import { ReserveerButton } from "@/components/reserveer-button";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "De Tafelaar | Shared Dining Restaurant Amersfoort Centrum",
+  title: "De Tafelaar | Restaurant Amersfoort — Lekker Eten & Shared Dining",
   description:
-    "De Tafelaar: shared dining restaurant in Amersfoort centrum. Borrel, diner en groepen met lokale seizoensgerechten om te delen. Op 2 min van Flint. Wo–zo open.",
+    "Restaurant in Amersfoort: De Tafelaar op de Kamp. Lekker eten, borrelen en shared dining met lokale seizoensgerechten. Op 2 min van Flint. Wo–zo open.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "De Tafelaar | Shared Dining Restaurant Amersfoort Centrum",
+    title: "De Tafelaar | Restaurant Amersfoort — Lekker Eten & Shared Dining",
     description:
-      "Shared dining restaurant in Amersfoort centrum op de Kamp. Borrel, diner en groepen met lokale seizoensgerechten. Op 2 min van Flint.",
+      "Restaurant in Amersfoort: lekker eten, borrelen en shared dining met lokale seizoensgerechten op de Kamp. Op 2 min van Flint.",
     images: [{ url: "/pics/homepage.png" }],
   },
   keywords: [
     "restaurant amersfoort",
+    "restaurants amersfoort",
+    "eten in amersfoort",
+    "lekker eten amersfoort",
+    "uit eten amersfoort",
     "restaurant amersfoort centrum",
     "shared dining amersfoort",
-    "uit eten amersfoort",
+    "gezellig eten amersfoort",
+    "goed restaurant amersfoort",
+    "waar eten in amersfoort",
     "borrel amersfoort",
-    "diner amersfoort",
-    "gezellig restaurant amersfoort",
-    "restaurant vlakbij flint",
-    "kleine gerechten amersfoort",
-    "lokaal eten amersfoort",
-    "duurzaam restaurant amersfoort",
     "beste restaurant amersfoort",
   ],
 };
@@ -73,24 +73,24 @@ function homeFaqJsonLd() {
 
 const homeFaqs = [
   {
+    question: "Waar kan ik lekker eten in Amersfoort?",
+    answer: "De Tafelaar op de Kamp 8 is een van de best beoordeelde restaurants in Amersfoort (4.8 op Google). We serveren shared dining: kleine gerechten om te delen, gemaakt met seizoensgebonden producten van lokale makers. Van €3,50 tot €15 per gerecht, gemiddeld €25–35 p.p. Open woensdag t/m zondag.",
+  },
+  {
     question: "Wat is shared dining bij De Tafelaar?",
-    answer: "Shared dining betekent dat je kleine gerechten bestelt om samen te delen aan tafel. Bij De Tafelaar kies je uit kazen, charcuterie, koude en warme gerechten en desserts — allemaal gemaakt met verse, lokale ingrediënten uit de regio Amersfoort.",
+    answer: "Shared dining betekent dat je kleine gerechten bestelt om samen te delen aan tafel. Kies uit kazen, charcuterie, koude en warme gerechten en desserts — gemaakt met verse, lokale ingrediënten uit de regio Amersfoort. We adviseren 3 tot 5 gerechten per persoon.",
   },
   {
     question: "Waar zit De Tafelaar in Amersfoort?",
-    answer: "De Tafelaar zit op de Kamp 8 in het centrum van Amersfoort, op 400 meter (2 minuten lopen) van Theater de Flint.",
+    answer: "De Tafelaar zit op de Kamp 8 in het centrum van Amersfoort, op 2 minuten lopen van Theater de Flint en 5 minuten van station Amersfoort Centraal. Parkeergarage Koestraat is op 1 minuut loopafstand.",
   },
   {
     question: "Hoe kan ik reserveren bij De Tafelaar?",
-    answer: "Reserveer via de widget op onze website of bel +31 6 341 279 32. Voor groepen vanaf 7 personen bieden we een Chef's Choice arrangement aan.",
+    answer: "Reserveer via de widget op onze website of bel +31 6 341 279 32. Reserveren is aan te raden, vooral op vrijdag en zaterdag. Walk-ins zijn welkom als er plek is.",
   },
   {
     question: "Wat zijn de openingstijden van De Tafelaar?",
     answer: "Woensdag en donderdag 17:00-23:00, vrijdag en zaterdag 15:00-00:00, zondag 17:00-23:00. Maandag en dinsdag gesloten.",
-  },
-  {
-    question: "Heeft De Tafelaar vegetarische en vegan opties?",
-    answer: "Ja, meerdere vegetarische en vegan gerechten op de kaart: carpaccio van bieten, Japanse curry, Bao Bun Inari en een vegan Snicker als dessert.",
   },
   {
     question: "Kan ik De Tafelaar huren voor een feest?",
@@ -277,9 +277,9 @@ export default function Home() {
           <div className="mx-auto max-w-3xl text-base leading-relaxed text-muted-foreground text-center mb-8 space-y-3">
             <p>
               De Tafelaar is een shared dining restaurant op de Kamp in het hart van Amersfoort centrum.
-              Op zoek naar een plek om gezellig uit eten te gaan in Amersfoort? We serveren kleine gerechten
+              Op zoek naar een plek om lekker te eten in Amersfoort? We serveren kleine gerechten
               van lokale makers — van kazen en charcuterie tot warme seizoensgerechten en desserts. Alles om
-              samen te delen aan tafel. Op loopafstand van station Amersfoort (5 min), Theater de Flint
+              gezellig samen te delen aan tafel. Op loopafstand van station Amersfoort (5 min), Theater de Flint
               (2 min) en de Koppelpoort.
             </p>
             <p>

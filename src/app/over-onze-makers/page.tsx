@@ -12,62 +12,16 @@ import {
   HeartHandshake,
   Sprout,
 } from "lucide-react";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import MakersClient from "./MakersClient";
-
-const makersFaqs = [
-  {
-    question: "Met welke lokale brouwerijen werkt De Tafelaar?",
-    answer:
-      "We schenken bieren van Amersfoortse brouwerijen zoals Rock City Brewing, De Drie Ringen, Brouwerij 't Mirakel en Eem Bier. Het aanbod wisselt met het seizoen, zodat er altijd iets nieuws te ontdekken valt.",
-  },
-  {
-    question: "Waar komen de wijnen van De Tafelaar vandaan?",
-    answer:
-      "Onze wijnkaart wordt verzorgd door Korte Garde, een wijnwinkel in dezelfde straat. Ze selecteren biologische en biodynamische wijnen die passen bij onze shared dining gerechten. Bij het Chef's Choice arrangement kun je een wijnarrangement toevoegen voor €28 per persoon.",
-  },
-  {
-    question: "Gebruikt De Tafelaar lokale en duurzame producten?",
-    answer:
-      "Ja, duurzaamheid is een kernwaarde. We werken met Farmfields voor biologisch rundvlees (Beter Leven 4-sterren), Boot Koffie voor biologische koffie en lokale seizoensgroenten. Zo houden we de lijnen kort en de kwaliteit hoog.",
-  },
-];
-
-function makersFaqJsonLd() {
-  return JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: makersFaqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: { "@type": "Answer", text: faq.answer },
-    })),
-  });
-}
 
 export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
-  title: "Onze Makers & Leveranciers | De Tafelaar Amersfoort",
-  description:
-    "Lokale makers achter De Tafelaar: Rock City, De Drie Ringen, Korte Garde, Boot Koffie en Farmfields. Shared dining met seizoensproducten in Amersfoort.",
+  title: "Wij en Onze Makers | De Tafelaar Amersfoort",
+  description: "Leer De Tafelaar en onze lokale makers kennen. Shared dining met lokale producten, seizoensgebonden gerechten. Ons verhaal, onze filosofie en de makers achter onze gerechten.",
   alternates: {
     canonical: "/over-onze-makers",
   },
-  openGraph: {
-    title: "Onze Makers & Leveranciers | De Tafelaar Amersfoort",
-    description:
-      "Lokale brouwerijen, wijnmakers en leveranciers van De Tafelaar. Ontdek wie er achter onze gerechten en dranken zit.",
-  },
-  keywords: [
-    "de tafelaar leveranciers",
-    "lokale makers amersfoort",
-    "rock city brewing amersfoort",
-    "korte garde wijnen",
-    "boot koffie amersfoort",
-    "duurzaam restaurant amersfoort",
-  ],
 };
 
 export default function WijEnOnzeMakersPage() {
@@ -83,8 +37,6 @@ export default function WijEnOnzeMakersPage() {
   ];
 
   return (
-    <>
-    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: makersFaqJsonLd() }} />
     <div className="relative bg-background">
       {/* Radial glow */}
       <div className="pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)] bg-gradient-to-b from-primary/5 to-transparent" />
@@ -97,10 +49,10 @@ export default function WijEnOnzeMakersPage() {
         {/* ─── WIJ ─── */}
         <header className="text-center mb-10 sm:mb-12">
           <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl">
-            Onze Makers &amp; Leveranciers — De Tafelaar Amersfoort
+            Wij en Onze Makers
           </h1>
           <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
-            De lokale brouwerijen, wijnmakers en producenten achter onze shared dining gerechten op de Kamp in Amersfoort centrum.
+            De gedachte achter onze gerechten, gastvrijheid en de makers die het mogelijk maken.
           </p>
 
           {!!philosophyContent.usps?.length && (
@@ -311,41 +263,7 @@ export default function WijEnOnzeMakersPage() {
             </div>
           </div>
         </section>
-
-        {/* FAQ */}
-        <section className="mt-12">
-          <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-6 text-center">
-            Veelgestelde vragen over onze makers
-          </h2>
-          <div className="max-w-3xl mx-auto space-y-4">
-            {makersFaqs.map((faq, i) => (
-              <Card key={i} className="rounded-2xl border p-4 sm:p-6">
-                <h3 className="font-semibold text-foreground mb-2">{faq.question}</h3>
-                <p className="text-sm text-muted-foreground">{faq.answer}</p>
-              </Card>
-            ))}
-          </div>
-        </section>
-
-        {/* Internal links */}
-        <section className="mt-12 text-center">
-          <div className="flex flex-wrap justify-center gap-3">
-            <Link href="/over-ons">
-              <Button variant="outline" className="rounded-xl">Over De Tafelaar</Button>
-            </Link>
-            <Link href="/drank">
-              <Button variant="outline" className="rounded-xl">Drankenkaart</Button>
-            </Link>
-            <Link href="/duurzaam-restaurant-amersfoort">
-              <Button variant="outline" className="rounded-xl">Duurzaamheid</Button>
-            </Link>
-            <Link href="/menu">
-              <Button variant="outline" className="rounded-xl">Menukaart</Button>
-            </Link>
-          </div>
-        </section>
       </div>
     </div>
-    </>
   );
 }

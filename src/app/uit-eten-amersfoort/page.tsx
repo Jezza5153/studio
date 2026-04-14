@@ -20,18 +20,20 @@ export const metadata: Metadata = {
     },
     keywords: [
         "uit eten amersfoort",
-        "uit eten in amersfoort",
+        "eten in amersfoort",
         "lekker eten amersfoort",
         "eten amersfoort",
+        "gezellig eten amersfoort",
+        "waar eten in amersfoort",
+        "lekker uit eten amersfoort",
         "restaurant tip amersfoort",
-        "gezellig uit eten amersfoort",
     ],
 };
 
 const faqs = [
     {
-        question: "Waar kan ik lekker uit eten in Amersfoort?",
-        answer: "De Tafelaar op de Kamp is de plek voor shared dining in Amersfoort. Kleine gerechten om te delen, gemaakt met seizoensgebonden producten van lokale makers. Gezellig, lekker en betaalbaar.",
+        question: "Waar kan ik lekker eten in Amersfoort?",
+        answer: "De Tafelaar op de Kamp 8 is een aanrader als je lekker wilt eten in Amersfoort. Je deelt kleine gerechten aan tafel — van borrelplanken en charcuterie tot warme seizoensgerechten. Gemaakt met lokale producten, gezellige sfeer, en een 4.8 op Google. Open woensdag t/m zondag.",
     },
     {
         question: "Hoeveel kost uit eten bij De Tafelaar?",

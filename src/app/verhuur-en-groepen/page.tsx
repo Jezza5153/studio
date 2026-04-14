@@ -98,7 +98,7 @@ export default function VerhuurEnGroepenPage() {
             Verhuur &amp; Groepen
           </p>
           <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl">
-            Verhuur &amp; Groepen bij De Tafelaar Amersfoort
+            Verhuur en groepen bij De Tafelaar
           </h1>
           <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
             De Tafelaar is te huur voor verschillende evenementen en groepsdiners tot{" "}
@@ -249,7 +249,7 @@ export default function VerhuurEnGroepenPage() {
                   <Button className="rounded-xl">Contactformulier</Button>
                 </Link>
                 <Button asChild variant="outline" className="rounded-xl">
-                  <ObfuscatedEmail user="hallo" domain="tafelaaramersfoort.nl">
+                  <ObfuscatedEmail user="hallo" domain="detafelaar.nl">
                     <MessageSquare className="mr-2 h-4 w-4" />
                     Mail ons
                   </ObfuscatedEmail>
@@ -257,31 +257,6 @@ export default function VerhuurEnGroepenPage() {
               </div>
             </div>
           </Card>
-        </section>
-
-        {/* Visible FAQ */}
-        <section className="mt-12">
-          <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-6 text-center">
-            Veelgestelde vragen over verhuur en groepen
-          </h2>
-          <div className="max-w-3xl mx-auto space-y-4">
-            {faqs.map((faq, i) => (
-              <Card key={i} className="rounded-2xl border p-4 sm:p-6">
-                <h3 className="font-semibold text-foreground mb-2">{faq.question}</h3>
-                <p className="text-sm text-muted-foreground">{faq.answer}</p>
-              </Card>
-            ))}
-          </div>
-        </section>
-
-        {/* Internal links */}
-        <section className="mt-12 text-center">
-          <div className="flex flex-wrap justify-center gap-3">
-            <Link href="/feestlocatie-amersfoort"><Button variant="outline" className="rounded-xl">Feestlocatie</Button></Link>
-            <Link href="/bedrijfsdiner-amersfoort"><Button variant="outline" className="rounded-xl">Bedrijfsdiner</Button></Link>
-            <Link href="/prive-diner-amersfoort"><Button variant="outline" className="rounded-xl">Priv&#233; diner</Button></Link>
-            <Link href="/catering"><Button variant="outline" className="rounded-xl">Catering</Button></Link>
-          </div>
         </section>
       </div>
     </div>

@@ -91,7 +91,7 @@ function restaurantJsonLd() {
       longitude: 5.3918238,
     },
 
-    telephone: "+31 6 341 279 32",
+    telephone: "+31634127932",
 
     // Social media links
     sameAs: [
@@ -150,7 +150,7 @@ function restaurantJsonLd() {
       "@type": "ReserveAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: `${siteUrl}/reserveren`,
+        urlTemplate: `${siteUrl}/contact`,
         actionPlatform: [
           "http://schema.org/DesktopWebPlatform",
           "http://schema.org/MobileWebPlatform",
