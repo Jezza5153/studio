@@ -4,14 +4,23 @@ import type { Metadata } from "next";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Reserveren & Contact | Restaurant vlakbij Flint",
-  description: "Reserveer bij De Tafelaar - shared dining vlakbij Flint in Amersfoort. Direct online boeken, bellen of mailen. Op 2 min lopen van Flint.",
+  title: "Contact De Tafelaar | Reserveren & Bereikbaarheid Amersfoort",
+  description:
+    "Neem contact op met De Tafelaar op de Kamp 8 in Amersfoort centrum. Reserveer online, bel +31 6 341 279 32 of mail. Op 2 min van Flint, 5 min van station.",
   alternates: {
     canonical: "/contact",
   },
+  keywords: [
+    "contact de tafelaar",
+    "reserveren amersfoort",
+    "restaurant bereikbaarheid amersfoort",
+    "de tafelaar telefoon",
+    "de tafelaar adres",
+  ],
   openGraph: {
-    title: "Reserveren bij De Tafelaar",
-    description: "Reserveer eenvoudig online bij De Tafelaar in Amersfoort. Shared dining vlakbij Flint.",
+    title: "Contact De Tafelaar | Reserveren & Bereikbaarheid Amersfoort",
+    description:
+      "Neem contact op met De Tafelaar in Amersfoort. Reserveer online, bel of mail. Op 2 min van Flint, 5 min van station.",
   },
 };
 
@@ -29,6 +38,28 @@ import { Phone, Info, MapPin, Mail } from "lucide-react";
 import { ReserveerButton } from "@/components/reserveer-button";
 import { ObfuscatedEmail } from "@/components/obfuscated-email";
 
+// --- FAQ override for "grote groep" (module-level for JSON-LD) ---
+const GROEP_ANTWOORD =
+  "Vanaf 7 personen hebben wij een chef's choice arrangement. Reserveer hier eventueel meerdere tafels voor en bel/mail ons bij uitzonderingen, dieetwensen of andere bijzonderheden. Bij opmerkingen krijgen we niet meteen een melding namelijk en kunnen we er misschien geen rekening mee houden.";
+
+const modifiedFaq = reservationFaq.map((item) =>
+  item.question?.toLowerCase().includes("grote groep reserveren")
+    ? { ...item, answer: GROEP_ANTWOORD }
+    : item
+);
+
+function contactFaqJsonLd() {
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: modifiedFaq.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: { "@type": "Answer", text: faq.answer },
+    })),
+  });
+}
+
 export default function ReserverenPage() {
   // Address + maps (no keys)
   const addressLines = (contactDetails.address || "").split("\n").filter(Boolean);
@@ -42,24 +73,17 @@ export default function ReserverenPage() {
   const dialPhone = rawPhone.replace(/[^\d+]/g, "");
   const hasDialablePhone = /\d/.test(dialPhone);
 
-  // --- FAQ override for "grote groep" ---
-  const GROEP_ANTWOORD =
-    "Vanaf 7 personen hebben wij een chef's choice arrangement. Reserveer hier eventueel meerdere tafels voor en bel/mail ons bij uitzonderingen, dieetwensen of andere bijzonderheden. Bij opmerkingen krijgen we niet meteen een melding namelijk en kunnen we er misschien geen rekening mee houden.";
-  const modifiedFaq = reservationFaq.map((item) =>
-    item.question?.toLowerCase().includes("grote groep reserveren")
-      ? { ...item, answer: GROEP_ANTWOORD }
-      : item
-  );
-
   return (
-    <div className="container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-20">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: contactFaqJsonLd() }} />
+      <div className="container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-20">
       {/* Hero */}
       <div className="text-center mb-12 md:mb-14">
         <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl tracking-tight">
-          Contact & Reserveren
+          Contact De Tafelaar Amersfoort
         </h1>
         <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
-          We kijken ernaar uit u te mogen verwelkomen. Gebruik de knop hieronder om direct te reserveren.
+          Reserveer online, bel of mail. We zitten op de Kamp 8, op 2 minuten lopen van Theater de Flint.
         </p>
       </div>
 
@@ -176,7 +200,46 @@ export default function ReserverenPage() {
           </Card>
         </div>
       </div>
+      {/* Bereikbaarheid */}
+      <section className="max-w-3xl mx-auto mt-12">
+        <Card className="rounded-2xl border p-6 sm:p-8">
+          <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-4">
+            Bereikbaarheid
+          </h2>
+          <div className="space-y-4 text-muted-foreground">
+            <p>
+              De Tafelaar ligt op de Kamp 8, midden in het centrum van Amersfoort. Vanaf station
+              Amersfoort Centraal loop je in 5 minuten naar ons restaurant. Theater de Flint is
+              op 2 minuten loopafstand — ideaal voor een diner voor of na een voorstelling.
+            </p>
+            <p>
+              Parkeren kan bij parkeergarage Kamp/Flint (ingang Stadsring) of Hoef (5 min lopen).
+              Met het openbaar vervoer is De Tafelaar uitstekend bereikbaar via station Amersfoort
+              Centraal (bus en trein).
+            </p>
+          </div>
+        </Card>
+      </section>
+
+      {/* Internal links */}
+      <section className="max-w-2xl mx-auto mt-12 mb-4 text-center">
+        <div className="flex flex-wrap justify-center gap-3">
+          <Link href="/openingstijden">
+            <Button variant="outline" className="rounded-xl">Openingstijden</Button>
+          </Link>
+          <Link href="/menu">
+            <Button variant="outline" className="rounded-xl">Menukaart</Button>
+          </Link>
+          <Link href="/reserveren">
+            <Button variant="outline" className="rounded-xl">Reserveren</Button>
+          </Link>
+          <Link href="/eten-voor-theater-de-flint">
+            <Button variant="outline" className="rounded-xl">Eten voor de Flint</Button>
+          </Link>
+        </div>
+      </section>
     </div>
+    </>
   );
 }
 

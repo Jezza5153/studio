@@ -100,6 +100,10 @@ const homeFaqs = [
     question: "Biedt De Tafelaar catering aan?",
     answer: "Ja, catering voor kantoorlunches, zakelijke events en walking dinners in de regio Amersfoort.",
   },
+  {
+    question: "Is De Tafelaar het beste restaurant in Amersfoort?",
+    answer: "Met een 4.8 op Google en 90+ reviews is De Tafelaar een van de best beoordeelde restaurants in Amersfoort. Gasten waarderen het unieke shared dining concept, de lokale ingrediënten en de persoonlijke sfeer. Bekijk onze reviews op Google of op onze impressie-pagina.",
+  },
 ];
 
 export default function Home() {
@@ -296,6 +300,7 @@ export default function Home() {
               { href: "/romantisch-diner-amersfoort", label: "Romantisch diner" },
               { href: "/vegetarisch-amersfoort", label: "Vegetarisch" },
               { href: "/duurzaam-restaurant-amersfoort", label: "Duurzaam eten" },
+              { href: "/beste-restaurant-amersfoort", label: "Beste restaurant" },
               { href: "/feestlocatie-amersfoort", label: "Feestlocatie" },
               { href: "/catering", label: "Catering" },
             ].map((link) => (

@@ -177,6 +177,11 @@ export default function UitEtenAmersfoortPage() {
                             Bekijk ons menu
                         </Button>
                     </Link>
+                    <Link href="/beste-restaurant-amersfoort">
+                        <Button variant="outline" className="rounded-xl">
+                            Beste restaurant
+                        </Button>
+                    </Link>
                     <Link href="/bourgondisch-eten-amersfoort">
                         <Button variant="outline" className="rounded-xl">
                             Bourgondisch eten

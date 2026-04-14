@@ -94,11 +94,12 @@ export default function MenuPage() {
           <div className="flex items-start justify-between gap-4">
             <div>
               <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl tracking-tight">
-                Ons Menu
+                Menukaart De Tafelaar
               </h1>
               <p className="mt-2 max-w-prose text-base sm:text-lg text-muted-foreground leading-relaxed">
-                Shared dining met liefde voor seizoen, lokaal en gezelligheid. Kies je favoriete
-                gerechtjes — of laat de chef je verrassen.
+                Shared dining in Amersfoort centrum: kleine gerechten om samen te delen. Van kazen
+                en charcuterie tot warme seizoensgerechten en desserts — bereid met lokale producten
+                uit de regio. Gerechten van €3,50 tot €15, of kies het Chef&apos;s Choice (€45 p.p.).
               </p>
 
               {/* Menu switch: Eten (active) / Dranken */}

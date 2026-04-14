@@ -27,6 +27,7 @@ export const metadata: Metadata = {
         "restaurant kamp amersfoort",
         "eten in amersfoort centrum",
         "waar eten in amersfoort",
+        "beste restaurant amersfoort",
     ],
 };
 
@@ -46,6 +47,10 @@ const faqs = [
     {
         question: "Wat kost eten bij De Tafelaar?",
         answer: "Gerechten variëren van EUR 3,50 tot EUR 15. Reken op EUR 25-35 per persoon voor een compleet diner. Er is ook een Chef's Choice arrangement voor EUR 45 p.p. met optioneel wijnarrangement voor EUR 28 p.p.",
+    },
+    {
+        question: "Is De Tafelaar een van de beste restaurants in Amersfoort?",
+        answer: "Met een 4.8 beoordeling op Google en 90+ reviews is De Tafelaar een van de best beoordeelde restaurants in Amersfoort centrum. Gasten waarderen het shared dining concept, de lokale seizoensgerechten en de persoonlijke bediening.",
     },
 ];
 
@@ -174,6 +179,11 @@ export default function RestaurantAmersfoortCentrumPage() {
                     <Link href="/menu">
                         <Button variant="outline" className="rounded-xl">
                             Bekijk ons menu
+                        </Button>
+                    </Link>
+                    <Link href="/beste-restaurant-amersfoort">
+                        <Button variant="outline" className="rounded-xl">
+                            Beste restaurant
                         </Button>
                     </Link>
                     <Link href="/eten-voor-theater-de-flint">

@@ -237,7 +237,7 @@ export default function CateringPage() {
             Office Lunch Catering
           </p>
           <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl">
-            De Tafelaar op kantoor
+            Office Lunch Catering Amersfoort — De Tafelaar
           </h1>
           <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
             Broodjes, bowls, wraps en lunchpakketten — strak verpakt, makkelijk uit te delen en
@@ -606,6 +606,31 @@ export default function CateringPage() {
               </div>
             </div>
           </Card>
+        </section>
+
+        {/* Visible FAQ */}
+        <section className="mt-12">
+          <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-6 text-center">
+            Veelgestelde vragen over onze catering
+          </h2>
+          <div className="max-w-3xl mx-auto space-y-4">
+            {faqs.map((faq, i) => (
+              <Card key={i} className="rounded-2xl border p-4 sm:p-6">
+                <h3 className="font-semibold text-foreground mb-2">{faq.question}</h3>
+                <p className="text-sm text-muted-foreground">{faq.answer}</p>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        {/* Internal links */}
+        <section className="mt-12 text-center">
+          <div className="flex flex-wrap justify-center gap-3">
+            <Link href="/menu"><Button variant="outline" className="rounded-xl">Menu</Button></Link>
+            <Link href="/verhuur-en-groepen"><Button variant="outline" className="rounded-xl">Verhuur &amp; Groepen</Button></Link>
+            <Link href="/contact"><Button variant="outline" className="rounded-xl">Contact</Button></Link>
+            <Link href="/duurzaam-restaurant-amersfoort"><Button variant="outline" className="rounded-xl">Duurzaam restaurant</Button></Link>
+          </div>
         </section>
       </div>
     </div>

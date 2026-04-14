@@ -8,6 +8,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
 import { GoogleAnalytics } from "@/components/google-analytics";
 import Script from "next/script";
+import { getSettings } from "@/lib/queries/feed";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -61,8 +62,8 @@ export const metadata: Metadata = {
   },
 };
 
-function restaurantJsonLd() {
-  const data = {
+function restaurantJsonLd(rating?: number, reviewCount?: number) {
+  const data: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Restaurant",
     "@id": `${siteUrl}#restaurant`,
@@ -84,73 +85,39 @@ function restaurantJsonLd() {
       addressCountry: "NL",
     },
 
-    // Geo coordinates for local search
     geo: {
       "@type": "GeoCoordinates",
       latitude: 52.1598363,
       longitude: 5.3918238,
     },
 
-    telephone: "+31634127932",
+    telephone: "+31 6 341 279 32",
 
-    // Social media links
     sameAs: [
       "https://www.facebook.com/people/Tafelaar-Amersfoort",
       "https://instagram.com/tafelaaramersfoort",
     ],
 
-    // Google Maps URL for local SEO
     hasMap: "https://maps.google.com/?q=De+Tafelaar+Kamp+8+Amersfoort",
 
-    // Area served
     areaServed: {
       "@type": "City",
       name: "Amersfoort",
     },
 
     openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: "Wednesday",
-        opens: "17:00",
-        closes: "23:00",
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: "Thursday",
-        opens: "17:00",
-        closes: "23:00",
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: "Friday",
-        opens: "15:00",
-        closes: "00:00",
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: "Saturday",
-        opens: "15:00",
-        closes: "00:00",
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: "Sunday",
-        opens: "17:00",
-        closes: "23:00",
-      },
+      { "@type": "OpeningHoursSpecification", dayOfWeek: "Wednesday", opens: "17:00", closes: "23:00" },
+      { "@type": "OpeningHoursSpecification", dayOfWeek: "Thursday", opens: "17:00", closes: "23:00" },
+      { "@type": "OpeningHoursSpecification", dayOfWeek: "Friday", opens: "15:00", closes: "00:00" },
+      { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "15:00", closes: "00:00" },
+      { "@type": "OpeningHoursSpecification", dayOfWeek: "Sunday", opens: "17:00", closes: "23:00" },
     ],
 
-    // NOTE: aggregateRating removed — hardcoded values risk a Google penalty
-    // when they don't match actual Google review counts. Re-add when syncing
-    // live review data from the /api/cron/ingest-reviews endpoint.
-
-    // Reserve action for AI engines and Google
     potentialAction: {
       "@type": "ReserveAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: `${siteUrl}/contact`,
+        urlTemplate: `${siteUrl}/reserveren`,
         actionPlatform: [
           "http://schema.org/DesktopWebPlatform",
           "http://schema.org/MobileWebPlatform",
@@ -162,27 +129,42 @@ function restaurantJsonLd() {
       },
     },
 
-    // Logo
     logo: {
       "@type": "ImageObject",
       url: `${siteUrl}/logo.png`,
     },
 
-    // Payment
     paymentAccepted: "Cash, Credit Card, Debit Card, PIN",
     currenciesAccepted: "EUR",
   };
+
+  // Live aggregateRating from Google reviews — synced via /api/cron/ingest-reviews
+  if (rating && rating > 0 && reviewCount && reviewCount > 0) {
+    data.aggregateRating = {
+      "@type": "AggregateRating",
+      ratingValue: rating.toFixed(1),
+      bestRating: "5",
+      worstRating: "1",
+      ratingCount: reviewCount,
+    };
+  }
 
   return JSON.stringify(data);
 }
 
 
 
-export default function RootLayout({
+export const revalidate = 3600; // Refresh live rating data every hour
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const settings = await getSettings();
+  const googleRating = settings?.googleRating || 0;
+  const googleReviewCount = settings?.googleReviewCount || 0;
+
   return (
     <html lang="nl" className={cn(inter.variable, playfairDisplay.variable)}>
       <head>
@@ -197,7 +179,7 @@ export default function RootLayout({
         {/* JSON-LD */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: restaurantJsonLd() }}
+          dangerouslySetInnerHTML={{ __html: restaurantJsonLd(googleRating, googleReviewCount) }}
         />
       </head>
 

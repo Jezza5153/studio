@@ -1,16 +1,57 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { getSettings, getLatestReviews } from "@/lib/queries/feed";
 import { ImpressieGallery } from "./ImpressieGallery";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "Impressie | De Tafelaar Amersfoort",
+  title: "Impressie & Reviews | De Tafelaar Amersfoort",
   description:
-    "Sfeerimpressie van De Tafelaar: foto's van ons restaurant, gasten en gerechten. Bekijk wat onze gasten zeggen.",
+    "Sfeerimpressie en reviews van De Tafelaar in Amersfoort. Bekijk foto's van ons restaurant op de Kamp, onze gerechten en wat gasten zeggen.",
   alternates: { canonical: "/impressie" },
   robots: { index: true, follow: true },
+  openGraph: {
+    title: "Impressie & Reviews | De Tafelaar Amersfoort",
+    description:
+      "Sfeerimpressie en reviews van De Tafelaar in Amersfoort. Bekijk foto's van ons restaurant op de Kamp, onze gerechten en wat gasten zeggen.",
+  },
+  keywords: [
+    "de tafelaar reviews",
+    "de tafelaar impressie",
+    "restaurant amersfoort foto's",
+    "de tafelaar sfeer",
+  ],
 };
 
 export const revalidate = 3600; // Re-fetch every hour
+
+const impressieFaqs = [
+  {
+    question: "Waar vind ik foto's van De Tafelaar?",
+    answer: "Op deze pagina zie je sfeerbeelden van ons shared dining restaurant op de Kamp 8 in Amersfoort centrum. We tonen foto's van het interieur, onze gerechten en de sfeer tijdens borrels en diners.",
+  },
+  {
+    question: "Wat zeggen gasten over De Tafelaar?",
+    answer: "Gasten waarderen De Tafelaar voor de verrassende shared dining gerechten, de gezellige sfeer en de persoonlijke bediening. Met een hoge Google-beoordeling zijn we een van de best beoordeelde restaurants in Amersfoort centrum.",
+  },
+  {
+    question: "Kan ik De Tafelaar bezoeken zonder reservering?",
+    answer: "Walk-ins zijn welkom als er plek is, maar we raden aan om te reserveren — vooral op vrijdag en zaterdag. Reserveer eenvoudig online via onze website.",
+  },
+];
+
+function impressieFaqJsonLd() {
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: impressieFaqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: { "@type": "Answer", text: faq.answer },
+    })),
+  });
+}
 
 export default async function ImpressiePage() {
   const [settings, reviews] = await Promise.all([
@@ -23,17 +64,21 @@ export default async function ImpressiePage() {
   const reviewCount = settings?.googleReviewCount || 0;
 
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: impressieFaqJsonLd() }}
+      />
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="relative overflow-hidden border-b border-border/50 bg-foreground/[0.02] py-16 sm:py-24">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent" />
         <div className="container relative mx-auto px-4 sm:px-6 text-center">
           <h1 className="font-headline text-4xl sm:text-5xl md:text-6xl tracking-tight">
-            Impressie
+            Sfeerimpressie De Tafelaar Amersfoort
           </h1>
           <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
-            Krijg een gevoel bij de sfeer van De Tafelaar — door de ogen van
-            onze gasten.
+            Foto&apos;s van ons shared dining restaurant op de Kamp, de gerechten en wat onze gasten zeggen.
           </p>
 
           {/* Google rating badge */}
@@ -97,18 +142,58 @@ export default async function ImpressiePage() {
         }))}
       />
 
+      {/* Over onze sfeer */}
+      <section className="container mx-auto px-4 sm:px-6 py-12">
+        <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-6 text-center">
+          Over onze sfeer
+        </h2>
+        <div className="max-w-3xl mx-auto space-y-4 text-muted-foreground text-sm sm:text-base leading-relaxed">
+          <p>
+            De Tafelaar is een shared dining restaurant op de{" "}
+            <strong>Kamp 8 in Amersfoort centrum</strong> — op 2 minuten
+            loopafstand van Theater de Flint en 5 minuten van station
+            Amersfoort Centraal. In een warm, eigentijds interieur serveren we
+            kleine gerechten om samen te delen, van seizoenssalades en
+            huisgemaakte bitterballen tot langzaam gegaarde hoofdgerechten.
+          </p>
+          <p>
+            We werken uitsluitend met lokale leveranciers:{" "}
+            <strong>Rock City Brewing</strong> voor ambachtelijke bieren,{" "}
+            <strong>Korte Garde</strong> voor wijnen en{" "}
+            <strong>Boot Koffie</strong> uit Amersfoort voor onze espresso.
+            Onze gerechten liggen tussen <strong>€&nbsp;3,50 en €&nbsp;15</strong>;
+            reken op gemiddeld <strong>€&nbsp;25–35&nbsp;p.p.</strong> voor een
+            compleet diner. Of je nu komt voor een borrel na het theater, een
+            uitgebreid diner met vrienden of een romantische avond — de sfeer
+            op deze foto&apos;s geeft een goed beeld van wat je kunt verwachten.
+          </p>
+        </div>
+      </section>
+
+      {/* Veelgestelde vragen */}
+      <section className="container mx-auto px-4 sm:px-6 py-12">
+        <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-6 text-center">
+          Veelgestelde vragen
+        </h2>
+        <div className="max-w-3xl mx-auto space-y-4">
+          {impressieFaqs.map((faq, i) => (
+            <Card key={i} className="rounded-2xl border p-4 sm:p-6">
+              <h3 className="font-semibold text-foreground mb-2">{faq.question}</h3>
+              <p className="text-sm text-muted-foreground">{faq.answer}</p>
+            </Card>
+          ))}
+        </div>
+      </section>
+
       {/* Footer CTA */}
       <section className="border-t border-border/50 bg-foreground/[0.02] py-12 text-center">
         <p className="text-sm text-muted-foreground">
           Benieuwd? Kom zelf ervaren.
         </p>
         <div className="mt-4 flex flex-wrap items-center justify-center gap-4">
-          <a
-            href="/reserveren"
-            className="rounded-lg bg-primary px-6 py-2.5 text-sm font-semibold text-primary-foreground shadow-md transition-all hover:shadow-lg hover:scale-[1.02]"
-          >
-            Reserveer een tafel
-          </a>
+          <Button asChild size="lg">
+            <Link href="/reserveren">Reserveer een tafel</Link>
+          </Button>
           <a
             href="https://maps.google.com/?q=De+Tafelaar+Kamp+8+Amersfoort"
             target="_blank"
@@ -125,7 +210,22 @@ export default async function ImpressiePage() {
             Meer op Google Maps
           </a>
         </div>
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+          <Button asChild variant="outline" size="sm">
+            <Link href="/menu">Menukaart</Link>
+          </Button>
+          <Button asChild variant="outline" size="sm">
+            <Link href="/drank">Drankenkaart</Link>
+          </Button>
+          <Button asChild variant="outline" size="sm">
+            <Link href="/over-ons">Over ons</Link>
+          </Button>
+          <Button asChild variant="outline" size="sm">
+            <Link href="/openingstijden">Openingstijden</Link>
+          </Button>
+        </div>
       </section>
     </div>
+    </>
   );
 }

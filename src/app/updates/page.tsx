@@ -8,9 +8,21 @@ import { TYPE_LABELS } from "@/lib/constants";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-    title: "Updates | De Tafelaar Courant",
-    description: "Alle updates, evenementen, reviews en meer van De Tafelaar Amersfoort.",
+    title: "Updates & Nieuws | De Tafelaar Amersfoort",
+    description:
+        "Alle updates, evenementen, reviews en persberichten van De Tafelaar op de Kamp in Amersfoort. Shared dining nieuws, menu-wijzigingen en gasten-reviews.",
     alternates: { canonical: "/updates" },
+    openGraph: {
+        title: "Updates & Nieuws | De Tafelaar Amersfoort",
+        description:
+            "Updates, reviews en persberichten van shared dining restaurant De Tafelaar in Amersfoort centrum.",
+    },
+    keywords: [
+        "de tafelaar updates",
+        "de tafelaar reviews",
+        "restaurant nieuws amersfoort",
+        "de tafelaar amersfoort",
+    ],
 };
 
 function UpdateCard({ item }: { item: FeedItem }) {
@@ -94,10 +106,11 @@ export default async function UpdatesPage({
             {/* Header */}
             <div className="mb-8 text-center">
                 <h1 className="font-headline text-3xl font-bold text-foreground sm:text-4xl">
-                    Het Archief
+                    Updates &amp; Nieuws — De Tafelaar Amersfoort
                 </h1>
-                <p className="mt-2 text-sm text-muted-foreground">
-                    Alle updates, evenementen, reviews en verhalen van De Tafelaar.
+                <p className="mt-2 max-w-2xl mx-auto text-sm text-muted-foreground">
+                    Alle updates, evenementen, reviews en verhalen van De Tafelaar op de Kamp in Amersfoort centrum.
+                    Van menu-wijzigingen en speciale avonden tot gasten-reviews en persberichten.
                 </p>
             </div>
 
@@ -173,6 +186,36 @@ export default async function UpdatesPage({
                         Volgende →
                     </Link>
                 )}
+            </div>
+
+            {/* Internal links */}
+            <div className="mt-12 text-center">
+                <div className="flex flex-wrap justify-center gap-3">
+                    <Link
+                        href="/agenda"
+                        className="rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground"
+                    >
+                        Agenda
+                    </Link>
+                    <Link
+                        href="/menu"
+                        className="rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground"
+                    >
+                        Menukaart
+                    </Link>
+                    <Link
+                        href="/impressie"
+                        className="rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground"
+                    >
+                        Impressie &amp; Reviews
+                    </Link>
+                    <Link
+                        href="/reserveren"
+                        className="rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground"
+                    >
+                        Reserveren
+                    </Link>
+                </div>
             </div>
         </div>
     );

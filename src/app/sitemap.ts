@@ -36,6 +36,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/bedrijfsdiner-amersfoort`, lastModified, priority: 0.8, changeFrequency: "monthly" },
     { url: `${base}/prive-diner-amersfoort`, lastModified, priority: 0.8, changeFrequency: "monthly" },
     { url: `${base}/vegetarisch-amersfoort`, lastModified, priority: 0.8, changeFrequency: "monthly" },
+    { url: `${base}/beste-restaurant-amersfoort`, lastModified, priority: 0.9, changeFrequency: "monthly" },
     { url: `${base}/moederdag-high-tea-amersfoort`, lastModified, priority: 0.9, changeFrequency: "weekly" },
   ];
 
