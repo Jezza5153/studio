@@ -16,19 +16,22 @@ import {
   MapPin,
   Theater,
   Map,
+  Clock,
+  Phone,
 } from "lucide-react";
 import { ReserveerButton } from "@/components/reserveer-button";
 
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "De Tafelaar | Restaurant Amersfoort Centrum",
+  title: "De Tafelaar | Shared Dining Restaurant Amersfoort Centrum",
   description:
-    "De Tafelaar: shared dining, borrel & diner in Amersfoort centrum. Kleine gerechten van lokale makers, vlakbij Flint. Wo-zo geopend.",
+    "De Tafelaar: shared dining restaurant in Amersfoort centrum. Borrel, diner en groepen met lokale seizoensgerechten om te delen. Op 2 min van Flint. Wo–zo open.",
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "De Tafelaar | Restaurant Amersfoort",
+    title: "De Tafelaar | Shared Dining Restaurant Amersfoort Centrum",
     description:
-      "Shared dining, borrel & diner in Amersfoort centrum. Lokale gerechten, vlakbij Flint.",
+      "Shared dining restaurant in Amersfoort centrum op de Kamp. Borrel, diner en groepen met lokale seizoensgerechten. Op 2 min van Flint.",
     images: [{ url: "/pics/homepage.png" }],
   },
   keywords: [
@@ -60,82 +63,49 @@ function homeFaqJsonLd() {
   return JSON.stringify({
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "Wat is shared dining bij De Tafelaar?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Shared dining betekent dat je kleine gerechten bestelt om samen te delen aan tafel. Bij De Tafelaar kies je uit kazen, charcuterie, koude en warme gerechten en desserts — allemaal gemaakt met verse, lokale ingrediënten uit de regio Amersfoort.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Waar zit De Tafelaar in Amersfoort?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "De Tafelaar zit op de Kamp 8 in het centrum van Amersfoort, op 400 meter (2 minuten lopen) van Theater de Flint.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Hoe kan ik reserveren bij De Tafelaar?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Reserveer via de widget op onze website of bel +31 6 341 279 32. Voor groepen vanaf 7 personen bieden we een Chef's Choice arrangement aan.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Wat zijn de openingstijden van De Tafelaar?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Woensdag en donderdag 17:00-23:00, vrijdag en zaterdag 15:00-00:00, zondag 17:00-23:00. Maandag en dinsdag gesloten.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Heeft De Tafelaar vegetarische en vegan opties?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Ja, meerdere vegetarische en vegan gerechten op de kaart: carpaccio van bieten, Japanse curry, Bao Bun Inari en een vegan Snicker als dessert.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Kan ik De Tafelaar huren voor een feest?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Ja, beschikbaar voor feesten en bedrijfsdiners tot circa 100 personen. Chef's Choice arrangement EUR 45 p.p., optioneel met wijnarrangement.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Biedt De Tafelaar catering aan?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Ja, catering voor kantoorlunches, zakelijke events en walking dinners in de regio Amersfoort.",
-        },
-      },
-    ],
+    mainEntity: homeFaqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: { "@type": "Answer", text: faq.answer },
+    })),
   });
 }
 
-function homeBreadcrumbJsonLd() {
-  return JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://tafelaaramersfoort.nl" },
-    ],
-  });
-}
+const homeFaqs = [
+  {
+    question: "Wat is shared dining bij De Tafelaar?",
+    answer: "Shared dining betekent dat je kleine gerechten bestelt om samen te delen aan tafel. Bij De Tafelaar kies je uit kazen, charcuterie, koude en warme gerechten en desserts — allemaal gemaakt met verse, lokale ingrediënten uit de regio Amersfoort.",
+  },
+  {
+    question: "Waar zit De Tafelaar in Amersfoort?",
+    answer: "De Tafelaar zit op de Kamp 8 in het centrum van Amersfoort, op 400 meter (2 minuten lopen) van Theater de Flint.",
+  },
+  {
+    question: "Hoe kan ik reserveren bij De Tafelaar?",
+    answer: "Reserveer via de widget op onze website of bel +31 6 341 279 32. Voor groepen vanaf 7 personen bieden we een Chef's Choice arrangement aan.",
+  },
+  {
+    question: "Wat zijn de openingstijden van De Tafelaar?",
+    answer: "Woensdag en donderdag 17:00-23:00, vrijdag en zaterdag 15:00-00:00, zondag 17:00-23:00. Maandag en dinsdag gesloten.",
+  },
+  {
+    question: "Heeft De Tafelaar vegetarische en vegan opties?",
+    answer: "Ja, meerdere vegetarische en vegan gerechten op de kaart: carpaccio van bieten, Japanse curry, Bao Bun Inari en een vegan Snicker als dessert.",
+  },
+  {
+    question: "Kan ik De Tafelaar huren voor een feest?",
+    answer: "Ja, beschikbaar voor feesten en bedrijfsdiners tot circa 100 personen. Chef's Choice arrangement EUR 45 p.p., optioneel met wijnarrangement.",
+  },
+  {
+    question: "Biedt De Tafelaar catering aan?",
+    answer: "Ja, catering voor kantoorlunches, zakelijke events en walking dinners in de regio Amersfoort.",
+  },
+];
 
 export default function Home() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: homeFaqJsonLd() }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: homeBreadcrumbJsonLd() }} />
       <div className="flex flex-col">
       {/* ================= HERO ================= */}
       <section className="relative h-[65svh] md:h-[70vh] w-full" aria-labelledby="home-hero-title">
@@ -160,18 +130,17 @@ export default function Home() {
 
           <h1
             id="home-hero-title"
-            className="font-headline text-3xl leading-tight tracking-wide sm:text-4xl md:text-6xl lg:text-7xl max-w-4xl"
+            className="font-headline text-2xl leading-tight tracking-wide sm:text-3xl md:text-5xl lg:text-6xl max-w-4xl"
           >
             {homeContent.hero.headline}
           </h1>
 
-          <p className="mt-3 max-w-xl text-base text-white/90 sm:text-lg">
-            {homeContent.hero.subhead}
+          <p className="mt-3 max-w-xl font-headline text-lg text-white/95 sm:text-xl md:text-2xl">
+            {homeContent.hero.tagline}
           </p>
 
-          {/* Explicit entity definition: subtle but visible for AI/SEO */}
-          <p className="mt-2 max-w-2xl text-sm text-white/75">
-            {homeContent.hero.entityDefinition}
+          <p className="mt-3 max-w-2xl text-base text-white/85 sm:text-lg">
+            {homeContent.hero.subhead}
           </p>
 
           {/* CTAs */}
@@ -305,11 +274,20 @@ export default function Home() {
           <h2 id="discover-title" className="font-headline text-2xl text-foreground md:text-3xl mb-6 text-center">
             Restaurant in Amersfoort centrum
           </h2>
-          <p className="mx-auto max-w-3xl text-base leading-relaxed text-muted-foreground text-center mb-8">
-            De Tafelaar is een shared dining restaurant op de Kamp in het hart van Amersfoort.
-            Op loopafstand van station Amersfoort (5 min), Theater de Flint (2 min) en de Koppelpoort.
-            Woensdag t/m zondag geopend voor borrel, diner en groepen.
-          </p>
+          <div className="mx-auto max-w-3xl text-base leading-relaxed text-muted-foreground text-center mb-8 space-y-3">
+            <p>
+              De Tafelaar is een shared dining restaurant op de Kamp in het hart van Amersfoort centrum.
+              Op zoek naar een plek om gezellig uit eten te gaan in Amersfoort? We serveren kleine gerechten
+              van lokale makers — van kazen en charcuterie tot warme seizoensgerechten en desserts. Alles om
+              samen te delen aan tafel. Op loopafstand van station Amersfoort (5 min), Theater de Flint
+              (2 min) en de Koppelpoort.
+            </p>
+            <p>
+              Gerechten variëren van €3,50 tot €15. Reken op €25–35 per persoon, of kies het Chef&apos;s Choice
+              arrangement (€45 p.p.) en laat de keuken verrassen. Woensdag t/m zondag geopend voor borrel, diner
+              en groepen tot 100 personen.
+            </p>
+          </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 max-w-3xl mx-auto">
             {[
               { href: "/bourgondisch-eten-amersfoort", label: "Bourgondisch eten" },
@@ -366,6 +344,58 @@ export default function Home() {
                 </Link>
               </Button>
             </div>
+          </div>
+        </section>
+
+        {/* ================= OPENING HOURS & LOCATION ================= */}
+        <section className="container mx-auto px-4 sm:px-6 md:px-8" aria-labelledby="info-title">
+          <h2 id="info-title" className="font-headline text-2xl text-foreground md:text-3xl mb-6 text-center">
+            Openingstijden &amp; locatie
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            <Card className="rounded-2xl border p-6">
+              <div className="flex items-center gap-2 text-primary mb-4">
+                <Clock className="h-5 w-5" />
+                <CardTitle className="text-lg">Openingstijden</CardTitle>
+              </div>
+              <dl className="space-y-1 text-sm">
+                <div className="flex justify-between"><dt>Maandag – dinsdag</dt><dd className="text-muted-foreground">Gesloten</dd></div>
+                <div className="flex justify-between"><dt>Woensdag – donderdag</dt><dd className="text-muted-foreground">17:00 – 23:00</dd></div>
+                <div className="flex justify-between"><dt>Vrijdag – zaterdag</dt><dd className="text-muted-foreground">15:00 – 00:00</dd></div>
+                <div className="flex justify-between"><dt>Zondag</dt><dd className="text-muted-foreground">17:00 – 23:00</dd></div>
+              </dl>
+            </Card>
+            <Card className="rounded-2xl border p-6">
+              <div className="flex items-center gap-2 text-primary mb-4">
+                <MapPin className="h-5 w-5" />
+                <CardTitle className="text-lg">Locatie</CardTitle>
+              </div>
+              <address className="not-italic text-sm space-y-2">
+                <p className="font-medium">De Tafelaar</p>
+                <p className="text-muted-foreground">Kamp 8, 3811 AR Amersfoort</p>
+                <p className="text-muted-foreground">2 min lopen van Theater de Flint</p>
+                <p className="text-muted-foreground">5 min lopen van Station Amersfoort</p>
+              </address>
+              <div className="mt-3 flex items-center gap-2 text-sm">
+                <Phone className="h-4 w-4 text-primary" />
+                <a href="tel:+31634127932" className="text-muted-foreground hover:text-foreground">+31 6 341 279 32</a>
+              </div>
+            </Card>
+          </div>
+        </section>
+
+        {/* ================= FAQ (visible) ================= */}
+        <section className="container mx-auto px-4 sm:px-6 md:px-8" aria-labelledby="faq-title">
+          <h2 id="faq-title" className="font-headline text-2xl text-foreground md:text-3xl mb-6 text-center">
+            Veelgestelde vragen over De Tafelaar
+          </h2>
+          <div className="max-w-3xl mx-auto space-y-4">
+            {homeFaqs.map((faq, i) => (
+              <Card key={i} className="rounded-2xl border p-4 sm:p-6">
+                <h3 className="font-semibold text-foreground mb-2">{faq.question}</h3>
+                <p className="text-sm text-muted-foreground">{faq.answer}</p>
+              </Card>
+            ))}
           </div>
         </section>
       </div>

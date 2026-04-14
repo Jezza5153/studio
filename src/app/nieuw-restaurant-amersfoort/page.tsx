@@ -28,8 +28,41 @@ export const metadata: Metadata = {
     ],
 };
 
+const faqs = [
+    {
+        question: "Wat voor restaurant is De Tafelaar?",
+        answer: "De Tafelaar is een shared dining restaurant op de Kamp 8 in Amersfoort centrum. Je bestelt kleine gerechten die je deelt aan tafel, gemaakt met seizoensgebonden producten van lokale makers uit de regio.",
+    },
+    {
+        question: "Wat kost eten bij De Tafelaar?",
+        answer: "Gerechten variëren van €3,50 tot €15. Reken op €25-35 per persoon voor een volledig diner. Er is ook een Chef's Choice arrangement voor €45 p.p., met optioneel wijnarrangement voor €28 p.p.",
+    },
+    {
+        question: "Wanneer is De Tafelaar open?",
+        answer: "Woensdag en donderdag van 17:00 tot 23:00, vrijdag en zaterdag van 15:00 tot 00:00, en zondag van 17:00 tot 23:00. Maandag en dinsdag zijn we gesloten.",
+    },
+    {
+        question: "Moet ik reserveren?",
+        answer: "Reserveren is aan te raden, vooral op vrijdag en zaterdag. Je kunt eenvoudig online reserveren via onze website. Walk-ins zijn welkom als er plek is.",
+    },
+];
+
+function faqJsonLd() {
+    return JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: { "@type": "Answer", text: faq.answer },
+        })),
+    });
+}
+
 export default function NieuwRestaurantAmersfoortPage() {
     return (
+        <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd() }} />
         <div className="container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
             {/* Hero */}
             <header className="text-center mb-12">
@@ -112,6 +145,21 @@ export default function NieuwRestaurantAmersfoortPage() {
                 </Card>
             </section>
 
+            {/* FAQ */}
+            <section className="max-w-3xl mx-auto mb-12">
+                <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-6 text-center">
+                    Veelgestelde vragen
+                </h2>
+                <div className="space-y-4">
+                    {faqs.map((faq) => (
+                        <Card key={faq.question} className="rounded-2xl border p-6">
+                            <h3 className="font-semibold mb-2">{faq.question}</h3>
+                            <p className="text-sm text-muted-foreground">{faq.answer}</p>
+                        </Card>
+                    ))}
+                </div>
+            </section>
+
             {/* Links */}
             <section className="max-w-2xl mx-auto text-center">
                 <div className="flex flex-wrap justify-center gap-3">
@@ -125,13 +173,19 @@ export default function NieuwRestaurantAmersfoortPage() {
                             Over De Tafelaar
                         </Button>
                     </Link>
-                    <Link href="/contact">
+                    <Link href="/impressie">
                         <Button variant="outline" className="rounded-xl">
-                            Contact
+                            Impressie &amp; Reviews
+                        </Button>
+                    </Link>
+                    <Link href="/reserveren">
+                        <Button variant="outline" className="rounded-xl">
+                            Reserveren
                         </Button>
                     </Link>
                 </div>
             </section>
         </div>
+        </>
     );
 }

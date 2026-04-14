@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import { philosophyContent } from "@/content/site-content";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import {
   Leaf,
   Users,
@@ -15,12 +17,50 @@ import {
 
 export const dynamic = "force-static";
 
+const overOnsFaqs = [
+  {
+    question: "Wanneer is De Tafelaar geopend?",
+    answer: "Woensdag en donderdag 17:00-23:00, vrijdag en zaterdag 15:00-00:00, zondag 17:00-23:00. Maandag en dinsdag gesloten. Feestdagen kunnen afwijken.",
+  },
+  {
+    question: "Wat maakt De Tafelaar anders dan andere restaurants in Amersfoort?",
+    answer: "Shared dining: kleine gerechten om samen te delen, bereid met seizoensgebonden producten van lokale makers zoals Rock City Brewing, Boot Koffie en Korte Garde. Geen vast menu — de kaart wisselt met het seizoen.",
+  },
+  {
+    question: "Wie zitten er achter De Tafelaar?",
+    answer: "Een team met meer dan 12 jaar horeca-ervaring, gedreven door de liefde voor gastvrijheid en lokale producten. De Tafelaar is geopend in 2025 op de Kamp 8 in Amersfoort centrum.",
+  },
+];
+
+function overOnsFaqJsonLd() {
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: overOnsFaqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: { "@type": "Answer", text: faq.answer },
+    })),
+  });
+}
+
 export const metadata: Metadata = {
-  title: "Over Ons | Shared Dining Restaurant Amersfoort",
-  description: "Leer De Tafelaar kennen: shared dining met lokale producten en seizoensgebonden gerechten. Ons verhaal, onze filosofie en waarom we doen wat we doen.",
+  title: "Over De Tafelaar | Ons Verhaal — Restaurant Amersfoort Centrum",
+  description: "Leer De Tafelaar kennen: shared dining restaurant op de Kamp in Amersfoort. Ons verhaal, onze lokale producenten en waarom we kiezen voor seizoensgebonden gerechten.",
   alternates: {
     canonical: "/over-ons",
   },
+  openGraph: {
+    title: "Over De Tafelaar | Ons Verhaal — Restaurant Amersfoort Centrum",
+    description: "Shared dining restaurant op de Kamp in Amersfoort. Ons verhaal, lokale producenten en seizoensgebonden gerechten.",
+  },
+  keywords: [
+    "over de tafelaar",
+    "restaurant amersfoort verhaal",
+    "shared dining amersfoort",
+    "lokaal restaurant amersfoort",
+    "de tafelaar kamp amersfoort",
+  ],
 };
 
 
@@ -48,6 +88,8 @@ export default function OverOnsPage() {
   ];
 
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: overOnsFaqJsonLd() }} />
     <div className="relative bg-background">
       {/* Radial glow */}
       <div className="pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)] bg-gradient-to-b from-primary/5 to-transparent" />
@@ -61,10 +103,11 @@ export default function OverOnsPage() {
         {/* Header */}
         <header className="text-center mb-10 sm:mb-12">
           <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl">
-            {philosophyContent.title}
+            Over De Tafelaar — Restaurant Amersfoort
           </h1>
           <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
-            De gedachte achter onze gerechten en gastvrijheid.
+            Shared dining op de Kamp in Amersfoort centrum. Ons verhaal, onze filosofie en de lokale
+            producenten achter onze gerechten.
           </p>
 
           {!!philosophyContent.usps?.length && (
@@ -160,7 +203,7 @@ export default function OverOnsPage() {
             <div className="rounded-xl border border-border px-4 py-3 text-center">
               <div className="text-2xl font-semibold">12+</div>
               <div className="text-sm text-muted-foreground">
-                Jaar ervaring
+                Jaar horeca-ervaring
               </div>
             </div>
           </div>
@@ -231,11 +274,13 @@ export default function OverOnsPage() {
           <div className="relative overflow-hidden rounded-xl border border-border">
             <div className="flex gap-8 py-4 animate-[marquee_30s_linear_infinite] hover:[animation-play-state:paused]">
               {[
-                "Wijnwinkel op de hoek",
-                "Brouwerij Amersfoort",
-                "Boer Jan",
-                "Kaas affineurs",
-                "Groenteteler Utrecht",
+                "Rock City Brewing",
+                "De Drie Ringen",
+                "Brouwerij 't Mirakel",
+                "Eem Bier",
+                "Korte Garde Wijnen",
+                "Boot Koffie",
+                "Farmfields",
               ].map((n, i) => (
                 <span
                   key={i}
@@ -245,11 +290,13 @@ export default function OverOnsPage() {
                 </span>
               ))}
               {[
-                "Wijnwinkel op de hoek",
-                "Brouwerij Amersfoort",
-                "Boer Jan",
-                "Kaas affineurs",
-                "Groenteteler Utrecht",
+                "Rock City Brewing",
+                "De Drie Ringen",
+                "Brouwerij 't Mirakel",
+                "Eem Bier",
+                "Korte Garde Wijnen",
+                "Boot Koffie",
+                "Farmfields",
               ].map((n, i) => (
                 <span
                   key={`dup-${i}`}
@@ -298,8 +345,23 @@ export default function OverOnsPage() {
           </div>
         </section>
 
+        {/* FAQ */}
+        <section className="mb-12">
+          <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-6">
+            Veelgestelde vragen over De Tafelaar
+          </h2>
+          <div className="space-y-4">
+            {overOnsFaqs.map((faq, i) => (
+              <Card key={i} className="rounded-2xl border p-4 sm:p-6">
+                <h3 className="font-semibold text-foreground mb-2">{faq.question}</h3>
+                <p className="text-sm text-muted-foreground">{faq.answer}</p>
+              </Card>
+            ))}
+          </div>
+        </section>
+
         {/* CTA card with soft glow */}
-        <section aria-labelledby="kom-langs">
+        <section aria-labelledby="kom-langs" className="mb-12">
           <div className="relative rounded-2xl border border-border p-6 sm:p-8 overflow-hidden">
             <div className="pointer-events-none absolute -inset-1 bg-gradient-to-r from-primary/10 via-transparent to-primary/10 blur-2xl" />
             <div className="relative flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -337,7 +399,18 @@ export default function OverOnsPage() {
             </div>
           </div>
         </section>
+
+        {/* Internal links */}
+        <section className="text-center">
+          <div className="flex flex-wrap justify-center gap-3">
+            <Link href="/over-onze-makers"><Button variant="outline" className="rounded-xl">Onze makers</Button></Link>
+            <Link href="/filosofie"><Button variant="outline" className="rounded-xl">Onze filosofie</Button></Link>
+            <Link href="/duurzaam-restaurant-amersfoort"><Button variant="outline" className="rounded-xl">Duurzaam eten</Button></Link>
+            <Link href="/impressie"><Button variant="outline" className="rounded-xl">Impressie</Button></Link>
+          </div>
+        </section>
       </div>
     </div>
+    </>
   );
 }

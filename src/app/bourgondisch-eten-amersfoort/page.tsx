@@ -142,6 +142,21 @@ export default function BourgondischEtenAmersfoortPage() {
                 </Card>
             </section>
 
+            {/* FAQ */}
+            <section className="max-w-3xl mx-auto mb-12">
+                <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-6 text-center">
+                    Veelgestelde vragen
+                </h2>
+                <div className="space-y-4">
+                    {faqs.map((faq) => (
+                        <Card key={faq.question} className="rounded-2xl border p-6">
+                            <h3 className="font-semibold mb-2">{faq.question}</h3>
+                            <p className="text-sm text-muted-foreground">{faq.answer}</p>
+                        </Card>
+                    ))}
+                </div>
+            </section>
+
             {/* Links */}
             <section className="max-w-2xl mx-auto text-center">
                 <div className="flex flex-wrap justify-center gap-3">
@@ -150,14 +165,19 @@ export default function BourgondischEtenAmersfoortPage() {
                             Bekijk ons menu
                         </Button>
                     </Link>
-                    <Link href="/eten-voor-theater-de-flint">
+                    <Link href="/uit-eten-amersfoort">
                         <Button variant="outline" className="rounded-xl">
-                            Eten vlakbij Flint
+                            Uit eten in Amersfoort
                         </Button>
                     </Link>
-                    <Link href="/contact">
+                    <Link href="/drank">
                         <Button variant="outline" className="rounded-xl">
-                            Contact & Reserveren
+                            Drankenkaart
+                        </Button>
+                    </Link>
+                    <Link href="/reserveren">
+                        <Button variant="outline" className="rounded-xl">
+                            Reserveren
                         </Button>
                     </Link>
                 </div>

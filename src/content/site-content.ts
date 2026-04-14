@@ -43,11 +43,12 @@ export const openingHours = {
 
 export const homeContent = {
   hero: {
-    headline: "Samen aan tafel. Kleine gerechten, grote gezelligheid.",
+    headline: "De Tafelaar — Shared Dining Restaurant in Amersfoort",
+    tagline: "Samen aan tafel. Kleine gerechten, grote gezelligheid.",
     subhead:
-      "Welkom bij De Tafelaar — het restaurant in Amersfoort centrum voor shared dining, borrel en diner. Lokale gerechten om te delen, vlakbij Flint.",
+      "Welkom bij De Tafelaar op de Kamp in Amersfoort centrum. Shared dining, borrel en diner met lokale seizoensgerechten om te delen. Op 2 minuten van Flint, open wo–zo.",
 
-    kicker: "Restaurant Amersfoort Centrum",
+    kicker: "Restaurant Amersfoort Centrum · Kamp 8",
     entityDefinition:
       "De Tafelaar is een shared-dining restaurant op de Kamp in Amersfoort centrum. Open wo–zo voor borrel, diner en groepen. Lokale producten, seizoensgebonden menu.",
   },
@@ -81,9 +82,9 @@ export const homeContent = {
   ],
 
   howItWorks: {
-    title: "Hoe werkt het?",
+    title: "Hoe werkt shared dining bij De Tafelaar?",
     description:
-      "Bij shared dining bestel je meerdere kleine gerechten die je deelt met je tafelgenoten. Zo kun je van alles proeven en samen een culinaire reis maken. We adviseren 2-3 gerechtjes per persoon om mee te beginnen. Ons team helpt je graag met kiezen!",
+      "Bij shared dining bestel je meerdere kleine gerechten die je deelt met je tafelgenoten. Kies uit kazen, charcuterie, koude en warme gerechten en desserts — allemaal bereid met seizoensgebonden, lokale producten. We adviseren 3 tot 5 gerechten per persoon om samen te delen. Geen keuze kunnen maken? Het Chef's Choice arrangement (€45 p.p.) laat de keuken voor je kiezen, met optioneel een bijpassend wijnarrangement van Korte Garde voor €28 p.p. Ons team helpt je graag bij het samenstellen van jullie tafel.",
   },
 
   // REPLACED seasonalTeaser -> story (your new text)
@@ -204,7 +205,7 @@ export const philosophyContent = {
     { id: "dish-1" },
   ],
   ctaLinks: {
-    reserve: "/contact",
+    reserve: "/reserveren",
     menu: "/menu",
   },
 
