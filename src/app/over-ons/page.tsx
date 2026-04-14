@@ -20,7 +20,7 @@ export const dynamic = "force-static";
 const overOnsFaqs = [
   {
     question: "Wanneer is De Tafelaar geopend?",
-    answer: "Woensdag en donderdag 17:00-23:00, vrijdag en zaterdag 15:00-00:00, zondag 17:00-23:00. Maandag en dinsdag gesloten. Feestdagen kunnen afwijken.",
+    answer: "Woensdag en donderdag 17:00-23:00, vrijdag 15:00-00:00, zaterdag 11:00-00:00, zondag 11:00-15:00. Maandag en dinsdag gesloten. Feestdagen kunnen afwijken.",
   },
   {
     question: "Wat maakt De Tafelaar anders dan andere restaurants in Amersfoort?",

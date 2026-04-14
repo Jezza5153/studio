@@ -39,7 +39,7 @@ const faqs = [
     },
     {
         question: "Wanneer is De Tafelaar open?",
-        answer: "Woensdag en donderdag van 17:00 tot 23:00, vrijdag en zaterdag van 15:00 tot 00:00, en zondag van 17:00 tot 23:00. Maandag en dinsdag zijn we gesloten.",
+        answer: "Woensdag en donderdag van 17:00 tot 23:00, vrijdag van 15:00 tot 00:00, zaterdag van 11:00 tot 00:00, en zondag van 11:00 tot 15:00. Maandag en dinsdag zijn we gesloten.",
     },
     {
         question: "Moet ik reserveren?",

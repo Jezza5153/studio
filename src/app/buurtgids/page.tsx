@@ -87,7 +87,7 @@ export default function BuurtgidsPage() {
                 een ontspannen diner of borrel voor of na een voorstelling.
               </p>
               <p>
-                Op vrijdag en zaterdag zijn we al open vanaf 15:00, waardoor je ruim de tijd hebt
+                Op zaterdag zijn we al open vanaf 11:00 en op vrijdag vanaf 15:00, waardoor je ruim de tijd hebt
                 voor een vroeg diner. Kleine gerechten kosten €3,50–€15, een compleet diner gemiddeld
                 €25–35 per persoon. Reserveer online of bel +31 6 341 279 32.
               </p>

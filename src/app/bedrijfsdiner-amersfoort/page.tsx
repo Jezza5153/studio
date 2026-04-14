@@ -161,7 +161,8 @@ export default function BedrijfsdinerAmersfoortPage() {
                                 Parkeergarage Kamp ligt op 1 minuut loopafstand. Met een 4.8 op Google
                                 en 90+ reviews is De Tafelaar een van de best beoordeelde restaurants
                                 in Amersfoort. We zijn geopend van woensdag t/m zondag (keuken open
-                                vanaf 17:00, vrijdag en zaterdag vanaf 15:00).
+                                vanaf 17:00, vrijdag vanaf 15:00, zaterdag vanaf 11:00,
+                                zondag 11:00–15:00).
                             </p>
                         </div>
                     </Card>

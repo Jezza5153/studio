@@ -157,8 +157,8 @@ export default function PriveDinerAmersfoortPage() {
                                 Amersfoort, 2 minuten van Theater de Flint. Parkeergarage Kamp is op
                                 1 minuut loopafstand. Met een 4.8 op Google en 90+ reviews is De
                                 Tafelaar een van de best beoordeelde restaurants in Amersfoort.
-                                Regulier geopend woensdag t/m zondag; overdag en op andere dagen
-                                in overleg.
+                                Regulier geopend woensdag t/m zondag (za vanaf 11:00, zo
+                                11:00–15:00); overdag en op andere dagen in overleg.
                             </p>
                         </div>
                     </Card>

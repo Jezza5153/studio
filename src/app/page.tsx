@@ -90,7 +90,7 @@ const homeFaqs = [
   },
   {
     question: "Wat zijn de openingstijden van De Tafelaar?",
-    answer: "Woensdag en donderdag 17:00-23:00, vrijdag en zaterdag 15:00-00:00, zondag 17:00-23:00. Maandag en dinsdag gesloten.",
+    answer: "Woensdag en donderdag 17:00-23:00, vrijdag 15:00-00:00, zaterdag 11:00-00:00, zondag 11:00-15:00. Maandag en dinsdag gesloten.",
   },
   {
     question: "Kan ik De Tafelaar huren voor een feest?",
@@ -366,8 +366,9 @@ export default function Home() {
               <dl className="space-y-1 text-sm">
                 <div className="flex justify-between"><dt>Maandag – dinsdag</dt><dd className="text-muted-foreground">Gesloten</dd></div>
                 <div className="flex justify-between"><dt>Woensdag – donderdag</dt><dd className="text-muted-foreground">17:00 – 23:00</dd></div>
-                <div className="flex justify-between"><dt>Vrijdag – zaterdag</dt><dd className="text-muted-foreground">15:00 – 00:00</dd></div>
-                <div className="flex justify-between"><dt>Zondag</dt><dd className="text-muted-foreground">17:00 – 23:00</dd></div>
+                <div className="flex justify-between"><dt>Vrijdag</dt><dd className="text-muted-foreground">15:00 – 00:00</dd></div>
+                <div className="flex justify-between"><dt>Zaterdag</dt><dd className="text-muted-foreground">11:00 – 00:00</dd></div>
+                <div className="flex justify-between"><dt>Zondag</dt><dd className="text-muted-foreground">11:00 – 15:00</dd></div>
               </dl>
             </Card>
             <Card className="rounded-2xl border p-6">

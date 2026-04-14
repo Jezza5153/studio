@@ -157,7 +157,8 @@ export default function FeestlocatieAmersfoortPage() {
                                 Amersfoort en 2 minuten van Theater de Flint. Parkeergarage Kamp is op
                                 1 minuut loopafstand — ideaal voor gasten die met de auto komen. Met een
                                 4.8 op Google en 90+ reviews weet je dat je feest in goede handen is.
-                                Regulier geopend woensdag t/m zondag; op andere dagen in overleg.
+                                Regulier geopend woensdag t/m zondag (za vanaf 11:00, zo 11:00–15:00);
+                                op andere dagen in overleg.
                             </p>
                         </div>
                     </Card>

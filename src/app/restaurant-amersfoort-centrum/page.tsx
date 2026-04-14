@@ -151,8 +151,8 @@ export default function RestaurantAmersfoortCentrumPage() {
                         <p>
                             De Tafelaar is ook de ideale plek voor een hapje voor of na een voorstelling
                             in Theater de Flint — op slechts 400 meter, 2 minuten lopen. We zijn
-                            geopend van woensdag t/m donderdag van 17:00 tot 23:00, vrijdag en zaterdag
-                            van 15:00 tot 00:00 en zondag van 17:00 tot 23:00.
+                            geopend van woensdag t/m donderdag van 17:00 tot 23:00, vrijdag
+                            van 15:00 tot 00:00, zaterdag van 11:00 tot 00:00 en zondag van 11:00 tot 15:00.
                         </p>
                     </div>
                 </Card>

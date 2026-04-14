@@ -12,14 +12,14 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Openingstijden De Tafelaar Amersfoort | Wanneer Open",
   description:
-    "Openingstijden van De Tafelaar op de Kamp 8 in Amersfoort centrum. Wo\u2013do 17:00\u201323:00, vr\u2013za 15:00\u201300:00, zo 17:00\u201323:00. Reserveer online of bel +31 6 341 279 32.",
+    "Openingstijden van De Tafelaar op de Kamp 8 in Amersfoort centrum. Wo\u2013do 17:00\u201323:00, vr 15:00\u201300:00, za 11:00\u201300:00, zo 11:00\u201315:00. Reserveer online of bel +31 6 341 279 32.",
   alternates: {
     canonical: "/openingstijden",
   },
   openGraph: {
     title: "Openingstijden De Tafelaar Amersfoort | Wanneer Open",
     description:
-      "Openingstijden van De Tafelaar op de Kamp 8 in Amersfoort centrum. Wo\u2013do 17:00\u201323:00, vr\u2013za 15:00\u201300:00, zo 17:00\u201323:00. Reserveer online of bel +31 6 341 279 32.",
+      "Openingstijden van De Tafelaar op de Kamp 8 in Amersfoort centrum. Wo\u2013do 17:00\u201323:00, vr 15:00\u201300:00, za 11:00\u201300:00, zo 11:00\u201315:00. Reserveer online of bel +31 6 341 279 32.",
   },
   keywords: [
     "openingstijden de tafelaar",
@@ -33,7 +33,7 @@ const faqs = [
   {
     question: "Wanneer is De Tafelaar open?",
     answer:
-      "De Tafelaar is geopend van woensdag t/m zondag. Woensdag en donderdag van 17:00 tot 23:00, vrijdag en zaterdag van 15:00 tot 00:00, en zondag van 17:00 tot 23:00. Op maandag en dinsdag zijn wij gesloten.",
+      "De Tafelaar is geopend van woensdag t/m zondag. Woensdag en donderdag van 17:00 tot 23:00, vrijdag van 15:00 tot 00:00, zaterdag van 11:00 tot 00:00, en zondag van 11:00 tot 15:00. Op maandag en dinsdag zijn wij gesloten.",
   },
   {
     question: "Is De Tafelaar open op feestdagen?",
@@ -43,7 +43,7 @@ const faqs = [
   {
     question: "Kan ik ook overdag langskomen?",
     answer:
-      "Op vrijdag en zaterdag zijn we al open vanaf 15:00 voor borrel en vroeg diner. Woensdag, donderdag en zondag openen we om 17:00.",
+      "Op vrijdag zijn we open vanaf 15:00, zaterdag al vanaf 11:00 en zondag van 11:00 tot 15:00. Woensdag en donderdag openen we om 17:00.",
   },
   {
     question: "Moet ik reserveren bij De Tafelaar?",
