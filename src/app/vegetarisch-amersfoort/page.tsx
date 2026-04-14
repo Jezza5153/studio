@@ -151,8 +151,15 @@ export default function VegetarischAmersfoortPage() {
                             <p>
                                 Of je nu helemaal plantaardig eet of gewoon graag meer groenten op
                                 tafel hebt — bij De Tafelaar ben je welkom. We adviseren 2 tot 3
-                                gerechten per persoon, en onze bediening helpt je graag bij het samenstellen
-                                van een mooie vegetarische selectie.
+                                gerechten per persoon (reken op EUR 25-35 p.p.), en onze bediening
+                                helpt je graag bij het samenstellen van een mooie vegetarische selectie.
+                            </p>
+                            <p>
+                                De Tafelaar zit op Kamp 8, hartje centrum Amersfoort — op 2 minuten
+                                van Theater de Flint en 5 minuten van station Amersfoort. Met een 4.8
+                                op Google en 90+ reviews zijn we een van de best beoordeelde restaurants
+                                in Amersfoort. Geopend woensdag t/m zondag (keuken open vanaf 17:00,
+                                vrijdag en zaterdag vanaf 15:00).
                             </p>
                         </div>
                     </Card>
@@ -184,6 +191,11 @@ export default function VegetarischAmersfoortPage() {
                         <Link href="/over-onze-makers">
                             <Button variant="outline" className="rounded-xl">
                                 Over onze makers
+                            </Button>
+                        </Link>
+                        <Link href="/duurzaam-restaurant-amersfoort">
+                            <Button variant="outline" className="rounded-xl">
+                                Duurzaam eten
                             </Button>
                         </Link>
                         <Link href="/contact">

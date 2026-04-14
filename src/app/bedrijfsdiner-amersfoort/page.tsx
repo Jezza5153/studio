@@ -155,6 +155,14 @@ export default function BedrijfsdinerAmersfoortPage() {
                                 Wij denken mee over de invulling zodat jullie alleen nog maar hoeven
                                 aan te schuiven.
                             </p>
+                            <p>
+                                De Tafelaar zit op Kamp 8, hartje Amersfoort centrum — op 5 minuten
+                                lopen van station Amersfoort en 2 minuten van Theater de Flint.
+                                Parkeergarage Kamp ligt op 1 minuut loopafstand. Met een 4.8 op Google
+                                en 90+ reviews is De Tafelaar een van de best beoordeelde restaurants
+                                in Amersfoort. We zijn geopend van woensdag t/m zondag (keuken open
+                                vanaf 17:00, vrijdag en zaterdag vanaf 15:00).
+                            </p>
                         </div>
                     </Card>
                 </section>

@@ -152,6 +152,13 @@ export default function FeestlocatieAmersfoortPage() {
                                 tot circa 100 gasten, voor een zittend diner 50 tot 60 personen. We bieden
                                 persoonlijke begeleiding en stemmen alles af op jouw wensen.
                             </p>
+                            <p>
+                                Kamp 8 ligt centraal in Amersfoort: op 5 minuten lopen van station
+                                Amersfoort en 2 minuten van Theater de Flint. Parkeergarage Kamp is op
+                                1 minuut loopafstand — ideaal voor gasten die met de auto komen. Met een
+                                4.8 op Google en 90+ reviews weet je dat je feest in goede handen is.
+                                Regulier geopend woensdag t/m zondag; op andere dagen in overleg.
+                            </p>
                         </div>
                     </Card>
                 </section>

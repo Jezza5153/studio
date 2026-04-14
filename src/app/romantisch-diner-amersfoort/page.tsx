@@ -175,6 +175,13 @@ export default function RomantischDinerAmersfoortPage() {
                                 Vrijdag en zaterdag zijn levendiger en net zo gezellig. We zijn open
                                 vanaf 17:00 (vr-za vanaf 15:00).
                             </p>
+                            <p>
+                                De Tafelaar zit op Kamp 8, hartje centrum Amersfoort — op 2 minuten
+                                van Theater de Flint en 5 minuten van station Amersfoort. Parkeergarage
+                                Kamp is op 1 minuut loopafstand. Met een 4.8 op Google en 90+ reviews
+                                is De Tafelaar een van de best beoordeelde restaurants in Amersfoort
+                                voor een romantische avond uit.
+                            </p>
                         </div>
                     </Card>
                 </section>
@@ -205,6 +212,11 @@ export default function RomantischDinerAmersfoortPage() {
                         <Link href="/drank">
                             <Button variant="outline" className="rounded-xl">
                                 Drankenkaart
+                            </Button>
+                        </Link>
+                        <Link href="/impressie">
+                            <Button variant="outline" className="rounded-xl">
+                                Reviews &amp; Impressie
                             </Button>
                         </Link>
                         <Link href="/contact">
