@@ -26,12 +26,12 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "De Tafelaar | Restaurant Amersfoort — Lekker Eten & Shared Dining",
   description:
-    "Restaurant in Amersfoort: De Tafelaar op de Kamp. Lekker eten, borrelen en shared dining met lokale seizoensgerechten. Op 2 min van Flint. Wo–zo open.",
+    "Restaurant in Amersfoort: De Tafelaar op de Kamp. Shared dining voor lunch, borrel en diner met lokale seizoensgerechten. 4.8 op Google. Op 2 min van Flint. Wo–zo open.",
   alternates: { canonical: "/" },
   openGraph: {
     title: "De Tafelaar | Restaurant Amersfoort — Lekker Eten & Shared Dining",
     description:
-      "Restaurant in Amersfoort: lekker eten, borrelen en shared dining met lokale seizoensgerechten op de Kamp. Op 2 min van Flint.",
+      "Restaurant in Amersfoort: shared dining voor lunch, borrel en diner met lokale seizoensgerechten op de Kamp. 4.8 op Google. Op 2 min van Flint.",
     images: [{ url: "/pics/homepage.png" }],
   },
   keywords: [
@@ -47,6 +47,8 @@ export const metadata: Metadata = {
     "waar eten in amersfoort",
     "borrel amersfoort",
     "beste restaurant amersfoort",
+    "lunch amersfoort",
+    "brunch amersfoort",
   ],
 };
 
@@ -103,6 +105,10 @@ const homeFaqs = [
   {
     question: "Is De Tafelaar het beste restaurant in Amersfoort?",
     answer: "Met een 4.8 op Google en 90+ reviews is De Tafelaar een van de best beoordeelde restaurants in Amersfoort. Gasten waarderen het unieke shared dining concept, de lokale ingrediënten en de persoonlijke sfeer. Bekijk onze reviews op Google of op onze impressie-pagina.",
+  },
+  {
+    question: "Kan ik bij De Tafelaar lunchen in Amersfoort?",
+    answer: "Ja, op zaterdag zijn we open vanaf 11:00 en op zondag van 11:00 tot 15:00 — ideaal voor een lunch of late brunch in Amersfoort centrum. Shared dining werkt uitstekend voor lunch: 2-3 kleine gerechten per persoon (EUR 15-25 p.p.) of uitgebreider voor een brunch (EUR 25-35 p.p.).",
   },
 ];
 
@@ -287,20 +293,22 @@ export default function Home() {
               (2 min) en de Koppelpoort.
             </p>
             <p>
-              Gerechten variëren van €3,50 tot €15. Reken op €25–35 per persoon, of kies het Chef&apos;s Choice
-              arrangement (€45 p.p.) en laat de keuken verrassen. Woensdag t/m zondag geopend voor borrel, diner
-              en groepen tot 100 personen.
+              Gerechten variëren van €3,50 tot €15. Reken op €25–35 per persoon voor een compleet diner,
+              of kom lunchen op zaterdag (vanaf 11:00) of zondag (11:00–15:00). Het Chef&apos;s Choice
+              arrangement (€45 p.p.) laat de keuken verrassen. Woensdag t/m zondag open voor lunch,
+              borrel en diner.
             </p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 max-w-3xl mx-auto">
             {[
-              { href: "/bourgondisch-eten-amersfoort", label: "Bourgondisch eten" },
-              { href: "/eten-voor-theater-de-flint", label: "Eten bij Flint" },
+              { href: "/beste-restaurant-amersfoort", label: "Beste restaurant" },
+              { href: "/lunch-amersfoort", label: "Lunch" },
               { href: "/borrel-amersfoort", label: "Borrelen" },
               { href: "/romantisch-diner-amersfoort", label: "Romantisch diner" },
+              { href: "/bourgondisch-eten-amersfoort", label: "Bourgondisch eten" },
               { href: "/vegetarisch-amersfoort", label: "Vegetarisch" },
               { href: "/duurzaam-restaurant-amersfoort", label: "Duurzaam eten" },
-              { href: "/beste-restaurant-amersfoort", label: "Beste restaurant" },
+              { href: "/eten-voor-theater-de-flint", label: "Eten bij Flint" },
               { href: "/feestlocatie-amersfoort", label: "Feestlocatie" },
               { href: "/catering", label: "Catering" },
             ].map((link) => (

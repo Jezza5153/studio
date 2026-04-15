@@ -68,13 +68,30 @@ function restaurantJsonLd(rating?: number, reviewCount?: number) {
     "@type": "Restaurant",
     "@id": `${siteUrl}#restaurant`,
     name: "De Tafelaar",
+    alternateName: "De Tafelaar Amersfoort",
     url: siteUrl,
-    image: `${siteUrl}/pics/homepage.png`,
+    image: [
+      `${siteUrl}/pics/homepage.png`,
+      `${siteUrl}/pics/impression-1.jpg`,
+    ],
     description: siteDescription,
-    servesCuisine: ["Shared Dining", "Bourgondisch", "Nederlands", "Seizoensgebonden"],
+    slogan: "Shared dining met lokale makers op de Kamp",
+    servesCuisine: [
+      "Shared Dining",
+      "Bourgondisch",
+      "Nederlands",
+      "Europees",
+      "Seizoensgebonden",
+      "Vegetarisch",
+    ],
     priceRange: "€€",
     acceptsReservations: true,
     hasMenu: `${siteUrl}/menu`,
+    foundingDate: "2025-11",
+    keywords:
+      "restaurant amersfoort, shared dining, lokaal, seizoensgebonden, vlakbij flint, lunch amersfoort, borrel amersfoort",
+    smokingAllowed: false,
+    publicAccess: true,
 
     address: {
       "@type": "PostalAddress",
@@ -92,6 +109,7 @@ function restaurantJsonLd(rating?: number, reviewCount?: number) {
     },
 
     telephone: "+31 6 341 279 32",
+    email: "info@tafelaaramersfoort.nl",
 
     sameAs: [
       "https://www.facebook.com/people/Tafelaar-Amersfoort",
@@ -100,10 +118,10 @@ function restaurantJsonLd(rating?: number, reviewCount?: number) {
 
     hasMap: "https://maps.google.com/?q=De+Tafelaar+Kamp+8+Amersfoort",
 
-    areaServed: {
-      "@type": "City",
-      name: "Amersfoort",
-    },
+    areaServed: [
+      { "@type": "City", name: "Amersfoort" },
+      { "@type": "AdministrativeArea", name: "Utrecht" },
+    ],
 
     openingHoursSpecification: [
       { "@type": "OpeningHoursSpecification", dayOfWeek: "Wednesday", opens: "17:00", closes: "23:00" },
@@ -111,6 +129,24 @@ function restaurantJsonLd(rating?: number, reviewCount?: number) {
       { "@type": "OpeningHoursSpecification", dayOfWeek: "Friday", opens: "15:00", closes: "00:00" },
       { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "11:00", closes: "00:00" },
       { "@type": "OpeningHoursSpecification", dayOfWeek: "Sunday", opens: "11:00", closes: "15:00" },
+    ],
+
+    makesOffer: [
+      {
+        "@type": "Offer",
+        name: "Chef's Choice arrangement",
+        description:
+          "Rijkgevulde tafel met borrelplanken, koude en warme gerechten en dessert. Vanaf 7 personen.",
+        price: "45",
+        priceCurrency: "EUR",
+      },
+      {
+        "@type": "Offer",
+        name: "Bijpassend wijnarrangement",
+        description: "Wijnen afgestemd op het Chef's Choice arrangement.",
+        price: "28",
+        priceCurrency: "EUR",
+      },
     ],
 
     potentialAction: {

@@ -46,6 +46,11 @@ const faqs = [
       "Op vrijdag zijn we open vanaf 15:00, zaterdag al vanaf 11:00 en zondag van 11:00 tot 15:00. Woensdag en donderdag openen we om 17:00.",
   },
   {
+    question: "Serveren jullie lunch?",
+    answer:
+      "Ja, op zaterdag vanaf 11:00 en op zondag 11:00-15:00 kun je bij ons lunchen. We serveren ons reguliere shared dining menu: kleine gerechten om te delen. Voor een lichte lunch reken je op 2-3 gerechten per persoon (EUR 15-25 p.p.).",
+  },
+  {
     question: "Moet ik reserveren bij De Tafelaar?",
     answer:
       "Reserveren is niet verplicht maar wel aan te raden, vooral op vrijdag- en zaterdagavond. Je kunt eenvoudig online reserveren via onze website. Walk-ins zijn welkom als er plek is.",
@@ -94,6 +99,12 @@ export default function OpeningstijdenPage() {
                 We liggen op 2 minuten lopen van Theater de Flint en 5 minuten van station Amersfoort
                 Centraal. Ideaal voor een borrel of diner voor of na een voorstelling.
               </p>
+              <p>
+                <strong className="text-foreground">Lunchen in het weekend:</strong> op zaterdag zijn
+                we open vanaf 11:00 en op zondag exclusief voor lunch van 11:00 tot 15:00. Shared
+                dining werkt uitstekend als lunch — kies 2 tot 3 kleine gerechten voor een lichte
+                lunch of maak er een uitgebreide brunch van.
+              </p>
             </div>
           </Card>
         </section>
@@ -108,9 +119,6 @@ export default function OpeningstijdenPage() {
                     <span className="font-semibold text-base sm:text-lg">{item.day}</span>
                     <div className="text-right">
                       <span className="text-base sm:text-lg text-muted-foreground">{item.time}</span>
-                      {item.special && (
-                        <p className="text-sm text-accent">{item.special}</p>
-                      )}
                     </div>
                   </li>
                 ))}
@@ -183,6 +191,11 @@ export default function OpeningstijdenPage() {
             <Link href="/reserveren">
               <Button variant="outline" className="rounded-xl">
                 Reserveren
+              </Button>
+            </Link>
+            <Link href="/lunch-amersfoort">
+              <Button variant="outline" className="rounded-xl">
+                Lunch in het centrum
               </Button>
             </Link>
             <Link href="/eten-voor-theater-de-flint">

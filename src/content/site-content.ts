@@ -46,11 +46,11 @@ export const homeContent = {
     headline: "De Tafelaar — Shared Dining Restaurant in Amersfoort",
     tagline: "Samen aan tafel. Kleine gerechten, grote gezelligheid.",
     subhead:
-      "Welkom bij De Tafelaar op de Kamp in Amersfoort centrum. Shared dining, borrel en diner met lokale seizoensgerechten om te delen. Op 2 minuten van Flint, open wo–zo.",
+      "Welkom bij De Tafelaar op de Kamp in Amersfoort centrum. Shared dining voor lunch, borrel en diner met lokale seizoensgerechten om te delen. Op 2 minuten van Flint, open wo–zo.",
 
     kicker: "Restaurant Amersfoort Centrum · Kamp 8",
     entityDefinition:
-      "De Tafelaar is een shared-dining restaurant op de Kamp in Amersfoort centrum. Open wo–zo voor borrel, diner en groepen. Lokale producten, seizoensgebonden menu.",
+      "De Tafelaar is een shared-dining restaurant op de Kamp in Amersfoort centrum. Open wo–zo voor lunch, borrel en diner. Lokale producten, seizoensgebonden menu.",
   },
 
   // UPDATED: stable iconKey so icons don’t break when titles change
