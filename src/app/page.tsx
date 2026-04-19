@@ -298,6 +298,11 @@ export default function Home() {
               arrangement (€45 p.p.) laat de keuken verrassen. Woensdag t/m zondag open voor lunch,
               borrel en diner.
             </p>
+            <p>
+              Op kantoor of op locatie? <Link href="/catering" className="underline hover:text-foreground">Tafelaar × Jezza Cooks Catering</Link>{" "}
+              bezorgt office lunch vanaf €7,50 p.p. en events tot 150 personen in heel Amersfoort —
+              bereid in dezelfde restaurantkeuken.
+            </p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 max-w-3xl mx-auto">
             {[

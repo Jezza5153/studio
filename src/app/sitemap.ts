@@ -22,7 +22,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/contact`, lastModified, priority: 0.8, changeFrequency: "monthly" },
     { url: `${base}/reserveren`, lastModified, priority: 0.8, changeFrequency: "monthly" },
     { url: `${base}/verhuur-en-groepen`, lastModified, priority: 0.6, changeFrequency: "monthly" },
-    { url: `${base}/catering`, lastModified, priority: 0.6, changeFrequency: "monthly" },
+    { url: `${base}/catering`, lastModified, priority: 0.9, changeFrequency: "monthly" },
     { url: `${base}/openingstijden`, lastModified, priority: 0.5, changeFrequency: "monthly" },
     { url: `${base}/drank`, lastModified, priority: 0.6, changeFrequency: "weekly" },
     { url: `${base}/agenda`, lastModified, priority: 0.8, changeFrequency: "weekly" },
