@@ -127,9 +127,16 @@ export default async function StoryPage({ params }: PageProps) {
         },
     ];
 
-    // Inject Event JSON-LD if configured
+    // Inject Event JSON-LD if configured. Supports a single Event or an
+    // array of Event nodes (used for multi-sitting events like Moederdag
+    // high tea where each sitting is its own bookable slot in Google
+    // rich results).
     if (seoOverride?.eventJsonLd) {
-        graphItems.push(seoOverride.eventJsonLd);
+        if (Array.isArray(seoOverride.eventJsonLd)) {
+            graphItems.push(...seoOverride.eventJsonLd);
+        } else {
+            graphItems.push(seoOverride.eventJsonLd);
+        }
     }
 
     // Inject FAQ JSON-LD if configured

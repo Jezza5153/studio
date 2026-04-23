@@ -12,7 +12,12 @@ export interface FaqItem {
 export interface SeoOverride {
     seoTitle?: string;
     metaDescription?: string;
-    eventJsonLd?: Record<string, unknown>;
+    /**
+     * One or more Event nodes. Pass an array when an event has multiple
+     * sittings / sub-events that should each be bookable in Google rich
+     * results (e.g. Moederdag high tea 12:00 + 14:00).
+     */
+    eventJsonLd?: Record<string, unknown> | Array<Record<string, unknown>>;
     faqItems?: FaqItem[];
 }
 
@@ -21,41 +26,80 @@ export const SEO_OVERRIDES: Record<string, SeoOverride> = {
         seoTitle: "Moederdag High Tea Amersfoort 2026 – De Tafelaar",
         metaDescription:
             "Verras je moeder met een uitgebreide high tea bij De Tafelaar in Amersfoort centrum. Shared dining high tea met hartige hapjes, zoete lekkernijen en lokale thee & koffie. Zondag 10 mei. Reserveer nu.",
-        eventJsonLd: {
-            "@type": "Event",
-            name: "Moederdag High Tea 2026 bij De Tafelaar",
-            startDate: "2026-05-10T12:00",
-            endDate: "2026-05-10T17:00",
-            eventAttendanceMode:
-                "https://schema.org/OfflineEventAttendanceMode",
-            eventStatus: "https://schema.org/EventScheduled",
-            location: {
-                "@type": "Place",
-                name: "De Tafelaar",
-                address: {
-                    "@type": "PostalAddress",
-                    streetAddress: "Kamp 8",
-                    addressLocality: "Amersfoort",
-                    postalCode: "3811 AR",
-                    addressCountry: "NL",
+        eventJsonLd: [
+            {
+                "@type": "Event",
+                "@id": "https://tafelaaramersfoort.nl/moederdag-high-tea-amersfoort#sitting-12",
+                name: "Moederdag High Tea 2026 — Sitting 12:00",
+                startDate: "2026-05-10T12:00",
+                endDate: "2026-05-10T14:30",
+                eventAttendanceMode:
+                    "https://schema.org/OfflineEventAttendanceMode",
+                eventStatus: "https://schema.org/EventScheduled",
+                location: {
+                    "@type": "Place",
+                    name: "De Tafelaar",
+                    address: {
+                        "@type": "PostalAddress",
+                        streetAddress: "Kamp 8",
+                        addressLocality: "Amersfoort",
+                        postalCode: "3811 AR",
+                        addressCountry: "NL",
+                    },
+                },
+                offers: {
+                    "@type": "Offer",
+                    price: "37.50",
+                    priceCurrency: "EUR",
+                    availability: "https://schema.org/InStock",
+                    url: "https://tafelaaramersfoort.nl/moederdag-high-tea-amersfoort",
+                },
+                description:
+                    "Bourgondische shared dining high tea op Moederdag bij De Tafelaar in Amersfoort. Verse croissants, vers brood, beenham, jonge kaas, huisgemaakte eiersalade, jammetjes, zalm met nori mayo, gegrilde ribeye en bladerdeeghapjes met asperges. Inclusief thee, koffie van Boot Koffie en een glas bubbels voor mama.",
+                image: "https://tafelaaramersfoort.nl/pics/homepage.png",
+                organizer: {
+                    "@type": "Organization",
+                    name: "De Tafelaar",
+                    url: "https://tafelaaramersfoort.nl",
                 },
             },
-            offers: {
-                "@type": "Offer",
-                price: "37.50",
-                priceCurrency: "EUR",
-                availability: "https://schema.org/InStock",
-                url: "https://tafelaaramersfoort.nl/moederdag-high-tea-amersfoort",
+            {
+                "@type": "Event",
+                "@id": "https://tafelaaramersfoort.nl/moederdag-high-tea-amersfoort#sitting-14",
+                name: "Moederdag High Tea 2026 — Sitting 14:00",
+                startDate: "2026-05-10T14:00",
+                endDate: "2026-05-10T16:30",
+                eventAttendanceMode:
+                    "https://schema.org/OfflineEventAttendanceMode",
+                eventStatus: "https://schema.org/EventScheduled",
+                location: {
+                    "@type": "Place",
+                    name: "De Tafelaar",
+                    address: {
+                        "@type": "PostalAddress",
+                        streetAddress: "Kamp 8",
+                        addressLocality: "Amersfoort",
+                        postalCode: "3811 AR",
+                        addressCountry: "NL",
+                    },
+                },
+                offers: {
+                    "@type": "Offer",
+                    price: "37.50",
+                    priceCurrency: "EUR",
+                    availability: "https://schema.org/InStock",
+                    url: "https://tafelaaramersfoort.nl/moederdag-high-tea-amersfoort",
+                },
+                description:
+                    "Bourgondische shared dining high tea op Moederdag bij De Tafelaar in Amersfoort. Verse croissants, vers brood, beenham, jonge kaas, huisgemaakte eiersalade, jammetjes, zalm met nori mayo, gegrilde ribeye en bladerdeeghapjes met asperges. Inclusief thee, koffie van Boot Koffie en een glas bubbels voor mama.",
+                image: "https://tafelaaramersfoort.nl/pics/homepage.png",
+                organizer: {
+                    "@type": "Organization",
+                    name: "De Tafelaar",
+                    url: "https://tafelaaramersfoort.nl",
+                },
             },
-            description:
-                "Vier Moederdag met een uitgebreide shared dining high tea bij De Tafelaar in Amersfoort. Hartige hapjes, zoete lekkernijen, lokale thee van Boot Koffie en meer.",
-            image: "https://tafelaaramersfoort.nl/pics/homepage.png",
-            organizer: {
-                "@type": "Organization",
-                name: "De Tafelaar",
-                url: "https://tafelaaramersfoort.nl",
-            },
-        },
+        ],
         faqItems: [
             {
                 question: "Moet ik reserveren voor de Moederdag high tea?",
@@ -67,7 +111,7 @@ export const SEO_OVERRIDES: Record<string, SeoOverride> = {
             },
             {
                 question: "Wat wordt er geserveerd bij de high tea?",
-                answer: "Een shared dining high tea met hartige hapjes (mini-sandwiches, quiche, kaasplanken), zoete lekkernijen (scones, taartjes, petit fours) en warme gerechten. Alles gemaakt met lokale, seizoensgebonden producten.",
+                answer: "Een bourgondische shared dining high tea om samen te delen. Op tafel: verse croissants, een variatie aan vers brood, beenham, jonge kaas, huisgemaakte eiersalade, diverse jammetjes, zalm met nori mayo, gegrilde ribeye en bladerdeeghapjes met asperges. Daarbij thee, koffie van Boot Koffie en een glas bubbels voor mama.",
             },
             {
                 question: "Is de high tea geschikt voor kinderen?",
@@ -75,7 +119,7 @@ export const SEO_OVERRIDES: Record<string, SeoOverride> = {
             },
             {
                 question: "Hoe laat is de Moederdag high tea?",
-                answer: "Zondag 10 mei 2026, van 12:00 tot 17:00. We adviseren om rond 12:00 of 14:00 te reserveren voor een ontspannen middag.",
+                answer: "Zondag 10 mei 2026. We werken met twee sittings: 12:00 en 14:00. Elke sitting duurt ongeveer 2,5 uur. Kies de tijd die past en reserveer op tijd — het aantal plaatsen is beperkt.",
             },
         ],
     },

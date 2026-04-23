@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 const faqs = [
     {
         question: "Wanneer is de Moederdag high tea bij De Tafelaar?",
-        answer: "Zondag 10 mei 2026, van 12:00 tot 17:00. We adviseren om rond 12:00 of 14:00 te reserveren voor een ontspannen middag.",
+        answer: "Zondag 10 mei 2026. We werken met twee sittings: 12:00 en 14:00. Elke sitting duurt ongeveer 2,5 uur. Kies de tijd die past en reserveer op tijd — het aantal plaatsen is beperkt.",
     },
     {
         question: "Wat kost de Moederdag high tea?",
@@ -42,7 +42,7 @@ const faqs = [
     },
     {
         question: "Wat wordt er geserveerd?",
-        answer: "Een shared dining high tea met hartige hapjes (mini-sandwiches, quiche, kaasplanken), zoete lekkernijen (scones, taartjes, petit fours) en warme seizoensgerechten. Alles van lokale producenten.",
+        answer: "Een bourgondische shared dining high tea om samen te delen. Op tafel: verse croissants, een variatie aan vers brood, beenham, jonge kaas, huisgemaakte eiersalade, diverse jammetjes, zalm met nori mayo, gegrilde ribeye en bladerdeeghapjes met asperges. Daarbij thee, koffie van Boot Koffie en een glas bubbels voor mama.",
     },
     {
         question: "Moet ik reserveren?",
@@ -71,40 +71,67 @@ function faqJsonLd() {
 }
 
 function eventJsonLd() {
+    // Two sittings as two separate Event nodes wrapped in @graph so Google
+    // rich results show two bookable time slots on the same day.
+    const sharedLocation = {
+        "@type": "Place",
+        name: "De Tafelaar",
+        address: {
+            "@type": "PostalAddress",
+            streetAddress: "Kamp 8",
+            addressLocality: "Amersfoort",
+            postalCode: "3811 AR",
+            addressCountry: "NL",
+        },
+    };
+    const sharedOffer = {
+        "@type": "Offer",
+        price: "37.50",
+        priceCurrency: "EUR",
+        availability: "https://schema.org/InStock",
+        url: "https://tafelaaramersfoort.nl/moederdag-high-tea-amersfoort",
+    };
+    const sharedOrganizer = {
+        "@type": "Organization",
+        name: "De Tafelaar",
+        url: "https://tafelaaramersfoort.nl",
+    };
+    const sharedDescription =
+        "Bourgondische shared dining high tea bij De Tafelaar in Amersfoort op Moederdag. Verse croissants, vers brood, beenham, jonge kaas, huisgemaakte eiersalade, jammetjes, zalm met nori mayo, gegrilde ribeye en bladerdeeghapjes met asperges. Inclusief thee, koffie van Boot Koffie en een glas bubbels voor mama.";
+    const sharedImage = "https://tafelaaramersfoort.nl/pics/homepage.png";
+
     return JSON.stringify({
         "@context": "https://schema.org",
-        "@type": "Event",
-        name: "Moederdag High Tea 2026 bij De Tafelaar",
-        startDate: "2026-05-10T12:00",
-        endDate: "2026-05-10T17:00",
-        eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-        eventStatus: "https://schema.org/EventScheduled",
-        location: {
-            "@type": "Place",
-            name: "De Tafelaar",
-            address: {
-                "@type": "PostalAddress",
-                streetAddress: "Kamp 8",
-                addressLocality: "Amersfoort",
-                postalCode: "3811 AR",
-                addressCountry: "NL",
+        "@graph": [
+            {
+                "@type": "Event",
+                "@id": "https://tafelaaramersfoort.nl/moederdag-high-tea-amersfoort#sitting-12",
+                name: "Moederdag High Tea 2026 — Sitting 12:00",
+                startDate: "2026-05-10T12:00",
+                endDate: "2026-05-10T14:30",
+                eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+                eventStatus: "https://schema.org/EventScheduled",
+                location: sharedLocation,
+                offers: sharedOffer,
+                description: sharedDescription,
+                image: sharedImage,
+                organizer: sharedOrganizer,
             },
-        },
-        offers: {
-            "@type": "Offer",
-            price: "37.50",
-            priceCurrency: "EUR",
-            availability: "https://schema.org/InStock",
-            url: "https://tafelaaramersfoort.nl/moederdag-high-tea-amersfoort",
-        },
-        description:
-            "Vier Moederdag met een uitgebreide shared dining high tea bij De Tafelaar in Amersfoort. Hartige hapjes, zoete lekkernijen en lokale producten.",
-        image: "https://tafelaaramersfoort.nl/pics/homepage.png",
-        organizer: {
-            "@type": "Organization",
-            name: "De Tafelaar",
-            url: "https://tafelaaramersfoort.nl",
-        },
+            {
+                "@type": "Event",
+                "@id": "https://tafelaaramersfoort.nl/moederdag-high-tea-amersfoort#sitting-14",
+                name: "Moederdag High Tea 2026 — Sitting 14:00",
+                startDate: "2026-05-10T14:00",
+                endDate: "2026-05-10T16:30",
+                eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+                eventStatus: "https://schema.org/EventScheduled",
+                location: sharedLocation,
+                offers: sharedOffer,
+                description: sharedDescription,
+                image: sharedImage,
+                organizer: sharedOrganizer,
+            },
+        ],
     });
 }
 
@@ -123,8 +150,10 @@ export default function MoederdagHighTeaPage() {
                         Moederdag High Tea in Amersfoort
                     </h1>
                     <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
-                        Verras je moeder met een uitgebreide shared dining high tea bij De Tafelaar.
-                        Hartige hapjes, zoete lekkernijen en een glas bubbels — midden in het centrum van Amersfoort.
+                        Speciaal voor de allerliefste. Geniet van een bourgondische high tea met een
+                        selectie van hartige en zoete lekkernijen, perfect om samen te delen op Moederdag.
+                        Twee sittings: <strong className="text-foreground">12:00</strong> en{" "}
+                        <strong className="text-foreground">14:00</strong>.
                     </p>
                 </header>
 
@@ -140,8 +169,8 @@ export default function MoederdagHighTeaPage() {
                             </CardHeader>
                             <CardContent className="text-sm text-muted-foreground">
                                 <p className="font-medium text-foreground">Zondag 10 mei 2026</p>
-                                <p>12:00 – 17:00</p>
-                                <p>Reserveer rond 12:00 of 14:00</p>
+                                <p>Sitting 1: 12:00</p>
+                                <p>Sitting 2: 14:00</p>
                             </CardContent>
                         </Card>
 
@@ -169,7 +198,7 @@ export default function MoederdagHighTeaPage() {
                             <CardContent className="text-sm text-muted-foreground">
                                 <p className="font-medium text-foreground">Kamp 8, Amersfoort</p>
                                 <p>Hartje centrum</p>
-                                <p>5 min van station, 2 min van Flint</p>
+                                <p>Parkeergarage Kamp 1 min lopen</p>
                             </CardContent>
                         </Card>
                     </div>
@@ -191,19 +220,29 @@ export default function MoederdagHighTeaPage() {
                         </h2>
                         <div className="space-y-4 text-muted-foreground">
                             <p>
-                                Onze Moederdag high tea is geen standaard etagère. Bij De Tafelaar serveren we het
-                                als <strong className="text-foreground">shared dining</strong>: een rijk gevulde tafel
-                                met hartige en zoete gerechten om samen te delen.
+                                Onze Moederdag high tea is een <strong className="text-foreground">bourgondische shared dining</strong> —
+                                een rijk gevulde tafel met hartige en zoete lekkernijen om samen te delen.
+                                Speciaal voor de allerliefste, perfect om te delen op Moederdag.
                             </p>
-                            <p>
-                                Denk aan <strong className="text-foreground">mini-sandwiches, quiche, kaasplanken</strong> van
-                                lokale producenten, <strong className="text-foreground">scones met clotted cream, seizoenstaartjes
-                                en petit fours</strong>. Daarbij biologische thee en koffie van Boot Koffie uit Baarn.
+                            <p className="font-medium text-foreground">
+                                Wat er allemaal op tafel komt:
                             </p>
+                            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1 pl-4 list-disc marker:text-primary">
+                                <li>Verse croissants</li>
+                                <li>Een variatie aan vers brood</li>
+                                <li>Beenham</li>
+                                <li>Jonge kaas</li>
+                                <li>Huisgemaakte eiersalade</li>
+                                <li>Diverse jammetjes</li>
+                                <li>Zalm met nori mayo</li>
+                                <li>Gegrilde ribeye</li>
+                                <li>Bladerdeeghapjes met asperges</li>
+                            </ul>
                             <p>
-                                Mama krijgt er een <strong className="text-foreground">glas bubbels</strong> bij —
-                                want dat verdient ze. De sfeer is warm, ontspannen en gezellig.
-                                Neem de tijd, geniet samen en laat de rest aan ons over.
+                                Daarbij thee, koffie van <strong className="text-foreground">Boot Koffie</strong> en
+                                een <strong className="text-foreground">glas bubbels voor mama</strong>. Twee sittings
+                                op zondag 10 mei: <strong className="text-foreground">12:00</strong> en{" "}
+                                <strong className="text-foreground">14:00</strong> — kies de tijd die past.
                             </p>
                         </div>
                     </Card>
