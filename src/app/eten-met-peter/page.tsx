@@ -12,6 +12,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ReserveerButton } from "@/components/reserveer-button";
 import { Calendar, ChefHat, Heart, Leaf, MapPin, Users, Wine } from "lucide-react";
 
 export const dynamic = "force-static";
@@ -198,15 +199,7 @@ export default function EtenMetPeterPage() {
             {EVENT_DATE_LABEL}
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <a
-              href={RESERVATION_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button size="lg" className="rounded-xl shadow-sm">
-                Reserveer voor 11 mei
-              </Button>
-            </a>
+            <ReserveerButton size="lg" className="rounded-xl shadow-sm" label="Reserveer voor 11 mei" />
             <Link href="/contact">
               <Button size="lg" variant="outline" className="rounded-xl">
                 Vragen? Neem contact op
@@ -382,11 +375,7 @@ export default function EtenMetPeterPage() {
           </div>
 
           <div className="mt-8 text-center">
-            <a href={RESERVATION_URL} target="_blank" rel="noopener noreferrer">
-              <Button size="lg" className="rounded-xl shadow-sm">
-                Reserveer je plek — 11 mei
-              </Button>
-            </a>
+            <ReserveerButton size="lg" className="rounded-xl shadow-sm" label="Reserveer je plek — 11 mei" />
           </div>
         </section>
 
