@@ -61,6 +61,38 @@ const HIGHLIGHT_ICONS = {
 
 type HighlightIconKey = keyof typeof HIGHLIGHT_ICONS;
 
+// Stacked event banners under the hero. Earliest event first.
+// To add an event: append an entry. To remove: delete the entry. Tailwind
+// gradient classes are inlined so the colour theming travels with the data.
+const UPCOMING_EVENTS = [
+  {
+    href: "/moederdag-high-tea-amersfoort",
+    title: "Moederdag High Tea — zondag 10 mei",
+    ctaLabel: "→ Reserveer nu",
+    iconLeft: "💐",
+    iconRight: "🫖",
+    iconLabelLeft: "Bloemen",
+    iconLabelRight: "Theepot",
+    bgClass:
+      "bg-gradient-to-r from-pink-50 via-rose-50 to-fuchsia-50 dark:from-pink-950/30 dark:via-rose-950/20 dark:to-fuchsia-950/30",
+    titleClass: "text-pink-900 dark:text-pink-200",
+    ctaClass: "text-pink-700 dark:text-pink-400",
+  },
+  {
+    href: "/eten-met-peter",
+    title: "Eten met Peter — actie voor de Hersenstichting · maandag 11 mei",
+    ctaLabel: "→ Reserveer je plek",
+    iconLeft: "👨‍🍳",
+    iconRight: "💛",
+    iconLabelLeft: "Chef",
+    iconLabelRight: "Hart",
+    bgClass:
+      "bg-gradient-to-r from-amber-50 via-orange-50 to-red-50 dark:from-amber-950/30 dark:via-orange-950/20 dark:to-red-950/30",
+    titleClass: "text-amber-900 dark:text-amber-200",
+    ctaClass: "text-amber-700 dark:text-amber-400",
+  },
+];
+
 function homeFaqJsonLd() {
   return JSON.stringify({
     "@context": "https://schema.org",
@@ -186,24 +218,37 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= MOEDERDAG HIGH TEA BANNER ================= */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-pink-50 via-rose-50 to-fuchsia-50 dark:from-pink-950/30 dark:via-rose-950/20 dark:to-fuchsia-950/30">
-        <div className="container mx-auto px-4 py-4 sm:px-6">
-          <Link
-            href="/moederdag-high-tea-amersfoort"
-            className="group flex items-center justify-center gap-3 text-center transition-transform hover:scale-[1.01]"
-          >
-            <span className="text-2xl" role="img" aria-label="Bloemen">💐</span>
-            <span className="font-headline text-sm font-semibold tracking-wide text-pink-900 dark:text-pink-200 sm:text-base">
-              Moederdag High Tea — zondag 10 mei
-            </span>
-            <span className="text-xs font-medium text-pink-700 dark:text-pink-400 sm:text-sm">
-              → Reserveer nu
-            </span>
-            <span className="text-2xl" role="img" aria-label="Theepot">🫖</span>
-          </Link>
-        </div>
-      </section>
+      {/* ================= EVENT BANNERS (STACKED) =================
+          Add a new entry to UPCOMING_EVENTS to ship another banner. Banners
+          stack vertically so each event is fully visible (per owner request).
+          Ordered by chronology — earliest first at the top. */}
+      {UPCOMING_EVENTS.map((event) => (
+        <section
+          key={event.href}
+          className={`relative overflow-hidden ${event.bgClass}`}
+          aria-label={`Aankondiging: ${event.title}`}
+        >
+          <div className="container mx-auto px-4 py-4 sm:px-6">
+            <Link
+              href={event.href}
+              className="group flex flex-wrap items-center justify-center gap-3 text-center transition-transform hover:scale-[1.01]"
+            >
+              <span className="text-2xl" role="img" aria-label={event.iconLabelLeft}>
+                {event.iconLeft}
+              </span>
+              <span className={`font-headline text-sm font-semibold tracking-wide sm:text-base ${event.titleClass}`}>
+                {event.title}
+              </span>
+              <span className={`text-xs font-medium sm:text-sm ${event.ctaClass}`}>
+                {event.ctaLabel}
+              </span>
+              <span className="text-2xl" role="img" aria-label={event.iconLabelRight}>
+                {event.iconRight}
+              </span>
+            </Link>
+          </div>
+        </section>
+      ))}
 
       <div className="space-y-12 py-12 sm:space-y-16 sm:py-16 md:space-y-24 md:py-24">
         {/* ================= HIGHLIGHTS ================= */}
