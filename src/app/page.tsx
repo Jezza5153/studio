@@ -64,34 +64,18 @@ type HighlightIconKey = keyof typeof HIGHLIGHT_ICONS;
 // Stacked event banners under the hero. Earliest event first.
 // To add an event: append an entry. To remove: delete the entry. Tailwind
 // gradient classes are inlined so the colour theming travels with the data.
-const UPCOMING_EVENTS = [
-  {
-    href: "/moederdag-high-tea-amersfoort",
-    title: "Moederdag High Tea — zondag 10 mei",
-    ctaLabel: "→ Reserveer nu",
-    iconLeft: "💐",
-    iconRight: "🫖",
-    iconLabelLeft: "Bloemen",
-    iconLabelRight: "Theepot",
-    bgClass:
-      "bg-gradient-to-r from-pink-50 via-rose-50 to-fuchsia-50 dark:from-pink-950/30 dark:via-rose-950/20 dark:to-fuchsia-950/30",
-    titleClass: "text-pink-900 dark:text-pink-200",
-    ctaClass: "text-pink-700 dark:text-pink-400",
-  },
-  {
-    href: "/eten-met-peter",
-    title: "Eten met Peter — actie voor de Hersenstichting · maandag 11 mei",
-    ctaLabel: "→ Reserveer je plek",
-    iconLeft: "👨‍🍳",
-    iconRight: "💛",
-    iconLabelLeft: "Chef",
-    iconLabelRight: "Hart",
-    bgClass:
-      "bg-gradient-to-r from-amber-50 via-orange-50 to-red-50 dark:from-amber-950/30 dark:via-orange-950/20 dark:to-red-950/30",
-    titleClass: "text-amber-900 dark:text-amber-200",
-    ctaClass: "text-amber-700 dark:text-amber-400",
-  },
-];
+const UPCOMING_EVENTS: Array<{
+  href: string;
+  title: string;
+  ctaLabel: string;
+  iconLeft: string;
+  iconRight: string;
+  iconLabelLeft: string;
+  iconLabelRight: string;
+  bgClass: string;
+  titleClass: string;
+  ctaClass: string;
+}> = [];
 
 function homeFaqJsonLd() {
   return JSON.stringify({
