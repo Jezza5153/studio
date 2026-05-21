@@ -248,7 +248,7 @@ export default async function RootLayout({
           tabIndex={-1}
           style={{ position: "absolute", left: "-9999px", top: "-9999px", width: 0, height: 0, overflow: "hidden", opacity: 0 }}
         >
-          <a href="mailto:info@tafelaaramersfoort.nl" tabIndex={-1}>contact</a>
+          <a href="mailto:crawler-trap@tafelaaramersfoort.nl" tabIndex={-1}>contact</a>
         </div>
         <Toaster />
 

@@ -249,7 +249,7 @@ export default function VerhuurEnGroepenPage() {
                   <Button className="rounded-xl">Contactformulier</Button>
                 </Link>
                 <Button asChild variant="outline" className="rounded-xl">
-                  <ObfuscatedEmail user="hallo" domain="tafelaaramersfoort.nl">
+                  <ObfuscatedEmail user="reserveren" domain="tafelaaramersfoort.nl">
                     <MessageSquare className="mr-2 h-4 w-4" />
                     Mail ons
                   </ObfuscatedEmail>
