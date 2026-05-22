@@ -1,22 +1,25 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { MENU } from "@/content/menu";
+import { LUNCH_MENU, DINNER_MENU, type MenuData } from "@/content/menu";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ReserveerButton } from "@/components/reserveer-button";
 
 export const metadata: Metadata = {
-    title: "Menukaart De Tafelaar | Shared Dining Gerechten Amersfoort",
-    description: "Bekijk de menukaart van De Tafelaar in Amersfoort centrum: shared dining gerechten van €3,50–€15. Kazen, charcuterie, vegetarisch en seizoensgebonden. Kamp 8.",
+    title: "Lunchkaart & Dinerkaart De Tafelaar | Shared Dining Amersfoort",
+    description: "Lunch en diner bij De Tafelaar in Amersfoort centrum (Kamp 8). Lunchkaart met broodjes, salades en bao buns; dinerkaart met shared dining, kazen, charcuterie en Chef's Choice. Gerechten van €3,50–€18,50.",
     alternates: {
         canonical: "/menu",
     },
     openGraph: {
-        title: "Menukaart De Tafelaar | Shared Dining Gerechten Amersfoort",
-        description: "Bekijk de menukaart van De Tafelaar: shared dining gerechten van €3,50–€15. Kazen, charcuterie, vegetarisch en seizoensgebonden.",
+        title: "Lunchkaart & Dinerkaart De Tafelaar | Shared Dining Amersfoort",
+        description: "Lunch en diner bij De Tafelaar: broodjes, salades, bao buns, shared dining gerechten, kazen, charcuterie en Chef's Choice in Amersfoort centrum.",
     },
     keywords: [
         "menukaart de tafelaar",
+        "lunchkaart amersfoort",
+        "lunch amersfoort",
+        "broodjes amersfoort centrum",
         "shared dining menu amersfoort",
         "kleine gerechten amersfoort",
         "borrelplanken amersfoort",
@@ -24,19 +27,19 @@ export const metadata: Metadata = {
     ],
 };
 
-function menuJsonLd() {
-    const siteUrl = "https://tafelaaramersfoort.nl";
+const SITE_URL = "https://tafelaaramersfoort.nl";
 
-    const data = {
-        "@context": "https://schema.org",
+/** Build a Schema.org Menu entity from a MenuData object. */
+function menuEntity(menu: MenuData, slug: "lunch" | "dinner") {
+    return {
         "@type": "Menu",
-        "@id": `${siteUrl}/menu#menu`,
-        name: "Menukaart De Tafelaar",
-        description: "Shared dining menu met kleine gerechten, kazen, charcuterie en desserts van lokale, seizoensgebonden ingrediënten.",
-        url: `${siteUrl}/menu`,
-        mainEntity: MENU.categories.map((category) => ({
+        "@id": `${SITE_URL}/menu#${slug}`,
+        name: menu.title,
+        url: `${SITE_URL}/menu#${slug === "lunch" ? "lunchkaart" : "dinerkaart"}`,
+        hasMenuSection: menu.categories.map((category) => ({
             "@type": "MenuSection",
             name: category.name,
+            description: category.note ?? undefined,
             hasMenuItem: category.items.map((item) => ({
                 "@type": "MenuItem",
                 name: item.name,
@@ -57,26 +60,43 @@ function menuJsonLd() {
             })),
         })),
     };
+}
 
+function menuJsonLd() {
+    const data = {
+        "@context": "https://schema.org",
+        "@graph": [
+            menuEntity(LUNCH_MENU, "lunch"),
+            menuEntity(DINNER_MENU, "dinner"),
+        ],
+    };
     return JSON.stringify(data);
 }
 
 const menuFaqs = [
     {
+        question: "Wat staat er op de lunchkaart?",
+        answer: "De lunchkaart bevat broodjes (keuze uit desembrood of maïsbrood) met carpaccio, vitello tonnato, gerookte zalm, rode biet met geitenkaas, oude kaas of Fiore kaas (€13,50–€15). Daarnaast salades (€14–€16), een gedeelde Tafelaarsplank (€18,50 vanaf 2 personen), warme gerechten zoals seizoenssoep, bao buns en gehaktballetjes, en desserts (€7,50).",
+    },
+    {
+        question: "Wanneer kan ik komen lunchen bij De Tafelaar?",
+        answer: "Lunch is op zaterdag vanaf 11:00 en op zondag van 11:00 tot 15:00. Op vrijdag opent de keuken om 15:00 met de dinerkaart. Tijdens drukke dagen is reserveren aan te raden.",
+    },
+    {
         question: "Wat kost een diner bij De Tafelaar?",
-        answer: "De gerechten variëren van €3,50 tot €15. Een compleet Chef's Choice arrangement kost €45 per persoon, optioneel met bijpassend wijnarrangement voor €28. Borrelgerechten beginnen vanaf €3,50.",
+        answer: "De dinergerechten variëren van €3,50 tot €15. Een compleet Chef's Choice arrangement kost €45 per persoon, optioneel met bijpassend wijnarrangement voor €28. Borrelgerechten beginnen vanaf €3,50.",
     },
     {
         question: "Hoeveel gerechten moet ik bestellen bij shared dining?",
-        answer: "We raden aan om 3 tot 5 gerechten per persoon te bestellen om samen te delen. Of kies ons Chef's Choice arrangement en laat de chef het voor je uitzoeken.",
+        answer: "We raden aan om 's avonds 3 tot 5 gerechten per persoon te bestellen om samen te delen. Of kies ons Chef's Choice arrangement en laat de chef het voor je uitzoeken. Bij de lunch is 1–2 gerechten per persoon meestal voldoende.",
     },
     {
         question: "Zijn er vegetarische en vegan opties op het menu?",
-        answer: "Ja, ons menu bevat meerdere vegetarische (V) en vegan (VG) opties, waaronder carpaccio van bieten, bruschetta, Japanse curry met udon noodles, Bao Bun Inari en een vegan Snicker als dessert.",
+        answer: "Ja, zowel de lunchkaart als de dinerkaart bevatten meerdere vegetarische (V) en vegan (VG) opties — van De Bietelaar broodje en Mediterrane salade tot Bao Bun Inari, carpaccio van bieten, Japanse curry en een vegan Snicker als dessert.",
     },
     {
         question: "Kan ik het menu bekijken voor ik reserveer?",
-        answer: "Ja, ons volledige menu staat op deze pagina. De kaart wisselt regelmatig met het seizoen — check voor je bezoek de meest actuele versie.",
+        answer: "Ja, zowel de lunchkaart als de dinerkaart staan volledig op deze pagina. De kaart wisselt regelmatig met het seizoen — check voor je bezoek de meest actuele versie.",
     },
 ];
 
@@ -119,16 +139,20 @@ export default function MenuLayout({
                     <Card className="rounded-2xl border p-6 sm:p-8">
                         <div className="space-y-4 text-muted-foreground">
                             <p>
-                                De menukaart van De Tafelaar draait om shared dining: kleine gerechten die je samen
-                                deelt aan tafel. We werken met seizoensgebonden ingrediënten van lokale producenten
-                                uit de regio Amersfoort — van kaas en charcuterie van Farmfields tot biologische
-                                koffie van Boot Koffie uit Baarn.
+                                De menukaart van De Tafelaar bestaat uit een lunchkaart en een dinerkaart.
+                                Overdag draait het om compacte, verse gerechten — broodjes (keuze uit desem of
+                                maïsbrood), salades, bao buns en een gedeelde Tafelaarsplank. &lsquo;s Avonds
+                                staat shared dining centraal: kleine gerechten die je samen deelt aan tafel,
+                                met seizoensgebonden ingrediënten van lokale producenten uit de regio Amersfoort
+                                — van kaas en charcuterie van Farmfields tot biologische koffie van Boot Koffie
+                                uit Baarn.
                             </p>
                             <p>
-                                De kaart wisselt regelmatig met het seizoen. Naast losse gerechten (€3,50–€15) kun
-                                je kiezen voor het Chef&apos;s Choice arrangement (€45 p.p.): een selectie van de
-                                mooiste gerechten van dat moment, samengesteld door de keuken. Combineer met het
-                                wijnarrangement van Korte Garde (€28 p.p.) voor een complete avond.
+                                De kaart wisselt regelmatig met het seizoen. Naast losse gerechten (€3,50–€15)
+                                kun je &lsquo;s avonds kiezen voor het Chef&apos;s Choice arrangement
+                                (€45 p.p.): een selectie van de mooiste gerechten van dat moment, samengesteld
+                                door de keuken. Combineer met het wijnarrangement van Korte Garde (€28 p.p.)
+                                voor een complete avond.
                             </p>
                             <p className="text-xs">
                                 Menu bijgewerkt: voorjaar 2026. De kaart kan tussentijds wijzigen op basis van seizoen en beschikbaarheid.

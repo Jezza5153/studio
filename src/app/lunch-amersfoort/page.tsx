@@ -192,9 +192,9 @@ export default function LunchAmersfoortPage() {
                 {/* Links */}
                 <section className="max-w-2xl mx-auto text-center">
                     <div className="flex flex-wrap justify-center gap-3">
-                        <Link href="/menu">
+                        <Link href="/menu#lunchkaart">
                             <Button variant="outline" className="rounded-xl">
-                                Bekijk ons menu
+                                Bekijk de lunchkaart
                             </Button>
                         </Link>
                         <Link href="/openingstijden">
