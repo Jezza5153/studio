@@ -81,7 +81,7 @@ export default function LunchAmersfoortPage() {
                     </h1>
                     <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
                         Lunchen bij De Tafelaar: shared dining op de Kamp 8, zaterdag vanaf 11:00 en
-                        zondag van 11:00 tot 15:00. Midden in het centrum van Amersfoort, op 2 minuten
+                        zondag van 11:00 tot 15:00. Midden in het centrum van Amersfoort, op 5 minuten
                         van Theater de Flint.
                     </p>
                 </header>
@@ -163,12 +163,13 @@ export default function LunchAmersfoortPage() {
                                 stadsbrander.
                             </p>
                             <p>
-                                De Tafelaar zit op Kamp 8, hartje centrum Amersfoort — op 2 minuten van
-                                Theater de Flint, 5 minuten van station Amersfoort en 1 minuut van
-                                parkeergarage Kamp. Ideaal voor een lunch tussen het winkelen of shoppen
-                                in de binnenstad, of als rustpunt op een dagje uit in Amersfoort. Met een
-                                4.8 op Google en 90+ reviews zijn we een van de best beoordeelde
-                                restaurants in Amersfoort centrum.
+                                De Tafelaar zit op Kamp 8, hartje centrum Amersfoort — op 5 minuten
+                                lopen van Theater de Flint en 1 minuut van parkeergarage Kamp. Vanaf
+                                station Amersfoort Centraal is het circa 22 minuten lopen, of korter
+                                met bus, fiets of taxi. Ideaal voor een lunch tussen het winkelen of
+                                shoppen in de binnenstad, of als rustpunt op een dagje uit in
+                                Amersfoort. Met een 4.8 op Google en 90+ reviews zijn we een van de
+                                best beoordeelde restaurants in Amersfoort centrum.
                             </p>
                         </div>
                     </Card>

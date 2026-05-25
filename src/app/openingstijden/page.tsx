@@ -96,8 +96,9 @@ export default function OpeningstijdenPage() {
                 vanaf 7 personen bieden we het Chef&apos;s Choice arrangement aan (€45 p.p.).
               </p>
               <p>
-                We liggen op 2 minuten lopen van Theater de Flint en 5 minuten van station Amersfoort
-                Centraal. Ideaal voor een borrel of diner voor of na een voorstelling.
+                We liggen op 5 minuten lopen van Theater de Flint — ideaal voor een borrel of diner
+                voor of na een voorstelling. Vanaf station Amersfoort Centraal is het circa 22 minuten
+                lopen, of korter met bus, fiets of taxi.
               </p>
               <p>
                 <strong className="text-foreground">Lunchen in het weekend:</strong> op zaterdag zijn
@@ -148,8 +149,8 @@ export default function OpeningstijdenPage() {
                 </a>
               </p>
               <p className="text-sm">
-                Op 2 minuten loopafstand van Theater de Flint en 5 minuten van station Amersfoort
-                Centraal.
+                Op 5 minuten loopafstand van Theater de Flint. Vanaf station Amersfoort Centraal
+                circa 22 minuten lopen (of korter met bus/fiets).
               </p>
             </div>
           </Card>

@@ -6,7 +6,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Contact De Tafelaar | Reserveren & Bereikbaarheid Amersfoort",
   description:
-    "Neem contact op met De Tafelaar op de Kamp 8 in Amersfoort centrum. Reserveer online, bel +31 6 341 279 32 of mail. Op 2 min van Flint, 5 min van station.",
+    "Neem contact op met De Tafelaar op de Kamp 8 in Amersfoort centrum. Reserveer online, bel +31 6 341 279 32 of mail. Op 5 min van Flint; vanaf station Amersfoort ~22 min lopen of korter met bus/fiets.",
   alternates: {
     canonical: "/contact",
   },
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Contact De Tafelaar | Reserveren & Bereikbaarheid Amersfoort",
     description:
-      "Neem contact op met De Tafelaar in Amersfoort. Reserveer online, bel of mail. Op 2 min van Flint, 5 min van station.",
+      "Neem contact op met De Tafelaar in Amersfoort. Reserveer online, bel of mail. Op 5 min van Flint; vanaf station ~22 min lopen of korter met bus/fiets.",
   },
 };
 
@@ -83,7 +83,7 @@ export default function ReserverenPage() {
           Contact De Tafelaar Amersfoort
         </h1>
         <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
-          Reserveer online, bel of mail. We zitten op de Kamp 8, op 2 minuten lopen van Theater de Flint.
+          Reserveer online, bel of mail. We zitten op de Kamp 8, op 5 minuten lopen van Theater de Flint.
         </p>
       </div>
 
@@ -208,14 +208,17 @@ export default function ReserverenPage() {
           </h2>
           <div className="space-y-4 text-muted-foreground">
             <p>
-              De Tafelaar ligt op de Kamp 8, midden in het centrum van Amersfoort. Vanaf station
-              Amersfoort Centraal loop je in 5 minuten naar ons restaurant. Theater de Flint is
-              op 2 minuten loopafstand — ideaal voor een diner voor of na een voorstelling.
+              De Tafelaar ligt op de Kamp 8, midden in het centrum van Amersfoort. Theater de Flint
+              is op 5 minuten loopafstand — ideaal voor een diner voor of na een voorstelling.
             </p>
             <p>
-              Parkeren kan bij parkeergarage Kamp/Flint (ingang Stadsring) of Hoef (5 min lopen).
-              Met het openbaar vervoer is De Tafelaar uitstekend bereikbaar via station Amersfoort
-              Centraal (bus en trein).
+              Station Amersfoort Centraal ligt iets buiten het centrum: vanaf het station is het
+              ongeveer 22 minuten lopen naar de Kamp, of een korte rit van zo&apos;n 5–10 minuten
+              met bus, fiets of taxi.
+            </p>
+            <p>
+              Parkeren kan bij parkeergarage Kamp/Flint (ingang Stadsring). Parkeergarage Hoef
+              ligt verder weg.
             </p>
           </div>
         </Card>

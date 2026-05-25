@@ -150,11 +150,12 @@ export default async function ImpressiePage() {
         <div className="max-w-3xl mx-auto space-y-4 text-muted-foreground text-sm sm:text-base leading-relaxed">
           <p>
             De Tafelaar is een shared dining restaurant op de{" "}
-            <strong>Kamp 8 in Amersfoort centrum</strong> — op 2 minuten
-            loopafstand van Theater de Flint en 5 minuten van station
-            Amersfoort Centraal. In een warm, eigentijds interieur serveren we
-            kleine gerechten om samen te delen, van seizoenssalades en
-            huisgemaakte bitterballen tot langzaam gegaarde hoofdgerechten.
+            <strong>Kamp 8 in Amersfoort centrum</strong> — op 5 minuten
+            loopafstand van Theater de Flint. Vanaf station Amersfoort Centraal
+            is het circa 22 minuten lopen, of korter met bus, fiets of taxi.
+            In een warm, eigentijds interieur serveren we kleine gerechten om
+            samen te delen, van seizoenssalades en huisgemaakte bitterballen
+            tot langzaam gegaarde hoofdgerechten.
           </p>
           <p>
             We werken uitsluitend met lokale leveranciers:{" "}

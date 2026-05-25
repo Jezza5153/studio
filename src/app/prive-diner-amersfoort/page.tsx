@@ -153,8 +153,9 @@ export default function PriveDinerAmersfoortPage() {
                                 Neem contact op en we bespreken samen de mogelijkheden.
                             </p>
                             <p>
-                                Kamp 8 is centraal gelegen in Amersfoort: 5 minuten lopen van station
-                                Amersfoort, 2 minuten van Theater de Flint. Parkeergarage Kamp is op
+                                Kamp 8 is centraal gelegen in Amersfoort: 5 minuten lopen van Theater
+                                de Flint. Vanaf station Amersfoort Centraal is het circa 22 minuten
+                                lopen, of korter met bus, fiets of taxi. Parkeergarage Kamp is op
                                 1 minuut loopafstand. Met een 4.8 op Google en 90+ reviews is De
                                 Tafelaar een van de best beoordeelde restaurants in Amersfoort.
                                 Regulier geopend woensdag t/m zondag (za vanaf 11:00, zo

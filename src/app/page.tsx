@@ -26,12 +26,12 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "De Tafelaar | Restaurant Amersfoort — Lekker Eten & Shared Dining",
   description:
-    "Restaurant in Amersfoort: De Tafelaar op de Kamp. Shared dining voor lunch, borrel en diner met lokale seizoensgerechten. 4.8 op Google. Op 2 min van Flint. Wo–zo open.",
+    "Restaurant in Amersfoort: De Tafelaar op de Kamp. Shared dining voor lunch, borrel en diner met lokale seizoensgerechten. 4.8 op Google. Op 5 min van Flint. Wo–zo open.",
   alternates: { canonical: "/" },
   openGraph: {
     title: "De Tafelaar | Restaurant Amersfoort — Lekker Eten & Shared Dining",
     description:
-      "Restaurant in Amersfoort: shared dining voor lunch, borrel en diner met lokale seizoensgerechten op de Kamp. 4.8 op Google. Op 2 min van Flint.",
+      "Restaurant in Amersfoort: shared dining voor lunch, borrel en diner met lokale seizoensgerechten op de Kamp. 4.8 op Google. Op 5 min van Flint.",
     images: [{ url: "/pics/homepage.png" }],
   },
   keywords: [
@@ -100,7 +100,7 @@ const homeFaqs = [
   },
   {
     question: "Waar zit De Tafelaar in Amersfoort?",
-    answer: "De Tafelaar zit op de Kamp 8 in het centrum van Amersfoort, op 2 minuten lopen van Theater de Flint en 5 minuten van station Amersfoort Centraal. Parkeergarage Koestraat is op 1 minuut loopafstand.",
+    answer: "De Tafelaar zit op de Kamp 8 in het centrum van Amersfoort, op 5 minuten lopen van Theater de Flint. Vanaf station Amersfoort Centraal is het ongeveer 22 minuten lopen, of korter met bus of fiets. Parkeergarage Koestraat is op 1 minuut loopafstand.",
   },
   {
     question: "Hoe kan ik reserveren bij De Tafelaar?",
@@ -318,8 +318,8 @@ export default function Home() {
               De Tafelaar is een shared dining restaurant op de Kamp in het hart van Amersfoort centrum.
               Op zoek naar een plek om lekker te eten in Amersfoort? We serveren kleine gerechten
               van lokale makers — van kazen en charcuterie tot warme seizoensgerechten en desserts. Alles om
-              gezellig samen te delen aan tafel. Op loopafstand van station Amersfoort (5 min), Theater de Flint
-              (2 min) en de Koppelpoort.
+              gezellig samen te delen aan tafel. Op loopafstand van Theater de Flint (5 min) en de Koppelpoort.
+              Vanaf station Amersfoort Centraal ben je in circa 22 minuten lopend bij ons — of korter met bus of fiets.
             </p>
             <p>
               Gerechten variëren van €3,50 tot €15. Reken op €25–35 per persoon voor een compleet diner,
@@ -421,8 +421,8 @@ export default function Home() {
               <address className="not-italic text-sm space-y-2">
                 <p className="font-medium">De Tafelaar</p>
                 <p className="text-muted-foreground">Kamp 8, 3811 AR Amersfoort</p>
-                <p className="text-muted-foreground">2 min lopen van Theater de Flint</p>
-                <p className="text-muted-foreground">5 min lopen van Station Amersfoort</p>
+                <p className="text-muted-foreground">5 min lopen van Theater de Flint</p>
+                <p className="text-muted-foreground">~22 min lopen van Station Amersfoort (korter met bus/fiets)</p>
               </address>
               <div className="mt-3 flex items-center gap-2 text-sm">
                 <Phone className="h-4 w-4 text-primary" />

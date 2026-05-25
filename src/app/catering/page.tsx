@@ -398,7 +398,7 @@ export default function CateringPage() {
                   <MapPin className="h-4 w-4 mt-0.5 shrink-0 text-primary" />
                   <div>
                     <p className="font-semibold text-foreground">Kamp 8, 3811 AR Amersfoort</p>
-                    <p className="text-muted-foreground">Restaurantkeuken in het centrum · 2 min van Flint · 5 min van station</p>
+                    <p className="text-muted-foreground">Restaurantkeuken in het centrum · 5 min lopen van Flint · ~22 min lopen van station Amersfoort</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-2">

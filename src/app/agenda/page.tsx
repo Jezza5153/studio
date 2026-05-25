@@ -91,7 +91,7 @@ export default async function AgendaPage() {
             {/* SEO footer with internal links */}
             <section className="container mx-auto px-4 sm:px-6 md:px-8 py-12 text-center">
                 <p className="text-sm text-muted-foreground mb-4">
-                    De Tafelaar is een shared dining restaurant op de Kamp 8 in Amersfoort centrum, op 2 minuten van Theater de Flint.
+                    De Tafelaar is een shared dining restaurant op de Kamp 8 in Amersfoort centrum, op 5 minuten van Theater de Flint.
                 </p>
                 <div className="flex flex-wrap justify-center gap-3">
                     <Link href="/updates" className="rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground">

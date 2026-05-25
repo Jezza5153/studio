@@ -128,7 +128,7 @@ export default function BesteRestaurantAmersfoortPage() {
                             </div>
                         </CardHeader>
                         <CardContent className="text-sm text-muted-foreground">
-                            Hartje centrum Amersfoort. 2 min van Flint, 5 min van het station.
+                            Hartje centrum Amersfoort. 5 min lopen van Flint; ~22 min lopen van het station (korter met bus/fiets).
                         </CardContent>
                     </Card>
                 </div>

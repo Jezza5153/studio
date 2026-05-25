@@ -10,13 +10,13 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Buurtgids Flint & Kamp | Eten vlakbij Flint Amersfoort",
   description:
-    "Op zoek naar eten dichtbij Flint? De Tafelaar ligt op 2 minuten lopen. Ontdek de beste restaurants nabij Flint, parkeren en hotspots op de Kamp in Amersfoort.",
+    "Op zoek naar eten dichtbij Flint? De Tafelaar ligt op 5 minuten lopen. Ontdek de beste restaurants nabij Flint, parkeren en hotspots op de Kamp in Amersfoort.",
   alternates: {
     canonical: "/buurtgids",
   },
   openGraph: {
     title: "Buurtgids Flint - Eten & Restaurants vlakbij Flint",
-    description: "De beste restaurants en eten dichtbij Flint Amersfoort. De Tafelaar ligt in de Kamp, op 2 min lopen.",
+    description: "De beste restaurants en eten dichtbij Flint Amersfoort. De Tafelaar ligt in de Kamp, op 5 min lopen.",
   },
   keywords: [
     "eten dichtbij flint",
@@ -34,12 +34,12 @@ const buurtgidsFaqs = [
   {
     question: "Welk restaurant ligt het dichtst bij Flint Amersfoort?",
     answer:
-      "De Tafelaar op de Kamp 8 ligt op 2 minuten lopen van Theater de Flint. Ideaal voor een diner of borrel voor of na een voorstelling. We zijn open vanaf 17:00 op woensdag en donderdag, vanaf 15:00 op vrijdag, vanaf 11:00 op zaterdag en zondag van 11:00 tot 15:00.",
+      "De Tafelaar op de Kamp 8 ligt op 5 minuten lopen van Theater de Flint. Ideaal voor een diner of borrel voor of na een voorstelling. We zijn open vanaf 17:00 op woensdag en donderdag, vanaf 15:00 op vrijdag, vanaf 11:00 op zaterdag en zondag van 11:00 tot 15:00.",
   },
   {
     question: "Waar kan ik parkeren bij Theater de Flint?",
     answer:
-      "De dichtstbijzijnde parkeergarages zijn Parkeergarage Koestraat en Parkeergarage Flintplein, beide op 2-3 minuten lopen van De Tafelaar en Theater de Flint. Ook Parkeergarage Stadhuisplein en Beestenmarkt zijn goede opties.",
+      "Parkeergarage Kamp/Koestraat ligt direct naast De Tafelaar (1 minuut lopen) en Parkeergarage Flintplein ligt naast Theater de Flint. Tussen De Tafelaar en Flint is het ongeveer 5 minuten lopen via de Kamp. Ook Parkeergarage Stadhuisplein en Beestenmarkt zijn goede opties in het centrum.",
   },
   {
     question: "Welke restaurants zitten er op de Kamp in Amersfoort?",
@@ -82,7 +82,7 @@ export default function BuurtgidsPage() {
             <div className="space-y-4 text-muted-foreground">
               <p>
                 De Tafelaar is een shared dining restaurant op de Kamp 8 in Amersfoort centrum, op
-                slechts 2 minuten lopen van Theater de Flint. Wij serveren kleine gerechten om te
+                slechts 5 minuten lopen van Theater de Flint. Wij serveren kleine gerechten om te
                 delen — van borrelplanken en charcuterie tot warme seizoensgerechten. Ideaal voor
                 een ontspannen diner of borrel voor of na een voorstelling.
               </p>

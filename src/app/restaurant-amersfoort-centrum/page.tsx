@@ -38,7 +38,7 @@ const faqs = [
     },
     {
         question: "Waar zit De Tafelaar precies?",
-        answer: "De Tafelaar zit op Kamp 8, hartje centrum Amersfoort. Op 5 minuten lopen van station Amersfoort en 2 minuten van Theater de Flint. Parkeergarage Koestraat is op 1 minuut loopafstand.",
+        answer: "De Tafelaar zit op Kamp 8, hartje centrum Amersfoort. Op 5 minuten lopen van Theater de Flint. Vanaf station Amersfoort Centraal is het circa 22 minuten lopen, of korter met bus, fiets of taxi. Parkeergarage Koestraat is op 1 minuut loopafstand.",
     },
     {
         question: "Wat voor restaurant is De Tafelaar?",
@@ -81,7 +81,7 @@ export default function RestaurantAmersfoortCentrumPage() {
                 </h1>
                 <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
                     De Tafelaar op Kamp 8: shared dining met lokale gerechten in het hart van Amersfoort.
-                    Op loopafstand van station, Flint en de Koppelpoort. Woensdag t/m zondag geopend.
+                    Op loopafstand van Flint en de Koppelpoort. Woensdag t/m zondag geopend.
                 </p>
             </header>
 
@@ -96,7 +96,7 @@ export default function RestaurantAmersfoortCentrumPage() {
                             </div>
                         </CardHeader>
                         <CardContent className="text-sm text-muted-foreground">
-                            Midden in het centrum van Amersfoort. 5 min van het station, 2 min van Flint.
+                            Midden in het centrum van Amersfoort. 5 min van Flint; ~22 min lopen van het station (korter met bus/fiets).
                         </CardContent>
                     </Card>
 
@@ -144,13 +144,14 @@ export default function RestaurantAmersfoortCentrumPage() {
                             binnenstad te bieden heeft.
                         </p>
                         <p>
-                            Kom je met de trein? Station Amersfoort is 5 minuten lopen. Met de auto?
-                            Parkeergarage Kamp ligt op 1 minuut. En na het eten wandel je zo naar de
-                            Koppelpoort of langs de grachten.
+                            Kom je met de trein? Station Amersfoort Centraal ligt iets buiten het
+                            centrum — vanaf het station is het circa 22 minuten lopen, of korter met
+                            bus, fiets of taxi. Met de auto is parkeergarage Kamp op 1 minuut. En na
+                            het eten wandel je zo naar de Koppelpoort of langs de grachten.
                         </p>
                         <p>
                             De Tafelaar is ook de ideale plek voor een hapje voor of na een voorstelling
-                            in Theater de Flint — op slechts 400 meter, 2 minuten lopen. We zijn
+                            in Theater de Flint — op ongeveer 400 meter, circa 5 minuten lopen. We zijn
                             geopend van woensdag t/m donderdag van 17:00 tot 23:00, vrijdag
                             van 15:00 tot 00:00, zaterdag van 11:00 tot 00:00 en zondag van 11:00 tot 15:00.
                         </p>

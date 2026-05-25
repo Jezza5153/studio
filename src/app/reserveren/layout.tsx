@@ -100,7 +100,7 @@ export default function ReserverenLayout({
                             <address className="not-italic text-sm space-y-1 text-muted-foreground">
                                 <p className="font-medium text-foreground">De Tafelaar</p>
                                 <p>Kamp 8, 3811 AR Amersfoort</p>
-                                <p>2 min van Flint · 5 min van station</p>
+                                <p>5 min lopen van Flint · ~22 min van station (korter met bus/fiets)</p>
                             </address>
                             <div className="mt-2 flex items-center gap-2 text-sm">
                                 <Phone className="h-4 w-4 text-primary" />

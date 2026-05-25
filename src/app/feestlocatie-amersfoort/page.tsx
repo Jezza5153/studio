@@ -153,10 +153,11 @@ export default function FeestlocatieAmersfoortPage() {
                                 persoonlijke begeleiding en stemmen alles af op jouw wensen.
                             </p>
                             <p>
-                                Kamp 8 ligt centraal in Amersfoort: op 5 minuten lopen van station
-                                Amersfoort en 2 minuten van Theater de Flint. Parkeergarage Kamp is op
-                                1 minuut loopafstand — ideaal voor gasten die met de auto komen. Met een
-                                4.8 op Google en 90+ reviews weet je dat je feest in goede handen is.
+                                Kamp 8 ligt centraal in Amersfoort: op 5 minuten lopen van Theater de
+                                Flint. Vanaf station Amersfoort Centraal is het circa 22 minuten lopen,
+                                of korter met bus, fiets of taxi. Parkeergarage Kamp is op 1 minuut
+                                loopafstand — ideaal voor gasten die met de auto komen. Met een 4.8 op
+                                Google en 90+ reviews weet je dat je feest in goede handen is.
                                 Regulier geopend woensdag t/m zondag (za vanaf 11:00, zo 11:00–15:00);
                                 op andere dagen in overleg.
                             </p>

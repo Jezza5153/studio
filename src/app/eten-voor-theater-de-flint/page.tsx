@@ -16,13 +16,13 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
     title: "Eten voor Theater Amersfoort | Restaurant vlakbij Flint | De Tafelaar",
     description:
-        "Eten voor of na het theater in Amersfoort? De Tafelaar ligt op 400 meter van Flint (2 min lopen). Shared dining met lokale gerechten. Reserveer nu.",
+        "Eten voor of na het theater in Amersfoort? De Tafelaar ligt op ongeveer 400 meter van Flint (circa 5 min lopen). Shared dining met lokale gerechten. Reserveer nu.",
     alternates: {
         canonical: "/eten-voor-theater-de-flint",
     },
     openGraph: {
         title: "Eten voor Theater Amersfoort | Restaurant vlakbij Flint",
-        description: "Shared dining op 2 minuten lopen van Flint. Perfect voor of na de voorstelling in Amersfoort.",
+        description: "Shared dining op 5 minuten lopen van Flint. Perfect voor of na de voorstelling in Amersfoort.",
     },
     keywords: [
         "eten voor theater amersfoort",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
 const faqs = [
     {
         question: "Hoe ver is De Tafelaar lopen naar Flint?",
-        answer: "De Tafelaar ligt op de Kamp 8, op ongeveer 400 meter van Theater de Flint. Dat is circa 2 minuten lopen. Je loopt via de Kamp rechtstreeks naar de ingang van Flint.",
+        answer: "De Tafelaar ligt op de Kamp 8, op ongeveer 400 meter van Theater de Flint. Dat is circa 5 minuten lopen. Je loopt via de Kamp rechtstreeks naar de ingang van Flint.",
     },
     {
         question: "Kunnen we op tijd eten voor de voorstelling?",
@@ -58,7 +58,7 @@ const faqs = [
     },
     {
         question: "Waar kan ik parkeren bij Flint en De Tafelaar?",
-        answer: "De dichtstbijzijnde parkeergarage is Parking Flint (Stadsring), op 2 minuten lopen van zowel Flint als De Tafelaar. Parkeergarage Kamp en het Smallepad zijn ook goede opties. Op straat parkeren kan op de Kamp en omliggende straten (betaald tot 21:00).",
+        answer: "De dichtstbijzijnde parkeergarage is Parking Flint (Stadsring), naast het theater en op circa 5 minuten lopen van De Tafelaar. Parkeergarage Kamp ligt direct naast ons restaurant (1 minuut lopen) en is een goede optie als je eerst eet en daarna naar de voorstelling loopt. Op straat parkeren kan op de Kamp en omliggende straten (betaald tot 21:00).",
     },
     {
         question: "Wat kost eten bij De Tafelaar?",
@@ -104,7 +104,7 @@ export default function EtenVoorDeFlintPage() {
                 {/* Hero */}
                 <header className="text-center mb-12">
                     <p className="inline-block text-xs tracking-widest uppercase text-primary/80 mb-2">
-                        Op 2 min lopen van Flint
+                        Op 5 min lopen van Flint
                     </p>
                     <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl tracking-tight">
                         Eten voor het theater in Amersfoort
@@ -127,8 +127,8 @@ export default function EtenVoorDeFlintPage() {
                             </CardHeader>
                             <CardContent className="text-sm text-muted-foreground">
                                 <p className="font-medium text-foreground">Kamp 8, Amersfoort</p>
-                                <p>400 meter van Flint</p>
-                                <p>~2 minuten lopen via de Kamp</p>
+                                <p>~400 meter van Flint</p>
+                                <p>~5 minuten lopen via de Kamp</p>
                             </CardContent>
                         </Card>
 
@@ -168,9 +168,9 @@ export default function EtenVoorDeFlintPage() {
                                 </div>
                             </CardHeader>
                             <CardContent className="text-sm text-muted-foreground">
-                                <p className="font-medium text-foreground">Parking Flint (Stadsring)</p>
-                                <p>2 min lopen naar Flint &amp; De Tafelaar</p>
-                                <p>Ook: garage Kamp, Smallepad</p>
+                                <p className="font-medium text-foreground">Parkeergarage Kamp (1 min)</p>
+                                <p>Of Parking Flint bij het theater (~5 min)</p>
+                                <p>Ook: Smallepad, straatparkeren Kamp</p>
                             </CardContent>
                         </Card>
 

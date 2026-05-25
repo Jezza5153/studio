@@ -155,8 +155,9 @@ export default function VegetarischAmersfoortPage() {
                                 helpt je graag bij het samenstellen van een mooie vegetarische selectie.
                             </p>
                             <p>
-                                De Tafelaar zit op Kamp 8, hartje centrum Amersfoort — op 2 minuten
-                                van Theater de Flint en 5 minuten van station Amersfoort. Met een 4.8
+                                De Tafelaar zit op Kamp 8, hartje centrum Amersfoort — op 5 minuten
+                                lopen van Theater de Flint. Vanaf station Amersfoort Centraal is het
+                                circa 22 minuten lopen, of korter met bus, fiets of taxi. Met een 4.8
                                 op Google en 90+ reviews zijn we een van de best beoordeelde restaurants
                                 in Amersfoort. Geopend woensdag t/m zondag (wo–do vanaf 17:00,
                                 vrijdag vanaf 15:00, zaterdag vanaf 11:00, zondag 11:00–15:00).
