@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
+import { safeText } from "@/lib/sanitize";
 
 // Google Places API (New) — review + photo ingestion
 // Uses API key auth (no OAuth needed)
@@ -52,134 +53,114 @@ async function handleIngest(request: Request) {
         const overallRating = data.rating || 0;
         const totalReviewCount = data.userRatingCount || 0;
         const placeUri = data.googleMapsUri || "";
-        const placePhotos = data.photos || [];
 
-        // Build photo objects paired with review quotes (up to 30)
-        const goodReviews = reviews
-            .filter((r: any) => {
-                const rMap: Record<string, number> = { ONE: 1, TWO: 2, THREE: 3, FOUR: 4, FIVE: 5 };
-                return (rMap[r.rating] || 5) >= 4 && (r.text?.text || r.originalText?.text || "").trim();
-            });
-        const photoItems: { url: string; name?: string; quote?: string }[] = [];
-        for (const [idx, photo] of placePhotos.slice(0, 30).entries()) {
-            if (photo.name) {
-                const pairedReview = goodReviews.length > 0
-                    ? goodReviews[idx % goodReviews.length]
-                    : null;
-                const reviewBody = pairedReview
-                    ? (pairedReview.text?.text || pairedReview.originalText?.text || "").slice(0, 100)
-                    : undefined;
-                const reviewAuthor = pairedReview
-                    ? pairedReview.authorAttribution?.displayName || "Gast"
-                    : undefined;
-                // Store a proxy URL instead of the raw Google URL so the API
-                // key never ships to the browser and HTTP-referrer
-                // restrictions on the key don't break rendering. The proxy
-                // route streams the photo bytes server-side.
-                photoItems.push({
-                    url: `/api/google-photos?name=${encodeURIComponent(photo.name)}`,
-                    name: reviewAuthor,
-                    quote: reviewBody,
-                });
-            }
-        }
-
-        // Update Settings with overall rating, count, and place photos
+        // Update Settings with overall rating + count only.
+        //
+        // NOTE: this cron deliberately does NOT write googlePhotos. The
+        // "Gastenhighlights" carousel is owned solely by the Instagram ingest
+        // cron (ingest-instagram), which is the live, working photo source.
+        // Both crons used to write googlePhotos and clobber each other on every
+        // run — whichever ran last won — which made the carousel flip-flop.
+        // Keeping a single owner removes that race.
         await prisma.settings.upsert({
             where: { id: "singleton" },
             create: {
                 id: "singleton",
                 googleRating: overallRating,
                 googleReviewCount: totalReviewCount,
-                googlePhotos: JSON.stringify(photoItems),
             },
             update: {
                 googleRating: overallRating,
                 googleReviewCount: totalReviewCount,
-                googlePhotos: JSON.stringify(photoItems),
             },
         });
 
         let upserted = 0;
+        let failed = 0;
 
         for (const review of reviews) {
-            const reviewId =
-                review.name?.split("/").pop() ||
-                review.name ||
-                `${Date.now()}-${upserted}`;
-            const slug = `review-${reviewId}`;
+            try {
+                const reviewId =
+                    review.name?.split("/").pop() ||
+                    review.name ||
+                    `${Date.now()}-${upserted}`;
+                const slug = `review-${reviewId}`;
 
-            const ratingMap: Record<string, number> = {
-                ONE: 1,
-                TWO: 2,
-                THREE: 3,
-                FOUR: 4,
-                FIVE: 5,
-            };
-            const rating = ratingMap[review.rating] || 5;
+                const ratingMap: Record<string, number> = {
+                    ONE: 1,
+                    TWO: 2,
+                    THREE: 3,
+                    FOUR: 4,
+                    FIVE: 5,
+                };
+                const rating = ratingMap[review.rating] || 5;
 
-            // Only keep 4★ and 5★ reviews
-            if (rating < 4) continue;
+                // Only keep 4★ and 5★ reviews
+                if (rating < 4) continue;
 
-            // Prefer translated text (Dutch via languageCode=nl), fall back to original
-            // text.text = translated version, originalText.text = original language
-            const translatedText = review.text?.text || "";
-            const originalText = review.originalText?.text || "";
-            const body = translatedText || originalText;
+                // Prefer translated text (Dutch via languageCode=nl), fall back to original
+                // text.text = translated version, originalText.text = original language
+                const translatedText = review.text?.text || "";
+                const originalText = review.originalText?.text || "";
+                const rawBody = translatedText || originalText;
 
-            // Skip reviews without text
-            if (!body.trim()) continue;
+                // Skip reviews without text
+                if (!rawBody.trim()) continue;
 
-            const authorName =
-                review.authorAttribution?.displayName || "Gast";
-            const ownerReplyText =
-                review.ownerResponse?.text || "";
+                const authorName = safeText(review.authorAttribution?.displayName, 120) || "Gast";
 
-            // Store extra data in the media JSON field
-            const mediaData = JSON.stringify({
-                ownerReply: ownerReplyText || undefined,
-                authorPhotoUri:
-                    review.authorAttribution?.photoUri || undefined,
-            });
+                // Store extra data in the media JSON field
+                const mediaData = JSON.stringify({
+                    ownerReply: safeText(review.ownerResponse?.text, 500) || undefined,
+                    authorPhotoUri:
+                        review.authorAttribution?.photoUri || undefined,
+                });
 
-            const title =
-                body.slice(0, 60) + (body.length > 60 ? "…" : "") ||
-                `Review van ${authorName}`;
+                // safeText: code-point-safe slice + NUL/lone-surrogate strip so an
+                // emoji at the cut boundary can't corrupt the Postgres write.
+                const body = safeText(rawBody, 500);
+                const titleBase = safeText(rawBody, 60);
+                const title = (titleBase + (Array.from(rawBody).length > 60 ? "…" : "")) || `Review van ${authorName}`;
 
-            // sourceUrl = Google Maps URI (clicking opens Google)
-            await prisma.feedItem.upsert({
-                where: { slug },
-                create: {
-                    type: "GOOGLE_REVIEW",
-                    category: "algemeen",
-                    title,
-                    slug,
-                    body: body.slice(0, 500),
-                    rating,
-                    authorName,
-                    sourceUrl: placeUri || null,
-                    media: mediaData,
-                    publishedAt: new Date(
-                        review.publishTime || Date.now()
-                    ),
-                },
-                update: {
-                    body: body.slice(0, 500),
-                    rating,
-                    authorName,
-                    sourceUrl: placeUri || null,
-                    media: mediaData,
-                },
-            });
-            upserted++;
+                // sourceUrl = Google Maps URI (clicking opens Google)
+                await prisma.feedItem.upsert({
+                    where: { slug },
+                    create: {
+                        type: "GOOGLE_REVIEW",
+                        category: "algemeen",
+                        title,
+                        slug,
+                        body,
+                        rating,
+                        authorName,
+                        sourceUrl: placeUri || null,
+                        media: mediaData,
+                        publishedAt: new Date(
+                            review.publishTime || Date.now()
+                        ),
+                    },
+                    update: {
+                        body,
+                        rating,
+                        authorName,
+                        sourceUrl: placeUri || null,
+                        media: mediaData,
+                    },
+                });
+                upserted++;
+            } catch (reviewErr) {
+                // One malformed review must not abort the whole ingest run.
+                failed++;
+                console.error(`Google review ${review?.name} upsert failed:`, reviewErr);
+            }
         }
 
         return NextResponse.json({
             success: true,
             upserted,
+            failed,
             overallRating,
             totalReviewCount,
-            photosFound: photoItems.length,
         });
     } catch (err) {
         console.error("Google reviews ingestion error:", err);

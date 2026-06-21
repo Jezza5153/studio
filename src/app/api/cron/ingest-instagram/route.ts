@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
+import { safeText } from "@/lib/sanitize";
 
 // Instagram ingestion via Behold.so feed
 // Triggered by Vercel/Railway cron, protected by CRON_SECRET
@@ -23,60 +24,12 @@ async function handleIngest(request: Request) {
         const data = await res.json();
         const posts = data.posts || [];
 
-        let upserted = 0;
-
-        for (const post of posts) {
-            const isVideo = post.mediaType === "VIDEO";
-
-            // Use Behold's optimized CDN images (medium = 700px, good balance)
-            const imageUrl = post.sizes?.medium?.mediaUrl
-                || post.thumbnailUrl
-                || post.mediaUrl;
-
-            const thumbUrl = post.sizes?.small?.mediaUrl
-                || post.thumbnailUrl
-                || imageUrl;
-
-            const slug = `ig-${post.id}`;
-            const caption = post.caption || "";
-            const title = caption.split("\n")[0]?.slice(0, 100) || "Instagram post";
-
-            const mediaItem: Record<string, unknown> = {
-                url: imageUrl,
-                thumbUrl: thumbUrl,
-                width: post.sizes?.medium?.width || 700,
-                height: post.sizes?.medium?.height || 700,
-                kind: isVideo ? "video" : "image",
-            };
-            // For reels/videos, also store the actual video URL
-            if (isVideo && post.mediaUrl) {
-                mediaItem.videoUrl = post.mediaUrl;
-            }
-            const media = JSON.stringify([mediaItem]);
-
-            await prisma.feedItem.upsert({
-                where: { slug },
-                create: {
-                    type: "INSTAGRAM",
-                    category: "algemeen",
-                    title,
-                    slug,
-                    body: caption.slice(0, 500),
-                    media,
-                    sourceUrl: post.permalink,
-                    publishedAt: new Date(post.timestamp),
-                },
-                update: {
-                    title,
-                    body: caption.slice(0, 500),
-                    media,
-                    sourceUrl: post.permalink,
-                },
-            });
-            upserted++;
-        }
-
-        // Also update guest highlight photos in Settings (IMAGE posts only, large)
+        // Refresh the guest-highlights carousel photos FIRST, derived directly
+        // from the live feed (not from DB writes). This must not be blocked by a
+        // single malformed feed item further down — historically one bad caption
+        // threw mid-loop and the carousel photos were never refreshed, so they
+        // went stale and (after Behold migrated their CDN URL scheme) started
+        // 404/403-ing. See safeText for the surrogate/NUL issue.
         const photoUrls = posts
             .filter((p: any) => p.mediaType === "IMAGE")
             .slice(0, 10)
@@ -91,7 +44,70 @@ async function handleIngest(request: Request) {
             });
         }
 
-        return NextResponse.json({ success: true, upserted });
+        let upserted = 0;
+        let failed = 0;
+
+        for (const post of posts) {
+            try {
+                const isVideo = post.mediaType === "VIDEO";
+
+                // Use Behold's optimized CDN images (medium = 700px, good balance)
+                const imageUrl = post.sizes?.medium?.mediaUrl
+                    || post.thumbnailUrl
+                    || post.mediaUrl;
+
+                const thumbUrl = post.sizes?.small?.mediaUrl
+                    || post.thumbnailUrl
+                    || imageUrl;
+
+                const slug = `ig-${post.id}`;
+                const caption = post.caption || "";
+                // safeText: code-point-safe slice + NUL/lone-surrogate strip so an
+                // emoji at the cut boundary can't corrupt the Postgres write.
+                const title = safeText(caption.split("\n")[0], 100) || "Instagram post";
+                const body = safeText(caption, 500);
+
+                const mediaItem: Record<string, unknown> = {
+                    url: imageUrl,
+                    thumbUrl: thumbUrl,
+                    width: post.sizes?.medium?.width || 700,
+                    height: post.sizes?.medium?.height || 700,
+                    kind: isVideo ? "video" : "image",
+                };
+                // For reels/videos, also store the actual video URL
+                if (isVideo && post.mediaUrl) {
+                    mediaItem.videoUrl = post.mediaUrl;
+                }
+                const media = JSON.stringify([mediaItem]);
+
+                await prisma.feedItem.upsert({
+                    where: { slug },
+                    create: {
+                        type: "INSTAGRAM",
+                        category: "algemeen",
+                        title,
+                        slug,
+                        body,
+                        media,
+                        sourceUrl: post.permalink,
+                        publishedAt: new Date(post.timestamp),
+                    },
+                    update: {
+                        title,
+                        body,
+                        media,
+                        sourceUrl: post.permalink,
+                    },
+                });
+                upserted++;
+            } catch (postErr) {
+                // One malformed post must not abort the whole ingest run.
+                failed++;
+                console.error(`Instagram post ${post?.id} upsert failed:`, postErr);
+            }
+        }
+
+        return NextResponse.json({ success: true, upserted, failed, photosRefreshed: photoUrls.length });
     } catch (err) {
         console.error("Instagram ingestion error:", err);
         return NextResponse.json({ error: "Ingestion failed" }, { status: 500 });

@@ -20,7 +20,7 @@ export function GuestHighlights({
     googleRating = 0,
     reviewCount = 0,
 }: GuestHighlightsProps) {
-    const items: PhotoItem[] = useMemo(() => {
+    const allItems: PhotoItem[] = useMemo(() => {
         try {
             const parsed = JSON.parse(photosJson);
             // Support both array of strings and array of objects
@@ -31,6 +31,15 @@ export function GuestHighlights({
             return [];
         }
     }, [photosJson]);
+
+    // Images whose URL failed to load (e.g. an expired CDN link). We drop them
+    // from rotation so a single dead photo never shows a broken-image box — and
+    // if every photo is dead the carousel renders nothing instead of a broken UI.
+    const [failedUrls, setFailedUrls] = useState<Set<string>>(new Set());
+    const items = useMemo(
+        () => allItems.filter((it) => !failedUrls.has(it.url)),
+        [allItems, failedUrls]
+    );
 
     const [current, setCurrent] = useState(0);
     const [isPaused, setIsPaused] = useState(false);
@@ -43,6 +52,11 @@ export function GuestHighlights({
         setCurrent((c) => (c - 1 + items.length) % items.length);
     }, [items.length]);
 
+    // Keep the index valid as photos drop out of rotation.
+    useEffect(() => {
+        if (current >= items.length && items.length > 0) setCurrent(0);
+    }, [items.length, current]);
+
     // Auto-advance every 5s
     useEffect(() => {
         if (items.length <= 1 || isPaused) return;
@@ -52,7 +66,7 @@ export function GuestHighlights({
 
     if (items.length === 0) return null;
 
-    const photo = items[current];
+    const photo = items[Math.min(current, items.length - 1)];
 
     return (
         <section className="relative mx-auto max-w-7xl px-4 py-10">
@@ -81,12 +95,16 @@ export function GuestHighlights({
                             exit={{ opacity: 0, scale: 0.95 }}
                             transition={{ duration: 0.6 }}
                             onError={() => {
-                                // Surface the failed URL so future regressions
-                                // are visible in DevTools instead of failing
-                                // silently. See /api/google-photos for the
-                                // server-side proxy that should serve these.
+                                // Drop the dead photo from rotation (and log it)
+                                // so a stale/expired CDN URL degrades gracefully
+                                // instead of showing a broken-image box.
                                 // eslint-disable-next-line no-console
-                                console.warn("[GuestHighlights] photo load failed:", photo.url);
+                                console.warn("[GuestHighlights] photo load failed, hiding:", photo.url);
+                                setFailedUrls((prev) => {
+                                    const nextSet = new Set(prev);
+                                    nextSet.add(photo.url);
+                                    return nextSet;
+                                });
                             }}
                         />
                     </AnimatePresence>
@@ -165,7 +183,18 @@ export function GuestHighlights({
                                 onClick={() => setCurrent(i)}
                                 className={`relative h-14 w-20 flex-shrink-0 overflow-hidden rounded-md transition-all ${i === current ? "ring-2 ring-primary ring-offset-1" : "opacity-50 hover:opacity-80"}`}
                             >
-                                <img src={item.url} alt={item.name || `Thumbnail ${i + 1}`} className="h-full w-full object-cover" />
+                                <img
+                                    src={item.url}
+                                    alt={item.name || `Thumbnail ${i + 1}`}
+                                    className="h-full w-full object-cover"
+                                    onError={() => {
+                                        setFailedUrls((prev) => {
+                                            const nextSet = new Set(prev);
+                                            nextSet.add(item.url);
+                                            return nextSet;
+                                        });
+                                    }}
+                                />
                             </button>
                         ))}
                     </div>
