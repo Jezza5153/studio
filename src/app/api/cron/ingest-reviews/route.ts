@@ -72,8 +72,12 @@ async function handleIngest(request: Request) {
                 const reviewAuthor = pairedReview
                     ? pairedReview.authorAttribution?.displayName || "Gast"
                     : undefined;
+                // Store a proxy URL instead of the raw Google URL so the API
+                // key never ships to the browser and HTTP-referrer
+                // restrictions on the key don't break rendering. The proxy
+                // route streams the photo bytes server-side.
                 photoItems.push({
-                    url: `https://places.googleapis.com/v1/${photo.name}/media?maxWidthPx=800&key=${apiKey}`,
+                    url: `/api/google-photos?name=${encodeURIComponent(photo.name)}`,
                     name: reviewAuthor,
                     quote: reviewBody,
                 });

@@ -52,6 +52,13 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'lh3.googleusercontent.com',
       },
+      // Google Places (New) photo media — only reachable from the server-side
+      // proxy at /api/google-photos, but added defensively so any future
+      // <Image> usage doesn't silently break.
+      {
+        protocol: 'https',
+        hostname: 'places.googleapis.com',
+      },
     ],
   },
   async redirects() {

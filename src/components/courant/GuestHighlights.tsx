@@ -80,6 +80,14 @@ export function GuestHighlights({
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.95 }}
                             transition={{ duration: 0.6 }}
+                            onError={() => {
+                                // Surface the failed URL so future regressions
+                                // are visible in DevTools instead of failing
+                                // silently. See /api/google-photos for the
+                                // server-side proxy that should serve these.
+                                // eslint-disable-next-line no-console
+                                console.warn("[GuestHighlights] photo load failed:", photo.url);
+                            }}
                         />
                     </AnimatePresence>
 
