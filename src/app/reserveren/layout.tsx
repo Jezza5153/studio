@@ -34,7 +34,7 @@ const reserverenFaqs = [
     },
     {
         question: "Hoe laat kan ik reserveren?",
-        answer: "Woensdag en donderdag vanaf 17:00, vrijdag vanaf 15:00, zaterdag vanaf 11:00, zondag van 11:00 tot 15:00. Maandag en dinsdag zijn we gesloten.",
+        answer: "Woensdag en donderdag vanaf 17:00, vrijdag en zaterdag vanaf 15:00, zondag van 17:00 tot 23:00. Maandag en dinsdag zijn we gesloten.",
     },
     {
         question: "Kan ik reserveren voor een grote groep?",
@@ -87,8 +87,8 @@ export default function ReserverenLayout({
                             <dl className="space-y-1 text-sm">
                                 <div className="flex justify-between"><dt>Wo – do</dt><dd className="text-muted-foreground">17:00 – 23:00</dd></div>
                                 <div className="flex justify-between"><dt>Vrijdag</dt><dd className="text-muted-foreground">15:00 – 00:00</dd></div>
-                                <div className="flex justify-between"><dt>Zaterdag</dt><dd className="text-muted-foreground">11:00 – 00:00</dd></div>
-                                <div className="flex justify-between"><dt>Zondag</dt><dd className="text-muted-foreground">11:00 – 15:00</dd></div>
+                                <div className="flex justify-between"><dt>Zaterdag</dt><dd className="text-muted-foreground">15:00 – 00:00</dd></div>
+                                <div className="flex justify-between"><dt>Zondag</dt><dd className="text-muted-foreground">17:00 – 23:00</dd></div>
                                 <div className="flex justify-between"><dt>Ma – di</dt><dd className="text-muted-foreground">Gesloten</dd></div>
                             </dl>
                         </Card>

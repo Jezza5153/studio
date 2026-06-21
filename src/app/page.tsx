@@ -26,12 +26,12 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "De Tafelaar | Restaurant Amersfoort — Lekker Eten & Shared Dining",
   description:
-    "Restaurant in Amersfoort: De Tafelaar op de Kamp. Shared dining voor lunch, borrel en diner met lokale seizoensgerechten. 4.8 op Google. Op 5 min van Flint. Wo–zo open.",
+    "Restaurant in Amersfoort: De Tafelaar op de Kamp. Shared dining voor borrel en diner met lokale seizoensgerechten. Ook ophalen. 4.8 op Google. Op 5 min van Flint. Wo–zo open.",
   alternates: { canonical: "/" },
   openGraph: {
     title: "De Tafelaar | Restaurant Amersfoort — Lekker Eten & Shared Dining",
     description:
-      "Restaurant in Amersfoort: shared dining voor lunch, borrel en diner met lokale seizoensgerechten op de Kamp. 4.8 op Google. Op 5 min van Flint.",
+      "Restaurant in Amersfoort: shared dining voor borrel en diner met lokale seizoensgerechten op de Kamp. Ook ophalen. 4.8 op Google. Op 5 min van Flint.",
     images: [{ url: "/pics/homepage.png" }],
   },
   keywords: [
@@ -47,8 +47,8 @@ export const metadata: Metadata = {
     "waar eten in amersfoort",
     "borrel amersfoort",
     "beste restaurant amersfoort",
-    "lunch amersfoort",
-    "brunch amersfoort",
+    "afhalen amersfoort",
+    "spare ribs afhalen amersfoort",
   ],
 };
 
@@ -96,11 +96,11 @@ const homeFaqs = [
   },
   {
     question: "Wat is shared dining bij De Tafelaar?",
-    answer: "Shared dining betekent dat je kleine gerechten bestelt om samen te delen aan tafel. Kies uit kazen, charcuterie, koude en warme gerechten en desserts — gemaakt met verse, lokale ingrediënten uit de regio Amersfoort. We adviseren 3 tot 5 gerechten per persoon.",
+    answer: "Shared dining betekent dat je kleine gerechten bestelt om samen te delen aan tafel. Kies uit kazen, charcuterie, koude en warme gerechten en desserts — gemaakt met verse, lokale ingrediënten uit de regio Amersfoort. We adviseren 2 à 3 gerechten per persoon.",
   },
   {
     question: "Waar zit De Tafelaar in Amersfoort?",
-    answer: "De Tafelaar zit op de Kamp 8 in het centrum van Amersfoort, op 5 minuten lopen van Theater de Flint. Vanaf station Amersfoort Centraal is het ongeveer 22 minuten lopen, of korter met bus of fiets. Parkeergarage Koestraat is op 1 minuut loopafstand.",
+    answer: "De Tafelaar zit op de Kamp 8 in het centrum van Amersfoort, op 5 minuten lopen van Theater de Flint. Vanaf station Amersfoort Centraal is het ongeveer 22 minuten lopen, of korter met bus of fiets. Parkeergarage Beestenmarkt is op 2 minuten loopafstand.",
   },
   {
     question: "Hoe kan ik reserveren bij De Tafelaar?",
@@ -108,7 +108,7 @@ const homeFaqs = [
   },
   {
     question: "Wat zijn de openingstijden van De Tafelaar?",
-    answer: "Woensdag en donderdag 17:00-23:00, vrijdag 15:00-00:00, zaterdag 11:00-00:00, zondag 11:00-15:00. Maandag en dinsdag gesloten.",
+    answer: "Woensdag en donderdag 17:00-23:00, vrijdag en zaterdag 15:00-00:00, zondag 17:00-23:00. Maandag en dinsdag gesloten.",
   },
   {
     question: "Kan ik De Tafelaar huren voor een feest?",
@@ -121,10 +121,6 @@ const homeFaqs = [
   {
     question: "Is De Tafelaar het beste restaurant in Amersfoort?",
     answer: "Met een 4.8 op Google en 90+ reviews is De Tafelaar een van de best beoordeelde restaurants in Amersfoort. Gasten waarderen het unieke shared dining concept, de lokale ingrediënten en de persoonlijke sfeer. Bekijk onze reviews op Google of op onze impressie-pagina.",
-  },
-  {
-    question: "Kan ik bij De Tafelaar lunchen in Amersfoort?",
-    answer: "Ja, op zaterdag zijn we open vanaf 11:00 en op zondag van 11:00 tot 15:00 — ideaal voor een lunch of late brunch in Amersfoort centrum. Shared dining werkt uitstekend voor lunch: 2-3 kleine gerechten per persoon (EUR 15-25 p.p.) of uitgebreider voor een brunch (EUR 25-35 p.p.).",
   },
 ];
 
@@ -322,10 +318,10 @@ export default function Home() {
               Vanaf station Amersfoort Centraal ben je in circa 22 minuten lopend bij ons — of korter met bus of fiets.
             </p>
             <p>
-              Gerechten variëren van €3,50 tot €15. Reken op €25–35 per persoon voor een compleet diner,
-              of kom lunchen op zaterdag (vanaf 11:00) of zondag (11:00–15:00). Het Chef&apos;s Choice
-              arrangement (€45 p.p.) laat de keuken verrassen. Woensdag t/m zondag open voor lunch,
-              borrel en diner.
+              Gerechten variëren van €3,50 tot €15. Reken op €25–35 per persoon voor een compleet diner.
+              Het Chef&apos;s Choice arrangement (€45 p.p.) laat de keuken verrassen. Woensdag t/m zondag
+              open voor borrel en diner. Liever thuis genieten? Bekijk onze{" "}
+              <Link href="/ophalen" className="underline hover:text-foreground">ophalenkaart</Link>.
             </p>
             <p>
               Op kantoor of op locatie? <Link href="/catering" className="underline hover:text-foreground">Tafelaar × Jezza Cooks Catering</Link>{" "}
@@ -336,7 +332,7 @@ export default function Home() {
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 max-w-3xl mx-auto">
             {[
               { href: "/beste-restaurant-amersfoort", label: "Beste restaurant" },
-              { href: "/lunch-amersfoort", label: "Lunch" },
+              { href: "/ophalen", label: "Ophalen" },
               { href: "/borrel-amersfoort", label: "Borrelen" },
               { href: "/romantisch-diner-amersfoort", label: "Romantisch diner" },
               { href: "/bourgondisch-eten-amersfoort", label: "Bourgondisch eten" },
@@ -409,8 +405,8 @@ export default function Home() {
                 <div className="flex justify-between"><dt>Maandag – dinsdag</dt><dd className="text-muted-foreground">Gesloten</dd></div>
                 <div className="flex justify-between"><dt>Woensdag – donderdag</dt><dd className="text-muted-foreground">17:00 – 23:00</dd></div>
                 <div className="flex justify-between"><dt>Vrijdag</dt><dd className="text-muted-foreground">15:00 – 00:00</dd></div>
-                <div className="flex justify-between"><dt>Zaterdag</dt><dd className="text-muted-foreground">11:00 – 00:00</dd></div>
-                <div className="flex justify-between"><dt>Zondag</dt><dd className="text-muted-foreground">11:00 – 15:00</dd></div>
+                <div className="flex justify-between"><dt>Zaterdag</dt><dd className="text-muted-foreground">15:00 – 00:00</dd></div>
+                <div className="flex justify-between"><dt>Zondag</dt><dd className="text-muted-foreground">17:00 – 23:00</dd></div>
               </dl>
             </Card>
             <Card className="rounded-2xl border p-6">

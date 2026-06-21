@@ -179,7 +179,7 @@ export default function RomantischDinerAmersfoortPage() {
                                 De Tafelaar zit op Kamp 8, hartje centrum Amersfoort — op 5 minuten
                                 lopen van Theater de Flint. Vanaf station Amersfoort Centraal is het
                                 circa 22 minuten lopen, of korter met bus, fiets of taxi. Parkeergarage
-                                Kamp is op 1 minuut loopafstand. Met een 4.8 op Google en 90+ reviews
+                                Beestenmarkt is op 2 minuten loopafstand. Met een 4.8 op Google en 90+ reviews
                                 is De Tafelaar een van de best beoordeelde restaurants in Amersfoort
                                 voor een romantische avond uit.
                             </p>

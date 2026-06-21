@@ -58,7 +58,7 @@ const faqs = [
     },
     {
         question: "Waar kan ik parkeren bij Flint en De Tafelaar?",
-        answer: "De dichtstbijzijnde parkeergarage is Parking Flint (Stadsring), naast het theater en op circa 5 minuten lopen van De Tafelaar. Parkeergarage Kamp ligt direct naast ons restaurant (1 minuut lopen) en is een goede optie als je eerst eet en daarna naar de voorstelling loopt. Op straat parkeren kan op de Kamp en omliggende straten (betaald tot 21:00).",
+        answer: "Parkeergarage Beestenmarkt ligt op 2 minuten lopen van De Tafelaar — een goede optie als je eerst eet en daarna naar de voorstelling loopt. Parking Flint (Stadsring) zit naast het theater en op circa 5 minuten lopen van De Tafelaar. Op straat parkeren kan op de Kamp en omliggende straten (betaald tot 21:00).",
     },
     {
         question: "Wat kost eten bij De Tafelaar?",
@@ -168,9 +168,9 @@ export default function EtenVoorDeFlintPage() {
                                 </div>
                             </CardHeader>
                             <CardContent className="text-sm text-muted-foreground">
-                                <p className="font-medium text-foreground">Parkeergarage Kamp (1 min)</p>
+                                <p className="font-medium text-foreground">Parkeergarage Beestenmarkt (2 min)</p>
                                 <p>Of Parking Flint bij het theater (~5 min)</p>
-                                <p>Ook: Smallepad, straatparkeren Kamp</p>
+                                <p>Ook: Koestraat, Smallepad, straatparkeren Kamp</p>
                             </CardContent>
                         </Card>
 

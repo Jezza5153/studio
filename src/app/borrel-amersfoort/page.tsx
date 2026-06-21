@@ -10,13 +10,13 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
     title: "Borrelen in Amersfoort | Borrelplanken & Lokaal Bier De Tafelaar",
     description:
-        "Borrelen in Amersfoort? De Tafelaar: borrelplanken, lokale bieren van Rock City & De Drie Ringen, en kleine gerechten. Zaterdag open vanaf 11:00, vrijdag vanaf 15:00.",
+        "Borrelen in Amersfoort? De Tafelaar: borrelplanken, lokale bieren van Rock City & De Drie Ringen, en kleine gerechten. Vrijdag en zaterdag open vanaf 15:00.",
     alternates: {
         canonical: "/borrel-amersfoort",
     },
     openGraph: {
         title: "Borrelen in Amersfoort | De Tafelaar",
-        description: "Borrelplanken en lokaal bier op de Kamp. Zaterdag open vanaf 11:00, vrijdag vanaf 15:00.",
+        description: "Borrelplanken en lokaal bier op de Kamp. Vrijdag en zaterdag open vanaf 15:00.",
     },
     keywords: [
         "borrel amersfoort",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 const faqs = [
     {
         question: "Kan ik bij De Tafelaar alleen borrelen?",
-        answer: "Ja, je hoeft niet te dineren. Op zaterdag zijn we open vanaf 11:00 en op vrijdag vanaf 15:00, dus je kunt prima langskomen voor alleen een borrel met hapjes.",
+        answer: "Ja, je hoeft niet te dineren. Op vrijdag en zaterdag zijn we open vanaf 15:00, dus je kunt prima langskomen voor alleen een borrel met hapjes.",
     },
     {
         question: "Wat voor bier hebben jullie?",
@@ -74,7 +74,7 @@ export default function BorrelAmersfoortPage() {
                 </h1>
                 <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
                     Borrelplanken, lokale bieren van vier Amersfoortse brouwerijen en kleine
-                    gerechten om te delen. Zaterdag open vanaf 11:00, vrijdag vanaf 15:00.
+                    gerechten om te delen. Vrijdag en zaterdag open vanaf 15:00.
                 </p>
             </header>
 
@@ -113,7 +113,7 @@ export default function BorrelAmersfoortPage() {
                             </div>
                         </CardHeader>
                         <CardContent className="text-sm text-muted-foreground">
-                            Zaterdag open vanaf 11:00, vrijdag vanaf 15:00. Ideaal voor een borrel.
+                            Vrijdag en zaterdag open vanaf 15:00. Ideaal voor een borrel.
                         </CardContent>
                     </Card>
                 </div>
@@ -132,9 +132,9 @@ export default function BorrelAmersfoortPage() {
                     </h2>
                     <div className="space-y-4 text-muted-foreground">
                         <p>
-                            De Tafelaar is meer dan een restaurant. Op zaterdag openen we al om
-                            11:00 en op vrijdag vanaf 15:00, zodat je rustig kunt binnenlopen
-                            voor een borrel. Geen reservering nodig — gewoon langskomen.
+                            De Tafelaar is meer dan een restaurant. Op vrijdag en zaterdag openen
+                            we al om 15:00, zodat je rustig kunt binnenlopen voor een borrel. Geen
+                            reservering nodig — gewoon langskomen.
                         </p>
                         <p>
                             We zijn trots op ons aanbod van lokale bieren. Rock City Brewing, De Drie
@@ -153,11 +153,10 @@ export default function BorrelAmersfoortPage() {
                             De Tafelaar zit op Kamp 8 in het centrum van Amersfoort, op 5 minuten
                             lopen van Theater de Flint. Vanaf station Amersfoort Centraal ben je in
                             circa 22 minuten lopend bij ons — of korter met bus of fiets. Parkeergarage
-                            Kamp is op 1 minuut loopafstand. Met een 4.8 op Google en 90+ reviews
-                            zijn we een van de best beoordeelde restaurants in Amersfoort. Naast
-                            zaterdag (open vanaf 11:00) en vrijdag (open vanaf 15:00) zijn we
-                            ook geopend op woensdag en donderdag vanaf 17:00, en zondag van
-                            11:00 tot 15:00.
+                            Beestenmarkt is op 2 minuten loopafstand. Met een 4.8 op Google en 90+
+                            reviews zijn we een van de best beoordeelde restaurants in Amersfoort.
+                            Naast vrijdag en zaterdag (open vanaf 15:00) zijn we ook geopend op
+                            woensdag, donderdag en zondag vanaf 17:00.
                         </p>
                     </div>
                 </Card>

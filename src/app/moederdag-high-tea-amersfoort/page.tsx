@@ -198,7 +198,7 @@ export default function MoederdagHighTeaPage() {
                             <CardContent className="text-sm text-muted-foreground">
                                 <p className="font-medium text-foreground">Kamp 8, Amersfoort</p>
                                 <p>Hartje centrum</p>
-                                <p>Parkeergarage Kamp 1 min lopen</p>
+                                <p>Parkeergarage Beestenmarkt 2 min lopen</p>
                             </CardContent>
                         </Card>
                     </div>

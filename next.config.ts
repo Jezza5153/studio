@@ -54,6 +54,16 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        // Lunch service is discontinued — keep indexed links useful.
+        source: "/lunch-amersfoort",
+        destination: "/menu",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

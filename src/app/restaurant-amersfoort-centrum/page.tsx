@@ -38,7 +38,7 @@ const faqs = [
     },
     {
         question: "Waar zit De Tafelaar precies?",
-        answer: "De Tafelaar zit op Kamp 8, hartje centrum Amersfoort. Op 5 minuten lopen van Theater de Flint. Vanaf station Amersfoort Centraal is het circa 22 minuten lopen, of korter met bus, fiets of taxi. Parkeergarage Koestraat is op 1 minuut loopafstand.",
+        answer: "De Tafelaar zit op Kamp 8, hartje centrum Amersfoort. Op 5 minuten lopen van Theater de Flint. Vanaf station Amersfoort Centraal is het circa 22 minuten lopen, of korter met bus, fiets of taxi. Parkeergarage Beestenmarkt is op 2 minuten loopafstand.",
     },
     {
         question: "Wat voor restaurant is De Tafelaar?",
@@ -146,14 +146,15 @@ export default function RestaurantAmersfoortCentrumPage() {
                         <p>
                             Kom je met de trein? Station Amersfoort Centraal ligt iets buiten het
                             centrum — vanaf het station is het circa 22 minuten lopen, of korter met
-                            bus, fiets of taxi. Met de auto is parkeergarage Kamp op 1 minuut. En na
-                            het eten wandel je zo naar de Koppelpoort of langs de grachten.
+                            bus, fiets of taxi. Met de auto is parkeergarage Beestenmarkt op
+                            2 minuten loopafstand. En na het eten wandel je zo naar de Koppelpoort
+                            of langs de grachten.
                         </p>
                         <p>
                             De Tafelaar is ook de ideale plek voor een hapje voor of na een voorstelling
                             in Theater de Flint — op ongeveer 400 meter, circa 5 minuten lopen. We zijn
-                            geopend van woensdag t/m donderdag van 17:00 tot 23:00, vrijdag
-                            van 15:00 tot 00:00, zaterdag van 11:00 tot 00:00 en zondag van 11:00 tot 15:00.
+                            geopend van woensdag t/m donderdag van 17:00 tot 23:00, vrijdag en
+                            zaterdag van 15:00 tot 00:00 en zondag van 17:00 tot 23:00.
                         </p>
                     </div>
                 </Card>

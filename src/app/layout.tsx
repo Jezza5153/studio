@@ -89,7 +89,7 @@ function restaurantJsonLd(rating?: number, reviewCount?: number) {
     hasMenu: `${siteUrl}/menu`,
     foundingDate: "2025-11",
     keywords:
-      "restaurant amersfoort, shared dining, lokaal, seizoensgebonden, vlakbij flint, lunch amersfoort, borrel amersfoort",
+      "restaurant amersfoort, shared dining, lokaal, seizoensgebonden, vlakbij flint, borrel amersfoort, afhalen amersfoort",
     smokingAllowed: false,
     publicAccess: true,
 
@@ -131,8 +131,8 @@ function restaurantJsonLd(rating?: number, reviewCount?: number) {
       { "@type": "OpeningHoursSpecification", dayOfWeek: "Wednesday", opens: "17:00", closes: "23:00" },
       { "@type": "OpeningHoursSpecification", dayOfWeek: "Thursday", opens: "17:00", closes: "23:00" },
       { "@type": "OpeningHoursSpecification", dayOfWeek: "Friday", opens: "15:00", closes: "00:00" },
-      { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "11:00", closes: "00:00" },
-      { "@type": "OpeningHoursSpecification", dayOfWeek: "Sunday", opens: "11:00", closes: "15:00" },
+      { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "15:00", closes: "00:00" },
+      { "@type": "OpeningHoursSpecification", dayOfWeek: "Sunday", opens: "17:00", closes: "23:00" },
     ],
 
     makesOffer: [

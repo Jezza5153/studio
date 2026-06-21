@@ -12,14 +12,14 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Openingstijden De Tafelaar Amersfoort | Wanneer Open",
   description:
-    "Openingstijden van De Tafelaar op de Kamp 8 in Amersfoort centrum. Wo\u2013do 17:00\u201323:00, vr 15:00\u201300:00, za 11:00\u201300:00, zo 11:00\u201315:00. Reserveer online of bel +31 6 341 279 32.",
+    "Openingstijden van De Tafelaar op de Kamp 8 in Amersfoort centrum. Wo\u2013do 17:00\u201323:00, vr\u2013za 15:00\u201300:00, zo 17:00\u201323:00. Reserveer online of bel +31 6 341 279 32.",
   alternates: {
     canonical: "/openingstijden",
   },
   openGraph: {
     title: "Openingstijden De Tafelaar Amersfoort | Wanneer Open",
     description:
-      "Openingstijden van De Tafelaar op de Kamp 8 in Amersfoort centrum. Wo\u2013do 17:00\u201323:00, vr 15:00\u201300:00, za 11:00\u201300:00, zo 11:00\u201315:00. Reserveer online of bel +31 6 341 279 32.",
+      "Openingstijden van De Tafelaar op de Kamp 8 in Amersfoort centrum. Wo\u2013do 17:00\u201323:00, vr\u2013za 15:00\u201300:00, zo 17:00\u201323:00. Reserveer online of bel +31 6 341 279 32.",
   },
   keywords: [
     "openingstijden de tafelaar",
@@ -33,7 +33,7 @@ const faqs = [
   {
     question: "Wanneer is De Tafelaar open?",
     answer:
-      "De Tafelaar is geopend van woensdag t/m zondag. Woensdag en donderdag van 17:00 tot 23:00, vrijdag van 15:00 tot 00:00, zaterdag van 11:00 tot 00:00, en zondag van 11:00 tot 15:00. Op maandag en dinsdag zijn wij gesloten.",
+      "De Tafelaar is geopend van woensdag t/m zondag. Woensdag en donderdag van 17:00 tot 23:00, vrijdag en zaterdag van 15:00 tot 00:00, en zondag van 17:00 tot 23:00. Op maandag en dinsdag zijn wij gesloten.",
   },
   {
     question: "Is De Tafelaar open op feestdagen?",
@@ -41,14 +41,14 @@ const faqs = [
       "Openingstijden kunnen afwijken op feestdagen zoals Kerst, Oud & Nieuw en Koningsdag. Check onze website of bel +31 6 341 279 32 voor de actuele situatie.",
   },
   {
-    question: "Kan ik ook overdag langskomen?",
+    question: "Kan ik ook in de middag langskomen?",
     answer:
-      "Op vrijdag zijn we open vanaf 15:00, zaterdag al vanaf 11:00 en zondag van 11:00 tot 15:00. Woensdag en donderdag openen we om 17:00.",
+      "Op vrijdag en zaterdag openen we om 15:00, ideaal voor een borrel met kleine gerechten. Woensdag, donderdag en zondag openen we om 17:00.",
   },
   {
-    question: "Serveren jullie lunch?",
+    question: "Kan ik bij De Tafelaar afhalen?",
     answer:
-      "Ja, op zaterdag vanaf 11:00 en op zondag 11:00-15:00 kun je bij ons lunchen. We serveren ons reguliere shared dining menu: kleine gerechten om te delen. Voor een lichte lunch reken je op 2-3 gerechten per persoon (EUR 15-25 p.p.).",
+      "Ja, we hebben een ophalenkaart met onze sous-vide spare ribs (24 uur op 80°C), bijgerechten, huisgemaakte sauzen, dranken en desserts. Bekijk de ophalenkaart om te bestellen.",
   },
   {
     question: "Moet ik reserveren bij De Tafelaar?",
@@ -101,10 +101,10 @@ export default function OpeningstijdenPage() {
                 lopen, of korter met bus, fiets of taxi.
               </p>
               <p>
-                <strong className="text-foreground">Lunchen in het weekend:</strong> op zaterdag zijn
-                we open vanaf 11:00 en op zondag exclusief voor lunch van 11:00 tot 15:00. Shared
-                dining werkt uitstekend als lunch — kies 2 tot 3 kleine gerechten voor een lichte
-                lunch of maak er een uitgebreide brunch van.
+                <strong className="text-foreground">Borrel of vroeg diner:</strong> op vrijdag en
+                zaterdag openen we al om 15:00 — ideaal voor een rustige borrel met kazen,
+                charcuterie en kleine gerechten, of een vroege start van je diner. Zondag draaien we
+                vanaf 17:00 met de volledige dinerkaart.
               </p>
             </div>
           </Card>
@@ -194,9 +194,9 @@ export default function OpeningstijdenPage() {
                 Reserveren
               </Button>
             </Link>
-            <Link href="/lunch-amersfoort">
+            <Link href="/ophalen">
               <Button variant="outline" className="rounded-xl">
-                Lunch in het centrum
+                Ophalen
               </Button>
             </Link>
             <Link href="/eten-voor-theater-de-flint">
