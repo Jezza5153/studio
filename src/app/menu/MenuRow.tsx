@@ -15,13 +15,16 @@ import {
 export function MenuRow({ item }: { item: MenuItem }) {
     const hasTags = (item.tags?.length ?? 0) > 0;
     const hasAllergens = (item.allergens?.length ?? 0) > 0;
+    const unavailable = item.unavailable === true;
 
     return (
-        <div className="min-w-0">
+        <div className={`min-w-0 ${unavailable ? "opacity-60" : ""}`}>
             {/* Name + Price + Icons row */}
             <div className="flex items-baseline justify-between gap-3">
                 <div className="flex items-center gap-2 min-w-0 flex-wrap">
-                    <h3 className="text-lg font-semibold leading-tight">{item.name}</h3>
+                    <h3 className={`text-lg font-semibold leading-tight ${unavailable ? "line-through" : ""}`}>
+                        {item.name}
+                    </h3>
                     {item.badge && (
                         <Badge variant="outline" className="text-[10px] font-normal uppercase tracking-wide">
                             {item.badge}
@@ -59,9 +62,18 @@ export function MenuRow({ item }: { item: MenuItem }) {
                         </div>
                     )}
                 </div>
-                <p className="shrink-0 text-lg font-semibold tabular-nums">
-                    {formatPriceNoCurrency(item.price)}
-                </p>
+                {unavailable ? (
+                    <p className="shrink-0 text-xs italic text-muted-foreground">
+                        Tijdelijk niet leverbaar
+                    </p>
+                ) : (
+                    <p className="shrink-0 text-lg font-semibold tabular-nums">
+                        {item.pricePrefix && (
+                            <span className="mr-1 text-xs font-normal text-muted-foreground">{item.pricePrefix}</span>
+                        )}
+                        {formatPriceNoCurrency(item.price)}
+                    </p>
+                )}
             </div>
 
             {/* Description */}

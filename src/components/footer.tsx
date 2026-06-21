@@ -77,6 +77,14 @@ export function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link
+                  href="/ophalen"
+                  className="text-sm py-1.5 inline-block text-white/50 hover:text-white transition-colors"
+                >
+                  Ophalen / Afhalen
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/restaurant-amersfoort-centrum"
                   className="text-sm py-1.5 inline-block text-white/50 hover:text-white transition-colors"
                 >

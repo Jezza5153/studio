@@ -17,6 +17,12 @@ export type MenuItem = {
   baseDishKey?: string;
   /** Optional inline badge on the row, e.g. "Vanaf 2 personen". */
   badge?: string;
+  /** Optional prefix shown before the price, e.g. "vanaf" for the
+   *  ophalen "Spare Ribs Menu" (vanaf €34,95). */
+  pricePrefix?: string;
+  /** When true, the row renders muted with a "Tijdelijk niet leverbaar"
+   *  note in place of the price. Used for sold-out ophalen items. */
+  unavailable?: boolean;
 };
 
 export type MenuCategory = {
@@ -362,4 +368,218 @@ export const DINNER_MENU: MenuData = {
 // Backwards-compatible alias — existing imports (`import { MENU } from
 // "@/content/menu"`) continue to work and resolve to the diner menu.
 export const MENU: MenuData = DINNER_MENU;
+
+// =========================================================================
+// OPHALENKAART (takeaway)
+// =========================================================================
+// Spare-ribs focused takeaway menu. Items are picked up at the restaurant
+// (Kamp 8, Amersfoort).
+//
+// TODO(owner-confirm): Allergen and dietary tags below are conservative
+// guesses based on the dinner menu equivalents and standard ingredients.
+// Walk the list with the chef and confirm before the page is shown to
+// guests with allergies — wrong allergen info is worse than missing info.
+// =========================================================================
+export const OPHALEN_MENU: MenuData = {
+  title: "Ophalenkaart",
+  currency: "EUR",
+  categories: [
+    // 1) HOOFDGERECHTEN
+    {
+      name: "Hoofdgerechten",
+      items: [
+        {
+          name: "Tafelaars spare ribs — zoet en pittig (Hollands pittig)",
+          description:
+            "Onze spare ribs worden 24 uur sous vide gegaard op 80°C in marinade. Daardoor vallen ze van het bot en zit de smaak tot in de kern.",
+          price: 24.95,
+          tags: [],
+          allergens: ["mosterd", "soja"],
+          baseDishKey: "spare-ribs",
+        },
+        {
+          name: "Tafelaars Spare Ribs Menu",
+          description:
+            "Inclusief mais of gepofte aardappel, coleslaw en een drankje.",
+          price: 34.95,
+          pricePrefix: "vanaf",
+          tags: [],
+          allergens: ["mosterd", "soja", "lactose", "ei"],
+          baseDishKey: "spare-ribs-menu",
+        },
+      ],
+    },
+
+    // 2) BIJGERECHTEN
+    {
+      name: "Bijgerechten",
+      items: [
+        {
+          name: "Tafelaars Coleslaw",
+          description: null,
+          price: 4.5,
+          tags: ["V"],
+          allergens: ["lactose", "ei"],
+        },
+        {
+          name: "Tafelaars Gepofte Aardappel met kruidenboter",
+          description: null,
+          price: 4.5,
+          tags: ["V"],
+          allergens: ["lactose"],
+        },
+        {
+          name: "Tafelaars Maïskolf met kruidenboter",
+          description: "Gegrilde maïskolf met kruidenboter.",
+          price: 5.5,
+          tags: ["V"],
+          allergens: ["lactose"],
+        },
+        {
+          name: "Loaded Potato met Pulled Pork",
+          description: "Loaded potato met huisgemaakte pulled pork.",
+          price: 8,
+          tags: [],
+          allergens: ["lactose"],
+        },
+      ],
+    },
+
+    // 3) SAUZEN
+    {
+      name: "Sauzen",
+      note: "Onze huisgemaakte sauzen zijn om je vingers bij af te likken.",
+      items: [
+        {
+          name: "Sriracha mayonaise",
+          description: null,
+          price: 1.5,
+          tags: ["V"],
+          allergens: ["ei"],
+        },
+        {
+          name: "Tafelaars Knoflooksaus",
+          description: null,
+          price: 1.5,
+          tags: ["V"],
+          allergens: ["ei"],
+        },
+        {
+          name: "Tafelaars Truffelmayonaise",
+          description: null,
+          price: 1.5,
+          tags: ["V"],
+          allergens: ["ei"],
+        },
+        {
+          name: "Extra Tafelaar marinade",
+          description: null,
+          price: 3,
+          tags: [],
+          allergens: ["mosterd", "soja"],
+        },
+      ],
+    },
+
+    // 4) DRANKEN
+    {
+      name: "Dranken",
+      items: [
+        {
+          name: "Coca-Cola 330ml",
+          description: null,
+          price: 2.95,
+          tags: [],
+          allergens: [],
+        },
+        {
+          name: "Coca-Cola Zero 330ml",
+          description: null,
+          price: 2.95,
+          tags: [],
+          allergens: [],
+        },
+        {
+          name: "Lipton Ice Tea Green 330ml",
+          description: null,
+          price: 2.95,
+          tags: [],
+          allergens: [],
+        },
+        {
+          name: "Lipton Ice Tea Sparkling 330ml",
+          description: null,
+          price: 2.95,
+          tags: [],
+          allergens: [],
+        },
+        {
+          name: "Red Bull 250ml",
+          description: null,
+          price: 3.9,
+          tags: [],
+          allergens: [],
+        },
+        {
+          name: "Vers Tafelaars Pils 500ml",
+          description:
+            "Vers getapt pils in beugelfles (halve Leo). 18+ · excl. statiegeld €0,50 · 5% vol.",
+          price: 4.95,
+          tags: [],
+          allergens: ["gluten"],
+          badge: "18+",
+        },
+        {
+          name: "Vers Tafelaars Weizen 500ml",
+          description:
+            "Vers getapt weizen in beugelfles — chef's choice. 18+ · excl. statiegeld €0,50 · 5% vol.",
+          price: 6.95,
+          tags: [],
+          allergens: ["gluten"],
+          badge: "18+",
+        },
+        {
+          name: "Playground IPA 0,3% 330ml",
+          description:
+            "Fruitige alcoholvrije IPA van Van de Streek. Excl. statiegeld €0,15.",
+          price: 5.95,
+          tags: [],
+          allergens: ["gluten"],
+        },
+        {
+          name: "Fanta 330ml",
+          description: null,
+          price: null,
+          tags: [],
+          allergens: [],
+          unavailable: true,
+        },
+      ],
+    },
+
+    // 5) DESSERTS
+    {
+      name: "Desserts",
+      items: [
+        {
+          name: "Tafelaars Vegan Snicker",
+          description: null,
+          price: 7.5,
+          tags: ["VG"],
+          allergens: ["pinda", "noten"],
+          baseDishKey: "snicker",
+        },
+        {
+          name: "Tafelaars Parfait",
+          description: "Vanille · salted caramel. Excl. statiegeld €0,50.",
+          price: 7.5,
+          tags: ["V"],
+          allergens: ["lactose", "ei"],
+          baseDishKey: "parfait",
+        },
+      ],
+    },
+  ],
+};
+
 
