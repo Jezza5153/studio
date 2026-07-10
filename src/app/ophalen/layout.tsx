@@ -169,6 +169,9 @@ export default function OphalenLayout({
                         <Link href="/menu">
                             <Button variant="outline" className="rounded-xl">Bekijk menukaart</Button>
                         </Link>
+                        <Link href="/lunch">
+                            <Button variant="outline" className="rounded-xl">Lunchkaart</Button>
+                        </Link>
                         <Link href="/drank">
                             <Button variant="outline" className="rounded-xl">Drankenkaart</Button>
                         </Link>

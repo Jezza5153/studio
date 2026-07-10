@@ -59,6 +59,9 @@ export default function MenuPage() {
                             <div className="mt-5 flex flex-wrap gap-2 sm:gap-3">
                                 <ReserveerButton size="sm" label="Reserveer tafel" />
                                 <Button asChild size="sm" variant="outline" className="rounded-xl">
+                                    <Link href="/lunch">Lunchkaart</Link>
+                                </Button>
+                                <Button asChild size="sm" variant="outline" className="rounded-xl">
                                     <Link href="/drank">Drankenkaart</Link>
                                 </Button>
                                 <Button asChild size="sm" variant="outline" className="rounded-xl">
