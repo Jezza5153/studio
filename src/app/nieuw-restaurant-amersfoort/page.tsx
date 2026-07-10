@@ -39,7 +39,7 @@ const faqs = [
     },
     {
         question: "Wanneer is De Tafelaar open?",
-        answer: "Woensdag en donderdag van 17:00 tot 23:00, vrijdag en zaterdag van 15:00 tot 00:00, en zondag van 17:00 tot 23:00. Maandag en dinsdag zijn we gesloten.",
+        answer: "Woensdag en donderdag van 17:00 tot 23:00, vrijdag en zaterdag van 11:00 tot 00:00, en zondag van 11:00 tot 23:00. Maandag en dinsdag zijn we gesloten.",
     },
     {
         question: "Moet ik reserveren?",
@@ -92,7 +92,7 @@ export default function NieuwRestaurantAmersfoortPage() {
                         </CardHeader>
                         <CardContent className="text-sm text-muted-foreground">
                             <p className="font-medium text-foreground">Kamp 8, Amersfoort</p>
-                            <p>Midden in het centrum, op loopafstand van Flint, Koppelpoort en het station.</p>
+                            <p>Midden in het centrum, op loopafstand van Flint, de Kamperbinnenpoort en het station.</p>
                         </CardContent>
                     </Card>
 
@@ -104,8 +104,8 @@ export default function NieuwRestaurantAmersfoortPage() {
                             </div>
                         </CardHeader>
                         <CardContent className="text-sm text-muted-foreground">
-                            <p>Woensdag t/m zondag</p>
-                            <p>Keuken open vanaf 17:00</p>
+                            <p>Woensdag en donderdag vanaf 17:00</p>
+                            <p>Vrijdag t/m zondag vanaf 11:00</p>
                         </CardContent>
                     </Card>
                 </div>

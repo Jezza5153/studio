@@ -158,8 +158,8 @@ export default function FeestlocatieAmersfoortPage() {
                                 of korter met bus, fiets of taxi. Parkeergarage Beestenmarkt is op
                                 2 minuten loopafstand — ideaal voor gasten die met de auto komen. Met
                                 een 4.8 op Google en 90+ reviews weet je dat je feest in goede handen
-                                is. Regulier geopend woensdag t/m zondag (vr/za vanaf 15:00, zo vanaf
-                                17:00); op andere dagen in overleg.
+                                is. Regulier geopend woensdag t/m zondag (woensdag en donderdag vanaf
+                                17:00, vrijdag t/m zondag vanaf 11:00); op andere dagen in overleg.
                             </p>
                         </div>
                     </Card>

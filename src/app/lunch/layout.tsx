@@ -77,7 +77,7 @@ const lunchFaqs = [
     {
         question: "Wanneer kan ik lunchen bij De Tafelaar?",
         answer:
-            "De lunchkaart wordt overdag geserveerd op Kamp 8 in Amersfoort centrum. Bel gerust om de actuele lunchtijden te checken — de kaart wisselt mee met het seizoen.",
+            "De lunchkaart wordt geserveerd zodra we op vrijdag, zaterdag en zondag om 11:00 open gaan op Kamp 8 in Amersfoort centrum. Op vrijdag en zaterdag zijn we tot laat open, op zondag tot 23:00. Op woensdag en donderdag openen we om 17:00 voor diner.",
     },
     {
         question: "Zijn er vegetarische en vegan lunchopties?",

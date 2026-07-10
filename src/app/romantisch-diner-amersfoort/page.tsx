@@ -173,7 +173,7 @@ export default function RomantischDinerAmersfoortPage() {
                                 <strong className="text-foreground">Tip:</strong> woensdag en
                                 donderdag zijn wat rustiger — ideaal als je extra intimiteit zoekt.
                                 Vrijdag en zaterdag zijn levendiger en net zo gezellig. We zijn open
-                                vanaf 17:00 (vr-za vanaf 15:00).
+                                op woensdag en donderdag vanaf 17:00 en vrijdag t/m zondag vanaf 11:00.
                             </p>
                             <p>
                                 De Tafelaar zit op Kamp 8, hartje centrum Amersfoort — op 5 minuten

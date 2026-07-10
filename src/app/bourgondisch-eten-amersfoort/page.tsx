@@ -108,7 +108,7 @@ export default function BourgondischEtenAmersfoortPage() {
                             </div>
                         </CardHeader>
                         <CardContent className="text-sm text-muted-foreground">
-                            Kamp 8, midden in het centrum. Vlakbij Flint en Koppelpoort.
+                            Kamp 8, midden in het centrum. Vlakbij Flint en de Kamperbinnenpoort.
                         </CardContent>
                     </Card>
                 </div>

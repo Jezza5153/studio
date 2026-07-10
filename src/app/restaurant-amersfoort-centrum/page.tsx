@@ -10,7 +10,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
     title: "Restaurant Amersfoort Centrum | Shared Dining De Tafelaar",
     description:
-        "Restaurant in Amersfoort centrum op de Kamp: De Tafelaar biedt shared dining met lokale gerechten. Vlakbij Flint, Koppelpoort en het station. Wo\u2013zo geopend.",
+        "Restaurant in Amersfoort centrum op de Kamp: De Tafelaar biedt shared dining met lokale gerechten. Vlakbij Flint, de Kamperbinnenpoort en het station. Wo\u2013zo geopend.",
     alternates: {
         canonical: "/restaurant-amersfoort-centrum",
     },
@@ -81,7 +81,7 @@ export default function RestaurantAmersfoortCentrumPage() {
                 </h1>
                 <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
                     De Tafelaar op Kamp 8: shared dining met lokale gerechten in het hart van Amersfoort.
-                    Op loopafstand van Flint en de Koppelpoort. Woensdag t/m zondag geopend.
+                    Op loopafstand van Flint en de Kamperbinnenpoort. Woensdag t/m zondag geopend.
                 </p>
             </header>
 
@@ -154,7 +154,7 @@ export default function RestaurantAmersfoortCentrumPage() {
                             De Tafelaar is ook de ideale plek voor een hapje voor of na een voorstelling
                             in Theater de Flint — op ongeveer 400 meter, circa 5 minuten lopen. We zijn
                             geopend van woensdag t/m donderdag van 17:00 tot 23:00, vrijdag en
-                            zaterdag van 15:00 tot 00:00 en zondag van 17:00 tot 23:00.
+                            zaterdag van 11:00 tot 00:00 en zondag van 11:00 tot 23:00.
                         </p>
                     </div>
                 </Card>
