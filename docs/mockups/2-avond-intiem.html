@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>De Tafelaar | Restaurant Amersfoort — Lekker Eten &amp; Shared Dining</title>
+<meta name="description" content="Restaurant in Amersfoort: De Tafelaar op de Kamp. Shared dining voor borrel en diner met lokale seizoensgerechten. Ook ophalen. 4.8 op Google. Op 5 min van Flint. Wo–zo open.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Restaurant","name":"De Tafelaar","servesCuisine":"Shared dining, Nederlands, seizoensgebonden","priceRange":"€€","address":{"@type":"PostalAddress","streetAddress":"Kamp 8","postalCode":"3811 AR","addressLocality":"Amersfoort","addressCountry":"NL"},"telephone":"+31634127932","email":"reserveren@tafelaaramersfoort.nl","url":"https://tafelaaramersfoort.nl","acceptsReservations":true,"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Wednesday","Thursday"],"opens":"17:00","closes":"23:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Friday","Saturday"],"opens":"11:00","closes":"00:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"11:00","closes":"23:00"}],"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"90"},"sameAs":["https://www.facebook.com/people/Tafelaar-Amersfoort","https://instagram.com/tafelaaramersfoort"]}
+</script>
+<style>
+:root{
+  --night:#121A16; --night-2:#1A241F; --night-3:#232F29; --cream:#F2EBDD; --cream-dim:rgba(242,235,221,.68);
+  --brass:#C9A254; --brass-soft:#E3C88A; --line:rgba(242,235,221,.14); --wine:#7E3B32;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',sans-serif;background:var(--night);color:var(--cream);line-height:1.7;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.container{max-width:1140px;margin:0 auto;padding:0 24px}
+.serif{font-family:'Cormorant Garamond',serif}
+.kicker{font-size:11.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--brass);font-weight:600}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:500}
+.hairline{width:56px;height:1px;background:var(--brass);margin:22px auto}
+.hairline.left{margin:22px 0}
+
+/* header */
+header{position:sticky;top:0;z-index:50;background:rgba(18,26,22,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+.brand{font-family:'Cormorant Garamond',serif;font-size:27px;letter-spacing:.04em}
+.brand span{color:var(--brass)}
+.nav ul{display:flex;gap:24px;list-style:none}
+.nav ul a{font-size:13px;font-weight:500;letter-spacing:.04em;color:var(--cream-dim);transition:color .2s}
+.nav ul a:hover{color:var(--brass-soft)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 30px;font-weight:600;font-size:14px;letter-spacing:.06em;transition:all .25s;cursor:pointer;border:none;text-transform:uppercase}
+.btn-brass{background:var(--brass);color:#161616}
+.btn-brass:hover{background:var(--brass-soft)}
+.btn-line{border:1px solid var(--brass);color:var(--brass-soft)}
+.btn-line:hover{background:var(--brass);color:#161616}
+.btn-sm{padding:11px 22px;font-size:12.5px}
+@media(max-width:920px){.nav ul{display:none}}
+
+/* hero */
+.hero{position:relative;text-align:center;padding:84px 24px 96px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(1100px 520px at 50% -10%,rgba(201,162,84,.14),transparent 65%)}
+.hero-inner{position:relative;max-width:840px;margin:0 auto}
+.hero h1{font-size:clamp(40px,6.4vw,80px);line-height:1.02;letter-spacing:.005em;margin:22px 0 8px}
+.hero h1 em{font-style:italic;color:var(--brass-soft)}
+.hero .tag{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(20px,2.6vw,28px);color:var(--brass-soft)}
+.hero .sub{max-width:60ch;margin:20px auto 0;color:var(--cream-dim);font-size:15.5px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:36px}
+.arch-row{display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:22px;max-width:980px;margin:64px auto 0;align-items:end}
+.arch{border-radius:300px 300px 18px 18px;overflow:hidden;border:1px solid var(--line)}
+.arch img{width:100%;height:100%;object-fit:cover}
+.arch.side{aspect-ratio:3/4;opacity:.92}
+.arch.mid{aspect-ratio:4/4.6}
+@media(max-width:720px){.arch-row{grid-template-columns:1fr;max-width:420px}.arch.side{display:none}}
+.review-line{display:inline-flex;align-items:center;gap:10px;margin-top:26px;color:var(--cream-dim);font-size:13.5px}
+.review-line b{color:var(--brass-soft);letter-spacing:2px}
+
+/* marquee divider */
+.mq{border-block:1px solid var(--line);padding:16px 0;overflow:hidden;white-space:nowrap;background:var(--night-2)}
+.mq-track{display:inline-block;animation:mq 28s linear infinite;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;color:var(--brass-soft)}
+.mq-track span{margin:0 26px}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* sections */
+.section{padding:96px 0}
+h2{font-size:clamp(30px,4vw,46px);line-height:1.1}
+.center{text-align:center}
+.lead{color:var(--cream-dim);max-width:64ch}
+
+/* highlights */
+.usps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:56px}
+.usp{background:var(--night);padding:38px 28px;transition:background .3s}
+.usp:hover{background:var(--night-2)}
+.usp .glyph{font-family:'Cormorant Garamond',serif;font-size:34px;color:var(--brass);line-height:1}
+.usp h3{font-size:23px;margin:16px 0 8px}
+.usp p{font-size:14px;color:var(--cream-dim)}
+@media(max-width:920px){.usps{grid-template-columns:1fr 1fr}}
+@media(max-width:540px){.usps{grid-template-columns:1fr}}
+
+/* buurtgids */
+.gids{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line)}
+.gids .img{min-height:380px;background:url('pics/over%20ons%20rechts%202.jpg') center/cover}
+.gids .txt{padding:56px;background:var(--night-2)}
+.gids .txt p{color:var(--cream-dim);margin-top:14px}
+.gids ul{list-style:none;margin:20px 0 28px;display:grid;gap:10px;font-size:14.5px}
+.gids ul li::before{content:"◆ ";color:var(--brass);font-size:10px;vertical-align:2px;margin-right:6px}
+@media(max-width:820px){.gids{grid-template-columns:1fr}.gids .txt{padding:36px 26px}}
+
+/* seo prose */
+.prose{max-width:700px;margin:0 auto;text-align:center}
+.prose p{margin-top:16px;color:var(--cream-dim);font-size:15px}
+.prose a{color:var(--brass-soft);text-decoration:underline;text-underline-offset:3px}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:38px}
+.chip{border:1px solid var(--line);border-radius:2px;padding:10px 18px;font-size:12.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--cream-dim);transition:all .2s}
+.chip:hover{border-color:var(--brass);color:var(--brass-soft)}
+
+/* story */
+.story{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.story .arch{aspect-ratio:3.4/4.4}
+.story p{margin-top:14px;color:var(--cream-dim)}
+.story p.q{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:var(--cream);line-height:1.5}
+@media(max-width:860px){.story{grid-template-columns:1fr;gap:44px}}
+
+/* hours */
+.hours-wrap{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:900px;margin:48px auto 0}
+.panel{border:1px solid var(--line);background:var(--night-2);padding:40px}
+.panel h3{font-size:24px;color:var(--brass-soft);margin-bottom:20px}
+.hours{width:100%;font-size:14.5px;border-collapse:collapse}
+.hours td{padding:9px 0;border-bottom:1px solid var(--line)}
+.hours tr:last-child td{border-bottom:none}
+.hours td:last-child{text-align:right;color:var(--cream-dim)}
+.closed{color:#C97A6A!important}
+address{font-style:normal;font-size:14.5px;color:var(--cream-dim);display:grid;gap:9px}
+address strong{color:var(--cream);font-size:16.5px;font-family:'Cormorant Garamond',serif;font-size:20px}
+.tel{display:inline-block;margin-top:16px;color:var(--brass-soft);font-weight:600;letter-spacing:.04em}
+@media(max-width:760px){.hours-wrap{grid-template-columns:1fr}}
+
+/* faq */
+.faq{max-width:740px;margin:44px auto 0}
+details{border:1px solid var(--line);margin-bottom:12px;background:var(--night-2)}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 24px;font-weight:600;font-size:15.5px}
+summary::-webkit-details-marker{display:none}
+summary .m{color:var(--brass);font-size:20px;font-family:'Cormorant Garamond',serif;transition:transform .25s}
+details[open] .m{transform:rotate(45deg)}
+details .a{padding:0 24px 22px;color:var(--cream-dim);font-size:14.5px;max-width:62ch}
+
+/* footer */
+footer{border-top:1px solid var(--line);background:#0D1310}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;padding:64px 0 40px;color:var(--cream-dim)}
+.foot h4{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--brass);margin-bottom:16px;font-family:'Manrope',sans-serif;font-weight:700}
+.foot ul{list-style:none;display:grid;gap:9px;font-size:14px}
+.foot a:hover{color:var(--brass-soft)}
+.legal{border-top:1px solid var(--line);padding:20px 0;font-size:12.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;color:var(--cream-dim)}
+@media(max-width:820px){.foot{grid-template-columns:1fr 1fr}}
+
+/* switcher + toast */
+.switcher{position:fixed;bottom:18px;right:18px;z-index:99;display:flex;gap:6px;background:rgba(13,19,16,.92);border:1px solid var(--line);padding:8px;border-radius:999px;backdrop-filter:blur(8px)}
+.switcher a{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;color:var(--cream);font-size:13px;font-weight:600}
+.switcher a:hover,.switcher a.on{background:var(--brass);color:#161616}
+#toast{position:fixed;bottom:76px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--brass);color:#161616;padding:12px 22px;border-radius:999px;font-size:13.5px;font-weight:600;opacity:0;pointer-events:none;transition:all .3s;z-index:100;white-space:nowrap}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#" class="brand">De Tafelaar<span>.</span></a>
+    <ul>
+      <li><a href="/" class="route">Home</a></li>
+      <li><a href="/menu" class="route">Menu</a></li>
+      <li><a href="/over-onze-makers" class="route">Wij en Onze Makers</a></li>
+      <li><a href="/verhuur-en-groepen" class="route">Verhuur en Groepen</a></li>
+      <li><a href="/catering" class="route">Catering</a></li>
+      <li><a href="/impressie" class="route">Impressie</a></li>
+      <li><a href="/agenda" class="route">Agenda</a></li>
+      <li><a href="/contact" class="route">Contact</a></li>
+    </ul>
+    <a href="/contact" class="btn btn-brass btn-sm route">Reserveren</a>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="kicker">Restaurant Amersfoort Centrum · Kamp 8</p>
+    <h1>De Tafelaar — Shared Dining Restaurant in <em>Amersfoort</em></h1>
+    <p class="tag">Samen aan tafel. Kleine gerechten, grote gezelligheid.</p>
+    <div class="hairline"></div>
+    <p class="sub">Welkom bij De Tafelaar op de Kamp in Amersfoort centrum. Shared dining voor lunch, borrel en diner met lokale seizoensgerechten om te delen. Op 5 minuten van Flint, open wo–zo.</p>
+    <div class="hero-ctas">
+      <a href="/contact" class="btn btn-brass route">Reserveer nu</a>
+      <a href="/menu" class="btn btn-line route">Bekijk menu</a>
+      <a href="/agenda" class="btn btn-line route">Agenda</a>
+    </div>
+    <span class="review-line"><b>★★★★★</b> 4.8 op Google — 90+ reviews</span>
+  </div>
+  <div class="arch-row">
+    <div class="arch side"><img src="pics/de-tafelaar-gerecht-1.jpg" alt="Shared dining gerecht van De Tafelaar met lokale seizoensproducten"></div>
+    <div class="arch mid"><img src="pics/homepage.png" alt="De Tafelaar – gedekte tafel voor shared dining in Amersfoort"></div>
+    <div class="arch side"><img src="pics/de-tafelaar-gerecht-2.jpg" alt="Klein gerecht om te delen bij restaurant De Tafelaar Amersfoort"></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="mq" aria-hidden="true">
+  <div class="mq-track">
+    <span>Shared dining</span>·<span>Lokale makers</span>·<span>Seizoensgebonden</span>·<span>Borrel &amp; diner</span>·<span>Kamp 8, Amersfoort</span>·<span>4.8 op Google</span>·
+    <span>Shared dining</span>·<span>Lokale makers</span>·<span>Seizoensgebonden</span>·<span>Borrel &amp; diner</span>·<span>Kamp 8, Amersfoort</span>·<span>4.8 op Google</span>·
+  </div>
+</div>
+
+<!-- HIGHLIGHTS -->
+<section class="section">
+  <div class="container center">
+    <p class="kicker">Waarom De Tafelaar</p>
+    <h2 style="margin-top:14px">Een avond om te <em class="serif" style="color:var(--brass-soft)">delen</em></h2>
+    <div class="usps">
+      <div class="usp"><div class="glyph">I.</div><h3>Shared dining</h3><p>Proef en deel een verscheidenheid aan kleine, seizoensgebonden gerechtjes.</p></div>
+      <div class="usp"><div class="glyph">II.</div><h3>Lokale makers</h3><p>We werken samen met lokale boeren en producenten voor de verste smaken.</p></div>
+      <div class="usp"><div class="glyph">III.</div><h3>Duurzaam</h3><p>Onze keuken is gericht op duurzaamheid, met respect voor mens en natuur.</p></div>
+      <div class="usp"><div class="glyph">IV.</div><h3>Centrale locatie</h3><p>Gevestigd in de historische binnenstad van Amersfoort, makkelijk bereikbaar.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- BUURTGIDS -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="gids">
+      <div class="img" role="img" aria-label="De Kamp in Amersfoort, vlakbij Theater de Flint"></div>
+      <div class="txt">
+        <p class="kicker">Buurtgids</p>
+        <h2 style="margin-top:12px">Op weg naar Flint of het centrum?</h2>
+        <p>Onze Buurtgids helpt je de beste plekken te vinden voor en na je theaterbezoek, of om de leukste hotspots op de Kamp te ontdekken.</p>
+        <ul>
+          <li>Dichtbij Flint</li>
+          <li>Hotspots in de straat Kamp</li>
+        </ul>
+        <a href="/buurtgids" class="btn btn-line route">Open Buurtgids</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEO TEXT -->
+<section class="section" style="background:var(--night-2);border-block:1px solid var(--line)">
+  <div class="container">
+    <div class="prose">
+      <p class="kicker">Ontdek</p>
+      <h2 style="margin-top:12px">Restaurant in Amersfoort centrum</h2>
+      <div class="hairline"></div>
+      <p>De Tafelaar is een shared dining restaurant op de Kamp in het hart van Amersfoort centrum. Op zoek naar een plek om lekker te eten in Amersfoort? We serveren kleine gerechten van lokale makers — van kazen en charcuterie tot warme seizoensgerechten en desserts. Alles om gezellig samen te delen aan tafel. Op loopafstand van Theater de Flint (5 min) en op een steenworp afstand van de Kamperbinnenpoort. Vanaf station Amersfoort Centraal ben je in circa 22 minuten lopend bij ons — of korter met bus of fiets.</p>
+      <p>Gerechten variëren van €3,50 tot €15. Reken op €25–35 per persoon voor een compleet diner. Het Chef's Choice arrangement (€45 p.p.) laat de keuken verrassen. Woensdag t/m zondag open voor borrel en diner. Liever thuis genieten? Bekijk onze <a href="/ophalen" class="route">ophalenkaart</a>.</p>
+      <p>Op kantoor of op locatie? <a href="/catering" class="route">Tafelaar × Jezza Cooks Catering</a> bezorgt office lunch vanaf €7,50 p.p. en events tot 150 personen in heel Amersfoort — bereid in dezelfde restaurantkeuken.</p>
+    </div>
+    <nav class="chips" aria-label="Ontdek meer pagina's">
+      <a class="chip route" href="/beste-restaurant-amersfoort">Beste restaurant</a>
+      <a class="chip route" href="/ophalen">Ophalen</a>
+      <a class="chip route" href="/borrel-amersfoort">Borrelen</a>
+      <a class="chip route" href="/romantisch-diner-amersfoort">Romantisch diner</a>
+      <a class="chip route" href="/bourgondisch-eten-amersfoort">Bourgondisch</a>
+      <a class="chip route" href="/vegetarisch-amersfoort">Vegetarisch</a>
+      <a class="chip route" href="/duurzaam-restaurant-amersfoort">Duurzaam</a>
+      <a class="chip route" href="/eten-voor-theater-de-flint">Eten bij Flint</a>
+      <a class="chip route" href="/feestlocatie-amersfoort">Feestlocatie</a>
+      <a class="chip route" href="/catering">Catering</a>
+    </nav>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section">
+  <div class="container story">
+    <div class="arch"><img src="pics/over%20ons%20links.jpg" alt="Gasten delen kleine gerechten aan tafel bij De Tafelaar in Amersfoort"></div>
+    <div>
+      <p class="kicker">Zo werkt het</p>
+      <h2 style="margin-top:12px">Hoe werkt shared dining bij De Tafelaar?</h2>
+      <div class="hairline left"></div>
+      <p>Bij shared dining bestel je meerdere kleine gerechten die je deelt met je tafelgenoten. Kies uit kazen, charcuterie, koude en warme gerechten en desserts — allemaal bereid met seizoensgebonden, lokale producten. We adviseren 2 à 3 gerechten per persoon om samen te delen.</p>
+      <p>Geen keuze kunnen maken? Het Chef's Choice arrangement (€45 p.p.) laat de keuken voor je kiezen, met optioneel een bijpassend wijnarrangement van Korte Garde voor €28 p.p. Ons team helpt je graag bij het samenstellen van jullie tafel.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="section" style="padding-top:0">
+  <div class="container story">
+    <div>
+      <p class="kicker">Ons verhaal</p>
+      <h2 style="margin-top:12px">Samen eten, samen ontdekken</h2>
+      <div class="hairline left"></div>
+      <p class="q">Bij De Tafelaar draait alles om samen eten en proeven. Kleine gerechten om te delen, gemaakt met verse, lokale producten en bereid volgens het seizoen.</p>
+      <p>Denk aan eieren en groenten van Het Derde Erf, ijs van De IJsmakerij of een goed glas van Rock City en De Drie Ringen.</p>
+      <p>Hapje voor hapje ontdek je nieuwe smaken en geniet je van de creativiteit van de keuken.</p>
+      <p>In de huiskamer ben je ook welkom om alleen te komen eten. Schuif aan bij de aanschuiftafel, ontmoet andere gasten en laat de gesprekken vanzelf ontstaan. Zo wordt eten bij De Tafelaar een gedeelde ervaring, of je nu met gezelschap komt of alleen.</p>
+      <div class="hero-ctas" style="justify-content:flex-start">
+        <a href="/contact" class="btn btn-brass route">Reserveer nu</a>
+        <a href="/menu" class="btn btn-line route">Bekijk menu</a>
+      </div>
+    </div>
+    <div class="arch"><img src="pics/over%20ons%201%20foto.jpg" alt="De huiskamer en aanschuiftafel van De Tafelaar op de Kamp 8"></div>
+  </div>
+</section>
+
+<!-- HOURS & LOCATION -->
+<section class="section center" style="background:var(--night-2);border-block:1px solid var(--line)">
+  <div class="container">
+    <p class="kicker">Praktisch</p>
+    <h2 style="margin-top:12px">Openingstijden &amp; locatie</h2>
+    <div class="hours-wrap" style="text-align:left">
+      <div class="panel">
+        <h3>Openingstijden</h3>
+        <table class="hours">
+          <tr><td>Maandag – dinsdag</td><td class="closed">Gesloten</td></tr>
+          <tr><td>Woensdag – donderdag</td><td>17:00 – 23:00</td></tr>
+          <tr><td>Vrijdag</td><td>11:00 – 00:00</td></tr>
+          <tr><td>Zaterdag</td><td>11:00 – 00:00</td></tr>
+          <tr><td>Zondag</td><td>11:00 – 23:00</td></tr>
+        </table>
+      </div>
+      <div class="panel">
+        <h3>Locatie</h3>
+        <address>
+          <strong>De Tafelaar</strong>
+          <span>Kamp 8, 3811 AR Amersfoort</span>
+          <span>5 min lopen van Theater de Flint</span>
+          <span>~22 min lopen van Station Amersfoort (korter met bus/fiets)</span>
+        </address>
+        <a class="tel" href="tel:+31634127932">+31 6 341 279 32</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="container center">
+    <p class="kicker">Goed om te weten</p>
+    <h2 style="margin-top:12px">Veelgestelde vragen over De Tafelaar</h2>
+    <div class="faq" style="text-align:left">
+      <details open><summary>Waar kan ik lekker eten in Amersfoort?<span class="m">+</span></summary><div class="a">De Tafelaar op de Kamp 8 is een van de best beoordeelde restaurants in Amersfoort (4.8 op Google). We serveren shared dining: kleine gerechten om te delen, gemaakt met seizoensgebonden producten van lokale makers. Van €3,50 tot €15 per gerecht, gemiddeld €25–35 p.p. Open woensdag t/m zondag.</div></details>
+      <details><summary>Wat is shared dining bij De Tafelaar?<span class="m">+</span></summary><div class="a">Shared dining betekent dat je kleine gerechten bestelt om samen te delen aan tafel. Kies uit kazen, charcuterie, koude en warme gerechten en desserts — gemaakt met verse, lokale ingrediënten uit de regio Amersfoort. We adviseren 2 à 3 gerechten per persoon.</div></details>
+      <details><summary>Waar zit De Tafelaar in Amersfoort?<span class="m">+</span></summary><div class="a">De Tafelaar zit op de Kamp 8 in het centrum van Amersfoort, op 5 minuten lopen van Theater de Flint. Vanaf station Amersfoort Centraal is het ongeveer 22 minuten lopen, of korter met bus of fiets. Parkeergarage Beestenmarkt is op 2 minuten loopafstand.</div></details>
+      <details><summary>Hoe kan ik reserveren bij De Tafelaar?<span class="m">+</span></summary><div class="a">Reserveer via de widget op onze website of bel +31 6 341 279 32. Reserveren is aan te raden, vooral op vrijdag en zaterdag. Walk-ins zijn welkom als er plek is.</div></details>
+      <details><summary>Wat zijn de openingstijden van De Tafelaar?<span class="m">+</span></summary><div class="a">Woensdag en donderdag 17:00-23:00, vrijdag en zaterdag 11:00-00:00, zondag 11:00-23:00. Maandag en dinsdag gesloten.</div></details>
+      <details><summary>Kan ik De Tafelaar huren voor een feest?<span class="m">+</span></summary><div class="a">Ja, beschikbaar voor feesten en bedrijfsdiners tot circa 100 personen. Chef's Choice arrangement EUR 45 p.p., optioneel met wijnarrangement.</div></details>
+      <details><summary>Biedt De Tafelaar catering aan?<span class="m">+</span></summary><div class="a">Ja, catering voor kantoorlunches, zakelijke events en walking dinners in de regio Amersfoort.</div></details>
+      <details><summary>Is De Tafelaar het beste restaurant in Amersfoort?<span class="m">+</span></summary><div class="a">Met een 4.8 op Google en 90+ reviews is De Tafelaar een van de best beoordeelde restaurants in Amersfoort. Gasten waarderen het unieke shared dining concept, de lokale ingrediënten en de persoonlijke sfeer. Bekijk onze reviews op Google of op onze impressie-pagina.</div></details>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="foot">
+      <div>
+        <div class="brand" style="color:var(--cream);margin-bottom:12px">De Tafelaar<span style="color:var(--brass)">.</span></div>
+        <p style="font-size:14px;max-width:32ch">Shared dining restaurant in het hart van Amersfoort. Samen aan tafel, kleine gerechten, grote gezelligheid.</p>
+        <p style="margin-top:14px;font-size:13.5px"><b style="color:var(--brass-soft)">★ 4.8</b> op Google · 90+ reviews</p>
+      </div>
+      <div>
+        <h4>Bezoek ons</h4>
+        <ul>
+          <li>De Tafelaar</li>
+          <li>Kamp 8</li>
+          <li>3811 AR Amersfoort</li>
+          <li><a href="tel:+31634127932">+31 6 341 279 32</a></li>
+          <li><a href="mailto:reserveren@tafelaaramersfoort.nl">reserveren@tafelaaramersfoort.nl</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Openingstijden</h4>
+        <ul>
+          <li>Ma–di: gesloten</li>
+          <li>Wo–do: 17:00–23:00</li>
+          <li>Vr–za: 11:00–00:00</li>
+          <li>Zo: 11:00–23:00</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Volg ons</h4>
+        <ul>
+          <li><a href="https://instagram.com/tafelaaramersfoort" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.facebook.com/people/Tafelaar-Amersfoort" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="/updates" class="route">Updates</a></li>
+          <li><a href="/openingstijden" class="route">Openingstijden</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2026 De Tafelaar, Amersfoort</span>
+      <span>Mockup 2 · Avond &amp; Intiem</span>
+    </div>
+  </div>
+</footer>
+
+<nav class="switcher" aria-label="Wissel mockup">
+  <a href="index.html" title="Overzicht">⌂</a>
+  <a href="1-warm-editorial.html">1</a>
+  <a href="2-avond-intiem.html" class="on">2</a>
+  <a href="3-fris-licht.html">3</a>
+  <a href="4-karakter-bold.html">4</a>
+  <a href="5-tafel-app.html">5</a>
+</nav>
+<div id="toast">Dit is een mockup — deze pagina bestaat wel op de echte site</div>
+<script>
+document.querySelectorAll('a.route').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const t=document.getElementById('toast');t.classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(()=>t.classList.remove('show'),2200);}));
+</script>
+</body>
+</html>
