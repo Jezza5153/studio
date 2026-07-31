@@ -29,7 +29,7 @@ export const SEO_OVERRIDES: Record<string, SeoOverride> = {
         eventJsonLd: [
             {
                 "@type": "Event",
-                "@id": "https://tafelaaramersfoort.nl/moederdag-high-tea-amersfoort#sitting-12",
+                "@id": "https://www.tafelaaramersfoort.nl/moederdag-high-tea-amersfoort#sitting-12",
                 name: "Moederdag High Tea 2026 — Sitting 12:00",
                 startDate: "2026-05-10T12:00",
                 endDate: "2026-05-10T14:30",
@@ -52,20 +52,20 @@ export const SEO_OVERRIDES: Record<string, SeoOverride> = {
                     price: "37.50",
                     priceCurrency: "EUR",
                     availability: "https://schema.org/InStock",
-                    url: "https://tafelaaramersfoort.nl/moederdag-high-tea-amersfoort",
+                    url: "https://www.tafelaaramersfoort.nl/moederdag-high-tea-amersfoort",
                 },
                 description:
                     "Bourgondische shared dining high tea op Moederdag bij De Tafelaar in Amersfoort. Verse croissants, vers brood, beenham, jonge kaas, huisgemaakte eiersalade, jammetjes, zalm met nori mayo, gegrilde ribeye en bladerdeeghapjes met asperges. Inclusief thee, koffie van Boot Koffie en een glas bubbels voor mama.",
-                image: "https://tafelaaramersfoort.nl/pics/homepage.png",
+                image: "https://www.tafelaaramersfoort.nl/pics/homepage.png",
                 organizer: {
                     "@type": "Organization",
                     name: "De Tafelaar",
-                    url: "https://tafelaaramersfoort.nl",
+                    url: "https://www.tafelaaramersfoort.nl",
                 },
             },
             {
                 "@type": "Event",
-                "@id": "https://tafelaaramersfoort.nl/moederdag-high-tea-amersfoort#sitting-14",
+                "@id": "https://www.tafelaaramersfoort.nl/moederdag-high-tea-amersfoort#sitting-14",
                 name: "Moederdag High Tea 2026 — Sitting 14:00",
                 startDate: "2026-05-10T14:00",
                 endDate: "2026-05-10T16:30",
@@ -88,15 +88,15 @@ export const SEO_OVERRIDES: Record<string, SeoOverride> = {
                     price: "37.50",
                     priceCurrency: "EUR",
                     availability: "https://schema.org/InStock",
-                    url: "https://tafelaaramersfoort.nl/moederdag-high-tea-amersfoort",
+                    url: "https://www.tafelaaramersfoort.nl/moederdag-high-tea-amersfoort",
                 },
                 description:
                     "Bourgondische shared dining high tea op Moederdag bij De Tafelaar in Amersfoort. Verse croissants, vers brood, beenham, jonge kaas, huisgemaakte eiersalade, jammetjes, zalm met nori mayo, gegrilde ribeye en bladerdeeghapjes met asperges. Inclusief thee, koffie van Boot Koffie en een glas bubbels voor mama.",
-                image: "https://tafelaaramersfoort.nl/pics/homepage.png",
+                image: "https://www.tafelaaramersfoort.nl/pics/homepage.png",
                 organizer: {
                     "@type": "Organization",
                     name: "De Tafelaar",
-                    url: "https://tafelaaramersfoort.nl",
+                    url: "https://www.tafelaaramersfoort.nl",
                 },
             },
         ],

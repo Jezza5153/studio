@@ -5,7 +5,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const base = "https://tafelaaramersfoort.nl";
+  const base = "https://www.tafelaaramersfoort.nl";
   const lastModified = new Date();
 
   // Static pages

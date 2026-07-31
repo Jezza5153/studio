@@ -83,7 +83,11 @@ function ExpandableReviewCard({ review, index }: { review: ReviewSnippet; index:
 export function ImpressieGallery({ photosJson, reviews }: ImpressieGalleryProps) {
     const photos: string[] = useMemo(() => {
         try {
-            return JSON.parse(photosJson);
+            const parsed = JSON.parse(photosJson);
+            // Guard the shape, not just the parse: googlePhotos is written by a
+            // cron, and valid-but-non-array JSON (e.g. "null") would otherwise
+            // blow up the .map() below and take the whole page down.
+            return Array.isArray(parsed) ? parsed : [];
         } catch {
             return [];
         }

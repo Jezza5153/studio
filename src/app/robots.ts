@@ -64,7 +64,7 @@ export default function robots() {
           disallow: ["/admin/", "/api/"],
         },
       ],
-      sitemap: "https://tafelaaramersfoort.nl/sitemap.xml",
+      sitemap: "https://www.tafelaaramersfoort.nl/sitemap.xml",
     };
   }
 

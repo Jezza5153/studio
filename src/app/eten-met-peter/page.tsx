@@ -109,7 +109,7 @@ function eventJsonLd() {
   return JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Event",
-    "@id": "https://tafelaaramersfoort.nl/eten-met-peter#event",
+    "@id": "https://www.tafelaaramersfoort.nl/eten-met-peter#event",
     name: "Eten met Peter — Charity Diner voor de Hersenstichting",
     startDate: EVENT_START_ISO,
     endDate: EVENT_END_ISO,
@@ -135,11 +135,11 @@ function eventJsonLd() {
     },
     description:
       "Charity-avond bij De Tafelaar in Amersfoort op maandag 11 mei 2026. Gastkok Peter van den Heuvel verzorgt zijn vriendendiner uit de bundel 'Ik heb een heel klein gaatje gedicht'. Onze chef Jeremy Arrascaeta staat naast hem in de keuken. Uitsluitend biologische producten. Volledige opbrengst gaat naar de actie van Peter van den Heuvel voor de Hersenstichting.",
-    image: `https://tafelaaramersfoort.nl${HERO_IMAGE_SRC}`,
+    image: `https://www.tafelaaramersfoort.nl${HERO_IMAGE_SRC}`,
     organizer: {
       "@type": "Organization",
       name: "De Tafelaar",
-      url: "https://tafelaaramersfoort.nl",
+      url: "https://www.tafelaaramersfoort.nl",
     },
     performer: [
       {
@@ -158,7 +158,7 @@ function eventJsonLd() {
     sponsor: {
       "@type": "Restaurant",
       name: "De Tafelaar",
-      "@id": "https://tafelaaramersfoort.nl#restaurant",
+      "@id": "https://www.tafelaaramersfoort.nl#restaurant",
     },
   });
 }

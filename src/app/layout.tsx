@@ -22,7 +22,7 @@ const playfairDisplay = Playfair_Display({
   variable: "--font-playfair",
 });
 
-const siteUrl = "https://tafelaaramersfoort.nl";
+const siteUrl = "https://www.tafelaaramersfoort.nl";
 const siteName = "De Tafelaar";
 const siteTitle = "De Tafelaar – Restaurant Amersfoort Centrum";
 const siteDescription =

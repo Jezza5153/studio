@@ -57,9 +57,10 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        // Lunch service is discontinued — keep indexed links useful.
+        // Legacy lunch landing page. Lunch service is running again, so send
+        // the still-indexed URL to the real lunchkaart instead of the diner menu.
         source: "/lunch-amersfoort",
-        destination: "/menu",
+        destination: "/lunch",
         permanent: true,
       },
     ];

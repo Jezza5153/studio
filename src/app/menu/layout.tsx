@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     ],
 };
 
-const SITE_URL = "https://tafelaaramersfoort.nl";
+const SITE_URL = "https://www.tafelaaramersfoort.nl";
 
 function menuJsonLd() {
     const data = {

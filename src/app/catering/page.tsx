@@ -22,7 +22,7 @@ import {
 
 export const dynamic = "force-static";
 
-const SITE_URL = "https://tafelaaramersfoort.nl";
+const SITE_URL = "https://www.tafelaaramersfoort.nl";
 const JEZZA_URL = "https://www.jezzacooks.com";
 
 export const metadata: Metadata = {
