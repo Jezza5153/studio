@@ -12,6 +12,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages: MetadataRoute.Sitemap = [
     { url: `${base}/`, lastModified, priority: 1.0, changeFrequency: "weekly" },
     { url: `${base}/menu`, lastModified, priority: 0.9, changeFrequency: "weekly" },
+    { url: `${base}/lunch`, lastModified, priority: 0.9, changeFrequency: "weekly" },
     { url: `${base}/eten-voor-theater-de-flint`, lastModified, priority: 0.9, changeFrequency: "monthly" },
     { url: `${base}/bourgondisch-eten-amersfoort`, lastModified, priority: 0.8, changeFrequency: "monthly" },
     { url: `${base}/nieuw-restaurant-amersfoort`, lastModified, priority: 0.8, changeFrequency: "monthly" },
