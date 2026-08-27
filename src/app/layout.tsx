@@ -141,7 +141,7 @@ function restaurantJsonLd(rating?: number, reviewCount?: number) {
         name: "Chef's Choice arrangement",
         description:
           "Rijkgevulde tafel met borrelplanken, koude en warme gerechten en dessert. Vanaf 7 personen.",
-        price: "45",
+        price: "48",
         priceCurrency: "EUR",
       },
       {

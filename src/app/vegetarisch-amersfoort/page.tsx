@@ -32,15 +32,15 @@ export const metadata: Metadata = {
 const faqs = [
     {
         question: "Heeft De Tafelaar vegetarische opties?",
-        answer: "Ja, een groot deel van ons menu is vegetarisch (V) of vegan (VG). Elk seizoen staan er meerdere plantaardige gerechten op de kaart.",
+        answer: "Ja, een groot deel van ons menu is vegetarisch — op de kaart herkenbaar aan de groene markering (V). Elk seizoen staan er meerdere plantaardige gerechten op de kaart, waaronder een vegan dessert.",
     },
     {
         question: "Is De Tafelaar volledig vegetarisch?",
-        answer: "Nee, maar we bieden altijd een ruime selectie vegetarische en vegan gerechten. Op onze menukaart staan V (vegetarisch), VG (vegan) en GF (glutenvrij) duidelijk aangegeven.",
+        answer: "Nee, maar we bieden altijd een ruime selectie vegetarische en plantaardige gerechten. Op onze menukaart staat bij elk gerecht de markering: V (vegetarisch), GF (glutenvrij), LF (lactosevrij) en glutenvrij brood mogelijk (+EUR 1,50).",
     },
     {
         question: "Kunnen jullie rekening houden met allergieen?",
-        answer: "Ja, we werken met verse producten en kunnen vrijwel altijd aanpassen. Allergenen staan op de menukaart vermeld. Geef je wensen door bij reservering.",
+        answer: "Ja, we werken met verse producten en kunnen vrijwel altijd aanpassen. Op de kaart staan dieetmarkeringen (vegetarisch, glutenvrij, lactosevrij), maar geen volledige allergenenlijst. Geef je allergie door bij reservering of aan tafel, dan denken we graag met je mee.",
     },
     {
         question: "Hoe werkt vegetarisch shared dining?",
@@ -91,8 +91,8 @@ export default function VegetarischAmersfoortPage() {
                                 </div>
                             </CardHeader>
                             <CardContent className="text-sm text-muted-foreground">
-                                Altijd meerdere vegetarische (V) en vegan (VG) gerechten op de kaart.
-                                Duidelijk aangegeven op het menu.
+                                Altijd meerdere vegetarische gerechten op de kaart.
+                                Duidelijk gemarkeerd met een groene stip.
                             </CardContent>
                         </Card>
 
@@ -140,7 +140,7 @@ export default function VegetarischAmersfoortPage() {
                                 Shared dining is ideaal als je vegetarisch of vegan eet. Je kiest
                                 meerdere kleine gerechten om te delen, waardoor je van alles kunt
                                 proeven. Op onze kaart staan altijd meerdere plantaardige opties —
-                                duidelijk gemarkeerd met V (vegetarisch), VG (vegan) en GF (glutenvrij).
+                                duidelijk gemarkeerd met V (vegetarisch), GF (glutenvrij) en LF (lactosevrij).
                             </p>
                             <p>
                                 Onze keuken werkt met seizoensgebonden groenten van lokale producenten.

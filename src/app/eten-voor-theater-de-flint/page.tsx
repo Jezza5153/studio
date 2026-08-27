@@ -66,7 +66,7 @@ const faqs = [
     },
     {
         question: "Hebben jullie rekening met dieetwensen en allergieën?",
-        answer: "Wij werken met verse, lokale producten en kunnen vrijwel altijd rekening houden met allergieën en dieetwensen. Op de menukaart staan vegetarische (V) en vegan (VG) gerechten duidelijk aangegeven. Vermeld specifieke wensen bij je reservering.",
+        answer: "Wij werken met verse, lokale producten en kunnen vrijwel altijd rekening houden met allergieën en dieetwensen. Op de menukaart staat bij elk gerecht een markering voor vegetarisch, glutenvrij en lactosevrij. Vermeld specifieke wensen bij je reservering.",
     },
     {
         question: "Hoe laat beginnen voorstellingen in Flint meestal?",
