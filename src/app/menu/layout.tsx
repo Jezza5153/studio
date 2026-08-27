@@ -7,13 +7,13 @@ import { ReserveerButton } from "@/components/reserveer-button";
 
 export const metadata: Metadata = {
     title: "Menukaart De Tafelaar | Shared Dining Gerechten Amersfoort",
-    description: "Bekijk de menukaart van De Tafelaar in Amersfoort centrum: shared dining gerechten van €3,50–€15. Kazen, charcuterie, vegetarisch en seizoensgebonden. Kamp 8.",
+    description: "Bekijk de menukaart van De Tafelaar in Amersfoort centrum: shared dining gerechten van €3,50–€15,50. Kazen, charcuterie, vegetarisch en seizoensgebonden. Kamp 8.",
     alternates: {
         canonical: "/menu",
     },
     openGraph: {
         title: "Menukaart De Tafelaar | Shared Dining Gerechten Amersfoort",
-        description: "Bekijk de menukaart van De Tafelaar: shared dining gerechten van €3,50–€15. Kazen, charcuterie, vegetarisch en seizoensgebonden.",
+        description: "Bekijk de menukaart van De Tafelaar: shared dining gerechten van €3,50–€15,50. Kazen, charcuterie, vegetarisch en seizoensgebonden.",
     },
     keywords: [
         "menukaart de tafelaar",
@@ -64,15 +64,15 @@ function menuJsonLd() {
 const menuFaqs = [
     {
         question: "Wat kost een diner bij De Tafelaar?",
-        answer: "De gerechten variëren van €3,50 tot €15. Een compleet Chef's Choice arrangement kost €45 per persoon, optioneel met bijpassend wijnarrangement voor €28. Borrelgerechten beginnen vanaf €3,50.",
+        answer: "De gerechten variëren van €3,50 tot €15,50. Een compleet Chef's Choice arrangement kost €48 per persoon, optioneel met bijpassend wijnarrangement voor €28. Borrelgerechten beginnen vanaf €3,50.",
     },
     {
         question: "Hoeveel gerechten moet ik bestellen bij shared dining?",
         answer: "We adviseren 2 à 3 gerechten per persoon om samen te delen. Of kies ons Chef's Choice arrangement en laat de chef het voor je uitzoeken.",
     },
     {
-        question: "Zijn er vegetarische en vegan opties op het menu?",
-        answer: "Ja, ons menu bevat meerdere vegetarische (V) en vegan (VG) opties, waaronder carpaccio van bieten, bruschetta, Japanse curry met udon noodles, Bao Bun Inari en een vegan Snicker als dessert.",
+        question: "Zijn er vegetarische en glutenvrije opties op het menu?",
+        answer: "Ja, ons menu bevat meerdere vegetarische opties, waaronder bieten carpaccio, bruschetta, miso groententuin, Bao Bun Inari, gevulde eitjes en al onze kazen. Veel gerechten zijn ook glutenvrij of lactosevrij, en glutenvrij brood is mogelijk voor €1,50 extra. Bij elk gerecht staat de markering op de kaart. Als dessert is er de vegan Snicker.",
     },
     {
         question: "Kan ik het menu bekijken voor ik reserveer?",
@@ -84,7 +84,7 @@ const menuFaqs = [
     },
     {
         question: "Serveren jullie ook lunch?",
-        answer: "Ja, overdag hebben we een aparte lunchkaart met verse broodjes (desem of maïsbrood), salades, de Tafelaarsplank om te delen, bao buns en soep. Bekijk de lunchkaart voor het volledige aanbod.",
+        answer: "Ja, van 11:00 tot 15:00 hebben we een aparte lunchkaart met verse broodjes, salades geserveerd met brood, bao buns, een clubsandwich en de Tafelaars Plank om te delen. Vanaf 17:00 gaat de dinerkaart open. Bekijk de lunchkaart voor het volledige aanbod.",
     },
 ];
 
@@ -133,8 +133,8 @@ export default function MenuLayout({
                                 koffie van Boot Koffie uit Baarn.
                             </p>
                             <p>
-                                De kaart wisselt regelmatig met het seizoen. Naast losse gerechten (€3,50–€15) kun
-                                je kiezen voor het Chef&apos;s Choice arrangement (€45 p.p.): een selectie van de
+                                De kaart wisselt regelmatig met het seizoen. Naast losse gerechten (€3,50–€15,50) kun
+                                je kiezen voor het Chef&apos;s Choice arrangement (€48 p.p.): een selectie van de
                                 mooiste gerechten van dat moment, samengesteld door de keuken. Combineer met het
                                 wijnarrangement van Korte Garde (€28 p.p.) voor een complete avond.
                             </p>

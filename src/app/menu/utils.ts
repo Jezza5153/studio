@@ -15,11 +15,21 @@ export function slugify(input: string) {
     return input.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, "-").replace(/(^-|-$)/g, "");
 }
 
-// Dietary tag icons and colors.
+// Dietary markers — these mirror the legend printed on the physical kaart:
+//   groen = vegetarisch · geel = glutenvrij · wit = lactosevrij ·
+//   paars = glutenvrij brood mogelijk (+€1,50)
+//
+// `color` carries the full dot styling (including its ring) because the
+// "Lactosevrij" dot is white and needs a darker ring to stay visible on the
+// light card background — a shared `ring-white/50` would make it disappear.
 export const TAG_CONFIG: Record<string, { label: string; color: string; icon: string }> = {
-    V: { label: "Vegetarisch", color: "bg-green-500", icon: "🌿" },
-    VG: { label: "Vegan", color: "bg-emerald-600", icon: "🌱" },
-    GF: { label: "Glutenvrij", color: "bg-amber-500", icon: "🌾" },
+    V: { label: "Vegetarisch", color: "bg-green-600 ring-1 ring-black/15", icon: "🌿" },
+    GF: { label: "Glutenvrij", color: "bg-amber-400 ring-1 ring-black/15", icon: "🌾" },
+    LF: { label: "Lactosevrij", color: "bg-white ring-1 ring-neutral-400", icon: "🥛" },
+    GFB: { label: "Glutenvrij brood (+€1,50)", color: "bg-purple-500 ring-1 ring-black/15", icon: "🍞" },
+    // Vegan is no longer printed on the lunch/dinerkaart, but the ophalenkaart
+    // still uses it.
+    VG: { label: "Vegan", color: "bg-emerald-600 ring-1 ring-black/15", icon: "🌱" },
 };
 
 // Allergen icons - subtle colored circles.

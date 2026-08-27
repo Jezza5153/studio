@@ -54,7 +54,7 @@ const faqs = [
     },
     {
         question: "Is er ruimte voor groepen na een show?",
-        answer: "Absoluut. We ontvangen graag groepen na de voorstelling. Vanaf 7 personen werken we met een Chef's Choice arrangement (EUR 45 p.p.). Reserveer vooraf en vermeld dat het na Flint is.",
+        answer: "Absoluut. We ontvangen graag groepen na de voorstelling. Vanaf 7 personen werken we met een Chef's Choice arrangement (EUR 48 p.p.). Reserveer vooraf en vermeld dat het na Flint is.",
     },
     {
         question: "Waar kan ik parkeren bij Flint en De Tafelaar?",
@@ -62,7 +62,7 @@ const faqs = [
     },
     {
         question: "Wat kost eten bij De Tafelaar?",
-        answer: "Gerechten varieren van EUR 3,50 tot EUR 15. Reken op gemiddeld EUR 25-35 per persoon voor eten. Ons Chef's Choice arrangement kost EUR 45 p.p., optioneel met bijpassend wijnarrangement voor EUR 28 p.p.",
+        answer: "Gerechten varieren van EUR 3,50 tot EUR 15,50. Reken op gemiddeld EUR 25-35 per persoon voor eten. Ons Chef's Choice arrangement kost EUR 48 p.p., optioneel met bijpassend wijnarrangement voor EUR 28 p.p.",
     },
     {
         question: "Hebben jullie rekening met dieetwensen en allergieën?",

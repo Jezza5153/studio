@@ -93,7 +93,7 @@ export default function OpeningstijdenPage() {
                 De Tafelaar is een shared dining restaurant op de Kamp 8 in Amersfoort centrum. Wij serveren
                 seizoensgebonden gerechten om te delen, met lokale producten van makers uit de regio. Kleine
                 gerechten kosten €3,50–€15, een compleet diner gemiddeld €25–35 per persoon. Voor groepen
-                vanaf 7 personen bieden we het Chef&apos;s Choice arrangement aan (€45 p.p.).
+                vanaf 7 personen bieden we het Chef&apos;s Choice arrangement aan (€48 p.p.).
               </p>
               <p>
                 We liggen op 5 minuten lopen van Theater de Flint — ideaal voor een borrel of diner

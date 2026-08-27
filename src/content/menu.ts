@@ -8,18 +8,24 @@ export type MenuItem = {
   name: string;
   description?: string | null;
   price: number | null;
+  /** Dietary markers, matching the printed kaart legend:
+   *  "V" vegetarisch · "GF" glutenvrij · "LF" lactosevrij ·
+   *  "GFB" glutenvrij brood mogelijk (+€1,50) · "VG" vegan (ophalenkaart only). */
   tags: string[];
-  allergens: string[]; // Gebruik "lactose" i.p.v. "melk"
+  /** Allergen keys — only used by the ophalenkaart. The lunch/dinerkaart follow
+   *  the printed menu, which lists dietary markers instead of allergens; guests
+   *  with an allergy are invited to ask (see the note under each menu). */
+  allergens: string[];
   /** Optional internal grouping key — never rendered publicly. Lets us link
-   *  the lunch + diner version of the same dish (e.g. both "De Klassiekelaar"
-   *  and dinner "Vitello Tonnato" share baseDishKey: "vitello-tonnato").
-   *  Editorial copy / price stay independent. */
+   *  the lunch + diner version of the same dish (e.g. lunch "Carpaccio" broodje
+   *  and dinner "Carpaccio"). Editorial copy / price stay independent. */
   baseDishKey?: string;
   /** Optional inline badge on the row, e.g. "Vanaf 2 personen". */
   badge?: string;
-  /** Optional prefix shown before the price, e.g. "vanaf" for the
-   *  ophalen "Spare Ribs Menu" (vanaf €34,95). */
+  /** Optional prefix shown before the price, e.g. "vanaf". */
   pricePrefix?: string;
+  /** Optional text shown instead of a number, e.g. "M.P." (marktprijs). */
+  priceText?: string;
   /** When true, the row renders muted with a "Tijdelijk niet leverbaar"
    *  note in place of the price. Used for sold-out ophalen items. */
   unavailable?: boolean;
@@ -29,7 +35,7 @@ export type MenuCategory = {
   name: string;
   items: MenuItem[];
   /** Optional sub-heading shown beneath the category title
-   *  (e.g. Broodjes: "Broodkeuze: desembrood of maïsbrood"). */
+   *  (e.g. Salades: "Geserveerd met brood"). */
   note?: string;
 };
 
@@ -37,11 +43,24 @@ export type MenuData = {
   title: string;
   currency: string;
   categories: MenuCategory[];
+  /** Optional service-time line, e.g. "Diner vanaf 17:00". */
+  serviceNote?: string;
 };
 
+// =========================================================================
+// DINERKAART — vanaf 17:00
+// =========================================================================
+// Source: printed kaart (Het Concept / Arrangementen / Kazen / Charcuterie /
+// Borrel / Koud / Klassiekers / Warm / Desserts).
+//
+// Dietary markers come straight from the printed legend:
+//   V = vegetarisch · GF = glutenvrij · LF = lactosevrij ·
+//   GFB = glutenvrij brood mogelijk (+€1,50)
+// =========================================================================
 export const DINNER_MENU: MenuData = {
   title: "Dinerkaart",
   currency: "EUR",
+  serviceNote: "Diner vanaf 17:00",
   categories: [
     // 1) ARRANGEMENTEN
     {
@@ -49,21 +68,22 @@ export const DINNER_MENU: MenuData = {
       items: [
         {
           name: "Lekker Borrelen",
-          description: "Een leuk charcuterie- en kaasplankje (p.p.)",
+          description: "Een leuk charcuterie- en kaasplankje. Minimaal 2 personen (p.p.)",
           price: 12.5,
           tags: [],
-          allergens: ["lactose", "gluten", "noten"],
+          allergens: [],
+          badge: "Vanaf 2 personen",
         },
         {
-          name: "Chef’s Choice",
+          name: "Chef's Choice",
           description: "Uitgebreid genieten",
-          price: 45,
+          price: 48,
           tags: [],
           allergens: [],
         },
         {
           name: "Bijpassend wijnarrangement",
-          description: "Bij Chef’s Choice",
+          description: null,
           price: 28,
           tags: [],
           allergens: [],
@@ -71,84 +91,88 @@ export const DINNER_MENU: MenuData = {
       ],
     },
 
-    // 2) KAZEN
+    // 2) KAZEN — beschikbaar hele dag
     {
       name: "Kazen",
+      note: "Beschikbaar hele dag",
       items: [
         {
           name: "Geitenbrie",
           description: "Vijgenchutney · Sfoglie",
           price: 7,
           tags: ["V"],
-          allergens: ["lactose", "gluten"],
+          allergens: [],
         },
         {
-          name: "Hoeve Goud Intens",
+          name: "Brokkel Kaas",
           description: "Biermosterd · Dadelbrood",
           price: 7.5,
           tags: ["V"],
-          allergens: ["lactose", "gluten", "noten"],
+          allergens: [],
         },
         {
           name: "Oudwijker Fiore",
-          description: "Biermosterd · Dadelbrood",
+          description: "Vijgenchutney · Sfoglie",
           price: 8.5,
           tags: ["V"],
-          allergens: ["lactose", "gluten", "mosterd"],
+          allergens: [],
+          baseDishKey: "fiore",
         },
         {
-          name: "Manchego",
-          description: "Geroosterde notenmix · Biermosterd",
-          price: 9,
+          name: "Jan zijn kaasje",
+          description: "Wisselende kaas met bijpassende garnituren",
+          price: 8,
           tags: ["V"],
-          allergens: ["lactose", "noten", "mosterd"],
+          allergens: [],
         },
         {
-          name: "Arcadia Blauw",
-          description: "Vijgencompote · Sfoglie",
+          name: "Chefs Blauwtje",
+          description: "Wisselende kaas met bijpassende garnituren",
           price: 8.5,
           tags: ["V"],
-          allergens: ["lactose", "gluten"],
+          allergens: [],
         },
       ],
     },
 
-    // 3) CHARCUTERIE
+    // 3) CHARCUTERIE — beschikbaar hele dag
     {
       name: "Charcuterie",
+      note: "Beschikbaar hele dag",
       items: [
         {
-          name: "Veluwnaartje",
-          description: "Biologisch rundvlees · Kesbeke smuluitjes",
-          price: 7,
-          tags: [],
-          allergens: [],
-        },
-        {
           name: "Venkelworstje",
-          description: "Biologisch rundvlees · Kesbeke cornichon",
+          description: "Biologisch rundvlees · Kesbeke Zuur",
           price: 7,
-          tags: [],
+          tags: ["GF", "LF"],
           allergens: [],
         },
         {
-          name: "Serrano ham",
-          description: "Handgesneden · Geconfijte knoflook · Croutons",
+          name: "Serrano Ham",
+          description: "Geconfijte knoflook · Croutons",
           price: 8,
-          tags: [],
-          allergens: ["gluten"],
-        },
-        {
-          name: "Peperworstje",
-          description: "Biologisch rundvlees · Kesbeke cornichon",
-          price: 7,
-          tags: [],
+          tags: ["LF", "GFB"],
           allergens: [],
         },
         {
-          name: "Gedroogde Twentse Worst",
-          description: "Kesbeke cornichon",
-          price: 6.5,
+          name: "Peper Fuet",
+          description: "Varkensvlees · Kesbeke Zuur",
+          price: 7,
+          tags: ["GF", "LF"],
+          allergens: [],
+        },
+        {
+          name: "Truffel Fuet",
+          description: "Kesbeke Zuur",
+          price: 8.5,
+          tags: ["GF", "LF"],
+          allergens: [],
+        },
+        {
+          name: "Chefs favorietje",
+          description: "Vraag de bediening voor meer informatie",
+          price: null,
+          priceText: "M.P.",
           tags: [],
           allergens: [],
         },
@@ -163,22 +187,22 @@ export const DINNER_MENU: MenuData = {
           name: "Peppadews",
           description: "Gevulde pepertjes met roomkaas",
           price: 6.5,
-          tags: ["V"],
-          allergens: ["lactose"],
+          tags: ["V", "GF"],
+          allergens: [],
         },
         {
           name: "Olijven",
-          description: "In De Tafelaar kruidenmix",
+          description: "In De Tafelaars kruidenmix",
           price: 4.5,
-          tags: ["VG"],
+          tags: ["V", "GF", "LF"],
           allergens: [],
         },
         {
           name: "Gerookte Notenmix",
-          description: "Huisgemaakte notenmix",
+          description: null,
           price: 3.5,
-          tags: ["VG"],
-          allergens: ["noten"],
+          tags: ["V", "LF"],
+          allergens: [],
         },
       ],
     },
@@ -188,32 +212,34 @@ export const DINNER_MENU: MenuData = {
       name: "Koud",
       items: [
         {
-          name: "Carpaccio van Bieten",
+          name: "Miso Zalm",
+          description: "Kokos dressing · Krokantje · Nori",
+          price: 15.5,
+          tags: ["LF", "GF"],
+          allergens: [],
+          baseDishKey: "zalm",
+        },
+        {
+          name: "Bieten Carpaccio",
           description: "Geitenkaas · Walnoot · Honing",
-          price: 9,
-          tags: ["V"],
-          allergens: ["lactose", "noten"],
-        },
-        {
-          name: "Bruschetta",
-          description: "Knoflook · Olijfolie · Tomaat · 3 stuks (+1 €3)",
-          price: 9,
-          tags: ["VG"],
-          allergens: ["gluten"],
-        },
-        {
-          name: "Gevulde Eitjes",
-          description: "Mayonaise · Bieslook · 3 stuks (+1 €2,50)",
-          price: 7.5,
-          tags: ["V"],
-          allergens: ["ei", "ui"],
+          price: 10.5,
+          tags: ["V", "GF"],
+          allergens: [],
         },
         {
           name: "Broodplankje",
-          description: "Met wisselende dips",
-          price: 6.5,
-          tags: [],
+          description: "Met verschillende dips",
+          price: 7.5,
+          tags: ["V", "GFB"],
           allergens: [],
+        },
+        {
+          name: "Watermeloen",
+          description: "Munt · Citroen · Feta",
+          price: 13,
+          tags: ["V", "GF"],
+          allergens: [],
+          baseDishKey: "watermeloen",
         },
       ],
     },
@@ -223,141 +249,140 @@ export const DINNER_MENU: MenuData = {
       name: "Klassiekers",
       items: [
         {
-          name: "Vitello Tonnato",
-          description: "Biologisch kalfsvlees · Tonijnmayonaise · Kappertjes",
-          price: 12.5,
-          tags: [],
-          allergens: ["vis", "ei"],
+          name: "Gevulde Eitjes",
+          description: "Mayonaise · Bieslook · 3 stuks",
+          price: 7.5,
+          tags: ["V", "GF", "LF"],
+          allergens: [],
         },
         {
           name: "Carpaccio",
-          description: "Biologisch rundvlees · Truffelmayonaise · Parmezaan",
+          description: "Biologisch rundvlees · Structuren van eigeel · Truffel",
           price: 12.5,
-          tags: [],
-          allergens: ["lactose", "ei"],
+          tags: ["GF", "LF"],
+          allergens: [],
+          baseDishKey: "carpaccio",
         },
         {
-          name: "Gerookte Zalm",
-          description: "Citroen · Dille · Komkommer",
-          price: 11.5,
-          tags: [],
-          allergens: ["vis"],
+          name: "Vitello Tonnato",
+          description: "Biologisch kalfsvlees · Tonijnmayonaise · Kappertjes",
+          price: 12.5,
+          tags: ["LF", "GF"],
+          allergens: [],
+          baseDishKey: "vitello",
+        },
+        {
+          name: "Bruschetta",
+          description:
+            "Knoflook · Olijfolie · Tomaat · 3 stuks (1 extra €3). Met serrano €1,50 per stuk",
+          price: 9,
+          tags: ["V", "LF", "GFB"],
+          allergens: [],
         },
       ],
     },
 
-    // 7) WARM (8)
+    // 7) WARM
     {
       name: "Warm",
       items: [
         {
+          name: "Spare Ribs",
+          description: "Van het bot vallend · Sweet & Spicy",
+          price: 13.5,
+          tags: ["LF", "GF"],
+          allergens: [],
+          baseDishKey: "spare-ribs",
+        },
+        {
+          name: "Runderballetjes",
+          description: "Biologisch rund · Gremolata · Tomatensaus",
+          price: 11,
+          tags: [],
+          allergens: [],
+          baseDishKey: "gehaktballetjes",
+        },
+        {
+          name: "Miso Groententuin",
+          description: "Munt · Doperwten · Miso · Mediterrane groenten",
+          price: 11.5,
+          tags: ["V", "LF"],
+          allergens: [],
+        },
+        {
           name: "Ossobuco",
-          description: "Polenta · Gremolata",
-          price: 12.5,
+          description: "Polenta · Gremolata · Demi Glace",
+          price: 13.5,
           tags: [],
-          allergens: ["lactose"],
-        },
-        {
-          name: "Japanse curry",
-          description: "Seizoensgroente · Curry · Udon noodles",
-          price: 11.5,
-          tags: ["VG"],
-          allergens: ["gluten", "soja"],
-        },
-        {
-          name: "Bao Bun Pulled Pork",
-          description: "Bao · Pulled pork · Sriracha mayonaise · 3 stuks (+1 €3,75)",
-          price: 11.5,
-          tags: [],
-          allergens: ["gluten", "soja", "ei"],
+          allergens: [],
         },
         {
           name: "Bao Bun Inari",
-          description: "Bao · Inari · Sriracha mayonaise · 3 stuks (+1 €3,75)",
-          price: 11.5,
-          tags: ["V"],
-          allergens: ["gluten", "soja", "ei"],
+          description: "Sriracha mayonaise · Bosui",
+          price: 12.5,
+          tags: ["V", "LF"],
+          allergens: [],
+          baseDishKey: "bao-inari",
         },
         {
-          name: "Kippenvleugels",
-          description: "Sticky wings · Knoflook crumble",
-          price: 10.5,
+          name: "Bao Bun Pulled Pork",
+          description: "Sriracha mayonaise · Bosui",
+          price: 12.5,
+          tags: ["LF"],
+          allergens: [],
+          baseDishKey: "bao-pulled-pork",
+        },
+        {
+          name: "Japanse Curry",
+          description: "Seizoensgroente · Udon noodles",
+          price: 11.5,
           tags: [],
           allergens: [],
-        },
-        {
-          name: "Spare Ribs",
-          description: "Van het bot vallend · Sweet and Spicy",
-          price: 11.5,
-          tags: [],
-          allergens: [],
-        },
-        {
-          name: "Gehaktballetjes",
-          description: "Biologisch kalfsvlees · Parmezaan · Tomatensaus",
-          price: 9.5,
-          tags: [],
-          allergens: ["gluten", "ei"],
-        },
-        {
-          name: "Gehackte balletjes",
-          description: "Van De Vegetarische Slager · Tomatensaus",
-          price: 9.5,
-          tags: ["V"],
-          allergens: ["gluten", "soja"],
         },
       ],
     },
 
-    // 8) DESSERT (6)
+    // 8) DESSERTS
     {
-      name: "Dessert",
+      name: "Desserts",
       items: [
         {
-          name: "Dame Blanche",
-          description: "Warme chocolade · vanille-ijs · slagroom",
-          price: 7.5,
-          tags: ["V"],
-          allergens: ["lactose"],
-          baseDishKey: "dame-blanche",
-        },
-        {
           name: "Parfait",
-          description: "Vanille · salted caramel",
-          price: 7.5,
-          tags: ["V"],
-          allergens: ["lactose", "ei"],
+          description: "Smaak van de week",
+          price: 8.5,
+          tags: ["V", "GF"],
+          allergens: [],
           baseDishKey: "parfait",
         },
         {
-          name: "Dessertje van de week",
-          description: "Vraag de bediening voor meer informatie",
-          price: 7.5,
-          tags: [],
-          allergens: ["lactose", "noten", "gluten"],
-          baseDishKey: "dessertje-van-de-week",
+          name: "Dame Blanche",
+          description: "Warme chocolade · Vanille-ijs · Slagroom",
+          price: 8.5,
+          tags: ["V", "GF"],
+          allergens: [],
+          baseDishKey: "dame-blanche",
         },
         {
           name: "Snicker",
           description: "Snicker, maar dan vegan.",
-          price: 7.5,
-          tags: ["VG"],
-          allergens: ["pinda", "noten"],
+          price: 8.5,
+          tags: ["V", "GF", "LF"],
+          allergens: [],
           baseDishKey: "snicker",
         },
         {
-          name: "Extra",
-          description: "Keuze uit vanille-ijs of citroensorbet",
-          price: 2,
+          name: "Local Dessert",
+          description: "Vraag de bediening voor meer informatie",
+          price: 9,
           tags: ["V"],
-          allergens: ["lactose"],
+          allergens: [],
         },
         {
           name: "Kaasplankje",
           description: "Selectie van 3 verschillende kazen",
           price: 15,
-          tags: [],
-          allergens: ["lactose", "gluten", "ei", "noten"],
+          tags: ["V"],
+          allergens: [],
           baseDishKey: "kaasplankje",
         },
       ],
@@ -583,224 +608,207 @@ export const OPHALEN_MENU: MenuData = {
 };
 
 // =========================================================================
-// LUNCHKAART
+// LUNCHKAART — 11:00 tot 15:00
 // =========================================================================
-// Source: printed Lunchkaart (Broodjes / Salades / Om Te Delen / Iets Warms /
-// Desserts). Served during lunch hours; see /lunch. Several dishes share a
-// baseDishKey with their dinner equivalents (carpaccio, vitello, zalm, biet,
-// bao buns, desserts) but stay independently editable — lunch portions, bread
-// choice and pricing differ from diner.
+// Source: printed Lunchkaart (Shared Lunch / Broodjes / Salades / Warm /
+// Zoete Hapjes). Kazen en charcuterie zijn de hele dag beschikbaar en staan
+// op de dinerkaart.
 //
-// TODO(owner-confirm): Allergen and dietary tags below are conservative
-// guesses inferred from the matching dinner items and standard ingredients.
-// Walk the list with the chef and confirm before the page is shown to guests
-// with allergies — wrong allergen info is worse than missing info.
+// Dietary markers come straight from the printed legend:
+//   V = vegetarisch · GF = glutenvrij · LF = lactosevrij ·
+//   GFB = glutenvrij brood mogelijk (+€1,50)
 // =========================================================================
 export const LUNCH_MENU: MenuData = {
   title: "Lunchkaart",
   currency: "EUR",
+  serviceNote: "Lunch van 11:00 tot 15:00",
   categories: [
-    // 1) BROODJES
+    // 1) SHARED LUNCH
     {
-      name: "Broodjes",
-      note: "Broodkeuze: desembrood of maïsbrood",
+      name: "Shared Lunch",
       items: [
         {
-          name: "De Rauwe Tafelaar",
-          description: "Carpaccio · parmezaan · truffelmayonaise · rucola",
-          price: 15,
+          name: "Tafelaars Plank",
+          description:
+            "Een plank met diverse lunchgerechtjes, broodjes, salade en warme hapjes.",
+          price: 19.5,
           tags: [],
-          allergens: ["gluten", "lactose", "ei"],
-          baseDishKey: "carpaccio",
-        },
-        {
-          name: "De Klassiekelaar",
-          description: "Vitello tonnato · kalfsvlees · tonijnmayo · kappertjes · rucola",
-          price: 15,
-          tags: [],
-          allergens: ["gluten", "vis", "ei"],
-          baseDishKey: "vitello-tonnato",
-        },
-        {
-          name: "De Hengelaar",
-          description: "Gerookte zalm · komkommer · dille en nori-mayonaise",
-          price: 15,
-          tags: [],
-          allergens: ["gluten", "vis", "ei"],
-          baseDishKey: "gerookte-zalm",
-        },
-        {
-          name: "De Bietelaar",
-          description: "Rode biet · geitenkaas · honing · walnoot en appel",
-          price: 14,
-          tags: ["V"],
-          allergens: ["gluten", "lactose", "noten"],
-          baseDishKey: "biet-geitenkaas",
-        },
-        {
-          name: "De Kaaskop",
-          description: "Oude kaas met biermosterd",
-          price: 13.5,
-          tags: ["V"],
-          allergens: ["gluten", "lactose", "mosterd"],
-        },
-        {
-          name: "De Oudwijkenaar",
-          description: "Fiore kaas · huisgemaakte vijgenchutney · balsamico · rucola",
-          price: 15,
-          tags: ["V"],
-          allergens: ["gluten", "lactose"],
-          baseDishKey: "fiore-vijgen",
-        },
-      ],
-    },
-
-    // 2) SALADES
-    {
-      name: "Salades",
-      items: [
-        {
-          name: "Mediterrane Salade",
-          description: "Olijven · cherrytomaatjes en rucola",
-          price: 16,
-          tags: ["VG", "GF"],
           allergens: [],
-        },
-        {
-          name: "De Rauwe Tafelaar",
-          description: "Carpaccio · parmezaan · truffelmayonaise · pijnboompitten en little gems",
-          price: 15,
-          tags: ["GF"],
-          allergens: ["lactose", "ei", "noten"],
-          baseDishKey: "carpaccio",
-        },
-        {
-          name: "De Klassiekelaar",
-          description: "Vitello tonnato met kalfsvlees · tonijnmayonaise · kappertjes · little gems",
-          price: 15,
-          tags: ["GF"],
-          allergens: ["vis", "ei"],
-          baseDishKey: "vitello-tonnato",
-        },
-        {
-          name: "De Hengelaar",
-          description: "Gerookte zalm · gemarineerde komkommer · dille · nori-mayo · little gems",
-          price: 15,
-          tags: ["GF"],
-          allergens: ["vis", "ei"],
-          baseDishKey: "gerookte-zalm",
-        },
-        {
-          name: "De Bietelaar",
-          description: "Rode biet · geitenkaas · honing · walnoot · appel · little gems",
-          price: 14,
-          tags: ["V", "GF"],
-          allergens: ["lactose", "noten"],
-          baseDishKey: "biet-geitenkaas",
-        },
-      ],
-    },
-
-    // 3) OM TE DELEN
-    {
-      name: "Om Te Delen",
-      items: [
-        {
-          name: "De Echte Tafelaarsplank",
-          description: "Een plank met lunchgerechtjes, broodjes, salade en warme hapjes.",
-          price: 18.5,
-          tags: [],
-          allergens: ["gluten", "lactose", "ei", "vis", "noten"],
           badge: "Vanaf 2 personen",
         },
       ],
     },
 
-    // 4) IETS WARMS
+    // 2) BROODJES
     {
-      name: "Iets Warms",
+      name: "Broodjes",
       items: [
         {
-          name: "Seizoenssoep",
-          description: "Soep van het seizoen met toast",
-          price: 8.5,
-          tags: [],
-          allergens: ["gluten"],
+          name: "Carpaccio",
+          description: "Truffel · Eigeel gel · Smokey prei emulsie",
+          price: 15.5,
+          tags: ["LF", "GFB"],
+          allergens: [],
+          baseDishKey: "carpaccio",
         },
         {
-          name: "Bao Buns Pulled Pork",
-          description: "Pulled pork · gepekelde wortels · sriracha mayo",
-          price: 15,
-          tags: [],
-          allergens: ["gluten", "soja", "ei"],
-          baseDishKey: "bao-pulled-pork",
+          name: "Zalm",
+          description: "Citroen · Radijs · Kapperappel",
+          price: 15.5,
+          tags: ["LF", "GFB"],
+          allergens: [],
+          baseDishKey: "zalm",
         },
         {
-          name: "Bao Buns Inari",
-          description: "Inari · gepekelde wortels · sriracha mayo",
-          price: 15,
-          tags: ["V"],
-          allergens: ["gluten", "soja", "ei"],
-          baseDishKey: "bao-inari",
+          name: "Clubsandwich",
+          description: "Kip · Bacon · Ei · Tomaat · Chips",
+          price: 17.5,
+          tags: ["LF", "GFB"],
+          allergens: [],
         },
         {
-          name: "De Hollander",
-          description: "Gehaktballetje in tomatensaus",
-          price: 14.5,
-          tags: [],
-          allergens: ["gluten", "ei"],
-          baseDishKey: "gehaktballetje",
+          name: "Ricotta Home Made",
+          description:
+            "Biologische ricotta · Tomaat · Serrano · Balsamico · Olijfolie",
+          price: 16.5,
+          tags: ["GFB"],
+          allergens: [],
+        },
+        {
+          name: "Vitello",
+          description: "Biologisch kalfsvlees · Tonijnmayo · Rucola",
+          price: 15.5,
+          tags: ["LF", "GFB"],
+          allergens: [],
+          baseDishKey: "vitello",
+        },
+        {
+          name: "Oudwijkenaar",
+          description: "Fiore kaas · Vijgenchutney · Balsamico",
+          price: 15.5,
+          tags: ["GFB"],
+          allergens: [],
+          baseDishKey: "fiore",
         },
       ],
     },
 
-    // 5) DESSERTS
+    // 3) SALADES
     {
-      name: "Desserts",
+      name: "Salades",
+      note: "Geserveerd met brood",
       items: [
         {
-          name: "Dame Blanche",
-          description: "Warme chocolade · vanille ijs · slagroom",
-          price: 7.5,
+          name: "Watermeloen",
+          description: "Feta · Munt · Limoen",
+          price: 15.5,
+          tags: ["V", "GFB"],
+          allergens: [],
+          baseDishKey: "watermeloen",
+        },
+        {
+          name: "Mediteraan",
+          description: "Olijven · Tomaten",
+          price: 15.5,
+          tags: ["V", "LF", "GFB"],
+          allergens: [],
+        },
+        {
+          name: "Carpaccio",
+          description:
+            "Biologisch rundvlees · Rucola · Little gem · Smokey prei mayo · Pijnboompitten",
+          price: 15.5,
+          tags: ["LF", "GFB"],
+          allergens: [],
+          baseDishKey: "carpaccio",
+        },
+        {
+          name: "Vitello",
+          description:
+            "Biologisch kalfsvlees · Little gem · Kappertjes · Tonijnmayo",
+          price: 15.5,
+          tags: ["GFB"],
+          allergens: [],
+          baseDishKey: "vitello",
+        },
+      ],
+    },
+
+    // 4) WARM
+    {
+      name: "Warm",
+      items: [
+        {
+          name: "Bao Buns Pulled Pork",
+          description: "Gepekelde wortel · Sriracha mayo",
+          price: 16.5,
+          tags: ["LF"],
+          allergens: [],
+          baseDishKey: "bao-pulled-pork",
+        },
+        {
+          name: "Bao Buns Inari",
+          description: "Gepekelde wortel · Sriracha mayo",
+          price: 16.5,
+          tags: ["V", "LF"],
+          allergens: [],
+          baseDishKey: "bao-inari",
+        },
+        {
+          name: "Gehaktballetjes",
+          description: "Biologisch rund · Brood · Tomatensaus",
+          price: 15.5,
+          tags: ["LF"],
+          allergens: [],
+          baseDishKey: "gehaktballetjes",
+        },
+      ],
+    },
+
+    // 5) ZOETE HAPJES
+    {
+      name: "Zoete Hapjes",
+      items: [
+        {
+          name: "Appel Taartje",
+          description: "Met slagroom €0,50 · Bol ijs €2",
+          price: 6,
           tags: ["V"],
-          allergens: ["lactose"],
-          baseDishKey: "dame-blanche",
+          allergens: [],
         },
         {
           name: "Parfait",
-          description: "Vanille · salted caramel",
-          price: 7.5,
-          tags: ["V"],
-          allergens: ["lactose", "ei"],
+          description: "Smaak van de week",
+          price: 8.5,
+          tags: ["V", "GF"],
+          allergens: [],
           baseDishKey: "parfait",
         },
         {
-          name: "Dessertje van de Week",
-          description: "Vraag de bediening voor meer informatie",
-          price: 7.5,
-          tags: [],
-          allergens: ["lactose", "noten", "gluten"],
-          baseDishKey: "dessertje-van-de-week",
-        },
-        {
-          name: "Snicker",
-          description: "Snicker, maar dan vegan",
-          price: 7.5,
-          tags: ["VG"],
-          allergens: ["pinda", "noten"],
-          baseDishKey: "snicker",
+          name: "Dame Blanche",
+          description: "Warme chocoladesaus · Slagroom",
+          price: 8.5,
+          tags: ["V", "GF"],
+          allergens: [],
+          baseDishKey: "dame-blanche",
         },
         {
           name: "Kaasplankje",
-          description: "Selectie van 3 verschillende kazen",
-          price: 7.5,
+          description: "Verschillende kaasjes",
+          price: 15,
           tags: ["V"],
-          allergens: ["lactose", "gluten", "noten"],
+          allergens: [],
           baseDishKey: "kaasplankje",
+        },
+        {
+          name: "Snicker",
+          description: "Snicker, maar dan vegan.",
+          price: 8.5,
+          tags: ["V", "GF", "LF"],
+          allergens: [],
+          baseDishKey: "snicker",
         },
       ],
     },
   ],
 };
-
-

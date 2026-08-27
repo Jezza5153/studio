@@ -84,7 +84,7 @@ export const homeContent = {
   howItWorks: {
     title: "Hoe werkt shared dining bij De Tafelaar?",
     description:
-      "Bij shared dining bestel je meerdere kleine gerechten die je deelt met je tafelgenoten. Kies uit kazen, charcuterie, koude en warme gerechten en desserts — allemaal bereid met seizoensgebonden, lokale producten. We adviseren 2 à 3 gerechten per persoon om samen te delen. Geen keuze kunnen maken? Het Chef's Choice arrangement (€45 p.p.) laat de keuken voor je kiezen, met optioneel een bijpassend wijnarrangement van Korte Garde voor €28 p.p. Ons team helpt je graag bij het samenstellen van jullie tafel.",
+      "Bij shared dining bestel je meerdere kleine gerechten die je deelt met je tafelgenoten. Kies uit kazen, charcuterie, koude en warme gerechten en desserts — allemaal bereid met seizoensgebonden, lokale producten. We adviseren 2 à 3 gerechten per persoon om samen te delen. Geen keuze kunnen maken? Het Chef's Choice arrangement (€48 p.p.) laat de keuken voor je kiezen, met optioneel een bijpassend wijnarrangement van Korte Garde voor €28 p.p. Ons team helpt je graag bij het samenstellen van jullie tafel.",
   },
 
   // REPLACED seasonalTeaser -> story (your new text)

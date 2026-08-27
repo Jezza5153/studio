@@ -37,7 +37,7 @@ const faqs = [
     },
     {
         question: "Hoeveel kost uit eten bij De Tafelaar?",
-        answer: "Reken op EUR 25-35 per persoon. Voor een complete avond is er het Chef's Choice arrangement voor EUR 45 p.p., eventueel met een bijpassend wijnarrangement voor EUR 28 p.p.",
+        answer: "Reken op EUR 25-35 per persoon. Voor een complete avond is er het Chef's Choice arrangement voor EUR 48 p.p., eventueel met een bijpassend wijnarrangement voor EUR 28 p.p.",
     },
     {
         question: "Moet ik reserveren bij De Tafelaar?",

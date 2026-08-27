@@ -104,7 +104,7 @@ export default function OphalenPage() {
                                             if (!config) return null;
                                             return (
                                                 <div key={tag} className="flex items-center gap-1.5">
-                                                    <span className={`w-3 h-3 rounded-full ${config.color} ring-1 ring-white/50`} />
+                                                    <span className={`w-3 h-3 rounded-full ${config.color}`} />
                                                     <span className="text-sm text-muted-foreground">{config.label}</span>
                                                 </div>
                                             );

@@ -40,7 +40,7 @@ const faqs = [
     },
     {
         question: "Hoeveel kost eten bij het best beoordeelde restaurant in Amersfoort?",
-        answer: "Bij De Tafelaar reken je op EUR 25-35 per persoon voor een compleet shared dining diner. Gerechten variëren van EUR 3,50 tot EUR 15. Er is ook een Chef's Choice arrangement voor EUR 45 p.p., met optioneel wijnarrangement voor EUR 28 p.p.",
+        answer: "Bij De Tafelaar reken je op EUR 25-35 per persoon voor een compleet shared dining diner. Gerechten variëren van EUR 3,50 tot EUR 15,50. Er is ook een Chef's Choice arrangement voor EUR 48 p.p., met optioneel wijnarrangement voor EUR 28 p.p.",
     },
     {
         question: "Moet ik reserveren bij De Tafelaar?",
@@ -168,7 +168,7 @@ export default function BesteRestaurantAmersfoortPage() {
                             meteen thuis.
                         </p>
                         <p>
-                            Gerechten variëren van EUR 3,50 tot EUR 15. Reken op EUR 25-35 per persoon
+                            Gerechten variëren van EUR 3,50 tot EUR 15,50. Reken op EUR 25-35 per persoon
                             voor een compleet diner. Woensdag t/m zondag geopend.
                         </p>
                     </div>

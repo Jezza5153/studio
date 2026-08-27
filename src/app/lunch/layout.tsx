@@ -8,14 +8,14 @@ import { ReserveerButton } from "@/components/reserveer-button";
 export const metadata: Metadata = {
     title: "Lunchkaart De Tafelaar | Lunch in Amersfoort Centrum",
     description:
-        "Lunchen bij De Tafelaar op Kamp 8 in Amersfoort centrum: verse broodjes (desem of maïsbrood), salades, de Tafelaarsplank om te delen, bao buns en soep. Bekijk de lunchkaart.",
+        "Lunchen bij De Tafelaar op Kamp 8 in Amersfoort centrum, 11:00–15:00: verse broodjes, salades met brood, bao buns, clubsandwich en de Tafelaars Plank om te delen. Bekijk de lunchkaart.",
     alternates: {
         canonical: "/lunch",
     },
     openGraph: {
         title: "Lunchkaart De Tafelaar | Lunch in Amersfoort Centrum",
         description:
-            "Verse broodjes, salades, gerechten om te delen en iets warms. Lunchen bij De Tafelaar op Kamp 8 in Amersfoort centrum.",
+            "Verse broodjes, salades met brood, bao buns en gerechten om te delen. Lunchen bij De Tafelaar op Kamp 8 in Amersfoort centrum, 11:00–15:00.",
     },
     keywords: [
         "lunch amersfoort",
@@ -37,7 +37,7 @@ function menuJsonLd() {
         "@id": `${SITE_URL}/lunch#menu`,
         name: LUNCH_MENU.title,
         description:
-            "Lunchkaart van De Tafelaar — verse broodjes, salades, gerechten om te delen, warme gerechten en desserts in Amersfoort centrum.",
+            "Lunchkaart van De Tafelaar — verse broodjes, salades met brood, bao buns, de Tafelaars Plank om te delen en zoete hapjes. Geserveerd van 11:00 tot 15:00 in Amersfoort centrum.",
         url: `${SITE_URL}/lunch`,
         hasMenuSection: LUNCH_MENU.categories.map((category) => ({
             "@type": "MenuSection",
@@ -72,22 +72,22 @@ const lunchFaqs = [
     {
         question: "Wat staat er op de lunchkaart van De Tafelaar?",
         answer:
-            "De lunchkaart bevat broodjes met keuze uit desembrood of maïsbrood (€13,50–€15) — met carpaccio, vitello tonnato, gerookte zalm, rode biet met geitenkaas, oude kaas of Fiore kaas. Daarnaast salades (€14–€16), de Echte Tafelaarsplank om te delen (€18,50 vanaf 2 personen), warme gerechten zoals seizoenssoep, bao buns en gehaktballetje, en desserts (€7,50).",
+            "De lunchkaart bevat broodjes (€15,50–€17,50) met carpaccio, zalm, clubsandwich, huisgemaakte ricotta, vitello of Fiore kaas. Daarnaast salades geserveerd met brood (€15,50) met watermeloen, mediterraan, carpaccio of vitello, warme gerechten zoals bao buns en gehaktballetjes (€15,50–€16,50), de Tafelaars Plank om te delen (€19,50 vanaf 2 personen) en zoete hapjes vanaf €6.",
     },
     {
-        question: "Wanneer kan ik lunchen bij De Tafelaar?",
+        question: "Hoe laat wordt de lunch geserveerd?",
         answer:
-            "De lunchkaart wordt geserveerd zodra we op vrijdag, zaterdag en zondag om 11:00 open gaan op Kamp 8 in Amersfoort centrum. Op vrijdag en zaterdag zijn we tot laat open, op zondag tot 23:00. Op woensdag en donderdag openen we om 17:00 voor diner.",
+            "De lunchkaart serveren we van 11:00 tot 15:00 op Kamp 8 in Amersfoort centrum. Vanaf 17:00 gaat de dinerkaart open. Kazen en charcuterie zijn de hele dag beschikbaar.",
     },
     {
-        question: "Zijn er vegetarische en vegan lunchopties?",
+        question: "Zijn er vegetarische en glutenvrije lunchopties?",
         answer:
-            "Ja. De Bietelaar (rode biet, geitenkaas), De Kaaskop, De Oudwijkenaar en De Mediterrane Salade zijn vegetarisch (V), de Mediterrane Salade is zelfs vegan (VG), en als dessert is er de vegan Snicker. Veel salades zijn glutenvrij (GF).",
+            "Ja. De salades watermeloen en mediterraan zijn vegetarisch, net als de Bao Buns Inari en alle zoete hapjes. Bij vrijwel elk broodje is glutenvrij brood mogelijk voor €1,50 extra, en meerdere gerechten zijn lactosevrij of glutenvrij — de markering staat bij elk gerecht op de kaart.",
     },
     {
         question: "Kan ik met een groep komen lunchen?",
         answer:
-            "Zeker. De Echte Tafelaarsplank (vanaf 2 personen) is ideaal om samen te delen. Voor grotere groepen kijk je op onze pagina Verhuur en Groepen of neem je contact met ons op.",
+            "Zeker. De Tafelaars Plank (vanaf 2 personen, €19,50 p.p.) met diverse lunchgerechtjes, broodjes, salade en warme hapjes is ideaal om samen te delen. Voor grotere groepen kijk je op onze pagina Verhuur en Groepen of neem je contact met ons op.",
     },
 ];
 
@@ -129,15 +129,17 @@ export default function LunchLayout({
                     <Card className="rounded-2xl border p-6 sm:p-8">
                         <div className="space-y-4 text-muted-foreground">
                             <p>
-                                Overdag draait De Tafelaar om een ontspannen lunch: verse broodjes met keuze
-                                uit desembrood of maïsbrood, frisse salades met little gems, en warme
-                                gerechten zoals seizoenssoep en bao buns. Alles wordt gemaakt met
-                                seizoensgebonden ingrediënten van lokale producenten uit de regio Amersfoort.
+                                Van 11:00 tot 15:00 draait De Tafelaar om een ontspannen lunch: verse broodjes,
+                                frisse salades met little gem — geserveerd met brood — en warme gerechten zoals
+                                bao buns en gehaktballetjes. Alles wordt gemaakt met seizoensgebonden
+                                ingrediënten van lokale producenten uit de regio Amersfoort. Glutenvrij brood is
+                                bij vrijwel elk broodje mogelijk voor €1,50 extra.
                             </p>
                             <p>
-                                Kom je met z&apos;n tweeën of meer? De Echte Tafelaarsplank (vanaf 2 personen)
-                                is een plank vol lunchgerechtjes, broodjes, salade en warme hapjes om samen te
-                                delen. &lsquo;s Avonds schuif je aan voor{" "}
+                                Kom je met z&apos;n tweeën of meer? De Tafelaars Plank (vanaf 2 personen) is een
+                                plank vol lunchgerechtjes, broodjes, salade en warme hapjes om samen te delen.
+                                Onze kazen en charcuterie zijn de hele dag beschikbaar, en vanaf 17:00 schuif je
+                                aan voor{" "}
                                 <Link href="/menu" className="underline hover:text-foreground">shared dining van de dinerkaart</Link>.
                             </p>
                             <p className="text-xs">

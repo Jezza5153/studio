@@ -39,7 +39,7 @@ const faqs = [
     },
     {
         question: "Hoe werkt private dining met shared dining?",
-        answer: "Jullie krijgen een volledig verzorgde tafel met een selectie van onze beste gerechten. Het Chef's Choice arrangement (EUR 45 p.p.) bevat borrelplanken, koude en warme gerechten en dessert.",
+        answer: "Jullie krijgen een volledig verzorgde tafel met een selectie van onze beste gerechten. Het Chef's Choice arrangement (EUR 48 p.p.) bevat borrelplanken, koude en warme gerechten en dessert.",
     },
     {
         question: "Kunnen we een eigen menusamenstelling?",
@@ -104,7 +104,7 @@ export default function PriveDinerAmersfoortPage() {
                             </CardHeader>
                             <CardContent className="text-sm text-muted-foreground">
                                 Vanaf 7 personen: een rijkgevulde tafel afgestemd op jullie wensen,
-                                allergieen en dieetwensen. EUR 45 p.p.
+                                allergieen en dieetwensen. EUR 48 p.p.
                             </CardContent>
                         </Card>
 
@@ -142,7 +142,7 @@ export default function PriveDinerAmersfoortPage() {
                             </p>
                             <p>
                                 Jullie krijgen een volledig verzorgde avond. Het Chef&apos;s Choice
-                                arrangement (EUR 45 p.p.) bevat borrelplanken, koude en warme gerechten
+                                arrangement (EUR 48 p.p.) bevat borrelplanken, koude en warme gerechten
                                 en dessert — allemaal samengesteld door onze chef. Bij grotere groepen
                                 stemmen we graag af op jullie wensen.
                             </p>

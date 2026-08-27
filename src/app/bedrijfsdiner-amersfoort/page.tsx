@@ -40,7 +40,7 @@ const faqs = [
     },
     {
         question: "Wat kost een bedrijfsdiner?",
-        answer: "Chef's Choice arrangement is EUR 45 p.p. Met wijnarrangement EUR 28 p.p. extra. Maatwerk mogelijk voor grotere groepen.",
+        answer: "Chef's Choice arrangement is EUR 48 p.p. Met wijnarrangement EUR 28 p.p. extra. Maatwerk mogelijk voor grotere groepen.",
     },
     {
         question: "Zijn er presentatiemogelijkheden?",
@@ -118,7 +118,7 @@ export default function BedrijfsdinerAmersfoortPage() {
                             </CardHeader>
                             <CardContent className="text-sm text-muted-foreground">
                                 Vanaf 7 personen: een volledig verzorgd diner met borrelplanken, warme
-                                en koude gerechten. EUR 45 p.p.
+                                en koude gerechten. EUR 48 p.p.
                             </CardContent>
                         </Card>
                     </div>
@@ -145,7 +145,7 @@ export default function BedrijfsdinerAmersfoortPage() {
                             </p>
                             <p>
                                 Onze keuken werkt met seizoensgebonden producten van lokale makers. Het
-                                Chef&apos;s Choice arrangement (EUR 45 p.p.) bevat borrelplanken, koude en warme
+                                Chef&apos;s Choice arrangement (EUR 48 p.p.) bevat borrelplanken, koude en warme
                                 gerechten en dessert. Voeg daar een wijnarrangement aan toe (EUR 28 p.p.)
                                 voor een complete avond.
                             </p>

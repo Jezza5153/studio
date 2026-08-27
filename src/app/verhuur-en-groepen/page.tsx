@@ -34,7 +34,7 @@ const faqs = [
   },
   {
     question: "Wat is het Chef's Choice arrangement?",
-    answer: "Vanaf 7 personen serveren we een Chef's Choice: een rijke selectie borrelplanken, koude en warme gerechten om te delen. Prijs: €45 per persoon. Optioneel bijpassend wijnarrangement voor €28 p.p.",
+    answer: "Vanaf 7 personen serveren we een Chef's Choice: een rijke selectie borrelplanken, koude en warme gerechten om te delen. Prijs: €48 per persoon. Optioneel bijpassend wijnarrangement voor €28 p.p.",
   },
   {
     question: "Kan ik De Tafelaar ook overdag of op maandag/dinsdag huren?",

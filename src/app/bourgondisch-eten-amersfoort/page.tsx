@@ -34,7 +34,7 @@ const faqs = [
     },
     {
         question: "Hoeveel kost bourgondisch uit eten bij De Tafelaar?",
-        answer: "Gerechten varieren van EUR 3,50 tot EUR 15. Reken op EUR 25-35 per persoon, of kies het Chef's Choice arrangement voor EUR 45 p.p. inclusief bijpassend wijnarrangement voor EUR 28 p.p.",
+        answer: "Gerechten varieren van EUR 3,50 tot EUR 15,50. Reken op EUR 25-35 per persoon, of kies het Chef's Choice arrangement voor EUR 48 p.p. inclusief bijpassend wijnarrangement voor EUR 28 p.p.",
     },
     {
         question: "Is De Tafelaar geschikt voor een gezellig groepsdiner?",

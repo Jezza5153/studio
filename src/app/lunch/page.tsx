@@ -48,15 +48,15 @@ export default function LunchPage() {
                     <div className="flex items-start justify-between gap-4">
                         <div className="min-w-0">
                             <p className="inline-block text-xs tracking-widest uppercase text-primary/80 mb-2">
-                                Overdag op Kamp 8
+                                {LUNCH_MENU.serviceNote ?? "Overdag op Kamp 8"}
                             </p>
                             <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl tracking-tight">
                                 Lunchkaart De Tafelaar
                             </h1>
                             <p className="mt-2 max-w-prose text-base sm:text-lg text-muted-foreground leading-relaxed">
-                                Voor een ontspannen lunch in Amersfoort centrum: verse broodjes (desem of
-                                maïsbrood), salades, gerechten om te delen en iets warms. Compact, vers en
-                                seizoensgebonden — schuif gezellig aan.
+                                Voor een ontspannen lunch in Amersfoort centrum: verse broodjes, salades met
+                                brood, bao buns en zoete hapjes. Of deel samen de Tafelaars Plank. Kazen en
+                                charcuterie zijn de hele dag beschikbaar.
                             </p>
 
                             <div className="mt-5 flex flex-wrap gap-2 sm:gap-3">
@@ -100,7 +100,7 @@ export default function LunchPage() {
                                             if (!config) return null;
                                             return (
                                                 <div key={tag} className="flex items-center gap-1.5">
-                                                    <span className={`w-3 h-3 rounded-full ${config.color} ring-1 ring-white/50`} />
+                                                    <span className={`w-3 h-3 rounded-full ${config.color}`} />
                                                     <span className="text-sm text-muted-foreground">{config.label}</span>
                                                 </div>
                                             );

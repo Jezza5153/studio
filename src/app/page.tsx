@@ -92,7 +92,7 @@ function homeFaqJsonLd() {
 const homeFaqs = [
   {
     question: "Waar kan ik lekker eten in Amersfoort?",
-    answer: "De Tafelaar op de Kamp 8 is een van de best beoordeelde restaurants in Amersfoort (4.8 op Google). We serveren shared dining: kleine gerechten om te delen, gemaakt met seizoensgebonden producten van lokale makers. Van €3,50 tot €15 per gerecht, gemiddeld €25–35 p.p. Open woensdag t/m zondag.",
+    answer: "De Tafelaar op de Kamp 8 is een van de best beoordeelde restaurants in Amersfoort (4.8 op Google). We serveren shared dining: kleine gerechten om te delen, gemaakt met seizoensgebonden producten van lokale makers. Van €3,50 tot €15,50 per gerecht, gemiddeld €25–35 p.p. Open woensdag t/m zondag.",
   },
   {
     question: "Wat is shared dining bij De Tafelaar?",
@@ -112,7 +112,7 @@ const homeFaqs = [
   },
   {
     question: "Kan ik De Tafelaar huren voor een feest?",
-    answer: "Ja, beschikbaar voor feesten en bedrijfsdiners tot circa 100 personen. Chef's Choice arrangement EUR 45 p.p., optioneel met wijnarrangement.",
+    answer: "Ja, beschikbaar voor feesten en bedrijfsdiners tot circa 100 personen. Chef's Choice arrangement EUR 48 p.p., optioneel met wijnarrangement.",
   },
   {
     question: "Biedt De Tafelaar catering aan?",
@@ -318,8 +318,8 @@ export default function Home() {
               Vanaf station Amersfoort Centraal ben je in circa 22 minuten lopend bij ons — of korter met bus of fiets.
             </p>
             <p>
-              Gerechten variëren van €3,50 tot €15. Reken op €25–35 per persoon voor een compleet diner.
-              Het Chef&apos;s Choice arrangement (€45 p.p.) laat de keuken verrassen. Woensdag t/m zondag
+              Gerechten variëren van €3,50 tot €15,50. Reken op €25–35 per persoon voor een compleet diner.
+              Het Chef&apos;s Choice arrangement (€48 p.p.) laat de keuken verrassen. Woensdag t/m zondag
               open voor borrel en diner. Liever thuis genieten? Bekijk onze{" "}
               <Link href="/ophalen" className="underline hover:text-foreground">ophalenkaart</Link>.
             </p>

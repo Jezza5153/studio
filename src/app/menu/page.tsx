@@ -47,13 +47,19 @@ export default function MenuPage() {
                 <Card className="rounded-2xl border bg-card p-6 sm:p-8">
                     <div className="flex items-start justify-between gap-4">
                         <div className="min-w-0">
+                            {DINNER_MENU.serviceNote && (
+                                <p className="inline-block text-xs tracking-widest uppercase text-primary/80 mb-2">
+                                    {DINNER_MENU.serviceNote}
+                                </p>
+                            )}
                             <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl tracking-tight">
                                 Menukaart De Tafelaar
                             </h1>
                             <p className="mt-2 max-w-prose text-base sm:text-lg text-muted-foreground leading-relaxed">
-                                Shared dining in Amersfoort centrum: kleine gerechten om samen te delen. Van kazen
-                                en charcuterie tot warme seizoensgerechten en desserts — bereid met lokale producten
-                                uit de regio. Gerechten van €3,50 tot €15, of kies het Chef&apos;s Choice (€45 p.p.).
+                                Shared dining in Amersfoort centrum: bestel 2 à 3 gerechtjes per persoon en deel ze
+                                samen aan tafel. Van kazen en charcuterie tot warme seizoensgerechten en desserts —
+                                bereid met lokale producten uit de regio. Gerechten van €3,50 tot €15,50, of kies
+                                het Chef&apos;s Choice (€48 p.p.).
                             </p>
 
                             <div className="mt-5 flex flex-wrap gap-2 sm:gap-3">
@@ -110,7 +116,7 @@ export default function MenuPage() {
                                         if (!config) return null;
                                         return (
                                             <div key={tag} className="flex items-center gap-1.5">
-                                                <span className={`w-3 h-3 rounded-full ${config.color} ring-1 ring-white/50`} />
+                                                <span className={`w-3 h-3 rounded-full ${config.color}`} />
                                                 <span className="text-sm text-muted-foreground">{config.label}</span>
                                             </div>
                                         );

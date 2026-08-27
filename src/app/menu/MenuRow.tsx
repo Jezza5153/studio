@@ -38,7 +38,7 @@ export function MenuRow({ item }: { item: MenuItem }) {
                                 return (
                                     <span
                                         key={tag}
-                                        className={`w-3 h-3 rounded-full ${config.color} ring-1 ring-white/50`}
+                                        className={`w-3 h-3 rounded-full ${config.color}`}
                                         title={config.label}
                                     />
                                 );
@@ -71,7 +71,8 @@ export function MenuRow({ item }: { item: MenuItem }) {
                         {item.pricePrefix && (
                             <span className="mr-1 text-xs font-normal text-muted-foreground">{item.pricePrefix}</span>
                         )}
-                        {formatPriceNoCurrency(item.price)}
+                        {/* priceText covers non-numeric prices such as "M.P." (marktprijs). */}
+                        {item.priceText ?? formatPriceNoCurrency(item.price)}
                     </p>
                 )}
             </div>

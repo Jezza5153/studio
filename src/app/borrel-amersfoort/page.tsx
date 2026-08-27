@@ -145,9 +145,9 @@ export default function BorrelAmersfoortPage() {
                         <p>
                             Bij de borrel serveren we borrelplanken met kaas en charcuterie, of je
                             bestelt een paar kleine gerechten van de kaart om te delen. Gerechten
-                            variëren van EUR 3,50 tot EUR 15. Kom je met een grotere groep? Vanaf 7
+                            variëren van EUR 3,50 tot EUR 15,50. Kom je met een grotere groep? Vanaf 7
                             personen stellen we een Chef&apos;s Choice borrel-arrangement samen
-                            (EUR 45 p.p.). We hebben ruimte voor tot circa 100 gasten.
+                            (EUR 48 p.p.). We hebben ruimte voor tot circa 100 gasten.
                         </p>
                         <p>
                             De Tafelaar zit op Kamp 8 in het centrum van Amersfoort, op 5 minuten

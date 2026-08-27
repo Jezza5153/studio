@@ -46,7 +46,7 @@ const faqs = [
     },
     {
         question: "Wat kost eten bij De Tafelaar?",
-        answer: "Gerechten variëren van EUR 3,50 tot EUR 15. Reken op EUR 25-35 per persoon voor een compleet diner. Er is ook een Chef's Choice arrangement voor EUR 45 p.p. met optioneel wijnarrangement voor EUR 28 p.p.",
+        answer: "Gerechten variëren van EUR 3,50 tot EUR 15,50. Reken op EUR 25-35 per persoon voor een compleet diner. Er is ook een Chef's Choice arrangement voor EUR 48 p.p. met optioneel wijnarrangement voor EUR 28 p.p.",
     },
     {
         question: "Is De Tafelaar een van de beste restaurants in Amersfoort?",

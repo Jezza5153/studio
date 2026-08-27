@@ -36,7 +36,7 @@ const faqs = [
     },
     {
         question: "Wat kost het om De Tafelaar te huren?",
-        answer: "Afhankelijk van grootte, tijdstip en invulling. Neem contact op voor een offerte op maat. Chef's Choice arrangement vanaf EUR 45 p.p.",
+        answer: "Afhankelijk van grootte, tijdstip en invulling. Neem contact op voor een offerte op maat. Chef's Choice arrangement vanaf EUR 48 p.p.",
     },
     {
         question: "Kan ik De Tafelaar ook overdag huren?",
@@ -105,7 +105,7 @@ export default function FeestlocatieAmersfoortPage() {
                             </CardHeader>
                             <CardContent className="text-sm text-muted-foreground">
                                 Vanaf 7 personen: een rijkgevulde tafel met borrelplanken, warme en
-                                koude gerechten en dessert. Vanaf EUR 45 p.p.
+                                koude gerechten en dessert. Vanaf EUR 48 p.p.
                             </CardContent>
                         </Card>
 
