@@ -86,7 +86,7 @@ export default function MakersClient({ makers }: MakersClientProps) {
           <div className="flex flex-wrap gap-2">
             <button
               onClick={() => setFilter("Alle")}
-              className={`border-2 border-foreground px-3 py-1 text-sm ${filter === "Alle" ? "bg-primary text-primary-foreground border-primary" : "border-border hover:bg-muted"}`}
+              className={`border-2 border-foreground px-3 py-1 text-sm ${filter === "Alle" ? "bg-primary text-primary-foreground border-primary" : "hover:bg-muted"}`}
             >
               Alle
             </button>
@@ -97,7 +97,7 @@ export default function MakersClient({ makers }: MakersClientProps) {
                 <button
                   key={c}
                   onClick={() => setFilter(c)}
-                  className={`border-2 border-foreground px-3 py-1 text-sm inline-flex items-center gap-1.5 ${active ? "bg-primary text-primary-foreground border-primary" : "border-border hover:bg-muted"}`}
+                  className={`border-2 border-foreground px-3 py-1 text-sm inline-flex items-center gap-1.5 ${active ? "bg-primary text-primary-foreground border-primary" : "hover:bg-muted"}`}
                 >
                   <Icon className="h-4 w-4" />
                   {c}
