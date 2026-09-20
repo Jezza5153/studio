@@ -232,14 +232,25 @@ function TonightPanel({ settings, onUpdate, toast }: {
     const [status, setStatus] = useState(settings.tonightStatus);
     const [note, setNote] = useState(settings.tonightNote);
     const [ownerReply, setOwnerReply] = useState(settings.ownerReplyMessage || "");
+    // Manual override for the Google score/count while the Places sync is down.
+    const [googleRating, setGoogleRating] = useState(settings.googleRating > 0 ? String(settings.googleRating) : "");
+    const [googleReviewCount, setGoogleReviewCount] = useState(settings.googleReviewCount > 0 ? String(settings.googleReviewCount) : "");
     const [saving, setSaving] = useState(false);
 
     const save = async () => {
         setSaving(true);
+        const ratingNum = Number(googleRating.replace(",", "."));
+        const countNum = Number(googleReviewCount);
         const res = await fetch("/api/admin/settings", {
             method: "PUT",
             headers: authHeaders(),
-            body: JSON.stringify({ tonightStatus: status, tonightNote: note, ownerReplyMessage: ownerReply }),
+            body: JSON.stringify({
+                tonightStatus: status,
+                tonightNote: note,
+                ownerReplyMessage: ownerReply,
+                ...(googleRating.trim() !== "" && Number.isFinite(ratingNum) && { googleRating: ratingNum }),
+                ...(googleReviewCount.trim() !== "" && Number.isInteger(countNum) && { googleReviewCount: countNum }),
+            }),
         });
         if (res.ok) {
             const updated = await res.json();
@@ -294,12 +305,35 @@ function TonightPanel({ settings, onUpdate, toast }: {
                 <p className="mt-1 text-[10px] text-muted-foreground/60">Dit bericht verschijnt onder elke review op de voorpagina</p>
             </div>
 
-            {/* Google rating info (read-only) */}
-            {settings.googleRating > 0 && (
-                <div className="flex items-center gap-2 mb-3 text-xs text-muted-foreground">
-                    <span>⭐ Google: {settings.googleRating.toFixed(1)} ({settings.googleReviewCount} reviews)</span>
+            {/* Google rating: normally filled by the nightly sync, editable as fallback */}
+            <div className="border-t border-border/30 pt-3 mt-1 mb-3">
+                <label className="mb-1.5 block text-xs font-medium text-muted-foreground">
+                    ⭐ Google-score en aantal reviews
+                </label>
+                <div className="flex gap-2">
+                    <input
+                        type="text"
+                        inputMode="decimal"
+                        value={googleRating}
+                        onChange={(e) => setGoogleRating(e.target.value)}
+                        placeholder="4,9"
+                        aria-label="Google-score (1 tot 5)"
+                        className="w-24 rounded-lg border border-border bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-primary/50"
+                    />
+                    <input
+                        type="text"
+                        inputMode="numeric"
+                        value={googleReviewCount}
+                        onChange={(e) => setGoogleReviewCount(e.target.value)}
+                        placeholder="110"
+                        aria-label="Aantal Google-reviews"
+                        className="w-28 rounded-lg border border-border bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-primary/50"
+                    />
                 </div>
-            )}
+                <p className="mt-1 text-[10px] text-muted-foreground/60">
+                    Wordt elke nacht automatisch bijgewerkt vanuit Google. Vul hier alleen iets in als de sync niet werkt; de site toont het direct.
+                </p>
+            </div>
 
             <button
                 onClick={save}

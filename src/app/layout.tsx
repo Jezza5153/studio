@@ -1,6 +1,7 @@
 
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
+import { formatRating } from "@/lib/google-rating";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -182,7 +183,7 @@ function restaurantJsonLd(rating?: number, reviewCount?: number) {
   if (rating && rating > 0 && reviewCount && reviewCount > 0) {
     data.aggregateRating = {
       "@type": "AggregateRating",
-      ratingValue: rating.toFixed(1),
+      ratingValue: formatRating(rating),
       bestRating: "5",
       worstRating: "1",
       ratingCount: reviewCount,

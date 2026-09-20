@@ -17,8 +17,11 @@ export type GoogleRating = {
   live: boolean;
 };
 
+// Round half up to one decimal, like Google Maps does. Number#toFixed would
+// turn 4.85 into "4.8" because 4.85 is stored as 4.8499999… in binary.
 export function formatRating(rating: number): string {
-  return rating.toFixed(1);
+  const tenths = Math.round(Number((rating * 10).toFixed(6)));
+  return (tenths / 10).toFixed(1);
 }
 
 export function formatCountPlus(count: number): string {

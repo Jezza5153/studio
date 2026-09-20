@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/db";
 import { isAuthorized } from "@/lib/admin-auth";
 
@@ -26,6 +27,17 @@ export async function PUT(request: Request) {
 
         const body = await request.json();
 
+        // Manual override for the Google score/count, for when the Places sync
+        // is down (e.g. suspended API key). The nightly cron overwrites these
+        // again as soon as it succeeds.
+        const googleRating = Number(body.googleRating);
+        const googleReviewCount = Number(body.googleReviewCount);
+        const hasRating = body.googleRating !== undefined && Number.isFinite(googleRating) && googleRating >= 1 && googleRating <= 5;
+        const hasCount = body.googleReviewCount !== undefined && Number.isInteger(googleReviewCount) && googleReviewCount >= 0;
+        if ((body.googleRating !== undefined && !hasRating) || (body.googleReviewCount !== undefined && !hasCount)) {
+            return NextResponse.json({ error: "googleRating must be 1–5 and googleReviewCount a whole number" }, { status: 400 });
+        }
+
         const settings = await prisma.settings.upsert({
             where: { id: "singleton" },
             create: {
@@ -33,13 +45,18 @@ export async function PUT(request: Request) {
                 tonightStatus: body.tonightStatus || "OPEN",
                 tonightNote: body.tonightNote || "",
                 ownerReplyMessage: body.ownerReplyMessage || "",
+                ...(hasRating && { googleRating }),
+                ...(hasCount && { googleReviewCount }),
             },
             update: {
                 ...(body.tonightStatus !== undefined && { tonightStatus: body.tonightStatus }),
                 ...(body.tonightNote !== undefined && { tonightNote: body.tonightNote }),
                 ...(body.ownerReplyMessage !== undefined && { ownerReplyMessage: body.ownerReplyMessage }),
+                ...(hasRating && { googleRating }),
+                ...(hasCount && { googleReviewCount }),
             },
         });
+        if (hasRating || hasCount) revalidatePath("/", "layout");
         return NextResponse.json(settings);
     } catch (err) {
         console.error("Settings update failed:", err);
