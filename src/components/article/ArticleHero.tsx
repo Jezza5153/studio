@@ -105,7 +105,7 @@ function Lightbox({
                 </button>
             </div>
 
-            {/* Main image — fills viewport */}
+            {/* Main image, fills viewport */}
             <div
                 className="relative flex items-center justify-center w-full h-full px-12 sm:px-20 py-16"
                 onClick={(e) => e.stopPropagation()}
@@ -181,7 +181,7 @@ export function ArticleHero({ title, media, caption }: ArticleHeroProps) {
         setLightboxIndex(idx);
     }, []);
 
-    // No images — clean gradient placeholder
+    // No images, clean gradient placeholder
     if (!heroImage) {
         return (
             <div className="relative h-[25svh] min-h-[180px] max-h-[300px] w-full bg-gradient-to-br from-primary/10 to-accent/10" />
@@ -191,7 +191,7 @@ export function ArticleHero({ title, media, caption }: ArticleHeroProps) {
     return (
         <>
             <div className="group relative w-full overflow-hidden">
-                {/* Hero image container — explicit ratio prevents CLS */}
+                {/* Hero image container, explicit ratio prevents CLS */}
                 <div
                     className={`relative w-full ${hasMultiple ? "h-[35svh] min-h-[250px] max-h-[400px]" : "h-[30svh] min-h-[220px] max-h-[360px]"}`}
                     style={{ aspectRatio: hasMultiple ? "16 / 7" : "16 / 9" }}
@@ -208,7 +208,7 @@ export function ArticleHero({ title, media, caption }: ArticleHeroProps) {
                     {/* #5: Stronger dark gradient for title readability */}
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 via-40% to-black/20" />
 
-                    {/* Gallery controls — only for multi-image */}
+                    {/* Gallery controls, only for multi-image */}
                     {hasMultiple && (
                         <>
                             {/* Photo count badge */}
@@ -222,7 +222,7 @@ export function ArticleHero({ title, media, caption }: ArticleHeroProps) {
                                 {media.length} foto&apos;s
                             </button>
 
-                            {/* #2: Thumbnail strip — HIDDEN on mobile to prevent overlap with title */}
+                            {/* #2: Thumbnail strip, HIDDEN on mobile to prevent overlap with title */}
                             {media.length >= 3 && (
                                 <div className="absolute bottom-4 left-4 z-10 hidden gap-1.5 md:flex">
                                     {media.slice(1, 4).map((img, i) => (

@@ -112,7 +112,7 @@ function ReviewQuoteRotator({
                         exit={reducedMotion ? {} : { opacity: 0, y: -10 }}
                         transition={{ duration: 0.4 }}
                     >
-                        {/* Review text — expandable */}
+                        {/* Review text, expandable */}
                         <div>
                             <blockquote className="text-sm italic leading-relaxed text-foreground/80">
                                 &ldquo;{expanded || !isLong
@@ -142,8 +142,7 @@ function ReviewQuoteRotator({
                                     <span key={i} className="text-lg" aria-hidden="true">★</span>
                                 ))}
                             </div>
-                            <span className="text-xs text-muted-foreground">
-                                — {currentReview.authorName || "Gast"}
+                            <span className="text-xs text-muted-foreground"> · {currentReview.authorName || "Gast"}
                             </span>
                         </div>
 

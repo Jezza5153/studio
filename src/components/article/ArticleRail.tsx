@@ -116,7 +116,7 @@ export function ArticleRail({ sections, relatedStories, latestStories = [], prev
                 🍽️ Reserveer
             </button>
 
-            {/* Table of Contents — only with 3+ titled sections */}
+            {/* Table of Contents, only with 3+ titled sections */}
             {hasTOC && (
                 <div className="rounded-xl border border-border/50 bg-foreground/[0.02] p-4">
                     <h4 className="mb-3 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/60">
@@ -153,7 +153,7 @@ export function ArticleRail({ sections, relatedStories, latestStories = [], prev
                 </button>
             )}
 
-            {/* Editorial stories — NEVER empty (related → fallback latest) */}
+            {/* Editorial stories, NEVER empty (related → fallback latest) */}
             {editorialStories.length > 0 && (
                 <div className="border-t border-border/30 pt-4">
                     <h4 className="mb-3 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/60">

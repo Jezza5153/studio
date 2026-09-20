@@ -33,7 +33,7 @@ export function GuestHighlights({
     }, [photosJson]);
 
     // Images whose URL failed to load (e.g. an expired CDN link). We drop them
-    // from rotation so a single dead photo never shows a broken-image box — and
+    // from rotation so a single dead photo never shows a broken-image box, and
     // if every photo is dead the carousel renders nothing instead of a broken UI.
     const [failedUrls, setFailedUrls] = useState<Set<string>>(new Set());
     const items = useMemo(
@@ -129,8 +129,7 @@ export function GuestHighlights({
                                     </p>
                                 )}
                                 {photo.name && (
-                                    <p className="mt-1 text-xs font-semibold text-white/70 sm:text-sm">
-                                        — {photo.name}
+                                    <p className="mt-1 text-xs font-semibold text-white/70 sm:text-sm"> · {photo.name}
                                     </p>
                                 )}
                             </motion.div>

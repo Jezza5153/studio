@@ -24,11 +24,11 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "De Tafelaar | Shared dining in Amersfoort | Vlakbij De Flint",
   description:
-    "De Tafelaar is het shared-dining restaurant vlakbij Theater De Flint in Amersfoort. Kleine gerechten om te delen, gemaakt met verse, lokale producten. Op 2 min lopen van De Flint.",
+    "De Tafelaar is het shared-dining restaurant vlakbij Theater De Flint in Amersfoort. Gerechten om te delen, gemaakt met verse, lokale producten. Op 2 min lopen van De Flint.",
   openGraph: {
     title: "De Tafelaar | Shared dining vlakbij De Flint",
     description:
-      "Shared dining restaurant op 400m van Theater De Flint. Kleine gerechten om te delen, lokale makers en seizoensgerechten — midden in Amersfoort.",
+      "Shared dining restaurant op 400m van Theater De Flint. Gerechten om te delen, lokale makers en seizoensgerechten — midden in Amersfoort.",
     images: [{ url: "/pics/homepage.png" }],
   },
   keywords: [

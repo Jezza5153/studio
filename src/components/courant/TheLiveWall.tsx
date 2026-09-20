@@ -76,7 +76,7 @@ function WallCard({ item, batchIndex }: { item: FeedItem; batchIndex: number }) 
                     )}
 
                     <div className="mt-2 flex items-center justify-between text-[10px] text-muted-foreground/70">
-                        {item.authorName && <span>— {item.authorName}</span>}
+                        {item.authorName && <span>- {item.authorName}</span>}
                         <time dateTime={new Date(item.publishedAt).toISOString().slice(0, 10)}>
                             {new Date(item.publishedAt).toLocaleDateString("nl-NL", {
                                 day: "numeric",
@@ -116,7 +116,7 @@ export function TheLiveWall({ initialItems, initialHasMore }: TheLiveWallProps) 
     const [loading, setLoading] = useState(false);
     const [isPending, startTransition] = useTransition();
 
-    // Reset when filter changes — keep old items visible until new data arrives
+    // Reset when filter changes, keep old items visible until new data arrives
     const switchFilter = useCallback((newFilter: string) => {
         if (newFilter === activeFilter) return;
         setActiveFilter(newFilter);
@@ -215,8 +215,7 @@ export function TheLiveWall({ initialItems, initialHasMore }: TheLiveWallProps) 
             )}
 
             {!hasMore && items.length > 0 && (
-                <p className="mt-8 text-center text-xs text-muted-foreground/60">
-                    — Alle berichten geladen —
+                <p className="mt-8 text-center text-xs text-muted-foreground/60"> · Alle berichten geladen -
                 </p>
             )}
         </section>

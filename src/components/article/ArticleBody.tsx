@@ -64,7 +64,7 @@ export function ArticleBody({ article }: ArticleBodyProps) {
 
             {sections.map((section, i) => (
                 <div key={section.id} id={section.id}>
-                    {/* Pull quote insertion point — #10: stronger styling */}
+                    {/* Pull quote insertion point, #10: stronger styling */}
                     {i === pullQuoteIndex && pullQuote && (
                         <blockquote className="my-10 border-l-[3px] border-primary pl-6 py-3 relative">
                             <span className="absolute -left-1 -top-4 text-5xl text-primary/20 font-headline leading-none select-none" aria-hidden="true">&ldquo;</span>
@@ -83,7 +83,7 @@ export function ArticleBody({ article }: ArticleBodyProps) {
                         </InkReveal>
                     )}
 
-                    {/* #4: Q&A block — distinct styling for Q vs A */}
+                    {/* #4: Q&A block, distinct styling for Q vs A */}
                     {section.isQA ? (
                         <div className="my-5 rounded-lg border border-foreground/[0.06] bg-foreground/[0.02] overflow-hidden">
                             {/* Question */}
@@ -110,7 +110,7 @@ export function ArticleBody({ article }: ArticleBodyProps) {
                 </div>
             ))}
 
-            {/* Tail-end pull quote — #10: stronger styling */}
+            {/* Tail-end pull quote, #10: stronger styling */}
             {pullQuoteIndex === -1 && pullQuote && sections.length > 0 && (
                 <blockquote className="my-10 border-l-[3px] border-primary pl-6 py-3 relative">
                     <span className="absolute -left-1 -top-4 text-5xl text-primary/20 font-headline leading-none select-none" aria-hidden="true">&ldquo;</span>

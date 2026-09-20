@@ -76,8 +76,7 @@ export default async function BorrelAmersfoortPage() {
                     Borrelen in Amersfoort
                 </h1>
                 <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
-                    Borrelplanken, lokale bieren van vier Amersfoortse brouwerijen en kleine
-                    gerechten om te delen. Vrijdag t/m zondag open vanaf 11:00.
+                    Borrelplanken, lokale bieren van vier Amersfoortse brouwerijen en gerechten om te delen. Vrijdag t/m zondag open vanaf 11:00.
                 </p>
             </header>
 

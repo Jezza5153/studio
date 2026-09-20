@@ -90,7 +90,7 @@ export function ArticleMetaBar({ category, publishedAt, readTime, slug, authorNa
                     {readTime}
                 </span>
 
-                {/* #13: Share actions — expanded with Facebook, Email, Copy */}
+                {/* #13: Share actions, expanded with Facebook, Email, Copy */}
                 <span className="ml-auto flex items-center gap-1">
                     <button
                         onClick={handleCopy}

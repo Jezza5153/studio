@@ -12,11 +12,11 @@ export type MenuItem = {
    *  "V" vegetarisch · "GF" glutenvrij · "LF" lactosevrij ·
    *  "GFB" glutenvrij brood mogelijk (+€1,50) · "VG" vegan (ophalenkaart only). */
   tags: string[];
-  /** Allergen keys — only used by the ophalenkaart. The lunch/dinerkaart follow
+  /** Allergen keys, only used by the ophalenkaart. The lunch/dinerkaart follow
    *  the printed menu, which lists dietary markers instead of allergens; guests
    *  with an allergy are invited to ask (see the note under each menu). */
   allergens: string[];
-  /** Optional internal grouping key — never rendered publicly. Lets us link
+  /** Optional internal grouping key, never rendered publicly. Lets us link
    *  the lunch + diner version of the same dish (e.g. lunch "Carpaccio" broodje
    *  and dinner "Carpaccio"). Editorial copy / price stay independent. */
   baseDishKey?: string;
@@ -48,7 +48,7 @@ export type MenuData = {
 };
 
 // =========================================================================
-// DINERKAART — vanaf 17:00
+// DINERKAART, vanaf 17:00
 // =========================================================================
 // Source: printed kaart (Het Concept / Arrangementen / Kazen / Charcuterie /
 // Borrel / Koud / Klassiekers / Warm / Desserts).
@@ -91,7 +91,7 @@ export const DINNER_MENU: MenuData = {
       ],
     },
 
-    // 2) KAZEN — beschikbaar hele dag
+    // 2) KAZEN, beschikbaar hele dag
     {
       name: "Kazen",
       note: "Beschikbaar hele dag",
@@ -135,7 +135,7 @@ export const DINNER_MENU: MenuData = {
       ],
     },
 
-    // 3) CHARCUTERIE — beschikbaar hele dag
+    // 3) CHARCUTERIE, beschikbaar hele dag
     {
       name: "Charcuterie",
       note: "Beschikbaar hele dag",
@@ -390,7 +390,7 @@ export const DINNER_MENU: MenuData = {
   ],
 };
 
-// Backwards-compatible alias — existing imports (`import { MENU } from
+// Backwards-compatible alias, existing imports (`import { MENU } from
 // "@/content/menu"`) continue to work and resolve to the diner menu.
 export const MENU: MenuData = DINNER_MENU;
 
@@ -403,7 +403,7 @@ export const MENU: MenuData = DINNER_MENU;
 // TODO(owner-confirm): Allergen and dietary tags below are conservative
 // guesses based on the dinner menu equivalents and standard ingredients.
 // Walk the list with the chef and confirm before the page is shown to
-// guests with allergies — wrong allergen info is worse than missing info.
+// guests with allergies, wrong allergen info is worse than missing info.
 // =========================================================================
 export const OPHALEN_MENU: MenuData = {
   title: "Ophalenkaart",
@@ -414,7 +414,7 @@ export const OPHALEN_MENU: MenuData = {
       name: "Hoofdgerechten",
       items: [
         {
-          name: "Tafelaars spare ribs — zoet en pittig (Hollands pittig)",
+          name: "Tafelaars spare ribs, zoet en pittig (Hollands pittig)",
           description:
             "Onze spare ribs worden 24 uur sous vide gegaard op 80°C in marinade. Daardoor vallen ze van het bot en zit de smaak tot in de kern.",
           price: 24.95,
@@ -557,7 +557,7 @@ export const OPHALEN_MENU: MenuData = {
         {
           name: "Vers Tafelaars Weizen 500ml",
           description:
-            "Vers getapt weizen in beugelfles — chef's choice. 18+ · excl. statiegeld €0,50 · 5% vol.",
+            "Vers getapt weizen in beugelfles, chef's choice. 18+ · excl. statiegeld €0,50 · 5% vol.",
           price: 6.95,
           tags: [],
           allergens: ["gluten"],
@@ -608,7 +608,7 @@ export const OPHALEN_MENU: MenuData = {
 };
 
 // =========================================================================
-// LUNCHKAART — 11:00 tot 15:00
+// LUNCHKAART, 11:00 tot 15:00
 // =========================================================================
 // Source: printed Lunchkaart (Shared Lunch / Broodjes / Salades / Warm /
 // Zoete Hapjes). Kazen en charcuterie zijn de hele dag beschikbaar en staan
@@ -630,7 +630,7 @@ export const LUNCH_MENU: MenuData = {
         {
           name: "Tafelaars Plank",
           description:
-            "Een plank met diverse lunchgerechtjes, broodjes, salade en warme hapjes.",
+            "Een plank met diverse lunchgerechten, broodjes, salade en warme hapjes.",
           price: 19.5,
           tags: [],
           allergens: [],

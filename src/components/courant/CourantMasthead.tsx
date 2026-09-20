@@ -9,7 +9,7 @@ export function CourantMasthead() {
     const height = useTransform(scrollY, [0, 200], [1, 0.85]);
     const opacity = useTransform(scrollY, [0, 150], [1, 0.9]);
 
-    // Compute date inside the component — never stale in production
+    // Compute date inside the component, never stale in production
     const dateStr = new Date().toLocaleDateString("nl-NL", {
         weekday: "long",
         day: "numeric",

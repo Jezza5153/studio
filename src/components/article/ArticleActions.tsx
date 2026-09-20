@@ -30,7 +30,7 @@ export function ArticleActions({ nextStory }: ArticleActionsProps) {
                 Volgende stap
             </h3>
             <div className="grid gap-3 sm:grid-cols-3">
-                {/* #8: Reserveer — visually prominent with solid fill and hover lift */}
+                {/* #8: Reserveer, visually prominent with solid fill and hover lift */}
                 <button
                     onClick={() => {
                         trackEvent("reserveer_click", { source: "article_bottom" });
@@ -43,7 +43,7 @@ export function ArticleActions({ nextStory }: ArticleActionsProps) {
                     <span className="mt-0.5 block text-[11px] text-muted-foreground">Proef het zelf</span>
                 </button>
 
-                {/* #8: Bekijk menu — hover lift */}
+                {/* #8: Bekijk menu, hover lift */}
                 <Link
                     href="/menu"
                     className="group rounded-xl border border-border/50 bg-foreground/[0.02] p-4 text-left transition-all duration-200 hover:bg-foreground/5 hover:shadow-lg hover:shadow-foreground/5 hover:-translate-y-0.5"
@@ -53,7 +53,7 @@ export function ArticleActions({ nextStory }: ArticleActionsProps) {
                     <span className="mt-0.5 block text-[11px] text-muted-foreground">Seizoensgerechten</span>
                 </Link>
 
-                {/* #8: Next story / All updates fallback — hover lift */}
+                {/* #8: Next story / All updates fallback, hover lift */}
                 {nextStory ? (
                     <Link
                         href={`/updates/${nextStory.slug}`}
