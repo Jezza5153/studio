@@ -68,11 +68,11 @@ export default async function PriveDinerAmersfoortPage() {
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd() }} />
             <div className="container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
                 {/* Hero */}
-                <header className="text-center mb-12">
-                    <p className="inline-block text-xs tracking-widest uppercase text-primary/80 mb-2">
+                <header className="mb-12 border-[5px] border-foreground bg-white px-6 py-10 text-center sm:px-10 sm:py-12">
+                    <p className="mb-4 inline-block -rotate-[1.2deg] bg-foreground px-3.5 py-[7px] text-[11px] font-bold uppercase tracking-[0.2em] text-background">
                         Private Dining in Amersfoort
                     </p>
-                    <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl tracking-tight">
+                    <h1 className="font-headline text-3xl font-black leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">
                         Prive diner bij De Tafelaar
                     </h1>
                     <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
@@ -85,7 +85,7 @@ export default async function PriveDinerAmersfoortPage() {
                 {/* USPs */}
                 <section className="max-w-4xl mx-auto mb-12">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <Card className="rounded-2xl border">
+                        <Card className=" border-2 border-foreground">
                             <CardHeader className="pb-2">
                                 <div className="flex items-center gap-2 text-primary">
                                     <Lock className="h-5 w-5" />
@@ -98,7 +98,7 @@ export default async function PriveDinerAmersfoortPage() {
                             </CardContent>
                         </Card>
 
-                        <Card className="rounded-2xl border">
+                        <Card className=" border-2 border-foreground">
                             <CardHeader className="pb-2">
                                 <div className="flex items-center gap-2 text-primary">
                                     <ChefHat className="h-5 w-5" />
@@ -111,7 +111,7 @@ export default async function PriveDinerAmersfoortPage() {
                             </CardContent>
                         </Card>
 
-                        <Card className="rounded-2xl border">
+                        <Card className=" border-2 border-foreground">
                             <CardHeader className="pb-2">
                                 <div className="flex items-center gap-2 text-primary">
                                     <Wine className="h-5 w-5" />
@@ -133,8 +133,8 @@ export default async function PriveDinerAmersfoortPage() {
 
                 {/* Content */}
                 <section className="max-w-3xl mx-auto mb-12">
-                    <Card className="rounded-2xl border p-6 sm:p-8">
-                        <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-4">
+                    <Card className=" border-2 border-foreground p-6 sm:p-8">
+                        <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-4">
                             Private dining bij De Tafelaar
                         </h2>
                         <div className="space-y-4 text-muted-foreground">
@@ -146,12 +146,12 @@ export default async function PriveDinerAmersfoortPage() {
                             <p>
                                 Jullie krijgen een volledig verzorgde avond. Het Chef&apos;s Choice
                                 arrangement (EUR 48 p.p.) bevat borrelplanken, koude en warme gerechten
-                                en dessert — allemaal samengesteld door onze chef. Bij grotere groepen
+                                en dessert, allemaal samengesteld door onze chef. Bij grotere groepen
                                 stemmen we graag af op jullie wensen.
                             </p>
                             <p>
                                 Of je nu een verjaardagsdiner plant, een jubileum viert of gewoon een
-                                bijzondere avond met vrienden of familie wilt — De Tafelaar biedt de
+                                bijzondere avond met vrienden of familie wilt, De Tafelaar biedt de
                                 persoonlijke aandacht en flexibiliteit die bij private dining hoort.
                                 Neem contact op en we bespreken samen de mogelijkheden.
                             </p>
@@ -170,12 +170,12 @@ export default async function PriveDinerAmersfoortPage() {
 
                 {/* FAQ */}
                 <section className="max-w-3xl mx-auto mb-12">
-                    <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-6 text-center">
+                    <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-6 text-center">
                         Veelgestelde vragen
                     </h2>
                     <div className="space-y-4">
                         {faqs.map((faq) => (
-                            <Card key={faq.question} className="rounded-2xl border p-6">
+                            <Card key={faq.question} className=" border-2 border-foreground p-6">
                                 <h3 className="font-semibold text-foreground mb-2">{faq.question}</h3>
                                 <p className="text-sm text-muted-foreground">{faq.answer}</p>
                             </Card>
@@ -187,22 +187,22 @@ export default async function PriveDinerAmersfoortPage() {
                 <section className="max-w-2xl mx-auto text-center">
                     <div className="flex flex-wrap justify-center gap-3">
                         <Link href="/feestlocatie-amersfoort">
-                            <Button variant="outline" className="rounded-xl">
+                            <Button variant="outline" className="">
                                 Feestlocatie
                             </Button>
                         </Link>
                         <Link href="/bedrijfsdiner-amersfoort">
-                            <Button variant="outline" className="rounded-xl">
+                            <Button variant="outline" className="">
                                 Bedrijfsdiner
                             </Button>
                         </Link>
                         <Link href="/romantisch-diner-amersfoort">
-                            <Button variant="outline" className="rounded-xl">
+                            <Button variant="outline" className="">
                                 Romantisch diner
                             </Button>
                         </Link>
                         <Link href="/contact">
-                            <Button variant="outline" className="rounded-xl">
+                            <Button variant="outline" className="">
                                 Neem contact op
                             </Button>
                         </Link>

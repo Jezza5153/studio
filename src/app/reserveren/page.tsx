@@ -27,7 +27,7 @@ export default function ReserverenPage() {
           2 tot 100 personen, woensdag t/m zondag. De reserveringsmodule opent automatisch.
         </p>
 
-        <div className="mt-6 border rounded-xl p-4 bg-secondary/30">
+        <div className="mt-6 border-2 border-foreground p-4 bg-secondary/30">
           <p className="text-sm text-muted-foreground mb-3">
             Widget niet zichtbaar? Gebruik de knoppen hieronder.
           </p>

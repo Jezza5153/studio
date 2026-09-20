@@ -8,14 +8,14 @@ import { ReserveerButton } from "@/components/reserveer-button";
 export const metadata: Metadata = {
     title: "Lunchkaart De Tafelaar | Lunch in Amersfoort Centrum",
     description:
-        "Lunchen bij De Tafelaar op Kamp 8 in Amersfoort centrum, 11:00–15:00: verse broodjes, salades met brood, bao buns, clubsandwich en de Tafelaars Plank om te delen. Bekijk de lunchkaart.",
+        "Lunchen bij De Tafelaar op Kamp 8 in Amersfoort centrum, 11:00-15:00: verse broodjes, salades met brood, bao buns, clubsandwich en de Tafelaars Plank om te delen. Bekijk de lunchkaart.",
     alternates: {
         canonical: "/lunch",
     },
     openGraph: {
         title: "Lunchkaart De Tafelaar | Lunch in Amersfoort Centrum",
         description:
-            "Verse broodjes, salades met brood, bao buns en gerechten om te delen. Lunchen bij De Tafelaar op Kamp 8 in Amersfoort centrum, 11:00–15:00.",
+            "Verse broodjes, salades met brood, bao buns en gerechten om te delen. Lunchen bij De Tafelaar op Kamp 8 in Amersfoort centrum, 11:00-15:00.",
     },
     keywords: [
         "lunch amersfoort",
@@ -37,7 +37,7 @@ function menuJsonLd() {
         "@id": `${SITE_URL}/lunch#menu`,
         name: LUNCH_MENU.title,
         description:
-            "Lunchkaart van De Tafelaar — verse broodjes, salades met brood, bao buns, de Tafelaars Plank om te delen en zoete hapjes. Geserveerd van 11:00 tot 15:00 in Amersfoort centrum.",
+            "Lunchkaart van De Tafelaar, verse broodjes, salades met brood, bao buns, de Tafelaars Plank om te delen en zoete hapjes. Geserveerd van 11:00 tot 15:00 in Amersfoort centrum.",
         url: `${SITE_URL}/lunch`,
         hasMenuSection: LUNCH_MENU.categories.map((category) => ({
             "@type": "MenuSection",
@@ -72,7 +72,7 @@ const lunchFaqs = [
     {
         question: "Wat staat er op de lunchkaart van De Tafelaar?",
         answer:
-            "De lunchkaart bevat broodjes (€15,50–€17,50) met carpaccio, zalm, clubsandwich, huisgemaakte ricotta, vitello of Fiore kaas. Daarnaast salades geserveerd met brood (€15,50) met watermeloen, mediterraan, carpaccio of vitello, warme gerechten zoals bao buns en gehaktballetjes (€15,50–€16,50), de Tafelaars Plank om te delen (€19,50 vanaf 2 personen) en zoete hapjes vanaf €6.",
+            "De lunchkaart bevat broodjes (€15,50-€17,50) met carpaccio, zalm, clubsandwich, huisgemaakte ricotta, vitello of Fiore kaas. Daarnaast salades geserveerd met brood (€15,50) met watermeloen, mediterraan, carpaccio of vitello, warme gerechten zoals bao buns en gehaktballetjes (€15,50-€16,50), de Tafelaars Plank om te delen (€19,50 vanaf 2 personen) en zoete hapjes vanaf €6.",
     },
     {
         question: "Hoe laat wordt de lunch geserveerd?",
@@ -82,12 +82,12 @@ const lunchFaqs = [
     {
         question: "Zijn er vegetarische en glutenvrije lunchopties?",
         answer:
-            "Ja. De salades watermeloen en mediterraan zijn vegetarisch, net als de Bao Buns Inari en alle zoete hapjes. Bij vrijwel elk broodje is glutenvrij brood mogelijk voor €1,50 extra, en meerdere gerechten zijn lactosevrij of glutenvrij — de markering staat bij elk gerecht op de kaart.",
+            "Ja. De salades watermeloen en mediterraan zijn vegetarisch, net als de Bao Buns Inari en alle zoete hapjes. Bij vrijwel elk broodje is glutenvrij brood mogelijk voor €1,50 extra, en meerdere gerechten zijn lactosevrij of glutenvrij, de markering staat bij elk gerecht op de kaart.",
     },
     {
         question: "Kan ik met een groep komen lunchen?",
         answer:
-            "Zeker. De Tafelaars Plank (vanaf 2 personen, €19,50 p.p.) met diverse lunchgerechtjes, broodjes, salade en warme hapjes is ideaal om samen te delen. Voor grotere groepen kijk je op onze pagina Verhuur en Groepen of neem je contact met ons op.",
+            "Zeker. De Tafelaars Plank (vanaf 2 personen, €19,50 p.p.) met diverse lunchgerechten, broodjes, salade en warme hapjes is ideaal om samen te delen. Voor grotere groepen kijk je op onze pagina Verhuur en Groepen of neem je contact met ons op.",
     },
 ];
 
@@ -123,21 +123,21 @@ export default function LunchLayout({
             <div className="container mx-auto px-4 sm:px-6 md:px-8 pb-12 sm:pb-16 md:pb-24 space-y-12">
                 {/* About */}
                 <section className="max-w-3xl mx-auto">
-                    <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-4 text-center">
+                    <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-4 text-center">
                         Over onze lunchkaart
                     </h2>
-                    <Card className="rounded-2xl border p-6 sm:p-8">
+                    <Card className=" border-2 border-foreground p-6 sm:p-8">
                         <div className="space-y-4 text-muted-foreground">
                             <p>
                                 Van 11:00 tot 15:00 draait De Tafelaar om een ontspannen lunch: verse broodjes,
-                                frisse salades met little gem — geserveerd met brood — en warme gerechten zoals
+                                frisse salades met little gem, geserveerd met brood, en warme gerechten zoals
                                 bao buns en gehaktballetjes. Alles wordt gemaakt met seizoensgebonden
                                 ingrediënten van lokale producenten uit de regio Amersfoort. Glutenvrij brood is
                                 bij vrijwel elk broodje mogelijk voor €1,50 extra.
                             </p>
                             <p>
                                 Kom je met z&apos;n tweeën of meer? De Tafelaars Plank (vanaf 2 personen) is een
-                                plank vol lunchgerechtjes, broodjes, salade en warme hapjes om samen te delen.
+                                plank vol lunchgerechten, broodjes, salade en warme hapjes om samen te delen.
                                 Onze kazen en charcuterie zijn de hele dag beschikbaar, en vanaf 17:00 schuif je
                                 aan voor{" "}
                                 <Link href="/menu" className="underline hover:text-foreground">shared dining van de dinerkaart</Link>.
@@ -152,12 +152,12 @@ export default function LunchLayout({
 
                 {/* FAQ */}
                 <section className="max-w-3xl mx-auto">
-                    <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-6 text-center">
+                    <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-6 text-center">
                         Veelgestelde vragen over de lunch
                     </h2>
                     <div className="space-y-4">
                         {lunchFaqs.map((faq, i) => (
-                            <Card key={i} className="rounded-2xl border p-4 sm:p-6">
+                            <Card key={i} className=" border-2 border-foreground p-4 sm:p-6">
                                 <h3 className="font-semibold text-foreground mb-2">{faq.question}</h3>
                                 <p className="text-sm text-muted-foreground">{faq.answer}</p>
                             </Card>
@@ -170,16 +170,16 @@ export default function LunchLayout({
                     <ReserveerButton size="lg" className="shadow-sm" label="Reserveer een tafel" />
                     <div className="flex flex-wrap justify-center gap-3">
                         <Link href="/menu">
-                            <Button variant="outline" className="rounded-xl">Dinerkaart</Button>
+                            <Button variant="outline" className="">Dinerkaart</Button>
                         </Link>
                         <Link href="/drank">
-                            <Button variant="outline" className="rounded-xl">Drankenkaart</Button>
+                            <Button variant="outline" className="">Drankenkaart</Button>
                         </Link>
                         <Link href="/ophalen">
-                            <Button variant="outline" className="rounded-xl">Ophalen</Button>
+                            <Button variant="outline" className="">Tafelaar Thuis (ophalen)</Button>
                         </Link>
                         <Link href="/verhuur-en-groepen">
-                            <Button variant="outline" className="rounded-xl">Groepen &amp; verhuur</Button>
+                            <Button variant="outline" className="">Groepen &amp; verhuur</Button>
                         </Link>
                     </div>
                 </section>

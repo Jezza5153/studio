@@ -66,11 +66,11 @@ export default function DuurzaamRestaurantAmersfoortPage() {
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd() }} />
             <div className="container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
                 {/* Hero */}
-                <header className="text-center mb-12">
-                    <p className="inline-block text-xs tracking-widest uppercase text-primary/80 mb-2">
+                <header className="mb-12 border-[5px] border-foreground bg-white px-6 py-10 text-center sm:px-10 sm:py-12">
+                    <p className="mb-4 inline-block -rotate-[1.2deg] bg-foreground px-3.5 py-[7px] text-[11px] font-bold uppercase tracking-[0.2em] text-background">
                         Lokaal &amp; Seizoensgebonden
                     </p>
-                    <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl tracking-tight">
+                    <h1 className="font-headline text-3xl font-black leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">
                         Duurzaam restaurant in Amersfoort
                     </h1>
                     <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
@@ -83,7 +83,7 @@ export default function DuurzaamRestaurantAmersfoortPage() {
                 {/* USPs */}
                 <section className="max-w-4xl mx-auto mb-12">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <Card className="rounded-2xl border">
+                        <Card className=" border-2 border-foreground">
                             <CardHeader className="pb-2">
                                 <div className="flex items-center gap-2 text-primary">
                                     <Leaf className="h-5 w-5" />
@@ -95,7 +95,7 @@ export default function DuurzaamRestaurantAmersfoortPage() {
                             </CardContent>
                         </Card>
 
-                        <Card className="rounded-2xl border">
+                        <Card className=" border-2 border-foreground">
                             <CardHeader className="pb-2">
                                 <div className="flex items-center gap-2 text-primary">
                                     <Recycle className="h-5 w-5" />
@@ -107,7 +107,7 @@ export default function DuurzaamRestaurantAmersfoortPage() {
                             </CardContent>
                         </Card>
 
-                        <Card className="rounded-2xl border">
+                        <Card className=" border-2 border-foreground">
                             <CardHeader className="pb-2">
                                 <div className="flex items-center gap-2 text-primary">
                                     <Wine className="h-5 w-5" />
@@ -128,8 +128,8 @@ export default function DuurzaamRestaurantAmersfoortPage() {
 
                 {/* Content */}
                 <section className="max-w-3xl mx-auto mb-12">
-                    <Card className="rounded-2xl border p-6 sm:p-8">
-                        <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-4">
+                    <Card className=" border-2 border-foreground p-6 sm:p-8">
+                        <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-4">
                             Duurzaam eten bij De Tafelaar
                         </h2>
                         <div className="space-y-4 text-muted-foreground">
@@ -149,7 +149,7 @@ export default function DuurzaamRestaurantAmersfoortPage() {
                                 <strong className="text-foreground">Stadsbrouwerij De Drie Ringen</strong>,{" "}
                                 <strong className="text-foreground">Brouwerij &apos;t Mirakel</strong> en{" "}
                                 <strong className="text-foreground">Eem Bier</strong>. Elke
-                                leverancier kennen we persoonlijk — dat is geen marketingverhaal,
+                                leverancier kennen we persoonlijk, dat is geen marketingverhaal,
                                 maar de basis van onze keuken.
                             </p>
                             <p>
@@ -168,12 +168,12 @@ export default function DuurzaamRestaurantAmersfoortPage() {
 
                 {/* FAQ */}
                 <section className="max-w-3xl mx-auto mb-12">
-                    <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-6 text-center">
+                    <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-6 text-center">
                         Veelgestelde vragen
                     </h2>
                     <div className="space-y-4">
                         {faqs.map((faq, i) => (
-                            <Card key={i} className="rounded-2xl border p-4 sm:p-6">
+                            <Card key={i} className=" border-2 border-foreground p-4 sm:p-6">
                                 <h3 className="font-semibold text-foreground mb-2">{faq.question}</h3>
                                 <p className="text-sm text-muted-foreground">{faq.answer}</p>
                             </Card>
@@ -185,17 +185,17 @@ export default function DuurzaamRestaurantAmersfoortPage() {
                 <section className="max-w-2xl mx-auto text-center">
                     <div className="flex flex-wrap justify-center gap-3">
                         <Link href="/over-onze-makers">
-                            <Button variant="outline" className="rounded-xl">
+                            <Button variant="outline" className="">
                                 Onze makers
                             </Button>
                         </Link>
                         <Link href="/menu">
-                            <Button variant="outline" className="rounded-xl">
+                            <Button variant="outline" className="">
                                 Bekijk ons menu
                             </Button>
                         </Link>
                         <Link href="/contact">
-                            <Button variant="outline" className="rounded-xl">
+                            <Button variant="outline" className="">
                                 Contact
                             </Button>
                         </Link>

@@ -42,7 +42,7 @@ const faqs = [
     },
     {
         question: "Kan ik De Tafelaar ook overdag huren?",
-        answer: "Ja, overdag en 's avonds. Zakelijk of prive — in overleg is veel mogelijk, ook op maandag en dinsdag.",
+        answer: "Ja, overdag en 's avonds. Zakelijk of prive, in overleg is veel mogelijk, ook op maandag en dinsdag.",
     },
     {
         question: "Wat voor feesten organiseren jullie?",
@@ -69,11 +69,11 @@ export default async function FeestlocatieAmersfoortPage() {
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd() }} />
             <div className="container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
                 {/* Hero */}
-                <header className="text-center mb-12">
-                    <p className="inline-block text-xs tracking-widest uppercase text-primary/80 mb-2">
+                <header className="mb-12 border-[5px] border-foreground bg-white px-6 py-10 text-center sm:px-10 sm:py-12">
+                    <p className="mb-4 inline-block -rotate-[1.2deg] bg-foreground px-3.5 py-[7px] text-[11px] font-bold uppercase tracking-[0.2em] text-background">
                         Feestlocatie in Amersfoort Centrum
                     </p>
-                    <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl tracking-tight">
+                    <h1 className="font-headline text-3xl font-black leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">
                         Feest vieren bij De Tafelaar
                     </h1>
                     <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
@@ -86,7 +86,7 @@ export default async function FeestlocatieAmersfoortPage() {
                 {/* USPs */}
                 <section className="max-w-4xl mx-auto mb-12">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <Card className="rounded-2xl border">
+                        <Card className=" border-2 border-foreground">
                             <CardHeader className="pb-2">
                                 <div className="flex items-center gap-2 text-primary">
                                     <PartyPopper className="h-5 w-5" />
@@ -99,7 +99,7 @@ export default async function FeestlocatieAmersfoortPage() {
                             </CardContent>
                         </Card>
 
-                        <Card className="rounded-2xl border">
+                        <Card className=" border-2 border-foreground">
                             <CardHeader className="pb-2">
                                 <div className="flex items-center gap-2 text-primary">
                                     <UtensilsCrossed className="h-5 w-5" />
@@ -112,7 +112,7 @@ export default async function FeestlocatieAmersfoortPage() {
                             </CardContent>
                         </Card>
 
-                        <Card className="rounded-2xl border">
+                        <Card className=" border-2 border-foreground">
                             <CardHeader className="pb-2">
                                 <div className="flex items-center gap-2 text-primary">
                                     <Clock className="h-5 w-5" />
@@ -120,7 +120,7 @@ export default async function FeestlocatieAmersfoortPage() {
                                 </div>
                             </CardHeader>
                             <CardContent className="text-sm text-muted-foreground">
-                                Ook op maandag en dinsdag in overleg. Zakelijk of prive — wij maken
+                                Ook op maandag en dinsdag in overleg. Zakelijk of prive, wij maken
                                 het mogelijk.
                             </CardContent>
                         </Card>
@@ -134,8 +134,8 @@ export default async function FeestlocatieAmersfoortPage() {
 
                 {/* Content */}
                 <section className="max-w-3xl mx-auto mb-12">
-                    <Card className="rounded-2xl border p-6 sm:p-8">
-                        <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-4">
+                    <Card className=" border-2 border-foreground p-6 sm:p-8">
+                        <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-4">
                             Feest vieren bij De Tafelaar
                         </h2>
                         <div className="space-y-4 text-muted-foreground">
@@ -148,7 +148,7 @@ export default async function FeestlocatieAmersfoortPage() {
                                 Ons shared dining concept werkt uitstekend voor feesten: gasten delen
                                 gerechten aan tafel, waardoor er vanzelf gesprekken ontstaan en de sfeer
                                 loskomt. Of het nu gaat om een verjaardag, jubileum, afstuderen of gewoon
-                                een gezellige borrel — wij denken mee over de opzet, het eten en de dranken.
+                                een gezellige borrel, wij denken mee over de opzet, het eten en de dranken.
                             </p>
                             <p>
                                 De ruimte is flexibel in te delen. Voor een staande borrel ontvangen we
@@ -159,7 +159,7 @@ export default async function FeestlocatieAmersfoortPage() {
                                 Kamp 8 ligt centraal in Amersfoort: op 5 minuten lopen van Theater de
                                 Flint. Vanaf station Amersfoort Centraal is het circa 22 minuten lopen,
                                 of korter met bus, fiets of taxi. Parkeergarage Beestenmarkt is op
-                                2 minuten loopafstand — ideaal voor gasten die met de auto komen. Met
+                                2 minuten loopafstand, ideaal voor gasten die met de auto komen. Met
                                 een {g.ratingText} op Google en {g.countText} reviews weet je dat je feest in goede handen
                                 is. Regulier geopend woensdag t/m zondag (woensdag en donderdag vanaf
                                 17:00, vrijdag t/m zondag vanaf 11:00); op andere dagen in overleg.
@@ -170,12 +170,12 @@ export default async function FeestlocatieAmersfoortPage() {
 
                 {/* FAQ */}
                 <section className="max-w-3xl mx-auto mb-12">
-                    <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-6 text-center">
+                    <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-6 text-center">
                         Veelgestelde vragen
                     </h2>
                     <div className="space-y-4">
                         {faqs.map((faq) => (
-                            <Card key={faq.question} className="rounded-2xl border p-6">
+                            <Card key={faq.question} className=" border-2 border-foreground p-6">
                                 <h3 className="font-semibold text-foreground mb-2">{faq.question}</h3>
                                 <p className="text-sm text-muted-foreground">{faq.answer}</p>
                             </Card>
@@ -187,22 +187,22 @@ export default async function FeestlocatieAmersfoortPage() {
                 <section className="max-w-2xl mx-auto text-center">
                     <div className="flex flex-wrap justify-center gap-3">
                         <Link href="/bedrijfsdiner-amersfoort">
-                            <Button variant="outline" className="rounded-xl">
+                            <Button variant="outline" className="">
                                 Bedrijfsdiner
                             </Button>
                         </Link>
                         <Link href="/prive-diner-amersfoort">
-                            <Button variant="outline" className="rounded-xl">
+                            <Button variant="outline" className="">
                                 Privé diner
                             </Button>
                         </Link>
                         <Link href="/verhuur-en-groepen">
-                            <Button variant="outline" className="rounded-xl">
+                            <Button variant="outline" className="">
                                 Verhuur &amp; Groepen
                             </Button>
                         </Link>
                         <Link href="/contact">
-                            <Button variant="outline" className="rounded-xl">
+                            <Button variant="outline" className="">
                                 Neem contact op
                             </Button>
                         </Link>

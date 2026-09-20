@@ -37,7 +37,7 @@ const impressieFaqs = [
   },
   {
     question: "Kan ik De Tafelaar bezoeken zonder reservering?",
-    answer: "Walk-ins zijn welkom als er plek is, maar we raden aan om te reserveren — vooral op vrijdag en zaterdag. Reserveer eenvoudig online via onze website.",
+    answer: "Walk-ins zijn welkom als er plek is, maar we raden aan om te reserveren, vooral op vrijdag en zaterdag. Reserveer eenvoudig online via onze website.",
   },
 ];
 
@@ -83,7 +83,7 @@ export default async function ImpressiePage() {
 
           {/* Google rating badge */}
           {googleRating > 0 && (
-            <div className="mt-6 inline-flex items-center gap-3 rounded-full border border-amber-500/20 bg-amber-500/[0.06] px-5 py-2.5 shadow-sm">
+            <div className="mt-6 inline-flex items-center gap-3 rounded-full border-2 border-foreground border-amber-500/20 bg-amber-500/[0.06] px-5 py-2.5 shadow-sm">
               <svg
                 className="h-5 w-5"
                 viewBox="0 0 24 24"
@@ -144,16 +144,16 @@ export default async function ImpressiePage() {
 
       {/* Over onze sfeer */}
       <section className="container mx-auto px-4 sm:px-6 py-12">
-        <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-6 text-center">
+        <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-6 text-center">
           Over onze sfeer
         </h2>
         <div className="max-w-3xl mx-auto space-y-4 text-muted-foreground text-sm sm:text-base leading-relaxed">
           <p>
             De Tafelaar is een shared dining restaurant op de{" "}
-            <strong>Kamp 8 in Amersfoort centrum</strong> — op 5 minuten
+            <strong>Kamp 8 in Amersfoort centrum</strong>, op 5 minuten
             loopafstand van Theater de Flint. Vanaf station Amersfoort Centraal
             is het circa 22 minuten lopen, of korter met bus, fiets of taxi.
-            In een warm, eigentijds interieur serveren we kleine gerechten om
+            In een warm, eigentijds interieur serveren we gerechten om
             samen te delen, van seizoenssalades en huisgemaakte bitterballen
             tot langzaam gegaarde hoofdgerechten.
           </p>
@@ -163,9 +163,9 @@ export default async function ImpressiePage() {
             <strong>Korte Garde</strong> voor wijnen en{" "}
             <strong>Boot Koffie</strong> uit Amersfoort voor onze espresso.
             Onze gerechten liggen tussen <strong>€&nbsp;3,50 en €&nbsp;15</strong>;
-            reken op gemiddeld <strong>€&nbsp;25–35&nbsp;p.p.</strong> voor een
+            reken op gemiddeld <strong>€&nbsp;25-35&nbsp;p.p.</strong> voor een
             compleet diner. Of je nu komt voor een borrel na het theater, een
-            uitgebreid diner met vrienden of een romantische avond — de sfeer
+            uitgebreid diner met vrienden of een romantische avond, de sfeer
             op deze foto&apos;s geeft een goed beeld van wat je kunt verwachten.
           </p>
         </div>
@@ -173,12 +173,12 @@ export default async function ImpressiePage() {
 
       {/* Veelgestelde vragen */}
       <section className="container mx-auto px-4 sm:px-6 py-12">
-        <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-6 text-center">
+        <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-6 text-center">
           Veelgestelde vragen
         </h2>
         <div className="max-w-3xl mx-auto space-y-4">
           {impressieFaqs.map((faq, i) => (
-            <Card key={i} className="rounded-2xl border p-4 sm:p-6">
+            <Card key={i} className=" border-2 border-foreground p-4 sm:p-6">
               <h3 className="font-semibold text-foreground mb-2">{faq.question}</h3>
               <p className="text-sm text-muted-foreground">{faq.answer}</p>
             </Card>

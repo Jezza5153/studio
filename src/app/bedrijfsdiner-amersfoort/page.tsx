@@ -69,11 +69,11 @@ export default async function BedrijfsdinerAmersfoortPage() {
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd() }} />
             <div className="container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
                 {/* Hero */}
-                <header className="text-center mb-12">
-                    <p className="inline-block text-xs tracking-widest uppercase text-primary/80 mb-2">
+                <header className="mb-12 border-[5px] border-foreground bg-white px-6 py-10 text-center sm:px-10 sm:py-12">
+                    <p className="mb-4 inline-block -rotate-[1.2deg] bg-foreground px-3.5 py-[7px] text-[11px] font-bold uppercase tracking-[0.2em] text-background">
                         Zakelijk Dineren in Amersfoort
                     </p>
-                    <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl tracking-tight">
+                    <h1 className="font-headline text-3xl font-black leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">
                         Bedrijfsdiner bij De Tafelaar
                     </h1>
                     <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
@@ -86,7 +86,7 @@ export default async function BedrijfsdinerAmersfoortPage() {
                 {/* USPs */}
                 <section className="max-w-4xl mx-auto mb-12">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <Card className="rounded-2xl border">
+                        <Card className=" border-2 border-foreground">
                             <CardHeader className="pb-2">
                                 <div className="flex items-center gap-2 text-primary">
                                     <Briefcase className="h-5 w-5" />
@@ -99,7 +99,7 @@ export default async function BedrijfsdinerAmersfoortPage() {
                             </CardContent>
                         </Card>
 
-                        <Card className="rounded-2xl border">
+                        <Card className=" border-2 border-foreground">
                             <CardHeader className="pb-2">
                                 <div className="flex items-center gap-2 text-primary">
                                     <Users className="h-5 w-5" />
@@ -112,7 +112,7 @@ export default async function BedrijfsdinerAmersfoortPage() {
                             </CardContent>
                         </Card>
 
-                        <Card className="rounded-2xl border">
+                        <Card className=" border-2 border-foreground">
                             <CardHeader className="pb-2">
                                 <div className="flex items-center gap-2 text-primary">
                                     <Utensils className="h-5 w-5" />
@@ -134,14 +134,14 @@ export default async function BedrijfsdinerAmersfoortPage() {
 
                 {/* Content */}
                 <section className="max-w-3xl mx-auto mb-12">
-                    <Card className="rounded-2xl border p-6 sm:p-8">
-                        <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-4">
+                    <Card className=" border-2 border-foreground p-6 sm:p-8">
+                        <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-4">
                             Zakelijk dineren bij De Tafelaar
                         </h2>
                         <div className="space-y-4 text-muted-foreground">
                             <p>
                                 Een bedrijfsdiner hoeft niet stijf en formeel te zijn. Bij De Tafelaar
-                                zit je samen aan tafel en deel je gerechten — dat doorbreekt het ijs en
+                                zit je samen aan tafel en deel je gerechten, dat doorbreekt het ijs en
                                 zorgt voor echte gesprekken. Of het nu gaat om een teamdiner, een
                                 relatie-etentje of een kick-off: shared dining past perfect bij een
                                 zakelijke setting die toch ontspannen is.
@@ -159,7 +159,7 @@ export default async function BedrijfsdinerAmersfoortPage() {
                                 aan te schuiven.
                             </p>
                             <p>
-                                De Tafelaar zit op Kamp 8, hartje Amersfoort centrum — op 5 minuten
+                                De Tafelaar zit op Kamp 8, hartje Amersfoort centrum, op 5 minuten
                                 lopen van Theater de Flint. Vanaf station Amersfoort Centraal is het
                                 circa 22 minuten lopen, of korter met bus, fiets of taxi.
                                 Parkeergarage Beestenmarkt ligt op 2 minuten loopafstand. Met een
@@ -174,12 +174,12 @@ export default async function BedrijfsdinerAmersfoortPage() {
 
                 {/* FAQ */}
                 <section className="max-w-3xl mx-auto mb-12">
-                    <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-6 text-center">
+                    <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-6 text-center">
                         Veelgestelde vragen
                     </h2>
                     <div className="space-y-4">
                         {faqs.map((faq) => (
-                            <Card key={faq.question} className="rounded-2xl border p-6">
+                            <Card key={faq.question} className=" border-2 border-foreground p-6">
                                 <h3 className="font-semibold text-foreground mb-2">{faq.question}</h3>
                                 <p className="text-sm text-muted-foreground">{faq.answer}</p>
                             </Card>
@@ -191,22 +191,22 @@ export default async function BedrijfsdinerAmersfoortPage() {
                 <section className="max-w-2xl mx-auto text-center">
                     <div className="flex flex-wrap justify-center gap-3">
                         <Link href="/feestlocatie-amersfoort">
-                            <Button variant="outline" className="rounded-xl">
+                            <Button variant="outline" className="">
                                 Feestlocatie
                             </Button>
                         </Link>
                         <Link href="/prive-diner-amersfoort">
-                            <Button variant="outline" className="rounded-xl">
+                            <Button variant="outline" className="">
                                 Privé diner
                             </Button>
                         </Link>
                         <Link href="/catering">
-                            <Button variant="outline" className="rounded-xl">
+                            <Button variant="outline" className="">
                                 Catering
                             </Button>
                         </Link>
                         <Link href="/contact">
-                            <Button variant="outline" className="rounded-xl">
+                            <Button variant="outline" className="">
                                 Neem contact op
                             </Button>
                         </Link>

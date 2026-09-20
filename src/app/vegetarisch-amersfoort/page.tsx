@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 const faqs = [
     {
         question: "Heeft De Tafelaar vegetarische opties?",
-        answer: "Ja, een groot deel van ons menu is vegetarisch — op de kaart herkenbaar aan de groene markering (V). Elk seizoen staan er meerdere plantaardige gerechten op de kaart, waaronder een vegan dessert.",
+        answer: "Ja, een groot deel van ons menu is vegetarisch, op de kaart herkenbaar aan de groene markering (V). Elk seizoen staan er meerdere plantaardige gerechten op de kaart, waaronder een vegan dessert.",
     },
     {
         question: "Is De Tafelaar volledig vegetarisch?",
@@ -69,11 +69,11 @@ export default async function VegetarischAmersfoortPage() {
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd() }} />
             <div className="container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
                 {/* Hero */}
-                <header className="text-center mb-12">
-                    <p className="inline-block text-xs tracking-widest uppercase text-primary/80 mb-2">
+                <header className="mb-12 border-[5px] border-foreground bg-white px-6 py-10 text-center sm:px-10 sm:py-12">
+                    <p className="mb-4 inline-block -rotate-[1.2deg] bg-foreground px-3.5 py-[7px] text-[11px] font-bold uppercase tracking-[0.2em] text-background">
                         Vegetarisch &amp; Vegan in Amersfoort
                     </p>
-                    <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl tracking-tight">
+                    <h1 className="font-headline text-3xl font-black leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">
                         Vegetarisch eten bij De Tafelaar
                     </h1>
                     <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
@@ -86,7 +86,7 @@ export default async function VegetarischAmersfoortPage() {
                 {/* USPs */}
                 <section className="max-w-4xl mx-auto mb-12">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <Card className="rounded-2xl border">
+                        <Card className=" border-2 border-foreground">
                             <CardHeader className="pb-2">
                                 <div className="flex items-center gap-2 text-primary">
                                     <Leaf className="h-5 w-5" />
@@ -99,7 +99,7 @@ export default async function VegetarischAmersfoortPage() {
                             </CardContent>
                         </Card>
 
-                        <Card className="rounded-2xl border">
+                        <Card className=" border-2 border-foreground">
                             <CardHeader className="pb-2">
                                 <div className="flex items-center gap-2 text-primary">
                                     <Sprout className="h-5 w-5" />
@@ -112,7 +112,7 @@ export default async function VegetarischAmersfoortPage() {
                             </CardContent>
                         </Card>
 
-                        <Card className="rounded-2xl border">
+                        <Card className=" border-2 border-foreground">
                             <CardHeader className="pb-2">
                                 <div className="flex items-center gap-2 text-primary">
                                     <Heart className="h-5 w-5" />
@@ -134,16 +134,15 @@ export default async function VegetarischAmersfoortPage() {
 
                 {/* Content */}
                 <section className="max-w-3xl mx-auto mb-12">
-                    <Card className="rounded-2xl border p-6 sm:p-8">
-                        <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-4">
+                    <Card className=" border-2 border-foreground p-6 sm:p-8">
+                        <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-4">
                             Vegetarisch eten bij De Tafelaar
                         </h2>
                         <div className="space-y-4 text-muted-foreground">
                             <p>
                                 Shared dining is ideaal als je vegetarisch of vegan eet. Je kiest
-                                meerdere kleine gerechten om te delen, waardoor je van alles kunt
-                                proeven. Op onze kaart staan altijd meerdere plantaardige opties —
-                                duidelijk gemarkeerd met V (vegetarisch), GF (glutenvrij) en LF (lactosevrij).
+                                meerdere gerechten om te delen, waardoor je van alles kunt
+                                proeven. Op onze kaart staan altijd meerdere plantaardige opties, duidelijk gemarkeerd met V (vegetarisch), GF (glutenvrij) en LF (lactosevrij).
                             </p>
                             <p>
                                 Onze keuken werkt met seizoensgebonden groenten van lokale producenten.
@@ -153,12 +152,12 @@ export default async function VegetarischAmersfoortPage() {
                             </p>
                             <p>
                                 Of je nu helemaal plantaardig eet of gewoon graag meer groenten op
-                                tafel hebt — bij De Tafelaar ben je welkom. We adviseren 2 tot 3
+                                tafel hebt, bij De Tafelaar ben je welkom. We adviseren 2 tot 3
                                 gerechten per persoon (reken op EUR 25-35 p.p.), en onze bediening
                                 helpt je graag bij het samenstellen van een mooie vegetarische selectie.
                             </p>
                             <p>
-                                De Tafelaar zit op Kamp 8, hartje centrum Amersfoort — op 5 minuten
+                                De Tafelaar zit op Kamp 8, hartje centrum Amersfoort, op 5 minuten
                                 lopen van Theater de Flint. Vanaf station Amersfoort Centraal is het
                                 circa 22 minuten lopen, of korter met bus, fiets of taxi. Met een {g.ratingText}
                                 op Google en {g.countText} reviews zijn we een van de best beoordeelde restaurants
@@ -171,12 +170,12 @@ export default async function VegetarischAmersfoortPage() {
 
                 {/* FAQ */}
                 <section className="max-w-3xl mx-auto mb-12">
-                    <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-6 text-center">
+                    <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-6 text-center">
                         Veelgestelde vragen
                     </h2>
                     <div className="space-y-4">
                         {faqs.map((faq) => (
-                            <Card key={faq.question} className="rounded-2xl border p-6">
+                            <Card key={faq.question} className=" border-2 border-foreground p-6">
                                 <h3 className="font-semibold text-foreground mb-2">{faq.question}</h3>
                                 <p className="text-sm text-muted-foreground">{faq.answer}</p>
                             </Card>
@@ -188,22 +187,22 @@ export default async function VegetarischAmersfoortPage() {
                 <section className="max-w-2xl mx-auto text-center">
                     <div className="flex flex-wrap justify-center gap-3">
                         <Link href="/menu">
-                            <Button variant="outline" className="rounded-xl">
+                            <Button variant="outline" className="">
                                 Bekijk ons menu
                             </Button>
                         </Link>
                         <Link href="/over-onze-makers">
-                            <Button variant="outline" className="rounded-xl">
+                            <Button variant="outline" className="">
                                 Over onze makers
                             </Button>
                         </Link>
                         <Link href="/duurzaam-restaurant-amersfoort">
-                            <Button variant="outline" className="rounded-xl">
+                            <Button variant="outline" className="">
                                 Duurzaam eten
                             </Button>
                         </Link>
                         <Link href="/contact">
-                            <Button variant="outline" className="rounded-xl">
+                            <Button variant="outline" className="">
                                 Contact &amp; Reserveren
                             </Button>
                         </Link>

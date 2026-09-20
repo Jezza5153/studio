@@ -34,10 +34,10 @@ function UpdateCard({ item }: { item: FeedItem }) {
     return (
         <Link
             href={`/updates/${item.slug}`}
-            className="group flex gap-4 rounded-xl border border-border/50 bg-background p-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+            className="group flex gap-4 border-2 border-foreground border-border/50 bg-background p-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
         >
             {thumb && (
-                <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-lg sm:h-28 sm:w-28">
+                <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden sm:h-28 sm:w-28">
                     <Image
                         src={thumb.url}
                         alt={item.title}
@@ -106,7 +106,7 @@ export default async function UpdatesPage({
             {/* Header */}
             <div className="mb-8 text-center">
                 <h1 className="font-headline text-3xl font-bold text-foreground sm:text-4xl">
-                    Updates &amp; Nieuws — De Tafelaar Amersfoort
+                    Updates &amp; Nieuws, De Tafelaar Amersfoort
                 </h1>
                 <p className="mt-2 max-w-2xl mx-auto text-sm text-muted-foreground">
                     Alle updates, evenementen, reviews en verhalen van De Tafelaar op de Kamp in Amersfoort centrum.
@@ -117,7 +117,7 @@ export default async function UpdatesPage({
             {/* Search + Filters */}
             <div className="mb-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
                 <form className="w-full sm:w-auto" action="/updates" method="get">
-                    <div className="flex overflow-hidden rounded-lg border border-border focus-within:ring-2 focus-within:ring-primary/50">
+                    <div className="flex overflow-hidden border-2 border-foreground border-border focus-within:ring-2 focus-within:ring-primary/50">
                         <input
                             type="text"
                             name="q"
@@ -173,7 +173,7 @@ export default async function UpdatesPage({
                 {page > 1 && (
                     <Link
                         href={`/updates?page=${page - 1}${type ? `&type=${type}` : ""}${query ? `&q=${query}` : ""}`}
-                        className="rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground"
+                        className="rounded-full border-2 border-foreground border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground"
                     >
                         ← Vorige
                     </Link>
@@ -181,7 +181,7 @@ export default async function UpdatesPage({
                 {data.hasMore && (
                     <Link
                         href={`/updates?page=${page + 1}${type ? `&type=${type}` : ""}${query ? `&q=${query}` : ""}`}
-                        className="rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground"
+                        className="rounded-full border-2 border-foreground border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground"
                     >
                         Volgende →
                     </Link>
@@ -193,25 +193,25 @@ export default async function UpdatesPage({
                 <div className="flex flex-wrap justify-center gap-3">
                     <Link
                         href="/agenda"
-                        className="rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground"
+                        className="rounded-full border-2 border-foreground border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground"
                     >
                         Agenda
                     </Link>
                     <Link
                         href="/menu"
-                        className="rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground"
+                        className="rounded-full border-2 border-foreground border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground"
                     >
                         Menukaart
                     </Link>
                     <Link
                         href="/impressie"
-                        className="rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground"
+                        className="rounded-full border-2 border-foreground border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground"
                     >
                         Impressie &amp; Reviews
                     </Link>
                     <Link
                         href="/reserveren"
-                        className="rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground"
+                        className="rounded-full border-2 border-foreground border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground"
                     >
                         Reserveren
                     </Link>

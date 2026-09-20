@@ -115,7 +115,7 @@ function restaurantJsonLd(rating?: number, reviewCount?: number) {
     sameAs: [
       "https://www.facebook.com/people/Tafelaar-Amersfoort",
       "https://instagram.com/tafelaaramersfoort",
-      // JV catering brand — Tafelaar × Jezza Cooks operates out of this kitchen.
+      // JV catering brand, Tafelaar × Jezza Cooks operates out of this kitchen.
       // jezzacooks.com's #catering entity cross-refs back to #restaurant here,
       // so AI answer engines resolve the two-domain service as one entity.
       "https://www.jezzacooks.com/services/catering",
@@ -179,7 +179,7 @@ function restaurantJsonLd(rating?: number, reviewCount?: number) {
     currenciesAccepted: "EUR",
   };
 
-  // Live aggregateRating from Google reviews — synced via /api/cron/ingest-reviews
+  // Live aggregateRating from Google reviews, synced via /api/cron/ingest-reviews
   if (rating && rating > 0 && reviewCount && reviewCount > 0) {
     data.aggregateRating = {
       "@type": "AggregateRating",
@@ -228,7 +228,7 @@ export default async function RootLayout({
         {/* Skip link for keyboard users */}
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:z-[100] focus:top-2 focus:left-2 focus:bg-primary focus:text-primary-foreground focus:px-3 focus:py-2 focus:rounded-md"
+          className="sr-only focus:not-sr-only focus:fixed focus:z-[100] focus:top-2 focus:left-2 focus:bg-primary focus:text-primary-foreground focus:px-3 focus:py-2 "
         >
           Naar inhoud springen
         </a>

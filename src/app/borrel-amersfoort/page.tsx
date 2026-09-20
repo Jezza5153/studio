@@ -12,7 +12,7 @@ export const revalidate = 3600; // Google rating/review count refresh hourly (sy
 export const metadata: Metadata = {
     title: "Borrelen in Amersfoort | Borrelplanken & Lokaal Bier De Tafelaar",
     description:
-        "Borrelen in Amersfoort? De Tafelaar: borrelplanken, lokale bieren van Rock City & De Drie Ringen, en kleine gerechten. Vrijdag t/m zondag open vanaf 11:00.",
+        "Borrelen in Amersfoort? De Tafelaar: borrelplanken, lokale bieren van Rock City & De Drie Ringen, en gerechten. Vrijdag t/m zondag open vanaf 11:00.",
     alternates: {
         canonical: "/borrel-amersfoort",
     },
@@ -41,7 +41,7 @@ const faqs = [
     },
     {
         question: "Hebben jullie borrelplanken?",
-        answer: "Ja, we hebben borrelplanken met kaas, charcuterie en seizoensgebonden hapjes. Perfect om te delen met een groep. Daarnaast kun je alle kleine gerechten van de kaart bestellen.",
+        answer: "Ja, we hebben borrelplanken met kaas, charcuterie en seizoensgebonden hapjes. Perfect om te delen met een groep. Daarnaast kun je alle gerechten van de kaart bestellen.",
     },
     {
         question: "Kan ik met een groep borrelen?",
@@ -68,11 +68,11 @@ export default async function BorrelAmersfoortPage() {
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd() }} />
             <div className="container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
             {/* Hero */}
-            <header className="text-center mb-12">
-                <p className="inline-block text-xs tracking-widest uppercase text-primary/80 mb-2">
+            <header className="mb-12 border-[5px] border-foreground bg-white px-6 py-10 text-center sm:px-10 sm:py-12">
+                <p className="mb-4 inline-block -rotate-[1.2deg] bg-foreground px-3.5 py-[7px] text-[11px] font-bold uppercase tracking-[0.2em] text-background">
                     Borrelplanken & Lokaal Bier
                 </p>
-                <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl tracking-tight">
+                <h1 className="font-headline text-3xl font-black leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">
                     Borrelen in Amersfoort
                 </h1>
                 <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
@@ -84,7 +84,7 @@ export default async function BorrelAmersfoortPage() {
             {/* USPs */}
             <section className="max-w-4xl mx-auto mb-12">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <Card className="rounded-2xl border">
+                    <Card className=" border-2 border-foreground">
                         <CardHeader className="pb-2">
                             <div className="flex items-center gap-2 text-primary">
                                 <Beer className="h-5 w-5" />
@@ -96,7 +96,7 @@ export default async function BorrelAmersfoortPage() {
                         </CardContent>
                     </Card>
 
-                    <Card className="rounded-2xl border">
+                    <Card className=" border-2 border-foreground">
                         <CardHeader className="pb-2">
                             <div className="flex items-center gap-2 text-primary">
                                 <UtensilsCrossed className="h-5 w-5" />
@@ -108,7 +108,7 @@ export default async function BorrelAmersfoortPage() {
                         </CardContent>
                     </Card>
 
-                    <Card className="rounded-2xl border">
+                    <Card className=" border-2 border-foreground">
                         <CardHeader className="pb-2">
                             <div className="flex items-center gap-2 text-primary">
                                 <Clock className="h-5 w-5" />
@@ -129,15 +129,15 @@ export default async function BorrelAmersfoortPage() {
 
             {/* Content */}
             <section className="max-w-3xl mx-auto mb-12">
-                <Card className="rounded-2xl border p-6 sm:p-8">
-                    <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-4">
+                <Card className=" border-2 border-foreground p-6 sm:p-8">
+                    <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-4">
                         Borrelen bij De Tafelaar
                     </h2>
                     <div className="space-y-4 text-muted-foreground">
                         <p>
                             De Tafelaar is meer dan een restaurant. Op vrijdag tot en met zondag openen
                             we al om 11:00, zodat je rustig kunt binnenlopen voor een lunch of borrel. Geen
-                            reservering nodig — gewoon langskomen.
+                            reservering nodig, gewoon langskomen.
                         </p>
                         <p>
                             We zijn trots op ons aanbod van lokale bieren. Rock City Brewing, De Drie
@@ -147,7 +147,7 @@ export default async function BorrelAmersfoortPage() {
                         </p>
                         <p>
                             Bij de borrel serveren we borrelplanken met kaas en charcuterie, of je
-                            bestelt een paar kleine gerechten van de kaart om te delen. Gerechten
+                            bestelt een paar gerechten van de kaart om te delen. Gerechten
                             variëren van EUR 3,50 tot EUR 15,50. Kom je met een grotere groep? Vanaf 7
                             personen stellen we een Chef&apos;s Choice borrel-arrangement samen
                             (EUR 48 p.p.). We hebben ruimte voor tot circa 100 gasten.
@@ -155,7 +155,7 @@ export default async function BorrelAmersfoortPage() {
                         <p>
                             De Tafelaar zit op Kamp 8 in het centrum van Amersfoort, op 5 minuten
                             lopen van Theater de Flint. Vanaf station Amersfoort Centraal ben je in
-                            circa 22 minuten lopend bij ons — of korter met bus of fiets. Parkeergarage
+                            circa 22 minuten lopend bij ons, of korter met bus of fiets. Parkeergarage
                             Beestenmarkt is op 2 minuten loopafstand. Met een {g.ratingText} op Google en {g.countText}
                             reviews zijn we een van de best beoordeelde restaurants in Amersfoort.
                             Naast vrijdag tot en met zondag (open vanaf 11:00) zijn we ook geopend op
@@ -167,12 +167,12 @@ export default async function BorrelAmersfoortPage() {
 
             {/* FAQ */}
             <section className="max-w-3xl mx-auto mb-12">
-                <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-6 text-center">
+                <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-6 text-center">
                     Veelgestelde vragen
                 </h2>
                 <div className="space-y-4">
                     {faqs.map((faq) => (
-                        <Card key={faq.question} className="rounded-2xl border p-6">
+                        <Card key={faq.question} className=" border-2 border-foreground p-6">
                             <h3 className="font-semibold mb-2">{faq.question}</h3>
                             <p className="text-sm text-muted-foreground">{faq.answer}</p>
                         </Card>
@@ -184,22 +184,22 @@ export default async function BorrelAmersfoortPage() {
             <section className="max-w-2xl mx-auto text-center">
                 <div className="flex flex-wrap justify-center gap-3">
                     <Link href="/drank">
-                        <Button variant="outline" className="rounded-xl">
+                        <Button variant="outline" className="">
                             Bekijk de drankenkaart
                         </Button>
                     </Link>
                     <Link href="/menu">
-                        <Button variant="outline" className="rounded-xl">
+                        <Button variant="outline" className="">
                             Bekijk ons menu
                         </Button>
                     </Link>
                     <Link href="/beste-restaurant-amersfoort">
-                        <Button variant="outline" className="rounded-xl">
+                        <Button variant="outline" className="">
                             Beste restaurant
                         </Button>
                     </Link>
                     <Link href="/contact">
-                        <Button variant="outline" className="rounded-xl">
+                        <Button variant="outline" className="">
                             Contact & Reserveren
                         </Button>
                     </Link>

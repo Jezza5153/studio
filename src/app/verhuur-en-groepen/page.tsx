@@ -8,13 +8,13 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Feestlocatie & Groepen Amersfoort | De Tafelaar",
   description:
-    "Feest, bedrijfsdiner of groepsuitje in Amersfoort? De Tafelaar: verhuur tot 100 personen vlakbij Flint. Chef's Choice vanaf 7 pers.",
+    "Feest, bedrijfsdiner of groepsuitje in Amersfoort? De Tafelaar: verhuur tot 100 personen vlakbij de Flint. Chef's Choice vanaf 7 pers.",
   alternates: {
     canonical: "/verhuur-en-groepen",
   },
   openGraph: {
     title: "Feestlocatie & Bedrijfsdiner Amersfoort | De Tafelaar",
-    description: "Unieke locatie voor feesten, borrels en zakelijke diners tot 100 personen. Op loopafstand van Flint.",
+    description: "Unieke locatie voor feesten, borrels en zakelijke diners tot 100 personen. Op loopafstand van de Flint.",
   },
   keywords: [
     "feestlocatie amersfoort",
@@ -94,7 +94,7 @@ export default function VerhuurEnGroepenPage() {
       <div className="relative container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
         {/* Header */}
         <header className="text-center mb-10 sm:mb-12">
-          <p className="inline-block text-xs tracking-widest uppercase text-primary/80 mb-2">
+          <p className="mb-4 inline-block -rotate-[1.2deg] bg-foreground px-3.5 py-[7px] text-[11px] font-bold uppercase tracking-[0.2em] text-background">
             Verhuur &amp; Groepen
           </p>
           <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl">
@@ -102,7 +102,7 @@ export default function VerhuurEnGroepenPage() {
           </h1>
           <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
             De Tafelaar is te huur voor verschillende evenementen en groepsdiners tot{" "}
-            <strong>±100 personen</strong>. Overdag of in de avond – in overleg is veel mogelijk.
+            <strong>±100 personen</strong>. Overdag of in de avond, in overleg is veel mogelijk.
           </p>
 
           <div className="mt-6 flex flex-wrap justify-center gap-2">
@@ -132,7 +132,7 @@ export default function VerhuurEnGroepenPage() {
             </h2>
             <p className="text-base sm:text-lg text-foreground leading-relaxed">
               De Tafelaar is te huur voor verschillende evenementen en voor grote groepen tot{" "}
-              <strong>100 personen</strong>. Overdag of in de avond – vrijwel alles is in overleg
+              <strong>100 personen</strong>. Overdag of in de avond, vrijwel alles is in overleg
               mogelijk. We denken graag mee over de invulling, zodat jullie alleen nog maar hoeven
               aan te schuiven.
             </p>
@@ -149,10 +149,10 @@ export default function VerhuurEnGroepenPage() {
           </div>
 
           {/* HERO IMAGE */}
-          <div className="order-1 md:order-2 overflow-hidden rounded-2xl">
+          <div className="order-1 md:order-2 overflow-hidden">
             <Image
               src="/pics/verhuur1.jpg"
-              alt="De Tafelaar – verhuur en groepen"
+              alt="De Tafelaar, verhuur en groepen"
               width={1200}
               height={800}
               className="object-cover w-full h-auto"
@@ -165,7 +165,7 @@ export default function VerhuurEnGroepenPage() {
         {/* Key cards */}
         <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {/* cards unchanged */}
-          <Card className="rounded-2xl border border-border">
+          <Card className=" border-2 border-foreground border-border">
             <CardHeader className="pb-2">
               <div className="flex items-center gap-2 text-primary">
                 <UtensilsCrossed className="h-5 w-5" />
@@ -179,7 +179,7 @@ export default function VerhuurEnGroepenPage() {
             </CardContent>
           </Card>
 
-          <Card className="rounded-2xl border border-border">
+          <Card className=" border-2 border-foreground border-border">
             <CardHeader className="pb-2">
               <div className="flex items-center gap-2 text-primary">
                 <Users className="h-5 w-5" />
@@ -192,7 +192,7 @@ export default function VerhuurEnGroepenPage() {
             </CardContent>
           </Card>
 
-          <Card className="rounded-2xl border border-border">
+          <Card className=" border-2 border-foreground border-border">
             <CardHeader className="pb-2">
               <div className="flex items-center gap-2 text-primary">
                 <CalendarDays className="h-5 w-5" />
@@ -201,7 +201,7 @@ export default function VerhuurEnGroepenPage() {
               <CardDescription>Zakelijk &amp; privé</CardDescription>
             </CardHeader>
             <CardContent className="text-sm text-muted-foreground leading-relaxed">
-              Van vergaderingen tot borrels – we plannen praktisch en duidelijk.
+              Van vergaderingen tot borrels, we plannen praktisch en duidelijk.
             </CardContent>
           </Card>
         </section>
@@ -216,7 +216,7 @@ export default function VerhuurEnGroepenPage() {
             ].map((src, i) => (
               <div
                 key={src}
-                className={`overflow-hidden rounded-xl ${i === 0 ? "col-span-2 row-span-2" : ""
+                className={`overflow-hidden ${i === 0 ? "col-span-2 row-span-2" : ""
                   }`}
               >
                 <Image
@@ -234,7 +234,7 @@ export default function VerhuurEnGroepenPage() {
 
         {/* CTA (unchanged) */}
         <section>
-          <Card className="rounded-2xl border border-border overflow-hidden">
+          <Card className=" border-2 border-foreground border-border overflow-hidden">
             <div className="relative p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div>
                 <h2 className="font-headline text-2xl sm:text-3xl md:text-4xl">
@@ -246,9 +246,9 @@ export default function VerhuurEnGroepenPage() {
               </div>
               <div className="flex flex-wrap gap-3">
                 <Link href="/contact" prefetch={false}>
-                  <Button className="rounded-xl">Contactformulier</Button>
+                  <Button className="">Contactformulier</Button>
                 </Link>
-                <Button asChild variant="outline" className="rounded-xl">
+                <Button asChild variant="outline" className="">
                   <ObfuscatedEmail user="reserveren" domain="tafelaaramersfoort.nl">
                     <MessageSquare className="mr-2 h-4 w-4" />
                     Mail ons
@@ -261,12 +261,12 @@ export default function VerhuurEnGroepenPage() {
 
         {/* Visible FAQ */}
         <section className="mt-12">
-          <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-6 text-center">
+          <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-6 text-center">
             Veelgestelde vragen over verhuur en groepen
           </h2>
           <div className="max-w-3xl mx-auto space-y-4">
             {faqs.map((faq, i) => (
-              <Card key={i} className="rounded-2xl border p-4 sm:p-6">
+              <Card key={i} className=" border-2 border-foreground p-4 sm:p-6">
                 <h3 className="font-semibold text-foreground mb-2">{faq.question}</h3>
                 <p className="text-sm text-muted-foreground">{faq.answer}</p>
               </Card>
@@ -277,10 +277,10 @@ export default function VerhuurEnGroepenPage() {
         {/* Internal links */}
         <section className="mt-12 text-center">
           <div className="flex flex-wrap justify-center gap-3">
-            <Link href="/feestlocatie-amersfoort"><Button variant="outline" className="rounded-xl">Feestlocatie</Button></Link>
-            <Link href="/bedrijfsdiner-amersfoort"><Button variant="outline" className="rounded-xl">Bedrijfsdiner</Button></Link>
-            <Link href="/prive-diner-amersfoort"><Button variant="outline" className="rounded-xl">Priv&#233; diner</Button></Link>
-            <Link href="/catering"><Button variant="outline" className="rounded-xl">Catering</Button></Link>
+            <Link href="/feestlocatie-amersfoort"><Button variant="outline" className="">Feestlocatie</Button></Link>
+            <Link href="/bedrijfsdiner-amersfoort"><Button variant="outline" className="">Bedrijfsdiner</Button></Link>
+            <Link href="/prive-diner-amersfoort"><Button variant="outline" className="">Priv&#233; diner</Button></Link>
+            <Link href="/catering"><Button variant="outline" className="">Catering</Button></Link>
           </div>
         </section>
       </div>

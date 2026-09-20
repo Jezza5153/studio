@@ -31,7 +31,7 @@ export default function LunchPage() {
         const url = typeof window !== "undefined" ? window.location.href : "";
         try {
             if (navigator.share) {
-                await navigator.share({ title: "De Tafelaar – Lunchkaart", text: "Onze lunchkaart bekijken?", url });
+                await navigator.share({ title: "De Tafelaar, Lunchkaart", text: "Onze lunchkaart bekijken?", url });
             } else {
                 await navigator.clipboard.writeText(url);
                 setCopied(true);
@@ -44,13 +44,13 @@ export default function LunchPage() {
         <div className="container mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-16">
             {/* ===== HERO ===== */}
             <header className="mb-8 sm:mb-10 md:mb-12">
-                <Card className="rounded-2xl border bg-card p-6 sm:p-8">
+                <Card className=" border-2 border-foreground bg-white p-6 sm:p-8">
                     <div className="flex items-start justify-between gap-4">
                         <div className="min-w-0">
-                            <p className="inline-block text-xs tracking-widest uppercase text-primary/80 mb-2">
+                            <p className="mb-4 inline-block -rotate-[1.2deg] bg-foreground px-3.5 py-[7px] text-[11px] font-bold uppercase tracking-[0.2em] text-background">
                                 {LUNCH_MENU.serviceNote ?? "Overdag op Kamp 8"}
                             </p>
-                            <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl tracking-tight">
+                            <h1 className="font-headline text-3xl font-black leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">
                                 Lunchkaart De Tafelaar
                             </h1>
                             <p className="mt-2 max-w-prose text-base sm:text-lg text-muted-foreground leading-relaxed">
@@ -61,10 +61,10 @@ export default function LunchPage() {
 
                             <div className="mt-5 flex flex-wrap gap-2 sm:gap-3">
                                 <ReserveerButton size="sm" label="Reserveer tafel" />
-                                <Button asChild size="sm" variant="outline" className="rounded-xl">
+                                <Button asChild size="sm" variant="outline" className="">
                                     <Link href="/menu">Dinerkaart</Link>
                                 </Button>
-                                <Button asChild size="sm" variant="outline" className="rounded-xl">
+                                <Button asChild size="sm" variant="outline" className="">
                                     <Link href="/drank">Drankenkaart</Link>
                                 </Button>
                             </div>
@@ -86,7 +86,7 @@ export default function LunchPage() {
             {/* ===== LEGEND ===== */}
             {(usedTags.length > 0 || usedAllergens.length > 0) && (
                 <section className="mb-8 sm:mb-10 md:mb-12">
-                    <div className="rounded-2xl border bg-card/80 p-4 md:p-6">
+                    <div className=" border-2 border-foreground bg-white p-4 md:p-6">
                         <div className="flex flex-wrap items-start gap-6 md:gap-10">
                             {usedTags.length > 0 && (
                                 <div className="flex items-center gap-3">
@@ -142,7 +142,7 @@ export default function LunchPage() {
                         <section
                             key={category.id}
                             id={category.id}
-                            className="rounded-2xl border bg-card/90 p-6 md:p-8"
+                            className=" border-2 border-foreground bg-white p-6 md:p-8"
                             aria-labelledby={`${category.id}-title`}
                         >
                             <div className="mb-5">
@@ -177,7 +177,7 @@ export default function LunchPage() {
             <footer className="mt-10 md:mt-14 border-t pt-6 text-center text-sm text-muted-foreground">
                 <p className="inline-flex items-center justify-center gap-2">
                     <Info className="h-4 w-4" />
-                    Heeft u een allergie? Laat het ons weten — we denken graag mee.
+                    Heeft u een allergie? Laat het ons weten, we denken graag mee.
                 </p>
             </footer>
         </div>

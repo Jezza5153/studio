@@ -11,7 +11,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
     title: "Ontdek De Tafelaar | Shared Dining Restaurant Amersfoort",
     description:
-        "Ken je De Tafelaar al? Shared dining restaurant op de Kamp in Amersfoort. Lokale gerechten om te delen, seizoensgebonden menu, gezellige sfeer. Wo–zo geopend.",
+        "Ken je De Tafelaar al? Shared dining restaurant op de Kamp in Amersfoort. Lokale gerechten om te delen, seizoensgebonden menu, gezellige sfeer. Wo t/m zo geopend.",
     alternates: {
         canonical: "/nieuw-restaurant-amersfoort",
     },
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 const faqs = [
     {
         question: "Wat voor restaurant is De Tafelaar?",
-        answer: "De Tafelaar is een shared dining restaurant op de Kamp 8 in Amersfoort centrum. Je bestelt kleine gerechten die je deelt aan tafel, gemaakt met seizoensgebonden producten van lokale makers uit de regio.",
+        answer: "De Tafelaar is een shared dining restaurant op de Kamp 8 in Amersfoort centrum. Je bestelt gerechten die je deelt aan tafel, gemaakt met seizoensgebonden producten van lokale makers uit de regio.",
     },
     {
         question: "Wat kost eten bij De Tafelaar?",
@@ -65,17 +65,17 @@ export default function NieuwRestaurantAmersfoortPage() {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd() }} />
         <div className="container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
             {/* Hero */}
-            <header className="text-center mb-12">
+            <header className="mb-12 border-[5px] border-foreground bg-white px-6 py-10 text-center sm:px-10 sm:py-12">
                 <div className="inline-flex items-center gap-2 text-primary mb-3">
                     <Sparkles className="h-5 w-5" />
                     <span className="text-xs tracking-widest uppercase">Shared Dining op de Kamp</span>
                 </div>
-                <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl tracking-tight">
+                <h1 className="font-headline text-3xl font-black leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">
                     Ontdek De Tafelaar in Amersfoort
                 </h1>
                 <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
                     Op zoek naar een restaurant in Amersfoort dat net even anders is? Bij De Tafelaar
-                    deel je kleine gerechten aan tafel — gemaakt met lokale ingrediënten, in een
+                    deel je gerechten aan tafel, gemaakt met lokale ingrediënten, in een
                     ongedwongen sfeer op de Kamp.
                 </p>
             </header>
@@ -83,7 +83,7 @@ export default function NieuwRestaurantAmersfoortPage() {
             {/* Info Cards */}
             <section className="max-w-4xl mx-auto mb-12">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <Card className="rounded-2xl border">
+                    <Card className=" border-2 border-foreground">
                         <CardHeader className="pb-2">
                             <div className="flex items-center gap-2 text-primary">
                                 <MapPin className="h-5 w-5" />
@@ -92,11 +92,11 @@ export default function NieuwRestaurantAmersfoortPage() {
                         </CardHeader>
                         <CardContent className="text-sm text-muted-foreground">
                             <p className="font-medium text-foreground">Kamp 8, Amersfoort</p>
-                            <p>Midden in het centrum, op loopafstand van Flint, de Kamperbinnenpoort en het station.</p>
+                            <p>Midden in het centrum, op loopafstand van de Flint, de Kamperbinnenpoort en het station.</p>
                         </CardContent>
                     </Card>
 
-                    <Card className="rounded-2xl border">
+                    <Card className=" border-2 border-foreground">
                         <CardHeader className="pb-2">
                             <div className="flex items-center gap-2 text-primary">
                                 <Calendar className="h-5 w-5" />
@@ -121,20 +121,19 @@ export default function NieuwRestaurantAmersfoortPage() {
 
             {/* Wat maakt ons bijzonder? */}
             <section className="max-w-3xl mx-auto mb-12">
-                <Card className="rounded-2xl border p-6 sm:p-8">
-                    <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-4">
+                <Card className=" border-2 border-foreground p-6 sm:p-8">
+                    <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-4">
                         Wat maakt De Tafelaar uniek?
                     </h2>
                     <div className="space-y-4 text-muted-foreground">
                         <p>
                             <strong className="text-foreground">Shared dining concept:</strong> Onze keuken
-                            maakt kleine gerechten die je deelt met tafelgenoten. Zo proef je van alles en
+                            maakt gerechten die je deelt met tafelgenoten. Zo proef je van alles en
                             is het een echte gezamenlijke ervaring.
                         </p>
                         <p>
                             <strong className="text-foreground">Lokale makers:</strong> We werken samen met
-                            producenten uit de regio. Van kaas tot bier, van groenten tot vleeswaren —
-                            alles komt van dichtbij.
+                            producenten uit de regio. Van kaas tot bier, van groenten tot vleeswaren, alles komt van dichtbij.
                         </p>
                         <p>
                             <strong className="text-foreground">Seizoensgebonden menu:</strong> Ons menu
@@ -147,12 +146,12 @@ export default function NieuwRestaurantAmersfoortPage() {
 
             {/* FAQ */}
             <section className="max-w-3xl mx-auto mb-12">
-                <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-6 text-center">
+                <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-6 text-center">
                     Veelgestelde vragen
                 </h2>
                 <div className="space-y-4">
                     {faqs.map((faq) => (
-                        <Card key={faq.question} className="rounded-2xl border p-6">
+                        <Card key={faq.question} className=" border-2 border-foreground p-6">
                             <h3 className="font-semibold mb-2">{faq.question}</h3>
                             <p className="text-sm text-muted-foreground">{faq.answer}</p>
                         </Card>
@@ -164,22 +163,22 @@ export default function NieuwRestaurantAmersfoortPage() {
             <section className="max-w-2xl mx-auto text-center">
                 <div className="flex flex-wrap justify-center gap-3">
                     <Link href="/menu">
-                        <Button variant="outline" className="rounded-xl">
+                        <Button variant="outline" className="">
                             Bekijk ons menu
                         </Button>
                     </Link>
                     <Link href="/over-ons">
-                        <Button variant="outline" className="rounded-xl">
+                        <Button variant="outline" className="">
                             Over De Tafelaar
                         </Button>
                     </Link>
                     <Link href="/impressie">
-                        <Button variant="outline" className="rounded-xl">
+                        <Button variant="outline" className="">
                             Impressie &amp; Reviews
                         </Button>
                     </Link>
                     <Link href="/reserveren">
-                        <Button variant="outline" className="rounded-xl">
+                        <Button variant="outline" className="">
                             Reserveren
                         </Button>
                     </Link>

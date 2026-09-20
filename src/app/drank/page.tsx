@@ -40,12 +40,12 @@ export default function DrankPage() {
     <div className="container mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-16">
       {/* Header */}
       <header className="mb-8 sm:mb-10 md:mb-12">
-        <div className="rounded-2xl border bg-card p-6 sm:p-8">
+        <div className=" border-2 border-foreground bg-white p-6 sm:p-8">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl tracking-tight">Drankenkaart De Tafelaar Amersfoort</h1>
+              <h1 className="font-headline text-3xl font-black leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">Drankenkaart De Tafelaar Amersfoort</h1>
               <p className="mt-2 max-w-prose text-base sm:text-lg text-muted-foreground leading-relaxed">
-                Lokale bieren, biologische wijnen van Korte Garde en cocktails — passend bij onze shared dining gerechten in Amersfoort centrum. Van Amersfoortse brouwerijen zoals Rock City Brewing en De Drie Ringen tot signature cocktails.
+                Lokale bieren, biologische wijnen van Korte Garde en cocktails, passend bij onze shared dining gerechten in Amersfoort centrum. Van Amersfoortse brouwerijen zoals Rock City Brewing en De Drie Ringen tot signature cocktails.
               </p>
 
               {/* Switch: Eten / Dranken */}
@@ -71,7 +71,7 @@ export default function DrankPage() {
             <section
               key={section.id}
               id={section.id}
-              className="rounded-2xl border bg-card/90 p-6 md:p-8"
+              className=" border-2 border-foreground bg-white p-6 md:p-8"
               aria-labelledby={`${section.id}-title`}
             >
               <div className="mb-5">

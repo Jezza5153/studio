@@ -97,7 +97,7 @@ export default function WijEnOnzeMakersPage() {
         {/* ─── WIJ ─── */}
         <header className="text-center mb-10 sm:mb-12">
           <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl">
-            Onze Makers &amp; Leveranciers — De Tafelaar Amersfoort
+            Onze Makers &amp; Leveranciers, De Tafelaar Amersfoort
           </h1>
           <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
             De lokale brouwerijen, wijnmakers en producenten achter onze shared dining gerechten op de Kamp in Amersfoort centrum.
@@ -108,7 +108,7 @@ export default function WijEnOnzeMakersPage() {
               {philosophyContent.usps.map((u: string, i: number) => (
                 <span
                   key={i}
-                  className="rounded-full border border-border px-3 py-1 text-xs sm:text-sm text-foreground/80"
+                  className="rounded-full border-2 border-foreground border-border px-3 py-1 text-xs sm:text-sm text-foreground/80"
                 >
                   {u}
                 </span>
@@ -131,7 +131,7 @@ export default function WijEnOnzeMakersPage() {
             </p>
           </div>
 
-          <div className="md:order-1 overflow-hidden rounded-2xl">
+          <div className="md:order-1 overflow-hidden">
             <Image
               src={hero.src}
               alt={hero.alt}
@@ -164,9 +164,9 @@ export default function WijEnOnzeMakersPage() {
             ].map((item, i) => (
               <div
                 key={i}
-                className="group relative rounded-2xl p-[1px] bg-gradient-to-br from-primary/20 via-transparent to-primary/10"
+                className="group relative p-[1px] bg-gradient-to-br from-primary/20 via-transparent to-primary/10"
               >
-                <div className="rounded-2xl bg-card p-4 shadow-[0_1px_0_0_rgba(0,0,0,0.03)] transition-transform duration-200 group-hover:-translate-y-0.5">
+                <div className=" bg-white p-4 shadow-[0_1px_0_0_rgba(0,0,0,0.03)] transition-transform duration-200 group-hover:-translate-y-0.5">
                   <div className="flex items-center gap-3">
                     <item.icon className="h-5 w-5 text-primary" />
                     <p className="text-foreground">{item.text}</p>
@@ -191,7 +191,7 @@ export default function WijEnOnzeMakersPage() {
               <p key={i}>{p}</p>
             ))}
           </div>
-          <div className="mt-6 rounded-2xl border border-border p-4 sm:p-5 bg-muted/30">
+          <div className="mt-6 border-2 border-foreground border-border p-4 sm:p-5 bg-muted/30">
             <h4 className="font-headline text-lg mb-1">Chef&apos;s Choice</h4>
             <p className="text-muted-foreground">
               Niet kiezen? Begin met een wisselende selectie van favorieten om te delen.
@@ -206,7 +206,7 @@ export default function WijEnOnzeMakersPage() {
               {gallery.slice(0, 3).map((img, i) => (
                 <div
                   key={i}
-                  className={`overflow-hidden rounded-xl ${i === 0 ? "col-span-2 row-span-2" : ""}`}
+                  className={`overflow-hidden ${i === 0 ? "col-span-2 row-span-2" : ""}`}
                 >
                   <Image
                     src={img.src}
@@ -240,15 +240,14 @@ export default function WijEnOnzeMakersPage() {
         {/* Quote */}
         {philosophyContent.quote?.text && (
           <section className="mb-12">
-            <figure className="rounded-2xl border border-border p-6 sm:p-8 bg-muted/30">
+            <figure className=" border-2 border-foreground border-border p-6 sm:p-8 bg-muted/30">
               <blockquote className="text-xl sm:text-2xl leading-relaxed tracking-tight">
                 &ldquo;{philosophyContent.quote.text}&rdquo;
               </blockquote>
               {philosophyContent.quote.author && (
                 <figcaption className="mt-4 flex items-center gap-3 text-muted-foreground">
                   <div className="h-px flex-1 bg-border" />
-                  <span className="italic">
-                    — {philosophyContent.quote.author}
+                  <span className="italic">, {philosophyContent.quote.author}
                   </span>
                 </figcaption>
               )}
@@ -277,7 +276,7 @@ export default function WijEnOnzeMakersPage() {
 
         {/* CTA */}
         <section aria-labelledby="kom-langs" className="mt-12">
-          <div className="relative rounded-2xl border border-border p-6 sm:p-8 overflow-hidden">
+          <div className="relative border-2 border-foreground border-border p-6 sm:p-8 overflow-hidden">
             <div className="pointer-events-none absolute -inset-1 bg-gradient-to-r from-primary/10 via-transparent to-primary/10 blur-2xl" />
             <div className="relative flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
@@ -293,7 +292,7 @@ export default function WijEnOnzeMakersPage() {
                   <Link
                     href={philosophyContent.ctaLinks.reserve}
                     prefetch={true}
-                    className="inline-flex items-center justify-center rounded-xl bg-primary px-4 py-2 text-primary-foreground hover:opacity-90 transition-opacity"
+                    className="inline-flex items-center justify-center bg-primary px-4 py-2 text-primary-foreground hover:opacity-90 transition-opacity"
                   >
                     Reserveer
                   </Link>
@@ -302,7 +301,7 @@ export default function WijEnOnzeMakersPage() {
                   <Link
                     href={philosophyContent.ctaLinks.menu}
                     prefetch={false}
-                    className="inline-flex items-center justify-center rounded-xl border border-border px-4 py-2 hover:bg-muted transition-colors"
+                    className="inline-flex items-center justify-center border-2 border-foreground border-border px-4 py-2 hover:bg-muted transition-colors"
                   >
                     Bekijk menu
                   </Link>
@@ -314,12 +313,12 @@ export default function WijEnOnzeMakersPage() {
 
         {/* FAQ */}
         <section className="mt-12">
-          <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-6 text-center">
+          <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-6 text-center">
             Veelgestelde vragen over onze makers
           </h2>
           <div className="max-w-3xl mx-auto space-y-4">
             {makersFaqs.map((faq, i) => (
-              <Card key={i} className="rounded-2xl border p-4 sm:p-6">
+              <Card key={i} className=" border-2 border-foreground p-4 sm:p-6">
                 <h3 className="font-semibold text-foreground mb-2">{faq.question}</h3>
                 <p className="text-sm text-muted-foreground">{faq.answer}</p>
               </Card>
@@ -331,16 +330,16 @@ export default function WijEnOnzeMakersPage() {
         <section className="mt-12 text-center">
           <div className="flex flex-wrap justify-center gap-3">
             <Link href="/over-ons">
-              <Button variant="outline" className="rounded-xl">Over De Tafelaar</Button>
+              <Button variant="outline" className="">Over De Tafelaar</Button>
             </Link>
             <Link href="/drank">
-              <Button variant="outline" className="rounded-xl">Drankenkaart</Button>
+              <Button variant="outline" className="">Drankenkaart</Button>
             </Link>
             <Link href="/duurzaam-restaurant-amersfoort">
-              <Button variant="outline" className="rounded-xl">Duurzaamheid</Button>
+              <Button variant="outline" className="">Duurzaamheid</Button>
             </Link>
             <Link href="/menu">
-              <Button variant="outline" className="rounded-xl">Menukaart</Button>
+              <Button variant="outline" className="">Menukaart</Button>
             </Link>
           </div>
         </section>

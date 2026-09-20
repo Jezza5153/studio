@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 const drankFaqs = [
     {
         question: "Welke bieren hebben jullie?",
-        answer: "We schenken lokale bieren uit Amersfoort en omgeving, waaronder bieren van Rock City Brewing, De Drie Ringen, Eem Bier en 't Mirakel. Het aanbod wisselt met het seizoen — vraag onze medewerkers naar de actuele selectie op tap en fles.",
+        answer: "We schenken lokale bieren uit Amersfoort en omgeving, waaronder bieren van Rock City Brewing, De Drie Ringen, Eem Bier en 't Mirakel. Het aanbod wisselt met het seizoen, vraag onze medewerkers naar de actuele selectie op tap en fles.",
     },
     {
         question: "Hebben jullie biologische wijnen?",
@@ -71,10 +71,10 @@ export default function DrankLayout({
             <div className="container mx-auto px-4 sm:px-6 md:px-8 pb-12 sm:pb-16 md:pb-24 space-y-12">
                 {/* About our drinks */}
                 <section className="max-w-3xl mx-auto">
-                    <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-4 text-center">
+                    <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-4 text-center">
                         Over onze dranken
                     </h2>
-                    <Card className="rounded-2xl border p-6 sm:p-8">
+                    <Card className=" border-2 border-foreground p-6 sm:p-8">
                         <div className="space-y-4 text-muted-foreground">
                             <p>
                                 Bij De Tafelaar werken we het liefst met brouwerijen en wijnmakers uit de regio. Op de tap
@@ -97,12 +97,12 @@ export default function DrankLayout({
 
                 {/* FAQ */}
                 <section className="max-w-3xl mx-auto">
-                    <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-6 text-center">
+                    <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-6 text-center">
                         Veelgestelde vragen over onze dranken
                     </h2>
                     <div className="space-y-4">
                         {drankFaqs.map((faq, i) => (
-                            <Card key={i} className="rounded-2xl border p-4 sm:p-6">
+                            <Card key={i} className=" border-2 border-foreground p-4 sm:p-6">
                                 <h3 className="font-semibold text-foreground mb-2">{faq.question}</h3>
                                 <p className="text-sm text-muted-foreground">{faq.answer}</p>
                             </Card>
@@ -115,19 +115,19 @@ export default function DrankLayout({
                     <ReserveerButton size="lg" className="shadow-sm" label="Reserveer een tafel" />
                     <div className="flex flex-wrap justify-center gap-3">
                         <Link href="/menu">
-                            <Button variant="outline" className="rounded-xl">Menukaart</Button>
+                            <Button variant="outline" className="">Menukaart</Button>
                         </Link>
                         <Link href="/lunch">
-                            <Button variant="outline" className="rounded-xl">Lunchkaart</Button>
+                            <Button variant="outline" className="">Lunchkaart</Button>
                         </Link>
                         <Link href="/borrel-amersfoort">
-                            <Button variant="outline" className="rounded-xl">Borrel in Amersfoort</Button>
+                            <Button variant="outline" className="">Borrel in Amersfoort</Button>
                         </Link>
                         <Link href="/bourgondisch-eten-amersfoort">
-                            <Button variant="outline" className="rounded-xl">Bourgondisch eten</Button>
+                            <Button variant="outline" className="">Bourgondisch eten</Button>
                         </Link>
                         <Link href="/over-onze-makers">
-                            <Button variant="outline" className="rounded-xl">Over onze makers</Button>
+                            <Button variant="outline" className="">Over onze makers</Button>
                         </Link>
                     </div>
                 </section>

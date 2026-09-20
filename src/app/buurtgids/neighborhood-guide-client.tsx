@@ -60,11 +60,11 @@ const THEATERWEEKEND = {
   start: "2026-01-23",
   end: "2026-01-25",
   ctaHref: "/contact", // in this codebase the /contact page is your reservation page
-  title: "Theaterweekend (23–25 jan)",
+  title: "Theaterweekend (23-25 jan)",
   subtitle:
     "Theateravond op de planning? Dan regelen wij het eten. Reserveer op tijd. Vol is vol.",
   bullets: [
-    "Vlak bij Flint",
+    "Vlak bij de Flint",
     "Chef’s Choice 4 gangen",
     "Reserveren: 17:15 of 17:45",
   ],
@@ -142,7 +142,7 @@ function formatPlaceType(type?: string) {
 }
 
 function parseDaysHours(weekdayText: string[]): DayHours[] {
-  // Example input: ["Monday: 10:00 AM – 6:00 PM", ...]
+  // Example input: ["Monday: 10:00 AM, 6:00 PM", ...]
   const daysHours = weekdayText
     .map((e) => e.split(/\:\s+/))
     .map((e) => ({ days: e[0].slice(0, 3), hours: e[1] }));
@@ -618,14 +618,14 @@ export function NeighborhoodGuideClient() {
     <div className="container mx-auto px-4 py-10 sm:px-6 md:px-8">
       <div className="max-w-6xl mx-auto">
         <div className="mb-6">
-          <h1 className="font-headline text-3xl sm:text-4xl tracking-tight">Buurtgids Kamp &amp; Flint — Amersfoort Centrum</h1>
+          <h1 className="font-headline text-3xl sm:text-4xl tracking-tight">Buurtgids Kamp &amp; Flint, Amersfoort Centrum</h1>
           <p className="mt-2 text-muted-foreground">
             De belangrijkste plekken rond <strong>De Tafelaar</strong> op de Kamp in Amersfoort: Theater de Flint, parkeergarages en de leukste restaurants en cafés in de straat.
           </p>
         </div>
 
         {loadError && (
-          <Card className="rounded-2xl border mb-6">
+          <Card className=" border-2 border-foreground mb-6">
             <CardHeader>
               <CardTitle className="text-lg">Google Maps kan niet laden</CardTitle>
             </CardHeader>
@@ -640,7 +640,7 @@ export function NeighborhoodGuideClient() {
 
         {/* Theaterweekend banner */}
         {theaterWeekendMode && (
-          <Card className="rounded-2xl border mb-6 bg-muted/20">
+          <Card className=" border-2 border-foreground mb-6 bg-muted/20">
             <CardHeader className="pb-3">
               <CardTitle className="flex items-center gap-2 text-xl">
                 <Ticket className="h-5 w-5" />
@@ -681,7 +681,7 @@ export function NeighborhoodGuideClient() {
           {/* Left panel */}
           <div className="lg:col-span-1 space-y-6">
             {/* Search */}
-            <Card className="rounded-2xl border">
+            <Card className=" border-2 border-foreground">
               <CardHeader className="pb-3">
                 <CardTitle className="text-lg flex items-center gap-2">
                   <Search className="h-4 w-4" />
@@ -704,7 +704,7 @@ export function NeighborhoodGuideClient() {
             </Card>
 
             {/* De Tafelaar card (live from Places details) */}
-            <Card className="rounded-2xl border">
+            <Card className=" border-2 border-foreground">
               <CardHeader className="pb-3">
                 <CardTitle className="text-lg flex items-center gap-2">
                   <UtensilsCrossed className="h-4 w-4" />
@@ -795,12 +795,12 @@ export function NeighborhoodGuideClient() {
 
           {/* Map + details */}
           <div className="lg:col-span-2 space-y-4">
-            <Card className="rounded-2xl border overflow-hidden">
+            <Card className=" border-2 border-foreground overflow-hidden">
               <div className="h-[60vh] min-h-[420px]" ref={mapRef} />
             </Card>
 
             {selected && (
-              <Card className="rounded-2xl border">
+              <Card className=" border-2 border-foreground">
                 <CardHeader className="pb-3">
                   <CardTitle className="flex items-center justify-between gap-3">
                     <div className="min-w-0">
@@ -878,7 +878,7 @@ export function NeighborhoodGuideClient() {
                   </div>
 
                   {selected.openingHours?.length ? (
-                    <div className="rounded-xl bg-muted/30 p-4">
+                    <div className=" bg-muted/30 p-4">
                       <p className="text-sm font-medium mb-2">Openingstijden</p>
                       <div className="space-y-1 text-sm text-muted-foreground">
                         {selected.openingHours.map((d) => (
@@ -907,7 +907,7 @@ export function NeighborhoodGuideClient() {
                             <img
                               src={p.urlSmall}
                               alt="foto"
-                              className="h-16 w-full object-cover rounded-lg"
+                              className="h-16 w-full object-cover"
                               loading="lazy"
                             />
                           </a>
@@ -946,7 +946,7 @@ function PlacesSection({
   icon: any;
 }) {
   return (
-    <Card className="rounded-2xl border">
+    <Card className=" border-2 border-foreground">
       <CardHeader className="pb-3">
         <CardTitle className="text-lg flex items-center gap-2">
           <Icon className="h-4 w-4" />
@@ -963,7 +963,7 @@ function PlacesSection({
                   type="button"
                   onClick={() => void onSelect(p, true)}
                   className={cn(
-                    "w-full text-left rounded-xl border bg-card px-3 py-2 hover:bg-muted/40 transition",
+                    "w-full text-left border-2 border-foreground bg-white px-3 py-2 hover:bg-muted/40 transition",
                     "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                   )}
                 >

@@ -30,12 +30,12 @@ const JEZZA_URL = "https://www.jezzacooks.com";
 export const metadata: Metadata = {
   title: "Catering Amersfoort | Office Lunch & Zakelijk | Tafelaar × Jezza Cooks",
   description:
-    "Catering in Amersfoort centrum: office lunch vanaf €7,50 p.p., walking dinners en events tot 150 personen. Tafelaar × Jezza Cooks — bereid in onze restaurantkeuken op Kamp 8. Bezorgd op kantoor.",
+    "Catering in Amersfoort centrum: office lunch vanaf €7,50 p.p., walking dinners en events tot 150 personen. Tafelaar × Jezza Cooks, bereid in onze restaurantkeuken op Kamp 8. Bezorgd op kantoor.",
   alternates: { canonical: "/catering" },
   openGraph: {
     title: "Catering Amersfoort | Tafelaar × Jezza Cooks",
     description:
-      "Office lunch, walking dinner en event catering uit onze restaurantkeuken op de Kamp. Vanaf €7,50 p.p., 10–150+ personen.",
+      "Office lunch, walking dinner en event catering uit onze restaurantkeuken op de Kamp. Vanaf €7,50 p.p., 10-150+ personen.",
   },
   keywords: [
     "catering amersfoort",
@@ -59,12 +59,12 @@ export const metadata: Metadata = {
 // ===== FAQ =====
 // Questions are phrased the way people actually type them (including long-tail
 // like "cateren jullie op bedrijventerrein De Hoef"). FAQs are the single most
-// AI-citable block on the page — each answer is self-contained and factual.
+// AI-citable block on the page, each answer is self-contained and factual.
 const faqs = [
   {
     question: "Wat kost office lunch catering in Amersfoort?",
     answer:
-      "Broodjes en wraps vanaf €7,50 p.p., bowls vanaf €10,50 p.p. Lunchboxen: Classic €14,50, Veggie €13,50, Premium €18,50. Reken op €12–€18 p.p. voor een complete vergaderlunch, afhankelijk van aantal gerechten en dieetwensen.",
+      "Broodjes en wraps vanaf €7,50 p.p., bowls vanaf €10,50 p.p. Lunchboxen: Classic €14,50, Veggie €13,50, Premium €18,50. Reken op €12-€18 p.p. voor een complete vergaderlunch, afhankelijk van aantal gerechten en dieetwensen.",
   },
   {
     question: "Vanaf hoeveel personen kan ik catering bestellen?",
@@ -74,12 +74,12 @@ const faqs = [
   {
     question: "Bezorgen jullie op kantoor en op bedrijventerreinen als De Hoef of Vathorst?",
     answer:
-      "Ja, we bezorgen in Amersfoort en omgeving. Alles wordt transport-proof verpakt en is klaar om te serveren. Standaard leverwindows: 11:30–12:30 voor lunch. Bedrijventerreinen De Hoef, De Wieken, De Brand, Vathorst en Calveen zitten op 10–15 minuten rijden vanuit onze keuken op Kamp 8. Levertijden en -kosten afhankelijk van postcode en aantal.",
+      "Ja, we bezorgen in Amersfoort en omgeving. Alles wordt transport-proof verpakt en is klaar om te serveren. Standaard leverwindows: 11:30-12:30 voor lunch. Bedrijventerreinen De Hoef, De Wieken, De Brand, Vathorst en Calveen zitten op 10-15 minuten rijden vanuit onze keuken op Kamp 8. Levertijden en -kosten afhankelijk van postcode en aantal.",
   },
   {
     question: "Hoe ver van tevoren moet ik catering boeken?",
     answer:
-      "Voor een standaard kantoorlunch (10–40 personen) raden we 3 werkdagen van tevoren aan. Grotere events, walking dinners of maatwerk: minimaal 2 weken vooruit. Spoedorders tot 48 uur van tevoren zijn vaak mogelijk voor lunchboxen — bel +31 6 341 279 32 om beschikbaarheid te checken.",
+      "Voor een standaard kantoorlunch (10-40 personen) raden we 3 werkdagen van tevoren aan. Grotere events, walking dinners of maatwerk: minimaal 2 weken vooruit. Spoedorders tot 48 uur van tevoren zijn vaak mogelijk voor lunchboxen, bel +31 6 341 279 32 om beschikbaarheid te checken.",
   },
   {
     question: "Hebben jullie vegetarische, vegan en glutenvrije opties?",
@@ -89,12 +89,12 @@ const faqs = [
   {
     question: "Wie bereidt de catering en waar komt het vandaan?",
     answer:
-      "De catering is een samenwerking tussen restaurant De Tafelaar (Jan Molmans, Kamp 8) en Jezza Cooks (Jeremy Arrascaeta, chef-kok van De Tafelaar). Alles wordt bereid in de volwaardige restaurantkeuken op de Kamp, met ingrediënten van 14+ lokale makers zoals Farmfields, Boot Koffie en Rock City Brewing. Zelfde keuken, zelfde chef, zelfde kwaliteit als het restaurant — alleen dan op kantoor of op locatie.",
+      "De catering is een samenwerking tussen restaurant De Tafelaar (Jan Molmans, Kamp 8) en Jezza Cooks (Jeremy Arrascaeta, chef-kok van De Tafelaar). Alles wordt bereid in de volwaardige restaurantkeuken op de Kamp, met ingrediënten van 14+ lokale makers zoals Farmfields, Boot Koffie en Rock City Brewing. Zelfde keuken, zelfde chef, zelfde kwaliteit als het restaurant, alleen dan op kantoor of op locatie.",
   },
   {
     question: "Is er een minimum bestelwaarde voor catering?",
     answer:
-      "Voor lunch catering: minimaal 10 personen. Voor events en diner catering vanaf 15 personen. Voor maatwerk of kleinere groepen onder 10 is het Chef's Choice arrangement in het restaurant zelf vaak een betere optie — neem contact op en we adviseren de beste route.",
+      "Voor lunch catering: minimaal 10 personen. Voor events en diner catering vanaf 15 personen. Voor maatwerk of kleinere groepen onder 10 is het Chef's Choice arrangement in het restaurant zelf vaak een betere optie, neem contact op en we adviseren de beste route.",
   },
 ];
 
@@ -123,7 +123,7 @@ function cateringServiceJsonLd() {
     alternateName: "Office Lunch Catering Amersfoort",
     serviceType: "Catering Service",
     description:
-      "Office lunch, walking dinner en event catering in Amersfoort en omgeving. Vanaf €7,50 p.p., 10–150+ personen, bereid in onze restaurantkeuken op Kamp 8.",
+      "Office lunch, walking dinner en event catering in Amersfoort en omgeving. Vanaf €7,50 p.p., 10-150+ personen, bereid in onze restaurantkeuken op Kamp 8.",
     provider: {
       "@id": `${SITE_URL}#restaurant`,
     },
@@ -150,7 +150,7 @@ function cateringServiceJsonLd() {
       itemListElement: [
         {
           "@type": "Offer",
-          name: "Office Lunch Box — Classic",
+          name: "Office Lunch Box, Classic",
           price: "14.50",
           priceCurrency: "EUR",
           description: "Vitello Tonnato sandwich, kleine carpaccio salade, gevuld eitje, zoete bite.",
@@ -159,7 +159,7 @@ function cateringServiceJsonLd() {
         },
         {
           "@type": "Offer",
-          name: "Office Lunch Box — Veggie",
+          name: "Office Lunch Box, Veggie",
           price: "13.50",
           priceCurrency: "EUR",
           description: "Inari bao-style sandwich, bieten & geitenkaas bowl, peppadew met roomkaas, zoete bite.",
@@ -168,7 +168,7 @@ function cateringServiceJsonLd() {
         },
         {
           "@type": "Offer",
-          name: "Office Lunch Box — Premium",
+          name: "Office Lunch Box, Premium",
           price: "18.50",
           priceCurrency: "EUR",
           description: "Wrap (keuze), salad bowl, charcuterie of kaas, dessert.",
@@ -180,7 +180,7 @@ function cateringServiceJsonLd() {
           name: "Broodje of wrap (losse component)",
           price: "7.50",
           priceCurrency: "EUR",
-          description: "Sandwiches en wraps — Vitello Tonnato, Carpaccio Truffel, Gerookte Zalm, Inari Bao-Style, Pulled Pork, Veggie Meatball.",
+          description: "Sandwiches en wraps, Vitello Tonnato, Carpaccio Truffel, Gerookte Zalm, Inari Bao-Style, Pulled Pork, Veggie Meatball.",
           availability: "https://schema.org/InStock",
         },
         {
@@ -193,7 +193,7 @@ function cateringServiceJsonLd() {
         },
       ],
     },
-    // Cross-link to the JV entity on jezzacooks.com — resolves "same service,
+    // Cross-link to the JV entity on jezzacooks.com, resolves "same service,
     // different domains" for AI answer engines.
     sameAs: [`${JEZZA_URL}/services/catering`, `${JEZZA_URL}/#catering`],
   });
@@ -289,7 +289,7 @@ const officeLunch = {
   ],
   boxes: [
     {
-      name: "Office Lunch Box – Classic",
+      name: "Office Lunch Box, Classic",
       description:
         "Vitello Tonnato sandwich · kleine carpaccio salade · gevuld eitje · zoete bite",
       price: 14.5,
@@ -297,7 +297,7 @@ const officeLunch = {
       allergens: ["gluten", "vis", "eieren", "lactose"],
     },
     {
-      name: "Office Lunch Box – Veggie",
+      name: "Office Lunch Box, Veggie",
       description:
         "Inari bao-style sandwich · bieten & geitenkaas bowl · peppadew met roomkaas · zoete bite",
       price: 13.5,
@@ -305,7 +305,7 @@ const officeLunch = {
       allergens: ["gluten", "soja", "eieren", "lactose", "noten"],
     },
     {
-      name: "Office Lunch Box – Premium",
+      name: "Office Lunch Box, Premium",
       description: "Wrap (keuze) · salad bowl · charcuterie of kaas · dessert",
       price: 18.5,
       tags: [],
@@ -338,7 +338,7 @@ function AllergensLine({ allergens }: { allergens: string[] }) {
 
 function PricePill({ value }: { value: number }) {
   return (
-    <div className="shrink-0 rounded-full border border-border bg-background/60 px-3 py-1 text-sm font-medium">
+    <div className="shrink-0 rounded-full border-2 border-foreground border-border bg-background/60 px-3 py-1 text-sm font-medium">
       € {value.toFixed(2)}
     </div>
   );
@@ -361,15 +361,14 @@ export default async function CateringPage() {
         <div className="relative container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
           {/* Header */}
           <header className="text-center mb-10 sm:mb-12">
-            <p className="inline-block text-xs tracking-widest uppercase text-primary/80 mb-2">
+            <p className="mb-4 inline-block -rotate-[1.2deg] bg-foreground px-3.5 py-[7px] text-[11px] font-bold uppercase tracking-[0.2em] text-background">
               Tafelaar × Jezza Cooks Catering
             </p>
             <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl">
-              Catering Amersfoort — Office Lunch, Events & Walking Dinner
+              Catering Amersfoort, Office Lunch, Events & Walking Dinner
             </h1>
             <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
-              Kantoorlunch vanaf €7,50 p.p., walking dinners en events tot 150 personen —
-              bereid in onze restaurantkeuken op Kamp 8 in het centrum van Amersfoort, bezorgd
+              Kantoorlunch vanaf €7,50 p.p., walking dinners en events tot 150 personen, bereid in onze restaurantkeuken op Kamp 8 in het centrum van Amersfoort, bezorgd
               op jouw kantoor of evenementlocatie.
             </p>
 
@@ -393,15 +392,15 @@ export default async function CateringPage() {
             </div>
           </header>
 
-          {/* Trust strip + NAP — above the fold, machine-readable */}
+          {/* Trust strip + NAP, above the fold, machine-readable */}
           <section className="mb-12 max-w-4xl mx-auto">
-            <Card className="rounded-2xl border border-border bg-primary/5">
+            <Card className=" border-2 border-foreground border-border bg-primary/5">
               <CardContent className="p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
                 <div className="flex items-start gap-2">
                   <MapPin className="h-4 w-4 mt-0.5 shrink-0 text-primary" />
                   <div>
                     <p className="font-semibold text-foreground">Kamp 8, 3811 AR Amersfoort</p>
-                    <p className="text-muted-foreground">Restaurantkeuken in het centrum · 5 min lopen van Flint · ~22 min lopen van station Amersfoort</p>
+                    <p className="text-muted-foreground">Restaurantkeuken in het centrum · 5 min lopen van de Flint · ~22 min lopen van station Amersfoort</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
@@ -410,7 +409,7 @@ export default async function CateringPage() {
                     <p className="font-semibold text-foreground">
                       <a href="tel:+31634127932" className="hover:underline">+31 6 341 279 32</a>
                     </p>
-                    <p className="text-muted-foreground">Offertes en overleg · ma–vr 09:00–18:00</p>
+                    <p className="text-muted-foreground">Offertes en overleg · ma t/m vr 09:00-18:00</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-2">
@@ -424,7 +423,7 @@ export default async function CateringPage() {
             </Card>
           </section>
 
-          {/* GEO H2: "Wat is catering bij De Tafelaar?" — self-contained passage */}
+          {/* GEO H2: "Wat is catering bij De Tafelaar?", self-contained passage */}
           <section className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center mb-12">
             <div className="space-y-4 order-2 md:order-1">
               <h2 className="font-headline text-2xl sm:text-3xl md:text-4xl">
@@ -432,7 +431,7 @@ export default async function CateringPage() {
               </h2>
               <p className="text-base sm:text-lg text-foreground leading-relaxed">
                 Geen gedoe, wel kwaliteit. Onze office lunch is ontworpen om netjes te eten, makkelijk te
-                verdelen en consistent te leveren — perfect voor vergaderlunches, teamdagen en events in
+                verdelen en consistent te leveren, perfect voor vergaderlunches, teamdagen en events in
                 en rond Amersfoort.
               </p>
               <p className="text-muted-foreground leading-relaxed">
@@ -443,22 +442,22 @@ export default async function CateringPage() {
 
               <div className="flex flex-wrap gap-3 pt-2">
                 <Link href="#menu" prefetch={false}>
-                  <Button className="rounded-xl">
+                  <Button className="">
                     Bekijk het office lunch menu
                   </Button>
                 </Link>
                 <Link href="/contact" prefetch={false}>
-                  <Button variant="outline" className="rounded-xl">
+                  <Button variant="outline" className="">
                     Offerte aanvragen
                   </Button>
                 </Link>
               </div>
             </div>
 
-            <div className="order-1 md:order-2 overflow-hidden rounded-2xl border border-border bg-muted/20">
+            <div className="order-1 md:order-2 overflow-hidden border-2 border-foreground border-border bg-muted/20">
               <Image
                 src={CATEGORY_IMAGES.boxes}
-                alt="Office lunch catering van Tafelaar × Jezza Cooks — Amersfoort"
+                alt="Office lunch catering van Tafelaar × Jezza Cooks, Amersfoort"
                 width={1200}
                 height={800}
                 className="object-cover w-full h-auto"
@@ -469,13 +468,13 @@ export default async function CateringPage() {
             </div>
           </section>
 
-          {/* GEO H2: "Wie maakt de catering?" — JV attribution block */}
+          {/* GEO H2: "Wie maakt de catering?", JV attribution block */}
           <section className="max-w-3xl mx-auto mb-12">
-            <Card className="rounded-2xl border border-border p-6 sm:p-8">
+            <Card className=" border-2 border-foreground border-border p-6 sm:p-8">
               <div className="flex items-center gap-2 text-primary mb-3">
                 <ChefHat className="h-5 w-5" />
                 <h2 className="font-headline text-xl sm:text-2xl tracking-tight">
-                  Onze chef — Tafelaar × Jezza Cooks
+                  Onze chef, Tafelaar × Jezza Cooks
                 </h2>
               </div>
               <div className="space-y-3 text-muted-foreground leading-relaxed">
@@ -483,7 +482,7 @@ export default async function CateringPage() {
                   Onze catering is een samenwerking tussen restaurant De Tafelaar (Jan Molmans,
                   eigenaar) en <Link href={JEZZA_URL} className="underline hover:text-foreground">Jezza Cooks</Link>{" "}
                   (Jeremy Arrascaeta, chef-kok van De Tafelaar). Dezelfde restaurantkeuken, dezelfde chef,
-                  dezelfde kwaliteit — alleen dan op jouw kantoor of evenementlocatie.
+                  dezelfde kwaliteit, alleen dan op jouw kantoor of evenementlocatie.
                 </p>
                 <p>
                   Jeremy heeft ruim 10 jaar ervaring in high-end keukens in Nederland en Australië
@@ -502,7 +501,7 @@ export default async function CateringPage() {
 
           {/* Key cards */}
           <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            <Card className="rounded-2xl border border-border">
+            <Card className=" border-2 border-foreground border-border">
               <CardHeader className="pb-2">
                 <div className="flex items-center gap-2 text-primary">
                   <ChefHat className="h-5 w-5" />
@@ -510,11 +509,11 @@ export default async function CateringPage() {
                 </div>
               </CardHeader>
               <CardContent className="text-sm text-muted-foreground leading-relaxed">
-                Vaste samenstellingen, duidelijke allergenen en consistente kwaliteit — ideaal voor teams.
+                Vaste samenstellingen, duidelijke allergenen en consistente kwaliteit, ideaal voor teams.
               </CardContent>
             </Card>
 
-            <Card className="rounded-2xl border border-border">
+            <Card className=" border-2 border-foreground border-border">
               <CardHeader className="pb-2">
                 <div className="flex items-center gap-2 text-primary">
                   <Package className="h-5 w-5" />
@@ -526,7 +525,7 @@ export default async function CateringPage() {
               </CardContent>
             </Card>
 
-            <Card className="rounded-2xl border border-border">
+            <Card className=" border-2 border-foreground border-border">
               <CardHeader className="pb-2">
                 <div className="flex items-center gap-2 text-primary">
                   <PartyPopper className="h-5 w-5" />
@@ -539,9 +538,9 @@ export default async function CateringPage() {
             </Card>
           </section>
 
-          {/* GEO H2: "Op welke bedrijventerreinen bezorgen jullie?" — evidence-rich */}
+          {/* GEO H2: "Op welke bedrijventerreinen bezorgen jullie?", evidence-rich */}
           <section className="max-w-3xl mx-auto mb-12">
-            <Card className="rounded-2xl border border-border p-6 sm:p-8">
+            <Card className=" border-2 border-foreground border-border p-6 sm:p-8">
               <h2 className="font-headline text-xl sm:text-2xl tracking-tight mb-3">
                 Op welke bedrijventerreinen bezorgen we?
               </h2>
@@ -563,14 +562,14 @@ export default async function CateringPage() {
                     <tr className="border-b border-border/50"><td className="py-2 pr-4">Vathorst</td><td className="py-2 pr-4">~12 min</td><td className="py-2">58 ha, 2.034 arbeidsplaatsen, IKEA + Loods 5</td></tr>
                     <tr className="border-b border-border/50"><td className="py-2 pr-4">De Wieken</td><td className="py-2 pr-4">~10 min</td><td className="py-2">Modern kantorencomplex, A28/A1 aansluiting</td></tr>
                     <tr className="border-b border-border/50"><td className="py-2 pr-4">De Brand</td><td className="py-2 pr-4">~8 min</td><td className="py-2">Retail, hotels en kantoorpanden</td></tr>
-                    <tr className="border-b border-border/50"><td className="py-2 pr-4">Calveen</td><td className="py-2 pr-4">~8 min</td><td className="py-2">Gemengd — retail, kantoor, horeca</td></tr>
+                    <tr className="border-b border-border/50"><td className="py-2 pr-4">Calveen</td><td className="py-2 pr-4">~8 min</td><td className="py-2">Gemengd, retail, kantoor, horeca</td></tr>
                     <tr className="border-b border-border/50"><td className="py-2 pr-4">Isselt</td><td className="py-2 pr-4">~10 min</td><td className="py-2">Industrieel, west van Amersfoort</td></tr>
                     <tr><td className="py-2 pr-4">Amersfoort Centrum</td><td className="py-2 pr-4">~5 min</td><td className="py-2">Gratis in binnenstad/Kamp</td></tr>
                   </tbody>
                 </table>
               </div>
               <p className="text-xs text-muted-foreground mt-3">
-                Ook Leusden, Soest, Baarn en Nijkerk zijn standaard leverbaar — vraag naar maatwerk en
+                Ook Leusden, Soest, Baarn en Nijkerk zijn standaard leverbaar, vraag naar maatwerk en
                 levertijden voor jouw postcode.
               </p>
             </Card>
@@ -595,11 +594,11 @@ export default async function CateringPage() {
             {/* Categories grid */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* Sandwiches */}
-              <Card className="rounded-2xl border border-border overflow-hidden">
+              <Card className=" border-2 border-foreground border-border overflow-hidden">
                 <div className="relative aspect-[16/9] w-full">
                   <Image
                     src={CATEGORY_IMAGES.sandwiches}
-                    alt="Office lunch broodjes Amersfoort — Tafelaar × Jezza Cooks"
+                    alt="Office lunch broodjes Amersfoort, Tafelaar × Jezza Cooks"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"
@@ -631,11 +630,11 @@ export default async function CateringPage() {
               </Card>
 
               {/* Bowls */}
-              <Card className="rounded-2xl border border-border overflow-hidden">
+              <Card className=" border-2 border-foreground border-border overflow-hidden">
                 <div className="relative aspect-[16/9] w-full">
                   <Image
                     src={CATEGORY_IMAGES.bowls}
-                    alt="Office lunch bowls Amersfoort — Tafelaar × Jezza Cooks"
+                    alt="Office lunch bowls Amersfoort, Tafelaar × Jezza Cooks"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"
@@ -663,11 +662,11 @@ export default async function CateringPage() {
               </Card>
 
               {/* Wraps */}
-              <Card className="rounded-2xl border border-border overflow-hidden">
+              <Card className=" border-2 border-foreground border-border overflow-hidden">
                 <div className="relative aspect-[16/9] w-full">
                   <Image
                     src={CATEGORY_IMAGES.wraps}
-                    alt="Office lunch wraps Amersfoort — Tafelaar × Jezza Cooks"
+                    alt="Office lunch wraps Amersfoort, Tafelaar × Jezza Cooks"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"
@@ -695,11 +694,11 @@ export default async function CateringPage() {
               </Card>
 
               {/* Lunch boxes */}
-              <Card className="rounded-2xl border border-border overflow-hidden">
+              <Card className=" border-2 border-foreground border-border overflow-hidden">
                 <div className="relative aspect-[16/9] w-full">
                   <Image
                     src={CATEGORY_IMAGES.boxes}
-                    alt="Office lunchpakketten Amersfoort — Tafelaar × Jezza Cooks"
+                    alt="Office lunchpakketten Amersfoort, Tafelaar × Jezza Cooks"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"
@@ -739,7 +738,7 @@ export default async function CateringPage() {
 
           {/* Build your own lunch */}
           <section className="mb-12">
-            <Card className="rounded-2xl border border-border overflow-hidden bg-muted/20">
+            <Card className=" border-2 border-foreground border-border overflow-hidden bg-muted/20">
               <div className="p-6 sm:p-8">
                 <div className="flex items-start gap-3">
                   <div className="mt-1 text-primary">
@@ -771,16 +770,16 @@ export default async function CateringPage() {
                         Flexibel per dieet
                       </Badge>
                       <Badge variant="outline" className="text-foreground/80">
-                        Handig voor 10–150+ personen
+                        Handig voor 10-150+ personen
                       </Badge>
                     </div>
 
                     <div className="pt-2 flex flex-wrap gap-3">
                       <Link href="/contact" prefetch={false}>
-                        <Button className="rounded-xl">Offerte aanvragen</Button>
+                        <Button className="">Offerte aanvragen</Button>
                       </Link>
                       <Link href="#contact" prefetch={false}>
-                        <Button variant="outline" className="rounded-xl">
+                        <Button variant="outline" className="">
                           Vragen? Contact opties
                         </Button>
                       </Link>
@@ -793,21 +792,21 @@ export default async function CateringPage() {
 
           {/* CTA */}
           <section id="contact" className="scroll-mt-24">
-            <Card className="rounded-2xl border border-border overflow-hidden">
+            <Card className=" border-2 border-foreground border-border overflow-hidden">
               <div className="relative p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
                   <h2 className="font-headline text-2xl sm:text-3xl md:text-4xl">
                     Bespreek de mogelijkheden
                   </h2>
                   <p className="text-base sm:text-lg text-foreground/90 mt-2">
-                    Vertel ons datum, locatie en aantal personen — dan maken we een voorstel dat past.
+                    Vertel ons datum, locatie en aantal personen, dan maken we een voorstel dat past.
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-3">
                   <Link href="/contact" prefetch={false}>
-                    <Button className="rounded-xl">Contact opnemen</Button>
+                    <Button className="">Contact opnemen</Button>
                   </Link>
-                  <Button asChild variant="outline" className="rounded-xl">
+                  <Button asChild variant="outline" className="">
                     <ObfuscatedEmail user="reserveren" domain="tafelaaramersfoort.nl">
                       <MessageSquare className="mr-2 h-4 w-4" />
                       Mail ons direct
@@ -820,12 +819,12 @@ export default async function CateringPage() {
 
           {/* Visible FAQ */}
           <section className="mt-12">
-            <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-6 text-center">
+            <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-6 text-center">
               Veelgestelde vragen over onze catering
             </h2>
             <div className="max-w-3xl mx-auto space-y-4">
               {faqs.map((faq, i) => (
-                <Card key={i} className="rounded-2xl border p-4 sm:p-6">
+                <Card key={i} className=" border-2 border-foreground p-4 sm:p-6">
                   <h3 className="font-semibold text-foreground mb-2">{faq.question}</h3>
                   <p className="text-sm text-muted-foreground">{faq.answer}</p>
                 </Card>
@@ -836,12 +835,12 @@ export default async function CateringPage() {
           {/* Internal links */}
           <section className="mt-12 text-center">
             <div className="flex flex-wrap justify-center gap-3">
-              <Link href="/menu"><Button variant="outline" className="rounded-xl">Menu</Button></Link>
-              <Link href="/verhuur-en-groepen"><Button variant="outline" className="rounded-xl">Verhuur & Groepen</Button></Link>
-              <Link href="/bedrijfsdiner-amersfoort"><Button variant="outline" className="rounded-xl">Bedrijfsdiner</Button></Link>
-              <Link href="/contact"><Button variant="outline" className="rounded-xl">Contact</Button></Link>
-              <Link href="/duurzaam-restaurant-amersfoort"><Button variant="outline" className="rounded-xl">Duurzaam restaurant</Button></Link>
-              <Link href={JEZZA_URL}><Button variant="outline" className="rounded-xl">Over Jezza Cooks →</Button></Link>
+              <Link href="/menu"><Button variant="outline" className="">Menu</Button></Link>
+              <Link href="/verhuur-en-groepen"><Button variant="outline" className="">Verhuur & Groepen</Button></Link>
+              <Link href="/bedrijfsdiner-amersfoort"><Button variant="outline" className="">Bedrijfsdiner</Button></Link>
+              <Link href="/contact"><Button variant="outline" className="">Contact</Button></Link>
+              <Link href="/duurzaam-restaurant-amersfoort"><Button variant="outline" className="">Duurzaam restaurant</Button></Link>
+              <Link href={JEZZA_URL}><Button variant="outline" className="">Over Jezza Cooks →</Button></Link>
             </div>
           </section>
         </div>

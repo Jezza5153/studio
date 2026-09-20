@@ -44,7 +44,7 @@ function ExpandableReviewCard({ review, index }: { review: ReviewSnippet; index:
 
     return (
         <motion.div
-            className="rounded-xl border border-border/50 bg-background p-5 shadow-sm transition-shadow hover:shadow-md"
+            className=" border-2 border-foreground border-border/50 bg-background p-5 shadow-sm transition-shadow hover:shadow-md"
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -72,8 +72,7 @@ function ExpandableReviewCard({ review, index }: { review: ReviewSnippet; index:
                         </span>
                     ))}
                 </div>
-                <span className="text-xs text-muted-foreground">
-                    — {review.authorName}
+                <span className="text-xs text-muted-foreground">, {review.authorName}
                 </span>
             </div>
         </motion.div>
@@ -141,14 +140,14 @@ export function ImpressieGallery({ photosJson, reviews }: ImpressieGalleryProps)
                     {pairedItems.map((item, i) => (
                         <motion.div
                             key={i}
-                            className="group break-inside-avoid cursor-pointer overflow-hidden rounded-xl border border-border/50 bg-background shadow-sm transition-shadow hover:shadow-lg"
+                            className="group break-inside-avoid cursor-pointer overflow-hidden border-2 border-foreground border-border/50 bg-background shadow-sm transition-shadow hover:shadow-lg"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
                             transition={{ duration: 0.5, delay: Math.min(i * 0.04, 0.5) }}
                             onClick={() => openLightbox(i)}
                         >
-                            {/* Photo — zoomed out with padding */}
+                            {/* Photo, zoomed out with padding */}
                             <div className="relative bg-muted/30">
                                 <img
                                     src={item.url}
@@ -175,8 +174,7 @@ export function ImpressieGallery({ photosJson, reviews }: ImpressieGalleryProps)
                                                 )
                                             )}
                                         </div>
-                                        <span className="text-xs text-muted-foreground">
-                                            — {item.review.authorName}
+                                        <span className="text-xs text-muted-foreground">, {item.review.authorName}
                                         </span>
                                     </div>
                                 </div>
@@ -242,7 +240,7 @@ export function ImpressieGallery({ photosJson, reviews }: ImpressieGalleryProps)
                             key={lightboxIndex}
                             src={photos[lightboxIndex]}
                             alt={`Sfeerimpressie ${lightboxIndex + 1}`}
-                            className="max-h-[80vh] max-w-[90vw] rounded-lg object-contain shadow-2xl"
+                            className="max-h-[80vh] max-w-[90vw] object-contain shadow-2xl"
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.95 }}
@@ -277,8 +275,7 @@ export function ImpressieGallery({ photosJson, reviews }: ImpressieGalleryProps)
                                             </span>
                                         ))}
                                     </div>
-                                    <span className="text-xs text-white/60">
-                                        — {pairedItems[lightboxIndex].review!.authorName}
+                                    <span className="text-xs text-white/60">, {pairedItems[lightboxIndex].review!.authorName}
                                     </span>
                                 </div>
                             </motion.div>
