@@ -47,13 +47,13 @@ export const metadata: Metadata = {
     siteName,
     type: "website",
     locale: "nl_NL",
-    images: [{ url: "/pics/hero-gasten.jpg", width: 1024, height: 519 }],
+    images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
   },
   twitter: {
     card: "summary_large_image",
     title: siteTitle,
     description: siteDescription,
-    images: ["/pics/hero-gasten.jpg"],
+    images: ["/pics/terras-kamp.jpg"],
   },
   robots: { index: true, follow: true },
   category: "restaurant",
@@ -72,6 +72,7 @@ function restaurantJsonLd(rating?: number, reviewCount?: number) {
     alternateName: "De Tafelaar Amersfoort",
     url: siteUrl,
     image: [
+      `${siteUrl}/pics/terras-kamp.jpg`,
       `${siteUrl}/pics/hero-gasten.jpg`,
       `${siteUrl}/pics/huiskamer-vol.jpg`,
     ],

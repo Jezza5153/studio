@@ -22,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: "De Tafelaar | Restaurant Amersfoort, Lekker Eten & Shared Dining",
       description: `Restaurant in Amersfoort: shared dining voor lunch, borrel en diner met lokale seizoensgerechten op de Kamp. Ook Tafelaar Thuis (ophalen). ${g.ratingText} op Google. Op 5 min van de Flint.`,
-      images: [{ url: "/pics/hero-gasten.jpg" }],
+      images: [{ url: "/pics/terras-kamp.jpg" }],
     },
     keywords: [
       "restaurant amersfoort",
@@ -169,8 +169,8 @@ export default async function Home() {
           <div className={`${VAK} relative min-h-[280px] bg-secondary md:min-h-[300px]`}>
             <Sticker rating={g.ratingText} count={g.countText} className="absolute right-4 top-4 z-10 md:right-6 md:top-6" />
             <Image
-              src="/pics/hero-gasten.jpg"
-              alt="Gasten delen gerechten aan tafel bij De Tafelaar in Amersfoort"
+              src="/pics/terras-kamp.jpg"
+              alt="Het terras van De Tafelaar op de Kamp in Amersfoort, in de zon"
               fill
               priority
               sizes="(min-width: 768px) 35vw, 100vw"
