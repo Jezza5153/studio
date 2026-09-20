@@ -5,14 +5,14 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-    title: "Ophalen bij De Tafelaar | Spare Ribs Afhalen Amersfoort",
+    title: "Tafelaar Thuis: Ophalen bij De Tafelaar | Spare Ribs Afhalen Amersfoort",
     description:
         "Ophalen bij De Tafelaar op Kamp 8 in Amersfoort: sous-vide spare ribs (24u op 80°C), bijgerechten, huisgemaakte sauzen en dranken. Bekijk de kaart van Tafelaar Thuis en bestel.",
     alternates: {
         canonical: "/ophalen",
     },
     openGraph: {
-        title: "Ophalen bij De Tafelaar | Spare Ribs Afhalen Amersfoort",
+        title: "Tafelaar Thuis: Ophalen bij De Tafelaar | Spare Ribs Afhalen Amersfoort",
         description:
             "Sous-vide spare ribs, bijgerechten en huisgemaakte sauzen om mee te nemen. Afhalen bij De Tafelaar op Kamp 8 in Amersfoort centrum.",
     },

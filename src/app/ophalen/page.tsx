@@ -30,7 +30,7 @@ export default function OphalenPage() {
         const url = typeof window !== "undefined" ? window.location.href : "";
         try {
             if (navigator.share) {
-                await navigator.share({ title: "De Tafelaar, Ophalen", text: "Onze kaart van Tafelaar Thuis bekijken?", url });
+                await navigator.share({ title: "Tafelaar Thuis, ophalen bij De Tafelaar", text: "Onze kaart van Tafelaar Thuis bekijken?", url });
             } else {
                 await navigator.clipboard.writeText(url);
                 setCopied(true);
@@ -50,7 +50,7 @@ export default function OphalenPage() {
                                 Afhalen op Kamp 8
                             </p>
                             <h1 className="font-headline text-3xl font-black leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">
-                                Ophalen bij De Tafelaar
+                                Tafelaar Thuis: ophalen bij De Tafelaar
                             </h1>
                             <p className="mt-2 max-w-prose text-base sm:text-lg text-muted-foreground leading-relaxed">
                                 Sous-vide spare ribs (24 uur op 80°C in marinade), bijgerechten,
