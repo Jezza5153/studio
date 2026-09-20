@@ -38,7 +38,7 @@ const reserverenFaqs = [
     },
     {
         question: "Kan ik reserveren voor een grote groep?",
-        answer: "Ja, we ontvangen groepen tot circa 100 personen. Vanaf 7 personen bieden we het Chef's Choice arrangement aan (€45 p.p.), optioneel met wijnarrangement (€28 p.p.).",
+        answer: "Ja, we ontvangen groepen tot circa 100 personen. Vanaf 7 personen bieden we het Chef's Choice arrangement aan (€48 p.p.), optioneel met wijnarrangement (€28 p.p.).",
     },
     {
         question: "Kan ik dieetwensen doorgeven bij de reservering?",
@@ -120,7 +120,7 @@ export default function ReserverenLayout({
                         <p className="text-muted-foreground">
                             De Tafelaar is geschikt voor groepen tot circa 100 personen — van een
                             intiem diner tot een groot feest of bedrijfsdiner. Vanaf 7 personen bieden
-                            we het Chef&apos;s Choice arrangement aan (€45 p.p.), optioneel aangevuld
+                            we het Chef&apos;s Choice arrangement aan (€48 p.p.), optioneel aangevuld
                             met een wijnarrangement van Korte Garde (€28 p.p.). Neem telefonisch
                             contact op om de mogelijkheden te bespreken.
                         </p>

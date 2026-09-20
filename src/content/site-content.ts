@@ -13,6 +13,26 @@ export const navLinks = [
   { href: "/contact", label: "Contact" },
 ];
 
+// Second-tier pages: the "Meer" menu in the header and "Meer ontdekken" in the footer.
+export const meerLinks = [
+  { href: "/lunch", label: "Lunchkaart" },
+  { href: "/ophalen", label: "Tafelaar Thuis (ophalen)" },
+  { href: "/buurtgids", label: "Buurtgids Flint & Kamp" },
+  { href: "/eten-voor-theater-de-flint", label: "Eten vlakbij de Flint" },
+  { href: "/restaurant-amersfoort-centrum", label: "Restaurant Amersfoort Centrum" },
+  { href: "/uit-eten-amersfoort", label: "Uit eten in Amersfoort" },
+  { href: "/beste-restaurant-amersfoort", label: "Beste restaurant Amersfoort" },
+  { href: "/borrel-amersfoort", label: "Borrelen in Amersfoort" },
+  { href: "/romantisch-diner-amersfoort", label: "Romantisch diner" },
+  { href: "/bourgondisch-eten-amersfoort", label: "Bourgondisch eten" },
+  { href: "/vegetarisch-amersfoort", label: "Vegetarisch eten" },
+  { href: "/duurzaam-restaurant-amersfoort", label: "Duurzaam eten" },
+  { href: "/feestlocatie-amersfoort", label: "Feestlocatie Amersfoort" },
+  { href: "/bedrijfsdiner-amersfoort", label: "Bedrijfsdiner" },
+  { href: "/prive-diner-amersfoort", label: "Privé diner" },
+  { href: "/openingstijden", label: "Openingstijden" },
+];
+
 export const contactDetails = {
   // Belangrijk: elke regel scheiden met "\n" zodat we hard afbreken in UI
   address: `De Tafelaar
@@ -43,14 +63,14 @@ export const openingHours = {
 
 export const homeContent = {
   hero: {
-    headline: "De Tafelaar — Shared Dining Restaurant in Amersfoort",
-    tagline: "Samen aan tafel. Kleine gerechten, grote gezelligheid.",
+    headline: "De Tafelaar: Shared Dining Restaurant in Amersfoort",
+    tagline: "Samen aan tafel. Gerechten om te delen, grote gezelligheid.",
     subhead:
-      "Welkom bij De Tafelaar op de Kamp in Amersfoort centrum. Shared dining voor lunch, borrel en diner met lokale seizoensgerechten om te delen. Op 5 minuten van Flint, open wo–zo.",
+      "Welkom bij De Tafelaar op de Kamp in Amersfoort centrum. Shared dining voor lunch, borrel en diner met lokale seizoensgerechten om te delen. Op 5 minuten van de Flint, open wo t/m zo.",
 
     kicker: "Restaurant Amersfoort Centrum · Kamp 8",
     entityDefinition:
-      "De Tafelaar is een shared-dining restaurant op de Kamp in Amersfoort centrum. Open wo–zo voor lunch, borrel en diner. Lokale producten, seizoensgebonden menu.",
+      "De Tafelaar is een shared-dining restaurant op de Kamp in Amersfoort centrum. Open wo t/m zo voor lunch, borrel en diner. Lokale producten, seizoensgebonden menu.",
   },
 
   // UPDATED: stable iconKey so icons don’t break when titles change
@@ -59,7 +79,7 @@ export const homeContent = {
       iconKey: "sharedDining",
       title: "Shared dining",
       description:
-        "Proef en deel een verscheidenheid aan kleine, seizoensgebonden gerechtjes.",
+        "Proef en deel seizoensgerechten die zo zijn samengesteld dat je ze makkelijk deelt.",
     },
     {
       iconKey: "makers",
@@ -84,14 +104,14 @@ export const homeContent = {
   howItWorks: {
     title: "Hoe werkt shared dining bij De Tafelaar?",
     description:
-      "Bij shared dining bestel je meerdere kleine gerechten die je deelt met je tafelgenoten. Kies uit kazen, charcuterie, koude en warme gerechten en desserts — allemaal bereid met seizoensgebonden, lokale producten. We adviseren 2 à 3 gerechten per persoon om samen te delen. Geen keuze kunnen maken? Het Chef's Choice arrangement (€48 p.p.) laat de keuken voor je kiezen, met optioneel een bijpassend wijnarrangement van Korte Garde voor €28 p.p. Ons team helpt je graag bij het samenstellen van jullie tafel.",
+      "Bij shared dining bestel je meerdere gerechten die je deelt met je tafelgenoten. Ze zijn zo samengesteld dat delen makkelijk gaat. Kies uit kazen, charcuterie, koude en warme gerechten en desserts, allemaal bereid met seizoensgebonden, lokale producten. We adviseren 2 à 3 gerechten per persoon om samen te delen. Geen keuze kunnen maken? Het Chef's Choice arrangement (€48 p.p.) laat de keuken voor je kiezen, met optioneel een bijpassend wijnarrangement van Korte Garde voor €28 p.p. Ons team helpt je graag bij het samenstellen van jullie tafel.",
   },
 
   // REPLACED seasonalTeaser -> story (your new text)
   story: {
     title: "Samen eten, samen ontdekken",
     paragraphs: [
-      "Bij De Tafelaar draait alles om samen eten en proeven. Kleine gerechten om te delen, gemaakt met verse, lokale producten en bereid volgens het seizoen.",
+      "Bij De Tafelaar draait alles om samen eten en proeven. Gerechten om te delen, gemaakt met verse, lokale producten en bereid volgens het seizoen.",
       "Denk aan eieren en groenten van Het Derde Erf, ijs van De IJsmakerij of een goed glas van Rock City en De Drie Ringen.",
       "Hapje voor hapje ontdek je nieuwe smaken en geniet je van de creativiteit van de keuken.",
       "In de huiskamer ben je ook welkom om alleen te komen eten. Schuif aan bij de aanschuiftafel, ontmoet andere gasten en laat de gesprekken vanzelf ontstaan. Zo wordt eten bij De Tafelaar een gedeelde ervaring, of je nu met gezelschap komt of alleen.",
@@ -111,7 +131,7 @@ export const reservationFaq = [
   {
     question: "Hoe werkt shared dining?",
     answer:
-      "U bestelt diverse kleine gerechten van de kaart die in het midden van de tafel worden geplaatst, zodat iedereen kan proeven en delen. We raden 2-3 gerechten per persoon aan om mee te starten.",
+      "U bestelt diverse gerechten van de kaart die in het midden van de tafel worden geplaatst, zodat iedereen kan proeven en delen. We raden 2-3 gerechten per persoon aan om mee te starten.",
   },
   {
     question: "Houden jullie rekening met dieetwensen of allergieën?",
@@ -146,7 +166,7 @@ export const philosophyContent = {
   etenEnDrinken: {
     title: "Eten & drinken",
     text: [
-      "Onze menukaart bestaat uit kleine gerechten om te delen: charcuterie, kazen, klassiekers, warme en koude gerechtjes en seizoensspecials. Alles is bedoeld om samen te ontdekken.",
+      "Onze menukaart bestaat uit gerechten die zijn samengesteld om te delen: charcuterie, kazen, klassiekers, warme en koude gerechten en seizoensspecials. Alles is bedoeld om samen te ontdekken.",
       "Kun je niet kiezen? Dan is onze Chef’s Choice een fijne start: een selectie van gerechten waar wij zelf blij van worden.",
       "Ook aan de bar houden we het dichtbij: Amersfoortse bieren, biologische wijnen van de wijnwinkel in de straat, biologische koffie en een drankkaart die past bij ons eten én onze sfeer.",
     ],
@@ -172,7 +192,7 @@ export const philosophyContent = {
     text: [
       "De Tafelaar ontstond uit een liefde voor horeca en het simpele idee dat een tafel mensen bij elkaar brengt.",
       "Na jaren ervaring in verschillende zaken groeide het verlangen naar een eigen plek die warm, toegankelijk en écht is.",
-      "Geen poeha, geen haast — maar een plek waar je rustig kunt zitten, kunt delen en kunt genieten. Een plek die voelt alsof je aanschuift aan een grote, gezellige tafel.",
+      "Geen poeha, geen haast, maar een plek waar je rustig kunt zitten, kunt delen en kunt genieten. Een plek die voelt alsof je aanschuift aan een grote, gezellige tafel.",
     ],
   },
 
@@ -195,7 +215,7 @@ export const philosophyContent = {
   // NEW: optional niceties (page renders fine without these)
   usps: ["Shared dining", "Lokaal & seizoensgebonden", "Warm & ontspannen"],
   quote: {
-    text: "Geen poeha, geen haast — gewoon samen aan tafel. Dat is waar we het voor doen.",
+    text: "Geen poeha, geen haast, gewoon samen aan tafel. Dat is waar we het voor doen.",
     author: "Jan Molmans",
   },
   gallery: [
@@ -239,7 +259,7 @@ export const makersIntro = {
   title: "Onze Makers",
   kicker: "Over onze makers",
   lead:
-    "Bij De Tafelaar werken we het liefst met mensen en producten van dichtbij. Makers die met aandacht werken, houden van hun vak en staan voor kwaliteit. Van lokale brouwers tot duurzame en biologische leveranciers — zij maken een belangrijk deel uit van wat je bij ons proeft en drinkt.",
+    "Bij De Tafelaar werken we het liefst met mensen en producten van dichtbij. Makers die met aandacht werken, houden van hun vak en staan voor kwaliteit. Van lokale brouwers tot duurzame en biologische leveranciers: zij maken een belangrijk deel uit van wat je bij ons proeft en drinkt.",
   cta: "Klik op een van de makers hieronder en leer hun verhaal kennen.",
 };
 
@@ -250,13 +270,13 @@ export const makers: Maker[] = [
     category: "Vlees",
     location: "Nederland",
     blurb:
-      "Biologisch rundvlees met Beter Leven 4-sterren — herkomst, transparantie en dierenwelzijn voorop.",
+      "Biologisch rundvlees met Beter Leven 4-sterren: herkomst, transparantie en dierenwelzijn voorop.",
     website: "https://farmfields.nl",
     imageId: "producer-farmfields",
     story: [
       "Farmfields is voor De Tafelaar een belangrijke partner als het gaat om eerlijk, duurzaam en bewust werken.",
       "Het vlees draagt het 4-sterren Beter Leven-keurmerk: ruimte, natuurlijk gedrag en maximale zorg in de hele keten.",
-      "Korte ketens en vaste boeren zorgen voor balans tussen mens, dier en omgeving — dat proef je terug.",
+      "Korte ketens en vaste boeren zorgen voor balans tussen mens, dier en omgeving. Dat proef je terug.",
       "Deze werkwijze sluit naadloos aan bij onze kernwaarden. Daarom vind je Farmfields met trots terug op onze kaart.",
     ],
   },
@@ -266,12 +286,12 @@ export const makers: Maker[] = [
     category: "Koffie",
     location: "Baarn",
     blurb:
-      "Ambachtelijke, biologische koffie — zorgvuldig geselecteerd en gebrand met aandacht voor mens en milieu.",
+      "Ambachtelijke, biologische koffie, zorgvuldig geselecteerd en gebrand met aandacht voor mens en milieu.",
     website: "https://www.bootkoffie.nl",
     imageId: "producer-boot",
     story: [
       "Boot Koffie staat voor kwaliteit, duurzaamheid en transparantie.",
-      "De bonen worden met zorg gebrand zodat de natuurlijke smaken optimaal tot hun recht komen — puur zoals koffie bedoeld is.",
+      "De bonen worden met zorg gebrand zodat de natuurlijke smaken optimaal tot hun recht komen, puur zoals koffie bedoeld is.",
       "Past perfect bij De Tafelaar: biologisch, lokaal betrokken en met aandacht voor kwaliteit.",
     ],
   },
@@ -281,7 +301,7 @@ export const makers: Maker[] = [
     category: "Brouwerij",
     location: "Amersfoort",
     blurb:
-      "Eigenzinnige brouwerij waar craft en creativiteit samenkomen — van graankorrel tot glas.",
+      "Eigenzinnige brouwerij waar craft en creativiteit samenkomen, van graankorrel tot glas.",
     website: "https://rockcitybrewing.com",
     imageId: "producer-rockcity",
     story: [
@@ -296,7 +316,7 @@ export const makers: Maker[] = [
     category: "Brouwerij",
     location: "Amersfoort",
     blurb:
-      "Historische stadsbrouwerij (1989 heropend) — traditie met een frisse blik.",
+      "Historische stadsbrouwerij (1989 heropend): traditie met een frisse blik.",
     website: "https://www.dedrieringen.nl",
     imageId: "producer-drieringen",
     story: [
@@ -316,7 +336,7 @@ export const makers: Maker[] = [
     imageId: "producer-mirakel",
     story: [
       "Zeven Amersfoorters bliezen het lokale mirakel nieuw leven in met ambachtelijke speciaalbieren.",
-      "Bekende bieren: De Vondst en Lieve Vrouw — karaktervol, net als de stad.",
+      "Bekende bieren: De Vondst en Lieve Vrouw. Karaktervol, net als de stad.",
       "Past naadloos bij De Tafelaar: lokaal, smaakvol en met verhaal.",
     ],
   },
@@ -326,7 +346,7 @@ export const makers: Maker[] = [
     category: "Brouwerij",
     location: "Regio Amersfoort",
     blurb:
-      "Nuchtere brouwerij vernoemd naar de rivier de Eem — doordrinkbaar, eerlijk en puur.",
+      "Nuchtere brouwerij vernoemd naar de rivier de Eem: doordrinkbaar, eerlijk en puur.",
     website: "https://eembier.nl",
     imageId: "producer-eem",
     story: [
@@ -341,7 +361,7 @@ export const makers: Maker[] = [
     category: "Wijn",
     location: "Amersfoort",
     blurb:
-      "Biologische & natuurwijnen met verhaal — selectie op herkomst, stijl en match met onze keuken.",
+      "Biologische & natuurwijnen met verhaal: selectie op herkomst, stijl en match met onze keuken.",
     website: "https://kortegarde.nl",
     imageId: "producer-kortegarde",
     story: [
