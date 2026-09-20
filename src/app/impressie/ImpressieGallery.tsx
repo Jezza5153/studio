@@ -44,7 +44,7 @@ function ExpandableReviewCard({ review, index }: { review: ReviewSnippet; index:
 
     return (
         <motion.div
-            className=" border-2 border-foreground border-border/50 bg-background p-5 shadow-sm transition-shadow hover:shadow-md"
+            className="border-2 border-foreground bg-background p-5 shadow-sm transition-shadow hover:shadow-md"
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -140,7 +140,7 @@ export function ImpressieGallery({ photosJson, reviews }: ImpressieGalleryProps)
                     {pairedItems.map((item, i) => (
                         <motion.div
                             key={i}
-                            className="group break-inside-avoid cursor-pointer overflow-hidden border-2 border-foreground border-border/50 bg-background shadow-sm transition-shadow hover:shadow-lg"
+                            className="group break-inside-avoid cursor-pointer overflow-hidden border-2 border-foreground bg-background shadow-sm transition-shadow hover:shadow-lg"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-50px" }}

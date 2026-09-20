@@ -118,7 +118,7 @@ export default function EtenVoorDeFlintPage() {
                 {/* Praktische info */}
                 <section className="max-w-4xl mx-auto mb-12">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <Card className=" border-2 border-foreground">
+                        <Card className="border-2 border-foreground">
                             <CardHeader className="pb-2">
                                 <div className="flex items-center gap-2 text-primary">
                                     <MapPin className="h-5 w-5" />
@@ -132,7 +132,7 @@ export default function EtenVoorDeFlintPage() {
                             </CardContent>
                         </Card>
 
-                        <Card className=" border-2 border-foreground">
+                        <Card className="border-2 border-foreground">
                             <CardHeader className="pb-2">
                                 <div className="flex items-center gap-2 text-primary">
                                     <Clock className="h-5 w-5" />
@@ -146,7 +146,7 @@ export default function EtenVoorDeFlintPage() {
                             </CardContent>
                         </Card>
 
-                        <Card className=" border-2 border-foreground">
+                        <Card className="border-2 border-foreground">
                             <CardHeader className="pb-2">
                                 <div className="flex items-center gap-2 text-primary">
                                     <Utensils className="h-5 w-5" />
@@ -160,7 +160,7 @@ export default function EtenVoorDeFlintPage() {
                             </CardContent>
                         </Card>
 
-                        <Card className=" border-2 border-foreground">
+                        <Card className="border-2 border-foreground">
                             <CardHeader className="pb-2">
                                 <div className="flex items-center gap-2 text-primary">
                                     <Car className="h-5 w-5" />
@@ -174,7 +174,7 @@ export default function EtenVoorDeFlintPage() {
                             </CardContent>
                         </Card>
 
-                        <Card className=" border-2 border-foreground">
+                        <Card className="border-2 border-foreground">
                             <CardHeader className="pb-2">
                                 <div className="flex items-center gap-2 text-primary">
                                     <Users className="h-5 w-5" />
@@ -207,7 +207,7 @@ export default function EtenVoorDeFlintPage() {
                     <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-6 text-center">
                         Veelgestelde vragen
                     </h2>
-                    <Card className=" border-2 border-foreground">
+                    <Card className="border-2 border-foreground">
                         <CardContent className="pt-6">
                             <Accordion type="single" collapsible className="w-full">
                                 {faqs.map((faq, index) => (

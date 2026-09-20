@@ -394,7 +394,7 @@ export default async function CateringPage() {
 
           {/* Trust strip + NAP, above the fold, machine-readable */}
           <section className="mb-12 max-w-4xl mx-auto">
-            <Card className=" border-2 border-foreground border-border bg-primary/5">
+            <Card className="border-2 border-foreground bg-primary/5">
               <CardContent className="p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
                 <div className="flex items-start gap-2">
                   <MapPin className="h-4 w-4 mt-0.5 shrink-0 text-primary" />
@@ -454,7 +454,7 @@ export default async function CateringPage() {
               </div>
             </div>
 
-            <div className="order-1 md:order-2 overflow-hidden border-2 border-foreground border-border bg-muted/20">
+            <div className="order-1 md:order-2 overflow-hidden border-2 border-foreground bg-muted/20">
               <Image
                 src={CATEGORY_IMAGES.boxes}
                 alt="Office lunch catering van Tafelaar × Jezza Cooks, Amersfoort"
@@ -470,7 +470,7 @@ export default async function CateringPage() {
 
           {/* GEO H2: "Wie maakt de catering?", JV attribution block */}
           <section className="max-w-3xl mx-auto mb-12">
-            <Card className=" border-2 border-foreground border-border p-6 sm:p-8">
+            <Card className="border-2 border-foreground p-6 sm:p-8">
               <div className="flex items-center gap-2 text-primary mb-3">
                 <ChefHat className="h-5 w-5" />
                 <h2 className="font-headline text-xl font-extrabold tracking-tight sm:text-2xl">
@@ -501,7 +501,7 @@ export default async function CateringPage() {
 
           {/* Key cards */}
           <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            <Card className=" border-2 border-foreground border-border">
+            <Card className="border-2 border-foreground">
               <CardHeader className="pb-2">
                 <div className="flex items-center gap-2 text-primary">
                   <ChefHat className="h-5 w-5" />
@@ -513,7 +513,7 @@ export default async function CateringPage() {
               </CardContent>
             </Card>
 
-            <Card className=" border-2 border-foreground border-border">
+            <Card className="border-2 border-foreground">
               <CardHeader className="pb-2">
                 <div className="flex items-center gap-2 text-primary">
                   <Package className="h-5 w-5" />
@@ -525,7 +525,7 @@ export default async function CateringPage() {
               </CardContent>
             </Card>
 
-            <Card className=" border-2 border-foreground border-border">
+            <Card className="border-2 border-foreground">
               <CardHeader className="pb-2">
                 <div className="flex items-center gap-2 text-primary">
                   <PartyPopper className="h-5 w-5" />
@@ -540,7 +540,7 @@ export default async function CateringPage() {
 
           {/* GEO H2: "Op welke bedrijventerreinen bezorgen jullie?", evidence-rich */}
           <section className="max-w-3xl mx-auto mb-12">
-            <Card className=" border-2 border-foreground border-border p-6 sm:p-8">
+            <Card className="border-2 border-foreground p-6 sm:p-8">
               <h2 className="font-headline text-xl font-extrabold tracking-tight sm:text-2xl mb-3">
                 Op welke bedrijventerreinen bezorgen we?
               </h2>
@@ -594,7 +594,7 @@ export default async function CateringPage() {
             {/* Categories grid */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {/* Sandwiches */}
-              <Card className=" border-2 border-foreground border-border overflow-hidden">
+              <Card className="border-2 border-foreground overflow-hidden">
                 <div className="relative aspect-[16/9] w-full">
                   <Image
                     src={CATEGORY_IMAGES.sandwiches}
@@ -630,7 +630,7 @@ export default async function CateringPage() {
               </Card>
 
               {/* Bowls */}
-              <Card className=" border-2 border-foreground border-border overflow-hidden">
+              <Card className="border-2 border-foreground overflow-hidden">
                 <div className="relative aspect-[16/9] w-full">
                   <Image
                     src={CATEGORY_IMAGES.bowls}
@@ -662,7 +662,7 @@ export default async function CateringPage() {
               </Card>
 
               {/* Wraps */}
-              <Card className=" border-2 border-foreground border-border overflow-hidden">
+              <Card className="border-2 border-foreground overflow-hidden">
                 <div className="relative aspect-[16/9] w-full">
                   <Image
                     src={CATEGORY_IMAGES.wraps}
@@ -694,7 +694,7 @@ export default async function CateringPage() {
               </Card>
 
               {/* Lunch boxes */}
-              <Card className=" border-2 border-foreground border-border overflow-hidden">
+              <Card className="border-2 border-foreground overflow-hidden">
                 <div className="relative aspect-[16/9] w-full">
                   <Image
                     src={CATEGORY_IMAGES.boxes}
@@ -738,7 +738,7 @@ export default async function CateringPage() {
 
           {/* Build your own lunch */}
           <section className="mb-12">
-            <Card className=" border-2 border-foreground border-border overflow-hidden bg-muted/20">
+            <Card className="border-2 border-foreground overflow-hidden bg-muted/20">
               <div className="p-6 sm:p-8">
                 <div className="flex items-start gap-3">
                   <div className="mt-1 text-primary">
@@ -792,7 +792,7 @@ export default async function CateringPage() {
 
           {/* CTA */}
           <section id="contact" className="scroll-mt-24">
-            <Card className=" border-2 border-foreground border-border overflow-hidden">
+            <Card className="border-2 border-foreground overflow-hidden">
               <div className="relative p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
                   <h2 className="font-headline text-2xl font-extrabold sm:text-3xl md:text-4xl">
@@ -824,7 +824,7 @@ export default async function CateringPage() {
             </h2>
             <div className="max-w-3xl mx-auto space-y-4">
               {faqs.map((faq, i) => (
-                <Card key={i} className=" border-2 border-foreground p-4 sm:p-6">
+                <Card key={i} className="border-2 border-foreground p-4 sm:p-6">
                   <h3 className="font-semibold text-foreground mb-2">{faq.question}</h3>
                   <p className="text-sm text-muted-foreground">{faq.answer}</p>
                 </Card>

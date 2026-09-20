@@ -34,7 +34,7 @@ function UpdateCard({ item }: { item: FeedItem }) {
     return (
         <Link
             href={`/updates/${item.slug}`}
-            className="group flex gap-4 border-2 border-foreground border-border/50 bg-background p-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+            className="group flex gap-4 border-2 border-foreground bg-background p-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
         >
             {thumb && (
                 <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden sm:h-28 sm:w-28">
@@ -117,7 +117,7 @@ export default async function UpdatesPage({
             {/* Search + Filters */}
             <div className="mb-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
                 <form className="w-full sm:w-auto" action="/updates" method="get">
-                    <div className="flex overflow-hidden border-2 border-foreground border-border focus-within:ring-2 focus-within:ring-primary/50">
+                    <div className="flex overflow-hidden border-2 border-foreground focus-within:ring-2 focus-within:ring-primary/50">
                         <input
                             type="text"
                             name="q"

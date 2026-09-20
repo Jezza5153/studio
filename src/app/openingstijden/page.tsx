@@ -87,7 +87,7 @@ export default function OpeningstijdenPage() {
 
         {/* Entity paragraph */}
         <section className="max-w-2xl mx-auto mb-12">
-          <Card className=" border-2 border-foreground p-6 sm:p-8">
+          <Card className="border-2 border-foreground p-6 sm:p-8">
             <div className="space-y-4 text-muted-foreground">
               <p>
                 De Tafelaar is een shared dining restaurant op de Kamp 8 in Amersfoort centrum. Wij serveren
@@ -132,7 +132,7 @@ export default function OpeningstijdenPage() {
 
         {/* Location card */}
         <section className="max-w-2xl mx-auto mb-12">
-          <Card className=" border-2 border-foreground p-6">
+          <Card className="border-2 border-foreground p-6">
             <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-4">
               Locatie
             </h2>
@@ -162,7 +162,7 @@ export default function OpeningstijdenPage() {
           </h2>
           <div className="space-y-4">
             {faqs.map((faq) => (
-              <Card key={faq.question} className=" border-2 border-foreground p-6">
+              <Card key={faq.question} className="border-2 border-foreground p-6">
                 <h3 className="font-semibold mb-2">{faq.question}</h3>
                 <p className="text-sm text-muted-foreground">{faq.answer}</p>
               </Card>

@@ -40,7 +40,7 @@ export default function DrankPage() {
     <div className="container mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-16">
       {/* Header */}
       <header className="mb-8 sm:mb-10 md:mb-12">
-        <div className=" border-2 border-foreground bg-white p-6 sm:p-8">
+        <div className="border-2 border-foreground bg-white p-6 sm:p-8">
           <div className="flex items-start justify-between gap-4">
             <div>
               <h1 className="font-headline text-3xl font-black leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">Drankenkaart De Tafelaar Amersfoort</h1>
@@ -71,7 +71,7 @@ export default function DrankPage() {
             <section
               key={section.id}
               id={section.id}
-              className=" border-2 border-foreground bg-white p-6 md:p-8"
+              className="border-2 border-foreground bg-white p-6 md:p-8"
               aria-labelledby={`${section.id}-title`}
             >
               <div className="mb-5">

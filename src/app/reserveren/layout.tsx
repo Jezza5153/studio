@@ -79,7 +79,7 @@ export default function ReserverenLayout({
                         Praktische informatie
                     </h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <Card className=" border-2 border-foreground p-5">
+                        <Card className="border-2 border-foreground p-5">
                             <div className="flex items-center gap-2 text-primary mb-3">
                                 <Clock className="h-5 w-5" />
                                 <CardTitle className="text-lg">Openingstijden</CardTitle>
@@ -92,7 +92,7 @@ export default function ReserverenLayout({
                                 <div className="flex justify-between"><dt>Ma, di</dt><dd className="text-muted-foreground">Gesloten</dd></div>
                             </dl>
                         </Card>
-                        <Card className=" border-2 border-foreground p-5">
+                        <Card className="border-2 border-foreground p-5">
                             <div className="flex items-center gap-2 text-primary mb-3">
                                 <MapPin className="h-5 w-5" />
                                 <CardTitle className="text-lg">Locatie</CardTitle>
@@ -112,7 +112,7 @@ export default function ReserverenLayout({
 
                 {/* Groups info */}
                 <section className="max-w-3xl mx-auto">
-                    <Card className=" border-2 border-foreground p-6 sm:p-8">
+                    <Card className="border-2 border-foreground p-6 sm:p-8">
                         <div className="flex items-center gap-2 text-primary mb-3">
                             <Users className="h-5 w-5" />
                             <h2 className="font-headline text-xl font-extrabold">Groepsreserveringen</h2>
@@ -134,7 +134,7 @@ export default function ReserverenLayout({
                     </h2>
                     <div className="space-y-4">
                         {reserverenFaqs.map((faq, i) => (
-                            <Card key={i} className=" border-2 border-foreground p-4 sm:p-6">
+                            <Card key={i} className="border-2 border-foreground p-4 sm:p-6">
                                 <h3 className="font-semibold text-foreground mb-2">{faq.question}</h3>
                                 <p className="text-sm text-muted-foreground">{faq.answer}</p>
                             </Card>

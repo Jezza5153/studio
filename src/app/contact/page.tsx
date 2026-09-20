@@ -91,7 +91,7 @@ export default function ReserverenPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
         {/* Left column */}
         <div className="lg:col-span-2">
-          <Card className=" border-2 border-foreground bg-white">
+          <Card className="border-2 border-foreground bg-white">
             <CardHeader className="pb-4 md:pb-6">
               <CardTitle className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight">
                 Reserveer uw tafel
@@ -158,7 +158,7 @@ export default function ReserverenPage() {
 
         {/* Right column: FAQ + tijden */}
         <div className="space-y-8">
-          <Card className=" border-2 border-foreground bg-white">
+          <Card className="border-2 border-foreground bg-white">
             <CardHeader className="pb-3 md:pb-4">
               <CardTitle className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight">
                 Veelgestelde Vragen
@@ -180,7 +180,7 @@ export default function ReserverenPage() {
             </CardContent>
           </Card>
 
-          <Card className=" border-2 border-foreground bg-white">
+          <Card className="border-2 border-foreground bg-white">
             <CardHeader className="pb-3 md:pb-4">
               <CardTitle className="font-headline text-xl tracking-tight">Openingstijden</CardTitle>
             </CardHeader>
@@ -202,7 +202,7 @@ export default function ReserverenPage() {
       </div>
       {/* Bereikbaarheid */}
       <section className="max-w-3xl mx-auto mt-12">
-        <Card className=" border-2 border-foreground p-6 sm:p-8">
+        <Card className="border-2 border-foreground p-6 sm:p-8">
           <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-4">
             Bereikbaarheid
           </h2>

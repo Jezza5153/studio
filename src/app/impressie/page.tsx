@@ -178,7 +178,7 @@ export default async function ImpressiePage() {
         </h2>
         <div className="max-w-3xl mx-auto space-y-4">
           {impressieFaqs.map((faq, i) => (
-            <Card key={i} className=" border-2 border-foreground p-4 sm:p-6">
+            <Card key={i} className="border-2 border-foreground p-4 sm:p-6">
               <h3 className="font-semibold text-foreground mb-2">{faq.question}</h3>
               <p className="text-sm text-muted-foreground">{faq.answer}</p>
             </Card>

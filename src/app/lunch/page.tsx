@@ -44,7 +44,7 @@ export default function LunchPage() {
         <div className="container mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-16">
             {/* ===== HERO ===== */}
             <header className="mb-8 sm:mb-10 md:mb-12">
-                <Card className=" border-2 border-foreground bg-white p-6 sm:p-8">
+                <Card className="border-2 border-foreground bg-white p-6 sm:p-8">
                     <div className="flex items-start justify-between gap-4">
                         <div className="min-w-0">
                             <p className="mb-4 inline-block -rotate-[1.2deg] bg-foreground px-3.5 py-[7px] text-[11px] font-bold uppercase tracking-[0.2em] text-background">
@@ -86,7 +86,7 @@ export default function LunchPage() {
             {/* ===== LEGEND ===== */}
             {(usedTags.length > 0 || usedAllergens.length > 0) && (
                 <section className="mb-8 sm:mb-10 md:mb-12">
-                    <div className=" border-2 border-foreground bg-white p-4 md:p-6">
+                    <div className="border-2 border-foreground bg-white p-4 md:p-6">
                         <div className="flex flex-wrap items-start gap-6 md:gap-10">
                             {usedTags.length > 0 && (
                                 <div className="flex items-center gap-3">
@@ -142,7 +142,7 @@ export default function LunchPage() {
                         <section
                             key={category.id}
                             id={category.id}
-                            className=" border-2 border-foreground bg-white p-6 md:p-8"
+                            className="border-2 border-foreground bg-white p-6 md:p-8"
                             aria-labelledby={`${category.id}-title`}
                         >
                             <div className="mb-5">

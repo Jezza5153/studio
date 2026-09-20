@@ -126,7 +126,7 @@ export default function LunchLayout({
                     <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-4 text-center">
                         Over onze lunchkaart
                     </h2>
-                    <Card className=" border-2 border-foreground p-6 sm:p-8">
+                    <Card className="border-2 border-foreground p-6 sm:p-8">
                         <div className="space-y-4 text-muted-foreground">
                             <p>
                                 Van 11:00 tot 15:00 draait De Tafelaar om een ontspannen lunch: verse broodjes,
@@ -157,7 +157,7 @@ export default function LunchLayout({
                     </h2>
                     <div className="space-y-4">
                         {lunchFaqs.map((faq, i) => (
-                            <Card key={i} className=" border-2 border-foreground p-4 sm:p-6">
+                            <Card key={i} className="border-2 border-foreground p-4 sm:p-6">
                                 <h3 className="font-semibold text-foreground mb-2">{faq.question}</h3>
                                 <p className="text-sm text-muted-foreground">{faq.answer}</p>
                             </Card>

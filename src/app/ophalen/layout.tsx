@@ -126,7 +126,7 @@ export default function OphalenLayout({
                     <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-4 text-center">
                         Over onze kaart van Tafelaar Thuis
                     </h2>
-                    <Card className=" border-2 border-foreground p-6 sm:p-8">
+                    <Card className="border-2 border-foreground p-6 sm:p-8">
                         <div className="space-y-4 text-muted-foreground">
                             <p>
                                 Liever thuis genieten? Bij De Tafelaar kun je onze sous-vide spare ribs en
@@ -154,7 +154,7 @@ export default function OphalenLayout({
                     </h2>
                     <div className="space-y-4">
                         {ophalenFaqs.map((faq, i) => (
-                            <Card key={i} className=" border-2 border-foreground p-4 sm:p-6">
+                            <Card key={i} className="border-2 border-foreground p-4 sm:p-6">
                                 <h3 className="font-semibold text-foreground mb-2">{faq.question}</h3>
                                 <p className="text-sm text-muted-foreground">{faq.answer}</p>
                             </Card>

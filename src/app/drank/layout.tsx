@@ -74,7 +74,7 @@ export default function DrankLayout({
                     <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-4 text-center">
                         Over onze dranken
                     </h2>
-                    <Card className=" border-2 border-foreground p-6 sm:p-8">
+                    <Card className="border-2 border-foreground p-6 sm:p-8">
                         <div className="space-y-4 text-muted-foreground">
                             <p>
                                 Bij De Tafelaar werken we het liefst met brouwerijen en wijnmakers uit de regio. Op de tap
@@ -102,7 +102,7 @@ export default function DrankLayout({
                     </h2>
                     <div className="space-y-4">
                         {drankFaqs.map((faq, i) => (
-                            <Card key={i} className=" border-2 border-foreground p-4 sm:p-6">
+                            <Card key={i} className="border-2 border-foreground p-4 sm:p-6">
                                 <h3 className="font-semibold text-foreground mb-2">{faq.question}</h3>
                                 <p className="text-sm text-muted-foreground">{faq.answer}</p>
                             </Card>

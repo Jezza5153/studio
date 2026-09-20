@@ -165,7 +165,7 @@ export default function VerhuurEnGroepenPage() {
         {/* Key cards */}
         <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {/* cards unchanged */}
-          <Card className=" border-2 border-foreground border-border">
+          <Card className="border-2 border-foreground">
             <CardHeader className="pb-2">
               <div className="flex items-center gap-2 text-primary">
                 <UtensilsCrossed className="h-5 w-5" />
@@ -179,7 +179,7 @@ export default function VerhuurEnGroepenPage() {
             </CardContent>
           </Card>
 
-          <Card className=" border-2 border-foreground border-border">
+          <Card className="border-2 border-foreground">
             <CardHeader className="pb-2">
               <div className="flex items-center gap-2 text-primary">
                 <Users className="h-5 w-5" />
@@ -192,7 +192,7 @@ export default function VerhuurEnGroepenPage() {
             </CardContent>
           </Card>
 
-          <Card className=" border-2 border-foreground border-border">
+          <Card className="border-2 border-foreground">
             <CardHeader className="pb-2">
               <div className="flex items-center gap-2 text-primary">
                 <CalendarDays className="h-5 w-5" />
@@ -234,7 +234,7 @@ export default function VerhuurEnGroepenPage() {
 
         {/* CTA (unchanged) */}
         <section>
-          <Card className=" border-2 border-foreground border-border overflow-hidden">
+          <Card className="border-2 border-foreground overflow-hidden">
             <div className="relative p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div>
                 <h2 className="font-headline text-2xl font-extrabold sm:text-3xl md:text-4xl">
@@ -266,7 +266,7 @@ export default function VerhuurEnGroepenPage() {
           </h2>
           <div className="max-w-3xl mx-auto space-y-4">
             {faqs.map((faq, i) => (
-              <Card key={i} className=" border-2 border-foreground p-4 sm:p-6">
+              <Card key={i} className="border-2 border-foreground p-4 sm:p-6">
                 <h3 className="font-semibold text-foreground mb-2">{faq.question}</h3>
                 <p className="text-sm text-muted-foreground">{faq.answer}</p>
               </Card>

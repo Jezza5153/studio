@@ -191,7 +191,7 @@ export default function WijEnOnzeMakersPage() {
               <p key={i}>{p}</p>
             ))}
           </div>
-          <div className="mt-6 border-2 border-foreground border-border p-4 sm:p-5 bg-muted/30">
+          <div className="mt-6 border-2 border-foreground p-4 sm:p-5 bg-muted/30">
             <h4 className="font-headline text-lg mb-1">Chef&apos;s Choice</h4>
             <p className="text-muted-foreground">
               Niet kiezen? Begin met een wisselende selectie van favorieten om te delen.
@@ -240,7 +240,7 @@ export default function WijEnOnzeMakersPage() {
         {/* Quote */}
         {philosophyContent.quote?.text && (
           <section className="mb-12">
-            <figure className=" border-2 border-foreground border-border p-6 sm:p-8 bg-muted/30">
+            <figure className="border-2 border-foreground p-6 sm:p-8 bg-muted/30">
               <blockquote className="text-xl sm:text-2xl leading-relaxed tracking-tight">
                 &ldquo;{philosophyContent.quote.text}&rdquo;
               </blockquote>
@@ -276,7 +276,7 @@ export default function WijEnOnzeMakersPage() {
 
         {/* CTA */}
         <section aria-labelledby="kom-langs" className="mt-12">
-          <div className="relative border-2 border-foreground border-border p-6 sm:p-8 overflow-hidden">
+          <div className="relative border-2 border-foreground p-6 sm:p-8 overflow-hidden">
             <div className="pointer-events-none absolute -inset-1 bg-gradient-to-r from-primary/10 via-transparent to-primary/10 blur-2xl" />
             <div className="relative flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
@@ -301,7 +301,7 @@ export default function WijEnOnzeMakersPage() {
                   <Link
                     href={philosophyContent.ctaLinks.menu}
                     prefetch={false}
-                    className="inline-flex items-center justify-center border-2 border-foreground border-border px-4 py-2 hover:bg-muted transition-colors"
+                    className="inline-flex items-center justify-center border-2 border-foreground px-4 py-2 hover:bg-muted transition-colors"
                   >
                     Bekijk menu
                   </Link>
@@ -318,7 +318,7 @@ export default function WijEnOnzeMakersPage() {
           </h2>
           <div className="max-w-3xl mx-auto space-y-4">
             {makersFaqs.map((faq, i) => (
-              <Card key={i} className=" border-2 border-foreground p-4 sm:p-6">
+              <Card key={i} className="border-2 border-foreground p-4 sm:p-6">
                 <h3 className="font-semibold text-foreground mb-2">{faq.question}</h3>
                 <p className="text-sm text-muted-foreground">{faq.answer}</p>
               </Card>

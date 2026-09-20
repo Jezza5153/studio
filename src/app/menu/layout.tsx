@@ -124,7 +124,7 @@ export default function MenuLayout({
                     <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-4 text-center">
                         Over onze menukaart
                     </h2>
-                    <Card className=" border-2 border-foreground p-6 sm:p-8">
+                    <Card className="border-2 border-foreground p-6 sm:p-8">
                         <div className="space-y-4 text-muted-foreground">
                             <p>
                                 De menukaart van De Tafelaar draait om shared dining: gerechten die je samen
@@ -159,7 +159,7 @@ export default function MenuLayout({
                     </h2>
                     <div className="space-y-4">
                         {menuFaqs.map((faq, i) => (
-                            <Card key={i} className=" border-2 border-foreground p-4 sm:p-6">
+                            <Card key={i} className="border-2 border-foreground p-4 sm:p-6">
                                 <h3 className="font-semibold text-foreground mb-2">{faq.question}</h3>
                                 <p className="text-sm text-muted-foreground">{faq.answer}</p>
                             </Card>

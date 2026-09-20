@@ -628,7 +628,7 @@ export function NeighborhoodGuideClient() {
         </div>
 
         {loadError && (
-          <Card className=" border-2 border-foreground mb-6">
+          <Card className="border-2 border-foreground mb-6">
             <CardHeader>
               <CardTitle className="text-lg">De kaart is even niet beschikbaar</CardTitle>
             </CardHeader>
@@ -651,7 +651,7 @@ export function NeighborhoodGuideClient() {
 
         {/* Theaterweekend banner */}
         {theaterWeekendMode && (
-          <Card className=" border-2 border-foreground mb-6 bg-muted/20">
+          <Card className="border-2 border-foreground mb-6 bg-muted/20">
             <CardHeader className="pb-3">
               <CardTitle className="flex items-center gap-2 text-xl">
                 <Ticket className="h-5 w-5" />
@@ -692,7 +692,7 @@ export function NeighborhoodGuideClient() {
           {/* Left panel */}
           <div className="lg:col-span-1 space-y-6">
             {/* Search */}
-            <Card className=" border-2 border-foreground">
+            <Card className="border-2 border-foreground">
               <CardHeader className="pb-3">
                 <CardTitle className="text-lg flex items-center gap-2">
                   <Search className="h-4 w-4" />
@@ -715,7 +715,7 @@ export function NeighborhoodGuideClient() {
             </Card>
 
             {/* De Tafelaar card (live from Places details) */}
-            <Card className=" border-2 border-foreground">
+            <Card className="border-2 border-foreground">
               <CardHeader className="pb-3">
                 <CardTitle className="text-lg flex items-center gap-2">
                   <UtensilsCrossed className="h-4 w-4" />
@@ -807,13 +807,13 @@ export function NeighborhoodGuideClient() {
           {/* Map + details */}
           <div className="lg:col-span-2 space-y-4">
             {!loadError && (
-              <Card className=" border-2 border-foreground overflow-hidden">
+              <Card className="border-2 border-foreground overflow-hidden">
                 <div className="h-[60vh] min-h-[420px]" ref={mapRef} />
               </Card>
             )}
 
             {selected && (
-              <Card className=" border-2 border-foreground">
+              <Card className="border-2 border-foreground">
                 <CardHeader className="pb-3">
                   <CardTitle className="flex items-center justify-between gap-3">
                     <div className="min-w-0">
@@ -959,7 +959,7 @@ function PlacesSection({
   icon: any;
 }) {
   return (
-    <Card className=" border-2 border-foreground">
+    <Card className="border-2 border-foreground">
       <CardHeader className="pb-3">
         <CardTitle className="text-lg flex items-center gap-2">
           <Icon className="h-4 w-4" />

@@ -93,7 +93,7 @@ export default async function BesteRestaurantAmersfoortPage() {
             {/* USPs */}
             <section className="max-w-4xl mx-auto mb-12">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-                    <Card className=" border-2 border-foreground">
+                    <Card className="border-2 border-foreground">
                         <CardHeader className="pb-2">
                             <div className="flex items-center gap-2 text-primary">
                                 <Star className="h-5 w-5" />
@@ -105,7 +105,7 @@ export default async function BesteRestaurantAmersfoortPage() {
                         </CardContent>
                     </Card>
 
-                    <Card className=" border-2 border-foreground">
+                    <Card className="border-2 border-foreground">
                         <CardHeader className="pb-2">
                             <div className="flex items-center gap-2 text-primary">
                                 <Users className="h-5 w-5" />
@@ -117,7 +117,7 @@ export default async function BesteRestaurantAmersfoortPage() {
                         </CardContent>
                     </Card>
 
-                    <Card className=" border-2 border-foreground">
+                    <Card className="border-2 border-foreground">
                         <CardHeader className="pb-2">
                             <div className="flex items-center gap-2 text-primary">
                                 <Leaf className="h-5 w-5" />
@@ -129,7 +129,7 @@ export default async function BesteRestaurantAmersfoortPage() {
                         </CardContent>
                     </Card>
 
-                    <Card className=" border-2 border-foreground">
+                    <Card className="border-2 border-foreground">
                         <CardHeader className="pb-2">
                             <div className="flex items-center gap-2 text-primary">
                                 <MapPin className="h-5 w-5" />
@@ -149,7 +149,7 @@ export default async function BesteRestaurantAmersfoortPage() {
 
             {/* Content */}
             <section className="max-w-3xl mx-auto mb-12">
-                <Card className=" border-2 border-foreground p-6 sm:p-8">
+                <Card className="border-2 border-foreground p-6 sm:p-8">
                     <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-4">
                         Waarom De Tafelaar een van de beste restaurants in Amersfoort is
                     </h2>
@@ -190,7 +190,7 @@ export default async function BesteRestaurantAmersfoortPage() {
                 </h2>
                 <div className="space-y-4">
                     {faqs.map((faq) => (
-                        <Card key={faq.question} className=" border-2 border-foreground p-6">
+                        <Card key={faq.question} className="border-2 border-foreground p-6">
                             <h3 className="font-semibold mb-2">{faq.question}</h3>
                             <p className="text-sm text-muted-foreground">{faq.answer}</p>
                         </Card>

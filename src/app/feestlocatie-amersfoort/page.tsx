@@ -86,7 +86,7 @@ export default async function FeestlocatieAmersfoortPage() {
                 {/* USPs */}
                 <section className="max-w-4xl mx-auto mb-12">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <Card className=" border-2 border-foreground">
+                        <Card className="border-2 border-foreground">
                             <CardHeader className="pb-2">
                                 <div className="flex items-center gap-2 text-primary">
                                     <PartyPopper className="h-5 w-5" />
@@ -99,7 +99,7 @@ export default async function FeestlocatieAmersfoortPage() {
                             </CardContent>
                         </Card>
 
-                        <Card className=" border-2 border-foreground">
+                        <Card className="border-2 border-foreground">
                             <CardHeader className="pb-2">
                                 <div className="flex items-center gap-2 text-primary">
                                     <UtensilsCrossed className="h-5 w-5" />
@@ -112,7 +112,7 @@ export default async function FeestlocatieAmersfoortPage() {
                             </CardContent>
                         </Card>
 
-                        <Card className=" border-2 border-foreground">
+                        <Card className="border-2 border-foreground">
                             <CardHeader className="pb-2">
                                 <div className="flex items-center gap-2 text-primary">
                                     <Clock className="h-5 w-5" />
@@ -134,7 +134,7 @@ export default async function FeestlocatieAmersfoortPage() {
 
                 {/* Content */}
                 <section className="max-w-3xl mx-auto mb-12">
-                    <Card className=" border-2 border-foreground p-6 sm:p-8">
+                    <Card className="border-2 border-foreground p-6 sm:p-8">
                         <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-4">
                             Feest vieren bij De Tafelaar
                         </h2>
@@ -175,7 +175,7 @@ export default async function FeestlocatieAmersfoortPage() {
                     </h2>
                     <div className="space-y-4">
                         {faqs.map((faq) => (
-                            <Card key={faq.question} className=" border-2 border-foreground p-6">
+                            <Card key={faq.question} className="border-2 border-foreground p-6">
                                 <h3 className="font-semibold text-foreground mb-2">{faq.question}</h3>
                                 <p className="text-sm text-muted-foreground">{faq.answer}</p>
                             </Card>
