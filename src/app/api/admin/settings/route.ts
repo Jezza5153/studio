@@ -27,9 +27,8 @@ export async function PUT(request: Request) {
 
         const body = await request.json();
 
-        // Manual override for the Google score/count, for when the Places sync
-        // is down (e.g. suspended API key). The nightly cron overwrites these
-        // again as soon as it succeeds.
+        // The owners maintain the Google score/count by hand (no Places API);
+        // this is the only writer of these two fields.
         const googleRating = Number(body.googleRating);
         const googleReviewCount = Number(body.googleReviewCount);
         const hasRating = body.googleRating !== undefined && Number.isFinite(googleRating) && googleRating >= 1 && googleRating <= 5;

@@ -1,11 +1,11 @@
 import { getSettings } from "@/lib/queries/feed";
 
 // Single source of truth for the Google rating shown across the site.
-// The nightly cron (/api/cron/ingest-reviews) writes the live values to
-// Settings; every page reads them through here so visible copy and JSON-LD
-// can never drift apart. FALLBACK is only shown before the first cron run
-// or when the database is unreachable at build time.
-const FALLBACK = { rating: 4.8, count: 90 };
+// The owners maintain the score and review count in the admin panel
+// (Settings.googleRating / googleReviewCount); every page reads them through
+// here so visible copy and JSON-LD can never drift apart. FALLBACK is only
+// shown while Settings is empty or the database is unreachable at build time.
+const FALLBACK = { rating: 4.9, count: 110 };
 
 export type GoogleRating = {
   rating: number;

@@ -31,12 +31,12 @@ export async function GET() {
     try {
         const settings = await prisma.settings.findFirst({ where: { id: "singleton" } });
         checks.settings = settings ? "OK (found)" : "OK (null, no singleton row)";
-        // Surfaces a silently failing review sync: updatedAt only moves when
-        // the cron (or an admin override) actually writes new numbers.
+        // updatedAt moves on any Settings write (tonight status included), so
+        // it says when the owners last saved, not specifically the score.
         if (settings) {
             checks.googleRating = settings.googleRating;
             checks.googleReviewCount = settings.googleReviewCount;
-            checks.lastRatingSync = settings.updatedAt.toISOString();
+            checks.settingsUpdatedAt = settings.updatedAt.toISOString();
         }
     } catch (err) {
         checks.settings = "FAILED";

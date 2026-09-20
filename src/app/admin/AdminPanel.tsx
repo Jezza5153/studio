@@ -331,7 +331,7 @@ function TonightPanel({ settings, onUpdate, toast }: {
                     />
                 </div>
                 <p className="mt-1 text-[10px] text-muted-foreground/60">
-                    Wordt elke nacht automatisch bijgewerkt vanuit Google. Vul hier alleen iets in als de sync niet werkt; de site toont het direct.
+                    Neem de score en het aantal reviews over van jullie Google-pagina. Na opslaan staat het direct op alle pagina's, ook in de zoekmachine-data.
                 </p>
             </div>
 
