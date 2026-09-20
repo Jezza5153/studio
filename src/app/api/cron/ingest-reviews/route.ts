@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/db";
 import { safeText } from "@/lib/sanitize";
 
@@ -74,6 +75,11 @@ async function handleIngest(request: Request) {
                 googleReviewCount: totalReviewCount,
             },
         });
+
+        // Pages render the rating from Settings (see lib/google-rating.ts) and
+        // are statically cached; regenerate them so the new numbers show up
+        // right after the sync instead of at the next hourly revalidate.
+        revalidatePath("/", "layout");
 
         let upserted = 0;
         let failed = 0;

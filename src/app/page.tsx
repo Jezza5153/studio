@@ -1,6 +1,7 @@
 
 // app/(site)/page.tsx
 import type { Metadata } from "next";
+import { getGoogleRating, type GoogleRating } from "@/lib/google-rating";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -22,16 +23,19 @@ import {
 import { ReserveerButton } from "@/components/reserveer-button";
 
 export const dynamic = "force-static";
+export const revalidate = 3600; // Google rating/review count refresh hourly (synced by /api/cron/ingest-reviews)
 
-export const metadata: Metadata = {
+export async function generateMetadata(): Promise<Metadata> {
+  const g = await getGoogleRating();
+  return {
   title: "De Tafelaar | Restaurant Amersfoort — Lekker Eten & Shared Dining",
   description:
-    "Restaurant in Amersfoort: De Tafelaar op de Kamp. Shared dining voor borrel en diner met lokale seizoensgerechten. Ook ophalen. 4.8 op Google. Op 5 min van Flint. Wo–zo open.",
+    `Restaurant in Amersfoort: De Tafelaar op de Kamp. Shared dining voor borrel en diner met lokale seizoensgerechten. Ook ophalen. ${g.ratingText} op Google. Op 5 min van Flint. Wo–zo open.`,
   alternates: { canonical: "/" },
   openGraph: {
     title: "De Tafelaar | Restaurant Amersfoort — Lekker Eten & Shared Dining",
     description:
-      "Restaurant in Amersfoort: shared dining voor borrel en diner met lokale seizoensgerechten op de Kamp. Ook ophalen. 4.8 op Google. Op 5 min van Flint.",
+      `Restaurant in Amersfoort: shared dining voor borrel en diner met lokale seizoensgerechten op de Kamp. Ook ophalen. ${g.ratingText} op Google. Op 5 min van Flint.`,
     images: [{ url: "/pics/homepage.png" }],
   },
   keywords: [
@@ -50,7 +54,8 @@ export const metadata: Metadata = {
     "afhalen amersfoort",
     "spare ribs afhalen amersfoort",
   ],
-};
+  };
+}
 
 const HIGHLIGHT_ICONS = {
   sharedDining: UtensilsCrossed,
@@ -77,7 +82,7 @@ const UPCOMING_EVENTS: Array<{
   ctaClass: string;
 }> = [];
 
-function homeFaqJsonLd() {
+function homeFaqJsonLd(homeFaqs: { question: string; answer: string }[]) {
   return JSON.stringify({
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -89,10 +94,11 @@ function homeFaqJsonLd() {
   });
 }
 
-const homeFaqs = [
+function buildHomeFaqs(g: GoogleRating) {
+  return [
   {
     question: "Waar kan ik lekker eten in Amersfoort?",
-    answer: "De Tafelaar op de Kamp 8 is een van de best beoordeelde restaurants in Amersfoort (4.8 op Google). We serveren shared dining: kleine gerechten om te delen, gemaakt met seizoensgebonden producten van lokale makers. Van €3,50 tot €15,50 per gerecht, gemiddeld €25–35 p.p. Open woensdag t/m zondag.",
+    answer: `De Tafelaar op de Kamp 8 is een van de best beoordeelde restaurants in Amersfoort (${g.ratingText} op Google). We serveren shared dining: kleine gerechten om te delen, gemaakt met seizoensgebonden producten van lokale makers. Van €3,50 tot €15,50 per gerecht, gemiddeld €25–35 p.p. Open woensdag t/m zondag.`,
   },
   {
     question: "Wat is shared dining bij De Tafelaar?",
@@ -120,14 +126,17 @@ const homeFaqs = [
   },
   {
     question: "Is De Tafelaar het beste restaurant in Amersfoort?",
-    answer: "Met een 4.8 op Google en 90+ reviews is De Tafelaar een van de best beoordeelde restaurants in Amersfoort. Gasten waarderen het unieke shared dining concept, de lokale ingrediënten en de persoonlijke sfeer. Bekijk onze reviews op Google of op onze impressie-pagina.",
+    answer: `Met een ${g.ratingText} op Google en ${g.countText} reviews is De Tafelaar een van de best beoordeelde restaurants in Amersfoort. Gasten waarderen het unieke shared dining concept, de lokale ingrediënten en de persoonlijke sfeer. Bekijk onze reviews op Google of op onze impressie-pagina.`,
   },
-];
+  ];
+}
 
-export default function Home() {
+export default async function Home() {
+  const g = await getGoogleRating();
+  const homeFaqs = buildHomeFaqs(g);
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: homeFaqJsonLd() }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: homeFaqJsonLd(homeFaqs) }} />
       <div className="flex flex-col">
       {/* ================= HERO ================= */}
       <section className="relative h-[65svh] md:h-[70vh] w-full" aria-labelledby="home-hero-title">

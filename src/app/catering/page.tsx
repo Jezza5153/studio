@@ -1,5 +1,6 @@
 // app/catering/page.tsx
 import type { Metadata } from "next";
+import { getGoogleRating } from "@/lib/google-rating";
 import Image from "next/image";
 import Link from "next/link";
 import { ObfuscatedEmail } from "@/components/obfuscated-email";
@@ -21,6 +22,7 @@ import {
 } from "lucide-react";
 
 export const dynamic = "force-static";
+export const revalidate = 3600; // Google rating/review count refresh hourly (synced by /api/cron/ingest-reviews)
 
 const SITE_URL = "https://www.tafelaaramersfoort.nl";
 const JEZZA_URL = "https://www.jezzacooks.com";
@@ -67,7 +69,7 @@ const faqs = [
   {
     question: "Vanaf hoeveel personen kan ik catering bestellen?",
     answer:
-      "Onze office lunch catering start vanaf 10 personen. We schalen soepel op tot 150+ gasten voor events en walking dinners. Vanaf 7 personen is het Chef's Choice arrangement van De Tafelaar beschikbaar (€45 p.p.), met optioneel wijnarrangement (€28 p.p.).",
+      "Onze office lunch catering start vanaf 10 personen. We schalen soepel op tot 150+ gasten voor events en walking dinners. Vanaf 7 personen is het Chef's Choice arrangement van De Tafelaar beschikbaar (€48 p.p.), met optioneel wijnarrangement (€28 p.p.).",
   },
   {
     question: "Bezorgen jullie op kantoor en op bedrijventerreinen als De Hoef of Vathorst?",
@@ -342,7 +344,8 @@ function PricePill({ value }: { value: number }) {
   );
 }
 
-export default function CateringPage() {
+export default async function CateringPage() {
+  const g = await getGoogleRating();
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd() }} />
@@ -413,7 +416,7 @@ export default function CateringPage() {
                 <div className="flex items-start gap-2">
                   <Sparkles className="h-4 w-4 mt-0.5 shrink-0 text-primary" />
                   <div>
-                    <p className="font-semibold text-foreground">4.8 op Google · 95+ reviews</p>
+                    <p className="font-semibold text-foreground">{g.ratingText} op Google · {g.countText} reviews</p>
                     <p className="text-muted-foreground">Zelfde keuken, zelfde chef als het restaurant</p>
                   </div>
                 </div>
