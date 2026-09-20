@@ -627,12 +627,20 @@ export function NeighborhoodGuideClient() {
         {loadError && (
           <Card className=" border-2 border-foreground mb-6">
             <CardHeader>
-              <CardTitle className="text-lg">Google Maps kan niet laden</CardTitle>
+              <CardTitle className="text-lg">De kaart is even niet beschikbaar</CardTitle>
             </CardHeader>
             <CardContent className="text-sm text-muted-foreground space-y-2">
-              <p>{loadError}</p>
               <p>
-                Check of je <strong>NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</strong> hebt gezet en of de juiste APIs aan staan.
+                Hieronder vind je alle plekken met adres en loopafstand. Wil je navigeren? Open dan{" "}
+                <a
+                  href="https://maps.google.com/?q=De+Tafelaar+Kamp+8+Amersfoort"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-primary underline underline-offset-4"
+                >
+                  Google Maps
+                </a>
+                .
               </p>
             </CardContent>
           </Card>
