@@ -7,7 +7,6 @@ import { DINNER_MENU, type MenuCategory } from "@/content/menu";
 import { Info, Share2, Leaf } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import Link from "next/link";
 import { ReserveerButton } from "@/components/reserveer-button";
 import { MenuRow } from "./MenuRow";
 import {
