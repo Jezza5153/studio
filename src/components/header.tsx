@@ -100,7 +100,7 @@ export function Header() {
         </Link>
 
         {/* Desktop */}
-        <nav className="hidden flex-1 items-center justify-end gap-5 lg:flex" aria-label="Hoofdmenu">
+        <nav className="hidden flex-1 items-center justify-end gap-5 whitespace-nowrap xl:flex" aria-label="Hoofdmenu">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
@@ -124,7 +124,7 @@ export function Header() {
         </nav>
 
         {/* Mobile */}
-        <div className="flex items-center lg:hidden">
+        <div className="flex items-center xl:hidden">
           <Sheet>
             <SheetTrigger asChild>
               <Button

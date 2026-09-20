@@ -22,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: "De Tafelaar | Restaurant Amersfoort, Lekker Eten & Shared Dining",
       description: `Restaurant in Amersfoort: shared dining voor lunch, borrel en diner met lokale seizoensgerechten op de Kamp. Ook Tafelaar Thuis (ophalen). ${g.ratingText} op Google. Op 5 min van de Flint.`,
-      images: [{ url: "/pics/over%20ons%20links.jpg" }],
+      images: [{ url: "/pics/hero-gasten.jpg" }],
     },
     keywords: [
       "restaurant amersfoort",
@@ -169,7 +169,7 @@ export default async function Home() {
           <div className={`${VAK} relative min-h-[280px] bg-secondary md:min-h-[300px]`}>
             <Sticker rating={g.ratingText} count={g.countText} className="absolute right-4 top-4 z-10 md:right-6 md:top-6" />
             <Image
-              src="/pics/over%20ons%20links.jpg"
+              src="/pics/hero-gasten.jpg"
               alt="Gasten delen gerechten aan tafel bij De Tafelaar in Amersfoort"
               fill
               priority
@@ -276,11 +276,11 @@ export default async function Home() {
       <section className="container mx-auto px-4 sm:px-6 md:px-8" aria-label="Impressie van De Tafelaar">
         <div className="grid grid-cols-1 gap-[5px] border-[5px] border-foreground bg-foreground md:grid-cols-[2fr_1fr] md:grid-rows-[240px_240px]">
           <figure className="relative h-[220px] md:row-span-2 md:h-auto">
-            <Image src="/pics/over%20ons%201%20foto.jpg" alt="De huiskamer en aanschuiftafel van De Tafelaar op de Kamp 8" fill sizes="(min-width: 768px) 60vw, 100vw" className="object-cover" />
+            <Image src="/pics/huiskamer-vol.jpg" alt="De volle huiskamer van De Tafelaar op de Kamp 8, gasten aan tafel" fill sizes="(min-width: 768px) 60vw, 100vw" className="object-cover" />
             <figcaption className="absolute bottom-0 left-0 bg-foreground px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.08em] text-background">De huiskamer</figcaption>
           </figure>
           <figure className="relative h-[220px] md:h-auto">
-            <Image src="/pics/de-tafelaar-gerecht-1.jpg" alt="Gerecht om te delen bij De Tafelaar met lokale seizoensproducten" fill sizes="(min-width: 768px) 30vw, 100vw" className="object-cover" />
+            <Image src="/pics/gerecht-boven.jpg" alt="Gerecht om te delen bij De Tafelaar met lokale seizoensproducten" fill sizes="(min-width: 768px) 30vw, 100vw" className="object-cover" />
             <figcaption className="absolute bottom-0 left-0 bg-foreground px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.08em] text-background">Van de kaart</figcaption>
           </figure>
           <div className="grid h-[160px] place-items-center bg-primary p-5 text-center font-headline text-[22px] font-extrabold leading-tight text-white md:h-auto">
@@ -363,7 +363,7 @@ export default async function Home() {
       <section className="container mx-auto px-4 pb-20 sm:px-6 md:px-8" aria-labelledby="how-title">
         <div className="grid grid-cols-1 border-[5px] border-foreground bg-white md:grid-cols-2">
           <div className="relative min-h-[280px] border-b-[5px] border-foreground md:min-h-[380px] md:border-b-0 md:border-r-[5px]">
-            <Image src="/pics/over%20ons%20rechts%201.jpg" alt="De keuken van De Tafelaar bereidt seizoensgerechten" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
+            <Image src="/pics/gasten-bar.jpg" alt="Gasten aan de bar van De Tafelaar, de keuken op de achtergrond" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
           </div>
           <div className="px-7 py-9 md:px-12 md:py-12">
             <Kicker>Zo werkt het</Kicker>
@@ -379,7 +379,7 @@ export default async function Home() {
       <section className="container mx-auto px-4 pb-20 sm:px-6 md:px-8" aria-labelledby="story-title">
         <div className="grid grid-cols-1 border-[5px] border-foreground bg-white md:grid-cols-2">
           <div className="relative order-first min-h-[280px] border-b-[5px] border-foreground md:order-last md:min-h-[420px] md:border-b-0 md:border-l-[5px]">
-            <Image src="/pics/de-tafelaar-gerecht-2.jpg" alt="Gerecht om te delen bij restaurant De Tafelaar Amersfoort" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
+            <Image src="/pics/borrelplank.jpg" alt="Borrelplank met kaas, charcuterie en een glas wijn bij De Tafelaar" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
           </div>
           <div className="px-7 py-9 md:px-12 md:py-12">
             <Kicker>Ons verhaal</Kicker>
