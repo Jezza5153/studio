@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getGoogleRating } from "@/lib/google-rating";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -6,6 +7,7 @@ import { Briefcase, Users, Utensils } from "lucide-react";
 import { ReserveerButton } from "@/components/reserveer-button";
 
 export const dynamic = "force-static";
+export const revalidate = 3600; // Google rating/review count refresh hourly (synced by /api/cron/ingest-reviews)
 
 export const metadata: Metadata = {
     title: "Bedrijfsdiner Amersfoort | Zakelijk Dineren bij De Tafelaar",
@@ -60,7 +62,8 @@ function faqJsonLd() {
     });
 }
 
-export default function BedrijfsdinerAmersfoortPage() {
+export default async function BedrijfsdinerAmersfoortPage() {
+    const g = await getGoogleRating();
     return (
         <>
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd() }} />
@@ -160,7 +163,7 @@ export default function BedrijfsdinerAmersfoortPage() {
                                 lopen van Theater de Flint. Vanaf station Amersfoort Centraal is het
                                 circa 22 minuten lopen, of korter met bus, fiets of taxi.
                                 Parkeergarage Beestenmarkt ligt op 2 minuten loopafstand. Met een
-                                4.8 op Google en 90+ reviews is De Tafelaar een van de best
+                                {g.ratingText} op Google en {g.countText} reviews is De Tafelaar een van de best
                                 beoordeelde restaurants in Amersfoort. We zijn geopend van woensdag
                                 t/m zondag (keuken open vanaf 17:00 op wo/do, vanaf 11:00 op
                                 vr t/m zo).

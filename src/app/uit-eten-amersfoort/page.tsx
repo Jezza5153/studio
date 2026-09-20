@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getGoogleRating, type GoogleRating } from "@/lib/google-rating";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -6,6 +7,7 @@ import { Users, Leaf, Heart } from "lucide-react";
 import { ReserveerButton } from "@/components/reserveer-button";
 
 export const dynamic = "force-static";
+export const revalidate = 3600; // Google rating/review count refresh hourly (synced by /api/cron/ingest-reviews)
 
 export const metadata: Metadata = {
     title: "Uit Eten in Amersfoort | Shared Dining De Tafelaar",
@@ -30,10 +32,11 @@ export const metadata: Metadata = {
     ],
 };
 
-const faqs = [
+function buildFaqs(g: GoogleRating) {
+    return [
     {
         question: "Waar kan ik lekker eten in Amersfoort?",
-        answer: "De Tafelaar op de Kamp 8 is een aanrader als je lekker wilt eten in Amersfoort. Je deelt kleine gerechten aan tafel — van borrelplanken en charcuterie tot warme seizoensgerechten. Gemaakt met lokale producten, gezellige sfeer, en een 4.8 op Google. Open woensdag t/m zondag.",
+        answer: `De Tafelaar op de Kamp 8 is een aanrader als je lekker wilt eten in Amersfoort. Je deelt kleine gerechten aan tafel — van borrelplanken en charcuterie tot warme seizoensgerechten. Gemaakt met lokale producten, gezellige sfeer, en een ${g.ratingText} op Google. Open woensdag t/m zondag.`,
     },
     {
         question: "Hoeveel kost uit eten bij De Tafelaar?",
@@ -47,9 +50,10 @@ const faqs = [
         question: "Is De Tafelaar geschikt voor een date of groep?",
         answer: "Absoluut. Of je nu met z'n twee\u00ebn komt voor een romantisch diner of met een grotere groep: shared dining past altijd. Vanaf 7 personen bieden we een Chef's Choice arrangement aan. We kunnen tot circa 100 gasten ontvangen.",
     },
-];
+    ];
+}
 
-function faqJsonLd() {
+function faqJsonLd(faqs: { question: string; answer: string }[]) {
     return JSON.stringify({
         "@context": "https://schema.org",
         "@type": "FAQPage",
@@ -61,10 +65,12 @@ function faqJsonLd() {
     });
 }
 
-export default function UitEtenAmersfoortPage() {
+export default async function UitEtenAmersfoortPage() {
+    const g = await getGoogleRating();
+    const faqs = buildFaqs(g);
     return (
         <>
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd() }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqs) }} />
             <div className="container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
             {/* Hero */}
             <header className="text-center mb-12">

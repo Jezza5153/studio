@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getGoogleRating, type GoogleRating } from "@/lib/google-rating";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -6,33 +7,38 @@ import { Star, Users, Leaf, MapPin } from "lucide-react";
 import { ReserveerButton } from "@/components/reserveer-button";
 
 export const dynamic = "force-static";
+export const revalidate = 3600; // Google rating/review count refresh hourly (synced by /api/cron/ingest-reviews)
 
-export const metadata: Metadata = {
-    title: "Beste Restaurant Amersfoort | De Tafelaar — 4.8 op Google",
-    description:
-        "Op zoek naar het beste restaurant in Amersfoort? De Tafelaar: 4.8 op Google, 90+ reviews. Shared dining met lokale gerechten op de Kamp. Reserveer nu.",
-    alternates: {
-        canonical: "/beste-restaurant-amersfoort",
-    },
-    openGraph: {
-        title: "Beste Restaurant Amersfoort | De Tafelaar — 4.8 op Google",
-        description: "4.8 op Google, 90+ reviews. Shared dining met lokale gerechten op de Kamp in Amersfoort.",
-    },
-    keywords: [
-        "beste restaurant amersfoort",
-        "best beoordeelde restaurant amersfoort",
-        "top restaurant amersfoort",
-        "goed restaurant amersfoort",
-        "restaurant amersfoort hoge beoordeling",
-        "beste restaurants amersfoort centrum",
-        "restaurant amersfoort reviews",
-    ],
-};
+export async function generateMetadata(): Promise<Metadata> {
+    const g = await getGoogleRating();
+    return {
+        title: `Beste Restaurant Amersfoort | De Tafelaar — ${g.ratingText} op Google`,
+        description:
+            `Op zoek naar het beste restaurant in Amersfoort? De Tafelaar: ${g.ratingText} op Google, ${g.countText} reviews. Shared dining met lokale gerechten op de Kamp. Reserveer nu.`,
+        alternates: {
+            canonical: "/beste-restaurant-amersfoort",
+        },
+        openGraph: {
+            title: `Beste Restaurant Amersfoort | De Tafelaar — ${g.ratingText} op Google`,
+            description: `${g.ratingText} op Google, ${g.countText} reviews. Shared dining met lokale gerechten op de Kamp in Amersfoort.`,
+        },
+        keywords: [
+            "beste restaurant amersfoort",
+            "best beoordeelde restaurant amersfoort",
+            "top restaurant amersfoort",
+            "goed restaurant amersfoort",
+            "restaurant amersfoort hoge beoordeling",
+            "beste restaurants amersfoort centrum",
+            "restaurant amersfoort reviews",
+        ],
+    };
+}
 
-const faqs = [
+function buildFaqs(g: GoogleRating) {
+    return [
     {
         question: "Wat is het beste restaurant in Amersfoort?",
-        answer: "De Tafelaar op de Kamp 8 is een van de best beoordeelde restaurants in Amersfoort met een 4.8 op Google en 90+ reviews. Gasten waarderen het unieke shared dining concept, de lokale seizoensgerechten en de persoonlijke sfeer. We zijn geopend van woensdag t/m zondag.",
+        answer: `De Tafelaar op de Kamp 8 is een van de best beoordeelde restaurants in Amersfoort met een ${g.ratingText} op Google en ${g.countText} reviews. Gasten waarderen het unieke shared dining concept, de lokale seizoensgerechten en de persoonlijke sfeer. We zijn geopend van woensdag t/m zondag.`,
     },
     {
         question: "Waarom wordt De Tafelaar zo hoog beoordeeld?",
@@ -46,9 +52,10 @@ const faqs = [
         question: "Moet ik reserveren bij De Tafelaar?",
         answer: "Reserveren is aan te raden, vooral op vrijdag en zaterdag. Als een van de populairste restaurants in Amersfoort kan het druk zijn. Reserveer eenvoudig online via onze website of bel +31 6 341 279 32.",
     },
-];
+    ];
+}
 
-function faqJsonLd() {
+function faqJsonLd(faqs: { question: string; answer: string }[]) {
     return JSON.stringify({
         "@context": "https://schema.org",
         "@type": "FAQPage",
@@ -60,16 +67,18 @@ function faqJsonLd() {
     });
 }
 
-export default function BesteRestaurantAmersfoortPage() {
+export default async function BesteRestaurantAmersfoortPage() {
+    const g = await getGoogleRating();
+    const faqs = buildFaqs(g);
     return (
         <>
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd() }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqs) }} />
             <div className="container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
             {/* Hero */}
             <header className="text-center mb-12">
                 <div className="inline-flex items-center gap-2 text-primary mb-3">
                     <Star className="h-5 w-5" />
-                    <span className="text-xs tracking-widest uppercase">4.8 op Google — 90+ reviews</span>
+                    <span className="text-xs tracking-widest uppercase">{g.ratingText} op Google — {g.countText} reviews</span>
                 </div>
                 <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl tracking-tight">
                     Beste Restaurant in Amersfoort
@@ -88,11 +97,11 @@ export default function BesteRestaurantAmersfoortPage() {
                         <CardHeader className="pb-2">
                             <div className="flex items-center gap-2 text-primary">
                                 <Star className="h-5 w-5" />
-                                <CardTitle className="text-lg">4.8 / 5</CardTitle>
+                                <CardTitle className="text-lg">{g.ratingText} / 5</CardTitle>
                             </div>
                         </CardHeader>
                         <CardContent className="text-sm text-muted-foreground">
-                            Google-beoordeling op basis van 90+ authentieke gastreviews.
+                            Google-beoordeling op basis van {g.countText} authentieke gastreviews.
                         </CardContent>
                     </Card>
 
@@ -146,7 +155,7 @@ export default function BesteRestaurantAmersfoortPage() {
                     </h2>
                     <div className="space-y-4 text-muted-foreground">
                         <p>
-                            Met een 4.8 op Google en meer dan 90 reviews — waarvan 90% vijf sterren —
+                            Met een {g.ratingText} op Google en {g.countText} reviews — waarvan 90% vijf sterren —
                             is De Tafelaar een van de hoogst beoordeelde restaurants in Amersfoort.
                             Maar wat maakt ons bijzonder?
                         </p>

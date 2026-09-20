@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/db";
 import { safeText } from "@/lib/sanitize";
 
@@ -12,7 +13,9 @@ async function handleIngest(request: Request) {
     }
 
     const placeId = process.env.GOOGLE_PLACE_ID;
-    const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+    // Prefer a server-only key (restricted to the Places API, never shipped to
+    // the browser); fall back to the public Maps key for backwards compatibility.
+    const apiKey = process.env.GOOGLE_PLACES_API_KEY || process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 
     if (!placeId) {
         return NextResponse.json(
@@ -23,7 +26,7 @@ async function handleIngest(request: Request) {
 
     if (!apiKey) {
         return NextResponse.json(
-            { error: "Missing NEXT_PUBLIC_GOOGLE_MAPS_API_KEY env var" },
+            { error: "Missing GOOGLE_PLACES_API_KEY (or NEXT_PUBLIC_GOOGLE_MAPS_API_KEY) env var" },
             { status: 500 }
         );
     }
@@ -74,6 +77,11 @@ async function handleIngest(request: Request) {
                 googleReviewCount: totalReviewCount,
             },
         });
+
+        // Pages render the rating from Settings (see lib/google-rating.ts) and
+        // are statically cached; regenerate them so the new numbers show up
+        // right after the sync instead of at the next hourly revalidate.
+        revalidatePath("/", "layout");
 
         let upserted = 0;
         let failed = 0;

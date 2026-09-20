@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getGoogleRating } from "@/lib/google-rating";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -6,6 +7,7 @@ import { Beer, UtensilsCrossed, Clock } from "lucide-react";
 import { ReserveerButton } from "@/components/reserveer-button";
 
 export const dynamic = "force-static";
+export const revalidate = 3600; // Google rating/review count refresh hourly (synced by /api/cron/ingest-reviews)
 
 export const metadata: Metadata = {
     title: "Borrelen in Amersfoort | Borrelplanken & Lokaal Bier De Tafelaar",
@@ -59,7 +61,8 @@ function faqJsonLd() {
     });
 }
 
-export default function BorrelAmersfoortPage() {
+export default async function BorrelAmersfoortPage() {
+    const g = await getGoogleRating();
     return (
         <>
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd() }} />
@@ -153,7 +156,7 @@ export default function BorrelAmersfoortPage() {
                             De Tafelaar zit op Kamp 8 in het centrum van Amersfoort, op 5 minuten
                             lopen van Theater de Flint. Vanaf station Amersfoort Centraal ben je in
                             circa 22 minuten lopend bij ons — of korter met bus of fiets. Parkeergarage
-                            Beestenmarkt is op 2 minuten loopafstand. Met een 4.8 op Google en 90+
+                            Beestenmarkt is op 2 minuten loopafstand. Met een {g.ratingText} op Google en {g.countText}
                             reviews zijn we een van de best beoordeelde restaurants in Amersfoort.
                             Naast vrijdag tot en met zondag (open vanaf 11:00) zijn we ook geopend op
                             woensdag en donderdag vanaf 17:00.
