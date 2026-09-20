@@ -25,9 +25,9 @@ const playfairDisplay = Playfair_Display({
 
 const siteUrl = "https://www.tafelaaramersfoort.nl";
 const siteName = "De Tafelaar";
-const siteTitle = "De Tafelaar – Restaurant Amersfoort Centrum";
+const siteTitle = "De Tafelaar, Restaurant Amersfoort Centrum";
 const siteDescription =
-  "De Tafelaar: restaurant in Amersfoort centrum voor shared dining, borrel en diner. Kleine gerechten van lokale makers, vlakbij Flint. Wo–zo geopend.";
+  "De Tafelaar: restaurant in Amersfoort centrum voor lunch, borrel en diner. Shared dining met gerechten van lokale makers, samengesteld om te delen, vlakbij de Flint. Wo t/m zo geopend.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
