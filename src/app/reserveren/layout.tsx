@@ -115,7 +115,7 @@ export default function ReserverenLayout({
                     <Card className=" border-2 border-foreground p-6 sm:p-8">
                         <div className="flex items-center gap-2 text-primary mb-3">
                             <Users className="h-5 w-5" />
-                            <h2 className="font-headline text-xl">Groepsreserveringen</h2>
+                            <h2 className="font-headline text-xl font-extrabold">Groepsreserveringen</h2>
                         </div>
                         <p className="text-muted-foreground">
                             De Tafelaar is geschikt voor groepen tot circa 100 personen, van een

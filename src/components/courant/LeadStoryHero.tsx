@@ -43,7 +43,7 @@ export function LeadStoryHero({ story }: LeadStoryHeroProps) {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
-                        className={`mb-3 inline-block w-fit rounded-full ${CATEGORY_COLORS[story.category]?.pill || "bg-primary/90"} px-3 py-1 text-xs font-semibold uppercase tracking-widest text-white`}
+                        className={`mb-3 inline-block w-fit ${CATEGORY_COLORS[story.category]?.pill || "bg-primary/90"} px-3 py-1 text-xs font-semibold uppercase tracking-widest text-white`}
                     >
                         {CATEGORY_LABELS[story.category] || "Uitgelicht"}
                     </motion.span>

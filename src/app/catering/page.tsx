@@ -202,10 +202,10 @@ function cateringServiceJsonLd() {
 // ===== Page content =====
 
 const CATEGORY_IMAGES = {
-  sandwiches: "/pics/cat2.png",
-  bowls: "/pics/cat3.png",
-  wraps: "/pics/cat4.png",
-  boxes: "/pics/cat1.png",
+  sandwiches: "/pics/catering-broodje.jpg",
+  bowls: "/pics/catering-bowl.jpg",
+  wraps: "/pics/catering-wraps.jpg",
+  boxes: "/pics/catering-lunchbox.jpg",
 };
 
 const PRICES = {
@@ -319,7 +319,7 @@ function TagBadges({ tags }: { tags: string[] }) {
   return (
     <div className="flex flex-wrap gap-2">
       {tags.map((t) => (
-        <Badge key={t} variant="secondary" className="rounded-full">
+        <Badge key={t} variant="secondary">
           {t}
         </Badge>
       ))}
@@ -338,7 +338,7 @@ function AllergensLine({ allergens }: { allergens: string[] }) {
 
 function PricePill({ value }: { value: number }) {
   return (
-    <div className="shrink-0 rounded-full border-2 border-foreground border-border bg-background/60 px-3 py-1 text-sm font-medium">
+    <div className="shrink-0 border-2 border-foreground bg-secondary px-3 py-1 text-sm font-bold">
       € {value.toFixed(2)}
     </div>
   );
@@ -364,7 +364,7 @@ export default async function CateringPage() {
             <p className="mb-4 inline-block -rotate-[1.2deg] bg-foreground px-3.5 py-[7px] text-[11px] font-bold uppercase tracking-[0.2em] text-background">
               Tafelaar × Jezza Cooks Catering
             </p>
-            <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl">
+            <h1 className="font-headline text-3xl font-black tracking-tight sm:text-4xl md:text-5xl">
               Catering Amersfoort, Office Lunch, Events & Walking Dinner
             </h1>
             <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
@@ -426,7 +426,7 @@ export default async function CateringPage() {
           {/* GEO H2: "Wat is catering bij De Tafelaar?", self-contained passage */}
           <section className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center mb-12">
             <div className="space-y-4 order-2 md:order-1">
-              <h2 className="font-headline text-2xl sm:text-3xl md:text-4xl">
+              <h2 className="font-headline text-2xl font-extrabold sm:text-3xl md:text-4xl">
                 Lunch die werkt op kantoor
               </h2>
               <p className="text-base sm:text-lg text-foreground leading-relaxed">
@@ -473,7 +473,7 @@ export default async function CateringPage() {
             <Card className=" border-2 border-foreground border-border p-6 sm:p-8">
               <div className="flex items-center gap-2 text-primary mb-3">
                 <ChefHat className="h-5 w-5" />
-                <h2 className="font-headline text-xl sm:text-2xl tracking-tight">
+                <h2 className="font-headline text-xl font-extrabold tracking-tight sm:text-2xl">
                   Onze chef, Tafelaar × Jezza Cooks
                 </h2>
               </div>
@@ -541,7 +541,7 @@ export default async function CateringPage() {
           {/* GEO H2: "Op welke bedrijventerreinen bezorgen jullie?", evidence-rich */}
           <section className="max-w-3xl mx-auto mb-12">
             <Card className=" border-2 border-foreground border-border p-6 sm:p-8">
-              <h2 className="font-headline text-xl sm:text-2xl tracking-tight mb-3">
+              <h2 className="font-headline text-xl font-extrabold tracking-tight sm:text-2xl mb-3">
                 Op welke bedrijventerreinen bezorgen we?
               </h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
@@ -582,7 +582,7 @@ export default async function CateringPage() {
                 <p className="text-xs tracking-widest uppercase text-primary/80 mb-2">
                   Menu
                 </p>
-                <h2 className="font-headline text-2xl sm:text-3xl md:text-4xl">
+                <h2 className="font-headline text-2xl font-extrabold sm:text-3xl md:text-4xl">
                   Office Lunch Assortiment
                 </h2>
                 <p className="mt-2 text-muted-foreground max-w-2xl">
@@ -708,7 +708,7 @@ export default async function CateringPage() {
                 <CardHeader className="pb-2">
                   <div className="flex items-center justify-between gap-3">
                     <CardTitle className="text-lg sm:text-xl">Lunchpakketten</CardTitle>
-                    <Badge variant="secondary" className="rounded-full">
+                    <Badge variant="secondary">
                       Meest gekozen
                     </Badge>
                   </div>
@@ -745,7 +745,7 @@ export default async function CateringPage() {
                     <Sparkles className="h-5 w-5" />
                   </div>
                   <div className="space-y-3">
-                    <h2 className="font-headline text-2xl sm:text-3xl">
+                    <h2 className="font-headline text-2xl font-extrabold sm:text-3xl">
                       Build your own lunch (bedrijven)
                     </h2>
                     <p className="text-muted-foreground leading-relaxed max-w-3xl">
@@ -795,7 +795,7 @@ export default async function CateringPage() {
             <Card className=" border-2 border-foreground border-border overflow-hidden">
               <div className="relative p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
-                  <h2 className="font-headline text-2xl sm:text-3xl md:text-4xl">
+                  <h2 className="font-headline text-2xl font-extrabold sm:text-3xl md:text-4xl">
                     Bespreek de mogelijkheden
                   </h2>
                   <p className="text-base sm:text-lg text-foreground/90 mt-2">

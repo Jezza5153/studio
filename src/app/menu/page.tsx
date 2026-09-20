@@ -162,7 +162,7 @@ export default function MenuPage() {
                             <div className="mb-5">
                                 <h2
                                     id={`${category.id}-title`}
-                                    className="font-headline text-2xl md:text-3xl tracking-tight"
+                                    className="font-headline text-2xl font-extrabold tracking-tight md:text-3xl"
                                 >
                                     {category.name}
                                 </h2>

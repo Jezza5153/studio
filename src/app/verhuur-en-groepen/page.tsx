@@ -97,7 +97,7 @@ export default function VerhuurEnGroepenPage() {
           <p className="mb-4 inline-block -rotate-[1.2deg] bg-foreground px-3.5 py-[7px] text-[11px] font-bold uppercase tracking-[0.2em] text-background">
             Verhuur &amp; Groepen
           </p>
-          <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl">
+          <h1 className="font-headline text-3xl font-black tracking-tight sm:text-4xl md:text-5xl">
             Verhuur &amp; Groepen bij De Tafelaar Amersfoort
           </h1>
           <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
@@ -127,7 +127,7 @@ export default function VerhuurEnGroepenPage() {
         {/* Hero + intro copy */}
         <section className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center mb-12">
           <div className="space-y-6 order-2 md:order-1">
-            <h2 className="font-headline text-2xl sm:text-3xl md:text-4xl">
+            <h2 className="font-headline text-2xl font-extrabold sm:text-3xl md:text-4xl">
               Samen tafelen, alles geregeld
             </h2>
             <p className="text-base sm:text-lg text-foreground leading-relaxed">
@@ -151,8 +151,8 @@ export default function VerhuurEnGroepenPage() {
           {/* HERO IMAGE */}
           <div className="order-1 md:order-2 overflow-hidden">
             <Image
-              src="/pics/verhuur1.jpg"
-              alt="De Tafelaar, verhuur en groepen"
+              src="/pics/zaal-feest.jpg"
+              alt="Feest in de huiskamer van De Tafelaar"
               width={1200}
               height={800}
               className="object-cover w-full h-auto"
@@ -210,9 +210,9 @@ export default function VerhuurEnGroepenPage() {
         <section className="mb-12">
           <div className="grid grid-cols-3 gap-2 sm:gap-3">
             {[
-              "/pics/verhuur2.jpg",
-              "/pics/verhuur3.jpg",
-              "/pics/verhuur4.jpg",
+              "/pics/huiskamer-vol.jpg",
+              "/pics/zaal-gasten.jpg",
+              "/pics/gevel-avond.jpg",
             ].map((src, i) => (
               <div
                 key={src}
@@ -237,7 +237,7 @@ export default function VerhuurEnGroepenPage() {
           <Card className=" border-2 border-foreground border-border overflow-hidden">
             <div className="relative p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div>
-                <h2 className="font-headline text-2xl sm:text-3xl md:text-4xl">
+                <h2 className="font-headline text-2xl font-extrabold sm:text-3xl md:text-4xl">
                   Plan je groepsevent bij De Tafelaar
                 </h2>
                 <p className="text-base sm:text-lg text-foreground/90 mt-2">

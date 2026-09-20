@@ -21,13 +21,9 @@ export function CourantMasthead() {
         <motion.div
             ref={ref}
             style={{ scaleY: height, opacity }}
-            className="relative z-20 origin-top border-b-2 border-foreground/20 bg-background px-4 py-4 text-center sm:py-6"
+            className="relative z-20 origin-top border-b-[5px] border-foreground bg-background px-4 py-4 text-center sm:py-6"
         >
-            <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-            >
+            <div>
                 {/* Top rule line */}
                 <div className="mx-auto mb-3 h-[2px] w-32 bg-foreground/30 sm:w-48" />
 
@@ -49,7 +45,7 @@ export function CourantMasthead() {
 
                 {/* Bottom rule line */}
                 <div className="mx-auto mt-3 h-[1px] w-48 bg-foreground/20 sm:w-64" />
-            </motion.div>
+            </div>
         </motion.div>
     );
 }

@@ -49,7 +49,7 @@ function UpdateCard({ item }: { item: FeedItem }) {
             )}
             <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2">
-                    <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-primary">
+                    <span className="bg-primary/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-primary">
                         {TYPE_LABELS[item.type] || "Update"}
                     </span>
                     <time
@@ -145,7 +145,7 @@ export default async function UpdatesPage({
                         <Link
                             key={tab.value}
                             href={`/updates${tab.value ? `?type=${tab.value}` : ""}`}
-                            className={`rounded-full px-3 py-1 text-xs font-medium transition-all ${(type || "") === tab.value
+                            className={`px-3 py-1 text-xs font-medium transition-all ${(type || "") === tab.value
                                 ? "bg-foreground text-background"
                                 : "bg-foreground/5 text-muted-foreground hover:bg-foreground/10"
                                 }`}
@@ -173,7 +173,7 @@ export default async function UpdatesPage({
                 {page > 1 && (
                     <Link
                         href={`/updates?page=${page - 1}${type ? `&type=${type}` : ""}${query ? `&q=${query}` : ""}`}
-                        className="rounded-full border-2 border-foreground border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground"
+                        className="border-2 border-foreground bg-white px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
                     >
                         ← Vorige
                     </Link>
@@ -181,7 +181,7 @@ export default async function UpdatesPage({
                 {data.hasMore && (
                     <Link
                         href={`/updates?page=${page + 1}${type ? `&type=${type}` : ""}${query ? `&q=${query}` : ""}`}
-                        className="rounded-full border-2 border-foreground border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground"
+                        className="border-2 border-foreground bg-white px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
                     >
                         Volgende →
                     </Link>
@@ -193,25 +193,25 @@ export default async function UpdatesPage({
                 <div className="flex flex-wrap justify-center gap-3">
                     <Link
                         href="/agenda"
-                        className="rounded-full border-2 border-foreground border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground"
+                        className="border-2 border-foreground bg-white px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
                     >
                         Agenda
                     </Link>
                     <Link
                         href="/menu"
-                        className="rounded-full border-2 border-foreground border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground"
+                        className="border-2 border-foreground bg-white px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
                     >
                         Menukaart
                     </Link>
                     <Link
                         href="/impressie"
-                        className="rounded-full border-2 border-foreground border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground"
+                        className="border-2 border-foreground bg-white px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
                     >
                         Impressie &amp; Reviews
                     </Link>
                     <Link
                         href="/reserveren"
-                        className="rounded-full border-2 border-foreground border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground"
+                        className="border-2 border-foreground bg-white px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
                     >
                         Reserveren
                     </Link>

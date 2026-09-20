@@ -89,7 +89,7 @@ export function StoryColumn({ stories }: StoryColumnProps) {
                         role="tab"
                         aria-selected={activeCategory === pill.value}
                         onClick={() => setActiveCategory(pill.value)}
-                        className={`rounded-full px-3 py-1 text-xs font-medium transition-all ${activeCategory === pill.value
+                        className={`px-3 py-1 text-xs font-medium transition-all ${activeCategory === pill.value
                             ? "bg-primary text-primary-foreground shadow-sm"
                             : "bg-foreground/5 text-muted-foreground hover:bg-foreground/10"
                             }`}

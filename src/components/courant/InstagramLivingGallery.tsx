@@ -62,7 +62,7 @@ function IGFrame({
 
                 {/* Reel indicator */}
                 {img.kind === "video" && (
-                    <div className="absolute top-2 right-2 bg-black/60 text-white rounded-full px-2 py-0.5 text-[10px] font-semibold flex items-center gap-1">
+                    <div className="absolute top-2 right-2 bg-black/60 text-white px-2 py-0.5 text-[10px] font-semibold flex items-center gap-1">
                         <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
                         Reel
                     </div>

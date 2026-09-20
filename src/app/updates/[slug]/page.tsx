@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
     const seoOverride = getSeoOverride(slug);
     const media = parseMedia(story.media as string | null);
-    const ogImage = media[0]?.url || "/pics/homepage.png";
+    const ogImage = media[0]?.url || "/pics/hero-gasten.jpg";
     const description = seoOverride?.metaDescription || extractMetaDescription(story.body) || "Lees meer op De Tafelaar Courant.";
     const pageTitle = seoOverride?.seoTitle || `${story.title} | De Tafelaar Courant`;
     const canonicalUrl = `https://www.tafelaaramersfoort.nl/updates/${slug}`;
@@ -91,7 +91,7 @@ export default async function StoryPage({ params }: PageProps) {
     const BASE = "https://www.tafelaaramersfoort.nl";
     const canonicalUrl = `${BASE}/updates/${slug}`;
     const heroUrl = media[0]?.url;
-    const ogImage = heroUrl?.startsWith("http") ? heroUrl : heroUrl ? `${BASE}${heroUrl}` : `${BASE}/pics/homepage.png`;
+    const ogImage = heroUrl?.startsWith("http") ? heroUrl : heroUrl ? `${BASE}${heroUrl}` : `${BASE}/pics/hero-gasten.jpg`;
 
     // Build the @graph array with base schemas
     const graphItems: Record<string, unknown>[] = [
@@ -112,7 +112,7 @@ export default async function StoryPage({ params }: PageProps) {
                 url: BASE,
                 logo: {
                     "@type": "ImageObject",
-                    url: `${BASE}/pics/logo.png`,
+                    url: `${BASE}/logo.png`,
                 },
             },
             mainEntityOfPage: canonicalUrl,

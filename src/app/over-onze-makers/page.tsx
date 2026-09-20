@@ -72,14 +72,14 @@ export const metadata: Metadata = {
 
 export default function WijEnOnzeMakersPage() {
   const hero = {
-    src: "/pics/over ons 1 foto.jpg",
-    alt: "Team van De Tafelaar in het restaurant",
+    src: "/pics/gerecht-boven.jpg",
+    alt: "Seizoensgerecht met producten van lokale makers",
   };
 
   const gallery = [
-    { src: "/pics/over ons links.jpg", alt: "Over ons foto links bij De Tafelaar" },
-    { src: "/pics/over ons rechts 1.jpg", alt: "Over ons foto rechts bij De Tafelaar" },
-    { src: "/pics/over ons rechts 2.jpg", alt: "Over ons foto rechts De Tafelaar sfeer" },
+    { src: "/pics/borrelplank.jpg", alt: "Borrelplank met kaas en charcuterie van lokale makers" },
+    { src: "/pics/gerecht-plank.jpg", alt: "Gerecht op een plank om te delen bij De Tafelaar" },
+    { src: "/pics/huiskamer-vol.jpg", alt: "De volle huiskamer van De Tafelaar op de Kamp" },
   ];
 
   return (
@@ -96,7 +96,7 @@ export default function WijEnOnzeMakersPage() {
       <div className="relative container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
         {/* ─── WIJ ─── */}
         <header className="text-center mb-10 sm:mb-12">
-          <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl">
+          <h1 className="font-headline text-3xl font-black tracking-tight sm:text-4xl md:text-5xl">
             Onze Makers &amp; Leveranciers, De Tafelaar Amersfoort
           </h1>
           <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
@@ -108,7 +108,7 @@ export default function WijEnOnzeMakersPage() {
               {philosophyContent.usps.map((u: string, i: number) => (
                 <span
                   key={i}
-                  className="rounded-full border-2 border-foreground border-border px-3 py-1 text-xs sm:text-sm text-foreground/80"
+                  className="border-2 border-foreground px-3 py-1 text-xs font-semibold sm:text-sm"
                 >
                   {u}
                 </span>
@@ -120,7 +120,7 @@ export default function WijEnOnzeMakersPage() {
         {/* Intro + Hero */}
         <section className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center mb-12">
           <div className="space-y-6 md:order-2">
-            <h2 className="font-headline text-2xl sm:text-3xl md:text-4xl">
+            <h2 className="font-headline text-2xl font-extrabold sm:text-3xl md:text-4xl">
               {philosophyContent.intro.heading}
             </h2>
             <p className="text-base sm:text-lg text-foreground leading-relaxed">

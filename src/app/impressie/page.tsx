@@ -74,7 +74,7 @@ export default async function ImpressiePage() {
       <header className="relative overflow-hidden border-b border-border/50 bg-foreground/[0.02] py-16 sm:py-24">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent" />
         <div className="container relative mx-auto px-4 sm:px-6 text-center">
-          <h1 className="font-headline text-4xl sm:text-5xl md:text-6xl tracking-tight">
+          <h1 className="font-headline text-4xl font-black tracking-tight sm:text-5xl md:text-6xl">
             Sfeerimpressie De Tafelaar Amersfoort
           </h1>
           <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
@@ -83,7 +83,7 @@ export default async function ImpressiePage() {
 
           {/* Google rating badge */}
           {googleRating > 0 && (
-            <div className="mt-6 inline-flex items-center gap-3 rounded-full border-2 border-foreground border-amber-500/20 bg-amber-500/[0.06] px-5 py-2.5 shadow-sm">
+            <div className="mt-6 inline-flex items-center gap-3 border-2 border-foreground bg-white px-5 py-2.5 shadow-[4px_4px_0_hsl(var(--foreground))]">
               <svg
                 className="h-5 w-5"
                 viewBox="0 0 24 24"

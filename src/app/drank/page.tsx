@@ -75,7 +75,7 @@ export default function DrankPage() {
               aria-labelledby={`${section.id}-title`}
             >
               <div className="mb-5">
-                <h2 id={`${section.id}-title`} className="font-headline text-2xl md:text-3xl tracking-tight">
+                <h2 id={`${section.id}-title`} className="font-headline text-2xl font-extrabold tracking-tight md:text-3xl">
                   {section.name}
                 </h2>
                 {section.intro ? (

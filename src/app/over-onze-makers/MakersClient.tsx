@@ -70,7 +70,7 @@ export default function MakersClient({ makers }: MakersClientProps) {
           <p className="mb-4 inline-block -rotate-[1.2deg] bg-foreground px-3.5 py-[7px] text-[11px] font-bold uppercase tracking-[0.2em] text-background">
             {makersIntro.kicker}
           </p>
-          <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl">
+          <h1 className="font-headline text-3xl font-black tracking-tight sm:text-4xl md:text-5xl">
             {makersIntro.title}
           </h1>
           <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
@@ -86,7 +86,7 @@ export default function MakersClient({ makers }: MakersClientProps) {
           <div className="flex flex-wrap gap-2">
             <button
               onClick={() => setFilter("Alle")}
-              className={`rounded-full border-2 border-foreground px-3 py-1 text-sm ${filter === "Alle" ? "bg-primary text-primary-foreground border-primary" : "border-border hover:bg-muted"}`}
+              className={`border-2 border-foreground px-3 py-1 text-sm ${filter === "Alle" ? "bg-primary text-primary-foreground border-primary" : "border-border hover:bg-muted"}`}
             >
               Alle
             </button>
@@ -97,7 +97,7 @@ export default function MakersClient({ makers }: MakersClientProps) {
                 <button
                   key={c}
                   onClick={() => setFilter(c)}
-                  className={`rounded-full border-2 border-foreground px-3 py-1 text-sm inline-flex items-center gap-1.5 ${active ? "bg-primary text-primary-foreground border-primary" : "border-border hover:bg-muted"}`}
+                  className={`border-2 border-foreground px-3 py-1 text-sm inline-flex items-center gap-1.5 ${active ? "bg-primary text-primary-foreground border-primary" : "border-border hover:bg-muted"}`}
                 >
                   <Icon className="h-4 w-4" />
                   {c}
@@ -161,7 +161,7 @@ export default function MakersClient({ makers }: MakersClientProps) {
                       <div className="h-full w-full bg-gradient-to-br from-muted to-muted/60" />
                     )}
                     {/* category pill */}
-                    <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-background/80 backdrop-blur px-2 py-1 text-xs border-2 border-foreground border-border">
+                    <span className="absolute left-3 top-3 inline-flex items-center gap-1 bg-background/90 px-2 py-1 text-xs border-2 border-foreground border-border">
                       <Icon className="h-3.5 w-3.5 text-primary" />
                       {m.category}
                     </span>

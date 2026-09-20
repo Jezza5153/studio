@@ -215,6 +215,9 @@ export function NeighborhoodGuideClient() {
       try {
         setLoading(true);
         setLoadError(null);
+        (window as any).gm_authFailure = () => {
+          if (!cancelled) setLoadError("auth");
+        };
 
         const google = await loadGoogleMaps({ apiKey, libraries: ["places", "geometry"] });
         if (cancelled) return;
@@ -618,7 +621,7 @@ export function NeighborhoodGuideClient() {
     <div className="container mx-auto px-4 py-10 sm:px-6 md:px-8">
       <div className="max-w-6xl mx-auto">
         <div className="mb-6">
-          <h1 className="font-headline text-3xl sm:text-4xl tracking-tight">Buurtgids Kamp &amp; Flint, Amersfoort Centrum</h1>
+          <h1 className="font-headline text-3xl font-black tracking-tight sm:text-4xl">Buurtgids Kamp &amp; Flint, Amersfoort Centrum</h1>
           <p className="mt-2 text-muted-foreground">
             De belangrijkste plekken rond <strong>De Tafelaar</strong> op de Kamp in Amersfoort: Theater de Flint, parkeergarages en de leukste restaurants en cafés in de straat.
           </p>
@@ -803,9 +806,11 @@ export function NeighborhoodGuideClient() {
 
           {/* Map + details */}
           <div className="lg:col-span-2 space-y-4">
-            <Card className=" border-2 border-foreground overflow-hidden">
-              <div className="h-[60vh] min-h-[420px]" ref={mapRef} />
-            </Card>
+            {!loadError && (
+              <Card className=" border-2 border-foreground overflow-hidden">
+                <div className="h-[60vh] min-h-[420px]" ref={mapRef} />
+              </Card>
+            )}
 
             {selected && (
               <Card className=" border-2 border-foreground">
