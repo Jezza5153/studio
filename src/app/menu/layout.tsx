@@ -171,11 +171,14 @@ export default function MenuLayout({
                 <section className="max-w-2xl mx-auto text-center space-y-6">
                     <ReserveerButton size="lg" className="shadow-sm" label="Reserveer een tafel" />
                     <div className="flex flex-wrap justify-center gap-3">
+                        <Link href="/lunch">
+                            <Button variant="outline" className="">Lunchkaart</Button>
+                        </Link>
                         <Link href="/drank">
                             <Button variant="outline" className="">Drankenkaart</Button>
                         </Link>
                         <Link href="/ophalen">
-                            <Button variant="outline" className="">Tafelaar Thuis (ophalen)</Button>
+                            <Button variant="outline" className="">Tafelaar Thuiskaart</Button>
                         </Link>
                         <Link href="/verhuur-en-groepen">
                             <Button variant="outline" className="">Groepen &amp; verhuur</Button>

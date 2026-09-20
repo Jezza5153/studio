@@ -81,7 +81,7 @@ export function LeadStoryHero({ story }: LeadStoryHeroProps) {
                     >
                         <Link
                             href={`/updates/${story.slug}`}
-                            className="group inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-semibold text-foreground shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-white/20"
+                            className="group inline-flex items-center gap-2 bg-white px-6 py-3 text-sm font-semibold text-foreground shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-white/20"
                         >
                             Lees verder
                             <span className="transition-transform group-hover:translate-x-1">

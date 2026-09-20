@@ -13,7 +13,7 @@ export function Kicker({ children, className }: { children: ReactNode; className
   return (
     <span
       className={cn(
-        "inline-block -rotate-[1.2deg] bg-foreground px-3.5 py-[7px] text-[11px] font-bold uppercase tracking-[0.2em] text-background",
+        "inline-block bg-foreground px-3.5 py-[7px] text-[11px] font-bold uppercase tracking-[0.2em] text-background",
         className,
       )}
     >
@@ -66,7 +66,7 @@ export function Sticker({ rating, count, className }: { rating: string; count: s
   return (
     <div
       className={cn(
-        "grid h-[116px] w-[116px] rotate-[9deg] place-items-center rounded-full border-2 border-foreground bg-primary text-center text-[12px] font-bold uppercase leading-tight tracking-wide text-white",
+        "grid h-[116px] w-[116px] place-items-center rounded-full border-2 border-foreground bg-primary text-center text-[12px] font-bold uppercase leading-tight tracking-wide text-white",
         BLOK_SCHADUW,
         className,
       )}

@@ -85,7 +85,7 @@ export function ArticleBody({ article }: ArticleBodyProps) {
 
                     {/* #4: Q&A block, distinct styling for Q vs A */}
                     {section.isQA ? (
-                        <div className="my-5 rounded-lg border border-foreground/[0.06] bg-foreground/[0.02] overflow-hidden">
+                        <div className="my-5 border border-foreground/[0.06] bg-foreground/[0.02] overflow-hidden">
                             {/* Question */}
                             <div className="flex items-start gap-3 px-5 py-3 border-b border-foreground/[0.06] bg-foreground/[0.03]">
                                 <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-primary/15 text-[10px] font-bold text-primary">V</span>

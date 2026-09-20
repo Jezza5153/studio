@@ -67,7 +67,7 @@ export default function MakersClient({ makers }: MakersClientProps) {
       <div className="relative container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
         {/* header */}
         <header className="text-center mb-8 sm:mb-10">
-          <p className="mb-4 inline-block -rotate-[1.2deg] bg-foreground px-3.5 py-[7px] text-[11px] font-bold uppercase tracking-[0.2em] text-background">
+          <p className="mb-4 inline-block bg-foreground px-3.5 py-[7px] text-[11px] font-bold uppercase tracking-[0.2em] text-background">
             {makersIntro.kicker}
           </p>
           <h1 className="font-headline text-3xl font-black tracking-tight sm:text-4xl md:text-5xl">

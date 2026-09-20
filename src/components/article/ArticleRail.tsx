@@ -38,10 +38,10 @@ function StoryCard({ story }: { story: RelatedStory }) {
     return (
         <Link
             href={`/updates/${story.slug}`}
-            className="group flex gap-3 rounded-lg p-2 transition-all duration-150 hover:bg-foreground/5"
+            className="group flex gap-3 p-2 transition-all duration-150 hover:bg-foreground/5"
         >
             {thumb && (
-                <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-md">
+                <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden">
                     <Image
                         src={thumb}
                         alt={story.title}
@@ -111,14 +111,14 @@ export function ArticleRail({ sections, relatedStories, latestStories = [], prev
                     trackEvent("reserveer_click", { source: "article_rail" });
                     window.eventsOpen?.();
                 }}
-                className="w-full rounded-xl bg-primary py-3 text-center text-sm font-semibold text-white shadow-lg shadow-primary/25 transition-all duration-200 hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02] active:scale-[0.98]"
+                className="w-full bg-primary py-3 text-center text-sm font-semibold text-white shadow-lg shadow-primary/25 transition-all duration-200 hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02] active:scale-[0.98]"
             >
                 🍽️ Reserveer
             </button>
 
             {/* Table of Contents, only with 3+ titled sections */}
             {hasTOC && (
-                <div className="rounded-xl border border-border/50 bg-foreground/[0.02] p-4">
+                <div className="border border-border/50 bg-foreground/[0.02] p-4">
                     <h4 className="mb-3 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/60">
                         Inhoud
                     </h4>
@@ -127,7 +127,7 @@ export function ArticleRail({ sections, relatedStories, latestStories = [], prev
                             <a
                                 key={section.id}
                                 href={`#${section.id}`}
-                                className={`block rounded-md px-2 py-1 text-xs font-medium transition-all duration-150 ${activeSection === section.id
+                                className={`block  px-2 py-1 text-xs font-medium transition-all duration-150 ${activeSection === section.id
                                     ? "bg-primary/10 text-primary"
                                     : "text-muted-foreground hover:text-foreground hover:bg-foreground/5"
                                     }`}
@@ -147,7 +147,7 @@ export function ArticleRail({ sections, relatedStories, latestStories = [], prev
             {showBackToTop && (
                 <button
                     onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                    className="w-full rounded-lg border border-border/40 py-2 text-xs font-medium text-muted-foreground transition-all duration-150 hover:bg-foreground/5 hover:text-foreground"
+                    className="w-full border border-border/40 py-2 text-xs font-medium text-muted-foreground transition-all duration-150 hover:bg-foreground/5 hover:text-foreground"
                 >
                     ↑ Terug naar boven
                 </button>
@@ -173,7 +173,7 @@ export function ArticleRail({ sections, relatedStories, latestStories = [], prev
                     {prevStory && (
                         <Link
                             href={`/updates/${prevStory.slug}`}
-                            className="block rounded-lg p-2 text-xs text-muted-foreground transition-all duration-150 hover:bg-foreground/5 hover:text-foreground"
+                            className="block p-2 text-xs text-muted-foreground transition-all duration-150 hover:bg-foreground/5 hover:text-foreground"
                         >
                             <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/50">← Vorig</span>
                             <span className="mt-0.5 block font-medium line-clamp-1">{prevStory.title}</span>
@@ -182,7 +182,7 @@ export function ArticleRail({ sections, relatedStories, latestStories = [], prev
                     {nextStory && (
                         <Link
                             href={`/updates/${nextStory.slug}`}
-                            className="block rounded-lg p-2 text-xs text-muted-foreground transition-all duration-150 hover:bg-foreground/5 hover:text-foreground"
+                            className="block p-2 text-xs text-muted-foreground transition-all duration-150 hover:bg-foreground/5 hover:text-foreground"
                         >
                             <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground/50">Volgend →</span>
                             <span className="mt-0.5 block font-medium line-clamp-1">{nextStory.title}</span>

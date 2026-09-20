@@ -116,7 +116,7 @@ function Lightbox({
                         poster={current.url}
                         controls
                         autoPlay
-                        className="max-h-full max-w-full rounded-lg"
+                        className="max-h-full max-w-full"
                     />
                 ) : (
                     <Image
@@ -125,7 +125,7 @@ function Lightbox({
                         alt={`Foto ${index + 1}`}
                         width={current.width || 1200}
                         height={current.height || 800}
-                        className="max-h-full max-w-full rounded-lg object-contain animate-in fade-in duration-200"
+                        className="max-h-full max-w-full object-contain animate-in fade-in duration-200"
                     />
                 )}
             </div>
@@ -214,7 +214,7 @@ export function ArticleHero({ title, media, caption }: ArticleHeroProps) {
                             {/* Photo count badge */}
                             <button
                                 onClick={() => openLightbox(0)}
-                                className="absolute bottom-4 right-4 z-10 inline-flex items-center gap-2 rounded-lg bg-black/50 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-sm transition-all duration-150 hover:bg-black/70 active:scale-95"
+                                className="absolute bottom-4 right-4 z-10 inline-flex items-center gap-2 bg-black/50 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-sm transition-all duration-150 hover:bg-black/70 active:scale-95"
                             >
                                 <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -229,7 +229,7 @@ export function ArticleHero({ title, media, caption }: ArticleHeroProps) {
                                         <button
                                             key={i}
                                             onClick={() => openLightbox(i + 1)}
-                                            className="relative h-12 w-12 overflow-hidden rounded-md border-2 border-white/30 transition-all duration-150 hover:border-white/60 hover:scale-105 active:scale-95"
+                                            className="relative h-12 w-12 overflow-hidden border-2 border-white/30 transition-all duration-150 hover:border-white/60 hover:scale-105 active:scale-95"
                                         >
                                             <Image
                                                 src={img.url}

@@ -79,7 +79,7 @@ export function GuestHighlights({
             </div>
 
             <div
-                className="relative mx-auto max-w-4xl overflow-hidden rounded-2xl shadow-xl"
+                className="relative mx-auto max-w-4xl overflow-hidden shadow-xl"
                 onMouseEnter={() => setIsPaused(true)}
                 onMouseLeave={() => setIsPaused(false)}
             >
@@ -180,7 +180,7 @@ export function GuestHighlights({
                             <button
                                 key={i}
                                 onClick={() => setCurrent(i)}
-                                className={`relative h-14 w-20 flex-shrink-0 overflow-hidden rounded-md transition-all ${i === current ? "ring-2 ring-primary ring-offset-1" : "opacity-50 hover:opacity-80"}`}
+                                className={`relative h-14 w-20 flex-shrink-0 overflow-hidden  transition-all ${i === current ? "ring-2 ring-primary ring-offset-1" : "opacity-50 hover:opacity-80"}`}
                             >
                                 <img
                                     src={item.url}

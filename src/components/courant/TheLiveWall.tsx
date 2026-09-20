@@ -30,7 +30,7 @@ function WallCard({ item, batchIndex }: { item: FeedItem; batchIndex: number }) 
         >
             <Link
                 href={`/updates/${item.slug}`}
-                className="block overflow-hidden rounded-xl border border-border/50 bg-background shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                className="block overflow-hidden border border-border/50 bg-background shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
                 {/* Image */}
                 {thumb && !imgError && (
@@ -92,7 +92,7 @@ function WallCard({ item, batchIndex }: { item: FeedItem; batchIndex: number }) 
 
 function SkeletonCard() {
     return (
-        <div className="mb-4 break-inside-avoid overflow-hidden rounded-xl border border-border/50 bg-background">
+        <div className="mb-4 break-inside-avoid overflow-hidden border border-border/50 bg-background">
             <div className="aspect-[4/3] w-full animate-pulse bg-muted" />
             <div className="space-y-2 p-4">
                 <div className="h-3 w-3/4 animate-pulse rounded bg-muted" />

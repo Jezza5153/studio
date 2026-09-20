@@ -2,6 +2,7 @@
 "use client";
 
 import { useMemo, useState, useCallback } from "react";
+import { KaartNav } from "@/components/kaart-nav";
 import { LUNCH_MENU, type MenuCategory } from "@/content/menu";
 import { Info, Share2, Leaf } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -47,7 +48,7 @@ export default function LunchPage() {
                 <Card className="border-2 border-foreground bg-white p-6 sm:p-8">
                     <div className="flex items-start justify-between gap-4">
                         <div className="min-w-0">
-                            <p className="mb-4 inline-block -rotate-[1.2deg] bg-foreground px-3.5 py-[7px] text-[11px] font-bold uppercase tracking-[0.2em] text-background">
+                            <p className="mb-4 inline-block bg-foreground px-3.5 py-[7px] text-[11px] font-bold uppercase tracking-[0.2em] text-background">
                                 {LUNCH_MENU.serviceNote ?? "Overdag op Kamp 8"}
                             </p>
                             <h1 className="font-headline text-3xl font-black leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">
@@ -59,15 +60,10 @@ export default function LunchPage() {
                                 charcuterie zijn de hele dag beschikbaar.
                             </p>
 
-                            <div className="mt-5 flex flex-wrap gap-2 sm:gap-3">
+                            <div className="mt-5">
                                 <ReserveerButton size="sm" label="Reserveer tafel" />
-                                <Button asChild size="sm" variant="outline" className="">
-                                    <Link href="/menu">Dinerkaart</Link>
-                                </Button>
-                                <Button asChild size="sm" variant="outline" className="">
-                                    <Link href="/drank">Drankenkaart</Link>
-                                </Button>
                             </div>
+                            <KaartNav current="lunch" className="mt-3" />
                         </div>
 
                         <Button

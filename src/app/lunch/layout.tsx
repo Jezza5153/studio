@@ -176,7 +176,7 @@ export default function LunchLayout({
                             <Button variant="outline" className="">Drankenkaart</Button>
                         </Link>
                         <Link href="/ophalen">
-                            <Button variant="outline" className="">Tafelaar Thuis (ophalen)</Button>
+                            <Button variant="outline" className="">Tafelaar Thuiskaart</Button>
                         </Link>
                         <Link href="/verhuur-en-groepen">
                             <Button variant="outline" className="">Groepen &amp; verhuur</Button>

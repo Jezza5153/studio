@@ -363,7 +363,7 @@ export const DINNER_MENU: MenuData = {
           baseDishKey: "dame-blanche",
         },
         {
-          name: "Snicker",
+          name: "Huisgemaakte Snicker",
           description: "Snicker, maar dan vegan.",
           price: 8.5,
           tags: ["V", "GF", "LF"],
@@ -588,7 +588,7 @@ export const OPHALEN_MENU: MenuData = {
       items: [
         {
           name: "Tafelaars Vegan Snicker",
-          description: null,
+          description: "Huisgemaakt.",
           price: 7.5,
           tags: ["VG"],
           allergens: ["pinda", "noten"],
@@ -801,7 +801,7 @@ export const LUNCH_MENU: MenuData = {
           baseDishKey: "kaasplankje",
         },
         {
-          name: "Snicker",
+          name: "Huisgemaakte Snicker",
           description: "Snicker, maar dan vegan.",
           price: 8.5,
           tags: ["V", "GF", "LF"],

@@ -361,7 +361,7 @@ export default async function CateringPage() {
         <div className="relative container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
           {/* Header */}
           <header className="text-center mb-10 sm:mb-12">
-            <p className="mb-4 inline-block -rotate-[1.2deg] bg-foreground px-3.5 py-[7px] text-[11px] font-bold uppercase tracking-[0.2em] text-background">
+            <p className="mb-4 inline-block bg-foreground px-3.5 py-[7px] text-[11px] font-bold uppercase tracking-[0.2em] text-background">
               Tafelaar × Jezza Cooks Catering
             </p>
             <h1 className="font-headline text-3xl font-black tracking-tight sm:text-4xl md:text-5xl">

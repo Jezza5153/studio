@@ -29,11 +29,11 @@ function StoryCard({ item, index }: { item: FeedItem; index: number }) {
         >
             <Link
                 href={`/updates/${item.slug}`}
-                className="flex gap-4 rounded-lg p-3 transition-all duration-200 hover:-translate-y-0.5 hover:bg-foreground/5 hover:shadow-md"
+                className="flex gap-4 p-3 transition-all duration-200 hover:-translate-y-0.5 hover:bg-foreground/5 hover:shadow-md"
             >
                 {/* Thumbnail */}
                 {thumb && (
-                    <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-md sm:h-24 sm:w-24">
+                    <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden sm:h-24 sm:w-24">
                         <Image
                             src={thumb.url}
                             alt={item.title}

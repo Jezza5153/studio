@@ -36,7 +36,7 @@ export function ArticleActions({ nextStory }: ArticleActionsProps) {
                         trackEvent("reserveer_click", { source: "article_bottom" });
                         window.eventsOpen?.();
                     }}
-                    className="group rounded-xl bg-primary/10 border border-primary/20 p-4 text-left transition-all duration-200 hover:bg-primary/15 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-0.5"
+                    className="group bg-primary/10 border border-primary/20 p-4 text-left transition-all duration-200 hover:bg-primary/15 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-0.5"
                 >
                     <span className="text-lg">🍽️</span>
                     <span className="mt-1 block text-sm font-semibold text-primary">Reserveer een tafel</span>
@@ -46,7 +46,7 @@ export function ArticleActions({ nextStory }: ArticleActionsProps) {
                 {/* #8: Bekijk menu, hover lift */}
                 <Link
                     href="/menu"
-                    className="group rounded-xl border border-border/50 bg-foreground/[0.02] p-4 text-left transition-all duration-200 hover:bg-foreground/5 hover:shadow-lg hover:shadow-foreground/5 hover:-translate-y-0.5"
+                    className="group border border-border/50 bg-foreground/[0.02] p-4 text-left transition-all duration-200 hover:bg-foreground/5 hover:shadow-lg hover:shadow-foreground/5 hover:-translate-y-0.5"
                 >
                     <span className="text-lg">📋</span>
                     <span className="mt-1 block text-sm font-semibold text-foreground">Bekijk menu</span>
@@ -57,7 +57,7 @@ export function ArticleActions({ nextStory }: ArticleActionsProps) {
                 {nextStory ? (
                     <Link
                         href={`/updates/${nextStory.slug}`}
-                        className="group rounded-xl border border-border/50 bg-foreground/[0.02] p-4 text-left transition-all duration-200 hover:bg-foreground/5 hover:shadow-lg hover:shadow-foreground/5 hover:-translate-y-0.5"
+                        className="group border border-border/50 bg-foreground/[0.02] p-4 text-left transition-all duration-200 hover:bg-foreground/5 hover:shadow-lg hover:shadow-foreground/5 hover:-translate-y-0.5"
                     >
                         <span className="text-lg">📰</span>
                         <span className="mt-1 block text-sm font-semibold text-foreground line-clamp-1">Volgend verhaal</span>
@@ -66,7 +66,7 @@ export function ArticleActions({ nextStory }: ArticleActionsProps) {
                 ) : (
                     <Link
                         href="/updates"
-                        className="group rounded-xl border border-border/50 bg-foreground/[0.02] p-4 text-left transition-all duration-200 hover:bg-foreground/5 hover:shadow-lg hover:shadow-foreground/5 hover:-translate-y-0.5"
+                        className="group border border-border/50 bg-foreground/[0.02] p-4 text-left transition-all duration-200 hover:bg-foreground/5 hover:shadow-lg hover:shadow-foreground/5 hover:-translate-y-0.5"
                     >
                         <span className="text-lg">📰</span>
                         <span className="mt-1 block text-sm font-semibold text-foreground">Alle updates</span>

@@ -2,6 +2,7 @@
 "use client";
 
 import { useMemo, useState, useCallback } from "react";
+import { KaartNav } from "@/components/kaart-nav";
 import { DINNER_MENU, type MenuCategory } from "@/content/menu";
 import { Info, Share2, Leaf } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -48,7 +49,7 @@ export default function MenuPage() {
                     <div className="flex items-start justify-between gap-4">
                         <div className="min-w-0">
                             {DINNER_MENU.serviceNote && (
-                                <p className="mb-4 inline-block -rotate-[1.2deg] bg-foreground px-3.5 py-[7px] text-[11px] font-bold uppercase tracking-[0.2em] text-background">
+                                <p className="mb-4 inline-block bg-foreground px-3.5 py-[7px] text-[11px] font-bold uppercase tracking-[0.2em] text-background">
                                     {DINNER_MENU.serviceNote}
                                 </p>
                             )}
@@ -61,29 +62,10 @@ export default function MenuPage() {
                                 het Chef&apos;s Choice (€48 p.p.).
                             </p>
 
-                            <div className="mt-5 flex flex-wrap gap-2 sm:gap-3">
+                            <div className="mt-5">
                                 <ReserveerButton size="sm" label="Reserveer tafel" />
-                                <Button asChild size="sm" variant="outline" className="">
-                                    <Link href="/lunch">Lunchkaart</Link>
-                                </Button>
-                                <Button asChild size="sm" variant="outline" className="">
-                                    <Link href="/drank">Drankenkaart</Link>
-                                </Button>
-                                <Button asChild size="sm" variant="outline" className="">
-                                    <Link href="/ophalen">Tafelaar Thuis (ophalen)</Link>
-                                </Button>
                             </div>
-
-                            <nav className="mt-4" aria-label="Menu switch">
-                                <div className="inline-flex items-center gap-2">
-                                    <Button asChild size="sm" variant="secondary" aria-current="page">
-                                        <Link href="/menu">Eten</Link>
-                                    </Button>
-                                    <Button asChild size="sm" variant="outline">
-                                        <Link href="/drank">Dranken</Link>
-                                    </Button>
-                                </div>
-                            </nav>
+                            <KaartNav current="diner" className="mt-3" />
                         </div>
 
                         <Button

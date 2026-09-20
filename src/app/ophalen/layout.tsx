@@ -166,7 +166,7 @@ export default function OphalenLayout({
                 <section className="max-w-2xl mx-auto text-center">
                     <div className="flex flex-wrap justify-center gap-3">
                         <Link href="/menu">
-                            <Button variant="outline" className="">Bekijk menukaart</Button>
+                            <Button variant="outline" className="">Dinerkaart</Button>
                         </Link>
                         <Link href="/lunch">
                             <Button variant="outline" className="">Lunchkaart</Button>

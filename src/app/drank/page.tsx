@@ -1,10 +1,9 @@
 
 "use client";
 
-import Link from "next/link";
+import { KaartNav } from "@/components/kaart-nav";
 import { useMemo } from "react";
 import { DRINKS, type DrinkItem, type DrinkCategory, type DrinkSection } from "@/content/drinks";
-import { Button } from "@/components/ui/button";
 import { Info } from "lucide-react";
 
 // ===== Helpers =====
@@ -48,17 +47,7 @@ export default function DrankPage() {
                 Lokale bieren, biologische wijnen van Korte Garde en cocktails, passend bij onze shared dining gerechten in Amersfoort centrum. Van Amersfoortse brouwerijen zoals Rock City Brewing en De Drie Ringen tot signature cocktails.
               </p>
 
-              {/* Switch: Eten / Dranken */}
-              <nav className="mt-4" aria-label="Menu switch">
-                <div className="inline-flex items-center gap-2">
-                  <Button asChild size="sm" variant="outline">
-                    <Link href="/menu">Eten</Link>
-                  </Button>
-                  <Button asChild size="sm" aria-current="page">
-                    <Link href="/drank">Dranken</Link>
-                  </Button>
-                </div>
-              </nav>
+              <KaartNav current="drank" className="mt-5" />
             </div>
           </div>
         </div>

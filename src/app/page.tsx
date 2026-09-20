@@ -162,7 +162,7 @@ export default async function Home() {
             </h1>
             <p className="text-[clamp(17px,2vw,22px)] font-medium text-muted-foreground">
               {tagStart}.{" "}
-              {tagEnd ? <b className="inline-block -rotate-1 bg-secondary px-2 py-0.5 text-foreground">{tagEnd}</b> : null}
+              {tagEnd ? <b className="inline-block bg-secondary px-2 py-0.5 text-foreground">{tagEnd}</b> : null}
             </p>
           </div>
 
@@ -252,7 +252,7 @@ export default async function Home() {
             >
               <span
                 aria-hidden
-                className="absolute right-3 top-3 rotate-[4deg] border-2 border-foreground bg-primary px-2.5 py-1 text-[9.5px] font-extrabold tracking-[0.16em] text-white"
+                className="absolute right-3 top-3 border-2 border-foreground bg-primary px-2.5 py-1 text-[9.5px] font-extrabold tracking-[0.16em] text-white"
               >
                 LOKAAL
               </span>
