@@ -19,7 +19,7 @@ export default function ReserverenPage() {
   return (
     <div className="container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-20">
       <div className="max-w-xl mx-auto text-center">
-        <h1 className="font-headline text-3xl sm:text-4xl tracking-tight">
+        <h1 className="font-headline text-3xl font-black tracking-tight sm:text-4xl">
           Reserveren bij De Tafelaar
         </h1>
         <p className="mt-3 text-muted-foreground text-base sm:text-lg">
@@ -27,7 +27,7 @@ export default function ReserverenPage() {
           2 tot 100 personen, woensdag t/m zondag. De reserveringsmodule opent automatisch.
         </p>
 
-        <div className="mt-6 border rounded-xl p-4 bg-secondary/30">
+        <div className="mt-6 border-2 border-foreground p-4 bg-secondary/30">
           <p className="text-sm text-muted-foreground mb-3">
             Widget niet zichtbaar? Gebruik de knoppen hieronder.
           </p>

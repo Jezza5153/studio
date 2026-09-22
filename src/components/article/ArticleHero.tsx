@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback, useEffect, useRef } from "react";
-import Image from "next/image";
+import { SafeImage } from "@/components/safe-image";
 
 interface MediaItem {
     url: string;
@@ -105,7 +105,7 @@ function Lightbox({
                 </button>
             </div>
 
-            {/* Main image — fills viewport */}
+            {/* Main image, fills viewport */}
             <div
                 className="relative flex items-center justify-center w-full h-full px-12 sm:px-20 py-16"
                 onClick={(e) => e.stopPropagation()}
@@ -116,16 +116,16 @@ function Lightbox({
                         poster={current.url}
                         controls
                         autoPlay
-                        className="max-h-full max-w-full rounded-lg"
+                        className="max-h-full max-w-full"
                     />
                 ) : (
-                    <Image
+                    <SafeImage
                         key={index}
                         src={current.url}
                         alt={`Foto ${index + 1}`}
                         width={current.width || 1200}
                         height={current.height || 800}
-                        className="max-h-full max-w-full rounded-lg object-contain animate-in fade-in duration-200"
+                        className="max-h-full max-w-full object-contain animate-in fade-in duration-200"
                     />
                 )}
             </div>
@@ -181,7 +181,7 @@ export function ArticleHero({ title, media, caption }: ArticleHeroProps) {
         setLightboxIndex(idx);
     }, []);
 
-    // No images — clean gradient placeholder
+    // No images, clean gradient placeholder
     if (!heroImage) {
         return (
             <div className="relative h-[25svh] min-h-[180px] max-h-[300px] w-full bg-gradient-to-br from-primary/10 to-accent/10" />
@@ -191,12 +191,12 @@ export function ArticleHero({ title, media, caption }: ArticleHeroProps) {
     return (
         <>
             <div className="group relative w-full overflow-hidden">
-                {/* Hero image container — explicit ratio prevents CLS */}
+                {/* Hero image container, explicit ratio prevents CLS */}
                 <div
                     className={`relative w-full ${hasMultiple ? "h-[35svh] min-h-[250px] max-h-[400px]" : "h-[30svh] min-h-[220px] max-h-[360px]"}`}
                     style={{ aspectRatio: hasMultiple ? "16 / 7" : "16 / 9" }}
                 >
-                    <Image
+                    <SafeImage
                         src={heroImage.url}
                         alt={title}
                         fill
@@ -208,13 +208,13 @@ export function ArticleHero({ title, media, caption }: ArticleHeroProps) {
                     {/* #5: Stronger dark gradient for title readability */}
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 via-40% to-black/20" />
 
-                    {/* Gallery controls — only for multi-image */}
+                    {/* Gallery controls, only for multi-image */}
                     {hasMultiple && (
                         <>
                             {/* Photo count badge */}
                             <button
                                 onClick={() => openLightbox(0)}
-                                className="absolute bottom-4 right-4 z-10 inline-flex items-center gap-2 rounded-lg bg-black/50 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-sm transition-all duration-150 hover:bg-black/70 active:scale-95"
+                                className="absolute bottom-4 right-4 z-10 inline-flex items-center gap-2 bg-black/50 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-sm transition-all duration-150 hover:bg-black/70 active:scale-95"
                             >
                                 <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -222,16 +222,16 @@ export function ArticleHero({ title, media, caption }: ArticleHeroProps) {
                                 {media.length} foto&apos;s
                             </button>
 
-                            {/* #2: Thumbnail strip — HIDDEN on mobile to prevent overlap with title */}
+                            {/* #2: Thumbnail strip, HIDDEN on mobile to prevent overlap with title */}
                             {media.length >= 3 && (
                                 <div className="absolute bottom-4 left-4 z-10 hidden gap-1.5 md:flex">
                                     {media.slice(1, 4).map((img, i) => (
                                         <button
                                             key={i}
                                             onClick={() => openLightbox(i + 1)}
-                                            className="relative h-12 w-12 overflow-hidden rounded-md border-2 border-white/30 transition-all duration-150 hover:border-white/60 hover:scale-105 active:scale-95"
+                                            className="relative h-12 w-12 overflow-hidden border-2 border-white/30 transition-all duration-150 hover:border-white/60 hover:scale-105 active:scale-95"
                                         >
-                                            <Image
+                                            <SafeImage
                                                 src={img.url}
                                                 alt={`Foto ${i + 2}`}
                                                 fill

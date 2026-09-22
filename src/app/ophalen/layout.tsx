@@ -5,14 +5,15 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-    title: "Ophalen bij De Tafelaar | Spare Ribs Afhalen Amersfoort",
+    title: "Tafelaar Thuis: Ophalen bij De Tafelaar | Spare Ribs Afhalen Amersfoort",
     description:
-        "Ophalen bij De Tafelaar op Kamp 8 in Amersfoort: sous-vide spare ribs (24u op 80°C), bijgerechten, huisgemaakte sauzen en dranken. Bekijk de ophalenkaart en bestel.",
+        "Tafelaar Thuis: ophalen bij De Tafelaar op de Kamp in Amersfoort. Sous-vide spare ribs, bijgerechten, huisgemaakte sauzen en dranken. Bekijk de kaart en bestel.",
     alternates: {
         canonical: "/ophalen",
     },
     openGraph: {
-        title: "Ophalen bij De Tafelaar | Spare Ribs Afhalen Amersfoort",
+        images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
+        title: "Tafelaar Thuis: Ophalen bij De Tafelaar | Spare Ribs Afhalen Amersfoort",
         description:
             "Sous-vide spare ribs, bijgerechten en huisgemaakte sauzen om mee te nemen. Afhalen bij De Tafelaar op Kamp 8 in Amersfoort centrum.",
     },
@@ -36,7 +37,7 @@ function menuJsonLd() {
         "@id": `${SITE_URL}/ophalen#menu`,
         name: OPHALEN_MENU.title,
         description:
-            "Ophalenkaart van De Tafelaar — sous-vide spare ribs, bijgerechten, huisgemaakte sauzen, dranken en desserts om mee te nemen.",
+            "Ophalenkaart van De Tafelaar, sous-vide spare ribs, bijgerechten, huisgemaakte sauzen, dranken en desserts om mee te nemen.",
         url: `${SITE_URL}/ophalen`,
         hasMenuSection: OPHALEN_MENU.categories.map((category) => ({
             "@type": "MenuSection",
@@ -70,9 +71,9 @@ function menuJsonLd() {
 
 const ophalenFaqs = [
     {
-        question: "Wat staat er op de ophalenkaart van De Tafelaar?",
+        question: "Wat staat er op de kaart van Tafelaar Thuis van De Tafelaar?",
         answer:
-            "Onze sous-vide spare ribs (24 uur op 80°C in marinade, zoet en pittig) zijn de specialiteit — los voor €24,95 of als Spare Ribs Menu vanaf €34,95 inclusief bijgerecht, coleslaw en drankje. Daarnaast bijgerechten (coleslaw, gepofte aardappel, maïskolf, loaded potato met pulled pork), huisgemaakte sauzen, frisdranken, lokaal getapte bieren en desserts.",
+            "Onze sous-vide spare ribs (24 uur op 80°C in marinade, zoet en pittig) zijn de specialiteit, los voor €24,95 of als Spare Ribs Menu vanaf €34,95 inclusief bijgerecht, coleslaw en drankje. Daarnaast bijgerechten (coleslaw, gepofte aardappel, maïskolf, loaded potato met pulled pork), huisgemaakte sauzen, frisdranken, lokaal getapte bieren en desserts.",
     },
     {
         question: "Hoe bestel ik en wanneer kan ik ophalen?",
@@ -82,7 +83,7 @@ const ophalenFaqs = [
     {
         question: "Waarom zijn jullie spare ribs anders?",
         answer:
-            "We garen onze spare ribs 24 uur sous vide op 80°C in marinade. Daardoor vallen ze van het bot en zit de smaak tot in de kern — niet alleen op de buitenkant.",
+            "We garen onze spare ribs 24 uur sous vide op 80°C in marinade. Daardoor vallen ze van het bot en zit de smaak tot in de kern, niet alleen op de buitenkant.",
     },
     {
         question: "Zijn er vegetarische of alcoholvrije opties?",
@@ -123,15 +124,14 @@ export default function OphalenLayout({
             <div className="container mx-auto px-4 sm:px-6 md:px-8 pb-12 sm:pb-16 md:pb-24 space-y-12">
                 {/* About */}
                 <section className="max-w-3xl mx-auto">
-                    <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-4 text-center">
-                        Over onze ophalenkaart
+                    <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-4 text-center">
+                        Over onze kaart van Tafelaar Thuis
                     </h2>
-                    <Card className="rounded-2xl border p-6 sm:p-8">
+                    <Card className="border-2 border-foreground p-6 sm:p-8">
                         <div className="space-y-4 text-muted-foreground">
                             <p>
                                 Liever thuis genieten? Bij De Tafelaar kun je onze sous-vide spare ribs en
-                                bijgerechten ook ophalen. De ribs worden 24 uur op 80°C in marinade gegaard
-                                — daardoor vallen ze van het bot en zit de smaak tot in de kern. Kies de
+                                bijgerechten ook ophalen. De ribs worden 24 uur op 80°C in marinade gegaard, daardoor vallen ze van het bot en zit de smaak tot in de kern. Kies de
                                 ribs los, of pak het Spare Ribs Menu inclusief bijgerecht, coleslaw en
                                 drankje.
                             </p>
@@ -150,12 +150,12 @@ export default function OphalenLayout({
 
                 {/* FAQ */}
                 <section className="max-w-3xl mx-auto">
-                    <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-6 text-center">
+                    <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-6 text-center">
                         Veelgestelde vragen over ophalen
                     </h2>
                     <div className="space-y-4">
                         {ophalenFaqs.map((faq, i) => (
-                            <Card key={i} className="rounded-2xl border p-4 sm:p-6">
+                            <Card key={i} className="border-2 border-foreground p-4 sm:p-6">
                                 <h3 className="font-semibold text-foreground mb-2">{faq.question}</h3>
                                 <p className="text-sm text-muted-foreground">{faq.answer}</p>
                             </Card>
@@ -167,16 +167,16 @@ export default function OphalenLayout({
                 <section className="max-w-2xl mx-auto text-center">
                     <div className="flex flex-wrap justify-center gap-3">
                         <Link href="/menu">
-                            <Button variant="outline" className="rounded-xl">Bekijk menukaart</Button>
+                            <Button variant="outline" className="">Dinerkaart</Button>
                         </Link>
                         <Link href="/lunch">
-                            <Button variant="outline" className="rounded-xl">Lunchkaart</Button>
+                            <Button variant="outline" className="">Lunchkaart</Button>
                         </Link>
                         <Link href="/drank">
-                            <Button variant="outline" className="rounded-xl">Drankenkaart</Button>
+                            <Button variant="outline" className="">Drankenkaart</Button>
                         </Link>
                         <Link href="/contact">
-                            <Button variant="outline" className="rounded-xl">Contact</Button>
+                            <Button variant="outline" className="">Contact</Button>
                         </Link>
                     </div>
                 </section>

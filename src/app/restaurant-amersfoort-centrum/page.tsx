@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getGoogleRating, type GoogleRating } from "@/lib/google-rating";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -6,6 +7,7 @@ import { MapPin, Utensils, Leaf } from "lucide-react";
 import { ReserveerButton } from "@/components/reserveer-button";
 
 export const dynamic = "force-static";
+export const revalidate = 3600; // Google rating/review count refresh hourly (synced by /api/cron/ingest-reviews)
 
 export const metadata: Metadata = {
     title: "Restaurant Amersfoort Centrum | Shared Dining De Tafelaar",
@@ -15,6 +17,7 @@ export const metadata: Metadata = {
         canonical: "/restaurant-amersfoort-centrum",
     },
     openGraph: {
+        images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
         title: "Restaurant Amersfoort Centrum | De Tafelaar",
         description: "Shared dining met lokale gerechten op de Kamp. Hartje Amersfoort.",
     },
@@ -31,10 +34,11 @@ export const metadata: Metadata = {
     ],
 };
 
-const faqs = [
+function buildFaqs(g: GoogleRating) {
+    return [
     {
         question: "Welke restaurants in Amersfoort centrum zijn een aanrader?",
-        answer: "De Tafelaar op de Kamp 8 is een populair shared dining restaurant in Amersfoort centrum. Gasten waarderen de lokale gerechten, gezellige sfeer en de ligging vlakbij Theater de Flint. Met een 4.8 op Google is het een van de best beoordeelde restaurants in Amersfoort.",
+        answer: `De Tafelaar op de Kamp 8 is een populair shared dining restaurant in Amersfoort centrum. Gasten waarderen de lokale gerechten, gezellige sfeer en de ligging vlakbij Theater de Flint. Met een ${g.ratingText} op Google is het een van de best beoordeelde restaurants in Amersfoort.`,
     },
     {
         question: "Waar zit De Tafelaar precies?",
@@ -42,7 +46,7 @@ const faqs = [
     },
     {
         question: "Wat voor restaurant is De Tafelaar?",
-        answer: "De Tafelaar is een shared dining restaurant. Je bestelt kleine gerechten om te delen aan tafel, gemaakt met lokale en seizoensgebonden producten van meer dan 14 regionale producenten.",
+        answer: "De Tafelaar is een shared dining restaurant. Je bestelt gerechten om te delen aan tafel, gemaakt met lokale en seizoensgebonden producten van meer dan 14 regionale producenten.",
     },
     {
         question: "Wat kost eten bij De Tafelaar?",
@@ -50,11 +54,12 @@ const faqs = [
     },
     {
         question: "Is De Tafelaar een van de beste restaurants in Amersfoort?",
-        answer: "Met een 4.8 beoordeling op Google en 90+ reviews is De Tafelaar een van de best beoordeelde restaurants in Amersfoort centrum. Gasten waarderen het shared dining concept, de lokale seizoensgerechten en de persoonlijke bediening.",
+        answer: `Met een ${g.ratingText} beoordeling op Google en ${g.countText} reviews is De Tafelaar een van de best beoordeelde restaurants in Amersfoort centrum. Gasten waarderen het shared dining concept, de lokale seizoensgerechten en de persoonlijke bediening.`,
     },
-];
+    ];
+}
 
-function faqJsonLd() {
+function faqJsonLd(faqs: { question: string; answer: string }[]) {
     return JSON.stringify({
         "@context": "https://schema.org",
         "@type": "FAQPage",
@@ -66,29 +71,31 @@ function faqJsonLd() {
     });
 }
 
-export default function RestaurantAmersfoortCentrumPage() {
+export default async function RestaurantAmersfoortCentrumPage() {
+    const g = await getGoogleRating();
+    const faqs = buildFaqs(g);
     return (
         <>
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd() }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqs) }} />
             <div className="container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
             {/* Hero */}
-            <header className="text-center mb-12">
-                <p className="inline-block text-xs tracking-widest uppercase text-primary/80 mb-2">
+            <header className="mb-12 border-[5px] border-foreground bg-white px-6 py-10 text-center sm:px-10 sm:py-12">
+                <p className="mb-4 inline-block bg-foreground px-3.5 py-[7px] text-[11px] font-bold uppercase tracking-[0.2em] text-background">
                     Shared Dining op de Kamp
                 </p>
-                <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl tracking-tight">
+                <h1 className="font-headline text-3xl font-black leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">
                     Restaurant in Amersfoort Centrum
                 </h1>
                 <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
                     De Tafelaar op Kamp 8: shared dining met lokale gerechten in het hart van Amersfoort.
-                    Op loopafstand van Flint en de Kamperbinnenpoort. Woensdag t/m zondag geopend.
+                    Op loopafstand van de Flint en de Kamperbinnenpoort. Woensdag t/m zondag geopend.
                 </p>
             </header>
 
             {/* USPs */}
             <section className="max-w-4xl mx-auto mb-12">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <Card className="rounded-2xl border">
+                    <Card className="border-2 border-foreground">
                         <CardHeader className="pb-2">
                             <div className="flex items-center gap-2 text-primary">
                                 <MapPin className="h-5 w-5" />
@@ -96,11 +103,11 @@ export default function RestaurantAmersfoortCentrumPage() {
                             </div>
                         </CardHeader>
                         <CardContent className="text-sm text-muted-foreground">
-                            Midden in het centrum van Amersfoort. 5 min van Flint; ~22 min lopen van het station (korter met bus/fiets).
+                            Midden in het centrum van Amersfoort. 5 min van de Flint; ~22 min lopen van het station (korter met bus/fiets).
                         </CardContent>
                     </Card>
 
-                    <Card className="rounded-2xl border">
+                    <Card className="border-2 border-foreground">
                         <CardHeader className="pb-2">
                             <div className="flex items-center gap-2 text-primary">
                                 <Utensils className="h-5 w-5" />
@@ -108,11 +115,11 @@ export default function RestaurantAmersfoortCentrumPage() {
                             </div>
                         </CardHeader>
                         <CardContent className="text-sm text-muted-foreground">
-                            Kleine gerechten om te delen. Bestel samen, proef van alles, geniet met z'n allen.
+                            Gerechten om te delen. Bestel samen, proef van alles, geniet met z'n allen.
                         </CardContent>
                     </Card>
 
-                    <Card className="rounded-2xl border">
+                    <Card className="border-2 border-foreground">
                         <CardHeader className="pb-2">
                             <div className="flex items-center gap-2 text-primary">
                                 <Leaf className="h-5 w-5" />
@@ -133,26 +140,26 @@ export default function RestaurantAmersfoortCentrumPage() {
 
             {/* Content */}
             <section className="max-w-3xl mx-auto mb-12">
-                <Card className="rounded-2xl border p-6 sm:p-8">
-                    <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-4">
+                <Card className="border-2 border-foreground p-6 sm:p-8">
+                    <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-4">
                         Waarom De Tafelaar in het centrum?
                     </h2>
                     <div className="space-y-4 text-muted-foreground">
                         <p>
                             De Kamp is een van de gezelligste plekken van Amersfoort. Ons restaurant
-                            ligt op Kamp 8, midden in het centrum — op loopafstand van alles wat de
+                            ligt op Kamp 8, midden in het centrum, op loopafstand van alles wat de
                             binnenstad te bieden heeft.
                         </p>
                         <p>
                             Kom je met de trein? Station Amersfoort Centraal ligt iets buiten het
-                            centrum — vanaf het station is het circa 22 minuten lopen, of korter met
+                            centrum, vanaf het station is het circa 22 minuten lopen, of korter met
                             bus, fiets of taxi. Met de auto is parkeergarage Beestenmarkt op
                             2 minuten loopafstand. En na het eten wandel je zo naar de Koppelpoort
                             of langs de grachten.
                         </p>
                         <p>
                             De Tafelaar is ook de ideale plek voor een hapje voor of na een voorstelling
-                            in Theater de Flint — op ongeveer 400 meter, circa 5 minuten lopen. We zijn
+                            in Theater de Flint, op ongeveer 400 meter, circa 5 minuten lopen. We zijn
                             geopend van woensdag t/m donderdag van 17:00 tot 23:00, vrijdag en
                             zaterdag van 11:00 tot 00:00 en zondag van 11:00 tot 23:00.
                         </p>
@@ -162,12 +169,12 @@ export default function RestaurantAmersfoortCentrumPage() {
 
             {/* FAQ */}
             <section className="max-w-3xl mx-auto mb-12">
-                <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-6 text-center">
+                <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-6 text-center">
                     Veelgestelde vragen
                 </h2>
                 <div className="space-y-4">
                     {faqs.map((faq) => (
-                        <Card key={faq.question} className="rounded-2xl border p-6">
+                        <Card key={faq.question} className="border-2 border-foreground p-6">
                             <h3 className="font-semibold mb-2">{faq.question}</h3>
                             <p className="text-sm text-muted-foreground">{faq.answer}</p>
                         </Card>
@@ -179,22 +186,22 @@ export default function RestaurantAmersfoortCentrumPage() {
             <section className="max-w-2xl mx-auto text-center">
                 <div className="flex flex-wrap justify-center gap-3">
                     <Link href="/menu">
-                        <Button variant="outline" className="rounded-xl">
+                        <Button variant="outline" className="">
                             Bekijk ons menu
                         </Button>
                     </Link>
                     <Link href="/beste-restaurant-amersfoort">
-                        <Button variant="outline" className="rounded-xl">
+                        <Button variant="outline" className="">
                             Beste restaurant
                         </Button>
                     </Link>
                     <Link href="/eten-voor-theater-de-flint">
-                        <Button variant="outline" className="rounded-xl">
-                            Eten vlakbij Flint
+                        <Button variant="outline" className="">
+                            Eten vlakbij de Flint
                         </Button>
                     </Link>
                     <Link href="/contact">
-                        <Button variant="outline" className="rounded-xl">
+                        <Button variant="outline" className="">
                             Contact & Route
                         </Button>
                     </Link>

@@ -1,6 +1,7 @@
 
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
+import { formatRating } from "@/lib/google-rating";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -24,9 +25,9 @@ const playfairDisplay = Playfair_Display({
 
 const siteUrl = "https://www.tafelaaramersfoort.nl";
 const siteName = "De Tafelaar";
-const siteTitle = "De Tafelaar – Restaurant Amersfoort Centrum";
+const siteTitle = "De Tafelaar, Restaurant Amersfoort Centrum";
 const siteDescription =
-  "De Tafelaar: restaurant in Amersfoort centrum voor shared dining, borrel en diner. Kleine gerechten van lokale makers, vlakbij Flint. Wo–zo geopend.";
+  "De Tafelaar: restaurant in Amersfoort centrum voor lunch, borrel en diner. Shared dining met gerechten van lokale makers, samengesteld om te delen, vlakbij de Flint. Wo t/m zo geopend.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -46,13 +47,13 @@ export const metadata: Metadata = {
     siteName,
     type: "website",
     locale: "nl_NL",
-    images: [{ url: "/pics/homepage.png", width: 1200, height: 630 }],
+    images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
   },
   twitter: {
     card: "summary_large_image",
     title: siteTitle,
     description: siteDescription,
-    images: ["/pics/homepage.png"],
+    images: ["/pics/terras-kamp.jpg"],
   },
   robots: { index: true, follow: true },
   category: "restaurant",
@@ -71,8 +72,9 @@ function restaurantJsonLd(rating?: number, reviewCount?: number) {
     alternateName: "De Tafelaar Amersfoort",
     url: siteUrl,
     image: [
-      `${siteUrl}/pics/homepage.png`,
-      `${siteUrl}/pics/impression-1.jpg`,
+      `${siteUrl}/pics/terras-kamp.jpg`,
+      `${siteUrl}/pics/hero-gasten.jpg`,
+      `${siteUrl}/pics/huiskamer-vol.jpg`,
     ],
     description: siteDescription,
     slogan: "Shared dining met lokale makers op de Kamp",
@@ -114,7 +116,7 @@ function restaurantJsonLd(rating?: number, reviewCount?: number) {
     sameAs: [
       "https://www.facebook.com/people/Tafelaar-Amersfoort",
       "https://instagram.com/tafelaaramersfoort",
-      // JV catering brand — Tafelaar × Jezza Cooks operates out of this kitchen.
+      // JV catering brand, Tafelaar × Jezza Cooks operates out of this kitchen.
       // jezzacooks.com's #catering entity cross-refs back to #restaurant here,
       // so AI answer engines resolve the two-domain service as one entity.
       "https://www.jezzacooks.com/services/catering",
@@ -178,11 +180,11 @@ function restaurantJsonLd(rating?: number, reviewCount?: number) {
     currenciesAccepted: "EUR",
   };
 
-  // Live aggregateRating from Google reviews — synced via /api/cron/ingest-reviews
+  // Live aggregateRating from Google reviews, synced via /api/cron/ingest-reviews
   if (rating && rating > 0 && reviewCount && reviewCount > 0) {
     data.aggregateRating = {
       "@type": "AggregateRating",
-      ratingValue: rating.toFixed(1),
+      ratingValue: formatRating(rating),
       bestRating: "5",
       worstRating: "1",
       ratingCount: reviewCount,
@@ -227,7 +229,7 @@ export default async function RootLayout({
         {/* Skip link for keyboard users */}
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:z-[100] focus:top-2 focus:left-2 focus:bg-primary focus:text-primary-foreground focus:px-3 focus:py-2 focus:rounded-md"
+          className="sr-only focus:not-sr-only focus:fixed focus:z-[100] focus:top-2 focus:left-2 focus:bg-primary focus:text-primary-foreground focus:px-3 focus:py-2 "
         >
           Naar inhoud springen
         </a>

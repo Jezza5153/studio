@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
     const seoOverride = getSeoOverride(slug);
     const media = parseMedia(story.media as string | null);
-    const ogImage = media[0]?.url || "/pics/homepage.png";
+    const ogImage = media[0]?.url || "/pics/hero-gasten.jpg";
     const description = seoOverride?.metaDescription || extractMetaDescription(story.body) || "Lees meer op De Tafelaar Courant.";
     const pageTitle = seoOverride?.seoTitle || `${story.title} | De Tafelaar Courant`;
     const canonicalUrl = `https://www.tafelaaramersfoort.nl/updates/${slug}`;
@@ -91,7 +91,7 @@ export default async function StoryPage({ params }: PageProps) {
     const BASE = "https://www.tafelaaramersfoort.nl";
     const canonicalUrl = `${BASE}/updates/${slug}`;
     const heroUrl = media[0]?.url;
-    const ogImage = heroUrl?.startsWith("http") ? heroUrl : heroUrl ? `${BASE}${heroUrl}` : `${BASE}/pics/homepage.png`;
+    const ogImage = heroUrl?.startsWith("http") ? heroUrl : heroUrl ? `${BASE}${heroUrl}` : `${BASE}/pics/hero-gasten.jpg`;
 
     // Build the @graph array with base schemas
     const graphItems: Record<string, unknown>[] = [
@@ -112,7 +112,7 @@ export default async function StoryPage({ params }: PageProps) {
                 url: BASE,
                 logo: {
                     "@type": "ImageObject",
-                    url: `${BASE}/pics/logo.png`,
+                    url: `${BASE}/logo.png`,
                 },
             },
             mainEntityOfPage: canonicalUrl,
@@ -178,7 +178,7 @@ export default async function StoryPage({ params }: PageProps) {
                             </p>
                         )}
 
-                        {/* Edition stamp — newspaper vibe */}
+                        {/* Edition stamp, newspaper vibe */}
                         <div className="mt-3 flex items-center gap-2 text-[11px] tracking-wide text-muted-foreground/50">
                             <span className="font-semibold uppercase">{categoryLabel}</span>
                             <span className="text-border">·</span>
@@ -226,7 +226,7 @@ export default async function StoryPage({ params }: PageProps) {
 
                         {/* 8 + 4 grid */}
                         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
-                            {/* Main content — 8 cols */}
+                            {/* Main content, 8 cols */}
                             <div className="lg:col-span-8">
                                 <ArticleBody article={article} />
 
@@ -237,7 +237,7 @@ export default async function StoryPage({ params }: PageProps) {
                                             href={story.sourceUrl}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="inline-flex items-center gap-2 rounded-lg bg-foreground/5 px-4 py-2 text-sm font-medium text-foreground transition-colors duration-150 hover:bg-foreground/10"
+                                            className="inline-flex items-center gap-2 bg-foreground/5 px-4 py-2 text-sm font-medium text-foreground transition-colors duration-150 hover:bg-foreground/10"
                                         >
                                             Bekijk origineel →
                                         </a>
@@ -258,7 +258,7 @@ export default async function StoryPage({ params }: PageProps) {
                                 </div>
                             </div>
 
-                            {/* Sidebar — 4 cols */}
+                            {/* Sidebar, 4 cols */}
                             <aside className="hidden lg:block lg:col-span-4">
                                 <div className="sticky" style={{ top: 'calc(var(--header-h, 4rem) + 2rem)' }}>
                                     <ArticleRail

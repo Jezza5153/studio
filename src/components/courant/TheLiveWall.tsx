@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useTransition } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import Image from "next/image";
+import { SafeImage } from "@/components/safe-image";
 import Link from "next/link";
 import type { FeedItem } from "@prisma/client";
 import { parseMedia } from "@/lib/queries/feed";
@@ -30,12 +30,12 @@ function WallCard({ item, batchIndex }: { item: FeedItem; batchIndex: number }) 
         >
             <Link
                 href={`/updates/${item.slug}`}
-                className="block overflow-hidden rounded-xl border border-border/50 bg-background shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                className="block overflow-hidden border border-border/50 bg-background shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
                 {/* Image */}
                 {thumb && !imgError && (
                     <div className="relative aspect-[4/3] w-full overflow-hidden">
-                        <Image
+                        <SafeImage
                             src={thumb.url}
                             alt={item.title}
                             fill
@@ -44,7 +44,7 @@ function WallCard({ item, batchIndex }: { item: FeedItem; batchIndex: number }) 
                             className="object-cover"
                         />
                         {/* Type badge */}
-                        <span className="absolute left-2 top-2 rounded-full bg-black/60 px-2 py-0.5 text-[10px] font-semibold uppercase text-white backdrop-blur-sm">
+                        <span className="absolute left-2 top-2 bg-black/60 px-2 py-0.5 text-[10px] font-semibold uppercase text-white backdrop-blur-sm">
                             {isIG ? "📸 Instagram" : isReview ? "⭐ Review" : item.type === "PRESS" ? "📰 Press" : "📝 Update"}
                         </span>
                     </div>
@@ -76,7 +76,7 @@ function WallCard({ item, batchIndex }: { item: FeedItem; batchIndex: number }) 
                     )}
 
                     <div className="mt-2 flex items-center justify-between text-[10px] text-muted-foreground/70">
-                        {item.authorName && <span>— {item.authorName}</span>}
+                        {item.authorName && <span>- {item.authorName}</span>}
                         <time dateTime={new Date(item.publishedAt).toISOString().slice(0, 10)}>
                             {new Date(item.publishedAt).toLocaleDateString("nl-NL", {
                                 day: "numeric",
@@ -92,7 +92,7 @@ function WallCard({ item, batchIndex }: { item: FeedItem; batchIndex: number }) 
 
 function SkeletonCard() {
     return (
-        <div className="mb-4 break-inside-avoid overflow-hidden rounded-xl border border-border/50 bg-background">
+        <div className="mb-4 break-inside-avoid overflow-hidden border border-border/50 bg-background">
             <div className="aspect-[4/3] w-full animate-pulse bg-muted" />
             <div className="space-y-2 p-4">
                 <div className="h-3 w-3/4 animate-pulse rounded bg-muted" />
@@ -116,7 +116,7 @@ export function TheLiveWall({ initialItems, initialHasMore }: TheLiveWallProps) 
     const [loading, setLoading] = useState(false);
     const [isPending, startTransition] = useTransition();
 
-    // Reset when filter changes — keep old items visible until new data arrives
+    // Reset when filter changes, keep old items visible until new data arrives
     const switchFilter = useCallback((newFilter: string) => {
         if (newFilter === activeFilter) return;
         setActiveFilter(newFilter);
@@ -177,7 +177,7 @@ export function TheLiveWall({ initialItems, initialHasMore }: TheLiveWallProps) 
                         role="tab"
                         aria-selected={activeFilter === tab.value}
                         onClick={() => switchFilter(tab.value)}
-                        className={`rounded-full px-4 py-1.5 text-xs font-medium transition-all ${activeFilter === tab.value
+                        className={`px-4 py-1.5 text-xs font-medium transition-all ${activeFilter === tab.value
                             ? "bg-foreground text-background shadow-sm"
                             : "bg-foreground/5 text-muted-foreground hover:bg-foreground/10"
                             }`}
@@ -207,7 +207,7 @@ export function TheLiveWall({ initialItems, initialHasMore }: TheLiveWallProps) 
                 <div className="mt-8 flex justify-center">
                     <button
                         onClick={loadMore}
-                        className="rounded-full border border-border px-6 py-2 text-sm font-medium text-muted-foreground transition-all hover:border-foreground hover:text-foreground"
+                        className="border-2 border-foreground bg-white px-6 py-2 text-sm font-semibold text-foreground transition-all hover:bg-secondary"
                     >
                         Meer laden…
                     </button>
@@ -215,8 +215,7 @@ export function TheLiveWall({ initialItems, initialHasMore }: TheLiveWallProps) 
             )}
 
             {!hasMore && items.length > 0 && (
-                <p className="mt-8 text-center text-xs text-muted-foreground/60">
-                    — Alle berichten geladen —
+                <p className="mt-8 text-center text-xs text-muted-foreground/60"> · Alle berichten geladen -
                 </p>
             )}
         </section>

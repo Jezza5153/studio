@@ -14,15 +14,16 @@ import { ReserveerButton } from "@/components/reserveer-button";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-    title: "Eten voor Theater Amersfoort | Restaurant vlakbij Flint | De Tafelaar",
+    title: "Eten voor Theater Amersfoort | Restaurant vlakbij de Flint | De Tafelaar",
     description:
-        "Eten voor of na het theater in Amersfoort? De Tafelaar ligt op ongeveer 400 meter van Flint (circa 5 min lopen). Shared dining met lokale gerechten. Reserveer nu.",
+        "Eten voor of na het theater in Amersfoort? De Tafelaar ligt op ongeveer 400 meter van de Flint (circa 5 min lopen). Shared dining met lokale gerechten. Reserveer nu.",
     alternates: {
         canonical: "/eten-voor-theater-de-flint",
     },
     openGraph: {
-        title: "Eten voor Theater Amersfoort | Restaurant vlakbij Flint",
-        description: "Shared dining op 5 minuten lopen van Flint. Perfect voor of na de voorstelling in Amersfoort.",
+        images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
+        title: "Eten voor Theater Amersfoort | Restaurant vlakbij de Flint",
+        description: "Shared dining op 5 minuten lopen van de Flint. Perfect voor of na de voorstelling in Amersfoort.",
     },
     keywords: [
         "eten voor theater amersfoort",
@@ -41,24 +42,24 @@ export const metadata: Metadata = {
 // FAQ data for schema and display
 const faqs = [
     {
-        question: "Hoe ver is De Tafelaar lopen naar Flint?",
-        answer: "De Tafelaar ligt op de Kamp 8, op ongeveer 400 meter van Theater de Flint. Dat is circa 5 minuten lopen. Je loopt via de Kamp rechtstreeks naar de ingang van Flint.",
+        question: "Hoe ver is De Tafelaar lopen naar de Flint?",
+        answer: "De Tafelaar ligt op de Kamp 8, op ongeveer 400 meter van Theater de Flint. Dat is circa 5 minuten lopen. Je loopt via de Kamp rechtstreeks naar de ingang van de Flint.",
     },
     {
         question: "Kunnen we op tijd eten voor de voorstelling?",
-        answer: "Ja, wij adviseren om een tafel te boeken 2 uur voor aanvang van de show. Dan heb je rustig de tijd om te genieten van shared dining en op tijd bij het theater te zijn. Voorstellingen in Flint beginnen meestal om 20:00 of 20:15 — boek dan rond 18:00.",
+        answer: "Ja, wij adviseren om een tafel te boeken 2 uur voor aanvang van de show. Dan heb je rustig de tijd om te genieten van shared dining en op tijd bij het theater te zijn. Voorstellingen in Flint beginnen meestal om 20:00 of 20:15, boek dan rond 18:00.",
     },
     {
         question: "Kunnen we snel shared dining doen (60-75 minuten)?",
-        answer: "Jazeker, laat bij je reservering weten dat je naar Flint gaat en hoe laat de voorstelling begint. Wij stemmen het tempo van de gerechten daarop af zodat je op tijd bent.",
+        answer: "Jazeker, laat bij je reservering weten dat je naar de Flint gaat en hoe laat de voorstelling begint. Wij stemmen het tempo van de gerechten daarop af zodat je op tijd bent.",
     },
     {
         question: "Is er ruimte voor groepen na een show?",
         answer: "Absoluut. We ontvangen graag groepen na de voorstelling. Vanaf 7 personen werken we met een Chef's Choice arrangement (EUR 48 p.p.). Reserveer vooraf en vermeld dat het na Flint is.",
     },
     {
-        question: "Waar kan ik parkeren bij Flint en De Tafelaar?",
-        answer: "Parkeergarage Beestenmarkt ligt op 2 minuten lopen van De Tafelaar — een goede optie als je eerst eet en daarna naar de voorstelling loopt. Parking Flint (Stadsring) zit naast het theater en op circa 5 minuten lopen van De Tafelaar. Op straat parkeren kan op de Kamp en omliggende straten (betaald tot 21:00).",
+        question: "Waar kan ik parkeren bij de Flint en De Tafelaar?",
+        answer: "Parkeergarage Beestenmarkt ligt op 2 minuten lopen van De Tafelaar, een goede optie als je eerst eet en daarna naar de voorstelling loopt. Parking Flint (Stadsring) zit naast het theater en op circa 5 minuten lopen van De Tafelaar. Op straat parkeren kan op de Kamp en omliggende straten (betaald tot 21:00).",
     },
     {
         question: "Wat kost eten bij De Tafelaar?",
@@ -102,23 +103,23 @@ export default function EtenVoorDeFlintPage() {
 
             <div className="container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
                 {/* Hero */}
-                <header className="text-center mb-12">
-                    <p className="inline-block text-xs tracking-widest uppercase text-primary/80 mb-2">
-                        Op 5 min lopen van Flint
+                <header className="mb-12 border-[5px] border-foreground bg-white px-6 py-10 text-center sm:px-10 sm:py-12">
+                    <p className="mb-4 inline-block bg-foreground px-3.5 py-[7px] text-[11px] font-bold uppercase tracking-[0.2em] text-background">
+                        Op 5 min lopen van de Flint
                     </p>
-                    <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl tracking-tight">
+                    <h1 className="font-headline text-3xl font-black leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">
                         Eten voor het theater in Amersfoort
                     </h1>
                     <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
                         Op zoek naar een restaurant voor of na het theater in Amersfoort? De Tafelaar ligt op
-                        400 meter van Theater de Flint — shared dining met lokale, seizoensgebonden gerechten.
+                        400 meter van Theater de Flint, shared dining met lokale, seizoensgebonden gerechten.
                     </p>
                 </header>
 
                 {/* Praktische info */}
                 <section className="max-w-4xl mx-auto mb-12">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <Card className="rounded-2xl border">
+                        <Card className="border-2 border-foreground">
                             <CardHeader className="pb-2">
                                 <div className="flex items-center gap-2 text-primary">
                                     <MapPin className="h-5 w-5" />
@@ -127,12 +128,12 @@ export default function EtenVoorDeFlintPage() {
                             </CardHeader>
                             <CardContent className="text-sm text-muted-foreground">
                                 <p className="font-medium text-foreground">Kamp 8, Amersfoort</p>
-                                <p>~400 meter van Flint</p>
+                                <p>~400 meter van de Flint</p>
                                 <p>~5 minuten lopen via de Kamp</p>
                             </CardContent>
                         </Card>
 
-                        <Card className="rounded-2xl border">
+                        <Card className="border-2 border-foreground">
                             <CardHeader className="pb-2">
                                 <div className="flex items-center gap-2 text-primary">
                                     <Clock className="h-5 w-5" />
@@ -146,7 +147,7 @@ export default function EtenVoorDeFlintPage() {
                             </CardContent>
                         </Card>
 
-                        <Card className="rounded-2xl border">
+                        <Card className="border-2 border-foreground">
                             <CardHeader className="pb-2">
                                 <div className="flex items-center gap-2 text-primary">
                                     <Utensils className="h-5 w-5" />
@@ -155,12 +156,12 @@ export default function EtenVoorDeFlintPage() {
                             </CardHeader>
                             <CardContent className="text-sm text-muted-foreground">
                                 <p className="font-medium text-foreground">Shared dining</p>
-                                <p>Kleine gerechten om te delen</p>
+                                <p>Gerechten om te delen</p>
                                 <p>Lokaal &amp; seizoensgebonden</p>
                             </CardContent>
                         </Card>
 
-                        <Card className="rounded-2xl border">
+                        <Card className="border-2 border-foreground">
                             <CardHeader className="pb-2">
                                 <div className="flex items-center gap-2 text-primary">
                                     <Car className="h-5 w-5" />
@@ -174,7 +175,7 @@ export default function EtenVoorDeFlintPage() {
                             </CardContent>
                         </Card>
 
-                        <Card className="rounded-2xl border">
+                        <Card className="border-2 border-foreground">
                             <CardHeader className="pb-2">
                                 <div className="flex items-center gap-2 text-primary">
                                     <Users className="h-5 w-5" />
@@ -197,17 +198,17 @@ export default function EtenVoorDeFlintPage() {
                             label="Reserveer nu"
                         />
                         <p className="mt-3 text-sm text-muted-foreground">
-                            Vermeld bij uw reservering dat u naar Flint gaat!
+                            Vermeld bij uw reservering dat u naar de Flint gaat!
                         </p>
                     </div>
                 </section>
 
                 {/* FAQ Section */}
                 <section className="max-w-3xl mx-auto mb-12">
-                    <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-6 text-center">
+                    <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-6 text-center">
                         Veelgestelde vragen
                     </h2>
-                    <Card className="rounded-2xl border">
+                    <Card className="border-2 border-foreground">
                         <CardContent className="pt-6">
                             <Accordion type="single" collapsible className="w-full">
                                 {faqs.map((faq, index) => (
@@ -229,17 +230,17 @@ export default function EtenVoorDeFlintPage() {
                 <section className="max-w-2xl mx-auto text-center">
                     <div className="flex flex-wrap justify-center gap-3">
                         <Link href="/menu">
-                            <Button variant="outline" className="rounded-xl">
+                            <Button variant="outline" className="">
                                 Bekijk ons menu
                             </Button>
                         </Link>
                         <Link href="/buurtgids">
-                            <Button variant="outline" className="rounded-xl">
+                            <Button variant="outline" className="">
                                 Buurtgids Flint
                             </Button>
                         </Link>
                         <Link href="/contact">
-                            <Button variant="outline" className="rounded-xl">
+                            <Button variant="outline" className="">
                                 <Phone className="mr-2 h-4 w-4" />
                                 Contact
                             </Button>

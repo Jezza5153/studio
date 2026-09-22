@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import { SafeImage } from "@/components/safe-image";
 import Link from "next/link";
 import type { FeedItem } from "@prisma/client";
 import { parseMedia } from "@/lib/queries/feed";
@@ -22,7 +22,7 @@ function IGFrame({
     const img = media[0];
 
     if (!img || imgError) return (
-        <div className={`relative overflow-hidden rounded-lg bg-foreground/5 flex items-center justify-center ${isLarge ? "row-span-2 col-span-2 min-h-[280px]" : "aspect-square"}`}>
+        <div className={`relative overflow-hidden  bg-foreground/5 flex items-center justify-center ${isLarge ? "row-span-2 col-span-2 min-h-[280px]" : "aspect-square"}`}>
             <span className="text-muted-foreground/40 text-xs">📷</span>
         </div>
     );
@@ -35,7 +35,7 @@ function IGFrame({
             target={post.sourceUrl ? "_blank" : undefined}
             rel={post.sourceUrl ? "noopener noreferrer" : undefined}
             aria-label={`Instagram post: ${post.title}`}
-            className={`group relative overflow-hidden rounded-lg bg-foreground/5 ${isLarge ? "row-span-2 col-span-2" : ""
+            className={`group relative overflow-hidden  bg-foreground/5 ${isLarge ? "row-span-2 col-span-2" : ""
                 }`}
         >
             <div className={`relative w-full ${isLarge ? "h-full min-h-[280px]" : "aspect-square"}`}>
@@ -50,7 +50,7 @@ function IGFrame({
                         className="absolute inset-0 h-full w-full object-cover"
                     />
                 ) : (
-                    <Image
+                    <SafeImage
                         src={img.url}
                         alt={post.title}
                         fill
@@ -62,7 +62,7 @@ function IGFrame({
 
                 {/* Reel indicator */}
                 {img.kind === "video" && (
-                    <div className="absolute top-2 right-2 bg-black/60 text-white rounded-full px-2 py-0.5 text-[10px] font-semibold flex items-center gap-1">
+                    <div className="absolute top-2 right-2 bg-black/60 text-white px-2 py-0.5 text-[10px] font-semibold flex items-center gap-1">
                         <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
                         Reel
                     </div>
@@ -87,7 +87,7 @@ function IGFrame({
 export function InstagramLivingGallery({ posts }: InstagramLivingGalleryProps) {
     if (posts.length === 0) {
         return (
-            <div className="rounded-xl border border-dashed border-border/50 p-6 text-center">
+            <div className="border border-dashed border-border/50 p-6 text-center">
                 <span className="text-2xl">📸</span>
                 <p className="mt-2 text-sm text-muted-foreground">
                     Volg ons op Instagram

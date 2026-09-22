@@ -29,7 +29,7 @@ export default function EventsWidget() {
         };
     }, [mounted]);
 
-    // Trigger preload on hover or touchstart — iframe loads in background
+    // Trigger preload on hover or touchstart, iframe loads in background
     const handleIntent = () => {
         if (!preload) setPreload(true);
     };
@@ -76,7 +76,7 @@ export default function EventsWidget() {
                 </button>
             )}
 
-            {/* Widget iframe — rendered on hover (hidden) or click (visible) */}
+            {/* Widget iframe, rendered on hover (hidden) or click (visible) */}
             {shouldRenderIframe && (
                 <div
                     style={{

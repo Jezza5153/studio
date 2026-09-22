@@ -7,18 +7,19 @@ import { ReserveerButton } from "@/components/reserveer-button";
 
 export const metadata: Metadata = {
     title: "Menukaart De Tafelaar | Shared Dining Gerechten Amersfoort",
-    description: "Bekijk de menukaart van De Tafelaar in Amersfoort centrum: shared dining gerechten van €3,50–€15,50. Kazen, charcuterie, vegetarisch en seizoensgebonden. Kamp 8.",
+    description: "Bekijk de menukaart van De Tafelaar in Amersfoort centrum: shared dining gerechten van €3,50-€15,50. Kazen, charcuterie, vegetarisch en seizoensgebonden. Kamp 8.",
     alternates: {
         canonical: "/menu",
     },
     openGraph: {
+        images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
         title: "Menukaart De Tafelaar | Shared Dining Gerechten Amersfoort",
-        description: "Bekijk de menukaart van De Tafelaar: shared dining gerechten van €3,50–€15,50. Kazen, charcuterie, vegetarisch en seizoensgebonden.",
+        description: "Bekijk de menukaart van De Tafelaar: shared dining gerechten van €3,50-€15,50. Kazen, charcuterie, vegetarisch en seizoensgebonden.",
     },
     keywords: [
         "menukaart de tafelaar",
         "shared dining menu amersfoort",
-        "kleine gerechten amersfoort",
+        "gerechten amersfoort",
         "borrelplanken amersfoort",
         "restaurant menu amersfoort centrum",
     ],
@@ -32,7 +33,7 @@ function menuJsonLd() {
         "@type": "Menu",
         "@id": `${SITE_URL}/menu#menu`,
         name: "Menukaart De Tafelaar",
-        description: "Shared dining menu met kleine gerechten, kazen, charcuterie en desserts van lokale, seizoensgebonden ingrediënten.",
+        description: "Shared dining menu met gerechten, kazen, charcuterie en desserts van lokale, seizoensgebonden ingrediënten.",
         url: `${SITE_URL}/menu`,
         hasMenuSection: DINNER_MENU.categories.map((category) => ({
             "@type": "MenuSection",
@@ -76,11 +77,11 @@ const menuFaqs = [
     },
     {
         question: "Kan ik het menu bekijken voor ik reserveer?",
-        answer: "Ja, ons volledige menu staat op deze pagina. De kaart wisselt regelmatig met het seizoen — check voor je bezoek de meest actuele versie.",
+        answer: "Ja, ons volledige menu staat op deze pagina. De kaart wisselt regelmatig met het seizoen, check voor je bezoek de meest actuele versie.",
     },
     {
         question: "Kan ik bij De Tafelaar ophalen?",
-        answer: "Ja, we hebben een ophalenkaart met onze sous-vide spare ribs (24 uur op 80°C), bijgerechten, huisgemaakte sauzen en dranken. Bekijk de ophalenkaart om te bestellen.",
+        answer: "Ja, we hebben een kaart van Tafelaar Thuis met onze sous-vide spare ribs (24 uur op 80°C), bijgerechten, huisgemaakte sauzen en dranken. Bekijk de kaart van Tafelaar Thuis om te bestellen.",
     },
     {
         question: "Serveren jullie ook lunch?",
@@ -121,19 +122,19 @@ export default function MenuLayout({
             <div className="container mx-auto px-4 sm:px-6 md:px-8 pb-12 sm:pb-16 md:pb-24 space-y-12">
                 {/* About the menu */}
                 <section className="max-w-3xl mx-auto">
-                    <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-4 text-center">
+                    <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-4 text-center">
                         Over onze menukaart
                     </h2>
-                    <Card className="rounded-2xl border p-6 sm:p-8">
+                    <Card className="border-2 border-foreground p-6 sm:p-8">
                         <div className="space-y-4 text-muted-foreground">
                             <p>
-                                De menukaart van De Tafelaar draait om shared dining: kleine gerechten die je samen
+                                De menukaart van De Tafelaar draait om shared dining: gerechten die je samen
                                 deelt aan tafel. We werken met seizoensgebonden ingrediënten van lokale producenten
-                                uit de regio Amersfoort — van kaas en charcuterie van Farmfields tot biologische
+                                uit de regio Amersfoort, van kaas en charcuterie van Farmfields tot biologische
                                 koffie van Boot Koffie uit Baarn.
                             </p>
                             <p>
-                                De kaart wisselt regelmatig met het seizoen. Naast losse gerechten (€3,50–€15,50) kun
+                                De kaart wisselt regelmatig met het seizoen. Naast losse gerechten (€3,50-€15,50) kun
                                 je kiezen voor het Chef&apos;s Choice arrangement (€48 p.p.): een selectie van de
                                 mooiste gerechten van dat moment, samengesteld door de keuken. Combineer met het
                                 wijnarrangement van Korte Garde (€28 p.p.) voor een complete avond.
@@ -142,7 +143,7 @@ export default function MenuLayout({
                                 Kom je overdag langs? Bekijk dan onze{" "}
                                 <Link href="/lunch" className="underline hover:text-foreground">lunchkaart</Link>{" "}
                                 met verse broodjes, salades en gerechten om te delen. Liever thuis genieten?
-                                Onze <Link href="/ophalen" className="underline hover:text-foreground">ophalenkaart</Link>{" "}
+                                Onze <Link href="/ophalen" className="underline hover:text-foreground">kaart van Tafelaar Thuis</Link>{" "}
                                 met sous-vide spare ribs en bijgerechten kun je meenemen.
                             </p>
                             <p className="text-xs">
@@ -154,12 +155,12 @@ export default function MenuLayout({
 
                 {/* FAQ */}
                 <section className="max-w-3xl mx-auto">
-                    <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-6 text-center">
+                    <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-6 text-center">
                         Veelgestelde vragen over ons menu
                     </h2>
                     <div className="space-y-4">
                         {menuFaqs.map((faq, i) => (
-                            <Card key={i} className="rounded-2xl border p-4 sm:p-6">
+                            <Card key={i} className="border-2 border-foreground p-4 sm:p-6">
                                 <h3 className="font-semibold text-foreground mb-2">{faq.question}</h3>
                                 <p className="text-sm text-muted-foreground">{faq.answer}</p>
                             </Card>
@@ -171,20 +172,23 @@ export default function MenuLayout({
                 <section className="max-w-2xl mx-auto text-center space-y-6">
                     <ReserveerButton size="lg" className="shadow-sm" label="Reserveer een tafel" />
                     <div className="flex flex-wrap justify-center gap-3">
+                        <Link href="/lunch">
+                            <Button variant="outline" className="">Lunchkaart</Button>
+                        </Link>
                         <Link href="/drank">
-                            <Button variant="outline" className="rounded-xl">Drankenkaart</Button>
+                            <Button variant="outline" className="">Drankenkaart</Button>
                         </Link>
                         <Link href="/ophalen">
-                            <Button variant="outline" className="rounded-xl">Ophalen</Button>
+                            <Button variant="outline" className="">Tafelaar Thuiskaart</Button>
                         </Link>
                         <Link href="/verhuur-en-groepen">
-                            <Button variant="outline" className="rounded-xl">Groepen &amp; verhuur</Button>
+                            <Button variant="outline" className="">Groepen &amp; verhuur</Button>
                         </Link>
                         <Link href="/vegetarisch-amersfoort">
-                            <Button variant="outline" className="rounded-xl">Vegetarisch</Button>
+                            <Button variant="outline" className="">Vegetarisch</Button>
                         </Link>
                         <Link href="/bourgondisch-eten-amersfoort">
-                            <Button variant="outline" className="rounded-xl">Bourgondisch eten</Button>
+                            <Button variant="outline" className="">Bourgondisch eten</Button>
                         </Link>
                     </div>
                 </section>

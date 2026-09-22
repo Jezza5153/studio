@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     canonical: "/openingstijden",
   },
   openGraph: {
+    images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
     title: "Openingstijden De Tafelaar Amersfoort | Wanneer Open",
     description:
       "Openingstijden van De Tafelaar op de Kamp 8 in Amersfoort centrum. Wo\u2013do 17:00\u201323:00, vr\u2013za 11:00\u201300:00, zo 11:00\u201323:00. Reserveer online of bel +31 6 341 279 32.",
@@ -43,12 +44,12 @@ const faqs = [
   {
     question: "Kan ik ook in de middag langskomen?",
     answer:
-      "Op vrijdag, zaterdag en zondag openen we om 11:00, ideaal voor een lunch of borrel met kleine gerechten. Woensdag en donderdag openen we om 17:00.",
+      "Op vrijdag, zaterdag en zondag openen we om 11:00, ideaal voor een lunch of borrel met gerechten. Woensdag en donderdag openen we om 17:00.",
   },
   {
     question: "Kan ik bij De Tafelaar afhalen?",
     answer:
-      "Ja, we hebben een ophalenkaart met onze sous-vide spare ribs (24 uur op 80°C), bijgerechten, huisgemaakte sauzen, dranken en desserts. Bekijk de ophalenkaart om te bestellen.",
+      "Ja, we hebben een kaart van Tafelaar Thuis met onze sous-vide spare ribs (24 uur op 80°C), bijgerechten, huisgemaakte sauzen, dranken en desserts. Bekijk de kaart van Tafelaar Thuis om te bestellen.",
   },
   {
     question: "Moet ik reserveren bij De Tafelaar?",
@@ -76,7 +77,7 @@ export default function OpeningstijdenPage() {
       <div className="container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
         {/* Hero */}
         <div className="text-center mb-12">
-          <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl">
+          <h1 className="font-headline text-3xl font-black tracking-tight sm:text-4xl md:text-5xl">
             Openingstijden De Tafelaar Amersfoort
           </h1>
           <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
@@ -87,23 +88,22 @@ export default function OpeningstijdenPage() {
 
         {/* Entity paragraph */}
         <section className="max-w-2xl mx-auto mb-12">
-          <Card className="rounded-2xl border p-6 sm:p-8">
+          <Card className="border-2 border-foreground p-6 sm:p-8">
             <div className="space-y-4 text-muted-foreground">
               <p>
                 De Tafelaar is een shared dining restaurant op de Kamp 8 in Amersfoort centrum. Wij serveren
-                seizoensgebonden gerechten om te delen, met lokale producten van makers uit de regio. Kleine
-                gerechten kosten €3,50–€15, een compleet diner gemiddeld €25–35 per persoon. Voor groepen
+                seizoensgebonden gerechten om te delen, met lokale producten van makers uit de regio. Gerechten kosten €3,50-€15, een compleet diner gemiddeld €25-35 per persoon. Voor groepen
                 vanaf 7 personen bieden we het Chef&apos;s Choice arrangement aan (€48 p.p.).
               </p>
               <p>
-                We liggen op 5 minuten lopen van Theater de Flint — ideaal voor een borrel of diner
+                We liggen op 5 minuten lopen van Theater de Flint, ideaal voor een borrel of diner
                 voor of na een voorstelling. Vanaf station Amersfoort Centraal is het circa 22 minuten
                 lopen, of korter met bus, fiets of taxi.
               </p>
               <p>
                 <strong className="text-foreground">Lunch, borrel of vroeg diner:</strong> op
-                vrijdag, zaterdag en zondag openen we al om 11:00 — ideaal voor een rustige lunch of
-                borrel met kazen, charcuterie en kleine gerechten, of een vroege start van je diner.
+                vrijdag, zaterdag en zondag openen we al om 11:00, ideaal voor een rustige lunch of
+                borrel met kazen, charcuterie en gerechten, of een vroege start van je diner.
                 Woensdag en donderdag draaien we vanaf 17:00 met de volledige dinerkaart.
               </p>
             </div>
@@ -112,7 +112,7 @@ export default function OpeningstijdenPage() {
 
         {/* Hours card */}
         <div className="max-w-2xl mx-auto mb-12">
-          <Card className="shadow-lg rounded-2xl">
+          <Card className="shadow-lg">
             <CardContent className="p-6">
               <ul className="divide-y divide-border">
                 {openingHours.schedule.map((item) => (
@@ -133,8 +133,8 @@ export default function OpeningstijdenPage() {
 
         {/* Location card */}
         <section className="max-w-2xl mx-auto mb-12">
-          <Card className="rounded-2xl border p-6">
-            <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-4">
+          <Card className="border-2 border-foreground p-6">
+            <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-4">
               Locatie
             </h2>
             <div className="space-y-3 text-muted-foreground">
@@ -158,12 +158,12 @@ export default function OpeningstijdenPage() {
 
         {/* FAQ */}
         <section className="max-w-3xl mx-auto mb-12">
-          <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-6 text-center">
+          <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-6 text-center">
             Veelgestelde vragen
           </h2>
           <div className="space-y-4">
             {faqs.map((faq) => (
-              <Card key={faq.question} className="rounded-2xl border p-6">
+              <Card key={faq.question} className="border-2 border-foreground p-6">
                 <h3 className="font-semibold mb-2">{faq.question}</h3>
                 <p className="text-sm text-muted-foreground">{faq.answer}</p>
               </Card>
@@ -180,27 +180,27 @@ export default function OpeningstijdenPage() {
         <section className="max-w-2xl mx-auto text-center">
           <div className="flex flex-wrap justify-center gap-3">
             <Link href="/contact">
-              <Button variant="outline" className="rounded-xl">
+              <Button variant="outline" className="">
                 Contact
               </Button>
             </Link>
             <Link href="/menu">
-              <Button variant="outline" className="rounded-xl">
+              <Button variant="outline" className="">
                 Bekijk ons menu
               </Button>
             </Link>
             <Link href="/reserveren">
-              <Button variant="outline" className="rounded-xl">
+              <Button variant="outline" className="">
                 Reserveren
               </Button>
             </Link>
             <Link href="/ophalen">
-              <Button variant="outline" className="rounded-xl">
+              <Button variant="outline" className="">
                 Ophalen
               </Button>
             </Link>
             <Link href="/eten-voor-theater-de-flint">
-              <Button variant="outline" className="rounded-xl">
+              <Button variant="outline" className="">
                 Eten voor de Flint
               </Button>
             </Link>

@@ -7,10 +7,10 @@ import {
 } from "./utils";
 
 /**
- * Single menu row — name + price, dietary + allergen dots inline, optional
+ * Single menu row, name + price, dietary + allergen dots inline, optional
  * description, optional small badge (e.g. "Vanaf 2 personen").
  *
- * Plain function component, no state — works in both lunch and diner sections.
+ * Plain function component, no state, works in both lunch and diner sections.
  */
 export function MenuRow({ item }: { item: MenuItem }) {
     const hasTags = (item.tags?.length ?? 0) > 0;

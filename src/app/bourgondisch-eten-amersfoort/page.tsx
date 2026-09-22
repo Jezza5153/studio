@@ -15,6 +15,7 @@ export const metadata: Metadata = {
         canonical: "/bourgondisch-eten-amersfoort",
     },
     openGraph: {
+        images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
         title: "Bourgondisch Eten Amersfoort | De Tafelaar",
         description: "Shared dining met lokale gerechten. Bourgondisch genieten op de Kamp.",
     },
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
 const faqs = [
     {
         question: "Wat is bourgondisch eten bij De Tafelaar?",
-        answer: "Bourgondisch eten betekent genieten zonder haast. Bij De Tafelaar deel je kleine gerechten aan tafel: kazen, charcuterie, warme gerechten en desserts. Allemaal gemaakt met lokale, seizoensgebonden producten.",
+        answer: "Bourgondisch eten betekent genieten zonder haast. Bij De Tafelaar deel je gerechten aan tafel: kazen, charcuterie, warme gerechten en desserts. Allemaal gemaakt met lokale, seizoensgebonden producten.",
     },
     {
         question: "Hoeveel kost bourgondisch uit eten bij De Tafelaar?",
@@ -60,15 +61,15 @@ export default function BourgondischEtenAmersfoortPage() {
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd() }} />
             <div className="container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
             {/* Hero */}
-            <header className="text-center mb-12">
-                <p className="inline-block text-xs tracking-widest uppercase text-primary/80 mb-2">
+            <header className="mb-12 border-[5px] border-foreground bg-white px-6 py-10 text-center sm:px-10 sm:py-12">
+                <p className="mb-4 inline-block bg-foreground px-3.5 py-[7px] text-[11px] font-bold uppercase tracking-[0.2em] text-background">
                     Shared Dining in Amersfoort
                 </p>
-                <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl tracking-tight">
+                <h1 className="font-headline text-3xl font-black leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">
                     Bourgondisch eten in Amersfoort
                 </h1>
                 <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
-                    Bij De Tafelaar draait alles om samen genieten. Kleine gerechten om te delen,
+                    Bij De Tafelaar draait alles om samen genieten. Gerechten om te delen,
                     gemaakt met lokale ingrediënten en liefde voor het vak. Echt bourgondisch.
                 </p>
             </header>
@@ -76,7 +77,7 @@ export default function BourgondischEtenAmersfoortPage() {
             {/* USPs */}
             <section className="max-w-4xl mx-auto mb-12">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <Card className="rounded-2xl border">
+                    <Card className="border-2 border-foreground">
                         <CardHeader className="pb-2">
                             <div className="flex items-center gap-2 text-primary">
                                 <Utensils className="h-5 w-5" />
@@ -84,11 +85,11 @@ export default function BourgondischEtenAmersfoortPage() {
                             </div>
                         </CardHeader>
                         <CardContent className="text-sm text-muted-foreground">
-                            Kleine gerechten om te delen. Proef van alles, geniet samen.
+                            Gerechten om te delen. Proef van alles, geniet samen.
                         </CardContent>
                     </Card>
 
-                    <Card className="rounded-2xl border">
+                    <Card className="border-2 border-foreground">
                         <CardHeader className="pb-2">
                             <div className="flex items-center gap-2 text-primary">
                                 <Leaf className="h-5 w-5" />
@@ -100,7 +101,7 @@ export default function BourgondischEtenAmersfoortPage() {
                         </CardContent>
                     </Card>
 
-                    <Card className="rounded-2xl border">
+                    <Card className="border-2 border-foreground">
                         <CardHeader className="pb-2">
                             <div className="flex items-center gap-2 text-primary">
                                 <MapPin className="h-5 w-5" />
@@ -121,8 +122,8 @@ export default function BourgondischEtenAmersfoortPage() {
 
             {/* Wat is bourgondisch eten? */}
             <section className="max-w-3xl mx-auto mb-12">
-                <Card className="rounded-2xl border p-6 sm:p-8">
-                    <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-4">
+                <Card className="border-2 border-foreground p-6 sm:p-8">
+                    <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-4">
                         Wat maakt De Tafelaar bourgondisch?
                     </h2>
                     <div className="space-y-4 text-muted-foreground">
@@ -135,7 +136,7 @@ export default function BourgondischEtenAmersfoortPage() {
                             50 gerechten, maar een zorgvuldig samengestelde kaart die elke paar weken wisselt.
                         </p>
                         <p>
-                            Of je nu met z'n tweeën komt of met een grotere groep — de sfeer is warm,
+                            Of je nu met z'n tweeën komt of met een grotere groep, de sfeer is warm,
                             de gerechten zijn rijkelijk, en de avond vliegt voorbij.
                         </p>
                     </div>
@@ -144,12 +145,12 @@ export default function BourgondischEtenAmersfoortPage() {
 
             {/* FAQ */}
             <section className="max-w-3xl mx-auto mb-12">
-                <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-6 text-center">
+                <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-6 text-center">
                     Veelgestelde vragen
                 </h2>
                 <div className="space-y-4">
                     {faqs.map((faq) => (
-                        <Card key={faq.question} className="rounded-2xl border p-6">
+                        <Card key={faq.question} className="border-2 border-foreground p-6">
                             <h3 className="font-semibold mb-2">{faq.question}</h3>
                             <p className="text-sm text-muted-foreground">{faq.answer}</p>
                         </Card>
@@ -161,22 +162,22 @@ export default function BourgondischEtenAmersfoortPage() {
             <section className="max-w-2xl mx-auto text-center">
                 <div className="flex flex-wrap justify-center gap-3">
                     <Link href="/menu">
-                        <Button variant="outline" className="rounded-xl">
+                        <Button variant="outline" className="">
                             Bekijk ons menu
                         </Button>
                     </Link>
                     <Link href="/uit-eten-amersfoort">
-                        <Button variant="outline" className="rounded-xl">
+                        <Button variant="outline" className="">
                             Uit eten in Amersfoort
                         </Button>
                     </Link>
                     <Link href="/drank">
-                        <Button variant="outline" className="rounded-xl">
+                        <Button variant="outline" className="">
                             Drankenkaart
                         </Button>
                     </Link>
                     <Link href="/reserveren">
-                        <Button variant="outline" className="rounded-xl">
+                        <Button variant="outline" className="">
                             Reserveren
                         </Button>
                     </Link>

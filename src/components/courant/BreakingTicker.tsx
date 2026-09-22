@@ -40,7 +40,7 @@ export function BreakingTicker({ pinnedItems, settings, reviewQuote }: BreakingT
         const snippet = reviewQuote.body.length > 60
             ? reviewQuote.body.slice(0, 60) + "…"
             : reviewQuote.body;
-        tickerItems.push(`⭐ "${snippet}" — ${reviewQuote.authorName || "Gast"}`);
+        tickerItems.push(`⭐ "${snippet}" · ${reviewQuote.authorName || "Gast"}`);
     }
 
     if (tickerItems.length === 0) return null;

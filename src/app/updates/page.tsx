@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
+import { SafeImage } from "@/components/safe-image";
 import { searchFeed, getFeedPage, parseMedia } from "@/lib/queries/feed";
 import type { FeedItem } from "@prisma/client";
 import { TYPE_LABELS } from "@/lib/constants";
@@ -13,6 +13,7 @@ export const metadata: Metadata = {
         "Alle updates, evenementen, reviews en persberichten van De Tafelaar op de Kamp in Amersfoort. Shared dining nieuws, menu-wijzigingen en gasten-reviews.",
     alternates: { canonical: "/updates" },
     openGraph: {
+        images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
         title: "Updates & Nieuws | De Tafelaar Amersfoort",
         description:
             "Updates, reviews en persberichten van shared dining restaurant De Tafelaar in Amersfoort centrum.",
@@ -34,11 +35,11 @@ function UpdateCard({ item }: { item: FeedItem }) {
     return (
         <Link
             href={`/updates/${item.slug}`}
-            className="group flex gap-4 rounded-xl border border-border/50 bg-background p-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+            className="group flex gap-4 border-2 border-foreground bg-background p-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
         >
             {thumb && (
-                <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-lg sm:h-28 sm:w-28">
-                    <Image
+                <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden sm:h-28 sm:w-28">
+                    <SafeImage
                         src={thumb.url}
                         alt={item.title}
                         fill
@@ -49,7 +50,7 @@ function UpdateCard({ item }: { item: FeedItem }) {
             )}
             <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2">
-                    <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-primary">
+                    <span className="bg-primary/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-primary">
                         {TYPE_LABELS[item.type] || "Update"}
                     </span>
                     <time
@@ -106,7 +107,7 @@ export default async function UpdatesPage({
             {/* Header */}
             <div className="mb-8 text-center">
                 <h1 className="font-headline text-3xl font-bold text-foreground sm:text-4xl">
-                    Updates &amp; Nieuws — De Tafelaar Amersfoort
+                    Updates &amp; Nieuws, De Tafelaar Amersfoort
                 </h1>
                 <p className="mt-2 max-w-2xl mx-auto text-sm text-muted-foreground">
                     Alle updates, evenementen, reviews en verhalen van De Tafelaar op de Kamp in Amersfoort centrum.
@@ -117,7 +118,7 @@ export default async function UpdatesPage({
             {/* Search + Filters */}
             <div className="mb-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
                 <form className="w-full sm:w-auto" action="/updates" method="get">
-                    <div className="flex overflow-hidden rounded-lg border border-border focus-within:ring-2 focus-within:ring-primary/50">
+                    <div className="flex overflow-hidden border-2 border-foreground focus-within:ring-2 focus-within:ring-primary/50">
                         <input
                             type="text"
                             name="q"
@@ -145,7 +146,7 @@ export default async function UpdatesPage({
                         <Link
                             key={tab.value}
                             href={`/updates${tab.value ? `?type=${tab.value}` : ""}`}
-                            className={`rounded-full px-3 py-1 text-xs font-medium transition-all ${(type || "") === tab.value
+                            className={`px-3 py-1 text-xs font-medium transition-all ${(type || "") === tab.value
                                 ? "bg-foreground text-background"
                                 : "bg-foreground/5 text-muted-foreground hover:bg-foreground/10"
                                 }`}
@@ -173,7 +174,7 @@ export default async function UpdatesPage({
                 {page > 1 && (
                     <Link
                         href={`/updates?page=${page - 1}${type ? `&type=${type}` : ""}${query ? `&q=${query}` : ""}`}
-                        className="rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground"
+                        className="border-2 border-foreground bg-white px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
                     >
                         ← Vorige
                     </Link>
@@ -181,7 +182,7 @@ export default async function UpdatesPage({
                 {data.hasMore && (
                     <Link
                         href={`/updates?page=${page + 1}${type ? `&type=${type}` : ""}${query ? `&q=${query}` : ""}`}
-                        className="rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground"
+                        className="border-2 border-foreground bg-white px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
                     >
                         Volgende →
                     </Link>
@@ -193,25 +194,25 @@ export default async function UpdatesPage({
                 <div className="flex flex-wrap justify-center gap-3">
                     <Link
                         href="/agenda"
-                        className="rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground"
+                        className="border-2 border-foreground bg-white px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
                     >
                         Agenda
                     </Link>
                     <Link
                         href="/menu"
-                        className="rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground"
+                        className="border-2 border-foreground bg-white px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
                     >
                         Menukaart
                     </Link>
                     <Link
                         href="/impressie"
-                        className="rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground"
+                        className="border-2 border-foreground bg-white px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
                     >
                         Impressie &amp; Reviews
                     </Link>
                     <Link
                         href="/reserveren"
-                        className="rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground"
+                        className="border-2 border-foreground bg-white px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
                     >
                         Reserveren
                     </Link>
