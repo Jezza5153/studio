@@ -14,7 +14,7 @@ const SITE_URL = "https://www.tafelaaramersfoort.nl";
 export const metadata: Metadata = {
   title: "Vacatures De Tafelaar | Werken in de horeca in Amersfoort",
   description:
-    "Werken bij De Tafelaar, shared dining restaurant op de Kamp in Amersfoort centrum. Vacatures voor bediening, kok en keukenhulp, plus open sollicitatie. Open wo t/m zo, maandag en dinsdag vrij.",
+    "Werken bij De Tafelaar, shared dining op de Kamp in Amersfoort: vacatures voor bediening, kok en keukenhulp, plus open sollicitatie. Open wo t/m zo, ma en di vrij.",
   alternates: { canonical: "/vacatures" },
   openGraph: {
     images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],

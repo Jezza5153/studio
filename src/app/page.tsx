@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const g = await getGoogleRating();
   return {
     title: "De Tafelaar | Restaurant Amersfoort, Lekker Eten & Shared Dining",
-    description: `Shared dining restaurant op de Kamp in Amersfoort centrum: lunch, borrel en diner met lokale seizoensgerechten, ook Tafelaar Thuis (ophalen). ${g.ratingText} op Google, 5 min van de Flint.`,
+    description: `Shared dining op de Kamp in Amersfoort centrum: lunch, borrel en diner met lokale seizoensgerechten, ook Tafelaar Thuis (ophalen). ${g.ratingText} op Google, 5 min van de Flint.`,
     alternates: { canonical: "/" },
     openGraph: {
       title: "De Tafelaar | Restaurant Amersfoort, Lekker Eten & Shared Dining",

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import Image from "next/image";
+import { SafeImage } from "@/components/safe-image";
 import Link from "next/link";
 import type { FeedItem } from "@prisma/client";
 import { parseMedia } from "@/lib/queries/feed";
@@ -34,7 +34,7 @@ function StoryCard({ item, index }: { item: FeedItem; index: number }) {
                 {/* Thumbnail */}
                 {thumb && (
                     <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden sm:h-24 sm:w-24">
-                        <Image unoptimized
+                        <SafeImage
                             src={thumb.url}
                             alt={item.title}
                             fill

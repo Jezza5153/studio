@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import { SafeImage } from "@/components/safe-image";
 import Link from "next/link";
 import type { FeedItem } from "@prisma/client";
 import { parseMedia } from "@/lib/queries/feed";
@@ -50,7 +50,7 @@ function IGFrame({
                         className="absolute inset-0 h-full w-full object-cover"
                     />
                 ) : (
-                    <Image unoptimized
+                    <SafeImage
                         src={img.url}
                         alt={post.title}
                         fill

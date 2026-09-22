@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useTransition } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import Image from "next/image";
+import { SafeImage } from "@/components/safe-image";
 import Link from "next/link";
 import type { FeedItem } from "@prisma/client";
 import { parseMedia } from "@/lib/queries/feed";
@@ -35,7 +35,7 @@ function WallCard({ item, batchIndex }: { item: FeedItem; batchIndex: number }) 
                 {/* Image */}
                 {thumb && !imgError && (
                     <div className="relative aspect-[4/3] w-full overflow-hidden">
-                        <Image unoptimized
+                        <SafeImage
                             src={thumb.url}
                             alt={item.title}
                             fill

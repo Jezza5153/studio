@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import { SafeImage } from "@/components/safe-image";
 import type { ArticleSection } from "@/lib/article-utils";
 import { trackEvent } from "@/lib/analytics";
 
@@ -42,7 +42,7 @@ function StoryCard({ story }: { story: RelatedStory }) {
         >
             {thumb && (
                 <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden">
-                    <Image unoptimized
+                    <SafeImage
                         src={thumb}
                         alt={story.title}
                         fill

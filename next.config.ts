@@ -57,6 +57,18 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        // Oude evenementpagina's (Moederdag high tea, Eten met Peter) zijn weg;
+        // nog geindexeerde en gedeelde links landen op de agenda.
+        source: "/moederdag-high-tea-amersfoort",
+        destination: "/agenda",
+        permanent: true,
+      },
+      {
+        source: "/eten-met-peter",
+        destination: "/agenda",
+        permanent: true,
+      },
+      {
         // Legacy lunch landing page. Lunch service is running again, so send
         // the still-indexed URL to the real lunchkaart instead of the diner menu.
         source: "/lunch-amersfoort",

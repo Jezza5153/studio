@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
+import { SafeImage } from "@/components/safe-image";
 import { searchFeed, getFeedPage, parseMedia } from "@/lib/queries/feed";
 import type { FeedItem } from "@prisma/client";
 import { TYPE_LABELS } from "@/lib/constants";
@@ -39,7 +39,7 @@ function UpdateCard({ item }: { item: FeedItem }) {
         >
             {thumb && (
                 <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden sm:h-28 sm:w-28">
-                    <Image unoptimized
+                    <SafeImage
                         src={thumb.url}
                         alt={item.title}
                         fill

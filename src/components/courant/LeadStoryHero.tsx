@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import Image from "next/image";
+import { SafeImage } from "@/components/safe-image";
 import Link from "next/link";
 import type { FeedItem } from "@prisma/client";
 import { parseMedia } from "@/lib/queries/feed";
@@ -21,7 +21,7 @@ export function LeadStoryHero({ story }: LeadStoryHeroProps) {
             {/* Hero image with Ken Burns */}
             <div className="relative h-[50vh] min-h-[400px] w-full sm:h-[60vh] md:h-[65vh]">
                 {heroImage ? (
-                    <Image unoptimized
+                    <SafeImage
                         src={heroImage.url}
                         alt={story.title}
                         fill

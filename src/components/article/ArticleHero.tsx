@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback, useEffect, useRef } from "react";
-import Image from "next/image";
+import { SafeImage } from "@/components/safe-image";
 
 interface MediaItem {
     url: string;
@@ -119,7 +119,7 @@ function Lightbox({
                         className="max-h-full max-w-full"
                     />
                 ) : (
-                    <Image unoptimized
+                    <SafeImage
                         key={index}
                         src={current.url}
                         alt={`Foto ${index + 1}`}
@@ -196,7 +196,7 @@ export function ArticleHero({ title, media, caption }: ArticleHeroProps) {
                     className={`relative w-full ${hasMultiple ? "h-[35svh] min-h-[250px] max-h-[400px]" : "h-[30svh] min-h-[220px] max-h-[360px]"}`}
                     style={{ aspectRatio: hasMultiple ? "16 / 7" : "16 / 9" }}
                 >
-                    <Image unoptimized
+                    <SafeImage
                         src={heroImage.url}
                         alt={title}
                         fill
@@ -231,7 +231,7 @@ export function ArticleHero({ title, media, caption }: ArticleHeroProps) {
                                             onClick={() => openLightbox(i + 1)}
                                             className="relative h-12 w-12 overflow-hidden border-2 border-white/30 transition-all duration-150 hover:border-white/60 hover:scale-105 active:scale-95"
                                         >
-                                            <Image unoptimized
+                                            <SafeImage
                                                 src={img.url}
                                                 alt={`Foto ${i + 2}`}
                                                 fill
