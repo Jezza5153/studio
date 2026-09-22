@@ -21,6 +21,7 @@ export const metadata: Metadata = {
         canonical: "/eten-voor-theater-de-flint",
     },
     openGraph: {
+        images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
         title: "Eten voor Theater Amersfoort | Restaurant vlakbij de Flint",
         description: "Shared dining op 5 minuten lopen van de Flint. Perfect voor of na de voorstelling in Amersfoort.",
     },

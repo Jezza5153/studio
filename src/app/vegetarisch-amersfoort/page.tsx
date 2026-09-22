@@ -17,6 +17,7 @@ export const metadata: Metadata = {
         canonical: "/vegetarisch-amersfoort",
     },
     openGraph: {
+        images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
         title: "Vegetarisch Restaurant Amersfoort | Vegan & Veggie bij De Tafelaar",
         description:
             "Ruim aanbod vegetarische en vegan gerechten. Shared dining met seizoensgebonden groenten bij De Tafelaar.",

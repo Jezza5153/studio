@@ -16,6 +16,7 @@ export const metadata: Metadata = {
         canonical: "/nieuw-restaurant-amersfoort",
     },
     openGraph: {
+        images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
         title: "Ontdek De Tafelaar | Shared Dining Amersfoort",
         description: "Shared dining met lokale gerechten op de Kamp in Amersfoort. Ontdek De Tafelaar.",
     },

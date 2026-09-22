@@ -19,6 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
             canonical: "/beste-restaurant-amersfoort",
         },
         openGraph: {
+            images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
             title: `Beste Restaurant Amersfoort | De Tafelaar, ${g.ratingText} op Google`,
             description: `${g.ratingText} op Google, ${g.countText} reviews. Shared dining met lokale gerechten op de Kamp in Amersfoort.`,
         },

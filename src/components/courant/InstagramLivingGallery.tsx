@@ -50,7 +50,7 @@ function IGFrame({
                         className="absolute inset-0 h-full w-full object-cover"
                     />
                 ) : (
-                    <Image
+                    <Image unoptimized
                         src={img.url}
                         alt={post.title}
                         fill

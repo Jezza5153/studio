@@ -15,6 +15,7 @@ export const metadata: Metadata = {
         canonical: "/duurzaam-restaurant-amersfoort",
     },
     openGraph: {
+        images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
         title: "Duurzaam Restaurant Amersfoort | Lokaal & Seizoensgebonden | De Tafelaar",
         description:
             "Duurzaam uit eten in Amersfoort? De Tafelaar werkt met 14+ lokale producenten, seizoensgebonden ingrediënten en biologische dranken.",

@@ -17,6 +17,7 @@ export const metadata: Metadata = {
         canonical: "/romantisch-diner-amersfoort",
     },
     openGraph: {
+        images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
         title: "Romantisch Diner Amersfoort | Shared Dining voor Twee | De Tafelaar",
         description:
             "Romantisch uit eten in Amersfoort? Intiem shared dining op de Kamp. Gerechten delen, lokale wijnen. Perfect voor een date.",

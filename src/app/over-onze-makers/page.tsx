@@ -56,6 +56,7 @@ export const metadata: Metadata = {
     canonical: "/over-onze-makers",
   },
   openGraph: {
+    images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
     title: "Onze Makers & Leveranciers | De Tafelaar Amersfoort",
     description:
       "Lokale brouwerijen, wijnmakers en leveranciers van De Tafelaar. Ontdek wie er achter onze gerechten en dranken zit.",

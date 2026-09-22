@@ -35,7 +35,7 @@ function WallCard({ item, batchIndex }: { item: FeedItem; batchIndex: number }) 
                 {/* Image */}
                 {thumb && !imgError && (
                     <div className="relative aspect-[4/3] w-full overflow-hidden">
-                        <Image
+                        <Image unoptimized
                             src={thumb.url}
                             alt={item.title}
                             fill

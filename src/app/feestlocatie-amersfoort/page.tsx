@@ -17,6 +17,7 @@ export const metadata: Metadata = {
         canonical: "/feestlocatie-amersfoort",
     },
     openGraph: {
+        images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
         title: "Feestlocatie Amersfoort Centrum | Tot 100 Personen | De Tafelaar",
         description:
             "Feestlocatie in Amersfoort centrum: feest, verjaardag of borrel tot 100 personen bij De Tafelaar op de Kamp.",

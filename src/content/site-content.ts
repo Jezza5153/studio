@@ -31,6 +31,7 @@ export const meerLinks = [
   { href: "/bedrijfsdiner-amersfoort", label: "Bedrijfsdiner" },
   { href: "/prive-diner-amersfoort", label: "Privé diner" },
   { href: "/openingstijden", label: "Openingstijden" },
+  { href: "/vacatures", label: "Vacatures" },
 ];
 
 export const contactDetails = {
@@ -332,7 +333,7 @@ export const makers: Maker[] = [
     location: "Amersfoort",
     blurb:
       "Kleine batches met karakter, geïnspireerd op het Mirakel van Amersfoort (1444).",
-    website: "https://brouwerijmirakel.nl",
+    website: "https://untappd.com/tMirakel",
     imageId: "producer-mirakel",
     story: [
       "Zeven Amersfoorters bliezen het lokale mirakel nieuw leven in met ambachtelijke speciaalbieren.",
@@ -362,7 +363,7 @@ export const makers: Maker[] = [
     location: "Amersfoort",
     blurb:
       "Biologische & natuurwijnen met verhaal: selectie op herkomst, stijl en match met onze keuken.",
-    website: "https://kortegarde.nl",
+    website: "https://www.kortegarde.com",
     imageId: "producer-kortegarde",
     story: [
       "Sterke focus op kwaliteit, vakkennis en persoonlijk advies.",

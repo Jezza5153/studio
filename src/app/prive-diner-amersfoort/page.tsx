@@ -17,6 +17,7 @@ export const metadata: Metadata = {
         canonical: "/prive-diner-amersfoort",
     },
     openGraph: {
+        images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
         title: "Prive Diner Amersfoort | Private Dining bij De Tafelaar",
         description:
             "Private dining met shared dining concept. Exclusief tafelen voor groepen bij De Tafelaar op de Kamp.",

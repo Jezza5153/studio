@@ -17,6 +17,7 @@ export const metadata: Metadata = {
         canonical: "/restaurant-amersfoort-centrum",
     },
     openGraph: {
+        images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
         title: "Restaurant Amersfoort Centrum | De Tafelaar",
         description: "Shared dining met lokale gerechten op de Kamp. Hartje Amersfoort.",
     },

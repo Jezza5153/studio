@@ -8,11 +8,12 @@ import { ReserveerButton } from "@/components/reserveer-button";
 export const metadata: Metadata = {
     title: "Lunchkaart De Tafelaar | Lunch in Amersfoort Centrum",
     description:
-        "Lunchen bij De Tafelaar op Kamp 8 in Amersfoort centrum, 11:00-15:00: verse broodjes, salades met brood, bao buns, clubsandwich en de Tafelaars Plank om te delen. Bekijk de lunchkaart.",
+        "Lunch bij De Tafelaar op de Kamp in Amersfoort centrum, 11:00-15:00: verse broodjes, salades, bao buns en de Tafelaars Plank om te delen. Bekijk de lunchkaart.",
     alternates: {
         canonical: "/lunch",
     },
     openGraph: {
+        images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
         title: "Lunchkaart De Tafelaar | Lunch in Amersfoort Centrum",
         description:
             "Verse broodjes, salades met brood, bao buns en gerechten om te delen. Lunchen bij De Tafelaar op Kamp 8 in Amersfoort centrum, 11:00-15:00.",
@@ -37,7 +38,7 @@ function menuJsonLd() {
         "@id": `${SITE_URL}/lunch#menu`,
         name: LUNCH_MENU.title,
         description:
-            "Lunchkaart van De Tafelaar, verse broodjes, salades met brood, bao buns, de Tafelaars Plank om te delen en zoete hapjes. Geserveerd van 11:00 tot 15:00 in Amersfoort centrum.",
+            "Lunchkaart van De Tafelaar: verse broodjes, salades, bao buns, de Tafelaars Plank om te delen en zoete hapjes. Van 11:00 tot 15:00 in Amersfoort centrum.",
         url: `${SITE_URL}/lunch`,
         hasMenuSection: LUNCH_MENU.categories.map((category) => ({
             "@type": "MenuSection",

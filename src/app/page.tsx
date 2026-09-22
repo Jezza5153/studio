@@ -17,11 +17,11 @@ export async function generateMetadata(): Promise<Metadata> {
   const g = await getGoogleRating();
   return {
     title: "De Tafelaar | Restaurant Amersfoort, Lekker Eten & Shared Dining",
-    description: `Restaurant in Amersfoort: De Tafelaar op de Kamp. Shared dining voor lunch, borrel en diner met lokale seizoensgerechten. Ook Tafelaar Thuis (ophalen). ${g.ratingText} op Google. Op 5 min van de Flint. Wo t/m zo open.`,
+    description: `Shared dining restaurant op de Kamp in Amersfoort centrum: lunch, borrel en diner met lokale seizoensgerechten, ook Tafelaar Thuis (ophalen). ${g.ratingText} op Google, 5 min van de Flint.`,
     alternates: { canonical: "/" },
     openGraph: {
       title: "De Tafelaar | Restaurant Amersfoort, Lekker Eten & Shared Dining",
-      description: `Restaurant in Amersfoort: shared dining voor lunch, borrel en diner met lokale seizoensgerechten op de Kamp. Ook Tafelaar Thuis (ophalen). ${g.ratingText} op Google. Op 5 min van de Flint.`,
+      description: `Shared dining op de Kamp in Amersfoort: lunch, borrel en diner met lokale seizoensgerechten. Ook Tafelaar Thuis (ophalen). ${g.ratingText} op Google.`,
       images: [{ url: "/pics/terras-kamp.jpg" }],
     },
     keywords: [

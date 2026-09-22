@@ -13,6 +13,7 @@ export const metadata: Metadata = {
         "Alle updates, evenementen, reviews en persberichten van De Tafelaar op de Kamp in Amersfoort. Shared dining nieuws, menu-wijzigingen en gasten-reviews.",
     alternates: { canonical: "/updates" },
     openGraph: {
+        images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
         title: "Updates & Nieuws | De Tafelaar Amersfoort",
         description:
             "Updates, reviews en persberichten van shared dining restaurant De Tafelaar in Amersfoort centrum.",
@@ -38,7 +39,7 @@ function UpdateCard({ item }: { item: FeedItem }) {
         >
             {thumb && (
                 <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden sm:h-28 sm:w-28">
-                    <Image
+                    <Image unoptimized
                         src={thumb.url}
                         alt={item.title}
                         fill

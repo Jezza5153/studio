@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     canonical: "/openingstijden",
   },
   openGraph: {
+    images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
     title: "Openingstijden De Tafelaar Amersfoort | Wanneer Open",
     description:
       "Openingstijden van De Tafelaar op de Kamp 8 in Amersfoort centrum. Wo\u2013do 17:00\u201323:00, vr\u2013za 11:00\u201300:00, zo 11:00\u201323:00. Reserveer online of bel +31 6 341 279 32.",

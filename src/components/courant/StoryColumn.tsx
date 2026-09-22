@@ -34,7 +34,7 @@ function StoryCard({ item, index }: { item: FeedItem; index: number }) {
                 {/* Thumbnail */}
                 {thumb && (
                     <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden sm:h-24 sm:w-24">
-                        <Image
+                        <Image unoptimized
                             src={thumb.url}
                             alt={item.title}
                             fill

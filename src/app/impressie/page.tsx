@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/impressie" },
   robots: { index: true, follow: true },
   openGraph: {
+    images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
     title: "Impressie & Reviews | De Tafelaar Amersfoort",
     description:
       "Sfeerimpressie en reviews van De Tafelaar in Amersfoort. Bekijk foto's van ons restaurant op de Kamp, onze gerechten en wat gasten zeggen.",

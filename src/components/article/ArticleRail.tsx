@@ -42,7 +42,7 @@ function StoryCard({ story }: { story: RelatedStory }) {
         >
             {thumb && (
                 <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden">
-                    <Image
+                    <Image unoptimized
                         src={thumb}
                         alt={story.title}
                         fill

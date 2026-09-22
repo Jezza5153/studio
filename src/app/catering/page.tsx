@@ -30,9 +30,10 @@ const JEZZA_URL = "https://www.jezzacooks.com";
 export const metadata: Metadata = {
   title: "Catering Amersfoort | Office Lunch & Zakelijk | Tafelaar × Jezza Cooks",
   description:
-    "Catering in Amersfoort centrum: office lunch vanaf €7,50 p.p., walking dinners en events tot 150 personen. Tafelaar × Jezza Cooks, bereid in onze restaurantkeuken op Kamp 8. Bezorgd op kantoor.",
+    "Catering Amersfoort: office lunch vanaf €7,50 p.p., walking dinners en events tot 150 personen. Bereid in onze restaurantkeuken op de Kamp, bezorgd op kantoor.",
   alternates: { canonical: "/catering" },
   openGraph: {
+    images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
     title: "Catering Amersfoort | Tafelaar × Jezza Cooks",
     description:
       "Office lunch, walking dinner en event catering uit onze restaurantkeuken op de Kamp. Vanaf €7,50 p.p., 10-150+ personen.",

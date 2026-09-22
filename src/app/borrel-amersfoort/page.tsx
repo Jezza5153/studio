@@ -17,6 +17,7 @@ export const metadata: Metadata = {
         canonical: "/borrel-amersfoort",
     },
     openGraph: {
+        images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
         title: "Borrelen in Amersfoort | De Tafelaar",
         description: "Borrelplanken en lokaal bier op de Kamp. Vrijdag t/m zondag open vanaf 11:00.",
     },

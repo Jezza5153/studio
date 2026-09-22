@@ -70,9 +70,9 @@ export default function MakersClient({ makers }: MakersClientProps) {
           <p className="mb-4 inline-block bg-foreground px-3.5 py-[7px] text-[11px] font-bold uppercase tracking-[0.2em] text-background">
             {makersIntro.kicker}
           </p>
-          <h1 className="font-headline text-3xl font-black tracking-tight sm:text-4xl md:text-5xl">
+          <h2 className="font-headline text-2xl font-extrabold tracking-tight sm:text-3xl md:text-4xl">
             {makersIntro.title}
-          </h1>
+          </h2>
           <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
             {makersIntro.lead}
           </p>

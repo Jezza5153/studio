@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     canonical: "/verhuur-en-groepen",
   },
   openGraph: {
+    images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
     title: "Feestlocatie & Bedrijfsdiner Amersfoort | De Tafelaar",
     description: "Unieke locatie voor feesten, borrels en zakelijke diners tot 100 personen. Op loopafstand van de Flint.",
   },

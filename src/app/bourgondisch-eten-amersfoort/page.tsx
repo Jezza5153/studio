@@ -15,6 +15,7 @@ export const metadata: Metadata = {
         canonical: "/bourgondisch-eten-amersfoort",
     },
     openGraph: {
+        images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
         title: "Bourgondisch Eten Amersfoort | De Tafelaar",
         description: "Shared dining met lokale gerechten. Bourgondisch genieten op de Kamp.",
     },

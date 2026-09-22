@@ -13,7 +13,7 @@ interface ArticleMetaBarProps {
 
 export function ArticleMetaBar({ category, publishedAt, readTime, slug, authorName }: ArticleMetaBarProps) {
     const [copied, setCopied] = useState(false);
-    const [origin, setOrigin] = useState("");
+    const [origin, setOrigin] = useState("https://www.tafelaaramersfoort.nl");
     const colors = CATEGORY_COLORS[category];
     const label = CATEGORY_LABELS[category] || category;
     const date = new Date(publishedAt);

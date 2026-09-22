@@ -51,6 +51,7 @@ export const metadata: Metadata = {
     canonical: "/over-ons",
   },
   openGraph: {
+    images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
     title: "Over De Tafelaar | Ons Verhaal, Restaurant Amersfoort Centrum",
     description: "Shared dining restaurant op de Kamp in Amersfoort. Ons verhaal, lokale producenten en seizoensgebonden gerechten.",
   },

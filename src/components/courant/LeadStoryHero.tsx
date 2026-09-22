@@ -21,7 +21,7 @@ export function LeadStoryHero({ story }: LeadStoryHeroProps) {
             {/* Hero image with Ken Burns */}
             <div className="relative h-[50vh] min-h-[400px] w-full sm:h-[60vh] md:h-[65vh]">
                 {heroImage ? (
-                    <Image
+                    <Image unoptimized
                         src={heroImage.url}
                         alt={story.title}
                         fill

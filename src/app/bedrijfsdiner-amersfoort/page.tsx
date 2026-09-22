@@ -17,6 +17,7 @@ export const metadata: Metadata = {
         canonical: "/bedrijfsdiner-amersfoort",
     },
     openGraph: {
+        images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
         title: "Bedrijfsdiner Amersfoort | Zakelijk Dineren bij De Tafelaar",
         description:
             "Shared dining voor teams en relaties. Chef's Choice vanaf 7 personen, tot 100 gasten bij De Tafelaar.",

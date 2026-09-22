@@ -6,7 +6,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Contact De Tafelaar | Reserveren & Bereikbaarheid Amersfoort",
   description:
-    "Neem contact op met De Tafelaar op de Kamp 8 in Amersfoort centrum. Reserveer online, bel +31 6 341 279 32 of mail. Op 5 min van de Flint; vanaf station Amersfoort ~22 min lopen of korter met bus/fiets.",
+    "Contact De Tafelaar, Kamp 8 in Amersfoort centrum: reserveer online, bel +31 6 341 279 32 of mail. Op 5 min lopen van de Flint, 22 min van het station.",
   alternates: {
     canonical: "/contact",
   },
@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     "de tafelaar adres",
   ],
   openGraph: {
+    images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
     title: "Contact De Tafelaar | Reserveren & Bereikbaarheid Amersfoort",
     description:
       "Neem contact op met De Tafelaar in Amersfoort. Reserveer online, bel of mail. Op 5 min van de Flint; vanaf station ~22 min lopen of korter met bus/fiets.",

@@ -17,6 +17,7 @@ export const metadata: Metadata = {
         canonical: "/uit-eten-amersfoort",
     },
     openGraph: {
+        images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
         title: "Uit Eten in Amersfoort | De Tafelaar",
         description: "Shared dining met lokale gerechten. Gezellig uit eten op de Kamp.",
     },

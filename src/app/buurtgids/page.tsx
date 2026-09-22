@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     canonical: "/buurtgids",
   },
   openGraph: {
+    images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
     title: "Buurtgids Flint - Eten & Restaurants vlakbij de Flint",
     description: "De beste restaurants en eten dichtbij de Flint Amersfoort. De Tafelaar ligt in de Kamp, op 5 min lopen.",
   },
