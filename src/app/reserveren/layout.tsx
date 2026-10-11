@@ -6,14 +6,14 @@ import { Clock, MapPin, Users, Phone } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "Reserveren bij De Tafelaar | Tafel Boeken Amersfoort Centrum",
-    description: "Reserveer online een tafel bij De Tafelaar in Amersfoort centrum: shared dining voor 2 tot 100 personen op de Kamp 8, do t/m zo. Of bel +31 6 341 279 32.",
+    description: "Reserveer online een tafel bij De Tafelaar in Amersfoort centrum: shared dining voor 2 tot 100 personen op de Kamp 8, ma en do t/m zo. Of bel +31 6 341 279 32.",
     alternates: {
         canonical: "/reserveren",
     },
     openGraph: {
         images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
         title: "Reserveren bij De Tafelaar | Tafel Boeken Amersfoort Centrum",
-        description: "Reserveer online een tafel bij De Tafelaar: shared dining voor 2-100 personen op de Kamp in Amersfoort. Open do t/m zo.",
+        description: "Reserveer online een tafel bij De Tafelaar: shared dining voor 2-100 personen op de Kamp in Amersfoort. Open ma en do t/m zo.",
     },
     keywords: [
         "reserveren de tafelaar",
@@ -35,7 +35,7 @@ const reserverenFaqs = [
     },
     {
         question: "Hoe laat kan ik reserveren?",
-        answer: "Donderdag 17:00-23:00, vrijdag en zaterdag 15:00-00:00, zondag 15:00-23:00. Maandag, dinsdag en woensdag gesloten.",
+        answer: "Maandag en donderdag 17:00-23:00, vrijdag en zaterdag 15:00-00:00, zondag 15:00-23:00. Dinsdag en woensdag gesloten.",
     },
     {
         question: "Kan ik reserveren voor een grote groep?",
@@ -86,7 +86,8 @@ export default function ReserverenLayout({
                                 <CardTitle className="text-lg">Openingstijden</CardTitle>
                             </div>
                             <dl className="space-y-1 text-sm">
-                                <div className="flex justify-between"><dt>Ma, di, wo</dt><dd className="text-muted-foreground">Gesloten</dd></div>
+                                <div className="flex justify-between"><dt>Maandag</dt><dd className="text-muted-foreground">17:00-23:00</dd></div>
+                                <div className="flex justify-between"><dt>Di, wo</dt><dd className="text-muted-foreground">Gesloten</dd></div>
                                 <div className="flex justify-between"><dt>Donderdag</dt><dd className="text-muted-foreground">17:00-23:00</dd></div>
                                 <div className="flex justify-between"><dt>Vrijdag</dt><dd className="text-muted-foreground">15:00-00:00</dd></div>
                                 <div className="flex justify-between"><dt>Zaterdag</dt><dd className="text-muted-foreground">15:00-00:00</dd></div>

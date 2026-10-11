@@ -46,7 +46,12 @@ export function jobPostingJsonLd(v: Vacature) {
           baseSalary: {
             "@type": "MonetaryAmount",
             currency: "EUR",
-            value: { "@type": "QuantitativeValue", minValue: v.salaris.min, maxValue: v.salaris.max, unitText: "HOUR" },
+            value: {
+              "@type": "QuantitativeValue",
+              minValue: v.salaris.min,
+              ...(v.salaris.max ? { maxValue: v.salaris.max } : {}),
+              unitText: "HOUR",
+            },
           },
         }
       : {}),

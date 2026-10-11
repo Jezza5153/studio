@@ -46,7 +46,7 @@ function buildHomeFaqs(g: GoogleRating) {
   return [
     {
       question: "Waar kan ik lekker eten in Amersfoort?",
-      answer: `De Tafelaar op de Kamp 8 is een van de best beoordeelde restaurants in Amersfoort (${g.ratingText} op Google). We serveren shared dining: gerechten die zo zijn samengesteld dat je ze makkelijk deelt, gemaakt met seizoensgebonden producten van lokale makers. Van €3,50 tot €15,50 per gerecht, gemiddeld €25-35 p.p. Open van donderdag t/m zondag.`,
+      answer: `De Tafelaar op de Kamp 8 is een van de best beoordeelde restaurants in Amersfoort (${g.ratingText} op Google). We serveren shared dining: gerechten die zo zijn samengesteld dat je ze makkelijk deelt, gemaakt met seizoensgebonden producten van lokale makers. Van €3,50 tot €15,50 per gerecht, gemiddeld €25-35 p.p. Open op maandag en van donderdag t/m zondag.`,
     },
     {
       question: "Wat is shared dining bij De Tafelaar?",
@@ -62,7 +62,7 @@ function buildHomeFaqs(g: GoogleRating) {
     },
     {
       question: "Wat zijn de openingstijden van De Tafelaar?",
-      answer: "Donderdag 17:00-23:00, vrijdag en zaterdag 15:00-00:00, zondag 15:00-23:00. Maandag, dinsdag en woensdag gesloten.",
+      answer: "Maandag en donderdag 17:00-23:00, vrijdag en zaterdag 15:00-00:00, zondag 15:00-23:00. Dinsdag en woensdag gesloten.",
     },
     {
       question: "Kan ik De Tafelaar huren voor een feest?",
@@ -330,7 +330,7 @@ export default async function Home() {
             De Tafelaar is een shared dining restaurant op de Kamp in het hart van Amersfoort centrum. Op zoek naar een plek om lekker te eten in Amersfoort? We serveren gerechten van lokale makers, samengesteld om te delen: van kazen en charcuterie tot warme seizoensgerechten en desserts. Alles om gezellig samen te delen aan tafel. Op loopafstand van Theater de Flint (5 min) en op een steenworp afstand van de Kamperbinnenpoort. Vanaf station Amersfoort Centraal ben je in circa 22 minuten lopend bij ons, of korter met bus of fiets.
           </p>
           <p>
-            Gerechten variëren van €3,50 tot €15,50. Reken op €25-35 per persoon voor een compleet diner. Kies je het Chef&apos;s Choice arrangement (€48 p.p.), dan laat je je verrassen door de keuken. Open voor borrel en diner op donderdag vanaf 17:00 en van vrijdag t/m zondag vanaf 15:00. Liever thuis genieten? Bekijk de kaart van{" "}
+            Gerechten variëren van €3,50 tot €15,50. Reken op €25-35 per persoon voor een compleet diner. Kies je het Chef&apos;s Choice arrangement (€48 p.p.), dan laat je je verrassen door de keuken. Open voor borrel en diner op maandag en donderdag vanaf 17:00 en van vrijdag t/m zondag vanaf 15:00. Liever thuis genieten? Bekijk de kaart van{" "}
             <Link href="/ophalen" className="font-bold text-primary underline underline-offset-4">Tafelaar Thuis</Link>, onze ophaalservice.
           </p>
         </div>
@@ -410,10 +410,10 @@ export default async function Home() {
           <div className="px-7 py-8 md:px-10">
             <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/80">Werken bij De Tafelaar</p>
             <h2 id="vacatures-band-title" className="mt-2 font-headline text-[clamp(24px,3vw,34px)] font-extrabold leading-tight">
-              We zoeken collega&apos;s voor de bediening en de keuken
+              We zoeken collega&apos;s voor de bediening, de leiding en de keuken
             </h2>
             <p className="mt-2 max-w-2xl text-[15px] text-white/90">
-              Bediening, kok en afwasser/keukenhulp, ook zonder ervaring welkom. Een klein team, lokale producten en vaste vrije dagen.
+              Bediening, assistent leidinggevende, kok en afwasser/keukenhulp, vanaf €15,21 per uur. Een klein team, lokale producten en vaste vrije dagen.
             </p>
           </div>
           <div className="border-t-[5px] border-foreground px-7 py-6 md:border-l-[5px] md:border-t-0 md:px-10">

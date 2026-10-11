@@ -43,7 +43,7 @@ const faqs = [
     },
     {
         question: "Kan ik De Tafelaar ook overdag huren?",
-        answer: "Ja, overdag en 's avonds. Zakelijk of prive, in overleg is veel mogelijk, ook op maandag t/m woensdag als we gesloten zijn.",
+        answer: "Ja, overdag en 's avonds. Zakelijk of prive, in overleg is veel mogelijk, ook op dinsdag en woensdag als we gesloten zijn.",
     },
     {
         question: "Wat voor feesten organiseren jullie?",
@@ -121,7 +121,7 @@ export default async function FeestlocatieAmersfoortPage() {
                                 </div>
                             </CardHeader>
                             <CardContent className="text-sm text-muted-foreground">
-                                Ook op maandag t/m woensdag in overleg. Zakelijk of prive, wij maken
+                                Ook op dinsdag en woensdag in overleg. Zakelijk of prive, wij maken
                                 het mogelijk.
                             </CardContent>
                         </Card>
@@ -162,7 +162,7 @@ export default async function FeestlocatieAmersfoortPage() {
                                 of korter met bus, fiets of taxi. Parkeergarage Beestenmarkt is op
                                 2 minuten loopafstand, ideaal voor gasten die met de auto komen. Met
                                 een {g.ratingText} op Google en {g.countText} reviews weet je dat je feest in goede handen
-                                is. Regulier geopend op donderdag (17:00-23:00) en vrijdag t/m zondag
+                                is. Regulier geopend op maandag en donderdag (17:00-23:00) en vrijdag t/m zondag
                                 (vanaf 15:00); op andere dagen in overleg.
                             </p>
                         </div>
