@@ -119,6 +119,10 @@ export function Footer() {
 
         <div className="border-t border-background/20 py-5 text-center text-xs text-background/50">
           &copy; {new Date().getFullYear()} De Tafelaar. Alle rechten voorbehouden.
+          <span className="mx-2 text-background/30">·</span>
+          <Link href="/privacy" className="transition-colors hover:text-background">
+            Privacy
+          </Link>
         </div>
       </div>
     </footer>
