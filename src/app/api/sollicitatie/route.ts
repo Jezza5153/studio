@@ -4,6 +4,7 @@ import { getVacature } from "@/content/vacatures";
 import { contactDetails } from "@/content/site-content";
 import { valideerSollicitatie } from "@/lib/sollicitatie";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
+import { escHtml, mailNaarRestaurant } from "@/lib/resend-mail";
 
 // Sollicitatieformulier op /vacatures/[slug].
 // - JSON (fetch vanuit het formulier) krijgt JSON terug.
@@ -121,5 +122,24 @@ export async function POST(request: Request) {
   }
 
   console.info(`[sollicitatie] nieuwe sollicitatie voor ${vacature.slug}`);
+
+  // Melding naar de restaurantmailbox. Opslaan is al gelukt; mislukt de mail, dan staat de
+  // sollicitatie gewoon in /admin.
+  const d = resultaat.data;
+  const regels = [
+    `Vacature: ${vacature.titel}`,
+    `Naam: ${d.naam}`,
+    `Telefoon: ${d.telefoon}`,
+    `E-mail: ${d.email ?? "niet opgegeven"}`,
+    `Beschikbaarheid: ${d.beschikbaarheid}`,
+  ];
+  const overzicht = "https://www.tafelaaramersfoort.nl/admin";
+  await mailNaarRestaurant({
+    subject: `Nieuwe sollicitatie: ${vacature.titel}, ${d.naam}`,
+    replyTo: d.email,
+    text: `Nieuwe sollicitatie via de website\n\n${regels.join("\n")}\n\nOver zichzelf:\n${d.bericht ?? "niets ingevuld"}\n\nAlle sollicitaties staan in ${overzicht}. Verwijder gegevens uiterlijk 4 weken na de procedure, ook uit deze mailbox.`,
+    html: `<p>Nieuwe sollicitatie via de website</p><p>${regels.map(escHtml).join("<br>")}</p><p><strong>Over zichzelf:</strong><br><span style="white-space:pre-wrap">${escHtml(d.bericht ?? "niets ingevuld")}</span></p><p>Alle sollicitaties staan in <a href="${overzicht}">het beheerpaneel</a>. Verwijder gegevens uiterlijk 4 weken na de procedure, ook uit deze mailbox.</p>`,
+  });
+
   return antwoord("verstuurd", { ok: true }, 201);
 }

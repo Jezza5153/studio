@@ -335,7 +335,11 @@ export function SollicitatieForm({ vacatureSlug, functie }: { vacatureSlug: stri
             className="mt-0.5 h-5 w-5 shrink-0 cursor-pointer accent-[hsl(var(--primary))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           />
           <label htmlFor={id("privacy")} className="cursor-pointer text-sm text-foreground">
-            Ik ga akkoord dat De Tafelaar mijn gegevens gebruikt voor deze sollicitatie
+            Ik ga akkoord dat De Tafelaar mijn gegevens gebruikt voor deze sollicitatie (zie de{" "}
+            <a href="/privacy" className="underline underline-offset-2" target="_blank" rel="noopener">
+              privacyverklaring
+            </a>
+            )
             <Verplicht />
           </label>
         </div>
