@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Feestlocatie & Groepen Amersfoort | De Tafelaar",
+  title: { absolute: "Feestlocatie & Groepen Amersfoort | De Tafelaar" },
   description:
     "Feest, bedrijfsdiner of groepsuitje in Amersfoort? De Tafelaar: verhuur tot 100 personen vlakbij de Flint. Chef's Choice vanaf 7 pers.",
   alternates: {

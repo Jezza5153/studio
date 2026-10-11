@@ -10,7 +10,7 @@ export const dynamic = "force-static";
 export const revalidate = 3600; // Google rating/review count refresh hourly (synced by /api/cron/ingest-reviews)
 
 export const metadata: Metadata = {
-    title: "Romantisch Diner Amersfoort | Shared Dining voor Twee | De Tafelaar",
+    title: { absolute: "Romantisch Diner Amersfoort | Shared Dining voor Twee | De Tafelaar" },
     description:
         "Romantisch uit eten in Amersfoort? De Tafelaar: intiem shared dining op de Kamp. Gerechten delen bij kaarslicht, lokale wijnen. Perfect voor een date.",
     alternates: {

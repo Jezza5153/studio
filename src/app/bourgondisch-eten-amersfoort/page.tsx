@@ -8,7 +8,7 @@ import { ReserveerButton } from "@/components/reserveer-button";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-    title: "Bourgondisch Eten in Amersfoort | Shared Dining De Tafelaar",
+    title: { absolute: "Bourgondisch Eten in Amersfoort | Shared Dining De Tafelaar" },
     description:
         "Op zoek naar bourgondisch eten in Amersfoort? De Tafelaar biedt shared dining met lokale, seizoensgebonden gerechten. Samen aan tafel in hartje Amersfoort.",
     alternates: {

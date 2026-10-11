@@ -14,7 +14,7 @@ import { ReserveerButton } from "@/components/reserveer-button";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-    title: "Eten voor Theater Amersfoort | Restaurant vlakbij de Flint | De Tafelaar",
+    title: { absolute: "Eten voor Theater Amersfoort | Restaurant vlakbij de Flint | De Tafelaar" },
     description:
         "Eten voor of na het theater in Amersfoort? De Tafelaar ligt op ongeveer 400 meter van de Flint (circa 5 min lopen). Shared dining met lokale gerechten. Reserveer nu.",
     alternates: {

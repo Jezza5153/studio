@@ -10,7 +10,7 @@ export const dynamic = "force-static";
 export const revalidate = 3600; // Google rating/review count refresh hourly (synced by /api/cron/ingest-reviews)
 
 export const metadata: Metadata = {
-    title: "Feestlocatie Amersfoort Centrum | Tot 100 Personen | De Tafelaar",
+    title: { absolute: "Feestlocatie Amersfoort Centrum | Tot 100 Personen | De Tafelaar" },
     description:
         "Feestlocatie in Amersfoort centrum: De Tafelaar op de Kamp. Feest, verjaardag of borrel tot 100 personen. Shared dining, eigen bar, flexibele opstelling.",
     alternates: {

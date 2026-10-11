@@ -11,7 +11,7 @@ import { SITE_URL, breadcrumbJsonLd, datumNl, mailtoSollicitatie, telHref } from
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Vacatures Amersfoort: werken bij restaurant De Tafelaar",
+  title: { absolute: "Vacatures Amersfoort: werken bij restaurant De Tafelaar" },
   description:
     "Werken in de horeca in Amersfoort centrum? De Tafelaar zoekt bediening, een kok en een afwasser/keukenhulp. Ook zonder ervaring welkom. Bekijk de vacatures.",
   alternates: { canonical: "/vacatures" },

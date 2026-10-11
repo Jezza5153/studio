@@ -10,7 +10,7 @@ export const dynamic = "force-static";
 export const revalidate = 3600; // Google rating/review count refresh hourly (synced by /api/cron/ingest-reviews)
 
 export const metadata: Metadata = {
-    title: "Uit Eten in Amersfoort | Shared Dining De Tafelaar",
+    title: { absolute: "Uit Eten in Amersfoort | Shared Dining De Tafelaar" },
     description:
         "Uit eten in Amersfoort? De Tafelaar: shared dining met lokale gerechten op de Kamp. Gezellig samen aan tafel, gerechten om te delen. Reserveer nu.",
     alternates: {

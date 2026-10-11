@@ -10,7 +10,7 @@ export const dynamic = "force-static";
 export const revalidate = 3600; // Google rating/review count refresh hourly (synced by /api/cron/ingest-reviews)
 
 export const metadata: Metadata = {
-    title: "Bedrijfsdiner Amersfoort | Zakelijk Dineren bij De Tafelaar",
+    title: { absolute: "Bedrijfsdiner Amersfoort | Zakelijk Dineren bij De Tafelaar" },
     description:
         "Bedrijfsdiner in Amersfoort? De Tafelaar: shared dining voor teams en relaties. Chef's Choice vanaf 7 personen, tot 100 gasten. Centraal op de Kamp.",
     alternates: {

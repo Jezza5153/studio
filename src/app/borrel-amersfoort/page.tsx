@@ -10,7 +10,7 @@ export const dynamic = "force-static";
 export const revalidate = 3600; // Google rating/review count refresh hourly (synced by /api/cron/ingest-reviews)
 
 export const metadata: Metadata = {
-    title: "Borrelen in Amersfoort | Borrelplanken & Lokaal Bier De Tafelaar",
+    title: { absolute: "Borrelen in Amersfoort | Borrelplanken & Lokaal Bier De Tafelaar" },
     description:
         "Borrelen in Amersfoort? De Tafelaar: borrelplanken, lokale bieren van Rock City & De Drie Ringen, en gerechten. Vrijdag t/m zondag open vanaf 15:00.",
     alternates: {

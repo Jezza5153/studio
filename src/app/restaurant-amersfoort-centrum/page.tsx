@@ -10,9 +10,9 @@ export const dynamic = "force-static";
 export const revalidate = 3600; // Google rating/review count refresh hourly (synced by /api/cron/ingest-reviews)
 
 export const metadata: Metadata = {
-    title: "Restaurant Amersfoort Centrum | Shared Dining De Tafelaar",
+    title: { absolute: "Restaurant Amersfoort Centrum | Shared Dining De Tafelaar" },
     description:
-        "Restaurant in Amersfoort centrum op de Kamp: De Tafelaar biedt shared dining met lokale gerechten. Vlakbij Flint, de Kamperbinnenpoort en het station. Open ma en vr t/m zo.",
+        "Restaurant in Amersfoort centrum op de Kamp: De Tafelaar, shared dining met lokale gerechten. Vlakbij de Flint, de Kamperbinnenpoort en het station. Open ma en vr t/m zo.",
     alternates: {
         canonical: "/restaurant-amersfoort-centrum",
     },

@@ -10,7 +10,7 @@ export const dynamic = "force-static";
 export const revalidate = 3600; // Google rating/review count refresh hourly (synced by /api/cron/ingest-reviews)
 
 export const metadata: Metadata = {
-    title: "Prive Diner Amersfoort | Private Dining bij De Tafelaar",
+    title: { absolute: "Prive Diner Amersfoort | Private Dining bij De Tafelaar" },
     description:
         "Prive diner in Amersfoort? De Tafelaar biedt private dining met shared dining concept. Exclusief tafelen voor groepen, op de Kamp in het centrum.",
     alternates: {

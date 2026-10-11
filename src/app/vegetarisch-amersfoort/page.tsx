@@ -10,7 +10,7 @@ export const dynamic = "force-static";
 export const revalidate = 3600; // Google rating/review count refresh hourly (synced by /api/cron/ingest-reviews)
 
 export const metadata: Metadata = {
-    title: "Vegetarisch Restaurant Amersfoort | Vegan & Veggie bij De Tafelaar",
+    title: { absolute: "Vegetarisch Restaurant Amersfoort | Vegan & Veggie bij De Tafelaar" },
     description:
         "Vegetarisch uit eten in Amersfoort? De Tafelaar: ruim aanbod vegetarische en vegan gerechten. Shared dining met seizoensgebonden groenten en lokale producten.",
     alternates: {

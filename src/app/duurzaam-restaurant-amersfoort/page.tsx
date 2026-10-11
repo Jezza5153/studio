@@ -8,7 +8,7 @@ import { ReserveerButton } from "@/components/reserveer-button";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-    title: "Duurzaam Restaurant Amersfoort | Lokaal & Seizoensgebonden | De Tafelaar",
+    title: { absolute: "Duurzaam Restaurant Amersfoort | Lokaal & Seizoensgebonden | De Tafelaar" },
     description:
         "Duurzaam uit eten in Amersfoort? De Tafelaar werkt met 14+ lokale producenten, seizoensgebonden ingrediënten en biologische dranken. Shared dining op de Kamp.",
     alternates: {

@@ -6,7 +6,7 @@ import { Clock, MapPin, Users, Phone } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "Reserveren bij De Tafelaar | Tafel Boeken Amersfoort Centrum",
-    description: "Reserveer online een tafel bij De Tafelaar in Amersfoort centrum. Shared dining voor 2 tot 100 personen op de Kamp 8, ma en vr t/m zo. Direct boeken of bel +31 6 341 279 32.",
+    description: "Reserveer online een tafel bij De Tafelaar in Amersfoort centrum: shared dining voor 2 tot 100 personen op de Kamp 8, ma en vr t/m zo. Of bel +31 6 341 279 32.",
     alternates: {
         canonical: "/reserveren",
     },
