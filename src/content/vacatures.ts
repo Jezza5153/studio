@@ -16,6 +16,8 @@ export type Vacature = {
   employmentType: ("PART_TIME" | "FULL_TIME")[];
   /** Geen ervaring of opleiding nodig: Google Jobs toont dit als filter. */
   zonderErvaring: boolean;
+  /** Bruto uurloon volgens de horeca-cao; Google Jobs toont vacatures met salaris prominenter. */
+  salaris?: { min: number; max: number; tekst: string };
   afbeelding: { src: string; alt: string };
   intro: string;
   doen: string[];
@@ -65,12 +67,19 @@ export const vacatures: Vacature[] = [
     slug: "zelfstandig-werkend-kok",
     titel: "Zelfstandig werkend kok",
     samenvatting:
-      "Koken in een open keuken met lokale seizoensproducten en gerechten om te delen. Parttime of fulltime, op de Kamp in Amersfoort centrum.",
+      "Koken in een open keuken met lokale seizoensproducten en gerechten om te delen. €15,21 tot €18,42 bruto per uur, parttime of fulltime, Amersfoort centrum.",
     dienstverband: "Parttime of fulltime",
     uren: "24 uur of meer per week, in overleg",
     dagen: `${WERKDAGEN}, in overleg ook overdag voor catering`,
     employmentType: ["PART_TIME", "FULL_TIME"],
     zonderErvaring: false,
+    // Horeca-cao loontabel per 1 juli 2026, functiegroep V (referentiefunctie zelfstandig werkend kok I),
+    // basisloon 20 jaar of ouder t/m eindloon, o.b.v. 1976 uur per jaar.
+    salaris: {
+      min: 15.21,
+      max: 18.42,
+      tekst: "€15,21 tot €18,42 bruto per uur (horeca-cao, functiegroep V), afhankelijk van ervaring",
+    },
     afbeelding: { src: "/pics/gerecht-boven.jpg", alt: "Seizoensgerecht om te delen uit de keuken van De Tafelaar" },
     intro:
       "In onze open keuken kook je gerechten die zijn samengesteld om te delen, met producten van makers uit de regio. De kaart beweegt mee met het seizoen, dus je krijgt ruimte om mee te denken.",
@@ -85,7 +94,7 @@ export const vacatures: Vacature[] = [
       "Beschikbaar van donderdag t/m zondag, in overleg ook overdag voor catering",
     ],
     bieden: [
-      "Salaris volgens de horeca-cao, afhankelijk van ervaring",
+      "€15,21 tot €18,42 bruto per uur volgens de horeca-cao (functiegroep V), bij 38 uur €2.505 tot €3.033 per maand, afhankelijk van ervaring",
       "Een keuken zonder franje waar smaak en product vooropstaan",
       "Vaste vrije dagen: op maandag, dinsdag en woensdag is de zaak dicht",
       "Werken naast een chef met ervaring in high-end keukens in Nederland en Australië",
@@ -168,7 +177,7 @@ export const vacatureFaqs = [
   {
     question: "Wat verdien je bij De Tafelaar?",
     answer:
-      "We betalen volgens de horeca-cao. Je uurloon hangt af van je leeftijd, ervaring en functie; dat bespreken we in het eerste gesprek. Tijdens je dienst eet je mee.",
+      "We betalen volgens de horeca-cao. Een zelfstandig werkend kok valt in functiegroep V: €15,21 tot €18,42 bruto per uur (loontabel per 1 juli 2026), afhankelijk van ervaring. Voor de bediening en de keukenhulp hangt het uurloon af van leeftijd en ervaring; dat bespreken we in het eerste gesprek. Tijdens je dienst eet je mee.",
   },
   {
     question: "Hoe solliciteer ik bij De Tafelaar?",

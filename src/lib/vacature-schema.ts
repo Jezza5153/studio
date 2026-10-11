@@ -41,6 +41,15 @@ export function jobPostingJsonLd(v: Vacature) {
     ...(v.zonderErvaring
       ? { experienceRequirements: "no requirements", educationRequirements: "no requirements" }
       : {}),
+    ...(v.salaris
+      ? {
+          baseSalary: {
+            "@type": "MonetaryAmount",
+            currency: "EUR",
+            value: { "@type": "QuantitativeValue", minValue: v.salaris.min, maxValue: v.salaris.max, unitText: "HOUR" },
+          },
+        }
+      : {}),
     directApply: false,
     hiringOrganization: {
       "@type": "Organization",

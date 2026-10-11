@@ -1,0 +1,9 @@
+{
+  "name": "tafelaar-google-rating-sync",
+  "private": true,
+  "type": "module",
+  "description": "Wekelijkse Google-score voor tafelaaramersfoort.nl, zonder Google API",
+  "dependencies": {
+    "playwright": "1.48.2"
+  }
+}
