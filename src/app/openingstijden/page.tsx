@@ -12,7 +12,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Openingstijden De Tafelaar Amersfoort | Wanneer Open",
   description:
-    "Openingstijden van De Tafelaar op de Kamp 8 in Amersfoort centrum: donderdag 17:00-23:00, vrijdag en zaterdag 15:00-00:00, zondag 15:00-23:00. Reserveer online of bel +31 6 341 279 32.",
+    "Openingstijden van De Tafelaar, Kamp 8 Amersfoort: do 17:00-23:00, vr en za 15:00-00:00, zo 15:00-23:00, ma t/m wo gesloten. Reserveer online of bel +31 6 341 279 32.",
   alternates: {
     canonical: "/openingstijden",
   },
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
     title: "Openingstijden De Tafelaar Amersfoort | Wanneer Open",
     description:
-      "Openingstijden van De Tafelaar op de Kamp 8 in Amersfoort centrum: donderdag 17:00-23:00, vrijdag en zaterdag 15:00-00:00, zondag 15:00-23:00. Reserveer online of bel +31 6 341 279 32.",
+      "Openingstijden van De Tafelaar, Kamp 8 Amersfoort: do 17:00-23:00, vr en za 15:00-00:00, zo 15:00-23:00, ma t/m wo gesloten. Reserveer online of bel +31 6 341 279 32.",
   },
   keywords: [
     "openingstijden de tafelaar",
