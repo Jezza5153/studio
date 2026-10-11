@@ -6,7 +6,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Contact De Tafelaar | Reserveren & Bereikbaarheid Amersfoort",
   description:
-    "Neem contact op met De Tafelaar op de Kamp 8 in Amersfoort centrum. Reserveer online, bel +31 6 341 279 32 of mail. Op 5 min van Flint; vanaf station Amersfoort ~22 min lopen of korter met bus/fiets.",
+    "Contact De Tafelaar, Kamp 8 in Amersfoort centrum: reserveer online, bel +31 6 341 279 32 of mail. Op 5 min lopen van de Flint, 22 min van het station.",
   alternates: {
     canonical: "/contact",
   },
@@ -18,9 +18,10 @@ export const metadata: Metadata = {
     "de tafelaar adres",
   ],
   openGraph: {
+    images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
     title: "Contact De Tafelaar | Reserveren & Bereikbaarheid Amersfoort",
     description:
-      "Neem contact op met De Tafelaar in Amersfoort. Reserveer online, bel of mail. Op 5 min van Flint; vanaf station ~22 min lopen of korter met bus/fiets.",
+      "Neem contact op met De Tafelaar in Amersfoort. Reserveer online, bel of mail. Op 5 min van de Flint; vanaf station ~22 min lopen of korter met bus/fiets.",
   },
 };
 
@@ -79,7 +80,7 @@ export default function ReserverenPage() {
       <div className="container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-20">
       {/* Hero */}
       <div className="text-center mb-12 md:mb-14">
-        <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl tracking-tight">
+        <h1 className="font-headline text-3xl font-black leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">
           Contact De Tafelaar Amersfoort
         </h1>
         <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
@@ -91,9 +92,9 @@ export default function ReserverenPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
         {/* Left column */}
         <div className="lg:col-span-2">
-          <Card className="rounded-2xl border bg-card">
+          <Card className="border-2 border-foreground bg-white">
             <CardHeader className="pb-4 md:pb-6">
-              <CardTitle className="font-headline text-2xl sm:text-3xl tracking-tight">
+              <CardTitle className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight">
                 Reserveer uw tafel
               </CardTitle>
             </CardHeader>
@@ -148,7 +149,7 @@ export default function ReserverenPage() {
               {/* Knop naar Verhuur & Groepen */}
               <div className="mt-4">
                 <Link href="/verhuur-en-groepen" prefetch={false}>
-                  <Button variant="outline" className="rounded-xl">Naar “Verhuur & Groepen”</Button>
+                  <Button variant="outline" className="">Naar “Verhuur & Groepen”</Button>
                 </Link>
               </div>
 
@@ -158,9 +159,9 @@ export default function ReserverenPage() {
 
         {/* Right column: FAQ + tijden */}
         <div className="space-y-8">
-          <Card className="rounded-2xl border bg-card">
+          <Card className="border-2 border-foreground bg-white">
             <CardHeader className="pb-3 md:pb-4">
-              <CardTitle className="font-headline text-2xl sm:text-3xl tracking-tight">
+              <CardTitle className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight">
                 Veelgestelde Vragen
               </CardTitle>
             </CardHeader>
@@ -180,7 +181,7 @@ export default function ReserverenPage() {
             </CardContent>
           </Card>
 
-          <Card className="rounded-2xl border bg-card">
+          <Card className="border-2 border-foreground bg-white">
             <CardHeader className="pb-3 md:pb-4">
               <CardTitle className="font-headline text-xl tracking-tight">Openingstijden</CardTitle>
             </CardHeader>
@@ -202,18 +203,18 @@ export default function ReserverenPage() {
       </div>
       {/* Bereikbaarheid */}
       <section className="max-w-3xl mx-auto mt-12">
-        <Card className="rounded-2xl border p-6 sm:p-8">
-          <h2 className="font-headline text-2xl sm:text-3xl tracking-tight mb-4">
+        <Card className="border-2 border-foreground p-6 sm:p-8">
+          <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-4">
             Bereikbaarheid
           </h2>
           <div className="space-y-4 text-muted-foreground">
             <p>
               De Tafelaar ligt op de Kamp 8, midden in het centrum van Amersfoort. Theater de Flint
-              is op 5 minuten loopafstand — ideaal voor een diner voor of na een voorstelling.
+              is op 5 minuten loopafstand, ideaal voor een diner voor of na een voorstelling.
             </p>
             <p>
               Station Amersfoort Centraal ligt iets buiten het centrum: vanaf het station is het
-              ongeveer 22 minuten lopen naar de Kamp, of een korte rit van zo&apos;n 5–10 minuten
+              ongeveer 22 minuten lopen naar de Kamp, of een korte rit van zo&apos;n 5-10 minuten
               met bus, fiets of taxi.
             </p>
             <p>
@@ -228,16 +229,16 @@ export default function ReserverenPage() {
       <section className="max-w-2xl mx-auto mt-12 mb-4 text-center">
         <div className="flex flex-wrap justify-center gap-3">
           <Link href="/openingstijden">
-            <Button variant="outline" className="rounded-xl">Openingstijden</Button>
+            <Button variant="outline" className="">Openingstijden</Button>
           </Link>
           <Link href="/menu">
-            <Button variant="outline" className="rounded-xl">Menukaart</Button>
+            <Button variant="outline" className="">Menukaart</Button>
           </Link>
           <Link href="/reserveren">
-            <Button variant="outline" className="rounded-xl">Reserveren</Button>
+            <Button variant="outline" className="">Reserveren</Button>
           </Link>
           <Link href="/eten-voor-theater-de-flint">
-            <Button variant="outline" className="rounded-xl">Eten voor de Flint</Button>
+            <Button variant="outline" className="">Eten voor de Flint</Button>
           </Link>
         </div>
       </section>

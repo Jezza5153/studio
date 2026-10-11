@@ -2,11 +2,11 @@
 "use client";
 
 import { useMemo, useState, useCallback } from "react";
+import { KaartNav } from "@/components/kaart-nav";
 import { DINNER_MENU, type MenuCategory } from "@/content/menu";
 import { Info, Share2, Leaf } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import Link from "next/link";
 import { ReserveerButton } from "@/components/reserveer-button";
 import { MenuRow } from "./MenuRow";
 import {
@@ -31,7 +31,7 @@ export default function MenuPage() {
         const url = typeof window !== "undefined" ? window.location.href : "";
         try {
             if (navigator.share) {
-                await navigator.share({ title: "De Tafelaar – Menu", text: "Ons menu bekijken?", url });
+                await navigator.share({ title: "De Tafelaar, Menu", text: "Ons menu bekijken?", url });
             } else {
                 await navigator.clipboard.writeText(url);
                 setCopied(true);
@@ -44,47 +44,27 @@ export default function MenuPage() {
         <div className="container mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-16">
             {/* ===== HERO ===== */}
             <header className="mb-8 sm:mb-10 md:mb-12">
-                <Card className="rounded-2xl border bg-card p-6 sm:p-8">
+                <Card className="border-2 border-foreground bg-white p-6 sm:p-8">
                     <div className="flex items-start justify-between gap-4">
                         <div className="min-w-0">
                             {DINNER_MENU.serviceNote && (
-                                <p className="inline-block text-xs tracking-widest uppercase text-primary/80 mb-2">
+                                <p className="mb-4 inline-block bg-foreground px-3.5 py-[7px] text-[11px] font-bold uppercase tracking-[0.2em] text-background">
                                     {DINNER_MENU.serviceNote}
                                 </p>
                             )}
-                            <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl tracking-tight">
+                            <h1 className="font-headline text-3xl font-black leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">
                                 Menukaart De Tafelaar
                             </h1>
                             <p className="mt-2 max-w-prose text-base sm:text-lg text-muted-foreground leading-relaxed">
-                                Shared dining in Amersfoort centrum: bestel 2 à 3 gerechtjes per persoon en deel ze
-                                samen aan tafel. Van kazen en charcuterie tot warme seizoensgerechten en desserts —
-                                bereid met lokale producten uit de regio. Gerechten van €3,50 tot €15,50, of kies
+                                Shared dining in Amersfoort centrum: bestel 2 à 3 gerechten per persoon en deel ze
+                                samen aan tafel. Van kazen en charcuterie tot warme seizoensgerechten en desserts, bereid met lokale producten uit de regio. Gerechten van €3,50 tot €15,50, of kies
                                 het Chef&apos;s Choice (€48 p.p.).
                             </p>
 
-                            <div className="mt-5 flex flex-wrap gap-2 sm:gap-3">
+                            <div className="mt-5">
                                 <ReserveerButton size="sm" label="Reserveer tafel" />
-                                <Button asChild size="sm" variant="outline" className="rounded-xl">
-                                    <Link href="/lunch">Lunchkaart</Link>
-                                </Button>
-                                <Button asChild size="sm" variant="outline" className="rounded-xl">
-                                    <Link href="/drank">Drankenkaart</Link>
-                                </Button>
-                                <Button asChild size="sm" variant="outline" className="rounded-xl">
-                                    <Link href="/ophalen">Ophalen</Link>
-                                </Button>
                             </div>
-
-                            <nav className="mt-4" aria-label="Menu switch">
-                                <div className="inline-flex items-center gap-2">
-                                    <Button asChild size="sm" variant="secondary" aria-current="page">
-                                        <Link href="/menu">Eten</Link>
-                                    </Button>
-                                    <Button asChild size="sm" variant="outline">
-                                        <Link href="/drank">Dranken</Link>
-                                    </Button>
-                                </div>
-                            </nav>
+                            <KaartNav current="diner" className="mt-3" />
                         </div>
 
                         <Button
@@ -102,7 +82,7 @@ export default function MenuPage() {
 
             {/* ===== LEGEND ===== */}
             <section className="mb-8 sm:mb-10 md:mb-12">
-                <div className="rounded-2xl border bg-card/80 p-4 md:p-6">
+                <div className="border-2 border-foreground bg-white p-4 md:p-6">
                     <div className="flex flex-wrap items-start gap-6 md:gap-10">
                         {usedTags.length > 0 && (
                             <div className="flex items-center gap-3">
@@ -157,13 +137,13 @@ export default function MenuPage() {
                         <section
                             key={category.id}
                             id={category.id}
-                            className="rounded-2xl border bg-card/90 p-6 md:p-8"
+                            className="border-2 border-foreground bg-white p-6 md:p-8"
                             aria-labelledby={`${category.id}-title`}
                         >
                             <div className="mb-5">
                                 <h2
                                     id={`${category.id}-title`}
-                                    className="font-headline text-2xl md:text-3xl tracking-tight"
+                                    className="font-headline text-2xl font-extrabold tracking-tight md:text-3xl"
                                 >
                                     {category.name}
                                 </h2>
@@ -193,7 +173,7 @@ export default function MenuPage() {
             <footer className="mt-10 md:mt-14 border-t pt-6 text-center text-sm text-muted-foreground">
                 <p className="inline-flex items-center justify-center gap-2">
                     <Info className="h-4 w-4" />
-                    Heeft u een allergie? Laat het ons weten — we denken graag mee.
+                    Heeft u een allergie? Laat het ons weten, we denken graag mee.
                 </p>
             </footer>
         </div>

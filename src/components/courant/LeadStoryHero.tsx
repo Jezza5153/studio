@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import Image from "next/image";
+import { SafeImage } from "@/components/safe-image";
 import Link from "next/link";
 import type { FeedItem } from "@prisma/client";
 import { parseMedia } from "@/lib/queries/feed";
@@ -21,7 +21,7 @@ export function LeadStoryHero({ story }: LeadStoryHeroProps) {
             {/* Hero image with Ken Burns */}
             <div className="relative h-[50vh] min-h-[400px] w-full sm:h-[60vh] md:h-[65vh]">
                 {heroImage ? (
-                    <Image
+                    <SafeImage
                         src={heroImage.url}
                         alt={story.title}
                         fill
@@ -43,7 +43,7 @@ export function LeadStoryHero({ story }: LeadStoryHeroProps) {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
-                        className={`mb-3 inline-block w-fit rounded-full ${CATEGORY_COLORS[story.category]?.pill || "bg-primary/90"} px-3 py-1 text-xs font-semibold uppercase tracking-widest text-white`}
+                        className={`mb-3 inline-block w-fit ${CATEGORY_COLORS[story.category]?.pill || "bg-primary/90"} px-3 py-1 text-xs font-semibold uppercase tracking-widest text-white`}
                     >
                         {CATEGORY_LABELS[story.category] || "Uitgelicht"}
                     </motion.span>
@@ -81,7 +81,7 @@ export function LeadStoryHero({ story }: LeadStoryHeroProps) {
                     >
                         <Link
                             href={`/updates/${story.slug}`}
-                            className="group inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-semibold text-foreground shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-white/20"
+                            className="group inline-flex items-center gap-2 bg-white px-6 py-3 text-sm font-semibold text-foreground shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-white/20"
                         >
                             Lees verder
                             <span className="transition-transform group-hover:translate-x-1">

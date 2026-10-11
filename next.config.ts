@@ -57,10 +57,27 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        // Legacy lunch landing page. Lunch service is running again, so send
-        // the still-indexed URL to the real lunchkaart instead of the diner menu.
+        // Oude evenementpagina's (Moederdag high tea, Eten met Peter) zijn weg;
+        // nog geindexeerde en gedeelde links landen op de agenda.
+        source: "/moederdag-high-tea-amersfoort",
+        destination: "/agenda",
+        permanent: true,
+      },
+      {
+        source: "/eten-met-peter",
+        destination: "/agenda",
+        permanent: true,
+      },
+      {
+        // Geen lunch meer sinds de openingstijden van oktober 2026 (vr t/m zo vanaf
+        // 15:00). Tijdelijke redirect, zodat /lunch terug kan als de lunch terugkomt.
+        source: "/lunch",
+        destination: "/menu",
+        permanent: false,
+      },
+      {
         source: "/lunch-amersfoort",
-        destination: "/lunch",
+        destination: "/menu",
         permanent: true,
       },
     ];

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import Image from "next/image";
+import { SafeImage } from "@/components/safe-image";
 import Link from "next/link";
 import type { FeedItem } from "@prisma/client";
 import { parseMedia } from "@/lib/queries/feed";
@@ -29,12 +29,12 @@ function StoryCard({ item, index }: { item: FeedItem; index: number }) {
         >
             <Link
                 href={`/updates/${item.slug}`}
-                className="flex gap-4 rounded-lg p-3 transition-all duration-200 hover:-translate-y-0.5 hover:bg-foreground/5 hover:shadow-md"
+                className="flex gap-4 p-3 transition-all duration-200 hover:-translate-y-0.5 hover:bg-foreground/5 hover:shadow-md"
             >
                 {/* Thumbnail */}
                 {thumb && (
-                    <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-md sm:h-24 sm:w-24">
-                        <Image
+                    <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden sm:h-24 sm:w-24">
+                        <SafeImage
                             src={thumb.url}
                             alt={item.title}
                             fill
@@ -89,7 +89,7 @@ export function StoryColumn({ stories }: StoryColumnProps) {
                         role="tab"
                         aria-selected={activeCategory === pill.value}
                         onClick={() => setActiveCategory(pill.value)}
-                        className={`rounded-full px-3 py-1 text-xs font-medium transition-all ${activeCategory === pill.value
+                        className={`px-3 py-1 text-xs font-medium transition-all ${activeCategory === pill.value
                             ? "bg-primary text-primary-foreground shadow-sm"
                             : "bg-foreground/5 text-muted-foreground hover:bg-foreground/10"
                             }`}

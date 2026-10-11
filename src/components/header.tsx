@@ -1,10 +1,9 @@
-
 "use client";
 
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "./ui/button";
 import {
   Sheet,
@@ -13,86 +12,95 @@ import {
   SheetClose,
   SheetTitle,
 } from "./ui/sheet";
-import { Menu as MenuIcon } from "lucide-react";
+import { ChevronDown, Menu as MenuIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { navLinks } from "@/content/site-content";
+import { navLinks, meerLinks } from "@/content/site-content";
 import { ReserveerButton } from "./reserveer-button";
 
-export function Header() {
-  const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
+const focusRing =
+  "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2";
+
+function MeerDropdown({ pathname }: { pathname: string }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 2);
-    onScroll(); // set initial
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    if (!open) return;
+    const onClick = (e: MouseEvent) => {
+      if (!ref.current?.contains(e.target as Node)) setOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("click", onClick);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("click", onClick);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
 
-  const focusRing =
-    "focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2";
+  useEffect(() => setOpen(false), [pathname]);
 
-  const NavLinks = ({
-    className,
-    onItemClick,
-  }: {
-    className?: string;
-    onItemClick?: () => void;
-  }) => (
-    <nav className={cn("flex flex-col items-start gap-2 text-lg", className)}>
-      {navLinks.map((link) => {
-        const isActive = pathname === link.href;
-        return (
-          <SheetClose asChild key={link.href}>
+  return (
+    <div ref={ref} className="relative">
+      <button
+        type="button"
+        aria-haspopup="menu"
+        aria-expanded={open}
+        onClick={() => setOpen((v) => !v)}
+        className={cn(
+          "inline-flex items-center gap-1 rounded-md text-[15px] font-medium text-muted-foreground transition-colors hover:text-primary",
+          focusRing,
+        )}
+      >
+        Meer
+        <ChevronDown className={cn("h-4 w-4 transition-transform", open && "rotate-180")} aria-hidden />
+      </button>
+      {open && (
+        <div
+          role="menu"
+          className="absolute right-0 top-[calc(100%+18px)] z-50 grid min-w-[560px] grid-cols-2 gap-x-2 border-2 border-foreground bg-white p-2 shadow-[6px_6px_0_hsl(var(--foreground))]"
+        >
+          {meerLinks.map((link) => (
             <Link
+              key={link.href}
               href={link.href}
-              aria-current={isActive ? "page" : undefined}
-              onClick={onItemClick}
+              role="menuitem"
               className={cn(
-                "relative text-lg font-medium transition-colors rounded-md py-2",
+                "block px-4 py-2 text-[13.5px] font-semibold text-foreground transition-colors hover:bg-secondary",
+                pathname === link.href && "bg-secondary",
                 focusRing,
-                isActive ? "text-primary" : "text-muted-foreground",
-                // underline indicator
-                "after:absolute after:inset-x-0 after:-bottom-1 after:h-0.5 after:rounded-full",
-                isActive
-                  ? "after:bg-primary"
-                  : "after:bg-transparent hover:text-primary"
               )}
             >
               {link.label}
             </Link>
-          </SheetClose>
-        );
-      })}
-    </nav>
+          ))}
+        </div>
+      )}
+    </div>
   );
+}
+
+export function Header() {
+  const pathname = usePathname();
 
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur transition-shadow supports-[backdrop-filter]:bg-background/60",
-        scrolled && "shadow-sm"
-      )}
-    >
-      <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 md:px-8">
-        {/* Logo */}
-        <Link
-          href="/"
-          className="mr-8 flex items-center"
-          aria-label="De Tafelaar – home"
-        >
+    <header className="sticky top-0 z-50 w-full border-b-[5px] border-foreground bg-background">
+      <div className="container mx-auto flex h-[72px] items-center justify-between px-4 sm:px-6 md:px-8">
+        <Link href="/" className="mr-6 flex items-center" aria-label="De Tafelaar, home">
           <Image
             src="/logo.png"
             alt="De Tafelaar logo"
-            width={288} // natural width of your logo file
-            height={80} // natural height of your logo file
-            className="h-8 md:h-10 w-auto" // ✅ scale by height only
+            width={288}
+            height={80}
+            className="h-8 w-auto md:h-10"
             priority
           />
         </Link>
 
-        {/* Desktop nav */}
-        <nav className="hidden lg:flex flex-1 items-center justify-end gap-6">
+        {/* Desktop */}
+        <nav className="hidden flex-1 items-center justify-end gap-5 whitespace-nowrap xl:flex" aria-label="Hoofdmenu">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
@@ -101,60 +109,78 @@ export function Header() {
                 href={link.href}
                 aria-current={isActive ? "page" : undefined}
                 className={cn(
-                  "relative text-[15px] font-medium transition-colors rounded-md",
+                  "relative rounded-md text-[15px] font-medium transition-colors",
+                  "after:absolute after:inset-x-0 after:-bottom-1.5 after:h-0.5",
+                  isActive ? "text-primary after:bg-primary" : "text-muted-foreground after:bg-transparent hover:text-primary",
                   focusRing,
-                  isActive ? "text-primary" : "text-muted-foreground",
-                  // underline indicator
-                  "after:absolute after:inset-x-0 after:-bottom-1.5 after:h-0.5 after:rounded-full",
-                  isActive
-                    ? "after:bg-primary"
-                    : "after:bg-transparent hover:text-primary"
                 )}
               >
                 {link.label}
               </Link>
             );
           })}
-          <ReserveerButton
-            size="sm"
-            className="ml-4 shadow-sm hover:opacity-90"
-            label="Reserveer nu"
-          />
+          <MeerDropdown pathname={pathname} />
+          <ReserveerButton size="sm" className="ml-3" label="Reserveer nu" />
         </nav>
 
-        {/* Mobile menu */}
-        <div className="flex lg:hidden items-center">
+        {/* Mobile */}
+        <div className="flex items-center xl:hidden">
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" aria-label="Open menu">
+              <Button
+                variant="outline"
+                size="icon"
+                aria-label="Menu openen"
+                className="h-11 w-11 border-2 border-foreground shadow-[3px_3px_0_hsl(var(--foreground))]"
+              >
                 <MenuIcon className="h-6 w-6" />
               </Button>
             </SheetTrigger>
 
-            <SheetContent side="right" className="w-[80vw] sm:w-[50vw] p-0">
+            <SheetContent side="right" className="w-[86vw] border-l-[5px] border-foreground bg-background p-0 sm:w-[420px]">
               <SheetTitle className="sr-only">Menu</SheetTitle>
-              <div className="p-6 max-h-dvh overflow-auto">
-                <Link href="/" className="mb-8 block">
-                  <Image
-                    src="/logo.png"
-                    alt="De Tafelaar logo"
-                    width={288}
-                    height={80}
-                    className="h-10 w-auto" // slightly bigger in drawer
-                  />
-                </Link>
+              <div className="max-h-dvh overflow-auto p-6">
+                <SheetClose asChild>
+                  <Link href="/" className="mb-6 block">
+                    <Image src="/logo.png" alt="De Tafelaar logo" width={288} height={80} className="h-10 w-auto" />
+                  </Link>
+                </SheetClose>
 
-                {/* Nav */}
-                <NavLinks />
+                <nav className="flex flex-col" aria-label="Menu">
+                  {navLinks.map((link) => (
+                    <SheetClose asChild key={link.href}>
+                      <Link
+                        href={link.href}
+                        aria-current={pathname === link.href ? "page" : undefined}
+                        className={cn(
+                          "border-b border-dashed border-border py-3 text-base font-semibold",
+                          pathname === link.href ? "text-primary" : "text-foreground",
+                          focusRing,
+                        )}
+                      >
+                        {link.label}
+                      </Link>
+                    </SheetClose>
+                  ))}
+                </nav>
 
-                {/* Divider + CTA */}
-                <div className="mt-4 border-t pt-4">
+                <p className="mt-5 mb-1 text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground">Meer</p>
+                <nav className="flex flex-col" aria-label="Meer pagina's">
+                  {meerLinks.map((link) => (
+                    <SheetClose asChild key={link.href}>
+                      <Link
+                        href={link.href}
+                        className={cn("py-2 text-[15px] font-medium text-muted-foreground hover:text-foreground", focusRing)}
+                      >
+                        {link.label}
+                      </Link>
+                    </SheetClose>
+                  ))}
+                </nav>
+
+                <div className="mt-5 border-t-2 border-foreground pt-5">
                   <SheetClose asChild>
-                    <ReserveerButton
-                      size="sm"
-                      className="w-full hover:opacity-90"
-                      label="Reserveer nu"
-                    />
+                    <ReserveerButton size="lg" className="w-full" label="Reserveer nu" />
                   </SheetClose>
                 </div>
               </div>

@@ -67,12 +67,12 @@ export default function MakersClient({ makers }: MakersClientProps) {
       <div className="relative container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
         {/* header */}
         <header className="text-center mb-8 sm:mb-10">
-          <p className="inline-block text-xs tracking-widest uppercase text-primary/80 mb-2">
+          <p className="mb-4 inline-block bg-foreground px-3.5 py-[7px] text-[11px] font-bold uppercase tracking-[0.2em] text-background">
             {makersIntro.kicker}
           </p>
-          <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl">
+          <h2 className="font-headline text-2xl font-extrabold tracking-tight sm:text-3xl md:text-4xl">
             {makersIntro.title}
-          </h1>
+          </h2>
           <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
             {makersIntro.lead}
           </p>
@@ -86,7 +86,7 @@ export default function MakersClient({ makers }: MakersClientProps) {
           <div className="flex flex-wrap gap-2">
             <button
               onClick={() => setFilter("Alle")}
-              className={`rounded-full border px-3 py-1 text-sm ${filter === "Alle" ? "bg-primary text-primary-foreground border-primary" : "border-border hover:bg-muted"}`}
+              className={`border-2 border-foreground px-3 py-1 text-sm ${filter === "Alle" ? "bg-primary text-primary-foreground border-primary" : "hover:bg-muted"}`}
             >
               Alle
             </button>
@@ -97,7 +97,7 @@ export default function MakersClient({ makers }: MakersClientProps) {
                 <button
                   key={c}
                   onClick={() => setFilter(c)}
-                  className={`rounded-full border px-3 py-1 text-sm inline-flex items-center gap-1.5 ${active ? "bg-primary text-primary-foreground border-primary" : "border-border hover:bg-muted"}`}
+                  className={`border-2 border-foreground px-3 py-1 text-sm inline-flex items-center gap-1.5 ${active ? "bg-primary text-primary-foreground border-primary" : "hover:bg-muted"}`}
                 >
                   <Icon className="h-4 w-4" />
                   {c}
@@ -112,14 +112,14 @@ export default function MakersClient({ makers }: MakersClientProps) {
               value={q}
               onChange={(e) => setQ(e.target.value)}
               placeholder="Zoek maker, locatie of trefwoord…"
-              className="w-full sm:w-80 rounded-xl border border-border bg-background pl-9 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
+              className="w-full sm:w-80 border-2 border-foreground bg-background pl-9 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
             />
           </div>
         </div>
 
         {/* marquee of names */}
         <div className="mb-8">
-          <div className="relative overflow-hidden rounded-xl border border-border">
+          <div className="relative overflow-hidden border-2 border-foreground">
             <div className="flex gap-8 py-4 animate-[marquee_28s_linear_infinite] hover:[animation-play-state:paused]">
               {[...makers, ...makers].map((m, i) => (
                 <span key={i} className="whitespace-nowrap text-sm sm:text-base text-foreground/80">
@@ -143,9 +143,9 @@ export default function MakersClient({ makers }: MakersClientProps) {
             return (
               <article
                 key={m.slug}
-                className="group relative rounded-2xl p-[1px] bg-gradient-to-br from-primary/20 via-transparent to-primary/10"
+                className="group relative p-[1px] bg-gradient-to-br from-primary/20 via-transparent to-primary/10"
               >
-                <div className="rounded-2xl bg-card overflow-hidden shadow-[0_1px_0_0_rgba(0,0,0,0.03)] flex flex-col">
+                <div className=" bg-white overflow-hidden shadow-[0_1px_0_0_rgba(0,0,0,0.03)] flex flex-col">
                   {/* image */}
                   <div className="relative h-44 w-full">
                     {img ? (
@@ -161,7 +161,7 @@ export default function MakersClient({ makers }: MakersClientProps) {
                       <div className="h-full w-full bg-gradient-to-br from-muted to-muted/60" />
                     )}
                     {/* category pill */}
-                    <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full bg-background/80 backdrop-blur px-2 py-1 text-xs border border-border">
+                    <span className="absolute left-3 top-3 inline-flex items-center gap-1 bg-background/90 px-2 py-1 text-xs border-2 border-foreground">
                       <Icon className="h-3.5 w-3.5 text-primary" />
                       {m.category}
                     </span>
@@ -182,7 +182,7 @@ export default function MakersClient({ makers }: MakersClientProps) {
                     <div className="mt-auto pt-2 flex gap-2">
                       <button
                         onClick={() => setActive(m)}
-                        className="inline-flex items-center justify-center rounded-xl border border-border px-3 py-1.5 text-sm hover:bg-muted transition-colors"
+                        className="inline-flex items-center justify-center border-2 border-foreground px-3 py-1.5 text-sm hover:bg-muted transition-colors"
                         aria-label={`Lees verhaal van ${m.name}`}
                       >
                         Lees verhaal
@@ -192,7 +192,7 @@ export default function MakersClient({ makers }: MakersClientProps) {
                           href={m.website}
                           target="_blank"
                           prefetch={false}
-                          className="inline-flex items-center justify-center rounded-xl bg-primary px-3 py-1.5 text-sm text-primary-foreground hover:opacity-90 transition-opacity"
+                          className="inline-flex items-center justify-center bg-primary px-3 py-1.5 text-sm text-primary-foreground hover:opacity-90 transition-opacity"
                         >
                           Website <ExternalLink className="ml-1 h-3.5 w-3.5" />
                         </Link>

@@ -21,7 +21,7 @@ export const revalidate = 60; // ISR: revalidate every 60s
 export const metadata: Metadata = {
     title: "Agenda & Evenementen | De Tafelaar Amersfoort",
     description:
-        "Agenda van De Tafelaar Amersfoort: evenementen, speciale menu's, reviews en updates. Shared dining restaurant op de Kamp, vlakbij Flint.",
+        "Agenda van De Tafelaar Amersfoort: evenementen, speciale menu's, reviews en updates. Shared dining restaurant op de Kamp, vlakbij de Flint.",
     alternates: {
         canonical: "/agenda",
     },
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
         title: "Agenda & Evenementen | De Tafelaar Amersfoort",
         description:
             "Evenementen, speciale menu's en updates van De Tafelaar op de Kamp in Amersfoort centrum.",
-        images: [{ url: "/pics/homepage.png" }],
+        images: [{ url: "/pics/hero-gasten.jpg" }],
     },
     keywords: [
         "agenda de tafelaar",
@@ -94,16 +94,16 @@ export default async function AgendaPage() {
                     De Tafelaar is een shared dining restaurant op de Kamp 8 in Amersfoort centrum, op 5 minuten van Theater de Flint.
                 </p>
                 <div className="flex flex-wrap justify-center gap-3">
-                    <Link href="/updates" className="rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground">
+                    <Link href="/updates" className="border-2 border-foreground bg-white px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-secondary">
                         Alle updates
                     </Link>
-                    <Link href="/menu" className="rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground">
+                    <Link href="/menu" className="border-2 border-foreground bg-white px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-secondary">
                         Menukaart
                     </Link>
-                    <Link href="/reserveren" className="rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground">
+                    <Link href="/reserveren" className="border-2 border-foreground bg-white px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-secondary">
                         Reserveren
                     </Link>
-                    <Link href="/impressie" className="rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground">
+                    <Link href="/impressie" className="border-2 border-foreground bg-white px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-secondary">
                         Impressie
                     </Link>
                 </div>

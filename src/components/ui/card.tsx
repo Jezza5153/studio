@@ -2,6 +2,9 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
+// Compositie style: white plane inside a 2px slate frame with an offset block
+// shadow. Pages that still pass rounded-* classes keep their radius until they
+// are converted; the frame and shadow apply everywhere.
 const Card = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
@@ -9,7 +12,7 @@ const Card = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "rounded-lg border bg-card text-card-foreground shadow-sm",
+      "rounded-none border-2 border-foreground bg-white text-card-foreground shadow-[5px_5px_0_hsl(var(--foreground))]",
       className
     )}
     {...props}
@@ -36,7 +39,7 @@ const CardTitle = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "text-2xl font-semibold leading-none tracking-tight",
+      "font-headline text-2xl font-extrabold leading-none tracking-tight",
       className
     )}
     {...props}

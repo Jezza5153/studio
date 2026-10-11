@@ -6,7 +6,7 @@
 export type DrinkItem = {
   name: string;
   description?: string | null;
-  // common price fields — use whichever applies for rendering
+  // common price fields, use whichever applies for rendering
   price?: number | null;         // single price
   priceGlass?: number | null;    // per glass
   priceBottle?: number | null;   // per bottle
@@ -335,8 +335,8 @@ export const DRINKS: DrinksData = {
         {
           name: "Bubbels",
           items: [
-            { name: "Prosecco Spumante (wit) – Villa Braida, Veneto", priceBottle: 39.5, priceGlass: 6.5 },
-            { name: "Prosecco Spumante (rosé) – Villa Braida, Veneto", priceBottle: 39.5 },
+            { name: "Prosecco Spumante (wit), Villa Braida, Veneto", priceBottle: 39.5, priceGlass: 6.5 },
+            { name: "Prosecco Spumante (rosé), Villa Braida, Veneto", priceBottle: 39.5 },
           ],
         },
         // DESSERTWIJNEN
