@@ -19,6 +19,7 @@ export const meerLinks = [
   { href: "/buurtgids", label: "Buurtgids Flint & Kamp" },
   { href: "/eten-voor-theater-de-flint", label: "Eten vlakbij de Flint" },
   { href: "/restaurant-amersfoort-centrum", label: "Restaurant Amersfoort Centrum" },
+  { href: "/nieuw-restaurant-amersfoort", label: "Nieuw restaurant in Amersfoort" },
   { href: "/uit-eten-amersfoort", label: "Uit eten in Amersfoort" },
   { href: "/beste-restaurant-amersfoort", label: "Beste restaurant Amersfoort" },
   { href: "/borrel-amersfoort", label: "Borrelen in Amersfoort" },

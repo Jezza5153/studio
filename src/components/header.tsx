@@ -94,6 +94,7 @@ export function Header() {
             alt="De Tafelaar logo"
             width={288}
             height={80}
+            sizes="144px"
             className="h-8 w-auto md:h-10"
             priority
           />
@@ -142,7 +143,7 @@ export function Header() {
               <div className="max-h-dvh overflow-auto p-6">
                 <SheetClose asChild>
                   <Link href="/" className="mb-6 block">
-                    <Image src="/logo.png" alt="De Tafelaar logo" width={288} height={80} className="h-10 w-auto" />
+                    <Image src="/logo.png" alt="De Tafelaar logo" width={288} height={80} sizes="144px" className="h-10 w-auto" />
                   </Link>
                 </SheetClose>
 

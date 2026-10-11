@@ -54,7 +54,7 @@ type PlaceLite = {
 };
 
 // Kamp 8, 3811 AR Amersfoort - De Tafelaar
-const CENTER = { lat: 52.1556, lng: 5.3876 };
+const CENTER = { lat: 52.1573757, lng: 5.3933828 };
 
 const THEATERWEEKEND = {
   start: "2026-01-23",

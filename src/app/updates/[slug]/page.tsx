@@ -28,10 +28,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const pageTitle = seoOverride?.seoTitle || `${story.title} | De Tafelaar Courant`;
     const canonicalUrl = `https://www.tafelaaramersfoort.nl/updates/${slug}`;
 
+    // Losse Instagram-posts zijn dunne pagina's (alleen een foto en een korte caption): wel volgen, niet indexeren.
+    const isInstagram = story.type === "INSTAGRAM" || slug.startsWith("ig-");
+
     return {
         title: pageTitle,
         description,
         alternates: { canonical: canonicalUrl },
+        ...(isInstagram ? { robots: { index: false, follow: true } } : {}),
         openGraph: {
             title: story.title,
             description,

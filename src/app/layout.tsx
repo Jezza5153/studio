@@ -106,8 +106,8 @@ function restaurantJsonLd(rating?: number, reviewCount?: number) {
 
     geo: {
       "@type": "GeoCoordinates",
-      latitude: 52.1598363,
-      longitude: 5.3918238,
+      latitude: 52.1573757,
+      longitude: 5.3933828,
     },
 
     telephone: "+31 6 341 279 32",
@@ -118,7 +118,7 @@ function restaurantJsonLd(rating?: number, reviewCount?: number) {
       "https://www.instagram.com/tafelaaramersfoort",
     ],
 
-    hasMap: "https://maps.google.com/?q=De+Tafelaar+Kamp+8+Amersfoort",
+    hasMap: "https://maps.google.com/?cid=9272578467641654802",
 
     areaServed: [
       { "@type": "City", name: "Amersfoort" },

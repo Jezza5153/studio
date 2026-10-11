@@ -195,10 +195,10 @@ export default async function Home() {
           </div>
 
           <div className="flex flex-col justify-center bg-accent px-6 py-8 text-background md:px-9">
-            <h3 className="flex items-center gap-2.5 font-headline text-[21px] font-extrabold">
+            <h2 className="flex items-center gap-2.5 font-headline text-[21px] font-extrabold">
               <span aria-hidden className="text-[12px] text-primary">●</span>
               Nu op tafel: {seizoen}
-            </h3>
+            </h2>
             <p className="mt-2 max-w-[38ch] text-sm text-background/90">
               De kaart beweegt mee met het seizoen: wat de makers deze weken oogsten, proef je op tafel.
             </p>
