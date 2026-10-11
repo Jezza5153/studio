@@ -7,7 +7,8 @@ const prisma = new PrismaClient();
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = "https://www.tafelaaramersfoort.nl";
-  const lastModified = new Date();
+  // Datum van de laatste inhoudelijke wijziging; Google negeert lastmod als die bij elke deploy verandert.
+  const lastModified = new Date("2026-10-11T00:00:00Z");
 
   // Static pages
   const staticPages: MetadataRoute.Sitemap = [

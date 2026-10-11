@@ -57,6 +57,13 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        // Oud vercel.app-adres van productie: dubbele content, alles naar het echte domein.
+        source: "/:path*",
+        has: [{ type: "host", value: "studio-ten-ruby.vercel.app" }],
+        destination: "https://www.tafelaaramersfoort.nl/:path*",
+        permanent: true,
+      },
+      {
         // Oude evenementpagina's (Moederdag high tea, Eten met Peter) zijn weg;
         // nog geindexeerde en gedeelde links landen op de agenda.
         source: "/moederdag-high-tea-amersfoort",
