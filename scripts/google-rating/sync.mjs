@@ -42,7 +42,12 @@ async function readRating() {
       },
       null,
       { timeout: 45_000 },
-    );
+    ).catch(async (err) => {
+      // Laat zien wat Google wel toonde (in de GitHub-log en als screenshot-artifact)
+      const body = (await page.evaluate(() => document.body?.innerText ?? "").catch(() => "")).replace(/\s+/g, " ");
+      await page.screenshot({ path: "debug.png", fullPage: false }).catch(() => {});
+      throw new Error(`${err.message} | url=${page.url()} | titel=${await page.title().catch(() => "?")} | tekst=${body.slice(0, 700)}`);
+    });
     const found = await page.evaluate(() => {
       const labels = [...document.querySelectorAll("[aria-label]")].map((e) => e.getAttribute("aria-label").trim());
       const summary = document.querySelector("div.F7nice")?.innerText ?? "";
