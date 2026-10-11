@@ -43,8 +43,8 @@ export async function GET(request: Request) {
     // 1. Env vars: presence only
     checks.DATABASE_URL = process.env.DATABASE_URL ? "set" : "NOT SET";
     checks.DATABASE_URL_UNPOOLED = process.env.DATABASE_URL_UNPOOLED ? "set" : "NOT SET";
-    checks.ADMIN_USER = process.env.ADMIN_USER ? "set" : "NOT SET (fallback used)";
-    checks.ADMIN_PASS = process.env.ADMIN_PASS ? "set" : "NOT SET (fallback used)";
+    checks.ADMIN_USER = process.env.ADMIN_USER?.trim() ? "set" : "NOT SET (admin locked)";
+    checks.ADMIN_PASS = process.env.ADMIN_PASS?.trim() ? "set" : "NOT SET (admin locked)";
     checks.NODE_ENV = process.env.NODE_ENV;
 
     // 2. Test DB connection

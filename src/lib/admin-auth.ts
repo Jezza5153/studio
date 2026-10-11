@@ -1,8 +1,18 @@
 // src/lib/admin-auth.ts
-// Shared admin authentication — validates Basic Auth credentials
+// Shared admin authentication: validates Basic Auth credentials against
+// ADMIN_USER and ADMIN_PASS. There is deliberately no fallback: the repo is
+// public, so any default in source would be a known password. When either
+// variable is unset or empty, every request is refused.
 
-const ADMIN_USER = process.env.ADMIN_USER || "Tafelaar1991";
-const ADMIN_PASS = process.env.ADMIN_PASS || "Kamp8tafelaar!";
+import { createHash, timingSafeEqual } from "node:crypto";
+
+// Hashing first gives timingSafeEqual two buffers of equal length and keeps
+// the comparison from leaking the length of the expected value.
+function safeEqual(a: string, b: string): boolean {
+    const hashA = createHash("sha256").update(a, "utf8").digest();
+    const hashB = createHash("sha256").update(b, "utf8").digest();
+    return timingSafeEqual(hashA, hashB);
+}
 
 /**
  * Checks the Authorization header for valid admin credentials.
@@ -11,6 +21,10 @@ const ADMIN_PASS = process.env.ADMIN_PASS || "Kamp8tafelaar!";
  *   - Legacy token: Authorization: Bearer <base64(user:pass)>
  */
 export function isAuthorized(request: Request): boolean {
+    const adminUser = process.env.ADMIN_USER;
+    const adminPass = process.env.ADMIN_PASS;
+    if (!adminUser?.trim() || !adminPass?.trim()) return false;
+
     const authHeader = request.headers.get("authorization");
     if (!authHeader) return false;
 
@@ -21,7 +35,11 @@ export function isAuthorized(request: Request): boolean {
         const decoded = Buffer.from(token, "base64").toString("utf-8");
         const [user, ...passParts] = decoded.split(":");
         const pass = passParts.join(":"); // password may contain colons
-        return user === ADMIN_USER && pass === ADMIN_PASS;
+        // Compare both before combining, so a wrong username takes as long
+        // as a wrong password.
+        const userOk = safeEqual(user, adminUser);
+        const passOk = safeEqual(pass, adminPass);
+        return userOk && passOk;
     } catch {
         return false;
     }
