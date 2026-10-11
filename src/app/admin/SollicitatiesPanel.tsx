@@ -181,7 +181,7 @@ export default function SollicitatiesPanel({
                                             )}
                                         </dd>
                                         <dt className="text-xs font-medium text-muted-foreground">Beschikbaarheid</dt>
-                                        <dd className="whitespace-pre-wrap break-words text-foreground">{s.beschikbaarheid}</dd>
+                                        <dd className="whitespace-pre-wrap break-words text-foreground">{s.beschikbaarheid || "Niet ingevuld"}</dd>
                                         <dt className="text-xs font-medium text-muted-foreground">Bericht</dt>
                                         <dd className="whitespace-pre-wrap break-words text-foreground">
                                             {s.bericht || <span className="text-muted-foreground">geen bericht</span>}

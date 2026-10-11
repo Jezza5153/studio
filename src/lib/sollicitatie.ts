@@ -67,7 +67,7 @@ export function valideerSollicitatie(invoer: Record<string, unknown>): Sollicita
 
   const fouten: Partial<Record<SollicitatieVeld, string>> = {};
 
-  if (naam.length < 2) fouten.naam = "Vul je naam in.";
+  if (!naam) fouten.naam = "Vul je naam in.";
   else if (naam.length > SOLLICITATIE_MAX.naam) fouten.naam = `Je naam mag maximaal ${SOLLICITATIE_MAX.naam} tekens zijn.`;
 
   if (!telefoon) fouten.telefoon = "Vul je telefoonnummer in.";
@@ -77,8 +77,8 @@ export function valideerSollicitatie(invoer: Record<string, unknown>): Sollicita
   if (email && (email.length > SOLLICITATIE_MAX.email || !geldigEmailadres(email)))
     fouten.email = "Dit e-mailadres klopt niet. Laat het veld leeg als je liever gebeld wordt.";
 
-  if (beschikbaarheid.length < 2) fouten.beschikbaarheid = "Laat weten wanneer je kunt werken.";
-  else if (beschikbaarheid.length > SOLLICITATIE_MAX.beschikbaarheid)
+  // Beschikbaarheid mag leeg blijven: liever een sollicitatie zonder dan geen sollicitatie.
+  if (beschikbaarheid.length > SOLLICITATIE_MAX.beschikbaarheid)
     fouten.beschikbaarheid = `Maximaal ${SOLLICITATIE_MAX.beschikbaarheid} tekens.`;
 
   if (bericht.length > SOLLICITATIE_MAX.bericht) fouten.bericht = `Maximaal ${SOLLICITATIE_MAX.bericht} tekens.`;

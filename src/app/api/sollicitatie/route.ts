@@ -131,7 +131,7 @@ export async function POST(request: Request) {
     `Naam: ${d.naam}`,
     `Telefoon: ${d.telefoon}`,
     `E-mail: ${d.email ?? "niet opgegeven"}`,
-    `Beschikbaarheid: ${d.beschikbaarheid}`,
+    `Beschikbaarheid: ${d.beschikbaarheid || "niet ingevuld"}`,
   ];
   const overzicht = "https://www.tafelaaramersfoort.nl/admin";
   await mailNaarRestaurant({

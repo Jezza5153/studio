@@ -283,13 +283,11 @@ export function SollicitatieForm({ vacatureSlug, functie }: { vacatureSlug: stri
       <div>
         <label htmlFor={id("beschikbaarheid")} className={LABEL}>
           Wanneer kun je werken?
-          <Verplicht />
         </label>
         <textarea
           id={id("beschikbaarheid")}
           name="beschikbaarheid"
           rows={3}
-          required
           maxLength={SOLLICITATIE_MAX.beschikbaarheid}
           placeholder="Bijvoorbeeld: vrijdag- en zaterdagavond, vanaf november"
           disabled={bezig}
@@ -298,7 +296,7 @@ export function SollicitatieForm({ vacatureSlug, functie }: { vacatureSlug: stri
           className={`${VELD} min-h-[88px] resize-y`}
         />
         <p id={id("beschikbaarheid-hint")} className={HINT}>
-          Welke dagen, hoeveel uur per week en vanaf wanneer.
+          Welke dagen, hoeveel uur per week en vanaf wanneer. Weet je het nog niet precies? Laat dan gerust leeg.
         </p>
         {foutTekst("beschikbaarheid")}
       </div>

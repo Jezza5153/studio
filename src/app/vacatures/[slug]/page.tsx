@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Mail, Phone, Send } from "lucide-react";
+import { Phone, Send } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { SollicitatieForm } from "@/components/sollicitatie-form";
 import { contactDetails } from "@/content/site-content";
 import { VACATURES_BIJGEWERKT, getVacature, sollicitatieStappen, vacatures } from "@/content/vacatures";
-import { breadcrumbJsonLd, datumNl, jobPostingJsonLd, mailtoSollicitatie, telHref } from "@/lib/vacature-schema";
+import { breadcrumbJsonLd, datumNl, jobPostingJsonLd, telHref } from "@/lib/vacature-schema";
 
 export const dynamicParams = false;
 
@@ -65,7 +65,7 @@ export default async function VacaturePage({ params }: Props) {
     ["Locatie", "Kamp 8, 3811 AR Amersfoort (centrum)"],
     ["Salaris", v.salaris?.tekst ?? "Volgens de horeca-cao"],
     ["Ervaring", v.ervaring],
-    ["Solliciteren", `Via het formulier op deze pagina. Mailen (${contactDetails.email}) of bellen (${contactDetails.phone}) mag ook.`],
+    ["Solliciteren", `Via het formulier op deze pagina. Bellen (${contactDetails.phone}) mag ook.`],
   ];
 
   const ld = [
@@ -111,12 +111,6 @@ export default async function VacaturePage({ params }: Props) {
                 <a href="#solliciteren">
                   <Send className="mr-2 h-4 w-4" aria-hidden />
                   Solliciteer direct
-                </a>
-              </Button>
-              <Button asChild variant="outline">
-                <a href={mailtoSollicitatie(v.titel)}>
-                  <Mail className="mr-2 h-4 w-4" aria-hidden />
-                  Solliciteer per mail
                 </a>
               </Button>
               <Button asChild variant="outline">
@@ -216,15 +210,9 @@ export default async function VacaturePage({ params }: Props) {
 
               <div className="mt-6">
                 <p className="text-sm font-semibold text-foreground">
-                  Liever mailen of bellen? Dat kan natuurlijk ook: {contactDetails.email} of {contactDetails.phone}.
+                  Liever bellen? Dat kan natuurlijk ook: {contactDetails.phone}.
                 </p>
                 <div className="mt-3 flex flex-wrap gap-3">
-                  <Button asChild variant="outline">
-                    <a href={mailtoSollicitatie(v.titel)}>
-                      <Mail className="mr-2 h-4 w-4" aria-hidden />
-                      Mail je sollicitatie
-                    </a>
-                  </Button>
                   <Button asChild variant="outline">
                     <a href={telHref()}>
                       <Phone className="mr-2 h-4 w-4" aria-hidden />

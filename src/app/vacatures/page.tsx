@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { contactDetails } from "@/content/site-content";
 import { VACATURES_BIJGEWERKT, sollicitatieStappen, vacatures, vacatureFaqs, waaromTafelaar } from "@/content/vacatures";
-import { SITE_URL, breadcrumbJsonLd, datumNl, mailtoSollicitatie, telHref } from "@/lib/vacature-schema";
+import { SITE_URL, breadcrumbJsonLd, datumNl, telHref } from "@/lib/vacature-schema";
 
 export const dynamic = "force-static";
 
@@ -92,7 +92,7 @@ export default function VacaturesPage() {
               <a href="#vacatures">Bekijk de vacatures</a>
             </Button>
             <Button asChild variant="outline">
-              <a href={mailtoSollicitatie("Open sollicitatie")}>Open sollicitatie</a>
+              <a href="/contact?onderwerp=werken#bericht">Open sollicitatie</a>
             </Button>
           </div>
           <p className="mt-5 text-xs text-muted-foreground">Bijgewerkt op {datumNl(VACATURES_BIJGEWERKT)}</p>
@@ -160,13 +160,13 @@ export default function VacaturesPage() {
             <CardContent className="text-sm text-foreground/80">
               <p>
                 Staat jouw functie er niet bij, maar denk je dat je bij ons past? Vertel in een paar zinnen wie je
-                bent, wat je zoekt en wanneer je kunt. We lezen elke mail en reageren altijd.
+                bent, wat je zoekt en wanneer je kunt. We lezen elk bericht en reageren altijd.
               </p>
               <div className="mt-4 flex flex-wrap gap-3">
                 <Button asChild size="sm">
-                  <a href={mailtoSollicitatie("Open sollicitatie")}>
+                  <a href="/contact?onderwerp=werken#bericht">
                     <Mail className="mr-2 h-4 w-4" aria-hidden />
-                    Mail je sollicitatie
+                    Stuur een bericht
                   </a>
                 </Button>
                 <Button asChild size="sm" variant="outline">
@@ -237,11 +237,11 @@ export default function VacaturesPage() {
             ))}
           </div>
           <p className="mt-4 text-center text-sm text-muted-foreground">
-            Mail naar{" "}
-            <a href={mailtoSollicitatie("Open sollicitatie")} className="font-semibold text-primary underline underline-offset-4">
-              {contactDetails.email}
-            </a>{" "}
-            of bel{" "}
+            Stuur ons een 
+            <a href="/contact?onderwerp=werken#bericht" className="font-semibold text-primary underline underline-offset-4">
+              bericht
+            </a> 
+            of bel 
             <a href={telHref()} className="font-semibold text-primary underline underline-offset-4">
               {contactDetails.phone}
             </a>

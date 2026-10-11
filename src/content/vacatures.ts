@@ -223,12 +223,12 @@ export const vacatureFaqs = [
   {
     question: "Hoe solliciteer ik bij De Tafelaar?",
     answer:
-      "Vul het korte formulier in op de pagina van de vacature: je naam, je telefoonnummer en wanneer je kunt werken is genoeg. Mailen naar reserveren@tafelaaramersfoort.nl (met de functie in het onderwerp), bellen of gewoon even binnenlopen op de Kamp 8 mag ook. We nodigen je dan uit voor een kop koffie en een proefdienst.",
+      "Vul het korte formulier in op de pagina van de vacature: je naam, je telefoonnummer en wanneer je kunt werken is genoeg. Bellen of gewoon even binnenlopen op de Kamp 8 mag ook. We nodigen je dan uit voor een kop koffie en een proefdienst.",
   },
   {
     question: "Zoeken jullie ook stagiairs?",
     answer:
-      "Een stage in de keuken of de bediening is bespreekbaar. Stuur je vraag met opleiding en periode naar reserveren@tafelaaramersfoort.nl, dan kijken we wat past.",
+      "Een stage in de keuken of de bediening is bespreekbaar. Stuur je vraag met opleiding en periode via het contactformulier, dan kijken we wat past.",
   },
 ];
 
