@@ -31,7 +31,18 @@ async function readRating() {
       await page.waitForURL(/google\.[a-z.]+\/maps/, { timeout: 30_000 });
     }
 
-    await page.waitForSelector('[aria-label$="reviews"], [aria-label$="review"], div.F7nice', { timeout: 45_000 });
+    // De score verschijnt eerder dan het aantal reviews: wacht tot ook het aantal er staat.
+    await page.waitForFunction(
+      () => {
+        const summary = document.querySelector("div.F7nice")?.innerText ?? "";
+        if (/\(\s*[\d.\s]+\s*\)/.test(summary)) return true;
+        return [...document.querySelectorAll("[aria-label]")].some((e) =>
+          /^[\d.\s]+\s+reviews?$/i.test(e.getAttribute("aria-label").trim()),
+        );
+      },
+      null,
+      { timeout: 45_000 },
+    );
     const found = await page.evaluate(() => {
       const labels = [...document.querySelectorAll("[aria-label]")].map((e) => e.getAttribute("aria-label").trim());
       const summary = document.querySelector("div.F7nice")?.innerText ?? "";
@@ -64,7 +75,17 @@ async function readRating() {
   }
 }
 
-const { rating, count } = await readRating();
+let result;
+for (let poging = 1; poging <= 3 && !result; poging++) {
+  try {
+    result = await readRating();
+  } catch (err) {
+    console.warn(`Poging ${poging} mislukt: ${err.message}`);
+    if (poging === 3) throw err;
+    await new Promise((r) => setTimeout(r, 5_000));
+  }
+}
+const { rating, count } = result;
 console.log(`Google: ${rating} sterren, ${count} reviews`);
 
 if (DRY_RUN) {
