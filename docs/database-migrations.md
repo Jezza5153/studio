@@ -71,6 +71,14 @@ Development. With that URL, do **not** run:
   `Settings` row.
 - `npm run db:seed`: same seed, same result.
 
+Since [PR #19](https://github.com/Jezza5153/studio/pull/19), `prisma/seed.ts`
+refuses to run, and exits before it connects, when `DATABASE_URL` points at Neon
+(a `*.neon.tech` host or the production endpoint `ep-icy-scene-abjt6uye`) or isn't
+set. Seed a local Postgres instead. This does **not** make `prisma migrate reset`
+safe: Prisma drops the database first and only then runs the seed. Only if you
+really mean to wipe the database you're pointing at, add
+`ALLOW_SEED_ON_PRODUCTION=yes-delete-everything`.
+
 These are fine: `npm run db:status` (read only), `npm run db:migration`
 (no database), `npm run db:studio` (careful, it can edit rows).
 
