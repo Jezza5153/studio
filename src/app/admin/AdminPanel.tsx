@@ -15,6 +15,7 @@ if (typeof globalThis.localStorage !== "undefined" && typeof globalThis.localSto
 
 import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { TYPE_LABELS, CATEGORY_LABELS, TONIGHT_STATUS_CONFIG } from "@/lib/constants";
+import SollicitatiesPanel from "./SollicitatiesPanel";
 
 // ─── Types ───
 interface FeedItem {
@@ -1073,6 +1074,9 @@ export default function AdminPage() {
             {settings && (
                 <TonightPanel settings={settings} onUpdate={setSettings} toast={addToast} />
             )}
+
+            {/* Sollicitaties via het formulier op de vacaturepagina's */}
+            <SollicitatiesPanel authHeaders={authHeaders} toast={addToast} />
 
             {/* Dashboard Stats */}
             <div className="mt-6">

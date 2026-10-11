@@ -3,10 +3,6 @@ import { contactDetails } from "@/content/site-content";
 
 export const SITE_URL = "https://www.tafelaaramersfoort.nl";
 
-export function mailtoSollicitatie(functie: string) {
-  return `mailto:${contactDetails.email}?subject=${encodeURIComponent(`Sollicitatie: ${functie}`)}`;
-}
-
 export function telHref() {
   return `tel:${contactDetails.phone.replace(/\s+/g, "")}`;
 }
@@ -28,7 +24,7 @@ export function jobPostingJsonLd(v: Vacature) {
       `<p><strong>Wat je doet</strong></p>${lijst(v.doen)}` +
       `<p><strong>Wat we zoeken</strong></p>${lijst(v.zoeken)}` +
       `<p><strong>Wat we bieden</strong></p>${lijst(v.bieden)}` +
-      `<p>Uren: ${v.uren}. Dagen: ${v.dagen}. Solliciteren: mail naar ${contactDetails.email} of bel ${contactDetails.phone}.</p>`,
+      `<p>Uren: ${v.uren}. Dagen: ${v.dagen}. Solliciteren: via het formulier op deze pagina of bel ${contactDetails.phone}.</p>`,
     identifier: { "@type": "PropertyValue", name: "De Tafelaar", value: v.slug },
     datePosted: v.datePosted,
     validThrough: `${v.validThrough}T23:59:59+01:00`,
@@ -55,7 +51,8 @@ export function jobPostingJsonLd(v: Vacature) {
           },
         }
       : {}),
-    directApply: false,
+    // Solliciteren kan direct op de vacaturepagina (formulier, /api/sollicitatie).
+    directApply: true,
     hiringOrganization: {
       "@type": "Organization",
       name: "De Tafelaar",
