@@ -143,7 +143,7 @@ export default function VacaturesPage() {
                         </Link>
                       </Button>
                       <Button asChild size="sm" variant="outline">
-                        <a href={mailtoSollicitatie(v.titel)}>Direct solliciteren</a>
+                        <Link href={`/vacatures/${v.slug}#solliciteren`}>Direct solliciteren</Link>
                       </Button>
                     </div>
                   </CardContent>

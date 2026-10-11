@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Mail, Phone } from "lucide-react";
+import { Mail, Phone, Send } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { SollicitatieForm } from "@/components/sollicitatie-form";
 import { contactDetails } from "@/content/site-content";
 import { VACATURES_BIJGEWERKT, getVacature, sollicitatieStappen, vacatures } from "@/content/vacatures";
 import { breadcrumbJsonLd, datumNl, jobPostingJsonLd, mailtoSollicitatie, telHref } from "@/lib/vacature-schema";
@@ -64,7 +65,7 @@ export default async function VacaturePage({ params }: Props) {
     ["Locatie", "Kamp 8, 3811 AR Amersfoort (centrum)"],
     ["Salaris", v.salaris?.tekst ?? "Volgens de horeca-cao"],
     ["Ervaring", v.ervaring],
-    ["Solliciteren", `Mail ${contactDetails.email} of bel ${contactDetails.phone}`],
+    ["Solliciteren", `Via het formulier op deze pagina. Mailen (${contactDetails.email}) of bellen (${contactDetails.phone}) mag ook.`],
   ];
 
   const ld = [
@@ -107,6 +108,12 @@ export default async function VacaturePage({ params }: Props) {
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Button asChild>
+                <a href="#solliciteren">
+                  <Send className="mr-2 h-4 w-4" aria-hidden />
+                  Solliciteer direct
+                </a>
+              </Button>
+              <Button asChild variant="outline">
                 <a href={mailtoSollicitatie(v.titel)}>
                   <Mail className="mr-2 h-4 w-4" aria-hidden />
                   Solliciteer per mail
@@ -137,7 +144,7 @@ export default async function VacaturePage({ params }: Props) {
                       <th scope="row" className="w-[34%] px-6 py-2.5 text-left align-top font-semibold text-foreground">
                         {k}
                       </th>
-                      <td className="px-6 py-2.5 text-muted-foreground">{val}</td>
+                      <td className="px-6 py-2.5 text-muted-foreground [overflow-wrap:anywhere]">{val}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -196,19 +203,35 @@ export default async function VacaturePage({ params }: Props) {
                   </li>
                 ))}
               </ol>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <Button asChild>
-                  <a href={mailtoSollicitatie(v.titel)}>
-                    <Mail className="mr-2 h-4 w-4" aria-hidden />
-                    Mail naar {contactDetails.email}
-                  </a>
-                </Button>
-                <Button asChild variant="outline">
-                  <a href={telHref()}>
-                    <Phone className="mr-2 h-4 w-4" aria-hidden />
-                    {contactDetails.phone}
-                  </a>
-                </Button>
+
+              <div id="solliciteren" className={`${KAART} mt-8 scroll-mt-28 p-5 sm:p-8`}>
+                <h3 className="font-headline text-xl font-extrabold tracking-tight sm:text-2xl">
+                  Solliciteer direct als {functie}
+                </h3>
+                <p className="mt-1.5 text-[15px] text-muted-foreground">
+                  Laat je gegevens achter, dan nemen we contact met je op voor een kop koffie op de Kamp.
+                </p>
+                <SollicitatieForm vacatureSlug={v.slug} functie={v.titel} />
+              </div>
+
+              <div className="mt-6">
+                <p className="text-sm font-semibold text-foreground">
+                  Liever mailen of bellen? Dat kan natuurlijk ook: {contactDetails.email} of {contactDetails.phone}.
+                </p>
+                <div className="mt-3 flex flex-wrap gap-3">
+                  <Button asChild variant="outline">
+                    <a href={mailtoSollicitatie(v.titel)}>
+                      <Mail className="mr-2 h-4 w-4" aria-hidden />
+                      Mail je sollicitatie
+                    </a>
+                  </Button>
+                  <Button asChild variant="outline">
+                    <a href={telHref()}>
+                      <Phone className="mr-2 h-4 w-4" aria-hidden />
+                      Bel {contactDetails.phone}
+                    </a>
+                  </Button>
+                </div>
               </div>
             </section>
 

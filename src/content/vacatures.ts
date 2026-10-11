@@ -223,7 +223,7 @@ export const vacatureFaqs = [
   {
     question: "Hoe solliciteer ik bij De Tafelaar?",
     answer:
-      "Mail een korte introductie (wie je bent, wat je zoekt en wanneer je beschikbaar bent) naar reserveren@tafelaaramersfoort.nl met de functie in het onderwerp. Bellen of gewoon even binnenlopen op de Kamp 8 mag ook. We nodigen je dan uit voor een kop koffie en een proefdienst.",
+      "Vul het korte formulier in op de pagina van de vacature: je naam, je telefoonnummer en wanneer je kunt werken is genoeg. Mailen naar reserveren@tafelaaramersfoort.nl (met de functie in het onderwerp), bellen of gewoon even binnenlopen op de Kamp 8 mag ook. We nodigen je dan uit voor een kop koffie en een proefdienst.",
   },
   {
     question: "Zoeken jullie ook stagiairs?",
@@ -234,8 +234,8 @@ export const vacatureFaqs = [
 
 export const sollicitatieStappen = [
   {
-    titel: "Mail, bel of loop binnen",
-    tekst: "Een korte mail is genoeg. Bellen of even langskomen op de Kamp 8 (maandag en donderdag t/m zondag) mag ook.",
+    titel: "Solliciteer direct",
+    tekst: "Vul het korte formulier bij de vacature in, dat is genoeg. Mailen, bellen of even langskomen op de Kamp 8 (maandag en donderdag t/m zondag) mag ook.",
   },
   {
     titel: "Koffie op de Kamp",

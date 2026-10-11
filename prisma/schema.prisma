@@ -39,3 +39,19 @@ model Settings {
   ownerReplyMessage String   @default("")  @db.Text
   updatedAt         DateTime @updatedAt
 }
+
+// Sollicitaties via het formulier op /vacatures/[slug]. AVG: verwijderen
+// uiterlijk 4 weken na de procedure (knop in /admin).
+model Sollicitatie {
+  id              String   @id @default(uuid())
+  createdAt       DateTime @default(now())
+  vacatureSlug    String
+  naam            String
+  telefoon        String
+  email           String?
+  beschikbaarheid String   @db.Text
+  bericht         String?  @db.Text
+  status          String   @default("nieuw") // nieuw | afgehandeld
+
+  @@index([createdAt])
+}

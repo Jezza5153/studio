@@ -55,7 +55,8 @@ export function jobPostingJsonLd(v: Vacature) {
           },
         }
       : {}),
-    directApply: false,
+    // Solliciteren kan direct op de vacaturepagina (formulier, /api/sollicitatie).
+    directApply: true,
     hiringOrganization: {
       "@type": "Organization",
       name: "De Tafelaar",
