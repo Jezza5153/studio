@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { ReserveerButton } from "@/components/reserveer-button";
 
 export const metadata: Metadata = {
-    title: "Menukaart De Tafelaar | Shared Dining Gerechten Amersfoort",
+    title: { absolute: "Menu De Tafelaar Amersfoort | Dinerkaart Shared Dining" },
     description: "Bekijk de menukaart van De Tafelaar in Amersfoort centrum: shared dining gerechten van €3,50-€15,50. Kazen, charcuterie, vegetarisch en seizoensgebonden. Kamp 8.",
     alternates: {
         canonical: "/menu",

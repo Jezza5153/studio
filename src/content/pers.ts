@@ -26,6 +26,13 @@ export const pers: PersItem[] = [
     soort: "artikel",
   },
   {
+    medium: "AD Amersfoort",
+    titel: "Amersfoortse te zien in Winter Vol Liefde, een gastchef-avond bij De Tafelaar en meer nieuwtjes van afgelopen week",
+    url: "https://www.ad.nl/amersfoort/amersfoortse-te-zien-in-winter-vol-liefde-een-gastchef-avond-bij-de-tafelaar-en-meer-nieuwtjes-van-afgelopen-week~a2791ec1/",
+    datum: "2026-02-08",
+    soort: "artikel",
+  },
+  {
     medium: "Gooische Business (podcast)",
     titel: "Interview met chef Jeremy Arrascaeta en eigenaar Jan Molmans",
     url: "https://open.spotify.com/episode/67uEJeqkVDtZD6Sryv4RMF",

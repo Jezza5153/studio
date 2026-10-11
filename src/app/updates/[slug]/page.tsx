@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const isInstagram = story.type === "INSTAGRAM" || slug.startsWith("ig-");
 
     return {
-        title: pageTitle,
+        title: { absolute: pageTitle },
         description,
         alternates: { canonical: canonicalUrl },
         ...(isInstagram ? { robots: { index: false, follow: true } } : {}),

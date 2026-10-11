@@ -9,7 +9,7 @@ import { ReserveerButton } from "@/components/reserveer-button";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-    title: "Ontdek De Tafelaar | Shared Dining Restaurant Amersfoort",
+    title: { absolute: "Nieuw Restaurant Amersfoort | Shared Dining bij De Tafelaar" },
     description:
         "Ken je De Tafelaar al? Shared dining restaurant op de Kamp in Amersfoort. Lokale gerechten om te delen, seizoensgebonden menu, gezellige sfeer. Open ma en do t/m zo.",
     alternates: {

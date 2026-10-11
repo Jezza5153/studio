@@ -8,7 +8,7 @@ import { TYPE_LABELS } from "@/lib/constants";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-    title: "Updates & Nieuws | De Tafelaar Amersfoort",
+    title: { absolute: "Updates & Nieuws | De Tafelaar Amersfoort" },
     description:
         "Alle updates, evenementen, reviews en persberichten van De Tafelaar op de Kamp in Amersfoort. Shared dining nieuws, menu-wijzigingen en gasten-reviews.",
     alternates: { canonical: "/updates" },

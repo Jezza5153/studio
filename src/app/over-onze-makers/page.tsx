@@ -49,7 +49,7 @@ function makersFaqJsonLd() {
 export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
-  title: "Onze Makers & Leveranciers | De Tafelaar Amersfoort",
+  title: { absolute: "Onze Makers & Leveranciers | De Tafelaar Amersfoort" },
   description:
     "Lokale makers achter De Tafelaar: Rock City, De Drie Ringen, Korte Garde, Boot Koffie en Farmfields. Shared dining met seizoensproducten in Amersfoort.",
   alternates: {

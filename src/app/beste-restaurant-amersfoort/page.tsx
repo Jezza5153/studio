@@ -12,7 +12,7 @@ export const revalidate = 3600; // Google rating/review count refresh hourly (sy
 export async function generateMetadata(): Promise<Metadata> {
     const g = await getGoogleRating();
     return {
-        title: `Beste Restaurant Amersfoort | De Tafelaar, ${g.ratingText} op Google`,
+        title: { absolute: `Beste Restaurant Amersfoort | De Tafelaar, ${g.ratingText.replace(".", ",")} op Google` },
         description:
             `Op zoek naar het beste restaurant in Amersfoort? De Tafelaar: ${g.ratingText} op Google, ${g.countText} reviews. Shared dining met lokale gerechten op de Kamp. Reserveer nu.`,
         alternates: {

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "Impressie & Reviews | De Tafelaar Amersfoort",
+  title: { absolute: "Impressie & Reviews | De Tafelaar Amersfoort" },
   description:
     "Sfeerimpressie en reviews van De Tafelaar in Amersfoort. Bekijk foto's van ons restaurant op de Kamp, onze gerechten en wat gasten zeggen.",
   alternates: { canonical: "/impressie" },

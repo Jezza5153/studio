@@ -19,7 +19,7 @@ import { GuestHighlights } from "@/components/courant/GuestHighlights";
 export const revalidate = 60; // ISR: revalidate every 60s
 
 export const metadata: Metadata = {
-    title: "Agenda & Evenementen | De Tafelaar Amersfoort",
+    title: { absolute: "Agenda & Evenementen | De Tafelaar Amersfoort" },
     description:
         "Agenda van De Tafelaar Amersfoort: evenementen, speciale menu's, reviews en updates. Shared dining restaurant op de Kamp, vlakbij de Flint.",
     alternates: {

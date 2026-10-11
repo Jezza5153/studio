@@ -93,6 +93,12 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        // demo-persbericht uit de seed dat per ongeluk live stond (11 okt 2026 verwijderd)
+        source: "/updates/ad-verrassende-nieuwkomer",
+        destination: "/over-ons#pers",
+        permanent: true,
+      },
+      {
         // Geen lunch meer sinds de openingstijden van oktober 2026 (vr t/m zo vanaf
         // 15:00). Tijdelijke redirect, zodat /lunch terug kan als de lunch terugkomt.
         source: "/lunch",

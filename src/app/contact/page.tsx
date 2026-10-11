@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Contact De Tafelaar | Reserveren & Bereikbaarheid Amersfoort",
+  title: { absolute: "Contact De Tafelaar | Kamp 8, Amersfoort Centrum" },
   description:
     "Contact De Tafelaar, Kamp 8 in Amersfoort centrum: reserveer online, bel +31 6 341 279 32 of mail. Op 5 min lopen van de Flint, 22 min van het station.",
   alternates: {
