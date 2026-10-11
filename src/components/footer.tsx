@@ -1,7 +1,6 @@
 import { contactDetails, navLinks, meerLinks, openingHours } from "@/content/site-content";
 import Image from "next/image";
 import Link from "next/link";
-import { ObfuscatedEmail } from "./obfuscated-email";
 
 export function Footer() {
   const hasDialablePhone = /\d/.test(contactDetails.phone || "");
@@ -104,7 +103,9 @@ export function Footer() {
               <span>{contactDetails.phone}</span>
             )}
             <span className="hidden text-background/30 sm:inline">·</span>
-            <ObfuscatedEmail user="reserveren" domain="tafelaaramersfoort.nl" className="transition-colors hover:text-background" />
+            <Link href="/contact#bericht" className="transition-colors hover:text-background">
+              Stuur een bericht
+            </Link>
           </address>
 
           <a

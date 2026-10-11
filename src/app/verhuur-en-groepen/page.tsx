@@ -63,7 +63,7 @@ function faqJsonLd() {
 
 import Image from "next/image";
 import Link from "next/link";
-import { ObfuscatedEmail } from "@/components/obfuscated-email";
+import { contactDetails } from "@/content/site-content";
 import {
   Card,
   CardContent,
@@ -81,7 +81,7 @@ import {
   Wine,
   Beer,
   Coffee,
-  MessageSquare,
+  Phone,
   Clock,
   ShieldCheck,
 } from "lucide-react";
@@ -252,10 +252,10 @@ export default function VerhuurEnGroepenPage() {
                   <Button className="">Contactformulier</Button>
                 </Link>
                 <Button asChild variant="outline" className="">
-                  <ObfuscatedEmail user="reserveren" domain="tafelaaramersfoort.nl">
-                    <MessageSquare className="mr-2 h-4 w-4" />
-                    Mail ons
-                  </ObfuscatedEmail>
+                  <a href={`tel:${contactDetails.phone.replace(/[^\d+]/g, "")}`}>
+                    <Phone className="mr-2 h-4 w-4" />
+                    Bel ons
+                  </a>
                 </Button>
               </div>
             </div>

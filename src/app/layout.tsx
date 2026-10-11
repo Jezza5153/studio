@@ -120,7 +120,6 @@ function restaurantJsonLd(rating?: number, reviewCount?: number) {
     },
 
     telephone: "+31 6 341 279 32",
-    email: "info@tafelaaramersfoort.nl",
 
     sameAs: [
       "https://www.facebook.com/people/Tafelaar-Amersfoort/61575109492128/",
