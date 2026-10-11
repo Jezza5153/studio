@@ -38,7 +38,8 @@ export default function PrivacyPage() {
 
       <p className="mt-6 leading-relaxed">
         De Tafelaar, Kamp 8, 3811 AR Amersfoort, gaat zorgvuldig om met je gegevens. In deze verklaring lees je welke
-        gegevens we gebruiken, waarvoor, en welke rechten je hebt. Vragen? Mail naar info@tafelaaramersfoort.nl of bel{" "}
+        gegevens we gebruiken, waarvoor, en welke rechten je hebt. Vragen? Stuur ons een bericht via het{" "}
+        <Link href="/contact#bericht" className="underline underline-offset-2">contactformulier</Link> of bel{" "}
         {contactDetails.phone}.
       </p>
 
@@ -91,8 +92,9 @@ export default function PrivacyPage() {
       <Blok titel="Je rechten">
         <p>
           Je mag altijd vragen welke gegevens we van je hebben, en ze laten aanpassen of verwijderen. Je kunt ook bezwaar
-          maken tegen het gebruik ervan. Stuur daarvoor een mail naar info@tafelaaramersfoort.nl; we reageren binnen een
-          maand.
+          maken tegen het gebruik ervan. Stuur daarvoor een bericht via het{" "}
+          <Link href="/contact#bericht" className="underline underline-offset-2">contactformulier</Link>; we reageren
+          binnen een maand.
         </p>
         <p>
           Ben je het niet eens met hoe we met je gegevens omgaan? Laat het ons eerst weten, dan zoeken we samen een
