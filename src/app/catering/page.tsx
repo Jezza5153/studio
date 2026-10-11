@@ -794,7 +794,7 @@ export default async function CateringPage() {
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-3">
-                  <Link href="/contact" prefetch={false}>
+                  <Link href="/contact?onderwerp=catering#bericht" prefetch={false}>
                     <Button className="">Contact opnemen</Button>
                   </Link>
                   <Button asChild variant="outline" className="">
