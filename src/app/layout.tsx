@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 import { GoogleAnalytics } from "@/components/google-analytics";
 import Script from "next/script";
 import { getSettings } from "@/lib/queries/feed";
+import { persJsonLd } from "@/content/pers";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -114,9 +115,13 @@ function restaurantJsonLd(rating?: number, reviewCount?: number) {
     email: "info@tafelaaramersfoort.nl",
 
     sameAs: [
-      "https://www.facebook.com/tafelaaramersfoort",
+      "https://www.facebook.com/people/Tafelaar-Amersfoort/61575109492128/",
       "https://www.instagram.com/tafelaaramersfoort",
+      "https://www.tripadvisor.nl/Restaurant_Review-g188613-d34027809-Reviews-De_Tafelaar-Amersfoort.html",
+      "https://www.youtube.com/@DeTafelaarAmersfoort",
     ],
+
+    subjectOf: persJsonLd(),
 
     hasMap: "https://maps.google.com/?cid=9272578467641654802",
 

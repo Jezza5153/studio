@@ -9,6 +9,7 @@ import { Kicker, SectionLabel, Chip, Sticker, Ticker } from "@/components/compos
 import { getGoogleRating, type GoogleRating } from "@/lib/google-rating";
 import { MAANDEN, huidigeMaandIndex, seizoenLabel } from "@/lib/seizoen";
 import { homeContent, makers, makersIntro, contactDetails, openingHours } from "@/content/site-content";
+import { persMedia } from "@/content/pers";
 
 export const dynamic = "force-static";
 export const revalidate = 3600; // score/aantal uit het admin-paneel en het seizoenslabel verversen elk uur
@@ -421,6 +422,19 @@ export default async function Home() {
               <Link href="/vacatures">Bekijk de vacatures →</Link>
             </Button>
           </div>
+        </div>
+      </section>
+
+      {/* ================= IN DE PERS ================= */}
+      <section className="container mx-auto px-4 pb-20 sm:px-6 md:px-8" aria-label="In de pers">
+        <div className="flex flex-col gap-3 border-y-2 border-foreground py-5 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-[15px] text-muted-foreground">
+            <span className="mr-2 text-[11px] font-bold uppercase tracking-[0.2em] text-foreground">Bekend van</span>
+            {persMedia.join(" · ")}
+          </p>
+          <Link href="/over-ons#pers" className="shrink-0 text-sm font-bold text-primary underline underline-offset-4">
+            Lees wat de pers schrijft →
+          </Link>
         </div>
       </section>
 
