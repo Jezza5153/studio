@@ -13,7 +13,8 @@ const FROM_DEFAULT = "De Tafelaar website <onboarding@resend.dev>";
 
 const RATE_WINDOW_MS = 60 * 60 * 1000;
 const RATE_MAX = 5;
-const MIN_FILL_MS = 3000;
+// Bots versturen meteen; mensen hebben (zelfs met automatisch invullen) altijd langer nodig.
+const MIN_FILL_MS = 1200;
 const MAX_FILL_MS = 24 * 60 * 60 * 1000;
 const hits = new Map<string, number[]>();
 
@@ -68,11 +69,13 @@ export async function POST(req: Request) {
   const onderwerp = CONTACT_ONDERWERPEN.find((o) => o.value === body.onderwerp) ?? CONTACT_ONDERWERPEN[0];
 
   const errors: Record<string, string> = {};
-  if (naam.length < 2) errors.naam = "Vul je naam in.";
+  // Zo min mogelijk drempels: naam, een bericht, en een e-mailadres OF telefoonnummer om te kunnen antwoorden.
+  if (!naam) errors.naam = "Vul je naam in.";
   else if (naam.length > CONTACT_MAX.naam) errors.naam = "Je naam is te lang.";
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) || email.length > CONTACT_MAX.email) errors.email = "Vul een geldig e-mailadres in, dan kunnen we je antwoorden.";
-  if (telefoon && !/^[+()\d\s.-]{6,30}$/.test(telefoon)) errors.telefoon = "Dit lijkt geen telefoonnummer.";
-  if (bericht.length < 10) errors.bericht = "Schrijf iets meer in je bericht.";
+  if (email && (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) || email.length > CONTACT_MAX.email)) errors.email = "Dit e-mailadres klopt niet helemaal.";
+  if (telefoon && !/^[+()\d\s.-]{6,30}$/.test(telefoon)) errors.telefoon = "Dit telefoonnummer klopt niet helemaal.";
+  if (!email && !telefoon) errors.email = "Vul je e-mailadres of telefoonnummer in, dan kunnen we je antwoorden.";
+  if (!bericht) errors.bericht = "Schrijf je vraag of bericht.";
   else if (bericht.length > CONTACT_MAX.bericht) errors.bericht = `Je bericht is te lang (maximaal ${CONTACT_MAX.bericht} tekens).`;
   else if ((bericht.match(/https?:\/\/|www\./gi) ?? []).length > 2) errors.bericht = "Haal de links uit je bericht, dan komt het zeker aan.";
   if (Object.keys(errors).length) return fout(400, "Controleer de velden hieronder.", errors);
@@ -82,11 +85,11 @@ export async function POST(req: Request) {
   const regels = [
     `Onderwerp: ${onderwerp.label}`,
     `Naam: ${naam}`,
-    `E-mail: ${email}`,
+    `E-mail: ${email || "niet opgegeven"}`,
     `Telefoon: ${telefoon || "niet opgegeven"}`,
   ];
-  const text = `Nieuw bericht via tafelaaramersfoort.nl\n\n${regels.join("\n")}\n\n${bericht}\n\nMet "Beantwoorden" gaat je antwoord direct naar ${email}.`;
-  const html = `<p>Nieuw bericht via tafelaaramersfoort.nl</p><p>${regels.map(esc).join("<br>")}</p><p style="white-space:pre-wrap">${esc(bericht)}</p><p style="color:#666">Met "Beantwoorden" gaat je antwoord direct naar ${esc(email)}.</p>`;
+  const text = `Nieuw bericht via tafelaaramersfoort.nl\n\n${regels.join("\n")}\n\n${bericht}\n\n${email ? `Met "Beantwoorden" gaat je antwoord direct naar ${email}.` : `Geen e-mailadres opgegeven: bel ${telefoon} terug.`}`;
+  const html = `<p>Nieuw bericht via tafelaaramersfoort.nl</p><p>${regels.map(esc).join("<br>")}</p><p style="white-space:pre-wrap">${esc(bericht)}</p><p style="color:#666">${email ? `Met "Beantwoorden" gaat je antwoord direct naar ${esc(email)}.` : `Geen e-mailadres opgegeven: bel ${esc(telefoon)} terug.`}</p>`;
 
   try {
     const res = await fetch("https://api.resend.com/emails", {
@@ -95,7 +98,7 @@ export async function POST(req: Request) {
       body: JSON.stringify({
         from,
         to: [to],
-        reply_to: email,
+        ...(email ? { reply_to: email } : {}),
         subject: `Website: ${onderwerp.label}, van ${naam}`,
         text,
         html,
