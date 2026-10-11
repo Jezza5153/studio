@@ -35,7 +35,7 @@ const buurtgidsFaqs = [
   {
     question: "Welk restaurant ligt het dichtst bij de Flint Amersfoort?",
     answer:
-      "De Tafelaar op de Kamp 8 ligt op 5 minuten lopen van Theater de Flint. Ideaal voor een diner of borrel voor of na een voorstelling. We zijn open op donderdag vanaf 17:00 en op vrijdag t/m zondag vanaf 15:00.",
+      "De Tafelaar op de Kamp 8 ligt op 5 minuten lopen van Theater de Flint. Ideaal voor een diner of borrel voor of na een voorstelling. We zijn open op maandag en donderdag vanaf 17:00 en op vrijdag t/m zondag vanaf 15:00.",
   },
   {
     question: "Waar kan ik parkeren bij Theater de Flint?",

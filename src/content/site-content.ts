@@ -49,7 +49,7 @@ Kamp 8
 export const openingHours = {
   title: "Openingstijden",
   schedule: [
-    { day: "Maandag", time: "Gesloten" },
+    { day: "Maandag", time: "17:00 - 23:00" },
     { day: "Dinsdag", time: "Gesloten" },
     { day: "Woensdag", time: "Gesloten" },
     { day: "Donderdag", time: "17:00 - 23:00" },
@@ -59,7 +59,8 @@ export const openingHours = {
   ],
   /** Korte weergave voor de footer */
   compact: [
-    { day: "Ma t/m wo", time: "Gesloten" },
+    { day: "Maandag", time: "17:00 - 23:00" },
+    { day: "Di en wo", time: "Gesloten" },
     { day: "Donderdag", time: "17:00 - 23:00" },
     { day: "Vr en za", time: "15:00 - 00:00" },
     { day: "Zondag", time: "15:00 - 23:00" },
@@ -73,11 +74,11 @@ export const homeContent = {
     headline: "De Tafelaar: Shared Dining Restaurant in Amersfoort",
     tagline: "Samen aan tafel. Gerechten om te delen, grote gezelligheid.",
     subhead:
-      "Welkom bij De Tafelaar op de Kamp in Amersfoort centrum. Shared dining voor borrel en diner met lokale seizoensgerechten om te delen. Op 5 minuten van de Flint, open van donderdag t/m zondag.",
+      "Welkom bij De Tafelaar op de Kamp in Amersfoort centrum. Shared dining voor borrel en diner met lokale seizoensgerechten om te delen. Op 5 minuten van de Flint, open op maandag en van donderdag t/m zondag.",
 
     kicker: "Restaurant Amersfoort Centrum · Kamp 8",
     entityDefinition:
-      "De Tafelaar is een shared-dining restaurant op de Kamp in Amersfoort centrum. Open van donderdag t/m zondag voor borrel en diner. Lokale producten, seizoensgebonden menu.",
+      "De Tafelaar is een shared-dining restaurant op de Kamp in Amersfoort centrum. Open op maandag en van donderdag t/m zondag voor borrel en diner. Lokale producten, seizoensgebonden menu.",
   },
 
   // UPDATED: stable iconKey so icons don’t break when titles change

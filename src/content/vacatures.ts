@@ -30,7 +30,7 @@ export type Vacature = {
   validThrough: string;
 };
 
-const WERKDAGEN = "Donderdagavond en vrijdag t/m zondag vanaf 15:00";
+const WERKDAGEN = "Maandag- en donderdagavond, vrijdag t/m zondag vanaf 15:00";
 
 // Horeca-cao loontabel per 1 juli 2026: basisloon functiegroep V (20 jaar of ouder) is €15,21 per uur.
 // Bediening (functiegroep III, cao-minimum €14,99) krijgt bewust hetzelfde startloon.
@@ -59,13 +59,13 @@ export const vacatures: Vacature[] = [
     ],
     zoeken: [
       "Ervaring in de bediening is fijn, een open en gastvrije instelling is belangrijker",
-      "Beschikbaar op donderdagavond en in het weekend (vrijdag t/m zondag vanaf 15:00)",
+      "Beschikbaar op maandag- en donderdagavond en in het weekend (vrijdag t/m zondag vanaf 15:00)",
       "Je spreekt goed Nederlands en houdt van lekker eten",
     ],
     bieden: [
       "Vanaf €15,21 bruto per uur (21 jaar of ouder), volgens de horeca-cao",
       "Een klein, hecht team en korte lijnen met de eigenaren",
-      "Vaste vrije dagen: op maandag, dinsdag en woensdag is de zaak dicht",
+      "Vaste vrije dagen: op dinsdag en woensdag is de zaak dicht",
       "Een personeelsmaaltijd en de kans om de hele kaart te leren proeven",
     ],
     datePosted: "2026-10-11",
@@ -96,13 +96,13 @@ export const vacatures: Vacature[] = [
     zoeken: [
       "Een paar jaar ervaring in de bediening, liefst ook als leidinggevende of shiftleader",
       "Overzicht en rust als het druk is, en een gastvrije houding",
-      "Beschikbaar op donderdagavond en in het weekend (vrijdag t/m zondag vanaf 15:00)",
+      "Beschikbaar op maandag- en donderdagavond en in het weekend (vrijdag t/m zondag vanaf 15:00)",
       "Je spreekt goed Nederlands; een Verklaring Sociale Hygiëne is een pre",
     ],
     bieden: [
       "Vanaf €15,21 bruto per uur (21 jaar of ouder), volgens de horeca-cao, afhankelijk van ervaring",
       "Verantwoordelijkheid en ruimte om mee te bouwen aan een jonge zaak met een eigen concept",
-      "Vaste vrije dagen: op maandag, dinsdag en woensdag is de zaak dicht",
+      "Vaste vrije dagen: op dinsdag en woensdag is de zaak dicht",
       "Korte lijnen met de eigenaren en een personeelsmaaltijd tijdens je dienst",
     ],
     datePosted: "2026-10-11",
@@ -131,12 +131,12 @@ export const vacatures: Vacature[] = [
     zoeken: [
       "Een afgeronde koksopleiding of een paar jaar ervaring in een goede keuken",
       "Zelfstandig, netjes en rustig als het druk is",
-      "Beschikbaar van donderdag t/m zondag, in overleg ook overdag voor catering",
+      "Beschikbaar op maandag en van donderdag t/m zondag, in overleg ook overdag voor catering",
     ],
     bieden: [
       "Vanaf €15,21 bruto per uur (21 jaar of ouder), volgens de horeca-cao, afhankelijk van ervaring",
       "Een keuken zonder franje waar smaak en product vooropstaan",
-      "Vaste vrije dagen: op maandag, dinsdag en woensdag is de zaak dicht",
+      "Vaste vrije dagen: op dinsdag en woensdag is de zaak dicht",
       "Werken naast een chef met ervaring in high-end keukens in Nederland en Australië",
     ],
     datePosted: "2026-10-11",
@@ -191,7 +191,7 @@ export const waaromTafelaar = [
   },
   {
     titel: "Vaste vrije dagen",
-    tekst: "We zijn open van donderdag t/m zondag. Maandag, dinsdag en woensdag is de zaak dicht, dus dan ben jij ook vrij.",
+    tekst: "We zijn open op maandag en van donderdag t/m zondag. Dinsdag en woensdag is de zaak dicht, dus dan ben jij ook vrij.",
   },
   {
     titel: "Shared dining is teamwerk",
@@ -213,7 +213,7 @@ export const vacatureFaqs = [
   {
     question: "Op welke dagen werk je bij De Tafelaar?",
     answer:
-      "We zijn open op donderdag van 17:00 tot 23:00, op vrijdag en zaterdag van 15:00 tot 00:00 en op zondag van 15:00 tot 23:00. Maandag, dinsdag en woensdag is de zaak gesloten. Je rooster spreken we samen af.",
+      "We zijn open op maandag en donderdag van 17:00 tot 23:00, op vrijdag en zaterdag van 15:00 tot 00:00 en op zondag van 15:00 tot 23:00. Dinsdag en woensdag is de zaak gesloten. Je rooster spreken we samen af.",
   },
   {
     question: "Wat verdien je bij De Tafelaar?",
@@ -235,7 +235,7 @@ export const vacatureFaqs = [
 export const sollicitatieStappen = [
   {
     titel: "Mail, bel of loop binnen",
-    tekst: "Een korte mail is genoeg. Bellen of even langskomen op de Kamp 8 (donderdag t/m zondag) mag ook.",
+    tekst: "Een korte mail is genoeg. Bellen of even langskomen op de Kamp 8 (maandag en donderdag t/m zondag) mag ook.",
   },
   {
     titel: "Koffie op de Kamp",
