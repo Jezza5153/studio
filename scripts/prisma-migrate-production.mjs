@@ -1,9 +1,19 @@
 // Runs as part of `npm run build`. Applies the committed migrations in
 // prisma/migrations, but ONLY on Vercel production builds (main).
 //
-// Preview and Development share the production DATABASE_URL, so preview and
-// local builds must never change the schema. See docs/database-migrations.md.
+// Preview and Development read the same (live) database through a read-only
+// login, so preview and local builds never change the schema.
+// See docs/database-migrations.md.
 import { spawnSync } from "node:child_process";
+import { explain, unapprovedDataLoss } from "./migration-guard.mjs";
+
+// 0. Every build (preview too, so the PR shows it): no migration may delete or
+//    rewrite data without an explicit `-- data-loss-approved:` line.
+const unapproved = unapprovedDataLoss();
+if (unapproved.length) {
+  console.error(explain(unapproved));
+  process.exit(1);
+}
 
 const vercelEnv = process.env.VERCEL_ENV;
 

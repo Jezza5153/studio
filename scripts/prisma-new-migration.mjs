@@ -10,6 +10,7 @@ import { execFileSync, spawnSync } from "node:child_process";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import { explain, unapprovedDataLoss } from "./migration-guard.mjs";
 
 const name = process.argv[2];
 if (!name || !/^[a-z0-9_]+$/.test(name)) {
@@ -63,9 +64,7 @@ fs.mkdirSync(path.dirname(out), { recursive: true });
 fs.writeFileSync(out, sql);
 console.log(`[db] Wrote ${out}:\n\n${sql}`);
 
-if (/\bDROP\b|SET DATA TYPE/i.test(sql)) {
-  console.warn(
-    "[db] WARNING: this migration drops or retypes something, which can delete production data.\n" +
-      "[db] Read the SQL carefully, take a backup before merging, and see docs/database-migrations.md."
-  );
+const risky = unapprovedDataLoss().filter((m) => m.name === path.basename(path.dirname(out)));
+if (risky.length) {
+  console.warn(explain(risky) + "\n[db] Until then every build of this branch fails on purpose.");
 }

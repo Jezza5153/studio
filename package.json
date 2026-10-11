@@ -15,7 +15,7 @@
     "postinstall": "prisma generate",
     "db:migration": "node scripts/prisma-new-migration.mjs",
     "db:status": "prisma migrate status",
-    "db:deploy": "prisma migrate deploy",
+    "db:deploy": "node scripts/migration-guard.mjs && prisma migrate deploy",
     "db:seed": "prisma db seed",
     "db:studio": "prisma studio"
   },
