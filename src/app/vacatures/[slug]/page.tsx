@@ -63,7 +63,7 @@ export default async function VacaturePage({ params }: Props) {
     ["Dagen", v.dagen],
     ["Locatie", "Kamp 8, 3811 AR Amersfoort (centrum)"],
     ["Salaris", v.salaris?.tekst ?? "Volgens de horeca-cao"],
-    ["Ervaring", v.zonderErvaring ? "Niet nodig, we leren je alles" : "Opleiding of een paar jaar ervaring"],
+    ["Ervaring", v.ervaring],
     ["Solliciteren", `Mail ${contactDetails.email} of bel ${contactDetails.phone}`],
   ];
 
@@ -103,7 +103,7 @@ export default async function VacaturePage({ params }: Props) {
             <p className="mt-4 max-w-2xl text-base text-muted-foreground sm:text-lg">
               De Tafelaar, shared dining restaurant op de Kamp 8 in Amersfoort centrum, zoekt een {functie}:{" "}
               {v.dienstverband.toLowerCase()}, {v.uren}.{" "}
-              {v.zonderErvaring ? "Ervaring is niet nodig, we leren je alles." : "Met een koksopleiding of een paar jaar keukenervaring."}
+              {v.zonderErvaring ? "Ervaring is niet nodig, we leren je alles." : `Gevraagd: ${v.ervaring.toLowerCase()}.`}
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Button asChild>

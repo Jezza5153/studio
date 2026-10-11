@@ -410,10 +410,10 @@ export default async function Home() {
           <div className="px-7 py-8 md:px-10">
             <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/80">Werken bij De Tafelaar</p>
             <h2 id="vacatures-band-title" className="mt-2 font-headline text-[clamp(24px,3vw,34px)] font-extrabold leading-tight">
-              We zoeken collega&apos;s voor de bediening en de keuken
+              We zoeken collega&apos;s voor de bediening, de leiding en de keuken
             </h2>
             <p className="mt-2 max-w-2xl text-[15px] text-white/90">
-              Bediening, kok en afwasser/keukenhulp, ook zonder ervaring welkom. Een klein team, lokale producten en vaste vrije dagen.
+              Bediening, assistent leidinggevende, kok en afwasser/keukenhulp, vanaf €15,21 per uur. Een klein team, lokale producten en vaste vrije dagen.
             </p>
           </div>
           <div className="border-t-[5px] border-foreground px-7 py-6 md:border-l-[5px] md:border-t-0 md:px-10">
