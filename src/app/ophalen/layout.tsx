@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-    title: "Tafelaar Thuis: Ophalen bij De Tafelaar | Spare Ribs Afhalen Amersfoort",
+    title: { absolute: "Tafelaar Thuis: Spare Ribs Afhalen bij De Tafelaar" },
     description:
         "Tafelaar Thuis: ophalen bij De Tafelaar op de Kamp in Amersfoort. Sous-vide spare ribs, bijgerechten, huisgemaakte sauzen en dranken. Bekijk de kaart en bestel.",
     alternates: {

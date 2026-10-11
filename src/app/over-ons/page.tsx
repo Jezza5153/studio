@@ -46,7 +46,7 @@ function overOnsFaqJsonLd() {
 }
 
 export const metadata: Metadata = {
-  title: "Over De Tafelaar | Ons Verhaal, Restaurant Amersfoort Centrum",
+  title: { absolute: "Over De Tafelaar | Restaurant op de Kamp, Amersfoort" },
   description: "Leer De Tafelaar kennen: shared dining restaurant op de Kamp in Amersfoort. Ons verhaal, onze lokale producenten en waarom we kiezen voor seizoensgebonden gerechten.",
   alternates: {
     canonical: "/over-ons",

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ReserveerButton } from "@/components/reserveer-button";
 
 export const metadata: Metadata = {
-    title: "Drankenkaart De Tafelaar | Lokaal Bier & Wijn Amersfoort",
+    title: { absolute: "Drankenkaart De Tafelaar | Lokaal Bier & Wijn Amersfoort" },
     description: "Lokale bieren, biologische wijnen en cocktails bij De Tafelaar in Amersfoort. Rock City, De Drie Ringen, Korte Garde en meer. Bekijk de volledige drankenkaart.",
     alternates: {
         canonical: "/drank",

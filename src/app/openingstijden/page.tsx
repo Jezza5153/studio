@@ -10,7 +10,7 @@ import { openingHours } from "@/content/site-content";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Openingstijden De Tafelaar Amersfoort | Wanneer Open",
+  title: { absolute: "Openingstijden De Tafelaar Amersfoort | Wanneer open?" },
   description:
     "Openingstijden De Tafelaar, Kamp 8 Amersfoort: ma en do 17:00-23:00, vr en za 15:00-00:00, zo 15:00-23:00, di en wo gesloten. Reserveer online of bel ons.",
   alternates: {
