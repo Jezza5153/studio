@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const v = getVacature(slug);
   if (!v) return {};
-  const titel = `Vacature ${v.titel.toLowerCase()} Amersfoort | De Tafelaar`;
+  const titel = `Vacature ${v.titel.toLowerCase()} in Amersfoort`;
   return {
     title: titel,
     description: v.samenvatting,
@@ -101,8 +101,9 @@ export default async function VacaturePage({ params }: Props) {
               Vacature {functie} in Amersfoort
             </h1>
             <p className="mt-4 max-w-2xl text-base text-muted-foreground sm:text-lg">
-              De Tafelaar, shared dining restaurant op de Kamp 8 in Amersfoort centrum, zoekt een {functie}.{" "}
-              {v.samenvatting}
+              De Tafelaar, shared dining restaurant op de Kamp 8 in Amersfoort centrum, zoekt een {functie}:{" "}
+              {v.dienstverband.toLowerCase()}, {v.uren}.{" "}
+              {v.zonderErvaring ? "Ervaring is niet nodig, we leren je alles." : "Met een koksopleiding of een paar jaar keukenervaring."}
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Button asChild>
