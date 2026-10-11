@@ -4,6 +4,7 @@ export const CONTACT_ONDERWERPEN = [
   { value: "vraag", label: "Vraag of reservering" },
   { value: "groep", label: "Groep, feest of verhuur" },
   { value: "catering", label: "Catering" },
+  { value: "werken", label: "Werken bij De Tafelaar" },
   { value: "overig", label: "Iets anders" },
 ] as const;
 

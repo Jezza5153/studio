@@ -120,7 +120,6 @@ function restaurantJsonLd(rating?: number, reviewCount?: number) {
     },
 
     telephone: "+31 6 341 279 32",
-    email: "info@tafelaaramersfoort.nl",
 
     sameAs: [
       "https://www.facebook.com/people/Tafelaar-Amersfoort/61575109492128/",
@@ -243,16 +242,6 @@ export default async function RootLayout({
 
         <Footer />
 
-        {/* Honeypot: hidden fake email to trap scraping bots.
-            Any email sent to this address = confirmed bot.
-            aria-hidden + tabIndex -1 makes it invisible to real users & screen readers. */}
-        <div
-          aria-hidden="true"
-          tabIndex={-1}
-          style={{ position: "absolute", left: "-9999px", top: "-9999px", width: 0, height: 0, overflow: "hidden", opacity: 0 }}
-        >
-          <a href="mailto:crawler-trap@tafelaaramersfoort.nl" tabIndex={-1}>contact</a>
-        </div>
         <Toaster />
 
         {/* Google Analytics */}

@@ -50,7 +50,12 @@ export function ContactForm({ telefoon }: { telefoon: string }) {
         setStatus({ kind: "ok" });
         return;
       }
-      if (json.errors) setErrors(json.errors);
+      if (json.errors) {
+        setErrors(json.errors);
+        // Spring naar het eerste veld dat nog aandacht nodig heeft
+        const eerste = ["naam", "email", "telefoon", "bericht"].find((k) => json.errors[k]);
+        if (eerste) requestAnimationFrame(() => document.getElementById(`contact-${eerste}`)?.focus());
+      }
       setStatus({ kind: "error", message: json.error ?? `Versturen lukte niet. Bel ons gerust op ${telefoon}.` });
     } catch {
       setStatus({ kind: "error", message: `Geen verbinding. Probeer het opnieuw of bel ons op ${telefoon}.` });
@@ -62,7 +67,7 @@ export function ContactForm({ telefoon }: { telefoon: string }) {
       <div role="status" className="border-2 border-foreground bg-background p-6">
         <p className="font-headline text-2xl font-extrabold tracking-tight">Bedankt, je bericht is verstuurd!</p>
         <p className="mt-2 text-muted-foreground">
-          We reageren zo snel mogelijk per e-mail. Wil je vandaag nog een tafel? Bel ons dan even op {telefoon}.
+          We nemen zo snel mogelijk contact met je op. Wil je vandaag nog een tafel? Bel ons dan even op {telefoon}.
         </p>
       </div>
     );
@@ -120,7 +125,6 @@ export function ContactForm({ telefoon }: { telefoon: string }) {
             type="email"
             autoComplete="email"
             inputMode="email"
-            required
             maxLength={CONTACT_MAX.email}
             aria-invalid={Boolean(errors.email)}
             aria-describedby={errors.email ? "fout-email" : undefined}
@@ -131,9 +135,7 @@ export function ContactForm({ telefoon }: { telefoon: string }) {
       </div>
 
       <div>
-        <Label htmlFor="contact-telefoon">
-          Telefoonnummer <span className="font-normal text-muted-foreground">(mag leeg blijven)</span>
-        </Label>
+        <Label htmlFor="contact-telefoon">Telefoonnummer</Label>
         <Input
           id="contact-telefoon"
           name="telefoon"
@@ -146,6 +148,7 @@ export function ContactForm({ telefoon }: { telefoon: string }) {
           className="mt-2"
         />
         <Veldfout id="fout-telefoon">{errors.telefoon}</Veldfout>
+        <p className="mt-1.5 text-xs text-muted-foreground">Vul je e-mailadres of telefoonnummer in, een van de twee is genoeg.</p>
       </div>
 
       <div>
@@ -159,7 +162,9 @@ export function ContactForm({ telefoon }: { telefoon: string }) {
           placeholder={
             onderwerp === "groep" || onderwerp === "catering"
               ? "Welke datum heb je in gedachten, met hoeveel personen, en wat zoek je?"
-              : "Waar kunnen we je mee helpen?"
+              : onderwerp === "werken"
+                ? "Vertel kort wie je bent, wat je zoekt en wanneer je kunt werken."
+                : "Waar kunnen we je mee helpen?"
           }
           aria-invalid={Boolean(errors.bericht)}
           aria-describedby={errors.bericht ? "fout-bericht" : undefined}
