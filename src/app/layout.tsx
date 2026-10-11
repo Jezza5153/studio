@@ -91,6 +91,10 @@ function restaurantJsonLd(rating?: number, reviewCount?: number) {
     acceptsReservations: true,
     hasMenu: `${siteUrl}/menu`,
     foundingDate: "2025-11",
+    disambiguatingDescription:
+      "Shared dining restaurant op de Kamp 8 in Amersfoort centrum, geopend in november 2025, op 5 minuten lopen van Theater de Flint.",
+    founder: { "@type": "Person", name: "Jan Molmans" },
+    employee: { "@type": "Person", name: "Jeremy Arrascaeta", jobTitle: "Chef-kok" },
     keywords:
       "restaurant amersfoort, shared dining, lokaal, seizoensgebonden, vlakbij flint, borrel amersfoort, afhalen amersfoort",
     smokingAllowed: false,

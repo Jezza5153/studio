@@ -57,6 +57,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/vacatures/assistent-leidinggevende",
+        destination: "/vacatures/eerste-medewerker-restaurant",
+        permanent: true,
+      },
+      {
         // Korte reviewlinks voor tafelkaartjes, bonnetjes en QR-codes. Tijdelijk (307), zodat de
         // QR-codes blijven werken als de doelpagina ooit verandert.
         source: "/review",
