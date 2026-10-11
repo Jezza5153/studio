@@ -12,7 +12,7 @@ export const revalidate = 3600; // Google rating/review count refresh hourly (sy
 export const metadata: Metadata = {
     title: "Restaurant Amersfoort Centrum | Shared Dining De Tafelaar",
     description:
-        "Restaurant in Amersfoort centrum op de Kamp: De Tafelaar biedt shared dining met lokale gerechten. Vlakbij Flint, de Kamperbinnenpoort en het station. Wo\u2013zo geopend.",
+        "Restaurant in Amersfoort centrum op de Kamp: De Tafelaar biedt shared dining met lokale gerechten. Vlakbij Flint, de Kamperbinnenpoort en het station. Open ma en vr t/m zo.",
     alternates: {
         canonical: "/restaurant-amersfoort-centrum",
     },
@@ -88,7 +88,7 @@ export default async function RestaurantAmersfoortCentrumPage() {
                 </h1>
                 <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
                     De Tafelaar op Kamp 8: shared dining met lokale gerechten in het hart van Amersfoort.
-                    Op loopafstand van de Flint en de Kamperbinnenpoort. Woensdag t/m zondag geopend.
+                    Op loopafstand van de Flint en de Kamperbinnenpoort. Open op maandag en van vrijdag t/m zondag.
                 </p>
             </header>
 
@@ -160,8 +160,8 @@ export default async function RestaurantAmersfoortCentrumPage() {
                         <p>
                             De Tafelaar is ook de ideale plek voor een hapje voor of na een voorstelling
                             in Theater de Flint, op ongeveer 400 meter, circa 5 minuten lopen. We zijn
-                            geopend van woensdag t/m donderdag van 17:00 tot 23:00, vrijdag en
-                            zaterdag van 11:00 tot 00:00 en zondag van 11:00 tot 23:00.
+                            open op maandag van 17:00 tot 22:00 en op vrijdag, zaterdag en zondag
+                            van 15:00 tot 00:00.
                         </p>
                     </div>
                 </Card>

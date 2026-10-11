@@ -93,7 +93,7 @@ export function InstagramLivingGallery({ posts }: InstagramLivingGalleryProps) {
                     Volg ons op Instagram
                 </p>
                 <a
-                    href="https://instagram.com/tafelaaramersfoort"
+                    href="https://www.instagram.com/tafelaaramersfoort"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-2 inline-block text-xs font-medium text-primary hover:underline"

@@ -118,9 +118,6 @@ export default function DrankLayout({
                         <Link href="/menu">
                             <Button variant="outline" className="">Dinerkaart</Button>
                         </Link>
-                        <Link href="/lunch">
-                            <Button variant="outline" className="">Lunchkaart</Button>
-                        </Link>
                         <Link href="/borrel-amersfoort">
                             <Button variant="outline" className="">Borrel in Amersfoort</Button>
                         </Link>

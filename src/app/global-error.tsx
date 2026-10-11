@@ -132,7 +132,6 @@ export default function GlobalError({
                         }}
                     >
                         <a href="/menu" style={{ color: "#9a7b4f" }}>Menukaart</a>
-                        <a href="/lunch" style={{ color: "#9a7b4f" }}>Lunchkaart</a>
                         <a href="/drank" style={{ color: "#9a7b4f" }}>Drankenkaart</a>
                         <a href="/openingstijden" style={{ color: "#9a7b4f" }}>Openingstijden</a>
                         <a href="/contact" style={{ color: "#9a7b4f" }}>Contact</a>

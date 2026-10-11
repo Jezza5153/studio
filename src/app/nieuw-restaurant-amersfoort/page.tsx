@@ -11,7 +11,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
     title: "Ontdek De Tafelaar | Shared Dining Restaurant Amersfoort",
     description:
-        "Ken je De Tafelaar al? Shared dining restaurant op de Kamp in Amersfoort. Lokale gerechten om te delen, seizoensgebonden menu, gezellige sfeer. Wo t/m zo geopend.",
+        "Ken je De Tafelaar al? Shared dining restaurant op de Kamp in Amersfoort. Lokale gerechten om te delen, seizoensgebonden menu, gezellige sfeer. Open ma en vr t/m zo.",
     alternates: {
         canonical: "/nieuw-restaurant-amersfoort",
     },
@@ -40,7 +40,7 @@ const faqs = [
     },
     {
         question: "Wanneer is De Tafelaar open?",
-        answer: "Woensdag en donderdag van 17:00 tot 23:00, vrijdag en zaterdag van 11:00 tot 00:00, en zondag van 11:00 tot 23:00. Maandag en dinsdag zijn we gesloten.",
+        answer: "Maandag van 17:00 tot 22:00, vrijdag, zaterdag en zondag van 15:00 tot 00:00. Dinsdag, woensdag en donderdag zijn we gesloten.",
     },
     {
         question: "Moet ik reserveren?",
@@ -105,8 +105,8 @@ export default function NieuwRestaurantAmersfoortPage() {
                             </div>
                         </CardHeader>
                         <CardContent className="text-sm text-muted-foreground">
-                            <p>Woensdag en donderdag vanaf 17:00</p>
-                            <p>Vrijdag t/m zondag vanaf 11:00</p>
+                            <p>Maandag 17:00-22:00</p>
+                            <p>Vrijdag t/m zondag 15:00-00:00</p>
                         </CardContent>
                     </Card>
                 </div>

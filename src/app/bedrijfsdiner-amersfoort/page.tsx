@@ -39,7 +39,7 @@ const faqs = [
     },
     {
         question: "Kunnen we overdag een bedrijfslunch doen?",
-        answer: "Ja, overdag is het restaurant beschikbaar voor zakelijke lunches, vergaderingen met eten, of teamdagen. Ook op maandag en dinsdag in overleg.",
+        answer: "Ja, overdag is het restaurant beschikbaar voor zakelijke lunches, vergaderingen met eten, of teamdagen. Ook op dinsdag t/m donderdag, als het restaurant gesloten is, in overleg.",
     },
     {
         question: "Wat kost een bedrijfsdiner?",
@@ -155,7 +155,7 @@ export default async function BedrijfsdinerAmersfoortPage() {
                             </p>
                             <p>
                                 Het restaurant is ook overdag beschikbaar voor zakelijke lunches,
-                                vergaderingen met eten of teamdagen. Op maandag en dinsdag in overleg.
+                                vergaderingen met eten of teamdagen. Op dinsdag t/m donderdag in overleg.
                                 Wij denken mee over de invulling zodat jullie alleen nog maar hoeven
                                 aan te schuiven.
                             </p>
@@ -165,9 +165,8 @@ export default async function BedrijfsdinerAmersfoortPage() {
                                 circa 22 minuten lopen, of korter met bus, fiets of taxi.
                                 Parkeergarage Beestenmarkt ligt op 2 minuten loopafstand. Met een
                                 {g.ratingText} op Google en {g.countText} reviews is De Tafelaar een van de best
-                                beoordeelde restaurants in Amersfoort. We zijn geopend van woensdag
-                                t/m zondag (keuken open vanaf 17:00 op wo/do, vanaf 11:00 op
-                                vr t/m zo).
+                                beoordeelde restaurants in Amersfoort. We zijn open op maandag
+                                vanaf 17:00 en van vrijdag t/m zondag vanaf 15:00.
                             </p>
                         </div>
                     </Card>

@@ -162,8 +162,8 @@ export default async function VegetarischAmersfoortPage() {
                                 lopen van Theater de Flint. Vanaf station Amersfoort Centraal is het
                                 circa 22 minuten lopen, of korter met bus, fiets of taxi. Met een {g.ratingText}
                                 op Google en {g.countText} reviews zijn we een van de best beoordeelde restaurants
-                                in Amersfoort. Geopend woensdag t/m zondag (woensdag en donderdag
-                                vanaf 17:00, vrijdag t/m zondag vanaf 11:00).
+                                in Amersfoort. Geopend op maandag (17:00-22:00) en vrijdag t/m zondag
+                                (vanaf 15:00).
                             </p>
                         </div>
                     </Card>

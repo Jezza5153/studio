@@ -78,7 +78,7 @@ const ophalenFaqs = [
     {
         question: "Hoe bestel ik en wanneer kan ik ophalen?",
         answer:
-            "Bel +31 6 341 279 32 om je bestelling door te geven en een ophaaltijd af te spreken. Ophalen op Kamp 8 in Amersfoort centrum tijdens openingstijden: woensdag en donderdag vanaf 17:00, vrijdag t/m zondag vanaf 11:00.",
+            "Bel +31 6 341 279 32 om je bestelling door te geven en een ophaaltijd af te spreken. Ophalen op Kamp 8 in Amersfoort centrum tijdens openingstijden: maandag vanaf 17:00, vrijdag t/m zondag vanaf 15:00.",
     },
     {
         question: "Waarom zijn jullie spare ribs anders?",
@@ -168,9 +168,6 @@ export default function OphalenLayout({
                     <div className="flex flex-wrap justify-center gap-3">
                         <Link href="/menu">
                             <Button variant="outline" className="">Dinerkaart</Button>
-                        </Link>
-                        <Link href="/lunch">
-                            <Button variant="outline" className="">Lunchkaart</Button>
                         </Link>
                         <Link href="/drank">
                             <Button variant="outline" className="">Drankenkaart</Button>

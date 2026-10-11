@@ -83,10 +83,6 @@ const menuFaqs = [
         question: "Kan ik bij De Tafelaar ophalen?",
         answer: "Ja, we hebben een kaart van Tafelaar Thuis met onze sous-vide spare ribs (24 uur op 80°C), bijgerechten, huisgemaakte sauzen en dranken. Bekijk de kaart van Tafelaar Thuis om te bestellen.",
     },
-    {
-        question: "Serveren jullie ook lunch?",
-        answer: "Ja, van 11:00 tot 15:00 hebben we een aparte lunchkaart met verse broodjes, salades geserveerd met brood, bao buns, een clubsandwich en de Tafelaars Plank om te delen. Vanaf 17:00 gaat de dinerkaart open. Bekijk de lunchkaart voor het volledige aanbod.",
-    },
 ];
 
 function menuFaqJsonLd() {
@@ -140,9 +136,7 @@ export default function MenuLayout({
                                 wijnarrangement van Korte Garde (€28 p.p.) voor een complete avond.
                             </p>
                             <p>
-                                Kom je overdag langs? Bekijk dan onze{" "}
-                                <Link href="/lunch" className="underline hover:text-foreground">lunchkaart</Link>{" "}
-                                met verse broodjes, salades en gerechten om te delen. Liever thuis genieten?
+                                Liever thuis genieten?
                                 Onze <Link href="/ophalen" className="underline hover:text-foreground">kaart van Tafelaar Thuis</Link>{" "}
                                 met sous-vide spare ribs en bijgerechten kun je meenemen.
                             </p>
@@ -172,9 +166,6 @@ export default function MenuLayout({
                 <section className="max-w-2xl mx-auto text-center space-y-6">
                     <ReserveerButton size="lg" className="shadow-sm" label="Reserveer een tafel" />
                     <div className="flex flex-wrap justify-center gap-3">
-                        <Link href="/lunch">
-                            <Button variant="outline" className="">Lunchkaart</Button>
-                        </Link>
                         <Link href="/drank">
                             <Button variant="outline" className="">Drankenkaart</Button>
                         </Link>

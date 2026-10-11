@@ -37,7 +37,7 @@ function buildFaqs(g: GoogleRating) {
     return [
     {
         question: "Waar kan ik lekker eten in Amersfoort?",
-        answer: `De Tafelaar op de Kamp 8 is een aanrader als je lekker wilt eten in Amersfoort. Je deelt gerechten aan tafel, van borrelplanken en charcuterie tot warme seizoensgerechten. Gemaakt met lokale producten, gezellige sfeer, en een ${g.ratingText} op Google. Open woensdag t/m zondag.`,
+        answer: `De Tafelaar op de Kamp 8 is een aanrader als je lekker wilt eten in Amersfoort. Je deelt gerechten aan tafel, van borrelplanken en charcuterie tot warme seizoensgerechten. Gemaakt met lokale producten, gezellige sfeer, en een ${g.ratingText} op Google. Open op maandagavond en van vrijdag t/m zondag.`,
     },
     {
         question: "Hoeveel kost uit eten bij De Tafelaar?",
@@ -154,7 +154,7 @@ export default async function UitEtenAmersfoortPage() {
                         <p>
                             Of je nu komt voor een spontane avond uit, een verjaardagsdiner of een
                             gezellig etentje met vrienden: shared dining maakt elke avond bijzonder.
-                            We zijn geopend van woensdag t/m zondag en zitten op de Kamp, midden in
+                            We zijn open op maandag en van vrijdag t/m zondag en zitten op de Kamp, midden in
                             het centrum van Amersfoort.
                         </p>
                     </div>

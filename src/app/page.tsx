@@ -17,11 +17,11 @@ export async function generateMetadata(): Promise<Metadata> {
   const g = await getGoogleRating();
   return {
     title: "De Tafelaar | Restaurant Amersfoort, Lekker Eten & Shared Dining",
-    description: `Shared dining op de Kamp in Amersfoort centrum: lunch, borrel en diner met lokale seizoensgerechten, ook Tafelaar Thuis (ophalen). ${g.ratingText} op Google, 5 min van de Flint.`,
+    description: `Shared dining op de Kamp in Amersfoort centrum: borrel en diner met lokale seizoensgerechten, ook Tafelaar Thuis (ophalen). ${g.ratingText} op Google, 5 min van de Flint.`,
     alternates: { canonical: "/" },
     openGraph: {
       title: "De Tafelaar | Restaurant Amersfoort, Lekker Eten & Shared Dining",
-      description: `Shared dining op de Kamp in Amersfoort: lunch, borrel en diner met lokale seizoensgerechten. Ook Tafelaar Thuis (ophalen). ${g.ratingText} op Google.`,
+      description: `Shared dining op de Kamp in Amersfoort: borrel en diner met lokale seizoensgerechten. Ook Tafelaar Thuis (ophalen). ${g.ratingText} op Google.`,
       images: [{ url: "/pics/terras-kamp.jpg" }],
     },
     keywords: [
@@ -37,7 +37,6 @@ export async function generateMetadata(): Promise<Metadata> {
       "waar eten in amersfoort",
       "borrel amersfoort",
       "beste restaurant amersfoort",
-      "lunch amersfoort",
       "afhalen amersfoort",
     ],
   };
@@ -47,7 +46,7 @@ function buildHomeFaqs(g: GoogleRating) {
   return [
     {
       question: "Waar kan ik lekker eten in Amersfoort?",
-      answer: `De Tafelaar op de Kamp 8 is een van de best beoordeelde restaurants in Amersfoort (${g.ratingText} op Google). We serveren shared dining: gerechten die zo zijn samengesteld dat je ze makkelijk deelt, gemaakt met seizoensgebonden producten van lokale makers. Van €3,50 tot €15,50 per gerecht, gemiddeld €25-35 p.p. Open woensdag t/m zondag.`,
+      answer: `De Tafelaar op de Kamp 8 is een van de best beoordeelde restaurants in Amersfoort (${g.ratingText} op Google). We serveren shared dining: gerechten die zo zijn samengesteld dat je ze makkelijk deelt, gemaakt met seizoensgebonden producten van lokale makers. Van €3,50 tot €15,50 per gerecht, gemiddeld €25-35 p.p. Open op maandagavond en van vrijdag t/m zondag.`,
     },
     {
       question: "Wat is shared dining bij De Tafelaar?",
@@ -63,7 +62,7 @@ function buildHomeFaqs(g: GoogleRating) {
     },
     {
       question: "Wat zijn de openingstijden van De Tafelaar?",
-      answer: "Woensdag en donderdag 17:00-23:00, vrijdag en zaterdag 11:00-00:00, zondag 11:00-23:00. Maandag en dinsdag gesloten. Lunch op vrijdag, zaterdag en zondag.",
+      answer: "Maandag 17:00-22:00, vrijdag, zaterdag en zondag 15:00-00:00. Dinsdag, woensdag en donderdag gesloten.",
     },
     {
       question: "Kan ik De Tafelaar huren voor een feest?",
@@ -92,7 +91,7 @@ function homeFaqJsonLd(faqs: { question: string; answer: string }[]) {
   });
 }
 
-const TICKER = ["Shared dining", "Lokale makers", "Seizoensgebonden", "Lunch, borrel & diner", "Tafelaar Thuis: ophalen", "Kamp 8 Amersfoort"];
+const TICKER = ["Shared dining", "Lokale makers", "Seizoensgebonden", "Borrel & diner", "Tafelaar Thuis: ophalen", "Kamp 8 Amersfoort"];
 
 const CHIPS = [
   { href: "/beste-restaurant-amersfoort", label: "Beste restaurant" },
@@ -331,7 +330,7 @@ export default async function Home() {
             De Tafelaar is een shared dining restaurant op de Kamp in het hart van Amersfoort centrum. Op zoek naar een plek om lekker te eten in Amersfoort? We serveren gerechten van lokale makers, samengesteld om te delen: van kazen en charcuterie tot warme seizoensgerechten en desserts. Alles om gezellig samen te delen aan tafel. Op loopafstand van Theater de Flint (5 min) en op een steenworp afstand van de Kamperbinnenpoort. Vanaf station Amersfoort Centraal ben je in circa 22 minuten lopend bij ons, of korter met bus of fiets.
           </p>
           <p>
-            Gerechten variëren van €3,50 tot €15,50. Reken op €25-35 per persoon voor een compleet diner. Kies je het Chef&apos;s Choice arrangement (€48 p.p.), dan laat je je verrassen door de keuken. Woensdag t/m zondag open voor borrel en diner, vrijdag t/m zondag ook voor lunch. Liever thuis genieten? Bekijk de kaart van{" "}
+            Gerechten variëren van €3,50 tot €15,50. Reken op €25-35 per persoon voor een compleet diner. Kies je het Chef&apos;s Choice arrangement (€48 p.p.), dan laat je je verrassen door de keuken. Open voor borrel en diner op maandag vanaf 17:00 en van vrijdag t/m zondag vanaf 15:00. Liever thuis genieten? Bekijk de kaart van{" "}
             <Link href="/ophalen" className="font-bold text-primary underline underline-offset-4">Tafelaar Thuis</Link>, onze ophaalservice.
           </p>
         </div>
@@ -401,6 +400,26 @@ export default async function Home() {
                 </Link>
               </Button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= VACATURES ================= */}
+      <section className="container mx-auto px-4 pb-20 sm:px-6 md:px-8" aria-labelledby="vacatures-band-title">
+        <div className="grid grid-cols-1 border-[5px] border-foreground bg-primary text-white shadow-[8px_8px_0_hsl(var(--foreground))] md:grid-cols-[1fr_auto] md:items-center">
+          <div className="px-7 py-8 md:px-10">
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/80">Werken bij De Tafelaar</p>
+            <h2 id="vacatures-band-title" className="mt-2 font-headline text-[clamp(24px,3vw,34px)] font-extrabold leading-tight">
+              We zoeken collega&apos;s voor de bediening en de keuken
+            </h2>
+            <p className="mt-2 max-w-2xl text-[15px] text-white/90">
+              Bediening, kok en afwasser/keukenhulp, ook zonder ervaring welkom. Een klein team, lokale producten en vaste vrije dagen.
+            </p>
+          </div>
+          <div className="border-t-[5px] border-foreground px-7 py-6 md:border-l-[5px] md:border-t-0 md:px-10">
+            <Button asChild variant="outline">
+              <Link href="/vacatures">Bekijk de vacatures →</Link>
+            </Button>
           </div>
         </div>
       </section>

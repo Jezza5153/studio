@@ -78,7 +78,7 @@ export function Footer() {
           <div>
             <h4 className="mb-4 text-[11.5px] font-bold uppercase tracking-[0.2em] text-secondary">Openingstijden</h4>
             <div className="border border-background/20 text-[13.5px]">
-              {openingHours.schedule.slice(2, 7).map((item, i) => (
+              {openingHours.compact.map((item, i) => (
                 <div
                   key={item.day}
                   className={`flex justify-between px-3 py-2 ${i % 2 === 0 ? "bg-background/5" : ""}`}

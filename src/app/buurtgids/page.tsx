@@ -35,7 +35,7 @@ const buurtgidsFaqs = [
   {
     question: "Welk restaurant ligt het dichtst bij de Flint Amersfoort?",
     answer:
-      "De Tafelaar op de Kamp 8 ligt op 5 minuten lopen van Theater de Flint. Ideaal voor een diner of borrel voor of na een voorstelling. We zijn open vanaf 17:00 op woensdag en donderdag, en vanaf 11:00 op vrijdag t/m zondag.",
+      "De Tafelaar op de Kamp 8 ligt op 5 minuten lopen van Theater de Flint. Ideaal voor een diner of borrel voor of na een voorstelling. We zijn open op maandag vanaf 17:00 en op vrijdag t/m zondag vanaf 15:00.",
   },
   {
     question: "Waar kan ik parkeren bij Theater de Flint?",
@@ -88,7 +88,7 @@ export default function BuurtgidsPage() {
                 een ontspannen diner of borrel voor of na een voorstelling.
               </p>
               <p>
-                Op vrijdag t/m zondag openen we al om 11:00, waardoor je ruim de tijd hebt
+                Op vrijdag t/m zondag openen we al om 15:00, waardoor je ruim de tijd hebt
                 voor een vroeg diner of een rustige borrel. Gerechten kosten €3,50-€15, een
                 compleet diner gemiddeld €25-35 per persoon. Reserveer online of bel +31 6 341 279 32.
               </p>

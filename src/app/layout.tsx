@@ -27,7 +27,7 @@ const siteUrl = "https://www.tafelaaramersfoort.nl";
 const siteName = "De Tafelaar";
 const siteTitle = "De Tafelaar, Restaurant Amersfoort Centrum";
 const siteDescription =
-  "De Tafelaar: restaurant in Amersfoort centrum voor lunch, borrel en diner. Shared dining met gerechten van lokale makers, samengesteld om te delen, vlakbij de Flint. Wo t/m zo geopend.";
+  "De Tafelaar: restaurant in Amersfoort centrum voor borrel en diner. Shared dining met gerechten van lokale makers, samengesteld om te delen, vlakbij de Flint. Open ma en vr t/m zo.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -114,8 +114,8 @@ function restaurantJsonLd(rating?: number, reviewCount?: number) {
     email: "info@tafelaaramersfoort.nl",
 
     sameAs: [
-      "https://www.facebook.com/people/Tafelaar-Amersfoort",
-      "https://instagram.com/tafelaaramersfoort",
+      "https://www.facebook.com/tafelaaramersfoort",
+      "https://www.instagram.com/tafelaaramersfoort",
       // JV catering brand, Tafelaar × Jezza Cooks operates out of this kitchen.
       // jezzacooks.com's #catering entity cross-refs back to #restaurant here,
       // so AI answer engines resolve the two-domain service as one entity.
@@ -130,11 +130,8 @@ function restaurantJsonLd(rating?: number, reviewCount?: number) {
     ],
 
     openingHoursSpecification: [
-      { "@type": "OpeningHoursSpecification", dayOfWeek: "Wednesday", opens: "17:00", closes: "23:00" },
-      { "@type": "OpeningHoursSpecification", dayOfWeek: "Thursday", opens: "17:00", closes: "23:00" },
-      { "@type": "OpeningHoursSpecification", dayOfWeek: "Friday", opens: "11:00", closes: "00:00" },
-      { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "11:00", closes: "00:00" },
-      { "@type": "OpeningHoursSpecification", dayOfWeek: "Sunday", opens: "11:00", closes: "23:00" },
+      { "@type": "OpeningHoursSpecification", dayOfWeek: "Monday", opens: "17:00", closes: "22:00" },
+      { "@type": "OpeningHoursSpecification", dayOfWeek: ["Friday", "Saturday", "Sunday"], opens: "15:00", closes: "00:00" },
     ],
 
     makesOffer: [

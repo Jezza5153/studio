@@ -69,10 +69,15 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        // Legacy lunch landing page. Lunch service is running again, so send
-        // the still-indexed URL to the real lunchkaart instead of the diner menu.
+        // Geen lunch meer sinds de openingstijden van oktober 2026 (vr t/m zo vanaf
+        // 15:00). Tijdelijke redirect, zodat /lunch terug kan als de lunch terugkomt.
+        source: "/lunch",
+        destination: "/menu",
+        permanent: false,
+      },
+      {
         source: "/lunch-amersfoort",
-        destination: "/lunch",
+        destination: "/menu",
         permanent: true,
       },
     ];

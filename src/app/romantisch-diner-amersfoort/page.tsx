@@ -47,7 +47,7 @@ const faqs = [
     },
     {
         question: "Wat is een goede avond voor een date?",
-        answer: "Woensdag en donderdag zijn wat rustiger en dus extra intiem. Vrijdag en zaterdag zijn levendig en gezellig. Op alle avonden is de sfeer warm en uitnodigend.",
+        answer: "We zijn open op maandag vanaf 17:00 en op vrijdag t/m zondag vanaf 15:00. Vrijdag en zaterdag zijn levendig en gezellig; op alle avonden is de sfeer warm en uitnodigend.",
     },
 ];
 
@@ -174,10 +174,9 @@ export default async function RomantischDinerAmersfoortPage() {
                                 gewoon een avond waarop je even tijd maakt voor elkaar.
                             </p>
                             <p>
-                                <strong className="text-foreground">Tip:</strong> woensdag en
-                                donderdag zijn wat rustiger, ideaal als je extra intimiteit zoekt.
-                                Vrijdag en zaterdag zijn levendiger en net zo gezellig. We zijn open
-                                op woensdag en donderdag vanaf 17:00 en vrijdag t/m zondag vanaf 11:00.
+                                <strong className="text-foreground">Tip:</strong> vrijdag en zaterdag zijn
+                                levendig en gezellig. We zijn open op maandag vanaf 17:00 en op
+                                vrijdag t/m zondag vanaf 15:00.
                             </p>
                             <p>
                                 De Tafelaar zit op Kamp 8, hartje centrum Amersfoort, op 5 minuten

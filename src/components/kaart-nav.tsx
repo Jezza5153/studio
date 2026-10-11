@@ -4,7 +4,6 @@ import { cn } from "@/lib/utils";
 
 export const KAARTEN = [
   { key: "diner", href: "/menu", label: "Dinerkaart" },
-  { key: "lunch", href: "/lunch", label: "Lunchkaart" },
   { key: "drank", href: "/drank", label: "Drankenkaart" },
   { key: "thuis", href: "/ophalen", label: "Tafelaar Thuiskaart" },
 ] as const;

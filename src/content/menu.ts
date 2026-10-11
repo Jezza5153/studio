@@ -94,7 +94,7 @@ export const DINNER_MENU: MenuData = {
     // 2) KAZEN, beschikbaar hele dag
     {
       name: "Kazen",
-      note: "Beschikbaar hele dag",
+      note: "Beschikbaar vanaf opening",
       items: [
         {
           name: "Geitenbrie",
@@ -138,7 +138,7 @@ export const DINNER_MENU: MenuData = {
     // 3) CHARCUTERIE, beschikbaar hele dag
     {
       name: "Charcuterie",
-      note: "Beschikbaar hele dag",
+      note: "Beschikbaar vanaf opening",
       items: [
         {
           name: "Venkelworstje",

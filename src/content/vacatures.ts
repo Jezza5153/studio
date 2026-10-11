@@ -1,13 +1,22 @@
-// Vacatures van De Tafelaar. Tekst aanpassen? Alleen dit bestand; de pagina /vacatures leest hieruit.
-// Een vacature weghalen = het blok verwijderen. Zonder vacatures toont de pagina alleen de open sollicitatie.
+// Vacatures van De Tafelaar. Tekst aanpassen? Alleen dit bestand: /vacatures en /vacatures/[slug] lezen hieruit.
+// Vacature weghalen = het blok verwijderen (de pagina verdwijnt dan ook uit de sitemap en uit Google Jobs).
+// Zet `bijgewerkt` op de datum van je laatste wijziging; Google en AI-zoekmachines kijken naar versheid.
+
+export const VACATURES_BIJGEWERKT = "2026-10-11";
 
 export type Vacature = {
   slug: string;
   titel: string;
+  /** Korte omschrijving voor de lijst en de meta description (max ~150 tekens). */
+  samenvatting: string;
   dienstverband: string;
   uren: string;
+  dagen: string;
   /** Voor Google Jobs (schema.org JobPosting) */
   employmentType: ("PART_TIME" | "FULL_TIME")[];
+  /** Geen ervaring of opleiding nodig: Google Jobs toont dit als filter. */
+  zonderErvaring: boolean;
+  afbeelding: { src: string; alt: string };
   intro: string;
   doen: string[];
   zoeken: string[];
@@ -17,13 +26,20 @@ export type Vacature = {
   validThrough: string;
 };
 
+const WERKDAGEN = "Maandagavond en vrijdag t/m zondag vanaf 15:00";
+
 export const vacatures: Vacature[] = [
   {
     slug: "medewerker-bediening",
     titel: "Medewerker bediening",
+    samenvatting:
+      "Parttime in de bediening van een shared dining restaurant op de Kamp in Amersfoort centrum. Ervaring is fijn, gastvrijheid is belangrijker.",
     dienstverband: "Parttime",
-    uren: "12 tot 24 uur per week, avonden en weekenden",
+    uren: "12 tot 24 uur per week",
+    dagen: WERKDAGEN,
     employmentType: ["PART_TIME"],
+    zonderErvaring: true,
+    afbeelding: { src: "/pics/gasten-bar.jpg", alt: "Het team van De Tafelaar serveert gasten aan de bar" },
     intro:
       "Jij bent het gezicht van De Tafelaar. Je ontvangt gasten, legt uit hoe shared dining werkt, adviseert over de kaart en de lokale bieren en wijnen, en zorgt dat een tafel vanzelf een avond wordt.",
     doen: [
@@ -33,24 +49,29 @@ export const vacatures: Vacature[] = [
     ],
     zoeken: [
       "Ervaring in de bediening is fijn, een open en gastvrije instelling is belangrijker",
-      "Beschikbaar op avonden van woensdag t/m zondag en in het weekend ook overdag voor de lunch",
+      "Beschikbaar op maandagavond en in het weekend (vrijdag t/m zondag vanaf 15:00)",
       "Je spreekt goed Nederlands en houdt van lekker eten",
     ],
     bieden: [
       "Salaris volgens de horeca-cao, afhankelijk van leeftijd en ervaring",
       "Een klein, hecht team en korte lijnen met de eigenaren",
-      "Maandag en dinsdag zijn we gesloten, dus twee vaste vrije dagen",
+      "Vaste vrije dagen: op dinsdag, woensdag en donderdag is de zaak dicht",
       "Een personeelsmaaltijd en de kans om de hele kaart te leren proeven",
     ],
-    datePosted: "2026-09-22",
-    validThrough: "2026-12-31",
+    datePosted: "2026-10-11",
+    validThrough: "2027-01-31",
   },
   {
     slug: "zelfstandig-werkend-kok",
     titel: "Zelfstandig werkend kok",
+    samenvatting:
+      "Koken in een open keuken met lokale seizoensproducten en gerechten om te delen. Parttime of fulltime, op de Kamp in Amersfoort centrum.",
     dienstverband: "Parttime of fulltime",
-    uren: "24 tot 38 uur per week",
+    uren: "24 uur of meer per week, in overleg",
+    dagen: `${WERKDAGEN}, in overleg ook overdag voor catering`,
     employmentType: ["PART_TIME", "FULL_TIME"],
+    zonderErvaring: false,
+    afbeelding: { src: "/pics/gerecht-boven.jpg", alt: "Seizoensgerecht om te delen uit de keuken van De Tafelaar" },
     intro:
       "In onze open keuken kook je gerechten die zijn samengesteld om te delen, met producten van makers uit de regio. De kaart beweegt mee met het seizoen, dus je krijgt ruimte om mee te denken.",
     doen: [
@@ -61,23 +82,28 @@ export const vacatures: Vacature[] = [
     zoeken: [
       "Een afgeronde koksopleiding of een paar jaar ervaring in een goede keuken",
       "Zelfstandig, netjes en rustig als het druk is",
-      "Beschikbaar van woensdag t/m zondag, in overleg ook overdag voor lunch en catering",
+      "Beschikbaar op maandagavond en van vrijdag t/m zondag, in overleg ook overdag voor catering",
     ],
     bieden: [
       "Salaris volgens de horeca-cao, afhankelijk van ervaring",
       "Een keuken zonder franje waar smaak en product vooropstaan",
-      "Twee vaste vrije dagen: maandag en dinsdag",
+      "Vaste vrije dagen: op dinsdag, woensdag en donderdag is de zaak dicht",
       "Werken naast een chef met ervaring in high-end keukens in Nederland en Australië",
     ],
-    datePosted: "2026-09-22",
-    validThrough: "2026-12-31",
+    datePosted: "2026-10-11",
+    validThrough: "2027-01-31",
   },
   {
     slug: "afwasser-keukenhulp",
     titel: "Afwasser / keukenhulp",
-    dienstverband: "Weekend en bijbaan",
-    uren: "8 tot 16 uur per week, vooral vrijdag t/m zondag",
+    samenvatting:
+      "Bijbaan in de keuken, vooral in het weekend. Geen ervaring nodig, vanaf 16 jaar. Goed te combineren met school of studie.",
+    dienstverband: "Bijbaan",
+    uren: "8 tot 16 uur per week",
+    dagen: "Vooral vrijdag t/m zondag vanaf 15:00",
     employmentType: ["PART_TIME"],
+    zonderErvaring: true,
+    afbeelding: { src: "/pics/huiskamer-vol.jpg", alt: "De volle huiskamer van De Tafelaar met de open keuken achterin" },
     intro:
       "Handen uit de mouwen in de keuken: afwassen, schoonmaken en de koks helpen met voorbereiden. Ideaal als bijbaan naast school of studie.",
     doen: [
@@ -95,10 +121,14 @@ export const vacatures: Vacature[] = [
       "Vaste dagen in overleg, goed te combineren met school of studie",
       "Een gezellig team en een warme maaltijd tijdens je dienst",
     ],
-    datePosted: "2026-09-22",
-    validThrough: "2026-12-31",
+    datePosted: "2026-10-11",
+    validThrough: "2027-01-31",
   },
 ];
+
+export function getVacature(slug: string) {
+  return vacatures.find((v) => v.slug === slug);
+}
 
 export const waaromTafelaar = [
   {
@@ -110,8 +140,8 @@ export const waaromTafelaar = [
     tekst: "Producten van makers uit Amersfoort en omstreken, een kaart die meebeweegt met het seizoen. Je leert elke week iets nieuws over eten en drinken.",
   },
   {
-    titel: "Twee vaste vrije dagen",
-    tekst: "We zijn open van woensdag t/m zondag. Maandag en dinsdag is de zaak dicht, dus die dagen ben jij ook vrij.",
+    titel: "Vaste vrije dagen",
+    tekst: "We zijn open op maandagavond en van vrijdag t/m zondag. Dinsdag, woensdag en donderdag is de zaak dicht, dus dan ben jij ook vrij.",
   },
   {
     titel: "Shared dining is teamwerk",
@@ -121,17 +151,27 @@ export const waaromTafelaar = [
 
 export const vacatureFaqs = [
   {
+    question: "Welke vacatures heeft De Tafelaar in Amersfoort?",
+    answer:
+      "De Tafelaar zoekt een medewerker bediening (parttime), een zelfstandig werkend kok (parttime of fulltime) en een afwasser/keukenhulp (bijbaan, vooral in het weekend). Een open sollicitatie is ook welkom. Het restaurant zit op de Kamp 8 in Amersfoort centrum.",
+  },
+  {
     question: "Kan ik ook zonder ervaring bij De Tafelaar werken?",
     answer:
-      "Ja. Voor de bediening en als keukenhulp is een gastvrije, nuchtere instelling belangrijker dan ervaring. We leren je de kaart, de makers en onze manier van werken. Voor de functie van zelfstandig werkend kok vragen we wel een opleiding of een paar jaar keukenervaring.",
+      "Ja. Voor de bediening en als afwasser/keukenhulp is een gastvrije, nuchtere instelling belangrijker dan ervaring. We leren je de kaart, de makers en onze manier van werken. Voor de functie van zelfstandig werkend kok vragen we wel een opleiding of een paar jaar keukenervaring.",
   },
   {
     question: "Op welke dagen werk je bij De Tafelaar?",
     answer:
-      "We zijn open van woensdag t/m zondag: woensdag en donderdag vanaf 17:00, vrijdag t/m zondag vanaf 11:00 voor lunch, borrel en diner. Maandag en dinsdag is de zaak gesloten. Je rooster spreken we samen af.",
+      "We zijn open op maandag van 17:00 tot 22:00 en op vrijdag, zaterdag en zondag van 15:00 tot 00:00. Dinsdag, woensdag en donderdag is de zaak gesloten. Je rooster spreken we samen af.",
   },
   {
-    question: "Hoe solliciteer ik?",
+    question: "Wat verdien je bij De Tafelaar?",
+    answer:
+      "We betalen volgens de horeca-cao. Je uurloon hangt af van je leeftijd, ervaring en functie; dat bespreken we in het eerste gesprek. Tijdens je dienst eet je mee.",
+  },
+  {
+    question: "Hoe solliciteer ik bij De Tafelaar?",
     answer:
       "Mail een korte introductie (wie je bent, wat je zoekt en wanneer je beschikbaar bent) naar reserveren@tafelaaramersfoort.nl met de functie in het onderwerp. Bellen of gewoon even binnenlopen op de Kamp 8 mag ook. We nodigen je dan uit voor een kop koffie en een proefdienst.",
   },
@@ -139,5 +179,20 @@ export const vacatureFaqs = [
     question: "Zoeken jullie ook stagiairs?",
     answer:
       "Een stage in de keuken of de bediening is bespreekbaar. Stuur je vraag met opleiding en periode naar reserveren@tafelaaramersfoort.nl, dan kijken we wat past.",
+  },
+];
+
+export const sollicitatieStappen = [
+  {
+    titel: "Mail, bel of loop binnen",
+    tekst: "Een korte mail is genoeg. Bellen of even langskomen op de Kamp 8 (maandagavond of vrijdag t/m zondag) mag ook.",
+  },
+  {
+    titel: "Koffie op de Kamp",
+    tekst: "We drinken een kop koffie, laten de zaak zien en vertellen hoe wij werken. Jij vertelt wat je zoekt.",
+  },
+  {
+    titel: "Proefdienst",
+    tekst: "Je draait een dienst mee, zodat we allebei weten of het klikt. Daarna maken we afspraken over uren en start.",
   },
 ];

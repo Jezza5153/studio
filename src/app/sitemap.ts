@@ -1,6 +1,7 @@
 
 import type { MetadataRoute } from "next";
 import { PrismaClient } from "@prisma/client";
+import { VACATURES_BIJGEWERKT, vacatures } from "@/content/vacatures";
 
 const prisma = new PrismaClient();
 
@@ -12,7 +13,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPages: MetadataRoute.Sitemap = [
     { url: `${base}/`, lastModified, priority: 1.0, changeFrequency: "weekly" },
     { url: `${base}/menu`, lastModified, priority: 0.9, changeFrequency: "weekly" },
-    { url: `${base}/lunch`, lastModified, priority: 0.9, changeFrequency: "weekly" },
     { url: `${base}/eten-voor-theater-de-flint`, lastModified, priority: 0.9, changeFrequency: "monthly" },
     { url: `${base}/bourgondisch-eten-amersfoort`, lastModified, priority: 0.8, changeFrequency: "monthly" },
     { url: `${base}/nieuw-restaurant-amersfoort`, lastModified, priority: 0.8, changeFrequency: "monthly" },
@@ -39,7 +39,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/vegetarisch-amersfoort`, lastModified, priority: 0.8, changeFrequency: "monthly" },
     { url: `${base}/beste-restaurant-amersfoort`, lastModified, priority: 0.9, changeFrequency: "monthly" },
     { url: `${base}/ophalen`, lastModified, priority: 0.8, changeFrequency: "monthly" },
-    { url: `${base}/vacatures`, lastModified, priority: 0.6, changeFrequency: "monthly" },
+    { url: `${base}/vacatures`, lastModified: new Date(VACATURES_BIJGEWERKT), priority: 0.8, changeFrequency: "weekly" },
+    ...vacatures.map((v) => ({
+      url: `${base}/vacatures/${v.slug}`,
+      lastModified: new Date(VACATURES_BIJGEWERKT),
+      priority: 0.7,
+      changeFrequency: "weekly" as const,
+    })),
   ];
 
   // Dynamic article pages from database

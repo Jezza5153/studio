@@ -12,7 +12,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: "Openingstijden De Tafelaar Amersfoort | Wanneer Open",
   description:
-    "Openingstijden van De Tafelaar op de Kamp 8 in Amersfoort centrum. Wo\u2013do 17:00\u201323:00, vr\u2013za 11:00\u201300:00, zo 11:00\u201323:00. Reserveer online of bel +31 6 341 279 32.",
+    "Openingstijden van De Tafelaar op de Kamp 8 in Amersfoort centrum: maandag 17:00-22:00, vrijdag t/m zondag 15:00-00:00. Reserveer online of bel +31 6 341 279 32.",
   alternates: {
     canonical: "/openingstijden",
   },
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
     title: "Openingstijden De Tafelaar Amersfoort | Wanneer Open",
     description:
-      "Openingstijden van De Tafelaar op de Kamp 8 in Amersfoort centrum. Wo\u2013do 17:00\u201323:00, vr\u2013za 11:00\u201300:00, zo 11:00\u201323:00. Reserveer online of bel +31 6 341 279 32.",
+      "Openingstijden van De Tafelaar op de Kamp 8 in Amersfoort centrum: maandag 17:00-22:00, vrijdag t/m zondag 15:00-00:00. Reserveer online of bel +31 6 341 279 32.",
   },
   keywords: [
     "openingstijden de tafelaar",
@@ -34,7 +34,7 @@ const faqs = [
   {
     question: "Wanneer is De Tafelaar open?",
     answer:
-      "De Tafelaar is geopend van woensdag t/m zondag. Woensdag en donderdag van 17:00 tot 23:00, vrijdag en zaterdag van 11:00 tot 00:00, en zondag van 11:00 tot 23:00. Op maandag en dinsdag zijn wij gesloten.",
+      "De Tafelaar is open op maandag van 17:00 tot 22:00 en op vrijdag, zaterdag en zondag van 15:00 tot 00:00. Op dinsdag, woensdag en donderdag zijn wij gesloten.",
   },
   {
     question: "Is De Tafelaar open op feestdagen?",
@@ -44,7 +44,7 @@ const faqs = [
   {
     question: "Kan ik ook in de middag langskomen?",
     answer:
-      "Op vrijdag, zaterdag en zondag openen we om 11:00, ideaal voor een lunch of borrel met gerechten. Woensdag en donderdag openen we om 17:00.",
+      "Op vrijdag, zaterdag en zondag openen we om 15:00, ideaal voor een middagborrel met kazen, charcuterie en gerechten om te delen. Op maandag openen we om 17:00.",
   },
   {
     question: "Kan ik bij De Tafelaar afhalen?",
@@ -101,10 +101,10 @@ export default function OpeningstijdenPage() {
                 lopen, of korter met bus, fiets of taxi.
               </p>
               <p>
-                <strong className="text-foreground">Lunch, borrel of vroeg diner:</strong> op
-                vrijdag, zaterdag en zondag openen we al om 11:00, ideaal voor een rustige lunch of
-                borrel met kazen, charcuterie en gerechten, of een vroege start van je diner.
-                Woensdag en donderdag draaien we vanaf 17:00 met de volledige dinerkaart.
+                <strong className="text-foreground">Borrel of vroeg diner:</strong> op vrijdag, zaterdag
+                en zondag openen we om 15:00, ideaal voor een middagborrel met kazen, charcuterie en
+                gerechten, of een vroege start van je diner. Op maandag zijn we open van 17:00 tot
+                22:00 met de volledige dinerkaart.
               </p>
             </div>
           </Card>
@@ -112,7 +112,7 @@ export default function OpeningstijdenPage() {
 
         {/* Hours card */}
         <div className="max-w-2xl mx-auto mb-12">
-          <Card className="shadow-lg">
+          <Card className="border-2 border-foreground">
             <CardContent className="p-6">
               <ul className="divide-y divide-border">
                 {openingHours.schedule.map((item) => (
@@ -125,7 +125,7 @@ export default function OpeningstijdenPage() {
                 ))}
               </ul>
             </CardContent>
-            <CardFooter className="p-4 bg-muted/50 rounded-b-2xl">
+            <CardFooter className="border-t-2 border-foreground bg-secondary p-4">
               <p className="text-sm text-muted-foreground text-center w-full">{openingHours.footer}</p>
             </CardFooter>
           </Card>

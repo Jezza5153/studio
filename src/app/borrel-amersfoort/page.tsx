@@ -12,14 +12,14 @@ export const revalidate = 3600; // Google rating/review count refresh hourly (sy
 export const metadata: Metadata = {
     title: "Borrelen in Amersfoort | Borrelplanken & Lokaal Bier De Tafelaar",
     description:
-        "Borrelen in Amersfoort? De Tafelaar: borrelplanken, lokale bieren van Rock City & De Drie Ringen, en gerechten. Vrijdag t/m zondag open vanaf 11:00.",
+        "Borrelen in Amersfoort? De Tafelaar: borrelplanken, lokale bieren van Rock City & De Drie Ringen, en gerechten. Vrijdag t/m zondag open vanaf 15:00.",
     alternates: {
         canonical: "/borrel-amersfoort",
     },
     openGraph: {
         images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
         title: "Borrelen in Amersfoort | De Tafelaar",
-        description: "Borrelplanken en lokaal bier op de Kamp. Vrijdag t/m zondag open vanaf 11:00.",
+        description: "Borrelplanken en lokaal bier op de Kamp. Vrijdag t/m zondag open vanaf 15:00.",
     },
     keywords: [
         "borrel amersfoort",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 const faqs = [
     {
         question: "Kan ik bij De Tafelaar alleen borrelen?",
-        answer: "Ja, je hoeft niet te dineren. Op vrijdag tot en met zondag zijn we open vanaf 11:00, dus je kunt prima langskomen voor alleen een borrel met hapjes.",
+        answer: "Ja, je hoeft niet te dineren. Op vrijdag tot en met zondag zijn we open vanaf 15:00, dus je kunt prima langskomen voor alleen een borrel met hapjes.",
     },
     {
         question: "Wat voor bier hebben jullie?",
@@ -77,7 +77,7 @@ export default async function BorrelAmersfoortPage() {
                     Borrelen in Amersfoort
                 </h1>
                 <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
-                    Borrelplanken, lokale bieren van vier Amersfoortse brouwerijen en gerechten om te delen. Vrijdag t/m zondag open vanaf 11:00.
+                    Borrelplanken, lokale bieren van vier Amersfoortse brouwerijen en gerechten om te delen. Vrijdag t/m zondag open vanaf 15:00.
                 </p>
             </header>
 
@@ -112,11 +112,11 @@ export default async function BorrelAmersfoortPage() {
                         <CardHeader className="pb-2">
                             <div className="flex items-center gap-2 text-primary">
                                 <Clock className="h-5 w-5" />
-                                <CardTitle className="text-lg">Open Vanaf 11:00</CardTitle>
+                                <CardTitle className="text-lg">Open Vanaf 15:00</CardTitle>
                             </div>
                         </CardHeader>
                         <CardContent className="text-sm text-muted-foreground">
-                            Vrijdag t/m zondag open vanaf 11:00. Ideaal voor een borrel.
+                            Vrijdag t/m zondag open vanaf 15:00. Ideaal voor een middagborrel.
                         </CardContent>
                     </Card>
                 </div>
@@ -136,7 +136,7 @@ export default async function BorrelAmersfoortPage() {
                     <div className="space-y-4 text-muted-foreground">
                         <p>
                             De Tafelaar is meer dan een restaurant. Op vrijdag tot en met zondag openen
-                            we al om 11:00, zodat je rustig kunt binnenlopen voor een lunch of borrel. Geen
+                            we om 15:00, zodat je rustig kunt binnenlopen voor een middagborrel. Geen
                             reservering nodig, gewoon langskomen.
                         </p>
                         <p>
@@ -158,8 +158,8 @@ export default async function BorrelAmersfoortPage() {
                             circa 22 minuten lopend bij ons, of korter met bus of fiets. Parkeergarage
                             Beestenmarkt is op 2 minuten loopafstand. Met een {g.ratingText} op Google en {g.countText}
                             reviews zijn we een van de best beoordeelde restaurants in Amersfoort.
-                            Naast vrijdag tot en met zondag (open vanaf 11:00) zijn we ook geopend op
-                            woensdag en donderdag vanaf 17:00.
+                            Naast vrijdag tot en met zondag (open vanaf 15:00) zijn we ook geopend op
+                            maandag van 17:00 tot 22:00.
                         </p>
                     </div>
                 </Card>
