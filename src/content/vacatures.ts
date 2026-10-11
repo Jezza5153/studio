@@ -72,10 +72,10 @@ export const vacatures: Vacature[] = [
     validThrough: "2027-01-31",
   },
   {
-    slug: "assistent-leidinggevende",
-    titel: "Assistent leidinggevende",
+    slug: "eerste-medewerker-restaurant",
+    titel: "Eerste medewerker restaurant",
     samenvatting:
-      "Assistant restaurant manager: je stuurt de bediening aan tijdens de service, op de Kamp in Amersfoort centrum. Vanaf €15,21 per uur.",
+      "Eerste medewerker en assistent leidinggevende: je stuurt de bediening aan tijdens de service, op de Kamp in Amersfoort. Vanaf €15,21 per uur.",
     dienstverband: "Parttime of fulltime",
     uren: "24 uur of meer per week, in overleg",
     dagen: WERKDAGEN,
@@ -85,7 +85,7 @@ export const vacatures: Vacature[] = [
     salaris: STARTLOON,
     afbeelding: { src: "/pics/hero-gasten.jpg", alt: "Gasten aan tafel en het team in de bediening bij De Tafelaar" },
     intro:
-      "Als assistent leidinggevende ben je de rechterhand van de eigenaren Jan en Sabine. Tijdens de service stuur je het team in de bediening aan, zorg je dat gasten zich welkom voelen en dat de avond soepel loopt, en spring je zelf bij waar het nodig is.",
+      "Als eerste medewerker (assistent leidinggevende) ben je de rechterhand van de eigenaren Jan en Sabine. Tijdens de service stuur je het team in de bediening aan, zorg je dat gasten zich welkom voelen en dat de avond soepel loopt, en spring je zelf bij waar het nodig is.",
     doen: [
       "Het team in de bediening aansturen tijdens de service en zelf meewerken op de vloer",
       "Roosters maken, taken verdelen en nieuwe collega's inwerken",
@@ -203,12 +203,12 @@ export const vacatureFaqs = [
   {
     question: "Welke vacatures heeft De Tafelaar in Amersfoort?",
     answer:
-      "De Tafelaar zoekt een medewerker bediening (parttime), een assistent leidinggevende (assistant restaurant manager), een zelfstandig werkend kok (parttime of fulltime) en een afwasser/keukenhulp (bijbaan, vooral in het weekend). Een open sollicitatie is ook welkom. Het restaurant zit op de Kamp 8 in Amersfoort centrum.",
+      "De Tafelaar zoekt een medewerker bediening (parttime), een eerste medewerker restaurant (assistent leidinggevende), een zelfstandig werkend kok (parttime of fulltime) en een afwasser/keukenhulp (bijbaan, vooral in het weekend). Een open sollicitatie is ook welkom. Het restaurant zit op de Kamp 8 in Amersfoort centrum.",
   },
   {
     question: "Kan ik ook zonder ervaring bij De Tafelaar werken?",
     answer:
-      "Ja. Voor de bediening en als afwasser/keukenhulp is een gastvrije, nuchtere instelling belangrijker dan ervaring. We leren je de kaart, de makers en onze manier van werken. Voor zelfstandig werkend kok vragen we een opleiding of een paar jaar keukenervaring, en voor assistent leidinggevende een paar jaar ervaring in de bediening.",
+      "Ja. Voor de bediening en als afwasser/keukenhulp is een gastvrije, nuchtere instelling belangrijker dan ervaring. We leren je de kaart, de makers en onze manier van werken. Voor zelfstandig werkend kok vragen we een opleiding of een paar jaar keukenervaring, en voor eerste medewerker een paar jaar ervaring in de bediening.",
   },
   {
     question: "Op welke dagen werk je bij De Tafelaar?",
@@ -218,7 +218,7 @@ export const vacatureFaqs = [
   {
     question: "Wat verdien je bij De Tafelaar?",
     answer:
-      "We betalen volgens de horeca-cao. In de bediening, als assistent leidinggevende en als zelfstandig werkend kok verdien je vanaf €15,21 bruto per uur (21 jaar of ouder), daarboven afhankelijk van ervaring. Voor de afwas en keukenhulp hangt het uurloon af van je leeftijd; dat bespreken we in het eerste gesprek. Tijdens je dienst eet je mee.",
+      "We betalen volgens de horeca-cao. In de bediening, als eerste medewerker en als zelfstandig werkend kok verdien je vanaf €15,21 bruto per uur (21 jaar of ouder), daarboven afhankelijk van ervaring. Voor de afwas en keukenhulp hangt het uurloon af van je leeftijd; dat bespreken we in het eerste gesprek. Tijdens je dienst eet je mee.",
   },
   {
     question: "Hoe solliciteer ik bij De Tafelaar?",

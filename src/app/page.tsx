@@ -414,7 +414,7 @@ export default async function Home() {
               We zoeken collega&apos;s voor de bediening, de leiding en de keuken
             </h2>
             <p className="mt-2 max-w-2xl text-[15px] text-white/90">
-              Bediening, assistent leidinggevende, kok en afwasser/keukenhulp, vanaf €15,21 per uur. Een klein team, lokale producten en vaste vrije dagen.
+              Bediening, eerste medewerker, kok en afwasser/keukenhulp, vanaf €15,21 per uur. Een klein team, lokale producten en vaste vrije dagen.
             </p>
           </div>
           <div className="border-t-[5px] border-foreground px-7 py-6 md:border-l-[5px] md:border-t-0 md:px-10">
