@@ -43,7 +43,7 @@ const faqs = [
     },
     {
         question: "Hebben jullie een wijnarrangement?",
-        answer: "Ja, bij het Chef's Choice arrangement (\u20AC45 p.p.) kun je een bijpassend wijnarrangement bestellen voor \u20AC28 p.p. met zorgvuldig geselecteerde biologische wijnen van Korte Garde.",
+        answer: "Ja, bij het Chef's Choice arrangement (\u20AC48 p.p.) kun je een bijpassend wijnarrangement bestellen voor \u20AC28 p.p. met zorgvuldig geselecteerde biologische wijnen van Korte Garde.",
     },
     {
         question: "Wat is een goede avond voor een date?",
@@ -158,7 +158,7 @@ export default async function RomantischDinerAmersfoortPage() {
                                 <strong className="text-foreground">&euro;25-35 p.p.</strong> of kies
                                 het{" "}
                                 <strong className="text-foreground">
-                                    Chef&apos;s Choice arrangement (&euro;45 p.p.)
+                                    Chef&apos;s Choice arrangement (&euro;48 p.p.)
                                 </strong>{" "}
                                 en laat je verrassen.
                             </p>

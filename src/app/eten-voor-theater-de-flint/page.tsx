@@ -2,12 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
-} from "@/components/ui/accordion";
+import { FaqList } from "@/components/faq-list";
 import { MapPin, Clock, Users, Utensils, Phone, Car } from "lucide-react";
 import { ReserveerButton } from "@/components/reserveer-button";
 
@@ -68,6 +63,14 @@ const faqs = [
     {
         question: "Hebben jullie rekening met dieetwensen en allergieën?",
         answer: "Wij werken met verse, lokale producten en kunnen vrijwel altijd rekening houden met allergieën en dieetwensen. Op de menukaart staat bij elk gerecht een markering voor vegetarisch, glutenvrij en lactosevrij. Vermeld specifieke wensen bij je reservering.",
+    },
+    {
+        question: "Kan ik na een middagvoorstelling in de Flint bij jullie terecht?",
+        answer: "Ja. Op vrijdag, zaterdag en zondag zijn we open vanaf 15:00, dus na een middagvoorstelling loop je in 5 minuten naar de Kamp voor een borrel of een vroeg diner.",
+    },
+    {
+        question: "Kunnen we na de voorstelling nog iets drinken?",
+        answer: "Ja. Op vrijdag en zaterdag zijn we open tot 00:00, op maandag, donderdag en zondag tot 23:00. Na een avondvoorstelling schuif je aan voor een drankje, een borrelplank of een dessert.",
     },
     {
         question: "Hoe laat beginnen voorstellingen in Flint meestal?",
@@ -185,7 +188,7 @@ export default function EtenVoorDeFlintPage() {
                             <CardContent className="text-sm text-muted-foreground">
                                 <p className="font-medium text-foreground">Groepsarrangement</p>
                                 <p>Chef&apos;s Choice vanaf 7 pers.</p>
-                                <p>&euro;45 p.p. + opt. wijnarrangement</p>
+                                <p>&euro;48 p.p. + opt. wijnarrangement</p>
                             </CardContent>
                         </Card>
                     </div>
@@ -203,27 +206,64 @@ export default function EtenVoorDeFlintPage() {
                     </div>
                 </section>
 
+                {/* Uitleg: zelfstandige antwoordblokken voor Google en AI-zoekmachines */}
+                <section className="max-w-3xl mx-auto mb-12 space-y-8" aria-label="Eten voor of na de Flint">
+                    <div>
+                        <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-3">
+                            Waar eet je in Amersfoort voor een voorstelling in de Flint?
+                        </h2>
+                        <p className="text-muted-foreground">
+                            De Tafelaar zit op de Kamp 8 in Amersfoort centrum, op ongeveer 400 meter (circa 5 minuten
+                            lopen) van Theater de Flint. Je bestelt een paar gerechten en deelt ze samen aan tafel: kazen,
+                            charcuterie, warme seizoensgerechten en desserts, gemaakt met producten van makers uit de regio.
+                            Reken op 2 à 3 gerechten per persoon, gemiddeld €25-35 per persoon. Vertel bij je reservering
+                            hoe laat de voorstelling begint, dan stemt de keuken het tempo daarop af.
+                        </p>
+                    </div>
+                    <div>
+                        <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-3">
+                            Hoe laat reserveer je voor de voorstelling?
+                        </h2>
+                        <div className="overflow-x-auto">
+                            <table className="w-full border-2 border-foreground bg-white text-sm">
+                                <thead className="bg-secondary text-left">
+                                    <tr>
+                                        <th className="px-4 py-2.5">Voorstelling</th>
+                                        <th className="px-4 py-2.5">Begint meestal</th>
+                                        <th className="px-4 py-2.5">Bij De Tafelaar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr className="border-t border-border">
+                                        <td className="px-4 py-2.5 font-semibold text-foreground">Avond</td>
+                                        <td className="px-4 py-2.5 text-muted-foreground">20:00 of 20:15</td>
+                                        <td className="px-4 py-2.5 text-muted-foreground">Reserveer rond 18:00 (maandag en donderdag open vanaf 17:00, vrijdag t/m zondag vanaf 15:00)</td>
+                                    </tr>
+                                    <tr className="border-t border-border">
+                                        <td className="px-4 py-2.5 font-semibold text-foreground">Middag</td>
+                                        <td className="px-4 py-2.5 text-muted-foreground">14:30 of 15:00</td>
+                                        <td className="px-4 py-2.5 text-muted-foreground">Na afloop welkom vanaf 15:00 (vrijdag t/m zondag)</td>
+                                    </tr>
+                                    <tr className="border-t border-border">
+                                        <td className="px-4 py-2.5 font-semibold text-foreground">Na de voorstelling</td>
+                                        <td className="px-4 py-2.5 text-muted-foreground">Rond 22:00 of later</td>
+                                        <td className="px-4 py-2.5 text-muted-foreground">Open tot 00:00 op vrijdag en zaterdag, tot 23:00 op maandag, donderdag en zondag</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p className="mt-2 text-xs text-muted-foreground">
+                            Aanvangstijden verschillen per voorstelling; kijk op de website van de Flint voor de exacte tijd.
+                        </p>
+                    </div>
+                </section>
+
                 {/* FAQ Section */}
                 <section className="max-w-3xl mx-auto mb-12">
                     <h2 className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-6 text-center">
                         Veelgestelde vragen
                     </h2>
-                    <Card className="border-2 border-foreground">
-                        <CardContent className="pt-6">
-                            <Accordion type="single" collapsible className="w-full">
-                                {faqs.map((faq, index) => (
-                                    <AccordionItem key={index} value={`item-${index}`} className="border-b last:border-b-0">
-                                        <AccordionTrigger className="font-semibold text-left text-base">
-                                            {faq.question}
-                                        </AccordionTrigger>
-                                        <AccordionContent className="text-muted-foreground">
-                                            {faq.answer}
-                                        </AccordionContent>
-                                    </AccordionItem>
-                                ))}
-                            </Accordion>
-                        </CardContent>
-                    </Card>
+                    <FaqList faqs={faqs} />
                 </section>
 
                 {/* Links */}

@@ -160,7 +160,7 @@ export default function DuurzaamRestaurantAmersfoortPage() {
                                 lekkerst zijn. Reken op{" "}
                                 <strong className="text-foreground">&euro;25-35 p.p.</strong> of kies
                                 het Chef&apos;s Choice arrangement voor{" "}
-                                <strong className="text-foreground">&euro;45 p.p.</strong> met
+                                <strong className="text-foreground">&euro;48 p.p.</strong> met
                                 optioneel wijnarrangement (&euro;28 p.p.).
                             </p>
                         </div>
