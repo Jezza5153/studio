@@ -2,15 +2,21 @@ name: Google-score bijwerken
 
 # Elke maandag de score en het aantal Google-reviews van De Tafelaar overnemen op de site.
 # Leest de openbare Google Maps-pagina met een echte browser (geen betaalde Google API).
-# Mislukt het, dan stuurt GitHub een mail en blijft de vorige score gewoon staan.
+# Google toont servers soms een "beperkte weergave" zonder aantal reviews. Daarom vier
+# kansen op maandag, elk op een nieuwe GitHub-server. Zodra er één gelukt is, slaan de
+# latere runs zichzelf over. Alleen als ook de laatste (18:00 UTC) mislukt, mailt GitHub.
+# De site houdt dan gewoon de vorige score.
 on:
   schedule:
-    - cron: "0 6 * * 1" # maandag 06:00 UTC = 08:00 zomertijd / 07:00 wintertijd
+    - cron: "0 6 * * 1"
+    - cron: "0 10 * * 1"
+    - cron: "0 14 * * 1"
+    - cron: "0 18 * * 1"
   workflow_dispatch:
 
 permissions:
   contents: read
-  actions: write # om deze geplande taak actief te houden (GitHub zet ze anders na 60 dagen zonder commits uit)
+  actions: write # cache-marker opslaan en deze geplande taak actief houden
 
 jobs:
   sync:
@@ -22,20 +28,50 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Datum
+        id: datum
+        run: echo "vandaag=$(date -u +%F)" >> "$GITHUB_OUTPUT"
+
+      - name: Vandaag al gelukt?
+        id: gedaan
+        if: github.event_name == 'schedule'
+        uses: actions/cache/restore@v4
+        with:
+          path: scripts/google-rating/.gelukt
+          key: google-rating-${{ steps.datum.outputs.vandaag }}
+          lookup-only: true
+
       - uses: actions/setup-node@v4
+        if: steps.gedaan.outputs.cache-hit != 'true'
         with:
           node-version: 20
 
       - name: Playwright installeren
+        if: steps.gedaan.outputs.cache-hit != 'true'
         run: |
           npm install --no-audit --no-fund
           npx playwright install --with-deps chromium
 
       - name: Score ophalen en opslaan
+        id: sync
+        if: steps.gedaan.outputs.cache-hit != 'true'
         env:
           RATING_SYNC_SECRET: ${{ secrets.RATING_SYNC_SECRET }}
           SITE_URL: https://www.tafelaaramersfoort.nl
+          # Alleen de laatste maandagrun (en een handmatige run) laat de job echt mislukken
+          STRICT: ${{ github.event_name != 'schedule' || github.event.schedule == '0 18 * * 1' }}
         run: node sync.mjs
+
+      - name: Markeren als gelukt
+        if: steps.sync.outputs.gelukt == 'true'
+        run: date -u +%FT%TZ > .gelukt
+
+      - name: Marker bewaren
+        if: steps.sync.outputs.gelukt == 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: scripts/google-rating/.gelukt
+          key: google-rating-${{ steps.datum.outputs.vandaag }}
 
       - name: Screenshot bij een fout
         if: failure()
@@ -48,6 +84,7 @@ jobs:
 
       - name: Geplande taak actief houden
         if: always()
+        working-directory: .
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh api -X PUT "repos/${{ github.repository }}/actions/workflows/google-rating.yml/enable" || true

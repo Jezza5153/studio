@@ -1,6 +1,7 @@
 // Leest score en aantal reviews van de openbare Google Maps-pagina van De Tafelaar (geen Google API)
 // en stuurt ze naar /api/cron/google-rating. Draait elke maandag via .github/workflows/google-rating.yml.
 // Lokaal testen zonder iets op te slaan: DRY_RUN=1 node sync.mjs
+import { appendFileSync } from "node:fs";
 import { chromium } from "playwright";
 
 // Drie adressen voor dezelfde Maps-pagina. Google toont servers (zoals die van GitHub) soms een
@@ -93,6 +94,9 @@ async function readRating(placeUrl) {
   }
 }
 
+// STRICT=false (de eerdere maandagruns): bij mislukken alleen een waarschuwing, een latere run probeert het opnieuw.
+const STRICT = process.env.STRICT !== "false";
+
 let result;
 for (let poging = 1; poging <= POGINGEN && !result; poging++) {
   const url = PLACE_URLS[(poging - 1) % PLACE_URLS.length];
@@ -100,7 +104,11 @@ for (let poging = 1; poging <= POGINGEN && !result; poging++) {
     result = await readRating(url);
   } catch (err) {
     console.warn(`Poging ${poging} mislukt: ${err.message}`);
-    if (poging === POGINGEN) throw err;
+    if (poging === POGINGEN) {
+      if (STRICT) throw err;
+      console.log("::warning::Google-score deze run niet gelezen; een latere run van vandaag probeert het opnieuw.");
+      process.exit(0);
+    }
     await new Promise((r) => setTimeout(r, 15_000));
   }
 }
@@ -123,3 +131,5 @@ const res = await fetch(`${SITE_URL}/api/cron/google-rating`, {
 const text = await res.text();
 console.log(`Site: ${res.status} ${text}`);
 if (!res.ok) process.exit(1);
+// Laat de workflow weten dat het gelukt is, zodat latere runs van vandaag zichzelf overslaan
+if (process.env.GITHUB_OUTPUT) appendFileSync(process.env.GITHUB_OUTPUT, "gelukt=true\n");
