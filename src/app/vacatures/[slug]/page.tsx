@@ -62,7 +62,7 @@ export default async function VacaturePage({ params }: Props) {
     ["Uren", v.uren],
     ["Dagen", v.dagen],
     ["Locatie", "Kamp 8, 3811 AR Amersfoort (centrum)"],
-    ["Salaris", "Volgens de horeca-cao"],
+    ["Salaris", v.salaris?.tekst ?? "Volgens de horeca-cao"],
     ["Ervaring", v.zonderErvaring ? "Niet nodig, we leren je alles" : "Opleiding of een paar jaar ervaring"],
     ["Solliciteren", `Mail ${contactDetails.email} of bel ${contactDetails.phone}`],
   ];
