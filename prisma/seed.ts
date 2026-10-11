@@ -15,7 +15,8 @@ function productionReason(url: string): string | null {
     }
     let host: string;
     try {
-        host = new URL(url).hostname.toLowerCase();
+        // Drop trailing dots: "ep-x.neon.tech." is the same host to DNS.
+        host = new URL(url).hostname.toLowerCase().replace(/\.+$/, "");
     } catch {
         return "DATABASE_URL could not be parsed, so its host can't be checked";
     }
