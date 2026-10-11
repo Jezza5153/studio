@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { pers, persDatum } from "@/content/pers";
 import {
   Leaf,
   Users,
@@ -341,6 +342,33 @@ export default function OverOnsPage() {
               >
                 {line}
               </p>
+            ))}
+          </div>
+        </section>
+
+        {/* In de pers */}
+        <section id="pers" className="mb-12 scroll-mt-24" aria-labelledby="pers-title">
+          <h2 id="pers-title" className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight mb-2">
+            De Tafelaar in de pers
+          </h2>
+          <p className="mb-6 text-muted-foreground">
+            Wat kranten, magazines en podcasts over De Tafelaar en het team schreven en vertelden.
+          </p>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            {pers.map((p) => (
+              <a
+                key={p.url}
+                href={p.url}
+                target="_blank"
+                rel="noopener"
+                className="block border-2 border-foreground bg-white p-5 shadow-[4px_4px_0_hsl(var(--foreground))] transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"
+              >
+                <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-accent">
+                  {p.medium} · {persDatum(p.datum)}
+                </p>
+                <p className="mt-2 font-semibold text-foreground">{p.titel}</p>
+                <p className="mt-2 text-sm font-bold text-primary">{p.soort === "podcast" ? "Luister de aflevering →" : "Lees het artikel →"}</p>
+              </a>
             ))}
           </div>
         </section>

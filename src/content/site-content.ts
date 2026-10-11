@@ -42,7 +42,7 @@ Kamp 8
   phone: "+31 6 341 279 32",
   email: "reserveren@tafelaaramersfoort.nl",
   socials: {
-    facebook: "https://www.facebook.com/tafelaaramersfoort",
+    facebook: "https://www.facebook.com/people/Tafelaar-Amersfoort/61575109492128/",
     instagram: "https://www.instagram.com/tafelaaramersfoort",
   },
 };
