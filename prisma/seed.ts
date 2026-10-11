@@ -1,6 +1,66 @@
 import { PrismaClient } from "@prisma/client";
 
-const prisma = new PrismaClient();
+// This seed deletes every FeedItem and the Settings row. In Vercel, DATABASE_URL
+// is the live database for Production, Preview AND Development, so the URL you get
+// from `vercel env pull` / `vercel env run` is production. `npm run db:seed`,
+// `prisma migrate reset` and `prisma migrate dev` all run this file, so it refuses
+// any Neon database unless explicitly forced. Never print the URL: it holds the password.
+const PRODUCTION_ENDPOINT = "ep-icy-scene-abjt6uye";
+const FORCE_ENV = "ALLOW_SEED_ON_PRODUCTION";
+const FORCE_VALUE = "yes-delete-everything";
+
+function productionReason(url: string): string | null {
+    if (url.toLowerCase().includes(PRODUCTION_ENDPOINT)) {
+        return "DATABASE_URL points at the production Neon endpoint";
+    }
+    let host: string;
+    try {
+        host = new URL(url).hostname.toLowerCase();
+    } catch {
+        return "DATABASE_URL could not be parsed, so its host can't be checked";
+    }
+    if (host === "neon.tech" || host.endsWith(".neon.tech")) {
+        return "DATABASE_URL points at a Neon database (*.neon.tech)";
+    }
+    return null;
+}
+
+function assertNotProduction(url: string | undefined): asserts url is string {
+    if (!url) {
+        console.error(
+            "Refusing to seed: DATABASE_URL is not set, so it can't be checked.\n" +
+                "Run `npm run db:seed` (Prisma loads .env) or set DATABASE_URL to a local database."
+        );
+        process.exit(1);
+    }
+    const reason = productionReason(url);
+    if (!reason) return;
+    if (process.env[FORCE_ENV] === FORCE_VALUE) {
+        console.warn(`⚠️  ${reason}, but ${FORCE_ENV} is set: seeding anyway.`);
+        return;
+    }
+    console.error(
+        [
+            `Refusing to seed: ${reason}.`,
+            "",
+            "prisma/seed.ts deletes every FeedItem (all posts) and the Settings row",
+            "(Google score, tonight status) before it inserts demo data. In Vercel,",
+            "DATABASE_URL is the live database for Production, Preview and Development.",
+            "",
+            "Seed a local database instead, for example:",
+            "  DATABASE_URL=postgresql://postgres:postgres@localhost:5432/tafelaar npm run db:seed",
+            "",
+            `To really wipe this database, run again with ${FORCE_ENV}=${FORCE_VALUE}`,
+        ].join("\n")
+    );
+    process.exit(1);
+}
+
+// Check before the client exists, and hand it the checked URL so Prisma can't pick
+// up a different one from .env.
+const databaseUrl = process.env.DATABASE_URL;
+assertNotProduction(databaseUrl);
+const prisma = new PrismaClient({ datasourceUrl: databaseUrl });
 
 const demoMedia = (src: string, w = 800, h = 600) =>
     JSON.stringify([
