@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { sharedOpenGraph } from "@/lib/site-metadata";
 import { getGoogleRating } from "@/lib/google-rating";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
         canonical: "/borrel-amersfoort",
     },
     openGraph: {
+        ...sharedOpenGraph,
         images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
         title: "Borrelen in Amersfoort | De Tafelaar",
         description: "Borrelplanken en lokaal bier op de Kamp. Vrijdag t/m zondag open vanaf 15:00.",

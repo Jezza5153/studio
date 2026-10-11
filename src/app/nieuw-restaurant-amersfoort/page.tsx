@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { sharedOpenGraph } from "@/lib/site-metadata";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
         canonical: "/nieuw-restaurant-amersfoort",
     },
     openGraph: {
+        ...sharedOpenGraph,
         images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
         title: "Ontdek De Tafelaar | Shared Dining Amersfoort",
         description: "Shared dining met lokale gerechten op de Kamp in Amersfoort. Ontdek De Tafelaar.",

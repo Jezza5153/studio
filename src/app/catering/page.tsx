@@ -1,9 +1,10 @@
 // app/catering/page.tsx
 import type { Metadata } from "next";
+import { sharedOpenGraph } from "@/lib/site-metadata";
 import { getGoogleRating } from "@/lib/google-rating";
 import Image from "next/image";
 import Link from "next/link";
-import { ObfuscatedEmail } from "@/components/obfuscated-email";
+import { contactDetails } from "@/content/site-content";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -12,7 +13,6 @@ import {
   ChefHat,
   Leaf,
   MapPin,
-  MessageSquare,
   Package,
   PartyPopper,
   Phone,
@@ -32,6 +32,7 @@ export const metadata: Metadata = {
     "Catering Amersfoort: office lunch vanaf €7,50 p.p., walking dinners en events tot 150 personen. Bereid in onze restaurantkeuken op de Kamp, bezorgd op kantoor.",
   alternates: { canonical: "/catering" },
   openGraph: {
+    ...sharedOpenGraph,
     images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
     title: "Catering Amersfoort | De Tafelaar",
     description:
@@ -792,14 +793,14 @@ export default async function CateringPage() {
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-3">
-                  <Link href="/contact" prefetch={false}>
+                  <Link href="/contact?onderwerp=catering#bericht" prefetch={false}>
                     <Button className="">Contact opnemen</Button>
                   </Link>
                   <Button asChild variant="outline" className="">
-                    <ObfuscatedEmail user="reserveren" domain="tafelaaramersfoort.nl">
-                      <MessageSquare className="mr-2 h-4 w-4" />
-                      Mail ons direct
-                    </ObfuscatedEmail>
+                    <a href={`tel:${contactDetails.phone.replace(/[^\d+]/g, "")}`}>
+                      <Phone className="mr-2 h-4 w-4" />
+                      Bel ons direct
+                    </a>
                   </Button>
                 </div>
               </div>

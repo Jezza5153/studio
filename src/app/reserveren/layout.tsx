@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { sharedOpenGraph } from "@/lib/site-metadata";
 import Link from "next/link";
 import { Card, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
         canonical: "/reserveren",
     },
     openGraph: {
+        ...sharedOpenGraph,
         images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
         title: "Reserveren bij De Tafelaar | Tafel Boeken Amersfoort Centrum",
         description: "Reserveer online een tafel bij De Tafelaar: shared dining voor 2-100 personen op de Kamp in Amersfoort. Open ma en do t/m zo.",

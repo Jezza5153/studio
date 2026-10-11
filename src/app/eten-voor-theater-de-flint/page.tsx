@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { sharedOpenGraph } from "@/lib/site-metadata";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
         canonical: "/eten-voor-theater-de-flint",
     },
     openGraph: {
+        ...sharedOpenGraph,
         images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
         title: "Eten voor Theater Amersfoort | Restaurant vlakbij de Flint",
         description: "Shared dining op 5 minuten lopen van de Flint. Perfect voor of na de voorstelling in Amersfoort.",

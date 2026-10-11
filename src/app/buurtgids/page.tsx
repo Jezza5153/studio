@@ -1,5 +1,6 @@
 
 import type { Metadata } from "next";
+import { sharedOpenGraph } from "@/lib/site-metadata";
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
     canonical: "/buurtgids",
   },
   openGraph: {
+    ...sharedOpenGraph,
     images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
     title: "Buurtgids Flint - Eten & Restaurants vlakbij de Flint",
     description: "De beste restaurants en eten dichtbij de Flint Amersfoort. De Tafelaar ligt in de Kamp, op 5 min lopen.",

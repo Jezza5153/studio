@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { sharedOpenGraph } from "@/lib/site-metadata";
 import Link from "next/link";
 import {
     getLeadStory,
@@ -15,6 +16,7 @@ import { LeadStoryHero } from "@/components/courant/LeadStoryHero";
 import { FrontPageGrid } from "@/components/courant/FrontPageGrid";
 import { TheLiveWall } from "@/components/courant/TheLiveWall";
 import { GuestHighlights } from "@/components/courant/GuestHighlights";
+import { buildEventsJsonLd } from "@/lib/event-jsonld";
 
 export const revalidate = 60; // ISR: revalidate every 60s
 
@@ -26,6 +28,7 @@ export const metadata: Metadata = {
         canonical: "/agenda",
     },
     openGraph: {
+        ...sharedOpenGraph,
         title: "Agenda & Evenementen | De Tafelaar Amersfoort",
         description:
             "Evenementen, speciale menu's en updates van De Tafelaar op de Kamp in Amersfoort centrum.",
@@ -56,8 +59,26 @@ export default async function AgendaPage() {
     const pressItems = stories.filter((s) => s.type === "PRESS");
     const nonPressStories = stories.filter((s) => s.type !== "PRESS");
 
+    // Event JSON-LD for upcoming events shown on this page (explicit date + time only),
+    // one per event even when it appears in several blocks.
+    const events = buildEventsJsonLd([
+        ...(leadStory ? [leadStory] : []),
+        ...pinnedItems,
+        ...stories,
+        ...feedPage.items,
+    ]);
+
     return (
         <>
+            {events.length > 0 && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({ "@context": "https://schema.org", "@graph": events }),
+                    }}
+                />
+            )}
+
             <CourantMasthead />
 
             <BreakingTicker

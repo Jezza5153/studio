@@ -1,6 +1,7 @@
 
 // app/(site)/over-onze-makers/page.tsx (server component)
 import type { Metadata } from "next";
+import { sharedOpenGraph } from "@/lib/site-metadata";
 import { makers, philosophyContent } from "@/content/site-content";
 import Image from "next/image";
 import Link from "next/link";
@@ -56,6 +57,7 @@ export const metadata: Metadata = {
     canonical: "/over-onze-makers",
   },
   openGraph: {
+    ...sharedOpenGraph,
     images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
     title: "Onze Makers & Leveranciers | De Tafelaar Amersfoort",
     description:

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { sharedOpenGraph } from "@/lib/site-metadata";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
         canonical: "/bourgondisch-eten-amersfoort",
     },
     openGraph: {
+        ...sharedOpenGraph,
         images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
         title: "Bourgondisch Eten Amersfoort | De Tafelaar",
         description: "Shared dining met lokale gerechten. Bourgondisch genieten op de Kamp.",

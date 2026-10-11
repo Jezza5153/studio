@@ -2,6 +2,7 @@
 // app/(site)/verhuur-en-groepen/page.tsx
 // Server component for speed (no client JS needed)
 import type { Metadata } from "next";
+import { sharedOpenGraph } from "@/lib/site-metadata";
 
 export const dynamic = "force-static";
 
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
     canonical: "/verhuur-en-groepen",
   },
   openGraph: {
+    ...sharedOpenGraph,
     images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
     title: "Feestlocatie & Bedrijfsdiner Amersfoort | De Tafelaar",
     description: "Unieke locatie voor feesten, borrels en zakelijke diners tot 100 personen. Op loopafstand van de Flint.",
@@ -61,7 +63,7 @@ function faqJsonLd() {
 
 import Image from "next/image";
 import Link from "next/link";
-import { ObfuscatedEmail } from "@/components/obfuscated-email";
+import { contactDetails } from "@/content/site-content";
 import {
   Card,
   CardContent,
@@ -79,7 +81,7 @@ import {
   Wine,
   Beer,
   Coffee,
-  MessageSquare,
+  Phone,
   Clock,
   ShieldCheck,
 } from "lucide-react";
@@ -246,14 +248,14 @@ export default function VerhuurEnGroepenPage() {
                 </p>
               </div>
               <div className="flex flex-wrap gap-3">
-                <Link href="/contact" prefetch={false}>
+                <Link href="/contact?onderwerp=groep#bericht" prefetch={false}>
                   <Button className="">Contactformulier</Button>
                 </Link>
                 <Button asChild variant="outline" className="">
-                  <ObfuscatedEmail user="reserveren" domain="tafelaaramersfoort.nl">
-                    <MessageSquare className="mr-2 h-4 w-4" />
-                    Mail ons
-                  </ObfuscatedEmail>
+                  <a href={`tel:${contactDetails.phone.replace(/[^\d+]/g, "")}`}>
+                    <Phone className="mr-2 h-4 w-4" />
+                    Bel ons
+                  </a>
                 </Button>
               </div>
             </div>

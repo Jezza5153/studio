@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { sharedOpenGraph } from "@/lib/site-metadata";
 import Link from "next/link";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
         canonical: "/drank",
     },
     openGraph: {
+        ...sharedOpenGraph,
         images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
         title: "Drankenkaart De Tafelaar | Lokaal Bier & Wijn Amersfoort",
         description: "Lokale bieren, biologische wijnen en cocktails bij De Tafelaar in Amersfoort. Rock City, De Drie Ringen, Korte Garde en meer. Bekijk de volledige drankenkaart.",

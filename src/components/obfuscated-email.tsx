@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 /**
  * Anti-scraping email link.
@@ -29,6 +29,9 @@ export function ObfuscatedEmail({
     className,
 }: ObfuscatedEmailProps) {
     const email = useMemo(() => `${user}@${domain}`, [user, domain]);
+    // Het adres pas na het laden in de pagina zetten: in de HTML die bots lezen staat het dan niet
+    const [loaded, setLoaded] = useState(false);
+    useEffect(() => setLoaded(true), []);
 
     const href = useMemo(() => {
         const base = `mailto:${email}`;
@@ -53,7 +56,7 @@ export function ObfuscatedEmail({
             data-d={domain}
             suppressHydrationWarning
         >
-            {children || email}
+            {children || (loaded ? email : "E-mail")}
         </a>
     );
 }

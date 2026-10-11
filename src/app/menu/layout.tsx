@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { sharedOpenGraph } from "@/lib/site-metadata";
 import Link from "next/link";
 import { DINNER_MENU } from "@/content/menu";
 import { Card } from "@/components/ui/card";
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
         canonical: "/menu",
     },
     openGraph: {
+        ...sharedOpenGraph,
         images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
         title: "Menukaart De Tafelaar | Shared Dining Gerechten Amersfoort",
         description: "Bekijk de menukaart van De Tafelaar: shared dining gerechten van €3,50-€15,50. Kazen, charcuterie, vegetarisch en seizoensgebonden.",

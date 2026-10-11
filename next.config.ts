@@ -9,6 +9,8 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
+    // AVIF waar de browser het ondersteunt, anders WebP (standaard alleen WebP).
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       // ✅ Wikimedia Commons CDN (for Amersfoort city shots)
       {
@@ -108,6 +110,18 @@ const nextConfig: NextConfig = {
       {
         source: "/lunch-amersfoort",
         destination: "/menu",
+        permanent: true,
+      },
+      {
+        // Restanten van de oude WordPress-site die nog in Search Console staan. Was een pagina met
+        // redirect("/"), maar die gaf bij statische rendering 200 + meta refresh (soft redirect).
+        source: "/uncategorized/:path*",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/category/:path*",
+        destination: "/",
         permanent: true,
       },
     ];

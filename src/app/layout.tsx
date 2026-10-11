@@ -8,9 +8,10 @@ import { Footer } from "@/components/footer";
 import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
 import { GoogleAnalytics } from "@/components/google-analytics";
-import Script from "next/script";
+import { BoekEerlijkEmbed } from "@/components/boekeerlijk-embed";
 import { getSettings } from "@/lib/queries/feed";
 import { persJsonLd } from "@/content/pers";
+import { SITE_NAME, SITE_URL, sharedOpenGraph } from "@/lib/site-metadata";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -18,14 +19,19 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+// Niet preloaden: geen enkele stijl gebruikt --font-playfair (font-headline in
+// tailwind.config.ts verwijst naar --font-playfair-display, dat nergens bestaat, dus koppen
+// erven Inter). Met preload haalde elke pagina ~40 KB font op dat nooit getoond wordt, in
+// concurrentie met de hero-foto. Zonder preload laadt de browser het pas als iets het gebruikt.
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-playfair",
+  preload: false,
 });
 
-const siteUrl = "https://www.tafelaaramersfoort.nl";
-const siteName = "De Tafelaar";
+const siteUrl = SITE_URL;
+const siteName = SITE_NAME;
 const siteTitle = "De Tafelaar, Restaurant Amersfoort Centrum";
 const siteDescription =
   "De Tafelaar: restaurant in Amersfoort centrum voor borrel en diner. Shared dining met gerechten van lokale makers, samengesteld om te delen, vlakbij de Flint. Open ma en do t/m zo.";
@@ -42,12 +48,10 @@ export const metadata: Metadata = {
     canonical: siteUrl,
   },
   openGraph: {
+    ...sharedOpenGraph,
     title: siteTitle,
     description: siteDescription,
     url: siteUrl,
-    siteName,
-    type: "website",
-    locale: "nl_NL",
     images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
   },
   twitter: {
@@ -116,7 +120,6 @@ function restaurantJsonLd(rating?: number, reviewCount?: number) {
     },
 
     telephone: "+31 6 341 279 32",
-    email: "info@tafelaaramersfoort.nl",
 
     sameAs: [
       "https://www.facebook.com/people/Tafelaar-Amersfoort/61575109492128/",
@@ -213,13 +216,7 @@ export default async function RootLayout({
   return (
     <html lang="nl" className={cn(inter.variable, playfairDisplay.variable)}>
       <head>
-        {/* Preconnect for webfonts */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
+        {/* Geen preconnect naar Google Fonts: next/font host de fonts zelf. */}
 
         {/* JSON-LD */}
         <script
@@ -245,27 +242,13 @@ export default async function RootLayout({
 
         <Footer />
 
-        {/* Honeypot: hidden fake email to trap scraping bots.
-            Any email sent to this address = confirmed bot.
-            aria-hidden + tabIndex -1 makes it invisible to real users & screen readers. */}
-        <div
-          aria-hidden="true"
-          tabIndex={-1}
-          style={{ position: "absolute", left: "-9999px", top: "-9999px", width: 0, height: 0, overflow: "hidden", opacity: 0 }}
-        >
-          <a href="mailto:crawler-trap@tafelaaramersfoort.nl" tabIndex={-1}>contact</a>
-        </div>
         <Toaster />
 
         {/* Google Analytics */}
         <GoogleAnalytics />
 
         {/* BoekEerlijk Reserveerknop */}
-        <Script
-          src="https://www.boekeerlijk.nl/embed.js"
-          data-restaurant-id="de-tafelaar-30fcc6"
-          strategy="afterInteractive"
-        />
+        <BoekEerlijkEmbed />
       </body>
     </html>
   );

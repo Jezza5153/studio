@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { sharedOpenGraph } from "@/lib/site-metadata";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getStoryBySlug, getRelatedStories, getAdjacentStories, getLatestStories, parseMedia } from "@/lib/queries/feed";
 import { parseArticleSections, extractMetaDescription } from "@/lib/article-utils";
 import { CATEGORY_LABELS } from "@/lib/constants";
 import { getSeoOverride, buildFaqJsonLd } from "@/lib/seo-overrides";
+import { buildEventJsonLd } from "@/lib/event-jsonld";
 import { ArticleHero } from "@/components/article/ArticleHero";
 import { ArticleMetaBar } from "@/components/article/ArticleMetaBar";
 import { ArticleBody } from "@/components/article/ArticleBody";
@@ -37,6 +39,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         alternates: { canonical: canonicalUrl },
         ...(isInstagram ? { robots: { index: false, follow: true } } : {}),
         openGraph: {
+            ...sharedOpenGraph,
             title: story.title,
             description,
             images: [{ url: ogImage }],
@@ -131,16 +134,17 @@ export default async function StoryPage({ params }: PageProps) {
         },
     ];
 
-    // Inject Event JSON-LD if configured. Supports a single Event or an
-    // array of Event nodes (used for multi-sitting events like Moederdag
-    // high tea where each sitting is its own bookable slot in Google
-    // rich results).
+    // Event JSON-LD. A hand-written override wins; otherwise the Event is built from the
+    // explicit "Datum:" / "Vanaf:" / "Prijs:" lines in the article (only for upcoming
+    // events with a date and a time). Never both, so there is at most one set of Events.
     if (seoOverride?.eventJsonLd) {
         if (Array.isArray(seoOverride.eventJsonLd)) {
             graphItems.push(...seoOverride.eventJsonLd);
         } else {
             graphItems.push(seoOverride.eventJsonLd);
         }
+    } else {
+        graphItems.push(...buildEventJsonLd(story));
     }
 
     // Inject FAQ JSON-LD if configured

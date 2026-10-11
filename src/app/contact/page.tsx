@@ -1,5 +1,6 @@
 
 import type { Metadata } from "next";
+import { sharedOpenGraph } from "@/lib/site-metadata";
 
 export const dynamic = "force-static";
 
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
     "de tafelaar adres",
   ],
   openGraph: {
+    ...sharedOpenGraph,
     images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
     title: "Contact De Tafelaar | Reserveren & Bereikbaarheid Amersfoort",
     description:
@@ -33,6 +35,8 @@ import { contactDetails, reservationFaq, openingHours } from "@/content/site-con
 import { Phone, Info, MapPin, Mail } from "lucide-react";
 import { ReserveerButton } from "@/components/reserveer-button";
 import { ObfuscatedEmail } from "@/components/obfuscated-email";
+import { ContactForm } from "@/components/contact-form";
+import { contactFormulierAan } from "@/lib/contact-form";
 
 // --- FAQ override for "grote groep" (module-level for JSON-LD) ---
 const GROEP_ANTWOORD =
@@ -68,6 +72,8 @@ export default function ReserverenPage() {
   const rawPhone = contactDetails.phone || "";
   const dialPhone = rawPhone.replace(/[^\d+]/g, "");
   const hasDialablePhone = /\d/.test(dialPhone);
+  // Formulier alleen tonen als de Resend-sleutel er is; anders blijft de mailknop staan
+  const formulierAan = contactFormulierAan();
 
   return (
     <>
@@ -79,7 +85,7 @@ export default function ReserverenPage() {
           Contact De Tafelaar Amersfoort
         </h1>
         <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg text-muted-foreground">
-          Reserveer online, bel of mail. We zitten op de Kamp 8, op 5 minuten lopen van Theater de Flint.
+          {formulierAan ? "Reserveer online, bel of stuur ons een bericht." : "Reserveer online, bel of mail."} We zitten op de Kamp 8, op 5 minuten lopen van Theater de Flint.
         </p>
       </div>
 
@@ -112,16 +118,25 @@ export default function ReserverenPage() {
                   </Button>
                 )}
 
-                <Button asChild variant="outline" className="w-full">
-                  <ObfuscatedEmail
-                    user="reserveren"
-                    domain="tafelaaramersfoort.nl"
-                    subject="Vraag over reservering"
-                  >
-                    <Mail className="mr-2 h-4 w-4" />
-                    Mail ons
-                  </ObfuscatedEmail>
-                </Button>
+                {formulierAan ? (
+                  <Button asChild variant="outline" className="w-full">
+                    <a href="#bericht">
+                      <Mail className="mr-2 h-4 w-4" />
+                      Stuur een bericht
+                    </a>
+                  </Button>
+                ) : (
+                  <Button asChild variant="outline" className="w-full">
+                    <ObfuscatedEmail
+                      user="reserveren"
+                      domain="tafelaaramersfoort.nl"
+                      subject="Vraag over reservering"
+                    >
+                      <Mail className="mr-2 h-4 w-4" />
+                      Mail ons
+                    </ObfuscatedEmail>
+                  </Button>
+                )}
 
                 <Button asChild variant="secondary" className="w-full">
                   <a href={googleWeb} target="_blank" rel="noopener noreferrer">
@@ -150,6 +165,22 @@ export default function ReserverenPage() {
 
             </CardContent>
           </Card>
+
+          {formulierAan && (
+            <Card id="bericht" className="mt-8 scroll-mt-24 border-2 border-foreground bg-white">
+              <CardHeader className="pb-4 md:pb-6">
+                <CardTitle className="font-headline text-2xl font-extrabold sm:text-3xl tracking-tight">
+                  Stuur ons een bericht
+                </CardTitle>
+                <p className="text-muted-foreground leading-relaxed">
+                  Een vraag, een groep, een feest of catering? Laat het ons weten, we reageren per e-mail.
+                </p>
+              </CardHeader>
+              <CardContent className="pt-0">
+                <ContactForm telefoon={contactDetails.phone} />
+              </CardContent>
+            </Card>
+          )}
         </div>
 
         {/* Right column: FAQ + tijden */}

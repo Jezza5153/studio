@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { sharedOpenGraph } from "@/lib/site-metadata";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -28,6 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: v.samenvatting,
     alternates: { canonical: `/vacatures/${v.slug}` },
     openGraph: {
+      ...sharedOpenGraph,
       title: titel,
       description: v.samenvatting,
       images: [{ url: v.afbeelding.src }],
