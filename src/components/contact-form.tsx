@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -175,7 +176,11 @@ export function ContactForm({ telefoon }: { telefoon: string }) {
 
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p id="contact-privacy" className="text-xs text-muted-foreground">
-          We gebruiken je gegevens alleen om je bericht te beantwoorden.
+          We gebruiken je gegevens alleen om je bericht te beantwoorden. Lees ook onze{" "}
+          <Link href="/privacy" className="underline underline-offset-2">
+            privacyverklaring
+          </Link>
+          .
         </p>
         <Button type="submit" disabled={sending} className="sm:w-auto">
           {sending ? "Versturen..." : "Verstuur bericht"}
