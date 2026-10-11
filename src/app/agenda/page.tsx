@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { sharedOpenGraph } from "@/lib/site-metadata";
 import Link from "next/link";
 import {
     getLeadStory,
@@ -26,6 +27,7 @@ export const metadata: Metadata = {
         canonical: "/agenda",
     },
     openGraph: {
+        ...sharedOpenGraph,
         title: "Agenda & Evenementen | De Tafelaar Amersfoort",
         description:
             "Evenementen, speciale menu's en updates van De Tafelaar op de Kamp in Amersfoort centrum.",

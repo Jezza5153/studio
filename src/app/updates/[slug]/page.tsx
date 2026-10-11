@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { sharedOpenGraph } from "@/lib/site-metadata";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getStoryBySlug, getRelatedStories, getAdjacentStories, getLatestStories, parseMedia } from "@/lib/queries/feed";
@@ -37,6 +38,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         alternates: { canonical: canonicalUrl },
         ...(isInstagram ? { robots: { index: false, follow: true } } : {}),
         openGraph: {
+            ...sharedOpenGraph,
             title: story.title,
             description,
             images: [{ url: ogImage }],

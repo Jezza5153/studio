@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { sharedOpenGraph } from "@/lib/site-metadata";
 import { getGoogleRating, type GoogleRating } from "@/lib/google-rating";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -19,6 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
             canonical: "/beste-restaurant-amersfoort",
         },
         openGraph: {
+            ...sharedOpenGraph,
             images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
             title: `Beste Restaurant Amersfoort | De Tafelaar, ${g.ratingText} op Google`,
             description: `${g.ratingText} op Google, ${g.countText} reviews. Shared dining met lokale gerechten op de Kamp in Amersfoort.`,

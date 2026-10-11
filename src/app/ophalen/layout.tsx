@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { sharedOpenGraph } from "@/lib/site-metadata";
 import Link from "next/link";
 import { OPHALEN_MENU } from "@/content/menu";
 import { Card } from "@/components/ui/card";
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
         canonical: "/ophalen",
     },
     openGraph: {
+        ...sharedOpenGraph,
         images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
         title: "Tafelaar Thuis: Ophalen bij De Tafelaar | Spare Ribs Afhalen Amersfoort",
         description:

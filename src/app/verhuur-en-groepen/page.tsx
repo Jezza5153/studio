@@ -2,6 +2,7 @@
 // app/(site)/verhuur-en-groepen/page.tsx
 // Server component for speed (no client JS needed)
 import type { Metadata } from "next";
+import { sharedOpenGraph } from "@/lib/site-metadata";
 
 export const dynamic = "force-static";
 
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
     canonical: "/verhuur-en-groepen",
   },
   openGraph: {
+    ...sharedOpenGraph,
     images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
     title: "Feestlocatie & Bedrijfsdiner Amersfoort | De Tafelaar",
     description: "Unieke locatie voor feesten, borrels en zakelijke diners tot 100 personen. Op loopafstand van de Flint.",
