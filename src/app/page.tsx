@@ -1,5 +1,6 @@
 // app/page.tsx: homepage in "De Tafelaar Compositie" (mockup 21)
 import type { Metadata } from "next";
+import { SITE_NAME, SITE_URL, sharedOpenGraph } from "@/lib/site-metadata";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -21,6 +22,8 @@ export async function generateMetadata(): Promise<Metadata> {
     description: `Shared dining op de Kamp in Amersfoort centrum: borrel en diner met lokale seizoensgerechten, ook Tafelaar Thuis (ophalen). ${g.ratingText} op Google, 5 min van de Flint.`,
     alternates: { canonical: "/" },
     openGraph: {
+      ...sharedOpenGraph,
+      url: "/",
       title: "De Tafelaar | Restaurant Amersfoort, Lekker Eten & Shared Dining",
       description: `Shared dining op de Kamp in Amersfoort: borrel en diner met lokale seizoensgerechten. Ook Tafelaar Thuis (ophalen). ${g.ratingText} op Google.`,
       images: [{ url: "/pics/terras-kamp.jpg" }],
@@ -78,6 +81,21 @@ function buildHomeFaqs(g: GoogleRating) {
       answer: `Met een ${g.ratingText} op Google en ${g.countText} reviews is De Tafelaar een van de best beoordeelde restaurants in Amersfoort. Gasten waarderen het unieke shared dining concept, de lokale ingrediënten en de persoonlijke sfeer. Bekijk onze reviews op Google of op onze impressie-pagina.`,
     },
   ];
+}
+
+// Sitenaam voor Google (developers.google.com/search/docs/appearance/site-names): WebSite op de
+// homepage, met dezelfde naam als og:site_name en de paginatitels.
+function websiteJsonLd() {
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${SITE_URL}/#website`,
+    name: SITE_NAME,
+    alternateName: ["De Tafelaar Amersfoort", "Tafelaar Amersfoort"],
+    url: `${SITE_URL}/`,
+    inLanguage: "nl-NL",
+    publisher: { "@id": `${SITE_URL}#restaurant` },
+  });
 }
 
 function homeFaqJsonLd(faqs: { question: string; answer: string }[]) {
@@ -145,6 +163,7 @@ export default async function Home() {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: websiteJsonLd() }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: homeFaqJsonLd(homeFaqs) }} />
 
       {/* ================= HERO: vier vlakken ================= */}

@@ -1,6 +1,7 @@
 
 // app/(site)/over-ons/page.tsx
 import type { Metadata } from "next";
+import { sharedOpenGraph } from "@/lib/site-metadata";
 import { philosophyContent } from "@/content/site-content";
 import Image from "next/image";
 import Link from "next/link";
@@ -52,6 +53,7 @@ export const metadata: Metadata = {
     canonical: "/over-ons",
   },
   openGraph: {
+    ...sharedOpenGraph,
     images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
     title: "Over De Tafelaar | Ons Verhaal, Restaurant Amersfoort Centrum",
     description: "Shared dining restaurant op de Kamp in Amersfoort. Ons verhaal, lokale producenten en seizoensgebonden gerechten.",

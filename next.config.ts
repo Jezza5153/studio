@@ -110,6 +110,18 @@ const nextConfig: NextConfig = {
         destination: "/menu",
         permanent: true,
       },
+      {
+        // Restanten van de oude WordPress-site die nog in Search Console staan. Was een pagina met
+        // redirect("/"), maar die gaf bij statische rendering 200 + meta refresh (soft redirect).
+        source: "/uncategorized/:path*",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/category/:path*",
+        destination: "/",
+        permanent: true,
+      },
     ];
   },
 };

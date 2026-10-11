@@ -11,6 +11,7 @@ import { GoogleAnalytics } from "@/components/google-analytics";
 import Script from "next/script";
 import { getSettings } from "@/lib/queries/feed";
 import { persJsonLd } from "@/content/pers";
+import { SITE_NAME, SITE_URL, sharedOpenGraph } from "@/lib/site-metadata";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,8 +25,8 @@ const playfairDisplay = Playfair_Display({
   variable: "--font-playfair",
 });
 
-const siteUrl = "https://www.tafelaaramersfoort.nl";
-const siteName = "De Tafelaar";
+const siteUrl = SITE_URL;
+const siteName = SITE_NAME;
 const siteTitle = "De Tafelaar, Restaurant Amersfoort Centrum";
 const siteDescription =
   "De Tafelaar: restaurant in Amersfoort centrum voor borrel en diner. Shared dining met gerechten van lokale makers, samengesteld om te delen, vlakbij de Flint. Open ma en do t/m zo.";
@@ -42,12 +43,10 @@ export const metadata: Metadata = {
     canonical: siteUrl,
   },
   openGraph: {
+    ...sharedOpenGraph,
     title: siteTitle,
     description: siteDescription,
     url: siteUrl,
-    siteName,
-    type: "website",
-    locale: "nl_NL",
     images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
   },
   twitter: {

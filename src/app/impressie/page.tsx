@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { sharedOpenGraph } from "@/lib/site-metadata";
 import Link from "next/link";
 import { getSettings, getLatestReviews } from "@/lib/queries/feed";
 import { ImpressieGallery } from "./ImpressieGallery";
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/impressie" },
   robots: { index: true, follow: true },
   openGraph: {
+    ...sharedOpenGraph,
     images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
     title: "Impressie & Reviews | De Tafelaar Amersfoort",
     description:

@@ -1,5 +1,6 @@
 // app/catering/page.tsx
 import type { Metadata } from "next";
+import { sharedOpenGraph } from "@/lib/site-metadata";
 import { getGoogleRating } from "@/lib/google-rating";
 import Image from "next/image";
 import Link from "next/link";
@@ -32,6 +33,7 @@ export const metadata: Metadata = {
     "Catering Amersfoort: office lunch vanaf €7,50 p.p., walking dinners en events tot 150 personen. Bereid in onze restaurantkeuken op de Kamp, bezorgd op kantoor.",
   alternates: { canonical: "/catering" },
   openGraph: {
+    ...sharedOpenGraph,
     images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
     title: "Catering Amersfoort | De Tafelaar",
     description:

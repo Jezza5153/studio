@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { sharedOpenGraph } from "@/lib/site-metadata";
 import Link from "next/link";
 import { ArrowRight, Clock, Mail, MapPin, Phone } from "lucide-react";
 
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
     "Werken in de horeca in Amersfoort? De Tafelaar zoekt bediening, een eerste medewerker, een kok en keukenhulp. Vanaf €15,21 per uur. Bekijk de vacatures.",
   alternates: { canonical: "/vacatures" },
   openGraph: {
+    ...sharedOpenGraph,
     images: [{ url: "/pics/gasten-bar.jpg", width: 846, height: 460 }],
     title: "Vacatures De Tafelaar | Werken in Amersfoort centrum",
     description:

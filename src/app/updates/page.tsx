@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { sharedOpenGraph } from "@/lib/site-metadata";
 import Link from "next/link";
 import { SafeImage } from "@/components/safe-image";
 import { searchFeed, getFeedPage, parseMedia } from "@/lib/queries/feed";
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
         "Alle updates, evenementen, reviews en persberichten van De Tafelaar op de Kamp in Amersfoort. Shared dining nieuws, menu-wijzigingen en gasten-reviews.",
     alternates: { canonical: "/updates" },
     openGraph: {
+        ...sharedOpenGraph,
         images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
         title: "Updates & Nieuws | De Tafelaar Amersfoort",
         description:

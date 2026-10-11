@@ -1,5 +1,6 @@
 
 import type { Metadata } from "next";
+import { sharedOpenGraph } from "@/lib/site-metadata";
 
 export const dynamic = "force-static";
 
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
     "de tafelaar adres",
   ],
   openGraph: {
+    ...sharedOpenGraph,
     images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
     title: "Contact De Tafelaar | Reserveren & Bereikbaarheid Amersfoort",
     description:
