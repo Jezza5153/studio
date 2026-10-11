@@ -108,7 +108,7 @@ export default async function ImpressiePage() {
                 />
               </svg>
               <span className="text-xl font-bold text-foreground">
-                {googleRating.toFixed(1)}
+                {googleRating.toFixed(1).replace(".", ",")}
               </span>
               <div className="flex text-amber-500">
                 {Array.from({ length: 5 }).map((_, i) => (
@@ -130,6 +130,25 @@ export default async function ImpressiePage() {
               )}
             </div>
           )}
+
+          <div className="mt-5 flex flex-wrap justify-center gap-3">
+            <a
+              href="/review"
+              target="_blank"
+              rel="noopener"
+              className="border-2 border-foreground bg-primary px-4 py-2 text-sm font-bold text-white shadow-[4px_4px_0_hsl(var(--foreground))]"
+            >
+              Schrijf een review op Google
+            </a>
+            <a
+              href="/tripadvisor"
+              target="_blank"
+              rel="noopener"
+              className="border-2 border-foreground bg-white px-4 py-2 text-sm font-bold text-foreground shadow-[4px_4px_0_hsl(var(--foreground))]"
+            >
+              Review op TripAdvisor
+            </a>
+          </div>
         </div>
       </header>
 

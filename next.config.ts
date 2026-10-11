@@ -57,6 +57,18 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        // Korte reviewlinks voor tafelkaartjes, bonnetjes en QR-codes. Tijdelijk (307), zodat de
+        // QR-codes blijven werken als de doelpagina ooit verandert.
+        source: "/review",
+        destination: "https://search.google.com/local/writereview?placeid=ChIJSW64-iRHxkcREn638_zQroA",
+        permanent: false,
+      },
+      {
+        source: "/tripadvisor",
+        destination: "https://www.tripadvisor.nl/UserReviewEdit-g188613-d34027809-De_Tafelaar-Amersfoort.html",
+        permanent: false,
+      },
+      {
         // Oud vercel.app-adres van productie: dubbele content, alles naar het echte domein.
         source: "/:path*",
         has: [{ type: "host", value: "studio-ten-ruby.vercel.app" }],
