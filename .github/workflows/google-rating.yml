@@ -15,7 +15,7 @@ permissions:
 jobs:
   sync:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     defaults:
       run:
         working-directory: scripts/google-rating
@@ -36,6 +36,15 @@ jobs:
           RATING_SYNC_SECRET: ${{ secrets.RATING_SYNC_SECRET }}
           SITE_URL: https://www.tafelaaramersfoort.nl
         run: node sync.mjs
+
+      - name: Screenshot bij een fout
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: google-maps-debug
+          path: scripts/google-rating/debug.png
+          if-no-files-found: ignore
+          retention-days: 7
 
       - name: Geplande taak actief houden
         if: always()
