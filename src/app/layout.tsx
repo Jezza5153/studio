@@ -116,10 +116,6 @@ function restaurantJsonLd(rating?: number, reviewCount?: number) {
     sameAs: [
       "https://www.facebook.com/tafelaaramersfoort",
       "https://www.instagram.com/tafelaaramersfoort",
-      // JV catering brand, Tafelaar × Jezza Cooks operates out of this kitchen.
-      // jezzacooks.com's #catering entity cross-refs back to #restaurant here,
-      // so AI answer engines resolve the two-domain service as one entity.
-      "https://www.jezzacooks.com/services/catering",
     ],
 
     hasMap: "https://maps.google.com/?q=De+Tafelaar+Kamp+8+Amersfoort",

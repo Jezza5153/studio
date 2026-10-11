@@ -25,16 +25,15 @@ export const dynamic = "force-static";
 export const revalidate = 3600; // Google rating/review count refresh hourly (synced by /api/cron/ingest-reviews)
 
 const SITE_URL = "https://www.tafelaaramersfoort.nl";
-const JEZZA_URL = "https://www.jezzacooks.com";
 
 export const metadata: Metadata = {
-  title: "Catering Amersfoort | Office Lunch & Zakelijk | Tafelaar × Jezza Cooks",
+  title: "Catering Amersfoort | Office Lunch & Zakelijke Catering",
   description:
     "Catering Amersfoort: office lunch vanaf €7,50 p.p., walking dinners en events tot 150 personen. Bereid in onze restaurantkeuken op de Kamp, bezorgd op kantoor.",
   alternates: { canonical: "/catering" },
   openGraph: {
     images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
-    title: "Catering Amersfoort | Tafelaar × Jezza Cooks",
+    title: "Catering Amersfoort | De Tafelaar",
     description:
       "Office lunch, walking dinner en event catering uit onze restaurantkeuken op de Kamp. Vanaf €7,50 p.p., 10-150+ personen.",
   },
@@ -90,7 +89,7 @@ const faqs = [
   {
     question: "Wie bereidt de catering en waar komt het vandaan?",
     answer:
-      "De catering is een samenwerking tussen restaurant De Tafelaar (Jan Molmans, Kamp 8) en Jezza Cooks (Jeremy Arrascaeta, chef-kok van De Tafelaar). Alles wordt bereid in de volwaardige restaurantkeuken op de Kamp, met ingrediënten van 14+ lokale makers zoals Farmfields, Boot Koffie en Rock City Brewing. Zelfde keuken, zelfde chef, zelfde kwaliteit als het restaurant, alleen dan op kantoor of op locatie.",
+      "De catering komt uit de keuken van restaurant De Tafelaar (eigenaar Jan Molmans, Kamp 8) en wordt verzorgd door chef Jeremy Arrascaeta, chef-kok van De Tafelaar. Alles wordt bereid in de volwaardige restaurantkeuken op de Kamp, met ingrediënten van 14+ lokale makers zoals Farmfields, Boot Koffie en Rock City Brewing. Zelfde keuken, zelfde chef, zelfde kwaliteit als het restaurant, alleen dan op kantoor of op locatie.",
   },
   {
     question: "Is er een minimum bestelwaarde voor catering?",
@@ -111,16 +110,13 @@ function faqJsonLd() {
   });
 }
 
-// Service + OfferCatalog JSON-LD specifically for catering, cross-linked to
-// the main #restaurant entity in layout.tsx and to jezzacooks.com's
-// #catering entity. This is the entity-resolution move that tells Google
-// "Tafelaar × Jezza Cooks Catering is ONE service across two domains".
+// Service + OfferCatalog JSON-LD for catering, linked to the #restaurant entity in layout.tsx.
 function cateringServiceJsonLd() {
   return JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Service",
     "@id": `${SITE_URL}/catering#service`,
-    name: "Tafelaar × Jezza Cooks Catering",
+    name: "De Tafelaar Catering",
     alternateName: "Office Lunch Catering Amersfoort",
     serviceType: "Catering Service",
     description:
@@ -194,9 +190,6 @@ function cateringServiceJsonLd() {
         },
       ],
     },
-    // Cross-link to the JV entity on jezzacooks.com, resolves "same service,
-    // different domains" for AI answer engines.
-    sameAs: [`${JEZZA_URL}/services/catering`, `${JEZZA_URL}/#catering`],
   });
 }
 
@@ -363,7 +356,7 @@ export default async function CateringPage() {
           {/* Header */}
           <header className="text-center mb-10 sm:mb-12">
             <p className="mb-4 inline-block bg-foreground px-3.5 py-[7px] text-[11px] font-bold uppercase tracking-[0.2em] text-background">
-              Tafelaar × Jezza Cooks Catering
+              De Tafelaar Catering
             </p>
             <h1 className="font-headline text-3xl font-black tracking-tight sm:text-4xl md:text-5xl">
               Catering Amersfoort, Office Lunch, Events & Walking Dinner
@@ -458,7 +451,7 @@ export default async function CateringPage() {
             <div className="order-1 md:order-2 overflow-hidden border-2 border-foreground bg-muted/20">
               <Image
                 src={CATEGORY_IMAGES.boxes}
-                alt="Office lunch catering van Tafelaar × Jezza Cooks, Amersfoort"
+                alt="Office lunch catering van De Tafelaar, Amersfoort"
                 width={1200}
                 height={800}
                 className="object-cover w-full h-auto"
@@ -475,15 +468,15 @@ export default async function CateringPage() {
               <div className="flex items-center gap-2 text-primary mb-3">
                 <ChefHat className="h-5 w-5" />
                 <h2 className="font-headline text-xl font-extrabold tracking-tight sm:text-2xl">
-                  Onze chef, Tafelaar × Jezza Cooks
+                  Onze chef, Jeremy Arrascaeta
                 </h2>
               </div>
               <div className="space-y-3 text-muted-foreground leading-relaxed">
                 <p>
-                  Onze catering is een samenwerking tussen restaurant De Tafelaar (Jan Molmans,
-                  eigenaar) en <Link href={JEZZA_URL} className="underline hover:text-foreground">Jezza Cooks</Link>{" "}
-                  (Jeremy Arrascaeta, chef-kok van De Tafelaar). Dezelfde restaurantkeuken, dezelfde chef,
-                  dezelfde kwaliteit, alleen dan op jouw kantoor of evenementlocatie.
+                  Onze catering komt uit de keuken van restaurant De Tafelaar (eigenaar Jan Molmans) en
+                  wordt verzorgd door chef Jeremy Arrascaeta, chef-kok van De Tafelaar. Dezelfde
+                  restaurantkeuken, dezelfde chef, dezelfde kwaliteit, alleen dan op jouw kantoor of
+                  evenementlocatie.
                 </p>
                 <p>
                   Jeremy heeft ruim 10 jaar ervaring in high-end keukens in Nederland en Australië
@@ -491,11 +484,6 @@ export default async function CateringPage() {
                   2018, en dry-aging lead bij Angler Restaurant in Zuid-Australië). We werken met
                   ingrediënten van 14+ lokale makers zoals Farmfields, Boot Koffie en Rock City Brewing.
                 </p>
-                <div className="pt-2">
-                  <Link href={`${JEZZA_URL}/services/catering`} className="text-sm underline text-primary hover:text-primary/80">
-                    Meer over Tafelaar × Jezza Cooks Catering →
-                  </Link>
-                </div>
               </div>
             </Card>
           </section>
@@ -599,7 +587,7 @@ export default async function CateringPage() {
                 <div className="relative aspect-[16/9] w-full">
                   <Image
                     src={CATEGORY_IMAGES.sandwiches}
-                    alt="Office lunch broodjes Amersfoort, Tafelaar × Jezza Cooks"
+                    alt="Office lunch broodjes Amersfoort, De Tafelaar"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"
@@ -635,7 +623,7 @@ export default async function CateringPage() {
                 <div className="relative aspect-[16/9] w-full">
                   <Image
                     src={CATEGORY_IMAGES.bowls}
-                    alt="Office lunch bowls Amersfoort, Tafelaar × Jezza Cooks"
+                    alt="Office lunch bowls Amersfoort, De Tafelaar"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"
@@ -667,7 +655,7 @@ export default async function CateringPage() {
                 <div className="relative aspect-[16/9] w-full">
                   <Image
                     src={CATEGORY_IMAGES.wraps}
-                    alt="Office lunch wraps Amersfoort, Tafelaar × Jezza Cooks"
+                    alt="Office lunch wraps Amersfoort, De Tafelaar"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"
@@ -699,7 +687,7 @@ export default async function CateringPage() {
                 <div className="relative aspect-[16/9] w-full">
                   <Image
                     src={CATEGORY_IMAGES.boxes}
-                    alt="Office lunchpakketten Amersfoort, Tafelaar × Jezza Cooks"
+                    alt="Office lunchpakketten Amersfoort, De Tafelaar"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"
@@ -841,7 +829,6 @@ export default async function CateringPage() {
               <Link href="/bedrijfsdiner-amersfoort"><Button variant="outline" className="">Bedrijfsdiner</Button></Link>
               <Link href="/contact"><Button variant="outline" className="">Contact</Button></Link>
               <Link href="/duurzaam-restaurant-amersfoort"><Button variant="outline" className="">Duurzaam restaurant</Button></Link>
-              <Link href={JEZZA_URL}><Button variant="outline" className="">Over Jezza Cooks →</Button></Link>
             </div>
           </section>
         </div>
