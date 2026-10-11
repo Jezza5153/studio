@@ -9,6 +9,8 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
+    // AVIF waar de browser het ondersteunt, anders WebP (standaard alleen WebP).
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       // ✅ Wikimedia Commons CDN (for Amersfoort city shots)
       {
