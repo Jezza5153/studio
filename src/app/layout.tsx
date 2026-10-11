@@ -27,7 +27,7 @@ const siteUrl = "https://www.tafelaaramersfoort.nl";
 const siteName = "De Tafelaar";
 const siteTitle = "De Tafelaar, Restaurant Amersfoort Centrum";
 const siteDescription =
-  "De Tafelaar: restaurant in Amersfoort centrum voor borrel en diner. Shared dining met gerechten van lokale makers, samengesteld om te delen, vlakbij de Flint. Open ma en vr t/m zo.";
+  "De Tafelaar: restaurant in Amersfoort centrum voor borrel en diner. Shared dining met gerechten van lokale makers, samengesteld om te delen, vlakbij de Flint. Open do t/m zo.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -130,8 +130,9 @@ function restaurantJsonLd(rating?: number, reviewCount?: number) {
     ],
 
     openingHoursSpecification: [
-      { "@type": "OpeningHoursSpecification", dayOfWeek: "Monday", opens: "17:00", closes: "22:00" },
-      { "@type": "OpeningHoursSpecification", dayOfWeek: ["Friday", "Saturday", "Sunday"], opens: "15:00", closes: "00:00" },
+      { "@type": "OpeningHoursSpecification", dayOfWeek: "Thursday", opens: "17:00", closes: "23:00" },
+      { "@type": "OpeningHoursSpecification", dayOfWeek: ["Friday", "Saturday"], opens: "15:00", closes: "00:00" },
+      { "@type": "OpeningHoursSpecification", dayOfWeek: "Sunday", opens: "15:00", closes: "23:00" },
     ],
 
     makesOffer: [

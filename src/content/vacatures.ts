@@ -26,7 +26,7 @@ export type Vacature = {
   validThrough: string;
 };
 
-const WERKDAGEN = "Maandagavond en vrijdag t/m zondag vanaf 15:00";
+const WERKDAGEN = "Donderdagavond en vrijdag t/m zondag vanaf 15:00";
 
 export const vacatures: Vacature[] = [
   {
@@ -49,13 +49,13 @@ export const vacatures: Vacature[] = [
     ],
     zoeken: [
       "Ervaring in de bediening is fijn, een open en gastvrije instelling is belangrijker",
-      "Beschikbaar op maandagavond en in het weekend (vrijdag t/m zondag vanaf 15:00)",
+      "Beschikbaar op donderdagavond en in het weekend (vrijdag t/m zondag vanaf 15:00)",
       "Je spreekt goed Nederlands en houdt van lekker eten",
     ],
     bieden: [
       "Salaris volgens de horeca-cao, afhankelijk van leeftijd en ervaring",
       "Een klein, hecht team en korte lijnen met de eigenaren",
-      "Vaste vrije dagen: op dinsdag, woensdag en donderdag is de zaak dicht",
+      "Vaste vrije dagen: op maandag, dinsdag en woensdag is de zaak dicht",
       "Een personeelsmaaltijd en de kans om de hele kaart te leren proeven",
     ],
     datePosted: "2026-10-11",
@@ -82,12 +82,12 @@ export const vacatures: Vacature[] = [
     zoeken: [
       "Een afgeronde koksopleiding of een paar jaar ervaring in een goede keuken",
       "Zelfstandig, netjes en rustig als het druk is",
-      "Beschikbaar op maandagavond en van vrijdag t/m zondag, in overleg ook overdag voor catering",
+      "Beschikbaar van donderdag t/m zondag, in overleg ook overdag voor catering",
     ],
     bieden: [
       "Salaris volgens de horeca-cao, afhankelijk van ervaring",
       "Een keuken zonder franje waar smaak en product vooropstaan",
-      "Vaste vrije dagen: op dinsdag, woensdag en donderdag is de zaak dicht",
+      "Vaste vrije dagen: op maandag, dinsdag en woensdag is de zaak dicht",
       "Werken naast een chef met ervaring in high-end keukens in Nederland en Australië",
     ],
     datePosted: "2026-10-11",
@@ -141,7 +141,7 @@ export const waaromTafelaar = [
   },
   {
     titel: "Vaste vrije dagen",
-    tekst: "We zijn open op maandagavond en van vrijdag t/m zondag. Dinsdag, woensdag en donderdag is de zaak dicht, dus dan ben jij ook vrij.",
+    tekst: "We zijn open van donderdag t/m zondag. Maandag, dinsdag en woensdag is de zaak dicht, dus dan ben jij ook vrij.",
   },
   {
     titel: "Shared dining is teamwerk",
@@ -163,7 +163,7 @@ export const vacatureFaqs = [
   {
     question: "Op welke dagen werk je bij De Tafelaar?",
     answer:
-      "We zijn open op maandag van 17:00 tot 22:00 en op vrijdag, zaterdag en zondag van 15:00 tot 00:00. Dinsdag, woensdag en donderdag is de zaak gesloten. Je rooster spreken we samen af.",
+      "We zijn open op donderdag van 17:00 tot 23:00, op vrijdag en zaterdag van 15:00 tot 00:00 en op zondag van 15:00 tot 23:00. Maandag, dinsdag en woensdag is de zaak gesloten. Je rooster spreken we samen af.",
   },
   {
     question: "Wat verdien je bij De Tafelaar?",
@@ -185,7 +185,7 @@ export const vacatureFaqs = [
 export const sollicitatieStappen = [
   {
     titel: "Mail, bel of loop binnen",
-    tekst: "Een korte mail is genoeg. Bellen of even langskomen op de Kamp 8 (maandagavond of vrijdag t/m zondag) mag ook.",
+    tekst: "Een korte mail is genoeg. Bellen of even langskomen op de Kamp 8 (donderdag t/m zondag) mag ook.",
   },
   {
     titel: "Koffie op de Kamp",

@@ -24,7 +24,7 @@ export default function ReserverenPage() {
         </h1>
         <p className="mt-3 text-muted-foreground text-base sm:text-lg">
           Boek online een tafel voor shared dining in Amersfoort centrum. Beschikbaar voor
-          2 tot 100 personen, op maandag en van vrijdag t/m zondag. De reserveringsmodule opent automatisch.
+          2 tot 100 personen, van donderdag t/m zondag. De reserveringsmodule opent automatisch.
         </p>
 
         <div className="mt-6 border-2 border-foreground p-4 bg-secondary/30">
