@@ -159,7 +159,9 @@ export function ContactForm({ telefoon }: { telefoon: string }) {
           placeholder={
             onderwerp === "groep" || onderwerp === "catering"
               ? "Welke datum heb je in gedachten, met hoeveel personen, en wat zoek je?"
-              : "Waar kunnen we je mee helpen?"
+              : onderwerp === "werken"
+                ? "Vertel kort wie je bent, wat je zoekt en wanneer je kunt werken."
+                : "Waar kunnen we je mee helpen?"
           }
           aria-invalid={Boolean(errors.bericht)}
           aria-describedby={errors.bericht ? "fout-bericht" : undefined}
