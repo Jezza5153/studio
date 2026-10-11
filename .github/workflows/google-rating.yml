@@ -1,0 +1,44 @@
+name: Google-score bijwerken
+
+# Elke maandag de score en het aantal Google-reviews van De Tafelaar overnemen op de site.
+# Leest de openbare Google Maps-pagina met een echte browser (geen betaalde Google API).
+# Mislukt het, dan stuurt GitHub een mail en blijft de vorige score gewoon staan.
+on:
+  schedule:
+    - cron: "0 6 * * 1" # maandag 06:00 UTC = 08:00 zomertijd / 07:00 wintertijd
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: write # om deze geplande taak actief te houden (GitHub zet ze anders na 60 dagen zonder commits uit)
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: scripts/google-rating
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Playwright installeren
+        run: |
+          npm install --no-audit --no-fund
+          npx playwright install --with-deps chromium
+
+      - name: Score ophalen en opslaan
+        env:
+          RATING_SYNC_SECRET: ${{ secrets.RATING_SYNC_SECRET }}
+          SITE_URL: https://www.tafelaaramersfoort.nl
+        run: node sync.mjs
+
+      - name: Geplande taak actief houden
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X PUT "repos/${{ github.repository }}/actions/workflows/google-rating.yml/enable" || true
