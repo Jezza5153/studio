@@ -248,7 +248,7 @@ export default function VerhuurEnGroepenPage() {
                 </p>
               </div>
               <div className="flex flex-wrap gap-3">
-                <Link href="/contact" prefetch={false}>
+                <Link href="/contact?onderwerp=groep#bericht" prefetch={false}>
                   <Button className="">Contactformulier</Button>
                 </Link>
                 <Button asChild variant="outline" className="">
