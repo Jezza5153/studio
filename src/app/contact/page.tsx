@@ -28,12 +28,7 @@ export const metadata: Metadata = {
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { FaqList } from "@/components/faq-list";
 import { contactDetails, reservationFaq, openingHours } from "@/content/site-content";
 import { Phone, Info, MapPin, Mail } from "lucide-react";
 import { ReserveerButton } from "@/components/reserveer-button";
@@ -166,18 +161,7 @@ export default function ReserverenPage() {
               </CardTitle>
             </CardHeader>
             <CardContent className="pt-0">
-              <Accordion type="single" collapsible className="w-full">
-                {modifiedFaq.map((item, index) => (
-                  <AccordionItem key={index} value={`item-${index}`} className="border-b">
-                    <AccordionTrigger className="font-semibold text-left text-base sm:text-lg data-[state=open]:text-foreground">
-                      {item.question}
-                    </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground leading-relaxed">
-                      {item.answer}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
+              <FaqList faqs={modifiedFaq} />
             </CardContent>
           </Card>
 
