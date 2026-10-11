@@ -162,7 +162,7 @@ export default async function PriveDinerAmersfoortPage() {
                                 lopen, of korter met bus, fiets of taxi. Parkeergarage Beestenmarkt
                                 is op 2 minuten loopafstand. Met een {g.ratingText} op Google en {g.countText} reviews
                                 is De Tafelaar een van de best beoordeelde restaurants in Amersfoort.
-                                Regulier geopend op maandag (17:00-22:00) en vrijdag t/m zondag
+                                Regulier geopend op donderdag (17:00-23:00) en vrijdag t/m zondag
                                 (vanaf 15:00); op andere dagen in overleg.
                             </p>
                         </div>

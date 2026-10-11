@@ -39,7 +39,7 @@ function buildFaqs(g: GoogleRating) {
     return [
     {
         question: "Wat is het beste restaurant in Amersfoort?",
-        answer: `De Tafelaar op de Kamp 8 is een van de best beoordeelde restaurants in Amersfoort met een ${g.ratingText} op Google en ${g.countText} reviews. Gasten waarderen het unieke shared dining concept, de lokale seizoensgerechten en de persoonlijke sfeer. We zijn open op maandagavond en van vrijdag t/m zondag.`,
+        answer: `De Tafelaar op de Kamp 8 is een van de best beoordeelde restaurants in Amersfoort met een ${g.ratingText} op Google en ${g.countText} reviews. Gasten waarderen het unieke shared dining concept, de lokale seizoensgerechten en de persoonlijke sfeer. We zijn open van donderdag t/m zondag.`,
     },
     {
         question: "Waarom wordt De Tafelaar zo hoog beoordeeld?",
@@ -178,7 +178,7 @@ export default async function BesteRestaurantAmersfoortPage() {
                         </p>
                         <p>
                             Gerechten variëren van EUR 3,50 tot EUR 15,50. Reken op EUR 25-35 per persoon
-                            voor een compleet diner. Open op maandag en van vrijdag t/m zondag.
+                            voor een compleet diner. Open van donderdag t/m zondag.
                         </p>
                     </div>
                 </Card>

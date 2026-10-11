@@ -179,9 +179,7 @@ export default async function VacaturePage({ params }: Props) {
               <p className="text-[15px] text-muted-foreground">
                 De Tafelaar is een shared dining restaurant op de Kamp 8 in Amersfoort centrum, op 5 minuten lopen van
                 Theater de Flint. Gasten bestellen samen een paar gerechten en delen ze aan tafel: kazen, charcuterie,
-                warme seizoensgerechten en desserts, gemaakt met producten van makers uit de regio. We zijn open op
-                maandag van 17:00 tot 22:00 en op vrijdag, zaterdag en zondag van 15:00 tot 00:00; dinsdag, woensdag en
-                donderdag is de zaak dicht. Je werkt in een klein team met de eigenaren Jan en Sabine en chef Jeremy.
+                warme seizoensgerechten en desserts, gemaakt met producten van makers uit de regio. We zijn open op donderdag van 17:00 tot 23:00, op vrijdag en zaterdag van 15:00 tot 00:00 en op zondag van 15:00 tot 23:00; maandag, dinsdag en woensdag is de zaak dicht. Je werkt in een klein team met de eigenaren Jan en Sabine en chef Jeremy.
               </p>
             </section>
 

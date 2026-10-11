@@ -5,7 +5,7 @@ import { getSettings } from "@/lib/queries/feed";
 // (Settings.googleRating / googleReviewCount); every page reads them through
 // here so visible copy and JSON-LD can never drift apart. FALLBACK is only
 // shown while Settings is empty or the database is unreachable at build time.
-const FALLBACK = { rating: 4.9, count: 110 };
+const FALLBACK = { rating: 4.8, count: 174 };
 
 export type GoogleRating = {
   rating: number;
