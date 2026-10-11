@@ -187,11 +187,17 @@ export default async function Home() {
 
           <div className={`${VAK} relative min-h-[280px] bg-secondary md:min-h-[300px]`}>
             <Sticker rating={g.ratingText} count={g.countText} className="absolute right-4 top-4 z-10 md:right-6 md:top-6" />
+            {/* LCP-element: preload met fetchpriority=high, nooit lazy. sizes volgt het grid
+                (mobiel volle breedte, vanaf md de .7fr-kolom = 35vw). Kwaliteit 70 geeft als AVIF
+                (Next codeert AVIF op kwaliteit - 20) dezelfde scherpte als de oude WebP op 75,
+                met zo'n 20% minder bytes. */}
             <Image
               src="/pics/terras-kamp.jpg"
               alt="Het terras van De Tafelaar op de Kamp in Amersfoort, in de zon"
               fill
               priority
+              fetchPriority="high"
+              quality={70}
               sizes="(min-width: 768px) 35vw, 100vw"
               className="object-cover"
             />

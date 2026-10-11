@@ -8,7 +8,7 @@ import { Footer } from "@/components/footer";
 import { Toaster } from "@/components/ui/toaster";
 import { cn } from "@/lib/utils";
 import { GoogleAnalytics } from "@/components/google-analytics";
-import Script from "next/script";
+import { BoekEerlijkEmbed } from "@/components/boekeerlijk-embed";
 import { getSettings } from "@/lib/queries/feed";
 import { persJsonLd } from "@/content/pers";
 import { SITE_NAME, SITE_URL, sharedOpenGraph } from "@/lib/site-metadata";
@@ -19,10 +19,15 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+// Niet preloaden: geen enkele stijl gebruikt --font-playfair (font-headline in
+// tailwind.config.ts verwijst naar --font-playfair-display, dat nergens bestaat, dus koppen
+// erven Inter). Met preload haalde elke pagina ~40 KB font op dat nooit getoond wordt, in
+// concurrentie met de hero-foto. Zonder preload laadt de browser het pas als iets het gebruikt.
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-playfair",
+  preload: false,
 });
 
 const siteUrl = SITE_URL;
@@ -212,13 +217,7 @@ export default async function RootLayout({
   return (
     <html lang="nl" className={cn(inter.variable, playfairDisplay.variable)}>
       <head>
-        {/* Preconnect for webfonts */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
+        {/* Geen preconnect naar Google Fonts: next/font host de fonts zelf. */}
 
         {/* JSON-LD */}
         <script
@@ -260,11 +259,7 @@ export default async function RootLayout({
         <GoogleAnalytics />
 
         {/* BoekEerlijk Reserveerknop */}
-        <Script
-          src="https://www.boekeerlijk.nl/embed.js"
-          data-restaurant-id="de-tafelaar-30fcc6"
-          strategy="afterInteractive"
-        />
+        <BoekEerlijkEmbed />
       </body>
     </html>
   );
