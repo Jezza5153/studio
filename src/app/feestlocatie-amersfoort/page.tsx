@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getGoogleRating } from "@/lib/google-rating";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -6,6 +7,7 @@ import { PartyPopper, UtensilsCrossed, Clock } from "lucide-react";
 import { ReserveerButton } from "@/components/reserveer-button";
 
 export const dynamic = "force-static";
+export const revalidate = 3600; // Google rating/review count refresh hourly (synced by /api/cron/ingest-reviews)
 
 export const metadata: Metadata = {
     title: "Feestlocatie Amersfoort Centrum | Tot 100 Personen | De Tafelaar",
@@ -60,7 +62,8 @@ function faqJsonLd() {
     });
 }
 
-export default function FeestlocatieAmersfoortPage() {
+export default async function FeestlocatieAmersfoortPage() {
+    const g = await getGoogleRating();
     return (
         <>
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd() }} />
@@ -157,7 +160,7 @@ export default function FeestlocatieAmersfoortPage() {
                                 Flint. Vanaf station Amersfoort Centraal is het circa 22 minuten lopen,
                                 of korter met bus, fiets of taxi. Parkeergarage Beestenmarkt is op
                                 2 minuten loopafstand — ideaal voor gasten die met de auto komen. Met
-                                een 4.8 op Google en 90+ reviews weet je dat je feest in goede handen
+                                een {g.ratingText} op Google en {g.countText} reviews weet je dat je feest in goede handen
                                 is. Regulier geopend woensdag t/m zondag (woensdag en donderdag vanaf
                                 17:00, vrijdag t/m zondag vanaf 11:00); op andere dagen in overleg.
                             </p>

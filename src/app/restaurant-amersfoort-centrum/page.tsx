@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getGoogleRating, type GoogleRating } from "@/lib/google-rating";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -6,6 +7,7 @@ import { MapPin, Utensils, Leaf } from "lucide-react";
 import { ReserveerButton } from "@/components/reserveer-button";
 
 export const dynamic = "force-static";
+export const revalidate = 3600; // Google rating/review count refresh hourly (synced by /api/cron/ingest-reviews)
 
 export const metadata: Metadata = {
     title: "Restaurant Amersfoort Centrum | Shared Dining De Tafelaar",
@@ -31,10 +33,11 @@ export const metadata: Metadata = {
     ],
 };
 
-const faqs = [
+function buildFaqs(g: GoogleRating) {
+    return [
     {
         question: "Welke restaurants in Amersfoort centrum zijn een aanrader?",
-        answer: "De Tafelaar op de Kamp 8 is een populair shared dining restaurant in Amersfoort centrum. Gasten waarderen de lokale gerechten, gezellige sfeer en de ligging vlakbij Theater de Flint. Met een 4.8 op Google is het een van de best beoordeelde restaurants in Amersfoort.",
+        answer: `De Tafelaar op de Kamp 8 is een populair shared dining restaurant in Amersfoort centrum. Gasten waarderen de lokale gerechten, gezellige sfeer en de ligging vlakbij Theater de Flint. Met een ${g.ratingText} op Google is het een van de best beoordeelde restaurants in Amersfoort.`,
     },
     {
         question: "Waar zit De Tafelaar precies?",
@@ -50,11 +53,12 @@ const faqs = [
     },
     {
         question: "Is De Tafelaar een van de beste restaurants in Amersfoort?",
-        answer: "Met een 4.8 beoordeling op Google en 90+ reviews is De Tafelaar een van de best beoordeelde restaurants in Amersfoort centrum. Gasten waarderen het shared dining concept, de lokale seizoensgerechten en de persoonlijke bediening.",
+        answer: `Met een ${g.ratingText} beoordeling op Google en ${g.countText} reviews is De Tafelaar een van de best beoordeelde restaurants in Amersfoort centrum. Gasten waarderen het shared dining concept, de lokale seizoensgerechten en de persoonlijke bediening.`,
     },
-];
+    ];
+}
 
-function faqJsonLd() {
+function faqJsonLd(faqs: { question: string; answer: string }[]) {
     return JSON.stringify({
         "@context": "https://schema.org",
         "@type": "FAQPage",
@@ -66,10 +70,12 @@ function faqJsonLd() {
     });
 }
 
-export default function RestaurantAmersfoortCentrumPage() {
+export default async function RestaurantAmersfoortCentrumPage() {
+    const g = await getGoogleRating();
+    const faqs = buildFaqs(g);
     return (
         <>
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd() }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqs) }} />
             <div className="container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
             {/* Hero */}
             <header className="text-center mb-12">
