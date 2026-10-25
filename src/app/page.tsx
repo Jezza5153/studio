@@ -66,7 +66,7 @@ function buildHomeFaqs(g: GoogleRating) {
     },
     {
       question: "Wat zijn de openingstijden van De Tafelaar?",
-      answer: "Maandag en donderdag 17:00-23:00, vrijdag en zaterdag 15:00-00:00, zondag 15:00-23:00. Dinsdag en woensdag gesloten.",
+      answer: "Maandag en donderdag 17:00-23:00, vrijdag en zaterdag 15:00-00:00, zondag 17:00-23:00. Dinsdag en woensdag gesloten.",
     },
     {
       question: "Kan ik De Tafelaar huren voor een feest?",
@@ -355,7 +355,7 @@ export default async function Home() {
             De Tafelaar is een shared dining restaurant op de Kamp in het hart van Amersfoort centrum. Op zoek naar een plek om lekker te eten in Amersfoort? We serveren gerechten van lokale makers, samengesteld om te delen: van kazen en charcuterie tot warme seizoensgerechten en desserts. Alles om gezellig samen te delen aan tafel. Op loopafstand van Theater de Flint (5 min) en op een steenworp afstand van de Kamperbinnenpoort. Vanaf station Amersfoort Centraal ben je in circa 22 minuten lopend bij ons, of korter met bus of fiets.
           </p>
           <p>
-            Gerechten variëren van €3,50 tot €15,50. Reken op €25-35 per persoon voor een compleet diner. Kies je het Chef&apos;s Choice arrangement (€48 p.p.), dan laat je je verrassen door de keuken. Open voor borrel en diner op maandag en donderdag vanaf 17:00 en van vrijdag t/m zondag vanaf 15:00. Liever thuis genieten? Bekijk de kaart van{" "}
+            Gerechten variëren van €3,50 tot €15,50. Reken op €25-35 per persoon voor een compleet diner. Kies je het Chef&apos;s Choice arrangement (€48 p.p.), dan laat je je verrassen door de keuken. Open voor borrel en diner op maandag, donderdag en zondag vanaf 17:00 en op vrijdag en zaterdag vanaf 15:00. Liever thuis genieten? Bekijk de kaart van{" "}
             <Link href="/ophalen" className="font-bold text-primary underline underline-offset-4">Tafelaar Thuis</Link>, onze ophaalservice.
           </p>
         </div>

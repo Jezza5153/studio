@@ -13,7 +13,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: { absolute: "Openingstijden De Tafelaar Amersfoort | Wanneer open?" },
   description:
-    "Openingstijden De Tafelaar, Kamp 8 Amersfoort: ma en do 17:00-23:00, vr en za 15:00-00:00, zo 15:00-23:00, di en wo gesloten. Reserveer online of bel ons.",
+    "Openingstijden De Tafelaar, Kamp 8 Amersfoort: ma en do 17:00-23:00, vr en za 15:00-00:00, zo 17:00-23:00, di en wo gesloten. Reserveer online of bel ons.",
   alternates: {
     canonical: "/openingstijden",
   },
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     images: [{ url: "/pics/terras-kamp.jpg", width: 1800, height: 1200 }],
     title: "Openingstijden De Tafelaar Amersfoort | Wanneer Open",
     description:
-      "Openingstijden De Tafelaar, Kamp 8 Amersfoort: ma en do 17:00-23:00, vr en za 15:00-00:00, zo 15:00-23:00, di en wo gesloten. Reserveer online of bel ons.",
+      "Openingstijden De Tafelaar, Kamp 8 Amersfoort: ma en do 17:00-23:00, vr en za 15:00-00:00, zo 17:00-23:00, di en wo gesloten. Reserveer online of bel ons.",
   },
   keywords: [
     "openingstijden de tafelaar",
@@ -36,7 +36,7 @@ const faqs = [
   {
     question: "Wanneer is De Tafelaar open?",
     answer:
-      "De Tafelaar is open op maandag en donderdag van 17:00 tot 23:00, op vrijdag en zaterdag van 15:00 tot 00:00 en op zondag van 15:00 tot 23:00. Op dinsdag en woensdag zijn wij gesloten.",
+      "De Tafelaar is open op maandag en donderdag van 17:00 tot 23:00, op vrijdag en zaterdag van 15:00 tot 00:00 en op zondag van 17:00 tot 23:00. Op dinsdag en woensdag zijn wij gesloten.",
   },
   {
     question: "Is De Tafelaar open op feestdagen?",
@@ -46,7 +46,7 @@ const faqs = [
   {
     question: "Kan ik ook in de middag langskomen?",
     answer:
-      "Op vrijdag, zaterdag en zondag openen we om 15:00, ideaal voor een middagborrel met kazen, charcuterie en gerechten om te delen. Op maandag en donderdag openen we om 17:00.",
+      "Op vrijdag en zaterdag openen we om 15:00, ideaal voor een middagborrel met kazen, charcuterie en gerechten om te delen. Op maandag, donderdag en zondag openen we om 17:00.",
   },
   {
     question: "Kan ik bij De Tafelaar afhalen?",
@@ -103,9 +103,9 @@ export default function OpeningstijdenPage() {
                 lopen, of korter met bus, fiets of taxi.
               </p>
               <p>
-                <strong className="text-foreground">Borrel of vroeg diner:</strong> op vrijdag, zaterdag
-                en zondag openen we om 15:00, ideaal voor een middagborrel met kazen, charcuterie en
-                gerechten, of een vroege start van je diner. Op maandag en donderdag zijn we open van 17:00 tot 23:00 met de volledige dinerkaart.
+                <strong className="text-foreground">Borrel of vroeg diner:</strong> op vrijdag en zaterdag
+                openen we om 15:00, ideaal voor een middagborrel met kazen, charcuterie en
+                gerechten, of een vroege start van je diner. Op maandag, donderdag en zondag zijn we open van 17:00 tot 23:00 met de volledige dinerkaart.
               </p>
             </div>
           </Card>
