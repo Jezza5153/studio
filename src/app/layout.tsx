@@ -138,9 +138,8 @@ function restaurantJsonLd(rating?: number, reviewCount?: number) {
     ],
 
     openingHoursSpecification: [
-      { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Thursday"], opens: "17:00", closes: "23:00" },
+      { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Thursday", "Sunday"], opens: "17:00", closes: "23:00" },
       { "@type": "OpeningHoursSpecification", dayOfWeek: ["Friday", "Saturday"], opens: "15:00", closes: "00:00" },
-      { "@type": "OpeningHoursSpecification", dayOfWeek: "Sunday", opens: "15:00", closes: "23:00" },
     ],
 
     makesOffer: [

@@ -30,7 +30,7 @@ export type Vacature = {
   validThrough: string;
 };
 
-const WERKDAGEN = "Maandag- en donderdagavond, vrijdag t/m zondag vanaf 15:00";
+const WERKDAGEN = "Maandag-, donderdag- en zondagavond, vrijdag en zaterdag vanaf 15:00";
 
 // Horeca-cao loontabel per 1 juli 2026: basisloon functiegroep V (20 jaar of ouder) is €15,21 per uur.
 // Bediening (functiegroep III, cao-minimum €14,99) krijgt bewust hetzelfde startloon.
@@ -59,7 +59,7 @@ export const vacatures: Vacature[] = [
     ],
     zoeken: [
       "Ervaring in de bediening is fijn, een open en gastvrije instelling is belangrijker",
-      "Beschikbaar op maandag- en donderdagavond en in het weekend (vrijdag t/m zondag vanaf 15:00)",
+      "Beschikbaar op maandag- en donderdagavond en in het weekend (vrijdag en zaterdag vanaf 15:00, zondag vanaf 17:00)",
       "Je spreekt goed Nederlands en houdt van lekker eten",
     ],
     bieden: [
@@ -96,7 +96,7 @@ export const vacatures: Vacature[] = [
     zoeken: [
       "Een paar jaar ervaring in de bediening, liefst ook als leidinggevende of shiftleader",
       "Overzicht en rust als het druk is, en een gastvrije houding",
-      "Beschikbaar op maandag- en donderdagavond en in het weekend (vrijdag t/m zondag vanaf 15:00)",
+      "Beschikbaar op maandag- en donderdagavond en in het weekend (vrijdag en zaterdag vanaf 15:00, zondag vanaf 17:00)",
       "Je spreekt goed Nederlands; een Verklaring Sociale Hygiëne is een pre",
     ],
     bieden: [
@@ -149,7 +149,7 @@ export const vacatures: Vacature[] = [
       "Bijbaan in de keuken, vooral in het weekend. Geen ervaring nodig, vanaf 16 jaar. Goed te combineren met school of studie.",
     dienstverband: "Bijbaan",
     uren: "8 tot 16 uur per week",
-    dagen: "Vooral vrijdag t/m zondag vanaf 15:00",
+    dagen: "Vooral vrijdag en zaterdag vanaf 15:00, zondag vanaf 17:00",
     employmentType: ["PART_TIME"],
     zonderErvaring: true,
     ervaring: "Niet nodig, we leren je alles",
@@ -213,7 +213,7 @@ export const vacatureFaqs = [
   {
     question: "Op welke dagen werk je bij De Tafelaar?",
     answer:
-      "We zijn open op maandag en donderdag van 17:00 tot 23:00, op vrijdag en zaterdag van 15:00 tot 00:00 en op zondag van 15:00 tot 23:00. Dinsdag en woensdag is de zaak gesloten. Je rooster spreken we samen af.",
+      "We zijn open op maandag en donderdag van 17:00 tot 23:00, op vrijdag en zaterdag van 15:00 tot 00:00 en op zondag van 17:00 tot 23:00. Dinsdag en woensdag is de zaak gesloten. Je rooster spreken we samen af.",
   },
   {
     question: "Wat verdien je bij De Tafelaar?",

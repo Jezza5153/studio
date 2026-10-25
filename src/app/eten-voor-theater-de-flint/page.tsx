@@ -68,7 +68,7 @@ const faqs = [
     },
     {
         question: "Kan ik na een middagvoorstelling in de Flint bij jullie terecht?",
-        answer: "Ja. Op vrijdag, zaterdag en zondag zijn we open vanaf 15:00, dus na een middagvoorstelling loop je in 5 minuten naar de Kamp voor een borrel of een vroeg diner.",
+        answer: "Ja. Op vrijdag en zaterdag zijn we open vanaf 15:00 en op zondag vanaf 17:00, dus na een middagvoorstelling loop je in 5 minuten naar de Kamp voor een borrel of een vroeg diner.",
     },
     {
         question: "Kunnen we na de voorstelling nog iets drinken?",
@@ -239,12 +239,12 @@ export default function EtenVoorDeFlintPage() {
                                     <tr className="border-t border-border">
                                         <td className="px-4 py-2.5 font-semibold text-foreground">Avond</td>
                                         <td className="px-4 py-2.5 text-muted-foreground">20:00 of 20:15</td>
-                                        <td className="px-4 py-2.5 text-muted-foreground">Reserveer rond 18:00 (maandag en donderdag open vanaf 17:00, vrijdag t/m zondag vanaf 15:00)</td>
+                                        <td className="px-4 py-2.5 text-muted-foreground">Reserveer rond 18:00 (maandag, donderdag en zondag open vanaf 17:00, vrijdag en zaterdag vanaf 15:00)</td>
                                     </tr>
                                     <tr className="border-t border-border">
                                         <td className="px-4 py-2.5 font-semibold text-foreground">Middag</td>
                                         <td className="px-4 py-2.5 text-muted-foreground">14:30 of 15:00</td>
-                                        <td className="px-4 py-2.5 text-muted-foreground">Na afloop welkom vanaf 15:00 (vrijdag t/m zondag)</td>
+                                        <td className="px-4 py-2.5 text-muted-foreground">Na afloop welkom vanaf 15:00 (vrijdag en zaterdag) of 17:00 (zondag)</td>
                                     </tr>
                                     <tr className="border-t border-border">
                                         <td className="px-4 py-2.5 font-semibold text-foreground">Na de voorstelling</td>

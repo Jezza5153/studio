@@ -56,7 +56,7 @@ export const openingHours = {
     { day: "Donderdag", time: "17:00 - 23:00" },
     { day: "Vrijdag", time: "15:00 - 00:00" },
     { day: "Zaterdag", time: "15:00 - 00:00" },
-    { day: "Zondag", time: "15:00 - 23:00" },
+    { day: "Zondag", time: "17:00 - 23:00" },
   ],
   /** Korte weergave voor de footer */
   compact: [
@@ -64,7 +64,7 @@ export const openingHours = {
     { day: "Di en wo", time: "Gesloten" },
     { day: "Donderdag", time: "17:00 - 23:00" },
     { day: "Vr en za", time: "15:00 - 00:00" },
-    { day: "Zondag", time: "15:00 - 23:00" },
+    { day: "Zondag", time: "17:00 - 23:00" },
   ],
   footer:
     "Let op: openingstijden kunnen afwijken tijdens feestdagen en evenementen.",

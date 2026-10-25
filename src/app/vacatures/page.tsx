@@ -213,7 +213,7 @@ export default function VacaturesPage() {
                 zoals Rock City Brewing, De Drie Ringen en Farmfields.
               </p>
               <p>
-                We zijn open op maandag en donderdag van 17:00 tot 23:00, op vrijdag en zaterdag van 15:00 tot 00:00 en op zondag van 15:00 tot 23:00. Op
+                We zijn open op maandag en donderdag van 17:00 tot 23:00, op vrijdag en zaterdag van 15:00 tot 00:00 en op zondag van 17:00 tot 23:00. Op
                 dinsdag en woensdag is de zaak dicht. Daardoor is werken bij ons goed te combineren met
                 studie, school of een tweede baan. De zaak is vanaf station Amersfoort Centraal in circa 22 minuten
                 lopend bereikbaar, en sneller met de fiets of de bus.

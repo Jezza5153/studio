@@ -80,7 +80,7 @@ const ophalenFaqs = [
     {
         question: "Hoe bestel ik en wanneer kan ik ophalen?",
         answer:
-            "Bel +31 6 341 279 32 om je bestelling door te geven en een ophaaltijd af te spreken. Ophalen op Kamp 8 in Amersfoort centrum tijdens openingstijden: maandag en donderdag vanaf 17:00, vrijdag t/m zondag vanaf 15:00.",
+            "Bel +31 6 341 279 32 om je bestelling door te geven en een ophaaltijd af te spreken. Ophalen op Kamp 8 in Amersfoort centrum tijdens openingstijden: maandag, donderdag en zondag vanaf 17:00, vrijdag en zaterdag vanaf 15:00.",
     },
     {
         question: "Waarom zijn jullie spare ribs anders?",

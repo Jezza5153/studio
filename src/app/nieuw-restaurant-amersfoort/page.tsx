@@ -42,7 +42,7 @@ const faqs = [
     },
     {
         question: "Wanneer is De Tafelaar open?",
-        answer: "Maandag en donderdag van 17:00 tot 23:00, vrijdag en zaterdag van 15:00 tot 00:00, zondag van 15:00 tot 23:00. Dinsdag en woensdag zijn we gesloten.",
+        answer: "Maandag en donderdag van 17:00 tot 23:00, vrijdag en zaterdag van 15:00 tot 00:00, zondag van 17:00 tot 23:00. Dinsdag en woensdag zijn we gesloten.",
     },
     {
         question: "Moet ik reserveren?",
@@ -109,7 +109,7 @@ export default function NieuwRestaurantAmersfoortPage() {
                         <CardContent className="text-sm text-muted-foreground">
                             <p>Maandag en donderdag 17:00-23:00</p>
                             <p>Vrijdag en zaterdag 15:00-00:00</p>
-                            <p>Zondag 15:00-23:00</p>
+                            <p>Zondag 17:00-23:00</p>
                         </CardContent>
                     </Card>
                 </div>
