@@ -11,9 +11,10 @@ import { getGoogleRating, type GoogleRating } from "@/lib/google-rating";
 import { MAANDEN, huidigeMaandIndex, seizoenLabel } from "@/lib/seizoen";
 import { homeContent, makers, makersIntro, contactDetails, openingHours } from "@/content/site-content";
 import { persMedia } from "@/content/pers";
+import { kerstdiner, kerstdinerActief, KERSTDINER_PAD } from "@/content/kerstdiner";
 
 export const dynamic = "force-static";
-export const revalidate = 3600; // score/aantal uit het admin-paneel en het seizoenslabel verversen elk uur
+export const revalidate = 3600; // score/aantal uit het admin-paneel, het seizoenslabel en het kerstdiner (verdwijnt na 25 dec) verversen elk uur
 
 export async function generateMetadata(): Promise<Metadata> {
   const g = await getGoogleRating();
@@ -154,6 +155,8 @@ export default async function Home() {
   const homeFaqs = buildHomeFaqs(g);
   const maandNu = huidigeMaandIndex();
   const seizoen = seizoenLabel();
+  const kerst = kerstdinerActief();
+  const ticker = kerst ? [`Kerstdiner ${kerstdiner.datumsKort}`, ...TICKER] : TICKER;
 
   const headlineWords = homeContent.hero.headline.split(" ");
   const headlineLast = headlineWords.pop();
@@ -165,6 +168,19 @@ export default async function Home() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: websiteJsonLd() }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: homeFaqJsonLd(homeFaqs) }} />
+
+      {/* ================= KERSTDINER: balk bovenaan (verdwijnt na 25 dec) ================= */}
+      {kerst ? (
+        <div className="border-b-[5px] border-foreground bg-foreground text-background">
+          <div className="container mx-auto flex items-center justify-between gap-4 px-4 py-2.5 sm:px-6 md:px-8">
+            <Link href={KERSTDINER_PAD} className="min-w-0 text-[13.5px] font-bold leading-snug underline-offset-4 hover:underline sm:text-[14.5px]">
+              <span aria-hidden className="mr-1.5 text-primary">★</span>
+              Kerstdiner {kerstdiner.datumsKort} · €{kerstdiner.prijs} p.p.
+            </Link>
+            <ReserveerButton size="sm" className="shrink-0" label="Reserveer" />
+          </div>
+        </div>
+      ) : null}
 
       {/* ================= HERO: vier vlakken ================= */}
       <section className="border-b-[5px] border-foreground" aria-labelledby="home-hero-title">
@@ -248,7 +264,61 @@ export default async function Home() {
         </div>
       </section>
 
-      <Ticker items={TICKER} />
+      {/* ================= KERSTDINER: blok onder de hero (verdwijnt na 25 dec) ================= */}
+      {kerst ? (
+        <section id="kerstdiner" className="border-b-[5px] border-foreground" aria-labelledby="kerst-title">
+          <div className="grid grid-cols-1 md:grid-cols-[1.3fr_.7fr]">
+            <div className="relative min-h-[240px] border-b-[5px] border-foreground md:order-last md:min-h-[300px] md:border-b-0">
+              <Image src={kerstdiner.foto.src} alt={kerstdiner.foto.alt} fill sizes="(min-width: 768px) 35vw, 100vw" className="object-cover" />
+            </div>
+            <div className="flex flex-col justify-center bg-white px-6 py-9 md:border-r-[5px] md:border-foreground md:px-10 md:py-12">
+              <div>
+                <Kicker>Kerst bij De Tafelaar</Kicker>
+              </div>
+              <h2 id="kerst-title" className="mt-5 max-w-[20ch] font-headline text-[clamp(30px,3.8vw,50px)] font-black leading-[1.05] tracking-tight">
+                Kerstdiner op kerstavond &amp; <em className="font-bold italic text-primary">eerste kerstdag</em>
+              </h2>
+              <p className="mt-3 text-[clamp(16px,1.8vw,19px)] font-semibold">{kerstdiner.datumsLang}</p>
+
+              <dl className="mt-6 grid max-w-[640px] grid-cols-1 border-2 border-foreground bg-background sm:grid-cols-3">
+                <div className="border-b-2 border-foreground px-4 py-3 sm:border-b-0 sm:border-r-2">
+                  <dt className="text-[10.5px] font-bold uppercase tracking-[0.16em] text-muted-foreground">Kerstmenu</dt>
+                  <dd className="mt-1 font-headline text-[24px] font-extrabold leading-none">
+                    €{kerstdiner.prijs} <span className="text-[13px] font-semibold">p.p.</span>
+                  </dd>
+                </div>
+                <div className="border-b-2 border-foreground px-4 py-3 sm:border-b-0 sm:border-r-2">
+                  <dt className="text-[10.5px] font-bold uppercase tracking-[0.16em] text-muted-foreground">Wijnarrangement</dt>
+                  <dd className="mt-1 font-headline text-[24px] font-extrabold leading-none">
+                    €{kerstdiner.wijnarrangement} <span className="text-[13px] font-semibold">p.p.</span>
+                  </dd>
+                  <dd className="mt-1.5 text-[12.5px] text-muted-foreground">{kerstdiner.wijnarrangementTekst}</dd>
+                </div>
+                <div className="px-4 py-3">
+                  <dt className="text-[10.5px] font-bold uppercase tracking-[0.16em] text-muted-foreground">Tafeltijden</dt>
+                  <dd className="mt-1 text-[14px] font-bold leading-snug">
+                    {kerstdiner.tafels[0].tekst}
+                    <br />
+                    of vanaf {kerstdiner.tafels[1].start}
+                  </dd>
+                </div>
+              </dl>
+
+              <p className="mt-4 max-w-[60ch] text-sm text-muted-foreground">
+                {kerstdiner.alleenKerstmenu} Het menu maken we binnenkort bekend.
+              </p>
+              <div className="mt-6 flex flex-col gap-3.5 sm:flex-row sm:flex-wrap">
+                <ReserveerButton size="lg" className="w-full sm:w-auto" label="Reserveer je kersttafel" />
+                <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
+                  <Link href={KERSTDINER_PAD}>Meer over het kerstdiner →</Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      <Ticker items={ticker} />
 
       {/* ================= USPs ================= */}
       <section className="container mx-auto px-4 py-20 sm:px-6 md:px-8" aria-labelledby="usp-title">
