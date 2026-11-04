@@ -71,6 +71,13 @@ const nextConfig: NextConfig = {
         permanent: false,
       },
       {
+        // Korte link voor Instagram-bio, tafelkaartjes, bonnetjes en QR-codes. Tijdelijk (307);
+        // na 25 december stuurt de kerstpagina zelf weer door naar /agenda.
+        source: "/kerst",
+        destination: "/kerstdiner-amersfoort",
+        permanent: false,
+      },
+      {
         source: "/tripadvisor",
         destination: "https://www.tripadvisor.nl/UserReviewEdit-g188613-d34027809-De_Tafelaar-Amersfoort.html",
         permanent: false,

@@ -1,9 +1,14 @@
 import { contactDetails, navLinks, meerLinks, openingHours } from "@/content/site-content";
 import Image from "next/image";
 import Link from "next/link";
+import { kerstdiner, kerstdinerActief, KERSTDINER_PAD } from "@/content/kerstdiner";
 
 export function Footer() {
   const hasDialablePhone = /\d/.test(contactDetails.phone || "");
+  // Tot en met 25 december staat het kerstdiner bovenaan "Meer ontdekken" (pagina's verversen elk uur).
+  const meer = kerstdinerActief()
+    ? [{ href: KERSTDINER_PAD, label: `Kerstdiner ${kerstdiner.datumsKort}` }, ...meerLinks]
+    : meerLinks;
   const linkClass = "inline-block py-1 text-sm text-background/60 transition-colors hover:text-background";
 
   return (
@@ -59,7 +64,7 @@ export function Footer() {
           <div>
             <h4 className="mb-4 text-[11.5px] font-bold uppercase tracking-[0.2em] text-secondary">Meer ontdekken</h4>
             <ul className="space-y-1">
-              {meerLinks.map((link) => (
+              {meer.map((link) => (
                 <li key={link.href}>
                   <Link href={link.href} className={linkClass}>
                     {link.label}

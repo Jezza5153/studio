@@ -17,6 +17,8 @@ import { FrontPageGrid } from "@/components/courant/FrontPageGrid";
 import { TheLiveWall } from "@/components/courant/TheLiveWall";
 import { GuestHighlights } from "@/components/courant/GuestHighlights";
 import { buildEventsJsonLd } from "@/lib/event-jsonld";
+import { KerstdinerMelding } from "@/components/kerstdiner-melding";
+import { kerstdinerActief } from "@/content/kerstdiner";
 
 export const revalidate = 60; // ISR: revalidate every 60s
 
@@ -86,6 +88,12 @@ export default async function AgendaPage() {
                 settings={settings}
                 reviewQuote={reviews[0] ?? null}
             />
+
+            {kerstdinerActief() && (
+                <div className="container mx-auto px-4 pt-6 sm:px-6 md:px-8">
+                    <KerstdinerMelding />
+                </div>
+            )}
 
             {leadStory && <LeadStoryHero story={leadStory} />}
 
