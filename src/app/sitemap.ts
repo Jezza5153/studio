@@ -6,6 +6,10 @@ import { KERSTDINER_PAD, kerstdiner, kerstdinerActief } from "@/content/kerstdin
 
 const prisma = new PrismaClient();
 
+// Dagelijks opnieuw opbouwen, zodat het kerstdiner na 25 december vanzelf uit de sitemap valt
+// (en nieuwe Courant-artikelen erin komen) zonder nieuwe deploy.
+export const revalidate = 86400;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = "https://www.tafelaaramersfoort.nl";
   // Datum van de laatste inhoudelijke wijziging; Google negeert lastmod als die bij elke deploy verandert.
