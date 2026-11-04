@@ -2,8 +2,13 @@
 import type { MetadataRoute } from "next";
 import { PrismaClient } from "@prisma/client";
 import { VACATURES_BIJGEWERKT, vacatures } from "@/content/vacatures";
+import { KERSTDINER_PAD, kerstdiner, kerstdinerActief } from "@/content/kerstdiner";
 
 const prisma = new PrismaClient();
+
+// Dagelijks opnieuw opbouwen, zodat het kerstdiner na 25 december vanzelf uit de sitemap valt
+// (en nieuwe Courant-artikelen erin komen) zonder nieuwe deploy.
+export const revalidate = 86400;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = "https://www.tafelaaramersfoort.nl";
@@ -28,6 +33,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${base}/openingstijden`, lastModified, priority: 0.5, changeFrequency: "monthly" },
     { url: `${base}/drank`, lastModified, priority: 0.6, changeFrequency: "weekly" },
     { url: `${base}/agenda`, lastModified, priority: 0.8, changeFrequency: "weekly" },
+    // Alleen tot en met 25 december; daarna stuurt de pagina door naar /agenda.
+    ...(kerstdinerActief()
+      ? [{ url: `${base}${KERSTDINER_PAD}`, lastModified: new Date("2026-11-04T00:00:00Z"), priority: 0.8, changeFrequency: "weekly" as const, images: [`${base}${kerstdiner.foto.src}`] }]
+      : []),
     { url: `${base}/updates`, lastModified, priority: 0.7, changeFrequency: "weekly" },
     { url: `${base}/restaurant-amersfoort-centrum`, lastModified, priority: 0.9, changeFrequency: "monthly" },
     { url: `${base}/borrel-amersfoort`, lastModified, priority: 0.8, changeFrequency: "monthly" },
