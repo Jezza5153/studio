@@ -27,8 +27,10 @@ export const metadata: Metadata = {
     url: KERSTDINER_PAD,
     title: TITEL,
     description: OMSCHRIJVING,
-    images: [{ url: kerstdiner.foto.src }],
+    // Deelbeeld met datums en prijzen, voor WhatsApp, Facebook en LinkedIn
+    images: [{ url: "/pics/kerstdiner-delen.jpg", width: 1200, height: 630, alt: "Kerstdiner bij De Tafelaar op 24 & 25 december: kerstmenu €65 p.p., wijnarrangement €35 p.p." }],
   },
+  twitter: { card: "summary_large_image", title: TITEL, description: OMSCHRIJVING, images: ["/pics/kerstdiner-delen.jpg"] },
   keywords: [
     "kerstdiner amersfoort",
     "kerst restaurant amersfoort",

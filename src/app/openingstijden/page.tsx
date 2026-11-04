@@ -7,6 +7,8 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { MapPin, Phone } from "lucide-react";
 import { ReserveerButton } from "@/components/reserveer-button";
 import { openingHours } from "@/content/site-content";
+import { KerstdinerMelding } from "@/components/kerstdiner-melding";
+import { kerstdiner, kerstdinerActief } from "@/content/kerstdiner";
 
 export const dynamic = "force-static";
 
@@ -32,7 +34,10 @@ export const metadata: Metadata = {
   ],
 };
 
-const faqs = [
+// In een functie (niet op moduleniveau), zodat de kerstregel na 25 december bij de volgende
+// verversing vanzelf verdwijnt.
+function buildFaqs() {
+  return [
   {
     question: "Wanneer is De Tafelaar open?",
     answer:
@@ -40,8 +45,9 @@ const faqs = [
   },
   {
     question: "Is De Tafelaar open op feestdagen?",
-    answer:
-      "Openingstijden kunnen afwijken op feestdagen zoals Kerst, Oud & Nieuw en Koningsdag. Check onze website of bel +31 6 341 279 32 voor de actuele situatie.",
+    answer: kerstdinerActief()
+      ? `Op kerstavond en eerste kerstdag (${kerstdiner.datumsKort}) serveren we alleen het kerstdiner, met tafels om ${kerstdiner.tafels[0].start} en ${kerstdiner.tafels[1].start}. Op andere feestdagen, zoals Oud & Nieuw en Koningsdag, kunnen de openingstijden afwijken. Check onze website of bel +31 6 341 279 32 voor de actuele situatie.`
+      : "Openingstijden kunnen afwijken op feestdagen zoals Kerst, Oud & Nieuw en Koningsdag. Check onze website of bel +31 6 341 279 32 voor de actuele situatie.",
   },
   {
     question: "Kan ik ook in de middag langskomen?",
@@ -58,9 +64,10 @@ const faqs = [
     answer:
       "Reserveren is niet verplicht maar wel aan te raden, vooral op vrijdag- en zaterdagavond. Je kunt eenvoudig online reserveren via onze website. Walk-ins zijn welkom als er plek is.",
   },
-];
+  ];
+}
 
-function faqJsonLd() {
+function faqJsonLd(faqs: { question: string; answer: string }[]) {
   return JSON.stringify({
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -73,9 +80,10 @@ function faqJsonLd() {
 }
 
 export default function OpeningstijdenPage() {
+  const faqs = buildFaqs();
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd() }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJsonLd(faqs) }} />
       <div className="container mx-auto px-4 py-12 sm:px-6 md:px-8 sm:py-16 md:py-24">
         {/* Hero */}
         <div className="text-center mb-12">
@@ -110,6 +118,11 @@ export default function OpeningstijdenPage() {
             </div>
           </Card>
         </section>
+
+        <KerstdinerMelding
+          className="mx-auto mb-6 max-w-2xl"
+          tekst={`Kerst: op ${kerstdiner.datumsKort} serveren we alleen het kerstdiner, met tafels om ${kerstdiner.tafels[0].start} en ${kerstdiner.tafels[1].start}.`}
+        />
 
         {/* Hours card */}
         <div className="max-w-2xl mx-auto mb-12">

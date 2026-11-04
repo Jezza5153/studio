@@ -5,6 +5,8 @@ import { DINNER_MENU } from "@/content/menu";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ReserveerButton } from "@/components/reserveer-button";
+import { KerstdinerMelding } from "@/components/kerstdiner-melding";
+import { kerstdiner, kerstdinerActief } from "@/content/kerstdiner";
 
 export const metadata: Metadata = {
     title: { absolute: "Menu De Tafelaar Amersfoort | Dinerkaart Shared Dining" },
@@ -114,6 +116,14 @@ export default function MenuLayout({
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: menuFaqJsonLd() }}
             />
+            {/* Kerst: in de (server)layout, niet in de client-pagina, zodat de datumcheck op de server draait */}
+            {kerstdinerActief() && (
+                <div className="container mx-auto px-4 pt-8 sm:px-6 sm:pt-12 md:px-8">
+                    <KerstdinerMelding
+                        tekst={`Op ${kerstdiner.datumsKort} serveren we alleen het kerstmenu (€${kerstdiner.prijs} p.p.), niet deze kaart.`}
+                    />
+                </div>
+            )}
             {children}
 
             {/* Below-menu content (server component) */}
