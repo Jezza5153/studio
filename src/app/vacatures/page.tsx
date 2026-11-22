@@ -14,14 +14,14 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: { absolute: "Vacatures Amersfoort: werken bij restaurant De Tafelaar" },
   description:
-    "Werken in de horeca in Amersfoort? De Tafelaar zoekt bediening, een eerste medewerker, een kok en keukenhulp. Vanaf €15,21 per uur. Bekijk de vacatures.",
+    "Werken in de horeca in Amersfoort? De Tafelaar zoekt een assistent bedrijfsleider, bediening, een eerste medewerker, een kok en keukenhulp. Bekijk de vacatures.",
   alternates: { canonical: "/vacatures" },
   openGraph: {
     ...sharedOpenGraph,
     images: [{ url: "/pics/gasten-bar.jpg", width: 846, height: 460 }],
     title: "Vacatures De Tafelaar | Werken in Amersfoort centrum",
     description:
-      "Bediening, eerste medewerker, kok en keukenhulp gezocht in een klein, hecht team met lokale producten en een seizoenskaart. Vanaf €15,21 per uur.",
+      "Assistent bedrijfsleider, bediening, eerste medewerker, kok en keukenhulp gezocht in een klein, hecht team met lokale producten en een seizoenskaart.",
   },
   keywords: [
     "vacature horeca amersfoort",
@@ -29,6 +29,8 @@ export const metadata: Metadata = {
     "werken bij restaurant amersfoort",
     "vacature bediening amersfoort",
     "vacature kok amersfoort",
+    "assistent bedrijfsleider horeca amersfoort",
+    "assistent bedrijfsleider amersfoort",
     "eerste medewerker horeca amersfoort",
     "assistent leidinggevende horeca amersfoort",
     "vacature restaurant manager amersfoort",

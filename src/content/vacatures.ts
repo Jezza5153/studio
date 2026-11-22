@@ -18,6 +18,8 @@ export type Vacature = {
   zonderErvaring: boolean;
   /** Bruto uurloon volgens de horeca-cao; Google Jobs toont vacatures met salaris prominenter. */
   salaris?: { min: number; max?: number; tekst: string };
+  /** Zonder vast bedrag (geen `salaris`): wat er op de vacaturepagina bij Salaris staat, bijv. "Marktconform". */
+  salarisTekst?: string;
   /** Gevraagde ervaring, in het overzichtsblok en de kop van de vacaturepagina */
   ervaring: string;
   afbeelding: { src: string; alt: string };
@@ -35,6 +37,22 @@ const WERKDAGEN = "Donderdag- en zondagavond, vrijdag en zaterdag vanaf 15:00";
 // Horeca-cao loontabel per 1 juli 2026: basisloon functiegroep V (20 jaar of ouder) is €15,21 per uur.
 // Bediening (functiegroep III, cao-minimum €14,99) krijgt bewust hetzelfde startloon.
 const STARTLOON = { min: 15.21, tekst: "Vanaf €15,21 bruto per uur (21 jaar of ouder), volgens de horeca-cao" };
+
+// Assistent bedrijfsleider en eerste medewerker hebben dezelfde taken en eisen.
+const LEIDING_DOEN = [
+  "Het team in de bediening aansturen tijdens de service en zelf meewerken op de vloer",
+  "Roosters maken, taken verdelen en nieuwe collega's inwerken",
+  "De zaak openen en afsluiten, inclusief kassa en dagafsluiting",
+  "Gasten, groepen en reserveringen ontvangen en groepsaanvragen afhandelen",
+  "Meedenken over de kaart, de drankenkaart en hoe het nog beter kan",
+];
+
+const LEIDING_ZOEKEN = [
+  "Een paar jaar ervaring in de bediening, liefst ook als leidinggevende of shiftleader",
+  "Overzicht en rust als het druk is, en een gastvrije houding",
+  "Beschikbaar op donderdagavond en in het weekend (vrijdag en zaterdag vanaf 15:00, zondag vanaf 17:00)",
+  "Je spreekt goed Nederlands; een Verklaring Sociale Hygiëne is een pre",
+];
 
 export const vacatures: Vacature[] = [
   {
@@ -72,6 +90,32 @@ export const vacatures: Vacature[] = [
     validThrough: "2027-01-31",
   },
   {
+    slug: "assistent-bedrijfsleider",
+    titel: "Assistent bedrijfsleider",
+    samenvatting:
+      "Rechterhand van de eigenaren: je stuurt het team aan tijdens de service, op de Kamp in Amersfoort centrum. Marktconform salaris.",
+    dienstverband: "Parttime of fulltime",
+    uren: "24 uur of meer per week, in overleg",
+    dagen: WERKDAGEN,
+    employmentType: ["PART_TIME", "FULL_TIME"],
+    zonderErvaring: false,
+    ervaring: "Een paar jaar ervaring in de bediening, liefst met leidinggeven",
+    salarisTekst: "Marktconform, afhankelijk van ervaring",
+    afbeelding: { src: "/pics/zaal-gasten.jpg", alt: "Gasten aan tafel in de zaal van De Tafelaar op de Kamp in Amersfoort" },
+    intro:
+      "Als assistent bedrijfsleider ben je de rechterhand van de eigenaren Jan en Sabine. Tijdens de service stuur je het team aan, zorg je dat gasten zich welkom voelen en dat de avond soepel loopt, en spring je zelf bij waar het nodig is.",
+    doen: LEIDING_DOEN,
+    zoeken: LEIDING_ZOEKEN,
+    bieden: [
+      "Een marktconform salaris, afhankelijk van ervaring",
+      "Verantwoordelijkheid en ruimte om mee te bouwen aan een jonge zaak met een eigen concept",
+      "Vaste vrije dagen: op maandag, dinsdag en woensdag is de zaak dicht",
+      "Korte lijnen met de eigenaren en een personeelsmaaltijd tijdens je dienst",
+    ],
+    datePosted: "2026-11-22",
+    validThrough: "2027-01-31",
+  },
+  {
     slug: "eerste-medewerker-restaurant",
     titel: "Eerste medewerker restaurant",
     samenvatting:
@@ -86,19 +130,8 @@ export const vacatures: Vacature[] = [
     afbeelding: { src: "/pics/hero-gasten.jpg", alt: "Gasten aan tafel en het team in de bediening bij De Tafelaar" },
     intro:
       "Als eerste medewerker (assistent leidinggevende) ben je de rechterhand van de eigenaren Jan en Sabine. Tijdens de service stuur je het team in de bediening aan, zorg je dat gasten zich welkom voelen en dat de avond soepel loopt, en spring je zelf bij waar het nodig is.",
-    doen: [
-      "Het team in de bediening aansturen tijdens de service en zelf meewerken op de vloer",
-      "Roosters maken, taken verdelen en nieuwe collega's inwerken",
-      "De zaak openen en afsluiten, inclusief kassa en dagafsluiting",
-      "Gasten, groepen en reserveringen ontvangen en groepsaanvragen afhandelen",
-      "Meedenken over de kaart, de drankenkaart en hoe het nog beter kan",
-    ],
-    zoeken: [
-      "Een paar jaar ervaring in de bediening, liefst ook als leidinggevende of shiftleader",
-      "Overzicht en rust als het druk is, en een gastvrije houding",
-      "Beschikbaar op donderdagavond en in het weekend (vrijdag en zaterdag vanaf 15:00, zondag vanaf 17:00)",
-      "Je spreekt goed Nederlands; een Verklaring Sociale Hygiëne is een pre",
-    ],
+    doen: LEIDING_DOEN,
+    zoeken: LEIDING_ZOEKEN,
     bieden: [
       "Vanaf €15,21 bruto per uur (21 jaar of ouder), volgens de horeca-cao, afhankelijk van ervaring",
       "Verantwoordelijkheid en ruimte om mee te bouwen aan een jonge zaak met een eigen concept",
@@ -203,7 +236,7 @@ export const vacatureFaqs = [
   {
     question: "Welke vacatures heeft De Tafelaar in Amersfoort?",
     answer:
-      "De Tafelaar zoekt een medewerker bediening (parttime), een eerste medewerker restaurant (assistent leidinggevende), een zelfstandig werkend kok (parttime of fulltime) en een afwasser/keukenhulp (bijbaan, vooral in het weekend). Een open sollicitatie is ook welkom. Het restaurant zit op de Kamp 8 in Amersfoort centrum.",
+      "De Tafelaar zoekt een assistent bedrijfsleider (parttime of fulltime), een medewerker bediening (parttime), een eerste medewerker restaurant (assistent leidinggevende), een zelfstandig werkend kok (parttime of fulltime) en een afwasser/keukenhulp (bijbaan, vooral in het weekend). Een open sollicitatie is ook welkom. Het restaurant zit op de Kamp 8 in Amersfoort centrum.",
   },
   {
     question: "Kan ik ook zonder ervaring bij De Tafelaar werken?",
@@ -218,7 +251,7 @@ export const vacatureFaqs = [
   {
     question: "Wat verdien je bij De Tafelaar?",
     answer:
-      "We betalen volgens de horeca-cao. In de bediening, als eerste medewerker en als zelfstandig werkend kok verdien je vanaf €15,21 bruto per uur (21 jaar of ouder), daarboven afhankelijk van ervaring. Voor de afwas en keukenhulp hangt het uurloon af van je leeftijd; dat bespreken we in het eerste gesprek. Tijdens je dienst eet je mee.",
+      "We betalen volgens de horeca-cao. In de bediening, als eerste medewerker en als zelfstandig werkend kok verdien je vanaf €15,21 bruto per uur (21 jaar of ouder), daarboven afhankelijk van ervaring. Als assistent bedrijfsleider krijg je een marktconform salaris, afhankelijk van ervaring. Voor de afwas en keukenhulp hangt het uurloon af van je leeftijd; dat bespreken we in het eerste gesprek. Tijdens je dienst eet je mee.",
   },
   {
     question: "Hoe solliciteer ik bij De Tafelaar?",

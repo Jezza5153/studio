@@ -65,7 +65,7 @@ export default async function VacaturePage({ params }: Props) {
     ["Uren", v.uren],
     ["Dagen", v.dagen],
     ["Locatie", "Kamp 8, 3811 AR Amersfoort (centrum)"],
-    ["Salaris", v.salaris?.tekst ?? "Volgens de horeca-cao"],
+    ["Salaris", v.salaris?.tekst ?? v.salarisTekst ?? "Volgens de horeca-cao"],
     ["Ervaring", v.ervaring],
     ["Solliciteren", `Via het formulier op deze pagina. Bellen (${contactDetails.phone}) mag ook.`],
   ];
