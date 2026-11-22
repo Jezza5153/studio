@@ -72,7 +72,7 @@ const faqs = [
     },
     {
         question: "Kunnen we na de voorstelling nog iets drinken?",
-        answer: "Ja. Op vrijdag en zaterdag zijn we open tot 00:00, op maandag, donderdag en zondag tot 23:00. Na een avondvoorstelling schuif je aan voor een drankje, een borrelplank of een dessert.",
+        answer: "Ja. Op vrijdag en zaterdag zijn we open tot 00:00, op donderdag en zondag tot 23:00. Na een avondvoorstelling schuif je aan voor een drankje, een borrelplank of een dessert.",
     },
     {
         question: "Hoe laat beginnen voorstellingen in Flint meestal?",
@@ -239,7 +239,7 @@ export default function EtenVoorDeFlintPage() {
                                     <tr className="border-t border-border">
                                         <td className="px-4 py-2.5 font-semibold text-foreground">Avond</td>
                                         <td className="px-4 py-2.5 text-muted-foreground">20:00 of 20:15</td>
-                                        <td className="px-4 py-2.5 text-muted-foreground">Reserveer rond 18:00 (maandag, donderdag en zondag open vanaf 17:00, vrijdag en zaterdag vanaf 15:00)</td>
+                                        <td className="px-4 py-2.5 text-muted-foreground">Reserveer rond 18:00 (donderdag en zondag open vanaf 17:00, vrijdag en zaterdag vanaf 15:00)</td>
                                     </tr>
                                     <tr className="border-t border-border">
                                         <td className="px-4 py-2.5 font-semibold text-foreground">Middag</td>
@@ -249,7 +249,7 @@ export default function EtenVoorDeFlintPage() {
                                     <tr className="border-t border-border">
                                         <td className="px-4 py-2.5 font-semibold text-foreground">Na de voorstelling</td>
                                         <td className="px-4 py-2.5 text-muted-foreground">Rond 22:00 of later</td>
-                                        <td className="px-4 py-2.5 text-muted-foreground">Open tot 00:00 op vrijdag en zaterdag, tot 23:00 op maandag, donderdag en zondag</td>
+                                        <td className="px-4 py-2.5 text-muted-foreground">Open tot 00:00 op vrijdag en zaterdag, tot 23:00 op donderdag en zondag</td>
                                     </tr>
                                 </tbody>
                             </table>

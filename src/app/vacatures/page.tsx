@@ -14,14 +14,14 @@ export const dynamic = "force-static";
 export const metadata: Metadata = {
   title: { absolute: "Vacatures Amersfoort: werken bij restaurant De Tafelaar" },
   description:
-    "Werken in de horeca in Amersfoort? De Tafelaar zoekt bediening, een eerste medewerker, een kok en keukenhulp. Vanaf €15,21 per uur. Bekijk de vacatures.",
+    "Werken in de horeca in Amersfoort? De Tafelaar zoekt een assistent bedrijfsleider, bediening, een eerste medewerker, een kok en keukenhulp. Bekijk de vacatures.",
   alternates: { canonical: "/vacatures" },
   openGraph: {
     ...sharedOpenGraph,
     images: [{ url: "/pics/gasten-bar.jpg", width: 846, height: 460 }],
     title: "Vacatures De Tafelaar | Werken in Amersfoort centrum",
     description:
-      "Bediening, eerste medewerker, kok en keukenhulp gezocht in een klein, hecht team met lokale producten en een seizoenskaart. Vanaf €15,21 per uur.",
+      "Assistent bedrijfsleider, bediening, eerste medewerker, kok en keukenhulp gezocht in een klein, hecht team met lokale producten en een seizoenskaart.",
   },
   keywords: [
     "vacature horeca amersfoort",
@@ -29,6 +29,8 @@ export const metadata: Metadata = {
     "werken bij restaurant amersfoort",
     "vacature bediening amersfoort",
     "vacature kok amersfoort",
+    "assistent bedrijfsleider horeca amersfoort",
+    "assistent bedrijfsleider amersfoort",
     "eerste medewerker horeca amersfoort",
     "assistent leidinggevende horeca amersfoort",
     "vacature restaurant manager amersfoort",
@@ -87,7 +89,7 @@ export default function VacaturesPage() {
           <p className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground sm:text-lg">
             De Tafelaar, het shared dining restaurant op de Kamp 8 in Amersfoort centrum, zoekt collega&apos;s voor de
             bediening, de leiding en de keuken, vanaf €15,21 bruto per uur. Een klein team, producten van makers uit de regio en vaste vrije dagen: we zijn
-            open op maandag en van donderdag t/m zondag.
+            open van donderdag t/m zondag.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <Button asChild>
@@ -213,8 +215,8 @@ export default function VacaturesPage() {
                 zoals Rock City Brewing, De Drie Ringen en Farmfields.
               </p>
               <p>
-                We zijn open op maandag en donderdag van 17:00 tot 23:00, op vrijdag en zaterdag van 15:00 tot 00:00 en op zondag van 17:00 tot 23:00. Op
-                dinsdag en woensdag is de zaak dicht. Daardoor is werken bij ons goed te combineren met
+                We zijn open op donderdag van 17:00 tot 23:00, op vrijdag en zaterdag van 15:00 tot 00:00 en op zondag van 17:00 tot 23:00. Op
+                maandag, dinsdag en woensdag is de zaak dicht. Daardoor is werken bij ons goed te combineren met
                 studie, school of een tweede baan. De zaak is vanaf station Amersfoort Centraal in circa 22 minuten
                 lopend bereikbaar, en sneller met de fiets of de bus.
               </p>

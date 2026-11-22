@@ -49,7 +49,7 @@ const faqs = [
     },
     {
         question: "Wat is een goede avond voor een date?",
-        answer: "We zijn open op maandag, donderdag en zondag vanaf 17:00 en op vrijdag en zaterdag vanaf 15:00. Vrijdag en zaterdag zijn levendig en gezellig; op alle avonden is de sfeer warm en uitnodigend.",
+        answer: "We zijn open op donderdag en zondag vanaf 17:00 en op vrijdag en zaterdag vanaf 15:00. Vrijdag en zaterdag zijn levendig en gezellig; op alle avonden is de sfeer warm en uitnodigend.",
     },
 ];
 
@@ -177,7 +177,7 @@ export default async function RomantischDinerAmersfoortPage() {
                             </p>
                             <p>
                                 <strong className="text-foreground">Tip:</strong> vrijdag en zaterdag zijn
-                                levendig en gezellig. We zijn open op maandag, donderdag en zondag vanaf 17:00 en op
+                                levendig en gezellig. We zijn open op donderdag en zondag vanaf 17:00 en op
                                 vrijdag en zaterdag vanaf 15:00.
                             </p>
                             <p>
