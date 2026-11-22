@@ -29,7 +29,7 @@ export const kerstdiner = {
     { naam: "2e tafel", start: "20:15", eind: null, tekst: "vanaf 20:15, zonder eindtijd" },
   ],
   tafelsKort: "17:30 – 20:00 of vanaf 20:15",
-  prijs: 65,
+  prijs: 68,
   wijnarrangement: 35,
   wijnarrangementTekst: "inclusief champagne bij ontvangst",
   alleenKerstmenu: "Op 24 en 25 december serveren we alleen het kerstmenu, niet de gewone kaart.",

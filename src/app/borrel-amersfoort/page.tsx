@@ -161,7 +161,7 @@ export default async function BorrelAmersfoortPage() {
                             Beestenmarkt is op 2 minuten loopafstand. Met een {g.ratingText} op Google en {g.countText}
                             reviews zijn we een van de best beoordeelde restaurants in Amersfoort.
                             Naast vrijdag en zaterdag (open vanaf 15:00) zijn we ook geopend op
-                            maandag, donderdag en zondag van 17:00 tot 23:00.
+                            donderdag en zondag van 17:00 tot 23:00.
                         </p>
                     </div>
                 </Card>

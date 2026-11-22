@@ -1,7 +1,7 @@
 # Kerstdiner 2026: promotie
 
 Alles wat buiten de code moet gebeuren om het kerstdiner te promoten, met teksten om te plakken.
-De feiten komen uit `src/content/kerstdiner.ts`: do 24 & vr 25 december, kerstmenu €65 p.p.,
+De feiten komen uit `src/content/kerstdiner.ts`: do 24 & vr 25 december, kerstmenu €68 p.p.,
 wijnarrangement €35 p.p. inclusief champagne bij ontvangst, tafels 17:30–20:00 of vanaf 20:15
 (zonder eindtijd). Op die avonden alleen het kerstmenu.
 
@@ -40,7 +40,7 @@ niets aan de pagina.
 
 > Kerst bij De Tafelaar
 >
-> Op kerstavond (donderdag 24 december) en eerste kerstdag (vrijdag 25 december) serveren we een speciaal kerstmenu voor €65 p.p. Maak het compleet met ons wijnarrangement voor €35 p.p., inclusief champagne bij ontvangst.
+> Op kerstavond (donderdag 24 december) en eerste kerstdag (vrijdag 25 december) serveren we een speciaal kerstmenu voor €68 p.p. Maak het compleet met ons wijnarrangement voor €35 p.p., inclusief champagne bij ontvangst.
 >
 > Twee tafels per avond: 17:30–20:00 of vanaf 20:15, zonder eindtijd. Op deze avonden serveren we alleen het kerstmenu.
 >
@@ -54,7 +54,7 @@ niets aan de pagina.
 >
 > 📅 Do 24 & vr 25 december
 > 🕠 17:30–20:00 of vanaf 20:15
-> 🍽️ Kerstmenu €65 p.p.
+> 🍽️ Kerstmenu €68 p.p.
 > 🥂 Wijnarrangement €35 p.p., incl. champagne bij ontvangst
 >
 > Reserveer via de link in onze bio.
@@ -66,7 +66,7 @@ niets aan de pagina.
 
 > Kerst aan tafel bij De Tafelaar 🎄
 >
-> Op kerstavond (do 24 december) en eerste kerstdag (vr 25 december) serveren we een speciaal kerstmenu voor €65 p.p., met een wijnarrangement voor €35 p.p. inclusief champagne bij ontvangst. Twee tafels per avond: 17:30–20:00 of vanaf 20:15.
+> Op kerstavond (do 24 december) en eerste kerstdag (vr 25 december) serveren we een speciaal kerstmenu voor €68 p.p., met een wijnarrangement voor €35 p.p. inclusief champagne bij ontvangst. Twee tafels per avond: 17:30–20:00 of vanaf 20:15.
 >
 > Reserveer hier: [Facebook-link uit de tabel]
 
@@ -83,7 +83,7 @@ niets aan de pagina.
 
 **Tekst:**
 
-> Op kerstavond, donderdag 24 december, en eerste kerstdag, vrijdag 25 december, serveren we bij De Tafelaar een speciaal kerstmenu voor €65 per persoon. Maak het compleet met ons wijnarrangement voor €35 per persoon, inclusief champagne bij ontvangst.
+> Op kerstavond, donderdag 24 december, en eerste kerstdag, vrijdag 25 december, serveren we bij De Tafelaar een speciaal kerstmenu voor €68 per persoon. Maak het compleet met ons wijnarrangement voor €35 per persoon, inclusief champagne bij ontvangst.
 >
 > Er zijn twee tafels per avond: van 17:30 tot 20:00, of vanaf 20:15 zonder eindtijd. Op deze twee avonden serveren we alleen het kerstmenu.
 >
@@ -102,7 +102,7 @@ Na kerst: het artikel losmaken (niet meer vastpinnen) of verwijderen.
 >
 > Eerder schreven jullie over onze actie Eten met Peter voor de Hersenstichting. Deze keer een tip voor jullie kerstagenda: op kerstavond (donderdag 24 december) en eerste kerstdag (vrijdag 25 december) serveert De Tafelaar op de Kamp een speciaal kerstmenu.
 >
-> - Kerstmenu: €65 per persoon
+> - Kerstmenu: €68 per persoon
 > - Wijnarrangement: €35 per persoon, inclusief champagne bij ontvangst
 > - Twee tafels per avond: 17:30–20:00 of vanaf 20:15
 > - Kamp 8, Amersfoort centrum, op 5 minuten lopen van Theater de Flint
@@ -121,7 +121,7 @@ Na kerst: het artikel losmaken (niet meer vastpinnen) of verwijderen.
 
 > **Kerst bij De Tafelaar**
 > Kerstavond & eerste kerstdag · 24 & 25 december
-> Kerstmenu €65 p.p. · wijnarrangement €35 p.p. incl. champagne
+> Kerstmenu €68 p.p. · wijnarrangement €35 p.p. incl. champagne
 > Scan en reserveer: tafelaaramersfoort.nl/kerst
 > [QR-code]
 
